@@ -2,1644 +2,1632 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CyberStart</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b1020;
-            color: white;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            background: #111a33;
-            padding: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #38bdf8;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #0b1020, #111a33);
-        }
-
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 10px;
-            color: #38bdf8;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-        .hero-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 25px;
-            background: #38bdf8;
-            color: #07111f;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-
-        .hero-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        section h2 {
-            text-align: center;
-            font-size: 34px;
-            margin-bottom: 35px;
-            color: #38bdf8;
-        }
-
-        /* =========================
-           CARDS
-        ========================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #111a33;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 200, 255, 0.08);
-        }
-
-        .card h3 {
-            color: #7dd3fc;
-        }
-
-        .card p {
-            line-height: 1.6;
-        }
-
-        /* =========================
-           GLOSSARY
-        ========================= */
-
-        .glossary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .term {
-            background: #111a33;
-            padding: 20px;
-            border-radius: 12px;
-        }
-
-        .term strong {
-            color: #38bdf8;
-            font-size: 20px;
-        }
-
-        /* =========================
-           LABS
-        ========================= */
-
-        .lab {
-            background: #111a33;
-            border: 1px solid #26345c;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-
-        .lab-number {
-            color: #78bbff;
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .lab h3 {
-            color: #4da6ff;
-            font-size: 26px;
-        }
-
-        .lab p {
-            color: #dddddd;
-            line-height: 1.6;
-        }
-
-        .lab input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 13px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background: #0b1020;
-            color: white;
-            border: 1px solid #354878;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .lab-button {
-            padding: 12px 20px;
-            background: #4da6ff;
-            color: #07101f;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 5px;
-        }
-
-        .lab-button:hover {
-            background: #78bbff;
-        }
-
-        .choice {
-            display: block;
-            width: 100%;
-            text-align: left;
-            background: #182544;
-            color: white;
-            border: 1px solid #354878;
-            margin: 8px 0;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .choice:hover {
-            background: #263b6b;
-        }
-
-        .result {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background: #0d162d;
-            border-radius: 8px;
-            line-height: 1.6;
-        }
-
-        .xp {
-            color: #78bbff;
-            font-weight: bold;
-        }
-
-        .lab-note {
-            font-size: 14px;
-            color: #94a3b8 !important;
-        }
-
-        /* =========================
-           CHALLENGE
-        ========================= */
-
-        .challenge-section {
-            text-align: center;
-        }
-
-        .challenge-card {
-            max-width: 700px;
-            margin: auto;
-            background: #111a33;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
-        }
-
-        .challenge-card h2 {
-            margin-bottom: 10px;
-        }
-
-        .challenge-card h3 {
-            font-size: 22px;
-            margin: 25px 0;
-            line-height: 1.4;
-        }
-
-        #questionNumber {
-            color: #7dd3fc;
-            font-weight: bold;
-        }
-
-        .answers {
-            display: grid;
-            gap: 12px;
-        }
-
-        .answers button,
-        #nextButton {
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            background: #1e2a4a;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .answers button:hover,
-        #nextButton:hover {
-            transform: scale(1.03);
-            background: #26375f;
-        }
-
-        .answers button:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        #feedback {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        #score {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 15px;
-        }
-
-        #nextButton {
-            background: #38bdf8;
-            color: #07111f;
-            font-weight: bold;
-        }
-
-        /* =========================
-           XP DISPLAY
-        ========================= */
-
-        .xp-display {
-            max-width: 1100px;
-            margin: 30px auto 0;
-            padding: 20px;
-            background: #111a33;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .xp-display h3 {
-            color: #38bdf8;
-            margin: 0 0 8px;
-        }
-
-        #totalXP {
-            font-size: 28px;
-            font-weight: bold;
-            color: #78bbff;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-            background: #111a33;
-            padding: 30px;
-            margin-top: 40px;
-            color: #94a3b8;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            nav {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            nav a {
-                margin: 0 7px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-        }
-
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CyberStart | Cyber Labs</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background-color: #070b16;
+
+    background-image:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(56, 189, 248, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        100% 100%,
+        45px 45px,
+        45px 45px;
+
+    background-attachment: fixed;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    background: rgba(11, 16, 32, 0.94);
+
+    border-bottom:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #38bdf8;
+    white-space: nowrap;
+}
+
+nav div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+
+    padding: 75px 20px 45px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -250px;
+    left: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 189, 248, 0.40),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow 5s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -200px;
+    right: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.35),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow2 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+@keyframes cyberGlow {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(500px);
+    }
+
+}
+
+@keyframes cyberGlow2 {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-500px);
+    }
+
+}
+
+.hero h1,
+.hero h2,
+.hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    color: #38bdf8;
+
+    font-size: 25px;
+
+    margin: 0 0 20px;
+}
+
+.hero h2 {
+    color: #38bdf8;
+
+    font-size: 42px;
+
+    margin: 0 0 15px;
+
+    text-shadow:
+        0 0 25px
+        rgba(56, 189, 248, 0.20);
+}
+
+.hero p {
+    max-width: 750px;
+
+    margin: auto;
+
+    color: #a9bbcf;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   LAB GRID
+========================= */
+
+.labs {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* =========================
+   LAB CARD
+========================= */
+
+.lab {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 26, 51, 0.97),
+            rgba(10, 17, 35, 0.97)
+        );
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.20);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.lab:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(56, 189, 248, 0.60);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.25);
+}
+
+.lab-number {
+
+    color: #7dd3fc;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.lab h3 {
+
+    color: #38bdf8;
+
+    font-size: 24px;
+
+    margin:
+        10px 0 12px;
+}
+
+.lab p {
+
+    color: #c2d0df;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.lab input,
+.lab select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin:
+        8px 0;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        #315273;
+
+    background:
+        #0b1728;
+
+    color: white;
+
+    font-size: 15px;
+}
+
+.lab input:focus,
+.lab select:focus {
+
+    outline: none;
+
+    border-color:
+        #38bdf8;
+
+    box-shadow:
+        0 0 12px
+        rgba(56, 189, 248, 0.12);
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.lab textarea {
+
+    width: 100%;
+
+    min-height: 110px;
+
+    padding: 12px;
+
+    margin:
+        8px 0;
+
+    resize: vertical;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        #315273;
+
+    background:
+        #0b1728;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+}
+
+.lab textarea:focus {
+
+    outline: none;
+
+    border-color:
+        #38bdf8;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.lab button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        #315273;
+
+    background:
+        #10243a;
+
+    color:
+        #7dd3fc;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.lab button:hover {
+
+    background:
+        #173652;
+
+    border-color:
+        #38bdf8;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================
+   RESULT BOX
+========================= */
+
+.result {
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background:
+        #091321;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.20);
+
+    color: #cfe8ff;
+
+    line-height: 1.6;
+
+    min-height: 20px;
+}
+
+
+/* =========================
+   LOG BOX
+========================= */
+
+.log-box {
+
+    background:
+        #050a12;
+
+    border:
+        1px solid
+        #263c55;
+
+    border-radius: 9px;
+
+    padding: 12px;
+
+    margin:
+        10px 0;
+
+    font-family:
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    overflow-x: auto;
+}
+
+
+/* =========================
+   CHOICE BUTTONS
+========================= */
+
+.choice {
+
+    text-align: left;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    margin-top: 60px;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background:
+        rgba(11, 16, 32, 0.95);
+
+    border-top:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    color:
+        #8195aa;
+}
+
+footer p:first-child {
+
+    color:
+        #38bdf8;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    nav {
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        padding:
+            18px 12px;
+    }
+
+    nav div:last-child {
+
+        gap:
+            12px 16px;
+    }
+
+    nav a {
+
+        font-size: 14px;
+    }
+
+    .hero {
+
+        padding:
+            60px 20px 35px;
+    }
+
+    .hero h2 {
+
+        font-size: 32px;
+    }
+
+    .hero p {
+
+        font-size: 17px;
+    }
+
+    .labs {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================
+   EXTRA SMALL PHONES
+========================= */
+
+@media (max-width: 430px) {
+
+    .logo {
+
+        font-size: 22px;
+    }
+
+    nav div:last-child {
+
+        gap:
+            10px 13px;
+    }
+
+    nav a {
+
+        font-size: 13px;
+    }
+
+    .hero h2 {
+
+        font-size: 29px;
+    }
+
+}
+
+</style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <nav>
+<nav>
 
-        <div class="logo">
-            🛡️ CyberStart
-        </div>
+    <div class="logo">
+        🛡️ CyberStart
+    </div>
 
-        <div>
+    <div>
 
-            <a href="#home">Home</a>
-
-            <a href="#lessons">Lessons</a>
-
-            <a href="#labs">Labs</a>
-
-            <a href="#glossary">Glossary</a>
-
-            <a href="#challenge">Challenge</a>
-
-        </div>
-
-    </nav>
-
-
-    <!-- =========================
-         HERO
-    ========================= -->
-
-    <header class="hero" id="home">
-
-        <h1>CyberStart</h1>
-
-        <p>
-            Learn cybersecurity, understand digital threats,
-            experiment with safe labs, and test your skills.
-        </p>
-
-        <a class="hero-button" href="#challenge">
-            🚀 Start the Challenge
+        <a href="index.html">
+            Home
         </a>
 
-    </header>
+        <a href="lessons.html">
+            Lessons
+        </a>
 
+        <a href="labs.html">
+            Labs
+        </a>
 
-    <!-- =========================
-         XP DISPLAY
-    ========================= -->
+        <a href="quiz.html">
+            Quiz
+        </a>
 
-    <div class="xp-display">
+        <a href="games.html">
+            Games
+        </a>
 
-        <h3>🏆 CyberStart XP</h3>
-
-        <div id="totalXP">
-            0 XP
-        </div>
+        <a href="glossary.html">
+            Glossary
+        </a>
 
     </div>
 
+</nav>
 
-    <!-- =========================
-         LESSONS
-    ========================= -->
 
-    <section id="lessons">
+<!-- =========================
+     HERO
+========================= -->
 
-        <h2>📚 Cybersecurity Lessons</h2>
+<section class="hero">
 
-        <div class="cards">
+    <h1>
+        🛡️ CyberStart
+    </h1>
 
+    <h2>
+        Cybersecurity Labs
+    </h2>
 
-            <div class="card">
+    <p>
+        Practice cybersecurity concepts through
+        safe, fictional, interactive challenges.
+    </p>
 
-                <h3>🛡️ What Is Cybersecurity?</h3>
+</section>
 
-                <p>
-                    Cybersecurity is the practice of protecting
-                    computers, networks, accounts, and information
-                    from digital threats.
-                </p>
 
-            </div>
+<!-- =========================
+     LABS
+========================= -->
 
+<section class="labs">
 
-            <div class="card">
 
-                <h3>🎣 What Is Phishing?</h3>
+<!-- =================================================
+     LAB 1
+================================================= -->
 
-                <p>
-                    Phishing is a scam where someone tries to trick
-                    you into giving away information or clicking
-                    something dangerous.
-                </p>
+<div class="lab">
 
-            </div>
+    <div class="lab-number">
+        Lab 01
+    </div>
 
+    <h3>
+        🔐 Password Strength
+    </h3>
 
-            <div class="card">
+    <p>
+        Enter a sample password and learn about
+        characteristics that can make passwords
+        harder to guess.
+    </p>
 
-                <h3>🔑 Strong Passwords</h3>
+    <input
+        type="text"
+        id="passwordInput"
+        placeholder="Enter a sample password"
+    >
 
-                <p>
-                    Strong passwords are harder for attackers to
-                    guess. Using unique passwords and additional
-                    security such as MFA can help protect accounts.
-                </p>
+    <button onclick="checkPassword()">
+        Check Password
+    </button>
 
-            </div>
+    <div
+        class="result"
+        id="passwordResult">
+    </div>
 
+</div>
 
-            <div class="card">
 
-                <h3>📱 Multi-Factor Authentication</h3>
+<!-- =================================================
+     LAB 2
+================================================= -->
 
-                <p>
-                    MFA adds another verification step when signing
-                    into an account, making it harder for someone
-                    else to access it.
-                </p>
+<div class="lab">
 
-            </div>
+    <div class="lab-number">
+        Lab 02
+    </div>
 
+    <h3>
+        🎣 Phishing Detective
+    </h3>
 
-            <div class="card">
+    <p>
+        Read the fictional message below and
+        decide whether it contains warning signs.
+    </p>
 
-                <h3>🦠 Malware</h3>
+    <div class="log-box">
 
-                <p>
-                    Malware is malicious software designed to
-                    disrupt systems, steal information, or perform
-                    other unwanted actions.
-                </p>
+        From: security-example@fake-mail.test
 
-            </div>
+        <br>
 
+        Subject: URGENT! Account Problem
 
-            <div class="card">
+        <br><br>
 
-                <h3>🌐 Network Security</h3>
+        Your account requires immediate attention.
+        Verify your information through the link
+        provided or access may be restricted.
 
-                <p>
-                    Network security involves protecting systems
-                    and information as they communicate across
-                    networks.
-                </p>
+    </div>
 
-            </div>
+    <button onclick="phishingAnswer(true)">
+        🚨 Suspicious
+    </button>
 
+    <button onclick="phishingAnswer(false)">
+        ✅ Safe
+    </button>
 
-        </div>
+    <div
+        class="result"
+        id="phishingResult">
+    </div>
 
-    </section>
+</div>
 
 
-    <!-- =========================
-         LABS
-    ========================= -->
+<!-- =================================================
+     LAB 3
+================================================= -->
 
-    <section id="labs">
+<div class="lab">
 
-        <h2>🧪 Cybersecurity Labs</h2>
+    <div class="lab-number">
+        Lab 03
+    </div>
 
-        <p style="text-align:center; color:#cccccc; font-size:18px;">
-            Learn cybersecurity by experimenting with
-            safe, interactive simulations.
-        </p>
+    <h3>
+        #️⃣ Hashing Lab
+    </h3>
 
+    <p>
+        Enter harmless sample text and generate
+        a SHA-256 hash directly in your browser.
+    </p>
 
-        <!-- LAB 1 -->
+    <input
+        type="text"
+        id="hashInput"
+        placeholder="Example: CyberStart"
+    >
 
-        <div class="lab">
+    <button onclick="generateHash()">
+        Generate SHA-256 Hash
+    </button>
 
-            <div class="lab-number">
-                LAB 1
-            </div>
+    <div
+        class="result"
+        id="hashResult">
+    </div>
 
-            <h3>
-                🔑 Password Strength Experiment
-            </h3>
+</div>
 
-            <p>
-                Enter an example password and see what
-                characteristics make it stronger or weaker.
-            </p>
 
-            <p class="lab-note">
-                ⚠️ Use an example password only. Never enter a real password.
-            </p>
+<!-- =================================================
+     LAB 4
+================================================= -->
 
-            <input
-                type="text"
-                id="passwordInput"
-                placeholder="Enter an example password"
-            >
+<div class="lab">
 
-            <button
-                class="lab-button"
-                onclick="checkPassword()">
-                Analyze Password
-            </button>
+    <div class="lab-number">
+        Lab 04
+    </div>
 
-            <div
-                class="result"
-                id="passwordResult">
-            </div>
+    <h3>
+        🌐 Network Basics
+    </h3>
 
-        </div>
+    <p>
+        Test your knowledge of basic networking
+        concepts.
+    </p>
 
+    <select id="networkQuestion">
 
-        <!-- LAB 2 -->
+        <option value="ip">
+            What identifies a device on a network?
+        </option>
 
-        <div class="lab">
+        <option value="dns">
+            What translates domain names into IP addresses?
+        </option>
 
-            <div class="lab-number">
-                LAB 2
-            </div>
+        <option value="port">
+            What identifies a network service endpoint?
+        </option>
 
-            <h3>
-                🎣 Phishing Detective
-            </h3>
+    </select>
 
-            <p>
-                You receive this fictional message:
-            </p>
+    <select id="networkAnswer">
 
-            <p>
-                <strong>
-                    "URGENT! Your account will be locked today.
-                    Click the link immediately to verify your account."
-                </strong>
-            </p>
+        <option value="ip">
+            IP address
+        </option>
 
-            <p>
-                What is the safest response?
-            </p>
+        <option value="dns">
+            DNS
+        </option>
 
+        <option value="port">
+            Port
+        </option>
 
-            <button
-                class="choice"
-                onclick="phishingAnswer(false)">
-                A. Click the link immediately
-            </button>
+    </select>
 
+    <button onclick="checkNetwork()">
+        Check Answer
+    </button>
 
-            <button
-                class="choice"
-                onclick="phishingAnswer(true)">
-                B. Verify the message using a trusted source
-            </button>
+    <div
+        class="result"
+        id="networkResult">
+    </div>
 
+</div>
 
-            <button
-                class="choice"
-                onclick="phishingAnswer(false)">
-                C. Reply with your password
-            </button>
 
+<!-- =================================================
+     LAB 5
+================================================= -->
 
-            <button
-                class="choice"
-                onclick="phishingAnswer(false)">
-                D. Forward it to everyone
-            </button>
+<div class="lab">
 
+    <div class="lab-number">
+        Lab 05
+    </div>
 
-            <div
-                class="result"
-                id="phishingResult">
-            </div>
+    <h3>
+        🕵️ Log Detective
+    </h3>
 
-        </div>
+    <p>
+        Inspect this fictional security log and
+        identify the suspicious event.
+    </p>
 
+    <div class="log-box">
 
-        <!-- LAB 3 -->
+        09:12:04 User login successful
 
-        <div class="lab">
+        <br>
 
-            <div class="lab-number">
-                LAB 3
-            </div>
+        09:14:22 File opened
 
-            <h3>
-                #️⃣ Hashing Experiment
-            </h3>
+        <br>
 
-            <p>
-                Hash functions turn input data into a fixed-length
-                value. Even a small change to the input can produce
-                a different hash.
-            </p>
+        09:16:08 Password reset requested
 
-            <input
-                type="text"
-                id="hashInput"
-                placeholder="Enter sample text"
-            >
+        <br>
 
-            <button
-                class="lab-button"
-                onclick="generateHash()">
-                Generate Demo Hash
-            </button>
+        09:17:51 Login attempt failed
 
-            <div
-                class="result"
-                id="hashResult">
-            </div>
+        <br>
 
-            <p class="lab-note">
+        09:18:02 Login attempt failed
 
-                <strong>Note:</strong>
-                This is an educational demonstration.
-                Do not enter real passwords or sensitive information.
+        <br>
 
-            </p>
+        09:18:14 Login attempt failed
 
-        </div>
+    </div>
 
-    </section>
+    <button onclick="logAnswer()">
+        Analyze Log
+    </button>
 
+    <div
+        class="result"
+        id="logResult">
+    </div>
 
-    <!-- =========================
-         GLOSSARY
-    ========================= -->
+</div>
 
-    <section id="glossary">
 
-        <h2>📖 Cybersecurity Glossary</h2>
+<!-- =================================================
+     LAB 6
+================================================= -->
 
-        <div class="glossary">
+<div class="lab">
 
+    <div class="lab-number">
+        Lab 06
+    </div>
 
-            <div class="term">
+    <h3>
+        🔎 Vulnerability Scanner Simulator
+    </h3>
 
-                <strong>Phishing</strong>
+    <p>
+        This is a fictional scanner. Select a
+        simulated system to see example findings.
+    </p>
 
-                <p>
-                    A scam designed to trick people into revealing
-                    information or taking an unsafe action.
-                </p>
+    <select id="scanTarget">
 
-            </div>
+        <option value="web">
+            Practice Web Server
+        </option>
 
+        <option value="office">
+            Practice Office Computer
+        </option>
 
-            <div class="term">
+        <option value="database">
+            Practice Database
+        </option>
 
-                <strong>Malware</strong>
+    </select>
 
-                <p>
-                    Malicious software that can harm systems or
-                    perform unwanted actions.
-                </p>
+    <button onclick="runScan()">
+        Run Simulated Scan
+    </button>
 
-            </div>
+    <div
+        class="result"
+        id="scanResult">
+    </div>
 
+</div>
 
-            <div class="term">
 
-                <strong>Firewall</strong>
+<!-- =================================================
+     LAB 7
+================================================= -->
 
-                <p>
-                    A security system that helps control network
-                    traffic based on security rules.
-                </p>
+<div class="lab">
 
-            </div>
+    <div class="lab-number">
+        Lab 07
+    </div>
 
+    <h3>
+        🔒 Encryption Basics
+    </h3>
 
-            <div class="term">
+    <p>
+        Learn the difference between plaintext
+        and encrypted-looking ciphertext.
+    </p>
 
-                <strong>MFA</strong>
+    <input
+        type="text"
+        id="encryptInput"
+        placeholder="Enter sample text"
+    >
 
-                <p>
-                    Multi-Factor Authentication. It requires more
-                    than one verification factor to access an account.
-                </p>
+    <button onclick="demoEncryption()">
+        Run Demo
+    </button>
 
-            </div>
+    <div
+        class="result"
+        id="encryptResult">
+    </div>
 
+</div>
 
-            <div class="term">
 
-                <strong>Encryption</strong>
+<!-- =================================================
+     LAB 8
+================================================= -->
 
-                <p>
-                    A process that transforms information so it can
-                    only be properly understood by someone with the
-                    required key or method.
-                </p>
+<div class="lab">
 
-            </div>
+    <div class="lab-number">
+        Lab 08
+    </div>
 
+    <h3>
+        🚨 Incident Response
+    </h3>
 
-            <div class="term">
+    <p>
+        A security alert appears on a fictional
+        company computer. What should an analyst
+        prioritize?
+    </p>
 
-                <strong>VPN</strong>
+    <button
+        class="choice"
+        onclick="incidentAnswer('investigate')">
 
-                <p>
-                    A Virtual Private Network can create an
-                    encrypted connection between a device and a
-                    VPN server.
-                </p>
+        🔎 Investigate the alert
 
-            </div>
+    </button>
 
+    <button
+        class="choice"
+        onclick="incidentAnswer('ignore')">
 
-            <div class="term">
+        ❌ Ignore it
 
-                <strong>Vulnerability</strong>
+    </button>
 
-                <p>
-                    A weakness that could potentially be exploited
-                    to compromise a system.
-                </p>
+    <button
+        class="choice"
+        onclick="incidentAnswer('share')">
 
-            </div>
+        📢 Post the details publicly
 
+    </button>
 
-            <div class="term">
+    <div
+        class="result"
+        id="incidentResult">
+    </div>
 
-                <strong>Authentication</strong>
+</div>
 
-                <p>
-                    The process of verifying someone's identity
-                    before allowing access.
-                </p>
 
-            </div>
+<!-- =================================================
+     LAB 9
+================================================= -->
 
+<div class="lab">
 
-            <div class="term">
+    <div class="lab-number">
+        Lab 09
+    </div>
 
-                <strong>Cyber Attack</strong>
+    <h3>
+        🛡️ Firewall Rules
+    </h3>
 
-                <p>
-                    An attempt to gain unauthorized access,
-                    disrupt systems, or steal information.
-                </p>
+    <p>
+        Practice deciding whether fictional network
+        traffic matches a security rule.
+    </p>
 
-            </div>
+    <select id="firewallTraffic">
 
+        <option value="safe">
+            Approved HTTPS traffic
+        </option>
 
-        </div>
+        <option value="unknown">
+            Unknown connection
+        </option>
 
-    </section>
+        <option value="blocked">
+            Traffic matching a blocked rule
+        </option>
 
+    </select>
 
-    <!-- =========================
-         CYBERSTART CHALLENGE
-    ========================= -->
+    <button onclick="firewallCheck()">
+        Evaluate Traffic
+    </button>
 
-    <section id="challenge" class="challenge-section">
+    <div
+        class="result"
+        id="firewallResult">
+    </div>
 
-        <div class="challenge-card">
+</div>
 
-            <h2>🛡️ CyberStart Challenge</h2>
 
-            <p>
-                Think you can spot a cyber threat?
-                Test your cybersecurity skills!
-            </p>
+<!-- =================================================
+     LAB 10
+================================================= -->
 
-            <div id="questionNumber">
-                Question 1 of 5
-            </div>
+<div class="lab">
 
-            <h3 id="question">
-                Which password is the strongest?
-            </h3>
+    <div class="lab-number">
+        Lab 10
+    </div>
 
-            <div class="answers">
+    <h3>
+        🎯 Cybersecurity Scenario
+    </h3>
 
-                <button onclick="checkAnswer(0)">
-                    password123
-                </button>
+    <p>
+        You receive a message asking you to provide
+        sensitive account information. What is the
+        safest response?
+    </p>
 
-                <button onclick="checkAnswer(1)">
-                    CyberStart2026
-                </button>
+    <button
+        class="choice"
+        onclick="scenarioAnswer('verify')">
 
-                <button onclick="checkAnswer(2)">
-                    T!9q#L2@vX7$k
-                </button>
+        🔎 Verify the request through an official channel
 
-                <button onclick="checkAnswer(3)">
-                    123456789
-                </button>
+    </button>
 
-            </div>
+    <button
+        class="choice"
+        onclick="scenarioAnswer('send')">
 
-            <p id="feedback"></p>
+        📤 Send the information immediately
 
-            <div id="score">
-                Score: 0
-            </div>
+    </button>
 
-            <button
-                id="nextButton"
-                onclick="nextQuestion()"
-                style="display:none;">
-                Next Question →
-            </button>
+    <button
+        class="choice"
+        onclick="scenarioAnswer('share')">
 
-        </div>
+        📢 Share the message with everyone
 
-    </section>
+    </button>
 
+    <div
+        class="result"
+        id="scenarioResult">
+    </div>
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+</div>
 
-    <footer>
 
-        <p>
-            🛡️ CyberStart
-        </p>
+</section>
 
-        <p>
-            Learn. Practice. Stay Secure.
-        </p>
 
-        <p>
-            © 2026 CyberStart
-        </p>
+<!-- =========================
+     FOOTER
+========================= -->
 
-    </footer>
+<footer>
 
+    <p>
+        🛡️ CyberStart
+    </p>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+    <p>
+        Learn. Practice. Stay Secure.
+    </p>
 
-    <script>
+    <p>
+        © 2026 CyberStart
+    </p>
 
+</footer>
 
-        /* =========================
-           XP SYSTEM
-        ========================= */
 
-        function awardLabXP(labNumber) {
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
-            const labKey =
-                "cyberstartLab" +
-                labNumber +
-                "Completed";
+<script>
 
-            const alreadyCompleted =
-                localStorage.getItem(labKey);
 
+/* =================================
+   LAB 1 — PASSWORD
+================================= */
 
-            if (alreadyCompleted === "true") {
-                return;
-            }
+function checkPassword() {
 
+    const password =
+        document.getElementById(
+            "passwordInput"
+        ).value;
 
-            let currentXP =
-                Number(
-                    localStorage.getItem("cyberstartXP")
-                ) || 0;
+    const result =
+        document.getElementById(
+            "passwordResult"
+        );
 
+    if (password.length === 0) {
 
-            currentXP += 25;
+        result.innerHTML =
+            "Enter a sample password first.";
 
+        return;
+    }
 
-            localStorage.setItem(
-                "cyberstartXP",
-                currentXP
-            );
+    let score = 0;
 
+    if (password.length >= 12) {
+        score++;
+    }
 
-            localStorage.setItem(
-                labKey,
-                "true"
-            );
+    if (/[A-Z]/.test(password)) {
+        score++;
+    }
 
+    if (/[a-z]/.test(password)) {
+        score++;
+    }
 
-            updateXPDisplay();
+    if (/[0-9]/.test(password)) {
+        score++;
+    }
 
-        }
+    if (/[^A-Za-z0-9]/.test(password)) {
+        score++;
+    }
 
 
-        function updateXPDisplay() {
+    if (score <= 2) {
 
-            const xp =
-                Number(
-                    localStorage.getItem("cyberstartXP")
-                ) || 0;
+        result.innerHTML =
+            "🟡 This sample password could be improved. Consider making it longer and unique.";
 
+    } else if (score <= 4) {
 
-            document.getElementById("totalXP").textContent =
-                xp + " XP";
+        result.innerHTML =
+            "🟠 Good start. A longer, unique passphrase can provide better protection.";
 
-        }
+    } else {
 
+        result.innerHTML =
+            "🟢 Strong characteristics detected. Remember to use unique passwords for important accounts.";
 
-        /* =========================
-           LAB 1
-           PASSWORD STRENGTH
-        ========================= */
+    }
 
-        function checkPassword() {
+}
 
-            const password =
-                document
-                .getElementById("passwordInput")
-                .value;
 
+/* =================================
+   LAB 2 — PHISHING
+================================= */
 
-            const result =
-                document
-                .getElementById("passwordResult");
+function phishingAnswer(answer) {
 
+    const result =
+        document.getElementById(
+            "phishingResult"
+        );
 
-            if (password.length === 0) {
+    if (answer === true) {
 
-                result.style.display = "block";
+        result.innerHTML =
+            "🟢 Correct! The message uses urgency and asks the recipient to verify information. Those are common phishing warning signs.";
 
-                result.innerHTML =
-                    "Enter an example password to analyze it.";
+    } else {
 
-                return;
+        result.innerHTML =
+            "🔴 Not quite. The urgency and request for information are warning signs.";
 
-            }
+    }
 
+}
 
-            let score = 0;
 
-            let feedback = [];
+/* =================================
+   LAB 3 — HASHING
+================================= */
 
+async function generateHash() {
 
-            if (password.length >= 12) {
+    const input =
+        document.getElementById(
+            "hashInput"
+        ).value;
 
-                score++;
+    const result =
+        document.getElementById(
+            "hashResult"
+        );
 
-            }
+    if (input.length === 0) {
 
-            else {
+        result.innerHTML =
+            "Enter some sample text first.";
 
-                feedback.push(
-                    "Try using at least 12 characters."
-                );
+        return;
+    }
 
-            }
 
+    const data =
+        new TextEncoder().encode(input);
 
-            if (/[A-Z]/.test(password)) {
+    const hashBuffer =
+        await crypto.subtle.digest(
+            "SHA-256",
+            data
+        );
 
-                score++;
+    const hashArray =
+        Array.from(
+            new Uint8Array(hashBuffer)
+        );
 
-            }
+    const hash =
+        hashArray
+        .map(
+            byte =>
+                byte
+                .toString(16)
+                .padStart(2, "0")
+        )
+        .join("");
 
-            else {
 
-                feedback.push(
-                    "Consider including uppercase letters."
-                );
+    result.innerHTML =
+        "<strong>SHA-256:</strong><br>" +
+        hash;
 
-            }
+}
 
 
-            if (/[a-z]/.test(password)) {
+/* =================================
+   LAB 4 — NETWORK
+================================= */
 
-                score++;
+function checkNetwork() {
 
-            }
+    const question =
+        document.getElementById(
+            "networkQuestion"
+        ).value;
 
-            else {
+    const answer =
+        document.getElementById(
+            "networkAnswer"
+        ).value;
 
-                feedback.push(
-                    "Consider including lowercase letters."
-                );
+    const result =
+        document.getElementById(
+            "networkResult"
+        );
 
-            }
 
+    if (question === answer) {
 
-            if (/[0-9]/.test(password)) {
+        result.innerHTML =
+            "🟢 Correct! You matched the networking concept.";
 
-                score++;
+    } else {
 
-            }
+        result.innerHTML =
+            "🔴 Not quite. Try matching the answer to the question.";
 
-            else {
+    }
 
-                feedback.push(
-                    "Consider including numbers."
-                );
+}
 
-            }
 
+/* =================================
+   LAB 5 — LOG DETECTIVE
+================================= */
 
-            if (/[^A-Za-z0-9]/.test(password)) {
+function logAnswer() {
 
-                score++;
+    const result =
+        document.getElementById(
+            "logResult"
+        );
 
-            }
+    result.innerHTML =
+        "🟢 Suspicious activity: multiple failed login attempts in a short period. An analyst would investigate the event and review the surrounding activity.";
 
-            else {
+}
 
-                feedback.push(
-                    "Consider including symbols."
-                );
 
-            }
+/* =================================
+   LAB 6 — SCANNER
+================================= */
 
+function runScan() {
 
-            result.style.display = "block";
+    const target =
+        document.getElementById(
+            "scanTarget"
+        ).value;
 
+    const result =
+        document.getElementById(
+            "scanResult"
+        );
 
-            if (score >= 5) {
 
-                result.innerHTML =
+    if (target === "web") {
 
-                    "<strong>Good characteristics!</strong><br>" +
+        result.innerHTML =
+            "<strong>Practice Web Server</strong><br>" +
+            "Finding: Outdated software detected.<br>" +
+            "Recommendation: Apply current security updates.";
 
-                    "This example contains several characteristics " +
+    }
 
-                    "commonly associated with stronger passwords." +
+    else if (target === "office") {
 
-                    "<br><br>" +
+        result.innerHTML =
+            "<strong>Practice Office Computer</strong><br>" +
+            "Finding: MFA is not configured in this simulation.<br>" +
+            "Recommendation: Enable MFA where available.";
 
-                    "<span class='xp'>+25 XP — Lab 1 Complete!</span>";
+    }
 
+    else {
 
-                awardLabXP(1);
+        result.innerHTML =
+            "<strong>Practice Database</strong><br>" +
+            "Finding: Excessive permissions detected.<br>" +
+            "Recommendation: Apply least-privilege access.";
 
-            }
+    }
 
-            else {
+}
 
-                result.innerHTML =
 
-                    "<strong>Room for improvement.</strong><br>" +
+/* =================================
+   LAB 7 — ENCRYPTION
+================================= */
 
-                    feedback.join("<br>");
+function demoEncryption() {
 
-            }
+    const input =
+        document.getElementById(
+            "encryptInput"
+        ).value;
 
-        }
+    const result =
+        document.getElementById(
+            "encryptResult"
+        );
 
 
-        /* =========================
-           LAB 2
-           PHISHING DETECTIVE
-        ========================= */
+    if (input.length === 0) {
 
-        function phishingAnswer(correct) {
+        result.innerHTML =
+            "Enter sample text first.";
 
-            const result =
-                document
-                .getElementById("phishingResult");
+        return;
+    }
 
 
-            result.style.display = "block";
+    let encoded =
+        btoa(
+            unescape(
+                encodeURIComponent(input)
+            )
+        );
 
 
-            if (correct) {
+    result.innerHTML =
+        "<strong>Plaintext:</strong><br>" +
+        input +
+        "<br><br>" +
+        "<strong>Encoded example:</strong><br>" +
+        encoded +
+        "<br><br>" +
+        "This is a demonstration of encoding, not secure encryption.";
 
-                result.innerHTML =
+}
 
-                    "<strong>Correct! 🎯</strong><br>" +
 
-                    "Urgent language and unexpected requests " +
+/* =================================
+   LAB 8 — INCIDENT RESPONSE
+================================= */
 
-                    "are common warning signs. Verify the message " +
+function incidentAnswer(answer) {
 
-                    "using a trusted source instead of using a " +
+    const result =
+        document.getElementById(
+            "incidentResult"
+        );
 
-                    "suspicious link." +
 
-                    "<br><br>" +
+    if (answer === "investigate") {
 
-                    "<span class='xp'>+25 XP — Lab 2 Complete!</span>";
+        result.innerHTML =
+            "🟢 Correct! Investigating the alert is an appropriate first step. Analysts gather information before deciding what action is needed.";
 
+    } else {
 
-                awardLabXP(2);
+        result.innerHTML =
+            "🔴 Not the best choice. Security alerts should be investigated rather than ignored or publicly shared.";
 
-            }
+    }
 
-            else {
+}
 
-                result.innerHTML =
 
-                    "<strong>Not the safest choice.</strong><br>" +
+/* =================================
+   LAB 9 — FIREWALL
+================================= */
 
-                    "Do not provide sensitive information or click " +
+function firewallCheck() {
 
-                    "unexpected links. Verify the message through " +
+    const traffic =
+        document.getElementById(
+            "firewallTraffic"
+        ).value;
 
-                    "a trusted method.";
+    const result =
+        document.getElementById(
+            "firewallResult"
+        );
 
-            }
 
-        }
+    if (traffic === "safe") {
 
+        result.innerHTML =
+            "🟢 Example decision: Allow, assuming the traffic matches the organization's approved firewall rules.";
 
-        /* =========================
-           LAB 3
-           SHA-256 HASHING
-        ========================= */
+    }
 
-        async function generateHash() {
+    else if (traffic === "blocked") {
 
-            const text =
-                document
-                .getElementById("hashInput")
-                .value;
+        result.innerHTML =
+            "🛑 Example decision: Block, because the traffic matches a rule that denies it.";
 
+    }
 
-            const result =
-                document
-                .getElementById("hashResult");
+    else {
 
+        result.innerHTML =
+            "🟡 Example decision: Review the traffic and security policy before allowing it.";
 
-            if (text.length === 0) {
+    }
 
-                result.style.display = "block";
+}
 
-                result.innerHTML =
-                    "Enter some sample text first.";
 
-                return;
+/* =================================
+   LAB 10 — SCENARIO
+================================= */
 
-            }
+function scenarioAnswer(answer) {
 
+    const result =
+        document.getElementById(
+            "scenarioResult"
+        );
 
-            const encoder =
-                new TextEncoder();
 
+    if (answer === "verify") {
 
-            const data =
-                encoder.encode(text);
+        result.innerHTML =
+            "🟢 Correct! Verify unexpected requests through an official channel instead of trusting the message itself.";
 
+    } else {
 
-            const hashBuffer =
-                await crypto.subtle.digest(
-                    "SHA-256",
-                    data
-                );
+        result.innerHTML =
+            "🔴 Not the safest choice. Don't provide sensitive information until the request has been independently verified.";
 
+    }
 
-            const hashArray =
-                Array.from(
-                    new Uint8Array(hashBuffer)
-                );
+}
 
+</script>
 
-            const hashHex =
-                hashArray
-                .map(
-                    byte =>
-                        byte
-                        .toString(16)
-                        .padStart(2, "0")
-                )
-                .join("");
-
-
-            result.style.display = "block";
-
-
-            result.innerHTML =
-
-                "<strong>SHA-256 Demo Hash:</strong><br>" +
-
-                "<span style='word-break:break-all;'>" +
-
-                hashHex +
-
-                "</span>" +
-
-                "<br><br>" +
-
-                "Change even one character and generate " +
-
-                "the hash again to see how the output changes." +
-
-                "<br><br>" +
-
-                "<span class='xp'>+25 XP — Lab 3 Complete!</span>";
-
-
-            awardLabXP(3);
-
-        }
-
-
-        /* =========================
-           CYBERSTART CHALLENGE
-        ========================= */
-
-        const questions = [
-
-            {
-                question:
-                    "Which password is the strongest?",
-
-                answers: [
-                    "password123",
-                    "CyberStart2026",
-                    "T!9q#L2@vX7$k",
-                    "123456789"
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "You receive an email saying you won a prize you never entered for. What should you do?",
-
-                answers: [
-                    "Click the link immediately",
-                    "Send them your information",
-                    "Ignore it and verify the message through an official source",
-                    "Forward it to everyone"
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "What does MFA help protect?",
-
-                answers: [
-                    "Your computer's screen brightness",
-                    "Your accounts",
-                    "Your internet speed",
-                    "Your keyboard"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "What is phishing?",
-
-                answers: [
-                    "A type of computer hardware",
-                    "A method of tricking people into giving up information",
-                    "A programming language",
-                    "A type of Wi-Fi"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "What should you do if you find a suspicious USB drive?",
-
-                answers: [
-                    "Plug it into your computer to see what's on it",
-                    "Give it to a friend",
-                    "Don't plug it in and report it to a trusted person",
-                    "Put it in another computer"
-                ],
-
-                correct: 2
-            }
-
-        ];
-
-
-        let currentQuestion = 0;
-
-        let points = 0;
-
-        let answered = false;
-
-
-        function loadQuestion() {
-
-            answered = false;
-
-
-            const q =
-                questions[currentQuestion];
-
-
-            document
-                .getElementById("questionNumber")
-                .textContent =
-
-                "Question " +
-                (currentQuestion + 1) +
-                " of " +
-                questions.length;
-
-
-            document
-                .getElementById("question")
-                .textContent =
-                q.question;
-
-
-            document
-                .getElementById("feedback")
-                .textContent =
-                "";
-
-
-            document
-                .getElementById("score")
-                .textContent =
-                "Score: " + points;
-
-
-            document
-                .getElementById("nextButton")
-                .style.display =
-                "none";
-
-
-            const buttons =
-                document
-                .querySelectorAll(
-                    ".answers button"
-                );
-
-
-            buttons.forEach(
-                (button, index) => {
-
-                    button.textContent =
-                        q.answers[index];
-
-                    button.disabled =
-                        false;
-
-                }
-            );
-
-        }
-
-
-        function checkAnswer(answer) {
-
-            if (answered) return;
-
-
-            answered = true;
-
-
-            const q =
-                questions[currentQuestion];
-
-
-            const buttons =
-                document
-                .querySelectorAll(
-                    ".answers button"
-                );
-
-
-            buttons.forEach(
-                button => {
-
-                    button.disabled =
-                        true;
-
-                }
-            );
-
-
-            if (answer === q.correct) {
-
-                points++;
-
-
-                document
-                    .getElementById("feedback")
-                    .textContent =
-                    "✅ Correct! Nice work.";
-
-            }
-
-            else {
-
-                document
-                    .getElementById("feedback")
-                    .textContent =
-                    "❌ Not quite. Keep learning.";
-
-            }
-
-
-            document
-                .getElementById("score")
-                .textContent =
-                "Score: " + points;
-
-
-            document
-                .getElementById("nextButton")
-                .style.display =
-                "inline-block";
-
-        }
-
-
-        function nextQuestion() {
-
-            currentQuestion++;
-
-
-            if (
-                currentQuestion <
-                questions.length
-            ) {
-
-                loadQuestion();
-
-            }
-
-            else {
-
-                document
-                    .getElementById("questionNumber")
-                    .textContent =
-                    "🏁 Challenge Complete!";
-
-
-                document
-                    .getElementById("question")
-                    .textContent =
-                    "You scored " +
-                    points +
-                    " out of " +
-                    questions.length +
-                    "!";
-
-
-                document
-                    .querySelector(".answers")
-                    .innerHTML =
-                    "";
-
-
-                if (points === 5) {
-
-                    document
-                        .getElementById("feedback")
-                        .textContent =
-                        "🏆 PERFECT SCORE! You're a CyberStart pro!";
-
-                }
-
-                else if (points >= 3) {
-
-                    document
-                        .getElementById("feedback")
-                        .textContent =
-                        "🔥 Great job! Keep sharpening your skills.";
-
-                }
-
-                else {
-
-                    document
-                        .getElementById("feedback")
-                        .textContent =
-                        "💻 Good attempt! Check out the lessons and try again.";
-
-                }
-
-
-                document
-                    .getElementById("nextButton")
-                    .textContent =
-                    "🔄 Play Again";
-
-
-                document
-                    .getElementById("nextButton")
-                    .style.display =
-                    "inline-block";
-
-
-                document
-                    .getElementById("nextButton")
-                    .onclick =
-                    restartChallenge;
-
-            }
-
-        }
-
-
-        function restartChallenge() {
-
-            currentQuestion = 0;
-
-            points = 0;
-
-            document
-                .querySelector(".answers")
-                .innerHTML =
-
-                `
-                <button onclick="checkAnswer(0)">
-                    password123
-                </button>
-
-                <button onclick="checkAnswer(1)">
-                    CyberStart2026
-                </button>
-
-                <button onclick="checkAnswer(2)">
-                    T!9q#L2@vX7$k
-                </button>
-
-                <button onclick="checkAnswer(3)">
-                    123456789
-                </button>
-                `;
-
-
-            document
-                .getElementById("nextButton")
-                .onclick =
-                nextQuestion;
-
-
-            loadQuestion();
-
-        }
-
-
-        /* =========================
-           STARTUP
-        ========================= */
-
-        updateXPDisplay();
-
-        loadQuestion();
-
-    </script>
 
 </body>
 
