@@ -5,140 +5,430 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CyberStart - Lessons</title>
+<title>CyberStart | Lessons</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0b1020;
     color: white;
+
+    background-color: #070b16;
+
+    background-image:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(56, 189, 248, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        100% 100%,
+        45px 45px,
+        45px 45px;
+
+    background-attachment: fixed;
 }
 
+
+/* NAVIGATION */
+
 nav {
-    background: #111a33;
-    padding: 18px;
-    text-align: center;
+    background: rgba(11, 16, 32, 0.94);
+
+    border-bottom:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+nav div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 7px;
+
     font-weight: bold;
+    font-size: 16px;
+
+    transition: 0.2s;
 }
 
 nav a:hover {
-    color: #4da6ff;
+    color: #38bdf8;
 }
 
-.container {
-    max-width: 950px;
+
+/* HERO */
+
+.hero {
+    text-align: center;
+
+    padding: 75px 20px 45px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -250px;
+    left: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 189, 248, 0.40),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow 5s ease-in-out infinite alternate;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -200px;
+    right: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.35),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow2 6s ease-in-out infinite alternate;
+}
+
+@keyframes cyberGlow {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(500px);
+    }
+
+}
+
+@keyframes cyberGlow2 {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-500px);
+    }
+
+}
+
+.hero h1,
+.hero h2,
+.hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    color: #38bdf8;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin: 0 0 15px;
+    color: #38bdf8;
+}
+
+.hero p {
+    max-width: 700px;
     margin: auto;
-    padding: 35px 20px;
-}
 
-h1 {
-    text-align: center;
-    color: #4da6ff;
-    font-size: 40px;
-}
+    color: #a9bbcf;
 
-.intro {
-    text-align: center;
-    color: #bbb;
-    line-height: 1.6;
-    margin-bottom: 35px;
-}
-
-
-/* LESSON */
-
-.lesson {
-    background: #111a33;
-    border: 1px solid #26345c;
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 25px;
-}
-
-.lesson h2 {
-    color: #78bbff;
-}
-
-.lesson p {
-    color: #ddd;
+    font-size: 18px;
     line-height: 1.7;
 }
 
-.lesson ul {
-    color: #ccc;
+
+/* LESSONS */
+
+.lessons {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 30px 20px 60px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* LESSON CARD */
+
+.lesson-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 26, 51, 0.96),
+            rgba(10, 17, 35, 0.96)
+        );
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.20);
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.lesson-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(56, 189, 248, 0.60);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.25);
+}
+
+.lesson-number {
+
+    color: #7dd3fc;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.lesson-card h3 {
+
+    color: #38bdf8;
+
+    font-size: 25px;
+
+    margin:
+        10px 0 15px;
+}
+
+.lesson-card p {
+
+    color: #c2d0df;
+
+    line-height: 1.7;
+}
+
+
+/* TOPIC LIST */
+
+.lesson-card ul {
+
+    padding-left: 20px;
+
+    color: #b8c7d8;
+
     line-height: 1.8;
 }
 
-.lesson strong {
-    color: white;
+.lesson-card li {
+    margin-bottom: 6px;
 }
 
 
-/* COMPLETE BUTTON */
+/* BUTTON */
 
-.complete {
-    background: #4da6ff;
-    color: #07101f;
+.lesson-button {
 
-    border: none;
-    border-radius: 8px;
+    display: inline-block;
 
-    padding: 11px 18px;
+    margin-top: 15px;
+
+    padding:
+        11px 17px;
+
+    background:
+        #10243a;
+
+    border:
+        1px solid
+        #315273;
+
+    border-radius: 9px;
+
+    color: #7dd3fc;
+
+    text-decoration: none;
 
     font-weight: bold;
 
-    cursor: pointer;
-
-    margin-top: 10px;
+    transition: 0.2s;
 }
 
-.complete:hover {
-    background: #78bbff;
-}
+.lesson-button:hover {
 
-.complete.completed {
-    background: #263b6b;
-    color: #9ecfff;
-    cursor: default;
-}
+    background:
+        #173652;
 
-
-/* XP */
-
-.xp-message {
-    display: none;
-
-    margin-top: 12px;
-
-    color: #78bbff;
-
-    font-weight: bold;
+    border-color:
+        #38bdf8;
 }
 
 
 /* FOOTER */
 
 footer {
+
     text-align: center;
 
-    padding: 25px;
+    padding: 35px 20px;
 
-    margin-top: 30px;
+    background:
+        rgba(11, 16, 32, 0.95);
 
-    background: #111a33;
+    border-top:
+        1px solid
+        rgba(96, 165, 250, 0.15);
 
-    color: #999;
+    color: #8195aa;
+}
+
+footer p:first-child {
+
+    color: #38bdf8;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        padding: 18px 12px;
+    }
+
+    nav div:last-child {
+
+        gap: 12px 16px;
+    }
+
+    nav a {
+
+        font-size: 14px;
+    }
+
+    .hero {
+
+        padding:
+            60px 20px 35px;
+    }
+
+    .hero h2 {
+
+        font-size: 32px;
+    }
+
+    .hero p {
+
+        font-size: 17px;
+    }
+
+    .lessons {
+
+        grid-template-columns: 1fr;
+    }
+
 }
 
 </style>
@@ -153,653 +443,484 @@ footer {
 
 <nav>
 
-<a href="index.html">Home</a>
+    <div class="logo">
+        🛡️ CyberStart
+    </div>
 
-<a href="lessons.html">Lessons</a>
+    <div>
 
-<a href="labs.html">Labs</a>
+        <a href="index.html">
+            Home
+        </a>
 
-<a href="quiz.html">Quiz</a>
+        <a href="lessons.html">
+            Lessons
+        </a>
 
-<a href="games.html">Games</a>
+        <a href="labs.html">
+            Labs
+        </a>
 
-<a href="glossary.html">Glossary</a>
+        <a href="quiz.html">
+            Quiz
+        </a>
 
-<a href="profile.html">Profile</a>
+        <a href="games.html">
+            Games
+        </a>
 
-<a href="feedback.html">Feedback</a>
+        <a href="glossary.html">
+            Glossary
+        </a>
+
+    </div>
 
 </nav>
 
 
-<div class="container">
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        🛡️ CyberStart
+    </h1>
+
+    <h2>
+        Cybersecurity Lessons
+    </h2>
+
+    <p>
+        Build your cybersecurity knowledge from
+        the basics to more advanced concepts.
+    </p>
+
+</section>
 
 
-<h1>
-📚 Cybersecurity Lessons
-</h1>
+<!-- LESSON CARDS -->
 
-
-<p class="intro">
-
-Learn the fundamentals of cybersecurity
-through short lessons and practical concepts.
-
-Complete lessons to earn XP and level up.
-
-</p>
+<section class="lessons">
 
 
 <!-- LESSON 1 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🔐 1. Password Security
-</h2>
+    <div class="lesson-number">
+        Lesson 01
+    </div>
 
-<p>
+    <h3>
+        What Is Cybersecurity?
+    </h3>
 
-Passwords are one of the most common ways
-people protect their online accounts.
+    <p>
+        Cybersecurity is the practice of protecting
+        computers, networks, accounts, applications,
+        and information from digital threats.
+    </p>
 
-A strong password should be difficult for
-someone else to guess.
+    <ul>
 
-</p>
+        <li>What cybersecurity protects</li>
 
-<p>
-<strong>Good practices include:</strong>
-</p>
+        <li>Common cyber threats</li>
 
-<ul>
+        <li>Why security matters</li>
 
-<li>Use long, unique passwords.</li>
+        <li>Examples of security controls</li>
 
-<li>Avoid easily guessed information.</li>
-
-<li>Don't reuse the same password everywhere.</li>
-
-<li>Consider using a reputable password manager.</li>
-
-<li>Enable MFA when available.</li>
-
-</ul>
-
-<button
-class="complete"
-onclick="completeLesson(1, this)">
-
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message1"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 2 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🎣 2. Phishing
-</h2>
+    <div class="lesson-number">
+        Lesson 02
+    </div>
 
-<p>
+    <h3>
+        Phishing
+    </h3>
 
-Phishing is a type of social engineering
-where attackers attempt to trick people into
-revealing information or performing an action.
+    <p>
+        Phishing is a social-engineering technique
+        where attackers attempt to trick people into
+        revealing information or interacting with
+        something unsafe.
+    </p>
 
-</p>
+    <ul>
 
-<p>
-<strong>Warning signs can include:</strong>
-</p>
+        <li>Email phishing</li>
 
-<ul>
+        <li>Spear phishing</li>
 
-<li>Unexpected messages.</li>
+        <li>Fake login pages</li>
 
-<li>Urgent or threatening language.</li>
+        <li>Warning signs</li>
 
-<li>Suspicious links.</li>
-
-<li>Requests for sensitive information.</li>
-
-<li>Unexpected attachments.</li>
-
-</ul>
-
-<p>
-
-When something looks suspicious, verify it
-using a trusted method instead of relying on
-the message itself.
-
-</p>
-
-<button
-class="complete"
-onclick="completeLesson(2, this)">
-
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message2"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 3 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🦠 3. Malware
-</h2>
+    <div class="lesson-number">
+        Lesson 03
+    </div>
 
-<p>
+    <h3>
+        Strong Passwords
+    </h3>
 
-Malware is software designed to perform
-harmful or unwanted actions on a computer
-or network.
+    <p>
+        Strong passwords help protect accounts from
+        unauthorized access. Good password practices
+        are an important part of cybersecurity.
+    </p>
 
-</p>
+    <ul>
 
-<p>
-<strong>Common categories include:</strong>
-</p>
+        <li>Use unique passwords</li>
 
-<ul>
+        <li>Use long passphrases</li>
 
-<li>Viruses</li>
+        <li>Avoid reused passwords</li>
 
-<li>Worms</li>
+        <li>Use a password manager</li>
 
-<li>Trojans</li>
-
-<li>Ransomware</li>
-
-<li>Spyware</li>
-
-</ul>
-
-<p>
-
-Security updates, careful downloads, and
-reliable security tools can help reduce risk.
-
-</p>
-
-<button
-class="complete"
-onclick="completeLesson(3, this)">
-
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message3"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 4 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🌐 4. Networks & IP Addresses
-</h2>
+    <div class="lesson-number">
+        Lesson 04
+    </div>
 
-<p>
+    <h3>
+        Multi-Factor Authentication
+    </h3>
 
-A network allows computers and other devices
-to communicate with each other.
+    <p>
+        Multi-Factor Authentication, or MFA, adds
+        another verification step to an account.
+        This can make unauthorized access harder.
+    </p>
 
-An IP address identifies a device or network
-interface so traffic can be directed to the
-correct destination.
+    <ul>
 
-</p>
+        <li>Something you know</li>
 
-<p>
-<strong>Important concepts:</strong>
-</p>
+        <li>Something you have</li>
 
-<ul>
+        <li>Something you are</li>
 
-<li>IP addresses</li>
+        <li>Why MFA matters</li>
 
-<li>Routers</li>
-
-<li>Switches</li>
-
-<li>Ports</li>
-
-<li>Protocols</li>
-
-</ul>
-
-<button
-class="complete"
-onclick="completeLesson(4, this)">
-
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message4"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 5 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🧱 5. Firewalls
-</h2>
+    <div class="lesson-number">
+        Lesson 05
+    </div>
 
-<p>
+    <h3>
+        Malware
+    </h3>
 
-A firewall helps control network traffic
-based on security rules.
+    <p>
+        Malware is malicious software designed to
+        perform unwanted or harmful actions on a
+        computer or other device.
+    </p>
 
-It can help prevent unauthorized connections
-while allowing legitimate traffic.
+    <ul>
 
-</p>
+        <li>Viruses</li>
 
-<p>
+        <li>Worms</li>
 
-Firewalls can exist on individual computers,
-servers, routers, and larger networks.
+        <li>Trojans</li>
 
-</p>
+        <li>Ransomware</li>
 
-<button
-class="complete"
-onclick="completeLesson(5, this)">
+        <li>Spyware</li>
 
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message5"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 6 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🔑 6. Encryption
-</h2>
+    <div class="lesson-number">
+        Lesson 06
+    </div>
 
-<p>
+    <h3>
+        Network Security
+    </h3>
 
-Encryption transforms readable information
-into protected data that can only be properly
-understood using the appropriate key or process.
+    <p>
+        Network security focuses on protecting
+        networks, devices, communications, and
+        services from unauthorized activity.
+    </p>
 
-</p>
+    <ul>
 
-<p>
+        <li>Firewalls</li>
 
-Encryption is commonly used when protecting
-data during storage or transmission.
+        <li>IP addresses</li>
 
-</p>
+        <li>Ports</li>
 
-<button
-class="complete"
-onclick="completeLesson(6, this)">
+        <li>Network traffic</li>
 
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message6"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 7 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🛡️ 7. Multi-Factor Authentication
-</h2>
+    <div class="lesson-number">
+        Lesson 07
+    </div>
 
-<p>
+    <h3>
+        Encryption
+    </h3>
 
-Multi-Factor Authentication, or MFA, requires
-more than one type of verification when
-logging into an account.
+    <p>
+        Encryption transforms readable information
+        into protected data so that unauthorized
+        people cannot easily understand it.
+    </p>
 
-</p>
+    <ul>
 
-<p>
-Examples can include:
+        <li>Plaintext</li>
 
-</p>
+        <li>Ciphertext</li>
 
-<ul>
+        <li>Encryption keys</li>
 
-<li>Something you know</li>
+        <li>Secure communication</li>
 
-<li>Something you have</li>
-
-<li>Something you are</li>
-
-</ul>
-
-<p>
-
-MFA can provide additional protection if a
-password is compromised.
-
-</p>
-
-<button
-class="complete"
-onclick="completeLesson(7, this)">
-
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message7"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 8 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-👤 8. Social Engineering
-</h2>
+    <div class="lesson-number">
+        Lesson 08
+    </div>
 
-<p>
+    <h3>
+        Hashing
+    </h3>
 
-Social engineering involves manipulating people
-into taking actions or revealing information.
+    <p>
+        Hashing converts data into a fixed-size value.
+        Hashes are commonly used for checking data
+        integrity and protecting stored passwords.
+    </p>
 
-Instead of attacking a technical system
-directly, an attacker may try to influence
-the person using it.
+    <ul>
 
-</p>
+        <li>Hash functions</li>
 
-<p>
-<strong>Common techniques include:</strong>
-</p>
+        <li>SHA-256</li>
 
-<ul>
+        <li>Data integrity</li>
 
-<li>Impersonation</li>
+        <li>Password storage</li>
 
-<li>Phishing</li>
-
-<li>Pretexting</li>
-
-<li>Manipulation</li>
-
-</ul>
-
-<button
-class="complete"
-onclick="completeLesson(8, this)">
-
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message8"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 9 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-☁️ 9. Cloud Security
-</h2>
+    <div class="lesson-number">
+        Lesson 09
+    </div>
 
-<p>
+    <h3>
+        Firewalls
+    </h3>
 
-Cloud security focuses on protecting data,
-applications, and systems hosted through
-cloud services.
+    <p>
+        A firewall monitors and controls network
+        traffic according to a set of security rules.
+    </p>
 
-</p>
+    <ul>
 
-<p>
+        <li>Inbound traffic</li>
 
-Important areas include account security,
-access controls, encryption, monitoring,
-and secure configuration.
+        <li>Outbound traffic</li>
 
-</p>
+        <li>Security rules</li>
 
-<button
-class="complete"
-onclick="completeLesson(9, this)">
+        <li>Network protection</li>
 
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message9"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
 <!-- LESSON 10 -->
 
-<div class="lesson">
+<div class="lesson-card">
 
-<h2>
-🚨 10. Incident Response
-</h2>
+    <div class="lesson-number">
+        Lesson 10
+    </div>
 
-<p>
+    <h3>
+        Social Engineering
+    </h3>
 
-Incident response is the process organizations
-use to identify, investigate, contain, and
-recover from cybersecurity incidents.
+    <p>
+        Social engineering focuses on manipulating
+        people rather than directly attacking
+        technology.
+    </p>
 
-</p>
+    <ul>
 
-<p>
+        <li>Trust manipulation</li>
 
-A good response process helps organizations
-reduce damage and learn from security events.
+        <li>Urgency</li>
 
-</p>
+        <li>Impersonation</li>
 
-<button
-class="complete"
-onclick="completeLesson(10, this)">
+        <li>Recognizing suspicious requests</li>
 
-Mark Lesson Complete
-
-</button>
-
-<div
-id="message10"
-class="xp-message">
-
-⭐ +10 XP earned!
-
-</div>
+    </ul>
 
 </div>
 
 
+<!-- LESSON 11 -->
+
+<div class="lesson-card">
+
+    <div class="lesson-number">
+        Lesson 11
+    </div>
+
+    <h3>
+        Incident Response
+    </h3>
+
+    <p>
+        Incident response is the organized process
+        used to detect, investigate, contain, and
+        recover from cybersecurity incidents.
+    </p>
+
+    <ul>
+
+        <li>Detection</li>
+
+        <li>Investigation</li>
+
+        <li>Containment</li>
+
+        <li>Recovery</li>
+
+    </ul>
+
 </div>
 
+
+<!-- LESSON 12 -->
+
+<div class="lesson-card">
+
+    <div class="lesson-number">
+        Lesson 12
+    </div>
+
+    <h3>
+        Vulnerabilities & Patching
+    </h3>
+
+    <p>
+        A vulnerability is a weakness that could
+        create a security risk. Patches can fix
+        vulnerabilities and other software problems.
+    </p>
+
+    <ul>
+
+        <li>Security weaknesses</li>
+
+        <li>Software updates</li>
+
+        <li>Vulnerability management</li>
+
+        <li>Security maintenance</li>
+
+    </ul>
+
+</div>
+
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-<p>
-© 2026 CyberStart | Learn. Explore. Stay Secure.
-</p>
+    <p>
+        🛡️ CyberStart
+    </p>
+
+    <p>
+        Learn. Practice. Stay Secure.
+    </p>
+
+    <p>
+        © 2026 CyberStart
+    </p>
 
 </footer>
-
-
-<script>
-
-
-function completeLesson(
-lessonNumber,
-button
-) {
-
-
-const key =
-"cyberstartLesson" +
-lessonNumber +
-"Completed";
-
-
-/* CHECK IF ALREADY COMPLETED */
-
-if (
-localStorage.getItem(key)
-=== "true"
-) {
-
-return;
-
-}
-
-
-/* GET CURRENT XP */
-
-let xp =
-Number(
-localStorage.getItem(
-"cyberstartXP"
-)
-) || 0;
-
-
-/* ADD 10 XP */
-
-xp += 10;
-
-
-/* SAVE XP */
-
-localStorage.setItem(
-"cyberstartXP",
-xp
-);
-
-
-/* SAVE LESSON */
-
-localStorage.setItem(
-key,
-"true"
-);
-
-
-/* CHANGE BUTTON */
-
-button.textContent =
-"✓ Completed";
-
-button.classList.add(
-"completed"
-);
-
-button.disabled = true;
-
-
-/* SHOW MESSAGE */
-
-const message =
-document.getElementById(
-"message" + lessonNumber
-);
-
-message.style.display =
-"block";
-
-}
-
-
-</script>
 
 
 </body>
