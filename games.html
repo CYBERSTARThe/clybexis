@@ -2,211 +2,432 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>CyberStart | Games</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <style>
 
-<title>CyberStart - Games</title>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            min-height: 100vh;
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1020;
-    color: white;
-}
+            background-color: #070b16;
 
-nav {
-    background: #111a33;
-    padding: 18px;
-    text-align: center;
-}
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: bold;
-}
+            background-size: 40px 40px;
+        }
 
-nav a:hover {
-    color: #4da6ff;
-}
+        /* NAVIGATION */
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 35px 20px;
-}
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 
-h1 {
-    text-align: center;
-    color: #4da6ff;
-    font-size: 38px;
-}
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-.intro {
-    text-align: center;
-    color: #cccccc;
-    margin-bottom: 35px;
-    line-height: 1.6;
-}
+            padding: 18px 7%;
 
+            background: rgba(5, 9, 20, 0.95);
+            border-bottom: 1px solid rgba(0, 150, 255, 0.25);
 
-/* GAME CARD */
+            backdrop-filter: blur(10px);
+        }
 
-.game {
-    background: #111a33;
-    border: 1px solid #26345c;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-}
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
 
-.game-number {
-    color: #78bbff;
-    font-size: 14px;
-    font-weight: bold;
-}
+        .logo span {
+            color: #00aaff;
+        }
 
-.game h2 {
-    color: #4da6ff;
-    font-size: 24px;
-}
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+        }
 
-.game p {
-    color: #dddddd;
-    line-height: 1.6;
-}
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
 
+        nav a:hover {
+            color: #00aaff;
+        }
 
-/* GAME BUTTONS */
+        /* HERO */
 
-.game-button {
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0;
+        .hero {
+            position: relative;
+            overflow: hidden;
 
-    background: #182544;
-    color: white;
+            text-align: center;
+            padding: 100px 20px 70px;
 
-    border: 1px solid #354878;
-    border-radius: 8px;
+            background:
+                radial-gradient(circle at 50% 20%,
+                rgba(0, 140, 255, 0.20),
+                transparent 45%);
+        }
 
-    cursor: pointer;
-    text-align: left;
-    font-size: 15px;
-}
+        .hero::before {
+            content: "";
 
-.game-button:hover {
-    background: #263b6b;
-}
+            position: absolute;
 
-.game-button.correct {
-    background: #176b3a;
-    border-color: #35c978;
-}
+            width: 350px;
+            height: 350px;
 
-.game-button.wrong {
-    background: #8b2525;
-    border-color: #ff6666;
-}
+            background: rgba(0, 140, 255, 0.18);
 
-.game-button:disabled {
-    cursor: default;
-}
+            filter: blur(90px);
 
+            border-radius: 50%;
 
-/* RESULT */
+            top: -150px;
+            left: 10%;
 
-.result {
-    display: none;
+            animation: cyberGlow 7s infinite alternate;
+        }
 
-    margin-top: 15px;
-    padding: 15px;
+        .hero::after {
+            content: "";
 
-    background: #0d162d;
+            position: absolute;
 
-    border-radius: 8px;
+            width: 300px;
+            height: 300px;
 
-    line-height: 1.6;
-}
+            background: rgba(0, 90, 255, 0.15);
 
-.xp {
-    color: #78bbff;
-    font-weight: bold;
-}
+            filter: blur(100px);
 
+            border-radius: 50%;
 
-/* RESET BUTTON */
+            right: 10%;
+            top: 20px;
 
-.reset-button {
-    display: block;
+            animation: cyberGlow2 8s infinite alternate;
+        }
 
-    margin: 30px auto;
+        @keyframes cyberGlow {
 
-    padding: 12px 25px;
+            from {
+                transform: translateX(0);
+            }
 
-    background: #4da6ff;
+            to {
+                transform: translateX(250px);
+            }
 
-    color: #07101f;
+        }
 
-    border: none;
+        @keyframes cyberGlow2 {
 
-    border-radius: 8px;
+            from {
+                transform: translateX(0);
+            }
 
-    font-weight: bold;
+            to {
+                transform: translateX(-220px);
+            }
 
-    cursor: pointer;
-}
+        }
 
-.reset-button:hover {
-    background: #78bbff;
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
 
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
 
-/* FOOTER */
+        .hero h1 span {
+            color: #00aaff;
+        }
 
-footer {
-    text-align: center;
+        .hero p {
+            max-width: 700px;
+            margin: auto;
 
-    padding: 25px;
+            color: #aaa;
+            line-height: 1.7;
 
-    margin-top: 30px;
+            font-size: 17px;
+        }
 
-    background: #111a33;
+        /* GAME GRID */
 
-    color: #999999;
-}
+        .games-container {
+            width: 90%;
+            max-width: 1200px;
 
+            margin: 50px auto 100px;
 
-/* MOBILE */
+            display: grid;
 
-@media (max-width: 700px) {
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
 
-    nav {
-        line-height: 2;
-    }
+            gap: 25px;
+        }
 
-    nav a {
-        margin: 0 5px;
-        font-size: 13px;
-    }
+        .game-card {
 
-    h1 {
-        font-size: 32px;
-    }
+            background: rgba(12, 20, 38, 0.92);
 
-    .game {
-        padding: 20px;
-    }
+            border: 1px solid rgba(0, 150, 255, 0.22);
 
-}
+            border-radius: 18px;
 
-</style>
+            padding: 30px;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.3);
+
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: rgba(0, 170, 255, 0.6);
+
+            box-shadow:
+                0 15px 40px rgba(0,120,255,0.15);
+        }
+
+        .game-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .game-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .game-card p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* GAME AREA */
+
+        .game-area {
+
+            background: rgba(0,0,0,0.25);
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin-top: 20px;
+        }
+
+        .question {
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            margin-bottom: 18px;
+        }
+
+        .choice {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin: 8px 0;
+
+            border-radius: 9px;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            background: #10192d;
+
+            color: white;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition: 0.2s;
+        }
+
+        .choice:hover {
+
+            border-color: #00aaff;
+
+            background: #14243d;
+        }
+
+        .correct {
+
+            border-color: #31d158 !important;
+
+            background: rgba(49,209,88,0.12) !important;
+        }
+
+        .wrong {
+
+            border-color: #ff4d4d !important;
+
+            background: rgba(255,77,77,0.12) !important;
+        }
+
+        .game-result {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            background: rgba(255,255,255,0.05);
+
+            color: #ddd;
+
+            line-height: 1.5;
+        }
+
+        button {
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 12px 18px;
+
+            background: #008cff;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+
+            background: #00aaff;
+
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+
+            margin-top: 12px;
+
+            background: #18243a;
+        }
+
+        .reset-btn:hover {
+
+            background: #223452;
+        }
+
+        /* SCORE */
+
+        .score {
+
+            text-align: center;
+
+            margin: 20px 0 0;
+
+            color: #00aaff;
+
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            border-top: 1px solid rgba(0,150,255,0.15);
+
+            color: #777;
+
+            line-height: 1.7;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+            }
+
+            nav ul {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px;
+
+            }
+
+            .hero {
+
+                padding: 70px 20px 50px;
+
+            }
+
+            .hero h1 {
+
+                font-size: 36px;
+
+            }
+
+            .games-container {
+
+                width: 94%;
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -218,317 +439,344 @@ footer {
 
 <nav>
 
-<a href="index.html">Home</a>
+    <div class="logo">
+        🛡️ Cyber<span>Start</span>
+    </div>
 
-<a href="lessons.html">Lessons</a>
+    <ul>
 
-<a href="labs.html">Labs</a>
+        <li>
+            <a href="index.html">Home</a>
+        </li>
 
-<a href="quiz.html">Quiz</a>
+        <li>
+            <a href="lessons.html">Lessons</a>
+        </li>
 
-<a href="games.html">Games</a>
+        <li>
+            <a href="labs.html">Labs</a>
+        </li>
 
-<a href="glossary.html">Glossary</a>
+        <li>
+            <a href="quiz.html">Quiz</a>
+        </li>
 
-<a href="profile.html">Profile</a>
+        <li>
+            <a href="games.html">Games</a>
+        </li>
 
-<a href="feedback.html">Feedback</a>
+        <li>
+            <a href="glossary.html">Glossary</a>
+        </li>
+
+    </ul>
 
 </nav>
 
 
-<div class="container">
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Cybersecurity <span>Games</span>
+        </h1>
+
+        <p>
+            Learn cybersecurity by making decisions,
+            solving mysteries, spotting scams, and testing
+            your security knowledge.
+        </p>
+
+    </div>
+
+</section>
 
 
-<h1>
-🎮 CyberStart Games
-</h1>
+<!-- GAMES -->
+
+<div class="games-container">
 
 
-<p class="intro">
+    <!-- GAME 1 -->
 
-Practice your cybersecurity skills through
-quick and safe interactive games.
+    <div class="game-card">
 
-Earn XP while you play!
+        <div class="game-icon">
+            🎣
+        </div>
 
-</p>
+        <h2>
+            Phishing Spotter
+        </h2>
+
+        <p>
+            Can you tell which messages are suspicious?
+            Look carefully before making your decision.
+        </p>
+
+        <div class="game-area">
+
+            <div class="question">
+                "URGENT! Your account will be deleted today.
+                Click this link immediately to verify your password!"
+            </div>
+
+            <button class="choice"
+                    onclick="phishingGame(true, this)">
+                🚨 Suspicious
+            </button>
+
+            <button class="choice"
+                    onclick="phishingGame(false, this)">
+                ✅ Safe
+            </button>
+
+            <div id="phishingResult"
+                 class="game-result">
+            </div>
+
+        </div>
+
+    </div>
 
 
-<!-- GAME 1 -->
+    <!-- GAME 2 -->
 
-<div class="game">
+    <div class="game-card">
 
-<div class="game-number">
-GAME 1 OF 5
+        <div class="game-icon">
+            🔐
+        </div>
+
+        <h2>
+            Password Defender
+        </h2>
+
+        <p>
+            Choose the better security practice.
+        </p>
+
+        <div class="game-area">
+
+            <div class="question">
+                Which is the better password practice?
+            </div>
+
+            <button class="choice"
+                    onclick="passwordGame(false, this)">
+                Use the same password everywhere
+            </button>
+
+            <button class="choice"
+                    onclick="passwordGame(true, this)">
+                Use unique passwords for important accounts
+            </button>
+
+            <div id="passwordResult"
+                 class="game-result">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME 3 -->
+
+    <div class="game-card">
+
+        <div class="game-icon">
+            🕵️
+        </div>
+
+        <h2>
+            Cyber Mystery
+        </h2>
+
+        <p>
+            A fictional company notices something strange.
+            What should the security team investigate first?
+        </p>
+
+        <div class="game-area">
+
+            <div class="question">
+                Several employees report unexpected
+                login alerts. What should the team do?
+            </div>
+
+            <button class="choice"
+                    onclick="mysteryGame(true, this)">
+                🔎 Investigate the login alerts
+            </button>
+
+            <button class="choice"
+                    onclick="mysteryGame(false, this)">
+                💤 Ignore them
+            </button>
+
+            <div id="mysteryResult"
+                 class="game-result">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME 4 -->
+
+    <div class="game-card">
+
+        <div class="game-icon">
+            🌐
+        </div>
+
+        <h2>
+            Network Detective
+        </h2>
+
+        <p>
+            Test your knowledge of basic networking.
+        </p>
+
+        <div class="game-area">
+
+            <div class="question">
+                What does DNS mainly help computers do?
+            </div>
+
+            <button class="choice"
+                    onclick="networkGame(false, this)">
+                Encrypt every file
+            </button>
+
+            <button class="choice"
+                    onclick="networkGame(true, this)">
+                Translate domain names into IP addresses
+            </button>
+
+            <button class="choice"
+                    onclick="networkGame(false, this)">
+                Physically connect computers
+            </button>
+
+            <div id="networkResult"
+                 class="game-result">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME 5 -->
+
+    <div class="game-card">
+
+        <div class="game-icon">
+            🚨
+        </div>
+
+        <h2>
+            Incident Response
+        </h2>
+
+        <p>
+            A security alert appears. Pick the safest
+            response.
+        </p>
+
+        <div class="game-area">
+
+            <div class="question">
+                You discover suspicious activity on a
+                fictional practice computer. What should
+                happen first?
+            </div>
+
+            <button class="choice"
+                    onclick="incidentGame(false, this)">
+                Ignore it
+            </button>
+
+            <button class="choice"
+                    onclick="incidentGame(true, this)">
+                Report and investigate through the proper process
+            </button>
+
+            <div id="incidentResult"
+                 class="game-result">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME 6 -->
+
+    <div class="game-card">
+
+        <div class="game-icon">
+            🧠
+        </div>
+
+        <h2>
+            Cyber Trivia
+        </h2>
+
+        <p>
+            One question. Three answers. Can you get it right?
+        </p>
+
+        <div class="game-area">
+
+            <div class="question">
+                What is MFA?
+            </div>
+
+            <button class="choice"
+                    onclick="triviaGame(false, this)">
+                A type of malware
+            </button>
+
+            <button class="choice"
+                    onclick="triviaGame(true, this)">
+                Multi-Factor Authentication
+            </button>
+
+            <button class="choice"
+                    onclick="triviaGame(false, this)">
+                A network cable
+            </button>
+
+            <div id="triviaResult"
+                 class="game-result">
+            </div>
+
+        </div>
+
+    </div>
+
+
 </div>
 
-<h2>
-🎣 Phishing Spotter
-</h2>
-
-<p>
-
-You receive this message:
-
-</p>
-
-<p>
-
-<strong>
-"Congratulations! You won a free phone!
-Click this link now to claim your prize!"
-</strong>
-
-</p>
-
-<p>
-What should you do?
-</p>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, true, 'result1')">
-
-🚨 Treat it as suspicious
-
-</button>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, false, 'result1')">
-
-✅ Click the link
-
-</button>
-
-
-<div
-id="result1"
-class="result">
-</div>
-
-</div>
-
-
-<!-- GAME 2 -->
-
-<div class="game">
-
-<div class="game-number">
-GAME 2 OF 5
-</div>
-
-<h2>
-🔐 Password Defender
-</h2>
-
-<p>
-Which example demonstrates stronger
-password characteristics?
-</p>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, false, 'result2')">
-
-password123
-
-</button>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, true, 'result2')">
-
-T!9q#L2@vX7$k
-
-</button>
-
-
-<div
-id="result2"
-class="result">
-</div>
-
-</div>
-
-
-<!-- GAME 3 -->
-
-<div class="game">
-
-<div class="game-number">
-GAME 3 OF 5
-</div>
-
-<h2>
-🕵️ Verification Code Mystery
-</h2>
-
-<p>
-
-Someone contacts you and asks for the
-verification code sent to your account.
-
-</p>
-
-<p>
-What should you do?
-</p>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, true, 'result3')">
-
-🛡️ Don't give them the code
-
-</button>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, false, 'result3')">
-
-📱 Give them the code
-
-</button>
-
-
-<div
-id="result3"
-class="result">
-</div>
-
-</div>
-
-
-<!-- GAME 4 -->
-
-<div class="game">
-
-<div class="game-number">
-GAME 4 OF 5
-</div>
-
-<h2>
-🌐 Network Detective
-</h2>
-
-<p>
-
-A website asks you to log in.
-Before entering your information,
-what should you check?
-
-</p>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, true, 'result4')">
-
-🔎 Check that you're using the legitimate website
-
-</button>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, false, 'result4')">
-
-⚡ Enter your password as quickly as possible
-
-</button>
-
-
-<div
-id="result4"
-class="result">
-</div>
-
-</div>
-
-
-<!-- GAME 5 -->
-
-<div class="game">
-
-<div class="game-number">
-GAME 5 OF 5
-</div>
-
-<h2>
-🦠 Malware Detector
-</h2>
-
-<p>
-
-You receive an unexpected email attachment
-from someone you don't recognize.
-
-What is the safer choice?
-
-</p>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, true, 'result5')">
-
-🛡️ Don't open it and verify the message
-
-</button>
-
-
-<button
-class="game-button"
-onclick="answerGame(this, false, 'result5')">
-
-📂 Open the attachment immediately
-
-</button>
-
-
-<div
-id="result5"
-class="result">
-</div>
-
-</div>
-
-
-<button
-class="reset-button"
-onclick="resetGames()">
-
-🔄 Reset Games
-
-</button>
-
-
-</div>
-
-
-<!-- FOOTER -->
 
 <footer>
 
-<p>
-🛡️ CyberStart
-</p>
+    🛡️ <strong>CyberStart</strong>
 
-<p>
-Learn. Practice. Stay Secure.
-</p>
+    <br>
 
-<p>
-© 2026 CyberStart
-</p>
+    Learn. Practice. Stay Secure.
+
+    <br><br>
+
+    © 2026 CyberStart
 
 </footer>
 
@@ -536,195 +784,173 @@ Learn. Practice. Stay Secure.
 <script>
 
 
-/* =========================
-   XP SYSTEM
-========================= */
+/* PHISHING GAME */
 
-function addXP(amount) {
+function phishingGame(correct, button) {
 
-let xp =
-Number(
-localStorage.getItem("cyberstartXP")
-) || 0;
+    disableChoices(button);
 
-xp += amount;
+    if (correct) {
 
-localStorage.setItem(
-"cyberstartXP",
-xp
-);
+        button.classList.add("correct");
 
-}
+        document.getElementById("phishingResult").innerHTML =
+            "✅ Correct! Urgency and requests for sensitive information are common phishing warning signs.";
 
+    } else {
 
-/* =========================
-   GAME ANSWER
-========================= */
+        button.classList.add("wrong");
 
-function answerGame(
-button,
-correct,
-resultID
-) {
+        document.getElementById("phishingResult").innerHTML =
+            "❌ Not quite. This message has several phishing warning signs.";
 
-
-const game =
-button.parentElement;
-
-
-/* Prevent multiple answers */
-
-if (
-game.dataset.completed === "true"
-) {
-
-return;
-
-}
-
-game.dataset.completed = "true";
-
-
-/* Disable buttons */
-
-const buttons =
-game.querySelectorAll(".game-button");
-
-
-buttons.forEach(function(btn) {
-
-btn.disabled = true;
-
-});
-
-
-const result =
-document.getElementById(resultID);
-
-
-result.style.display =
-"block";
-
-
-/* Correct answer */
-
-if (correct) {
-
-
-button.classList.add("correct");
-
-
-result.innerHTML =
-
-"<strong>🎯 Correct!</strong><br>" +
-
-"Great cybersecurity thinking. " +
-
-"Recognizing suspicious behavior and " +
-
-"verifying information can help keep " +
-
-"accounts and devices safer." +
-
-"<br><br>" +
-
-"<span class='xp'>⭐ +10 XP!</span>";
-
-
-/* Award XP */
-
-const gameKey =
-"cyberstartGame" +
-resultID +
-"Completed";
-
-
-if (
-localStorage.getItem(gameKey)
-!== "true"
-) {
-
-
-addXP(10);
-
-
-localStorage.setItem(
-gameKey,
-"true"
-);
-
-}
+    }
 
 }
 
 
-/* Wrong answer */
+/* PASSWORD GAME */
 
-else {
+function passwordGame(correct, button) {
 
+    disableChoices(button);
 
-button.classList.add("wrong");
+    if (correct) {
 
+        button.classList.add("correct");
 
-result.innerHTML =
+        document.getElementById("passwordResult").innerHTML =
+            "✅ Correct! Unique passwords help prevent one compromised account from affecting others.";
 
-"<strong>❌ Not quite.</strong><br>" +
+    } else {
 
-"Look for warning signs and choose " +
+        button.classList.add("wrong");
 
-"the safer cybersecurity action.";
+        document.getElementById("passwordResult").innerHTML =
+            "❌ Try again. Reusing passwords can increase the impact of a compromised account.";
+
+    }
 
 }
 
+
+/* MYSTERY GAME */
+
+function mysteryGame(correct, button) {
+
+    disableChoices(button);
+
+    if (correct) {
+
+        button.classList.add("correct");
+
+        document.getElementById("mysteryResult").innerHTML =
+            "✅ Correct! Unexpected login alerts should be investigated through the proper security process.";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        document.getElementById("mysteryResult").innerHTML =
+            "❌ Ignoring unexpected login activity could allow a security problem to go unnoticed.";
+
+    }
+
 }
 
 
-/* =========================
-   RESET GAMES
-========================= */
+/* NETWORK GAME */
 
-function resetGames() {
+function networkGame(correct, button) {
 
+    disableChoices(button);
 
-const games =
-document.querySelectorAll(".game");
+    if (correct) {
 
+        button.classList.add("correct");
 
-games.forEach(function(game) {
+        document.getElementById("networkResult").innerHTML =
+            "✅ Correct! DNS helps translate human-readable domain names into IP addresses.";
 
-game.dataset.completed =
-"false";
+    } else {
 
+        button.classList.add("wrong");
 
-const buttons =
-game.querySelectorAll(
-".game-button"
-);
+        document.getElementById("networkResult").innerHTML =
+            "❌ Not quite. Think about what happens when you type a website name into a browser.";
 
+    }
 
-buttons.forEach(function(button) {
-
-button.disabled = false;
-
-button.classList.remove(
-"correct",
-"wrong"
-);
-
-});
+}
 
 
-const result =
-game.querySelector(".result");
+/* INCIDENT RESPONSE GAME */
+
+function incidentGame(correct, button) {
+
+    disableChoices(button);
+
+    if (correct) {
+
+        button.classList.add("correct");
+
+        document.getElementById("incidentResult").innerHTML =
+            "✅ Correct! Security incidents should be reported and handled through an appropriate response process.";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        document.getElementById("incidentResult").innerHTML =
+            "❌ Ignoring suspicious activity is not a good security response.";
+
+    }
+
+}
 
 
-result.style.display =
-"none";
+/* TRIVIA GAME */
 
-result.innerHTML = "";
+function triviaGame(correct, button) {
 
-});
+    disableChoices(button);
 
+    if (correct) {
+
+        button.classList.add("correct");
+
+        document.getElementById("triviaResult").innerHTML =
+            "✅ Correct! MFA stands for Multi-Factor Authentication.";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        document.getElementById("triviaResult").innerHTML =
+            "❌ Not quite. MFA stands for Multi-Factor Authentication.";
+
+    }
+
+}
+
+
+/* DISABLE OTHER ANSWERS */
+
+function disableChoices(selectedButton) {
+
+    const gameArea =
+        selectedButton.parentElement;
+
+    const buttons =
+        gameArea.querySelectorAll(".choice");
+
+    buttons.forEach(function(button) {
+
+        button.disabled = true;
+
+        button.style.cursor = "default";
+
+    });
 
 }
 
