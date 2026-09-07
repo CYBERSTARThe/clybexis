@@ -5,213 +5,589 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CyberStart - Quiz</title>
+<title>CyberStart | Quiz</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0b1020;
     color: white;
+
+    background-color: #070b16;
+
+    background-image:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(56, 189, 248, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        100% 100%,
+        45px 45px,
+        45px 45px;
+
+    background-attachment: fixed;
 }
 
+
+/* =========================
+   NAVIGATION
+========================= */
+
 nav {
-    background: #111a33;
-    padding: 18px;
-    text-align: center;
+    background: rgba(11, 16, 32, 0.94);
+
+    border-bottom:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #38bdf8;
+    white-space: nowrap;
+}
+
+nav div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 8px;
+
     font-weight: bold;
+    font-size: 16px;
+
+    transition: 0.2s;
 }
 
 nav a:hover {
-    color: #4da6ff;
+    color: #38bdf8;
 }
 
-.container {
-    max-width: 850px;
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+
+    padding: 75px 20px 45px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -250px;
+    left: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(56, 189, 248, 0.40),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow 5s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -200px;
+    right: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.35),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow2 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+@keyframes cyberGlow {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(500px);
+    }
+
+}
+
+@keyframes cyberGlow2 {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-500px);
+    }
+
+}
+
+.hero h1,
+.hero h2,
+.hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    color: #38bdf8;
+
+    font-size: 25px;
+
+    margin: 0 0 20px;
+}
+
+.hero h2 {
+    color: #38bdf8;
+
+    font-size: 42px;
+
+    margin: 0 0 15px;
+}
+
+.hero p {
+    max-width: 750px;
+
     margin: auto;
-    padding: 35px 20px;
+
+    color: #a9bbcf;
+
+    font-size: 18px;
+
+    line-height: 1.7;
 }
 
-h1 {
-    text-align: center;
-    color: #4da6ff;
-    font-size: 38px;
+
+/* =========================
+   QUIZ CONTAINER
+========================= */
+
+.quiz-container {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 20px 20px 60px;
 }
 
-.intro {
-    text-align: center;
-    color: #cccccc;
-    margin-bottom: 35px;
-    line-height: 1.6;
-}
 
-.question {
-    background: #111a33;
-    border: 1px solid #26345c;
-    border-radius: 12px;
-    padding: 25px;
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-box {
+
     margin-bottom: 20px;
+
+    text-align: center;
+
+    color: #9fb3c8;
 }
 
-.question-number {
-    color: #78bbff;
-    font-size: 14px;
-    font-weight: bold;
-}
+.progress-bar {
 
-.question h2 {
-    font-size: 20px;
-    line-height: 1.5;
-    margin-top: 8px;
-}
-
-.answer {
     width: 100%;
-    padding: 14px;
-    margin: 8px 0;
 
-    background: #182544;
-    color: white;
+    height: 9px;
 
-    border: 1px solid #354878;
-    border-radius: 8px;
+    background: #101c2d;
 
-    cursor: pointer;
-    text-align: left;
-    font-size: 15px;
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-top: 10px;
 }
 
-.answer:hover {
-    background: #263b6b;
+.progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #38bdf8;
+
+    transition: width 0.3s;
 }
 
-.answer.correct {
-    background: #176b3a;
-    border-color: #35c978;
-}
 
-.answer.wrong {
-    background: #8b2525;
-    border-color: #ff6666;
-}
+/* =========================
+   QUESTION CARD
+========================= */
 
-.answer:disabled {
-    cursor: default;
-}
+.quiz-card {
 
-.explanation {
-    display: none;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 26, 51, 0.97),
+            rgba(10, 17, 35, 0.97)
+        );
 
-    margin-top: 15px;
-    padding: 15px;
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.20);
 
-    background: #0d162d;
-
-    border-radius: 8px;
-
-    color: #cccccc;
-    line-height: 1.6;
-}
-
-#result {
-    display: none;
-
-    background: #111a33;
-
-    border: 1px solid #26345c;
-
-    border-radius: 12px;
+    border-radius: 18px;
 
     padding: 30px;
 
-    text-align: center;
-
-    margin-top: 30px;
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.20);
 }
 
-#result h2 {
-    color: #4da6ff;
+.question-number {
+
+    color: #7dd3fc;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
 
-#score {
+.quiz-card h3 {
+
+    color: white;
+
     font-size: 24px;
-    font-weight: bold;
+
+    line-height: 1.4;
+
+    margin:
+        12px 0 25px;
 }
 
-.xp-earned {
-    color: #78bbff;
-    font-size: 20px;
-    font-weight: bold;
+
+/* =========================
+   ANSWERS
+========================= */
+
+.answers {
+
+    display: grid;
+
+    gap: 12px;
 }
 
-.button {
-    display: inline-block;
+.answer {
 
-    padding: 12px 25px;
+    width: 100%;
 
-    margin: 8px;
+    padding: 15px;
 
-    background: #4da6ff;
+    border-radius: 10px;
 
-    color: #07101f;
+    border:
+        1px solid
+        #315273;
 
-    text-decoration: none;
+    background:
+        #0b1728;
 
-    border-radius: 8px;
+    color: #d7e5f2;
 
-    font-weight: bold;
+    text-align: left;
 
-    border: none;
+    font-size: 16px;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
-.button:hover {
-    background: #78bbff;
+.answer:hover {
+
+    border-color:
+        #38bdf8;
+
+    background:
+        #10243a;
+
+    transform:
+        translateX(3px);
 }
 
-footer {
+.answer.selected {
+
+    border-color:
+        #38bdf8;
+
+    background:
+        #12304a;
+
+    color: white;
+}
+
+
+/* =========================
+   NAV BUTTONS
+========================= */
+
+.quiz-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.quiz-button {
+
+    flex: 1;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        #315273;
+
+    background:
+        #10243a;
+
+    color:
+        #7dd3fc;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.quiz-button:hover {
+
+    background:
+        #173652;
+
+    border-color:
+        #38bdf8;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+
+    display: none;
+
     text-align: center;
 
-    padding: 25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 26, 51, 0.97),
+            rgba(10, 17, 35, 0.97)
+        );
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.35);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    margin-top: 25px;
+}
+
+.result h3 {
+
+    color: #38bdf8;
+
+    font-size: 30px;
+}
+
+.score {
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    color: #7dd3fc;
+
+    margin: 15px;
+}
+
+.result p {
+
+    color: #c2d0df;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
 
     margin-top: 30px;
 
-    background: #111a33;
+    padding: 35px 20px;
 
-    color: #999999;
+    text-align: center;
+
+    background:
+        rgba(11, 16, 32, 0.95);
+
+    border-top:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    color:
+        #8195aa;
+}
+
+footer p:first-child {
+
+    color:
+        #38bdf8;
+
+    font-size: 20px;
+
+    font-weight: bold;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
 
     nav {
-        line-height: 2;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        padding:
+            18px 12px;
+    }
+
+    nav div:last-child {
+
+        gap:
+            12px 16px;
     }
 
     nav a {
-        margin: 0 5px;
-        font-size: 13px;
+
+        font-size: 14px;
     }
 
-    h1 {
+    .hero {
+
+        padding:
+            60px 20px 35px;
+    }
+
+    .hero h2 {
+
         font-size: 32px;
     }
 
-    .question {
-        padding: 20px;
+    .hero p {
+
+        font-size: 17px;
+    }
+
+    .quiz-card {
+
+        padding: 22px;
+    }
+
+    .quiz-card h3 {
+
+        font-size: 21px;
+    }
+
+    .quiz-actions {
+
+        flex-direction: column;
     }
 
 }
@@ -224,875 +600,831 @@ footer {
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
-<a href="index.html">Home</a>
+    <div class="logo">
+        🛡️ CyberStart
+    </div>
 
-<a href="lessons.html">Lessons</a>
+    <div>
 
-<a href="labs.html">Labs</a>
+        <a href="index.html">
+            Home
+        </a>
 
-<a href="quiz.html">Quiz</a>
+        <a href="lessons.html">
+            Lessons
+        </a>
 
-<a href="games.html">Games</a>
+        <a href="labs.html">
+            Labs
+        </a>
 
-<a href="glossary.html">Glossary</a>
+        <a href="quiz.html">
+            Quiz
+        </a>
 
-<a href="profile.html">Profile</a>
+        <a href="games.html">
+            Games
+        </a>
 
-<a href="feedback.html">Feedback</a>
+        <a href="glossary.html">
+            Glossary
+        </a>
+
+    </div>
 
 </nav>
 
 
-<div class="container">
+<!-- =========================
+     HERO
+========================= -->
 
+<section class="hero">
 
-<h1>
-🧠 Cybersecurity Quiz
-</h1>
+    <h1>
+        🛡️ CyberStart
+    </h1>
 
+    <h2>
+        Cybersecurity Quiz
+    </h2>
 
-<p class="intro">
+    <p>
+        Test your knowledge of cybersecurity
+        concepts, threats, and defenses.
+    </p>
 
-Test your cybersecurity knowledge.
+</section>
 
-Choose the best answer for each question
-and learn from the explanations.
 
-</p>
+<!-- =========================
+     QUIZ
+========================= -->
 
+<section class="quiz-container">
 
-<!-- QUESTION 1 -->
 
-<div class="question">
+    <div class="progress-box">
 
-<div class="question-number">
-QUESTION 1 OF 10
-</div>
+        <span id="progressText">
+            Question 1 of 20
+        </span>
 
-<h2>
-What does MFA stand for?
-</h2>
+        <div class="progress-bar">
 
-<button class="answer"
-onclick="checkAnswer(this, true)">
+            <div
+                class="progress-fill"
+                id="progressFill">
+            </div>
 
-A. Multi-Factor Authentication
+        </div>
 
-</button>
+    </div>
 
-<button class="answer"
-onclick="checkAnswer(this, false)">
 
-B. Main Firewall Access
+    <div
+        class="quiz-card"
+        id="quizCard">
 
-</button>
+        <div
+            class="question-number"
+            id="questionNumber">
 
-<button class="answer"
-onclick="checkAnswer(this, false)">
+            Question 1
 
-C. Multiple File Application
+        </div>
 
-</button>
+        <h3
+            id="questionText">
+        </h3>
 
-<button class="answer"
-onclick="checkAnswer(this, false)">
 
-D. Managed File Account
+        <div
+            class="answers"
+            id="answers">
+        </div>
 
-</button>
 
-<div class="explanation">
+        <div class="quiz-actions">
 
-<strong>Correct answer: A</strong><br><br>
+            <button
+                class="quiz-button"
+                id="nextButton"
+                onclick="nextQuestion()">
 
-MFA stands for Multi-Factor Authentication.
-It requires additional verification beyond
-just a password.
+                Next Question →
 
-</div>
+            </button>
 
-</div>
+        </div>
 
+    </div>
 
-<!-- QUESTION 2 -->
 
-<div class="question">
+    <!-- RESULT -->
 
-<div class="question-number">
-QUESTION 2 OF 10
-</div>
+    <div
+        class="result"
+        id="result">
 
-<h2>
-What is phishing?
-</h2>
+        <h3>
+            🎉 Quiz Complete!
+        </h3>
 
-<button class="answer"
-onclick="checkAnswer(this, false)">
+        <div
+            class="score"
+            id="score">
+        </div>
 
-A. A computer game
+        <p
+            id="resultMessage">
+        </p>
 
-</button>
+        <button
+            class="quiz-button"
+            onclick="restartQuiz()">
 
-<button class="answer"
-onclick="checkAnswer(this, true)">
+            🔄 Restart Quiz
 
-B. A trick used to steal information
+        </button>
 
-</button>
+    </div>
 
-<button class="answer"
-onclick="checkAnswer(this, false)">
 
-C. A type of keyboard
+</section>
 
-</button>
 
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. A network cable
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: B</strong><br><br>
-
-Phishing is a social engineering technique
-that attempts to trick people into revealing
-information or performing an unsafe action.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 3 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 3 OF 10
-</div>
-
-<h2>
-What does a firewall help control?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-A. Screen brightness
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-B. Network traffic
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. Keyboard volume
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. Battery temperature
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: B</strong><br><br>
-
-A firewall helps control network traffic
-according to security rules.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 4 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 4 OF 10
-</div>
-
-<h2>
-What is malware?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-A. Malicious software
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-B. A computer monitor
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. A programming keyboard
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. A Wi-Fi router
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: A</strong><br><br>
-
-Malware is software designed to perform
-harmful or unwanted actions.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 5 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 5 OF 10
-</div>
-
-<h2>
-What should you do with a suspicious link?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-A. Click it immediately
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-B. Send it to friends
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-C. Verify it before interacting with it
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. Enter your password
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: C</strong><br><br>
-
-Suspicious links should be verified through
-a trusted source before interacting with them.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 6 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 6 OF 10
-</div>
-
-<h2>
-Which security principle gives users only
-the access they need?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-A. Availability
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-B. Least privilege
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. Encryption
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. Data redundancy
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: B</strong><br><br>
-
-Least privilege means giving users only
-the access necessary to perform their
-responsibilities.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 7 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 7 OF 10
-</div>
-
-<h2>
-Which part of the CIA Triad focuses on
-protecting information from unauthorized access?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-A. Confidentiality
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-B. Integrity
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. Availability
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. Authentication
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: A</strong><br><br>
-
-Confidentiality focuses on making sure
-information is accessible only to authorized
-people or systems.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 8 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 8 OF 10
-</div>
-
-<h2>
-What does encryption do?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-A. Deletes information
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-B. Protects information by transforming it into a protected form
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. Makes computers faster
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. Removes every virus
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: B</strong><br><br>
-
-Encryption transforms readable information
-into protected data that requires the
-appropriate key or process to understand.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 9 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 9 OF 10
-</div>
-
-<h2>
-What is a vulnerability?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-A. A security backup
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-B. A weakness that could potentially be exploited
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. A type of firewall
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. A password manager
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: B</strong><br><br>
-
-A vulnerability is a weakness in a system
-that could potentially be exploited.
-
-</div>
-
-</div>
-
-
-<!-- QUESTION 10 -->
-
-<div class="question">
-
-<div class="question-number">
-QUESTION 10 OF 10
-</div>
-
-<h2>
-What is social engineering?
-</h2>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-A. Building computer hardware
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, true)">
-
-B. Manipulating people into revealing information or taking an action
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-C. Creating a network cable
-
-</button>
-
-<button class="answer"
-onclick="checkAnswer(this, false)">
-
-D. Encrypting a hard drive
-
-</button>
-
-<div class="explanation">
-
-<strong>Correct answer: B</strong><br><br>
-
-Social engineering involves manipulating
-people into revealing information or
-performing actions.
-
-</div>
-
-</div>
-
-
-<!-- RESULT -->
-
-<div id="result">
-
-<h2>
-🎉 Quiz Complete!
-</h2>
-
-<p id="score"></p>
-
-<p id="message"></p>
-
-<p class="xp-earned">
-⭐ +50 XP Earned!
-</p>
-
-<button
-class="button"
-onclick="restartQuiz()">
-
-🔄 Restart Quiz
-
-</button>
-
-<a
-class="button"
-href="profile.html">
-
-👤 View Profile
-
-</a>
-
-</div>
-
-
-</div>
-
-
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<p>
-🛡️ CyberStart
-</p>
+    <p>
+        🛡️ CyberStart
+    </p>
 
-<p>
-Learn. Practice. Stay Secure.
-</p>
+    <p>
+        Learn. Practice. Stay Secure.
+    </p>
 
-<p>
-© 2026 CyberStart
-</p>
+    <p>
+        © 2026 CyberStart
+    </p>
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
 
+/* =========================================
+   QUIZ QUESTIONS
+========================================= */
+
+const questions = [
+
+    {
+        question:
+            "What does MFA stand for?",
+
+        answers: [
+            "Multi-Factor Authentication",
+            "Main Firewall Access",
+            "Multiple File Authorization",
+            "Managed Firewall Application"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is phishing?",
+
+        answers: [
+            "A type of computer hardware",
+            "A technique used to trick people into revealing information",
+            "A method of encrypting files",
+            "A type of firewall"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What does a firewall primarily do?",
+
+        answers: [
+            "Creates passwords",
+            "Deletes every file on a computer",
+            "Controls network traffic according to rules",
+            "Writes computer programs"
+        ],
+
+        correct: 2
+    },
+
+
+    {
+        question:
+            "What is malware?",
+
+        answers: [
+            "Malicious software",
+            "A network cable",
+            "A secure password",
+            "A backup system"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What does encryption do?",
+
+        answers: [
+            "Deletes information",
+            "Turns protected data into readable data for everyone",
+            "Transforms information so it can be protected from unauthorized reading",
+            "Makes a computer physically faster"
+        ],
+
+        correct: 2
+    },
+
+
+    {
+        question:
+            "What is a vulnerability?",
+
+        answers: [
+            "A security weakness",
+            "A type of monitor",
+            "A backup copy",
+            "A programming language"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is hashing commonly used for?",
+
+        answers: [
+            "Increasing screen brightness",
+            "Checking data integrity",
+            "Connecting a keyboard",
+            "Creating Wi-Fi signals"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What does DNS help with?",
+
+        answers: [
+            "Translating domain names into IP addresses",
+            "Scanning physical computers",
+            "Creating passwords",
+            "Removing malware automatically"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is social engineering?",
+
+        answers: [
+            "Building computer networks",
+            "Manipulating people to influence their actions or reveal information",
+            "Installing a graphics card",
+            "Encrypting a hard drive"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What is ransomware?",
+
+        answers: [
+            "A type of keyboard",
+            "Malware that can deny access to data or systems and demand payment",
+            "A network protocol",
+            "A password manager"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What does the principle of least privilege mean?",
+
+        answers: [
+            "Everyone gets administrator access",
+            "Users receive only the access they need",
+            "Passwords should be short",
+            "Networks should have no security rules"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What is a zero-day vulnerability?",
+
+        answers: [
+            "A vulnerability that is unknown or not yet patched",
+            "A computer with no storage",
+            "A password that expires daily",
+            "A network with zero users"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is a brute-force attack?",
+
+        answers: [
+            "Repeatedly trying possible authentication values",
+            "Physically damaging a computer",
+            "Updating antivirus software",
+            "Creating a backup"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is an IP address?",
+
+        answers: [
+            "A type of malware",
+            "A numerical address associated with a device or network interface",
+            "A password",
+            "An encryption algorithm"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What is a VPN?",
+
+        answers: [
+            "A Virtual Private Network",
+            "A Virus Protection Number",
+            "A Virtual Password Node",
+            "A Verified Port Network"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is incident response?",
+
+        answers: [
+            "The process of handling cybersecurity incidents",
+            "A way to create websites",
+            "A method for increasing internet speed",
+            "A type of computer monitor"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is a Trojan?",
+
+        answers: [
+            "Malware that disguises itself as legitimate software or a file",
+            "A firewall rule",
+            "A network cable",
+            "An operating system update"
+        ],
+
+        correct: 0
+    },
+
+
+    {
+        question:
+            "What is a DDoS attack designed to do?",
+
+        answers: [
+            "Improve network performance",
+            "Overwhelm a service with large amounts of traffic",
+            "Create stronger passwords",
+            "Encrypt a user's files"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "What is authentication?",
+
+        answers: [
+            "Determining what a user is allowed to access",
+            "Verifying who or what someone is",
+            "Deleting an account",
+            "Updating a firewall"
+        ],
+
+        correct: 1
+    },
+
+
+    {
+        question:
+            "Which is a good cybersecurity practice?",
+
+        answers: [
+            "Reuse the same password everywhere",
+            "Ignore software updates",
+            "Use MFA and keep software updated",
+            "Share account credentials with friends"
+        ],
+
+        correct: 2
+    }
+
+];
+
+
+/* =========================================
+   QUIZ VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
 let score = 0;
 
-let answered = 0;
-
-const totalQuestions = 10;
+let selectedAnswer = null;
 
 
-/* =========================
-   CHECK ANSWER
-========================= */
+/* =========================================
+   LOAD QUESTION
+========================================= */
 
-function checkAnswer(button, correct) {
+function loadQuestion() {
+
+    const question =
+        questions[currentQuestion];
 
 
-const question =
-button.parentElement;
+    selectedAnswer = null;
 
 
-/* Prevent answering twice */
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        "Question " +
+        (currentQuestion + 1);
 
-if (
-question.dataset.answered === "true"
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        (
+            ((currentQuestion + 1)
+            / questions.length)
+            * 100
+        ) + "%";
+
+
+    document.getElementById(
+        "questionText"
+    ).textContent =
+        question.question;
+
+
+    const answers =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answers.innerHTML = "";
+
+
+    question.answers.forEach(
+        function(answer, index) {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answer;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        index,
+                        button
+                    );
+
+                };
+
+
+            answers.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    const nextButton =
+        document.getElementById(
+            "nextButton"
+        );
+
+
+    if (
+        currentQuestion ===
+        questions.length - 1
+    ) {
+
+        nextButton.textContent =
+            "Finish Quiz ✓";
+
+    } else {
+
+        nextButton.textContent =
+            "Next Question →";
+
+    }
+
+}
+
+
+/* =========================================
+   SELECT ANSWER
+========================================= */
+
+function selectAnswer(
+    index,
+    button
 ) {
 
-return;
+    selectedAnswer = index;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        function(item) {
+
+            item.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    button.classList.add(
+        "selected"
+    );
 
 }
 
 
-question.dataset.answered = "true";
+/* =========================================
+   NEXT QUESTION
+========================================= */
 
-answered++;
+function nextQuestion() {
 
+    if (
+        selectedAnswer === null
+    ) {
 
-/* Disable all answers */
+        alert(
+            "Please select an answer first."
+        );
 
-const buttons =
-question.querySelectorAll(".answer");
+        return;
 
-
-buttons.forEach(function(btn) {
-
-btn.disabled = true;
-
-});
-
-
-/* Check answer */
-
-if (correct) {
-
-button.classList.add("correct");
-
-score++;
-
-}
-
-else {
-
-button.classList.add("wrong");
-
-}
+    }
 
 
-/* Show explanation */
+    if (
+        selectedAnswer ===
+        questions[currentQuestion].correct
+    ) {
 
-const explanation =
-question.querySelector(".explanation");
+        score++;
 
-explanation.style.display =
-"block";
+    }
 
 
-/* Finish quiz */
+    currentQuestion++;
 
-if (
-answered === totalQuestions
-) {
 
-showResult();
+    if (
+        currentQuestion <
+        questions.length
+    ) {
 
-}
+        loadQuestion();
+
+    } else {
+
+        showResult();
+
+    }
 
 }
 
 
-/* =========================
+/* =========================================
    SHOW RESULT
-========================= */
+========================================= */
 
 function showResult() {
 
-
-const result =
-document.getElementById("result");
-
-const scoreText =
-document.getElementById("score");
-
-const message =
-document.getElementById("message");
+    document.getElementById(
+        "quizCard"
+    ).style.display =
+        "none";
 
 
-result.style.display =
-"block";
+    document.querySelector(
+        ".progress-box"
+    ).style.display =
+        "none";
 
 
-scoreText.textContent =
-"Your Score: " +
-score +
-" / " +
-totalQuestions;
+    document.getElementById(
+        "result"
+    ).style.display =
+        "block";
 
 
-/* Save last score */
-
-localStorage.setItem(
-"cyberstartLastScore",
-score
-);
-
-
-/* Save best score */
-
-let bestScore =
-Number(
-localStorage.getItem(
-"cyberstartBestScore"
-)
-) || 0;
+    document.getElementById(
+        "score"
+    ).textContent =
+        score +
+        " / " +
+        questions.length;
 
 
-if (score > bestScore) {
-
-localStorage.setItem(
-"cyberstartBestScore",
-score
-);
-
-}
+    let message;
 
 
-/* =========================
-   XP
-========================= */
-
-let quizCompleted =
-localStorage.getItem(
-"cyberstartMainQuizCompleted"
-);
+    const percentage =
+        (
+            score /
+            questions.length
+        ) * 100;
 
 
-if (
-quizCompleted !== "true"
-) {
+    if (percentage >= 90) {
+
+        message =
+            "🏆 Excellent work! You have a strong understanding of the cybersecurity fundamentals.";
+
+    }
+
+    else if (percentage >= 75) {
+
+        message =
+            "🟢 Great job! You have a solid cybersecurity foundation.";
+
+    }
+
+    else if (percentage >= 60) {
+
+        message =
+            "🟡 Good start! Review the Lessons and Labs to strengthen your knowledge.";
+
+    }
+
+    else {
+
+        message =
+            "🔵 Keep learning! Go through the Lessons and Labs and try the quiz again.";
+
+    }
 
 
-let currentXP =
-Number(
-localStorage.getItem(
-"cyberstartXP"
-)
-) || 0;
-
-
-currentXP += 50;
-
-
-localStorage.setItem(
-"cyberstartXP",
-currentXP
-);
-
-
-localStorage.setItem(
-"cyberstartMainQuizCompleted",
-"true"
-);
+    document.getElementById(
+        "resultMessage"
+    ).textContent =
+        message;
 
 }
 
 
-/* =========================
-   MESSAGE
-========================= */
-
-if (score === 10) {
-
-message.textContent =
-"🏆 Perfect score! Excellent cybersecurity knowledge.";
-
-}
-
-else if (score >= 8) {
-
-message.textContent =
-"🔥 Great work! Your cybersecurity fundamentals are strong.";
-
-}
-
-else if (score >= 6) {
-
-message.textContent =
-"👍 Good job! Keep studying and improving.";
-
-}
-
-else if (score >= 4) {
-
-message.textContent =
-"📚 You're making progress. Review your lessons and try again.";
-
-}
-
-else {
-
-message.textContent =
-"💻 Keep learning! Cybersecurity takes practice.";
-
-}
-
-
-/* Scroll to result */
-
-result.scrollIntoView({
-behavior: "smooth"
-});
-
-}
-
-
-/* =========================
-   RESTART
-========================= */
+/* =========================================
+   RESTART QUIZ
+========================================= */
 
 function restartQuiz() {
 
-location.reload();
+    currentQuestion = 0;
+
+    score = 0;
+
+    selectedAnswer = null;
+
+
+    document.getElementById(
+        "quizCard"
+    ).style.display =
+        "block";
+
+
+    document.querySelector(
+        ".progress-box"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    loadQuestion();
 
 }
+
+
+/* =========================================
+   START QUIZ
+========================================= */
+
+loadQuestion();
 
 </script>
 
