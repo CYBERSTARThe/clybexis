@@ -15,225 +15,673 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #07111f;
     color: white;
+
+    background-color: #070b16;
+
+    background-image:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(56, 189, 248, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(56, 189, 248, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        100% 100%,
+        45px 45px,
+        45px 45px;
+
+    background-attachment: fixed;
 }
 
-header {
-    background: #0b1728;
-    padding: 25px 15px;
-    text-align: center;
-    border-bottom: 1px solid #1d3b5c;
-}
 
-header h1 {
-    color: #38bdf8;
-    margin: 0;
-}
-
-header p {
-    color: #9fb3c8;
-}
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
-    margin-top: 15px;
+    background: rgba(11, 16, 32, 0.94);
+
+    border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #38bdf8;
+    white-space: nowrap;
+}
+
+nav div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 5px 8px;
-    display: inline-block;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    transition: 0.2s;
 }
 
 nav a:hover {
     color: #38bdf8;
 }
 
+
+/* =========================
+   HERO
+========================= */
+
 .hero {
     text-align: center;
-    padding: 55px 20px 30px;
+
+    padding: 75px 20px 35px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(30, 64, 175, 0.20),
+            transparent 55%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -250px;
+    left: -100px;
+
+    background: radial-gradient(
+        circle,
+        rgba(56, 189, 248, 0.40),
+        transparent 65%
+    );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow 5s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -200px;
+    right: -100px;
+
+    background: radial-gradient(
+        circle,
+        rgba(37, 99, 235, 0.35),
+        transparent 65%
+    );
+
+    filter: blur(30px);
+
+    animation:
+        cyberGlow2 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+@keyframes cyberGlow {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(500px);
+    }
+
+}
+
+@keyframes cyberGlow2 {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-500px);
+    }
+
+}
+
+.hero h1,
+.hero h2,
+.hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    color: #38bdf8;
+
+    font-size: 25px;
+
+    margin: 0 0 25px;
 }
 
 .hero h2 {
-    font-size: 38px;
+    font-size: 42px;
+
     color: #38bdf8;
-    margin-bottom: 10px;
+
+    margin: 0 0 12px;
+
+    text-shadow:
+        0 0 25px rgba(56, 189, 248, 0.20);
 }
 
 .hero p {
     color: #a9bbcf;
+
     max-width: 700px;
+
     margin: auto;
+
+    line-height: 1.7;
+
+    font-size: 18px;
 }
 
+
+/* =========================
+   SEARCH
+========================= */
+
 .search {
+
     max-width: 700px;
+
     margin: 25px auto;
+
     padding: 0 20px;
 }
 
 .search input {
+
     width: 100%;
+
     padding: 16px;
+
     border-radius: 10px;
-    border: 1px solid #315273;
-    background: #0d1b2d;
+
+    border:
+        1px solid
+        #315273;
+
+    background:
+        #0d1b2d;
+
     color: white;
+
     font-size: 16px;
 }
 
 .search input:focus {
+
     outline: none;
-    border-color: #38bdf8;
+
+    border-color:
+        #38bdf8;
+
+    box-shadow:
+        0 0 15px
+        rgba(56, 189, 248, 0.12);
 }
 
+
+/* =========================
+   CATEGORIES
+========================= */
+
 .categories {
+
     text-align: center;
+
     padding: 10px 15px 30px;
 }
 
 .categories button {
-    background: #10243a;
+
+    background:
+        #10243a;
+
     color: white;
-    border: 1px solid #315273;
+
+    border:
+        1px solid
+        #315273;
+
     border-radius: 20px;
+
     padding: 9px 15px;
+
     margin: 5px;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .categories button:hover {
-    background: #173652;
-    border-color: #38bdf8;
+
+    background:
+        #173652;
+
+    border-color:
+        #38bdf8;
+
+    transform:
+        translateY(-2px);
 }
 
+
+/* =========================
+   CARDS
+========================= */
+
 .cards {
+
     max-width: 1100px;
+
     margin: auto;
+
     padding: 20px;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
     gap: 20px;
 }
 
 .card {
-    background: #0d1b2d;
-    border: 1px solid #1d3b5c;
-    border-radius: 15px;
-    padding: 22px;
-    transition: 0.2s;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 26, 51, 0.96),
+            rgba(10, 17, 35, 0.96)
+        );
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.20);
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    border-color: #38bdf8;
-    box-shadow: 0 12px 30px rgba(56,189,248,0.15);
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(56, 189, 248, 0.60);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.25);
 }
 
 .card h3 {
-    color: #38bdf8;
+
+    color:
+        #38bdf8;
+
     margin-top: 0;
+
+    font-size: 22px;
 }
 
 .card p {
-    color: #c2d0df;
+
+    color:
+        #c2d0df;
+
     line-height: 1.6;
 }
 
+
+/* =========================
+   TAG
+========================= */
+
 .tag {
+
     display: inline-block;
+
     margin-top: 10px;
+
     padding: 5px 9px;
-    background: #132b45;
-    color: #7dd3fc;
+
+    background:
+        #132b45;
+
+    color:
+        #7dd3fc;
+
     border-radius: 6px;
+
     font-size: 12px;
 }
 
+
+/* =========================
+   NO RESULTS
+========================= */
+
 #noResults {
+
     display: none;
+
     text-align: center;
+
     padding: 40px;
-    color: #9fb3c8;
+
+    color:
+        #9fb3c8;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
+
     margin-top: 60px;
-    padding: 30px;
+
+    padding: 35px 20px;
+
     text-align: center;
-    background: #0b1728;
-    color: #8195aa;
+
+    background:
+        rgba(11, 16, 32, 0.95);
+
+    border-top:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    color:
+        #8195aa;
+}
+
+footer p:first-child {
+
+    color:
+        #38bdf8;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    nav {
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        padding: 18px 12px;
+    }
+
+    nav div:last-child {
+
+        gap: 12px 16px;
+    }
+
+    nav a {
+
+        font-size: 14px;
+    }
+
+    .hero {
+
+        padding:
+            60px 20px 30px;
+    }
+
+    .hero h2 {
+
+        font-size: 32px;
+    }
+
+    .hero p {
+
+        font-size: 17px;
+    }
+
+    .cards {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================
+   EXTRA SMALL PHONES
+========================= */
+
+@media (max-width: 430px) {
+
+    .logo {
+
+        font-size: 22px;
+    }
+
+    nav div:last-child {
+
+        gap: 10px 13px;
+    }
+
+    nav a {
+
+        font-size: 13px;
+    }
+
+    .hero h2 {
+
+        font-size: 29px;
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<header>
 
-<h1>🛡️ CyberStart</h1>
-
-<p>Learn. Explore. Defend.</p>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
-<a href="index.html">Home</a>
-<a href="lessons.html">Lessons</a>
-<a href="labs.html">Labs</a>
-<a href="quiz.html">Quiz</a>
-<a href="games.html">Games</a>
-<a href="glossary.html">Glossary</a>
-<a href="challenge.html">Challenge</a>
+    <div class="logo">
+        🛡️ CyberStart
+    </div>
+
+    <div>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="lessons.html">
+            Lessons
+        </a>
+
+        <a href="labs.html">
+            Labs
+        </a>
+
+        <a href="quiz.html">
+            Quiz
+        </a>
+
+        <a href="games.html">
+            Games
+        </a>
+
+        <a href="glossary.html">
+            Glossary
+        </a>
+
+    </div>
 
 </nav>
 
-</header>
 
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
-<h2>Cybersecurity Glossary</h2>
+    <h1>
+        🛡️ CyberStart
+    </h1>
 
-<p>
-Learn the important words and concepts used by cybersecurity professionals.
-</p>
+    <h2>
+        Cybersecurity Glossary
+    </h2>
+
+    <p>
+        Learn the important words and concepts
+        used by cybersecurity professionals.
+    </p>
 
 </section>
 
 
+<!-- =========================
+     SEARCH
+========================= -->
+
 <div class="search">
 
-<input
-type="text"
-id="searchBox"
-placeholder="🔎 Search a cybersecurity term..."
->
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔎 Search a cybersecurity term..."
+    >
 
 </div>
 
+
+<!-- =========================
+     CATEGORIES
+========================= -->
 
 <div class="categories">
 
-<button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('all')">
+        All
+    </button>
 
-<button onclick="filterCategory('security')">Security</button>
+    <button onclick="filterCategory('security')">
+        Security
+    </button>
 
-<button onclick="filterCategory('attacks')">Attacks</button>
+    <button onclick="filterCategory('attacks')">
+        Attacks
+    </button>
 
-<button onclick="filterCategory('network')">Network</button>
+    <button onclick="filterCategory('network')">
+        Network
+    </button>
 
-<button onclick="filterCategory('malware')">Malware</button>
+    <button onclick="filterCategory('malware')">
+        Malware
+    </button>
 
-<button onclick="filterCategory('identity')">Identity</button>
+    <button onclick="filterCategory('identity')">
+        Identity
+    </button>
 
 </div>
 
+
+<!-- =========================
+     GLOSSARY CARDS
+========================= -->
 
 <section class="cards" id="cards">
 
@@ -241,310 +689,743 @@ placeholder="🔎 Search a cybersecurity term..."
 <!-- SECURITY -->
 
 <div class="card" data-category="security">
-<h3>Authentication</h3>
-<p>Verifying that a person or system is really who or what it claims to be.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Authentication
+    </h3>
+
+    <p>
+        Verifying that a person or system is really
+        who or what it claims to be.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Encryption</h3>
-<p>Converting readable information into protected information that requires the correct method or key to read.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Encryption
+    </h3>
+
+    <p>
+        Converting readable information into protected
+        information that requires the correct method
+        or key to read.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Hashing</h3>
-<p>Turning data into a fixed-length value called a hash. Hashing is commonly used to protect passwords and verify data.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Hashing
+    </h3>
+
+    <p>
+        Turning data into a fixed-length value called
+        a hash. Hashing is commonly used to protect
+        passwords and verify data.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Firewall</h3>
-<p>A security system that monitors and controls network traffic according to security rules.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Firewall
+    </h3>
+
+    <p>
+        A security system that monitors and controls
+        network traffic according to security rules.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Vulnerability</h3>
-<p>A weakness in software, hardware, configuration, or a process that could create a security risk.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Vulnerability
+    </h3>
+
+    <p>
+        A weakness in software, hardware, configuration,
+        or a process that could create a security risk.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Patch</h3>
-<p>A software update that can fix bugs and security vulnerabilities.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Patch
+    </h3>
+
+    <p>
+        A software update that can fix bugs and
+        security vulnerabilities.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Zero-Day</h3>
-<p>A previously unknown or unpatched vulnerability that may be exploited before a fix is available.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Zero-Day
+    </h3>
+
+    <p>
+        A previously unknown or unpatched vulnerability
+        that may be exploited before a fix is available.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Antivirus</h3>
-<p>Software designed to detect, block, and remove certain types of malicious software.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Antivirus
+    </h3>
+
+    <p>
+        Software designed to detect, block, and remove
+        certain types of malicious software.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Penetration Testing</h3>
-<p>Authorized security testing used to find weaknesses in systems and applications.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Penetration Testing
+    </h3>
+
+    <p>
+        Authorized security testing used to find
+        weaknesses in systems and applications.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Least Privilege</h3>
-<p>A security principle where users and systems receive only the access they need.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Least Privilege
+    </h3>
+
+    <p>
+        A security principle where users and systems
+        receive only the access they need.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <div class="card" data-category="security">
-<h3>Incident Response</h3>
-<p>The process of detecting, investigating, containing, and recovering from cybersecurity incidents.</p>
-<span class="tag">Security</span>
+
+    <h3>
+        Incident Response
+    </h3>
+
+    <p>
+        The process of detecting, investigating,
+        containing, and recovering from cybersecurity
+        incidents.
+    </p>
+
+    <span class="tag">
+        Security
+    </span>
+
 </div>
 
 
 <!-- IDENTITY -->
 
 <div class="card" data-category="identity">
-<h3>MFA</h3>
-<p>Multi-Factor Authentication uses two or more different verification methods to protect an account.</p>
-<span class="tag">Identity</span>
+
+    <h3>
+        MFA
+    </h3>
+
+    <p>
+        Multi-Factor Authentication uses two or more
+        different verification methods to protect
+        an account.
+    </p>
+
+    <span class="tag">
+        Identity
+    </span>
+
 </div>
 
 
 <div class="card" data-category="identity">
-<h3>Authorization</h3>
-<p>Determines what an authenticated person or system is allowed to access or do.</p>
-<span class="tag">Identity</span>
+
+    <h3>
+        Authorization
+    </h3>
+
+    <p>
+        Determines what an authenticated person or
+        system is allowed to access or do.
+    </p>
+
+    <span class="tag">
+        Identity
+    </span>
+
 </div>
 
 
 <div class="card" data-category="identity">
-<h3>Password Manager</h3>
-<p>A tool that securely stores and manages passwords and other login information.</p>
-<span class="tag">Identity</span>
+
+    <h3>
+        Password Manager
+    </h3>
+
+    <p>
+        A tool that securely stores and manages
+        passwords and other login information.
+    </p>
+
+    <span class="tag">
+        Identity
+    </span>
+
 </div>
 
 
 <div class="card" data-category="identity">
-<h3>Access Control</h3>
-<p>Security rules that determine who can access systems, information, or resources.</p>
-<span class="tag">Identity</span>
+
+    <h3>
+        Access Control
+    </h3>
+
+    <p>
+        Security rules that determine who can access
+        systems, information, or resources.
+    </p>
+
+    <span class="tag">
+        Identity
+    </span>
+
 </div>
 
 
 <!-- NETWORK -->
 
 <div class="card" data-category="network">
-<h3>IP Address</h3>
-<p>A numerical address used to identify a device or network interface.</p>
-<span class="tag">Network</span>
+
+    <h3>
+        IP Address
+    </h3>
+
+    <p>
+        A numerical address used to identify a device
+        or network interface.
+    </p>
+
+    <span class="tag">
+        Network
+    </span>
+
 </div>
 
 
 <div class="card" data-category="network">
-<h3>DNS</h3>
-<p>The Domain Name System translates domain names into IP addresses.</p>
-<span class="tag">Network</span>
+
+    <h3>
+        DNS
+    </h3>
+
+    <p>
+        The Domain Name System translates domain names
+        into IP addresses.
+    </p>
+
+    <span class="tag">
+        Network
+    </span>
+
 </div>
 
 
 <div class="card" data-category="network">
-<h3>VPN</h3>
-<p>A Virtual Private Network creates an encrypted connection between a device and a network service.</p>
-<span class="tag">Network</span>
+
+    <h3>
+        VPN
+    </h3>
+
+    <p>
+        A Virtual Private Network creates an encrypted
+        connection between a device and a network service.
+    </p>
+
+    <span class="tag">
+        Network
+    </span>
+
 </div>
 
 
 <div class="card" data-category="network">
-<h3>Packet</h3>
-<p>A small unit of data sent across a computer network.</p>
-<span class="tag">Network</span>
+
+    <h3>
+        Packet
+    </h3>
+
+    <p>
+        A small unit of data sent across a computer network.
+    </p>
+
+    <span class="tag">
+        Network
+    </span>
+
 </div>
 
 
 <div class="card" data-category="network">
-<h3>Network Security</h3>
-<p>The practice of protecting networks, devices, and network traffic from unauthorized access and attacks.</p>
-<span class="tag">Network</span>
+
+    <h3>
+        Network Security
+    </h3>
+
+    <p>
+        The practice of protecting networks, devices,
+        and network traffic from unauthorized access
+        and attacks.
+    </p>
+
+    <span class="tag">
+        Network
+    </span>
+
 </div>
 
 
 <div class="card" data-category="network">
-<h3>Port</h3>
-<p>A logical communication endpoint used by network services and applications.</p>
-<span class="tag">Network</span>
+
+    <h3>
+        Port
+    </h3>
+
+    <p>
+        A logical communication endpoint used by
+        network services and applications.
+    </p>
+
+    <span class="tag">
+        Network
+    </span>
+
 </div>
 
 
 <!-- ATTACKS -->
 
 <div class="card" data-category="attacks">
-<h3>Phishing</h3>
-<p>A scam that attempts to trick people into revealing information or interacting with something unsafe.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        Phishing
+    </h3>
+
+    <p>
+        A scam that attempts to trick people into
+        revealing information or interacting with
+        something unsafe.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <div class="card" data-category="attacks">
-<h3>Spear Phishing</h3>
-<p>A targeted phishing attack designed for a specific person or organization.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        Spear Phishing
+    </h3>
+
+    <p>
+        A targeted phishing attack designed for
+        a specific person or organization.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <div class="card" data-category="attacks">
-<h3>Social Engineering</h3>
-<p>Manipulating people into revealing information or taking actions that create a security risk.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        Social Engineering
+    </h3>
+
+    <p>
+        Manipulating people into revealing information
+        or taking actions that create a security risk.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <div class="card" data-category="attacks">
-<h3>Brute Force Attack</h3>
-<p>An attack that repeatedly tries possible passwords or authentication values.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        Brute Force Attack
+    </h3>
+
+    <p>
+        An attack that repeatedly tries possible
+        passwords or authentication values.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <div class="card" data-category="attacks">
-<h3>DDoS</h3>
-<p>A Distributed Denial-of-Service attack attempts to overwhelm a service with large amounts of traffic.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        DDoS
+    </h3>
+
+    <p>
+        A Distributed Denial-of-Service attack attempts
+        to overwhelm a service with large amounts of traffic.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <div class="card" data-category="attacks">
-<h3>Spoofing</h3>
-<p>Making information or an identity appear to come from a trusted source when it does not.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        Spoofing
+    </h3>
+
+    <p>
+        Making information or an identity appear to
+        come from a trusted source when it does not.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <div class="card" data-category="attacks">
-<h3>Man-in-the-Middle</h3>
-<p>An attack where someone secretly interferes with communication between two parties.</p>
-<span class="tag">Attack</span>
+
+    <h3>
+        Man-in-the-Middle
+    </h3>
+
+    <p>
+        An attack where someone secretly interferes
+        with communication between two parties.
+    </p>
+
+    <span class="tag">
+        Attack
+    </span>
+
 </div>
 
 
 <!-- MALWARE -->
 
 <div class="card" data-category="malware">
-<h3>Malware</h3>
-<p>Malicious software designed to disrupt systems, steal information, or perform unwanted actions.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Malware
+    </h3>
+
+    <p>
+        Malicious software designed to disrupt systems,
+        steal information, or perform unwanted actions.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 <div class="card" data-category="malware">
-<h3>Ransomware</h3>
-<p>Malware that prevents access to data or systems and attempts to pressure victims into paying money.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Ransomware
+    </h3>
+
+    <p>
+        Malware that prevents access to data or systems
+        and attempts to pressure victims into paying money.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 <div class="card" data-category="malware">
-<h3>Spyware</h3>
-<p>Software designed to secretly collect information about a person or system.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Spyware
+    </h3>
+
+    <p>
+        Software designed to secretly collect information
+        about a person or system.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 <div class="card" data-category="malware">
-<h3>Trojan</h3>
-<p>Malware that disguises itself as legitimate software or a file.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Trojan
+    </h3>
+
+    <p>
+        Malware that disguises itself as legitimate
+        software or a file.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 <div class="card" data-category="malware">
-<h3>Worm</h3>
-<p>Malware capable of spreading between systems.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Worm
+    </h3>
+
+    <p>
+        Malware capable of spreading between systems.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 <div class="card" data-category="malware">
-<h3>Botnet</h3>
-<p>A collection of compromised devices that can be controlled by an attacker.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Botnet
+    </h3>
+
+    <p>
+        A collection of compromised devices that can
+        be controlled by an attacker.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 <div class="card" data-category="malware">
-<h3>Keylogger</h3>
-<p>Software or hardware designed to record keyboard input.</p>
-<span class="tag">Malware</span>
+
+    <h3>
+        Keylogger
+    </h3>
+
+    <p>
+        Software or hardware designed to record
+        keyboard input.
+    </p>
+
+    <span class="tag">
+        Malware
+    </span>
+
 </div>
 
 
 </section>
 
 
+<!-- =========================
+     NO RESULTS
+========================= -->
+
 <div id="noResults">
-No terms found. Try another search.
+
+    No terms found.
+    Try another search.
+
 </div>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-<p>© 2026 CyberStart | Learn Cybersecurity</p>
+    <p>
+        🛡️ CyberStart
+    </p>
+
+    <p>
+        Learn. Practice. Stay Secure.
+    </p>
+
+    <p>
+        © 2026 CyberStart
+    </p>
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-const searchBox = document.getElementById("searchBox");
+const searchBox =
+    document.getElementById("searchBox");
 
-const cards = document.querySelectorAll(".card");
+const cards =
+    document.querySelectorAll(".card");
 
-const noResults = document.getElementById("noResults");
+const noResults =
+    document.getElementById("noResults");
 
 
-searchBox.addEventListener("input", function() {
+searchBox.addEventListener(
+    "input",
+    function() {
 
-    const search = this.value.toLowerCase();
+        const search =
+            this.value.toLowerCase();
 
-    let found = 0;
+        let found = 0;
 
-    cards.forEach(function(card) {
 
-        const text = card.innerText.toLowerCase();
+        cards.forEach(
+            function(card) {
 
-        if (text.includes(search)) {
+                const text =
+                    card.innerText.toLowerCase();
 
-            card.style.display = "block";
 
-            found++;
+                if (
+                    text.includes(search)
+                ) {
 
-        } else {
+                    card.style.display =
+                        "block";
 
-            card.style.display = "none";
+                    found++;
 
-        }
+                } else {
 
-    });
+                    card.style.display =
+                        "none";
 
-    noResults.style.display =
-        found === 0 ? "block" : "none";
+                }
 
-});
+            }
+        );
+
+
+        noResults.style.display =
+            found === 0
+            ? "block"
+            : "none";
+
+    }
+);
 
 
 function filterCategory(category) {
@@ -553,27 +1434,35 @@ function filterCategory(category) {
 
     let found = 0;
 
-    cards.forEach(function(card) {
 
-        if (
-            category === "all" ||
-            card.dataset.category === category
-        ) {
+    cards.forEach(
+        function(card) {
 
-            card.style.display = "block";
+            if (
+                category === "all" ||
+                card.dataset.category === category
+            ) {
 
-            found++;
+                card.style.display =
+                    "block";
 
-        } else {
+                found++;
 
-            card.style.display = "none";
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
 
         }
+    );
 
-    });
 
     noResults.style.display =
-        found === 0 ? "block" : "none";
+        found === 0
+        ? "block"
+        : "none";
 
 }
 
