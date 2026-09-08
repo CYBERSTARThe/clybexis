@@ -3,435 +3,742 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberStart | Lessons</title>
 
-<title>CyberStart | Lessons</title>
+    <style>
 
-<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            min-height: 100vh;
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
+            background-color: #050b16;
 
-    background-color: #070b16;
+            background-image:
+                linear-gradient(
+                    rgba(0,170,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,170,255,0.035) 1px,
+                    transparent 1px
+                );
 
-    background-image:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(56, 189, 248, 0.18),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(56, 189, 248, 0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(56, 189, 248, 0.035) 1px,
-            transparent 1px
-        );
+            background-size: 40px 40px;
+        }
 
-    background-size:
-        100% 100%,
-        45px 45px,
-        45px 45px;
 
-    background-attachment: fixed;
-}
+        /* =========================
+           NAVIGATION
+        ========================= */
 
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 
-/* NAVIGATION */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-nav {
-    background: rgba(11, 16, 32, 0.94);
+            padding: 16px 6%;
 
-    border-bottom:
-        1px solid
-        rgba(96, 165, 250, 0.15);
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4,12,27,0.98),
+                    rgba(7,20,40,0.96),
+                    rgba(4,12,27,0.98)
+                );
 
-    padding: 18px 25px;
+            border-bottom: 1px solid #00aaff;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+            box-shadow:
+                0 0 15px rgba(0,170,255,0.25),
+                0 3px 25px rgba(0,0,0,0.5);
 
-    position: sticky;
-    top: 0;
+            backdrop-filter: blur(15px);
+        }
 
-    z-index: 1000;
+        nav::before {
+            content: "";
 
-    backdrop-filter: blur(12px);
-}
+            position: absolute;
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #38bdf8;
-}
+            top: 0;
+            left: 8%;
 
-nav div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-}
+            width: 84%;
+            height: 2px;
 
-nav a {
-    color: white;
-    text-decoration: none;
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #00aaff,
+                    #39ff88,
+                    #00aaff,
+                    transparent
+                );
 
-    font-weight: bold;
-    font-size: 16px;
+            box-shadow:
+                0 0 12px #00aaff,
+                0 0 18px #39ff88;
+        }
 
-    transition: 0.2s;
-}
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
 
-nav a:hover {
-    color: #38bdf8;
-}
+            letter-spacing: -1px;
 
+            white-space: nowrap;
+        }
 
-/* HERO */
+        .logo span {
+            color: #00aaff;
 
-.hero {
-    text-align: center;
+            text-shadow:
+                0 0 10px #00aaff,
+                0 0 20px rgba(0,170,255,0.5);
+        }
 
-    padding: 75px 20px 45px;
+        nav ul {
+            display: flex;
+            align-items: center;
 
-    position: relative;
-    overflow: hidden;
-}
+            gap: 20px;
 
-.hero::before {
-    content: "";
+            list-style: none;
+        }
 
-    position: absolute;
+        nav a {
+            color: #e7f5ff;
 
-    width: 400px;
-    height: 400px;
+            text-decoration: none;
 
-    top: -250px;
-    left: -100px;
+            font-size: 15px;
+            font-weight: 600;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(56, 189, 248, 0.40),
-            transparent 65%
-        );
+            padding: 10px 4px;
 
-    filter: blur(30px);
+            transition: 0.3s;
+        }
 
-    animation:
-        cyberGlow 5s ease-in-out infinite alternate;
-}
+        nav a:hover {
+            color: #00d9ff;
 
-.hero::after {
-    content: "";
+            text-shadow:
+                0 0 10px #00aaff;
+        }
 
-    position: absolute;
+        nav a.active {
+            color: #00d9ff;
+        }
 
-    width: 350px;
-    height: 350px;
+        nav a.active::after {
+            content: "";
 
-    top: -200px;
-    right: -100px;
+            display: block;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(37, 99, 235, 0.35),
-            transparent 65%
-        );
+            height: 3px;
 
-    filter: blur(30px);
+            margin-top: 5px;
 
-    animation:
-        cyberGlow2 6s ease-in-out infinite alternate;
-}
+            border-radius: 10px;
 
-@keyframes cyberGlow {
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #39ff88
+                );
 
-    from {
-        transform: translateX(0);
-    }
+            box-shadow:
+                0 0 8px #00aaff;
+        }
 
-    to {
-        transform: translateX(500px);
-    }
+        nav a.donate {
+            padding: 10px 17px;
 
-}
+            border: 1px solid #39ff88;
 
-@keyframes cyberGlow2 {
+            border-radius: 30px;
 
-    from {
-        transform: translateX(0);
-    }
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,170,255,0.12),
+                    rgba(57,255,136,0.12)
+                );
 
-    to {
-        transform: translateX(-500px);
-    }
+            box-shadow:
+                0 0 10px rgba(57,255,136,0.3);
+        }
 
-}
 
-.hero h1,
-.hero h2,
-.hero p {
-    position: relative;
-    z-index: 2;
-}
+        /* =========================
+           HERO
+        ========================= */
 
-.hero h1 {
-    color: #38bdf8;
-    font-size: 25px;
-    margin-bottom: 20px;
-}
+        .hero {
+            position: relative;
 
-.hero h2 {
-    font-size: 42px;
-    margin: 0 0 15px;
-    color: #38bdf8;
-}
+            overflow: hidden;
 
-.hero p {
-    max-width: 700px;
-    margin: auto;
+            text-align: center;
 
-    color: #a9bbcf;
+            padding: 90px 20px 70px;
 
-    font-size: 18px;
-    line-height: 1.7;
-}
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(0,150,255,0.18),
+                    transparent 40%
+                );
+        }
 
+        .hero::before {
+            content: "";
 
-/* LESSONS */
+            position: absolute;
 
-.lessons {
+            width: 400px;
+            height: 400px;
 
-    max-width: 1100px;
+            border-radius: 50%;
 
-    margin: auto;
+            background: rgba(0,140,255,0.15);
 
-    padding: 30px 20px 60px;
+            filter: blur(100px);
 
-    display: grid;
+            top: -150px;
+            left: 5%;
 
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px, 1fr)
-        );
+            animation: glowMove 8s infinite alternate;
+        }
 
-    gap: 22px;
-}
+        .hero::after {
+            content: "";
 
+            position: absolute;
 
-/* LESSON CARD */
+            width: 350px;
+            height: 350px;
 
-.lesson-card {
+            border-radius: 50%;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17, 26, 51, 0.96),
-            rgba(10, 17, 35, 0.96)
-        );
+            background: rgba(57,255,136,0.08);
 
-    border:
-        1px solid
-        rgba(96, 165, 250, 0.20);
+            filter: blur(100px);
 
-    border-radius: 18px;
+            right: 5%;
+            bottom: -100px;
 
-    padding: 28px;
+            animation: glowMove2 9s infinite alternate;
+        }
 
-    transition:
-        transform 0.2s,
-        border-color 0.2s,
-        box-shadow 0.2s;
-}
+        @keyframes glowMove {
 
-.lesson-card:hover {
+            from {
+                transform: translateX(0);
+            }
 
-    transform:
-        translateY(-6px);
+            to {
+                transform: translateX(220px);
+            }
 
-    border-color:
-        rgba(56, 189, 248, 0.60);
+        }
 
-    box-shadow:
-        0 15px 35px
-        rgba(0, 0, 0, 0.25);
-}
+        @keyframes glowMove2 {
 
-.lesson-number {
+            from {
+                transform: translateX(0);
+            }
 
-    color: #7dd3fc;
+            to {
+                transform: translateX(-220px);
+            }
 
-    font-size: 14px;
+        }
 
-    font-weight: bold;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    letter-spacing: 1px;
+        .hero-icon {
+            font-size: 70px;
 
-    text-transform: uppercase;
-}
+            margin-bottom: 15px;
 
-.lesson-card h3 {
+            filter:
+                drop-shadow(0 0 15px #00aaff)
+                drop-shadow(0 0 20px rgba(57,255,136,0.3));
+        }
 
-    color: #38bdf8;
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
 
-    font-size: 25px;
+            margin-bottom: 20px;
 
-    margin:
-        10px 0 15px;
-}
+            font-weight: 900;
+        }
 
-.lesson-card p {
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #00d9ff,
+                    #39ff88
+                );
 
-    color: #c2d0df;
+            -webkit-background-clip: text;
+            background-clip: text;
 
-    line-height: 1.7;
-}
+            color: transparent;
+        }
 
+        .hero p {
+            max-width: 720px;
 
-/* TOPIC LIST */
+            margin: auto;
 
-.lesson-card ul {
+            color: #b9cada;
 
-    padding-left: 20px;
+            font-size: 18px;
 
-    color: #b8c7d8;
+            line-height: 1.7;
+        }
 
-    line-height: 1.8;
-}
 
-.lesson-card li {
-    margin-bottom: 6px;
-}
+        /* =========================
+           LESSON CONTAINER
+        ========================= */
 
+        .lessons-container {
 
-/* BUTTON */
+            width: 92%;
+            max-width: 1200px;
 
-.lesson-button {
+            margin: 60px auto 100px;
+        }
 
-    display: inline-block;
 
-    margin-top: 15px;
+        /* =========================
+           LEVEL HEADERS
+        ========================= */
 
-    padding:
-        11px 17px;
+        .level {
 
-    background:
-        #10243a;
+            margin-bottom: 60px;
+        }
 
-    border:
-        1px solid
-        #315273;
+        .level-header {
 
-    border-radius: 9px;
+            display: flex;
 
-    color: #7dd3fc;
+            align-items: center;
 
-    text-decoration: none;
+            gap: 15px;
 
-    font-weight: bold;
+            margin-bottom: 25px;
 
-    transition: 0.2s;
-}
+            padding-bottom: 15px;
 
-.lesson-button:hover {
+            border-bottom: 1px solid rgba(0,170,255,0.25);
+        }
 
-    background:
-        #173652;
+        .level-number {
 
-    border-color:
-        #38bdf8;
-}
+            width: 48px;
+            height: 48px;
 
+            display: flex;
 
-/* FOOTER */
+            justify-content: center;
+            align-items: center;
 
-footer {
+            border-radius: 14px;
 
-    text-align: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,170,255,0.2),
+                    rgba(57,255,136,0.12)
+                );
 
-    padding: 35px 20px;
+            border: 1px solid #00aaff;
 
-    background:
-        rgba(11, 16, 32, 0.95);
+            box-shadow:
+                0 0 15px rgba(0,170,255,0.25);
 
-    border-top:
-        1px solid
-        rgba(96, 165, 250, 0.15);
+            font-weight: bold;
+        }
 
-    color: #8195aa;
-}
+        .level-header h2 {
 
-footer p:first-child {
+            font-size: 28px;
+        }
 
-    color: #38bdf8;
+        .level-header p {
 
-    font-size: 20px;
+            color: #7f96ac;
 
-    font-weight: bold;
-}
+            margin-left: auto;
+        }
 
 
-/* MOBILE */
+        /* =========================
+           LESSON GRID
+        ========================= */
 
-@media (max-width: 700px) {
+        .lesson-grid {
 
-    nav {
+            display: grid;
 
-        flex-direction: column;
+            grid-template-columns:
+                repeat(3, 1fr);
 
-        gap: 16px;
+            gap: 22px;
+        }
 
-        padding: 18px 12px;
-    }
 
-    nav div:last-child {
+        /* =========================
+           LESSON CARD
+        ========================= */
 
-        gap: 12px 16px;
-    }
+        .lesson-card {
 
-    nav a {
+            position: relative;
 
-        font-size: 14px;
-    }
+            overflow: hidden;
 
-    .hero {
+            padding: 27px;
 
-        padding:
-            60px 20px 35px;
-    }
+            min-height: 245px;
 
-    .hero h2 {
+            border-radius: 18px;
 
-        font-size: 32px;
-    }
+            border: 1px solid rgba(0,170,255,0.2);
 
-    .hero p {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(11,25,45,0.95),
+                    rgba(5,14,28,0.95)
+                );
 
-        font-size: 17px;
-    }
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.25);
 
-    .lessons {
+            transition: 0.3s;
+        }
 
-        grid-template-columns: 1fr;
-    }
+        .lesson-card::before {
 
-}
+            content: "";
 
-</style>
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #39ff88
+                );
+
+            opacity: 0.7;
+        }
+
+        .lesson-card:hover {
+
+            transform: translateY(-6px);
+
+            border-color: rgba(0,210,255,0.65);
+
+            box-shadow:
+                0 15px 35px rgba(0,120,255,0.15);
+        }
+
+        .lesson-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 15px;
+
+            filter:
+                drop-shadow(0 0 8px rgba(0,170,255,0.5));
+        }
+
+        .lesson-card h3 {
+
+            font-size: 21px;
+
+            margin-bottom: 12px;
+        }
+
+        .lesson-card p {
+
+            color: #a9bacc;
+
+            line-height: 1.65;
+
+            font-size: 15px;
+        }
+
+        .lesson-tag {
+
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            color: #9feaff;
+
+            border: 1px solid rgba(0,170,255,0.35);
+
+            background: rgba(0,170,255,0.08);
+        }
+
+
+        /* =========================
+           LEARNING TIP
+        ========================= */
+
+        .tip-box {
+
+            margin-top: 50px;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid rgba(57,255,136,0.35);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(57,255,136,0.08),
+                    rgba(0,170,255,0.07)
+                );
+
+            box-shadow:
+                0 0 25px rgba(57,255,136,0.05);
+
+            text-align: center;
+        }
+
+        .tip-box h2 {
+
+            margin-bottom: 12px;
+
+            color: #39ff88;
+        }
+
+        .tip-box p {
+
+            color: #b8c8d7;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            border-top: 1px solid rgba(0,170,255,0.25);
+
+            background: rgba(3,9,20,0.8);
+
+            color: #7f91a4;
+        }
+
+        .footer-logo {
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            color: white;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+
+            color: #00aaff;
+        }
+
+        .slogan {
+
+            font-size: 12px;
+
+            letter-spacing: 5px;
+
+            color: #b9c9d8;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 14px;
+            }
+
+            nav ul {
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 12px;
+            }
+
+            .lesson-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .level-header {
+
+                flex-wrap: wrap;
+            }
+
+            .level-header p {
+
+                width: 100%;
+
+                margin-left: 63px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding: 15px 10px;
+            }
+
+            .logo {
+
+                font-size: 24px;
+            }
+
+            nav ul {
+
+                gap: 8px 12px;
+            }
+
+            nav a {
+
+                font-size: 13px;
+            }
+
+            nav a.donate {
+
+                padding: 8px 12px;
+            }
+
+            .hero {
+
+                padding: 65px 18px 55px;
+            }
+
+            .hero-icon {
+
+                font-size: 55px;
+            }
+
+            .hero h1 {
+
+                font-size: 48px;
+            }
+
+            .hero p {
+
+                font-size: 16px;
+            }
+
+            .lessons-container {
+
+                width: 94%;
+
+                margin-top: 40px;
+            }
+
+            .lesson-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .level-header h2 {
+
+                font-size: 24px;
+            }
+
+            .level-header p {
+
+                margin-left: 0;
+            }
+
+            .lesson-card {
+
+                min-height: auto;
+            }
+
+            .tip-box {
+
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -439,482 +746,710 @@ footer p:first-child {
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
     <div class="logo">
-        🛡️ CyberStart
+        🛡️ Cyber<span>Start</span>
     </div>
 
-    <div>
 
-        <a href="index.html">
-            Home
-        </a>
+    <ul>
 
-        <a href="lessons.html">
-            Lessons
-        </a>
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
 
-        <a href="labs.html">
-            Labs
-        </a>
+        <li>
+            <a href="lessons.html" class="active">
+                Lessons
+            </a>
+        </li>
 
-        <a href="quiz.html">
-            Quiz
-        </a>
+        <li>
+            <a href="labs.html">
+                Labs
+            </a>
+        </li>
 
-        <a href="games.html">
-            Games
-        </a>
+        <li>
+            <a href="quiz.html">
+                Quiz
+            </a>
+        </li>
 
-        <a href="glossary.html">
-            Glossary
-        </a>
+        <li>
+            <a href="games.html">
+                Games
+            </a>
+        </li>
 
-    </div>
+        <li>
+            <a href="glossary.html">
+                Glossary
+            </a>
+        </li>
+
+        <li>
+            <a href="donate.html" class="donate">
+                💚 Donate
+            </a>
+        </li>
+
+    </ul>
 
 </nav>
 
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
-    <h1>
-        🛡️ CyberStart
-    </h1>
+    <div class="hero-content">
 
-    <h2>
-        Cybersecurity Lessons
-    </h2>
+        <div class="hero-icon">
+            📚
+        </div>
 
-    <p>
-        Build your cybersecurity knowledge from
-        the basics to more advanced concepts.
-    </p>
+        <h1>
+            Cyber<span>Lessons</span>
+        </h1>
+
+        <p>
+
+            Follow the CyberStart learning path
+            from cybersecurity fundamentals to
+            advanced security concepts.
+
+        </p>
+
+    </div>
 
 </section>
 
 
-<!-- LESSON CARDS -->
 
-<section class="lessons">
+<!-- =========================
+     LESSONS
+========================= -->
+
+<main class="lessons-container">
 
 
-<!-- LESSON 1 -->
+    <!-- =========================
+         BEGINNER
+    ========================= -->
 
-<div class="lesson-card">
+    <section class="level">
 
-    <div class="lesson-number">
-        Lesson 01
+        <div class="level-header">
+
+            <div class="level-number">
+                01
+            </div>
+
+            <div>
+
+                <h2>
+                    🟢 Beginner
+                </h2>
+
+            </div>
+
+            <p>
+                Build your foundation
+            </p>
+
+        </div>
+
+
+        <div class="lesson-grid">
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    What Is Cybersecurity?
+                </h3>
+
+                <p>
+                    Learn what cybersecurity is,
+                    why it matters, and what
+                    security professionals protect.
+                </p>
+
+                <span class="lesson-tag">
+                    FUNDAMENTALS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🎣
+                </div>
+
+                <h3>
+                    Phishing
+                </h3>
+
+                <p>
+                    Learn how attackers use
+                    deceptive messages and websites
+                    to trick people.
+                </p>
+
+                <span class="lesson-tag">
+                    THREATS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Strong Passwords
+                </h3>
+
+                <p>
+                    Understand why unique passwords
+                    and password managers can improve
+                    account security.
+                </p>
+
+                <span class="lesson-tag">
+                    ACCOUNT SECURITY
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Multi-Factor Authentication
+                </h3>
+
+                <p>
+                    Learn how MFA adds another layer
+                    of protection when signing into
+                    an account.
+                </p>
+
+                <span class="lesson-tag">
+                    AUTHENTICATION
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🦠
+                </div>
+
+                <h3>
+                    Malware
+                </h3>
+
+                <p>
+                    Explore what malware is and learn
+                    about common categories such as
+                    viruses, worms, and trojans.
+                </p>
+
+                <span class="lesson-tag">
+                    THREATS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Network Security
+                </h3>
+
+                <p>
+                    Learn why networks need security
+                    controls and how defenders protect
+                    connected systems.
+                </p>
+
+                <span class="lesson-tag">
+                    NETWORKS
+                </span>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         INTERMEDIATE
+    ========================= -->
+
+    <section class="level">
+
+        <div class="level-header">
+
+            <div class="level-number">
+                02
+            </div>
+
+            <div>
+
+                <h2>
+                    🔵 Intermediate
+                </h2>
+
+            </div>
+
+            <p>
+                Understand attacks and defenses
+            </p>
+
+        </div>
+
+
+        <div class="lesson-grid">
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Encryption
+                </h3>
+
+                <p>
+                    Learn how encryption helps protect
+                    information by making data unreadable
+                    without the appropriate key.
+                </p>
+
+                <span class="lesson-tag">
+                    CRYPTOGRAPHY
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    #️⃣
+                </div>
+
+                <h3>
+                    Hashing
+                </h3>
+
+                <p>
+                    Understand how hash functions create
+                    fixed-size values and why hashing is
+                    useful in security.
+                </p>
+
+                <span class="lesson-tag">
+                    CRYPTOGRAPHY
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🧱
+                </div>
+
+                <h3>
+                    Firewalls
+                </h3>
+
+                <p>
+                    Learn how firewalls can filter network
+                    traffic according to security rules.
+                </p>
+
+                <span class="lesson-tag">
+                    DEFENSE
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Social Engineering
+                </h3>
+
+                <p>
+                    Discover how attackers may manipulate
+                    people instead of directly attacking
+                    technology.
+                </p>
+
+                <span class="lesson-tag">
+                    HUMAN FACTORS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🚨
+                </div>
+
+                <h3>
+                    Incident Response
+                </h3>
+
+                <p>
+                    Learn the basic process defenders use
+                    to identify, contain, investigate,
+                    and recover from security incidents.
+                </p>
+
+                <span class="lesson-tag">
+                    DEFENSE
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🔧
+                </div>
+
+                <h3>
+                    Vulnerabilities & Patching
+                </h3>
+
+                <p>
+                    Learn what vulnerabilities are and
+                    why software updates are important
+                    for reducing security risk.
+                </p>
+
+                <span class="lesson-tag">
+                    VULNERABILITIES
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Authentication vs Authorization
+                </h3>
+
+                <p>
+                    Understand the difference between
+                    proving who you are and determining
+                    what you are allowed to access.
+                </p>
+
+                <span class="lesson-tag">
+                    ACCESS CONTROL
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🚪
+                </div>
+
+                <h3>
+                    Access Control
+                </h3>
+
+                <p>
+                    Learn how organizations control which
+                    users and systems can access resources.
+                </p>
+
+                <span class="lesson-tag">
+                    SECURITY
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ADVANCED
+    ========================= -->
+
+    <section class="level">
+
+        <div class="level-header">
+
+            <div class="level-number">
+                03
+            </div>
+
+            <div>
+
+                <h2>
+                    🟣 Advanced
+                </h2>
+
+            </div>
+
+            <p>
+                Think like a security analyst
+            </p>
+
+        </div>
+
+
+        <div class="lesson-grid">
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Least Privilege
+                </h3>
+
+                <p>
+                    Learn why users and systems should
+                    receive only the access they actually
+                    need.
+                </p>
+
+                <span class="lesson-tag">
+                    ACCESS CONTROL
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🔗
+                </div>
+
+                <h3>
+                    VPNs
+                </h3>
+
+                <p>
+                    Understand the basic purpose of VPNs
+                    and how they can create protected
+                    connections across networks.
+                </p>
+
+                <span class="lesson-tag">
+                    NETWORKS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    📡
+                </div>
+
+                <h3>
+                    DNS
+                </h3>
+
+                <p>
+                    Learn how DNS helps translate domain
+                    names into IP addresses.
+                </p>
+
+                <span class="lesson-tag">
+                    NETWORKS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🏷️
+                </div>
+
+                <h3>
+                    IP Addresses
+                </h3>
+
+                <p>
+                    Learn what IP addresses are and how
+                    they help devices communicate across
+                    networks.
+                </p>
+
+                <span class="lesson-tag">
+                    NETWORKS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🌊
+                </div>
+
+                <h3>
+                    DDoS Attacks
+                </h3>
+
+                <p>
+                    Understand the concept of distributed
+                    denial-of-service attacks and how
+                    defenders can reduce their impact.
+                </p>
+
+                <span class="lesson-tag">
+                    THREATS
+                </span>
+
+            </article>
+
+
+            <article class="lesson-card">
+
+                <div class="lesson-icon">
+                    🔴
+                </div>
+
+                <h3>
+                    Ransomware
+                </h3>
+
+                <p>
+                    Learn how ransomware can disrupt
+                    organizations and why backups and
+                    layered security matter.
+                </p>
+
+                <span class="lesson-tag">
+                    THREATS
+                </span>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TIP
+    ========================= -->
+
+    <div class="tip-box">
+
+        <h2>
+            💡 CyberStart Learning Tip
+        </h2>
+
+        <p>
+
+            Don't try to memorize everything at once.
+            Learn a concept, test yourself with the quiz,
+            then practice it in a lab. Repetition is one
+            of the best ways to build cybersecurity knowledge.
+
+        </p>
+
     </div>
 
-    <h3>
-        What Is Cybersecurity?
-    </h3>
 
-    <p>
-        Cybersecurity is the practice of protecting
-        computers, networks, accounts, applications,
-        and information from digital threats.
-    </p>
+</main>
 
-    <ul>
 
-        <li>What cybersecurity protects</li>
 
-        <li>Common cyber threats</li>
-
-        <li>Why security matters</li>
-
-        <li>Examples of security controls</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 2 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 02
-    </div>
-
-    <h3>
-        Phishing
-    </h3>
-
-    <p>
-        Phishing is a social-engineering technique
-        where attackers attempt to trick people into
-        revealing information or interacting with
-        something unsafe.
-    </p>
-
-    <ul>
-
-        <li>Email phishing</li>
-
-        <li>Spear phishing</li>
-
-        <li>Fake login pages</li>
-
-        <li>Warning signs</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 3 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 03
-    </div>
-
-    <h3>
-        Strong Passwords
-    </h3>
-
-    <p>
-        Strong passwords help protect accounts from
-        unauthorized access. Good password practices
-        are an important part of cybersecurity.
-    </p>
-
-    <ul>
-
-        <li>Use unique passwords</li>
-
-        <li>Use long passphrases</li>
-
-        <li>Avoid reused passwords</li>
-
-        <li>Use a password manager</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 4 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 04
-    </div>
-
-    <h3>
-        Multi-Factor Authentication
-    </h3>
-
-    <p>
-        Multi-Factor Authentication, or MFA, adds
-        another verification step to an account.
-        This can make unauthorized access harder.
-    </p>
-
-    <ul>
-
-        <li>Something you know</li>
-
-        <li>Something you have</li>
-
-        <li>Something you are</li>
-
-        <li>Why MFA matters</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 5 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 05
-    </div>
-
-    <h3>
-        Malware
-    </h3>
-
-    <p>
-        Malware is malicious software designed to
-        perform unwanted or harmful actions on a
-        computer or other device.
-    </p>
-
-    <ul>
-
-        <li>Viruses</li>
-
-        <li>Worms</li>
-
-        <li>Trojans</li>
-
-        <li>Ransomware</li>
-
-        <li>Spyware</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 6 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 06
-    </div>
-
-    <h3>
-        Network Security
-    </h3>
-
-    <p>
-        Network security focuses on protecting
-        networks, devices, communications, and
-        services from unauthorized activity.
-    </p>
-
-    <ul>
-
-        <li>Firewalls</li>
-
-        <li>IP addresses</li>
-
-        <li>Ports</li>
-
-        <li>Network traffic</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 7 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 07
-    </div>
-
-    <h3>
-        Encryption
-    </h3>
-
-    <p>
-        Encryption transforms readable information
-        into protected data so that unauthorized
-        people cannot easily understand it.
-    </p>
-
-    <ul>
-
-        <li>Plaintext</li>
-
-        <li>Ciphertext</li>
-
-        <li>Encryption keys</li>
-
-        <li>Secure communication</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 8 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 08
-    </div>
-
-    <h3>
-        Hashing
-    </h3>
-
-    <p>
-        Hashing converts data into a fixed-size value.
-        Hashes are commonly used for checking data
-        integrity and protecting stored passwords.
-    </p>
-
-    <ul>
-
-        <li>Hash functions</li>
-
-        <li>SHA-256</li>
-
-        <li>Data integrity</li>
-
-        <li>Password storage</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 9 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 09
-    </div>
-
-    <h3>
-        Firewalls
-    </h3>
-
-    <p>
-        A firewall monitors and controls network
-        traffic according to a set of security rules.
-    </p>
-
-    <ul>
-
-        <li>Inbound traffic</li>
-
-        <li>Outbound traffic</li>
-
-        <li>Security rules</li>
-
-        <li>Network protection</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 10 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 10
-    </div>
-
-    <h3>
-        Social Engineering
-    </h3>
-
-    <p>
-        Social engineering focuses on manipulating
-        people rather than directly attacking
-        technology.
-    </p>
-
-    <ul>
-
-        <li>Trust manipulation</li>
-
-        <li>Urgency</li>
-
-        <li>Impersonation</li>
-
-        <li>Recognizing suspicious requests</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 11 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 11
-    </div>
-
-    <h3>
-        Incident Response
-    </h3>
-
-    <p>
-        Incident response is the organized process
-        used to detect, investigate, contain, and
-        recover from cybersecurity incidents.
-    </p>
-
-    <ul>
-
-        <li>Detection</li>
-
-        <li>Investigation</li>
-
-        <li>Containment</li>
-
-        <li>Recovery</li>
-
-    </ul>
-
-</div>
-
-
-<!-- LESSON 12 -->
-
-<div class="lesson-card">
-
-    <div class="lesson-number">
-        Lesson 12
-    </div>
-
-    <h3>
-        Vulnerabilities & Patching
-    </h3>
-
-    <p>
-        A vulnerability is a weakness that could
-        create a security risk. Patches can fix
-        vulnerabilities and other software problems.
-    </p>
-
-    <ul>
-
-        <li>Security weaknesses</li>
-
-        <li>Software updates</li>
-
-        <li>Vulnerability management</li>
-
-        <li>Security maintenance</li>
-
-    </ul>
-
-</div>
-
-
-</section>
-
-
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <p>
-        🛡️ CyberStart
-    </p>
+    <div class="footer-logo">
 
-    <p>
-        Learn. Practice. Stay Secure.
-    </p>
+        🛡️ Cyber<span>Start</span>
+
+    </div>
+
+    <div class="slogan">
+
+        LEARN. PRACTICE. STAY SECURE.
+
+    </div>
 
     <p>
         © 2026 CyberStart
