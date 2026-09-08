@@ -61,53 +61,24 @@ body {
 /* =========================
    NAVIGATION
 ========================= */
+<nav>
 
-nav {
-    background: rgba(11, 16, 32, 0.94);
+    <div class="logo">
+        🛡️ Cyber<span>Start</span>
+    </div>
 
-    border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+    <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="lessons.html">Lessons</a></li>
+        <li><a href="labs.html">Labs</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="donate.html" class="donate">💚 Donate</a></li>
+    </ul>
 
-    padding: 18px 25px;
+</nav>
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    position: sticky;
-    top: 0;
-
-    z-index: 1000;
-
-    backdrop-filter: blur(12px);
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #38bdf8;
-    white-space: nowrap;
-}
-
-nav div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-
-    font-weight: bold;
-    font-size: 16px;
-
-    transition: 0.2s;
-}
-
-nav a:hover {
-    color: #38bdf8;
-}
 
 
 /* =========================
