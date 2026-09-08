@@ -7,47 +7,69 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CyberStart | Cyber Labs</title>
+<title>CyberStart | Labs</title>
 
 <style>
 
+/* =========================
+   BASIC RESET
+========================= */
+
 * {
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
+    min-height: 100vh;
 
-    background-color: #070b16;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,170,255,.15), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(0,255,170,.10), transparent 30%),
+        linear-gradient(135deg,#050812,#07111f,#03060d);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   CYBER GRID
+========================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
 
     background-image:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(56, 189, 248, 0.18),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(56, 189, 248, 0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(56, 189, 248, 0.035) 1px,
-            transparent 1px
-        );
+        linear-gradient(rgba(0,180,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,180,255,.04) 1px,transparent 1px);
 
-    background-size:
-        100% 100%,
-        45px 45px,
-        45px 45px;
+    background-size: 45px 45px;
 
-    background-attachment: fixed;
+    animation: gridMove 18s linear infinite;
+
+    z-index: -1;
+}
+
+@keyframes gridMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(45px);
+    }
+
 }
 
 
@@ -56,52 +78,86 @@ body {
 ========================= */
 
 nav {
-    background: rgba(11, 16, 32, 0.94);
-
-    border-bottom:
-        1px solid
-        rgba(96, 165, 250, 0.15);
-
-    padding: 18px 25px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
     position: sticky;
+
     top: 0;
 
     z-index: 1000;
 
-    backdrop-filter: blur(12px);
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 16px 6%;
+
+    background: rgba(3,8,18,.85);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(0,200,255,.15);
 }
 
 .logo {
-    font-size: 25px;
+
+    font-size: 23px;
+
     font-weight: bold;
-    color: #38bdf8;
+
     white-space: nowrap;
 }
 
-nav div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
+.logo span {
+
+    color: #00d9ff;
 }
 
-nav a {
-    color: white;
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.nav-links a {
+
+    color: #c9d7e8;
+
     text-decoration: none;
 
-    font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
 
-    transition: 0.2s;
+    transition: .3s;
 }
 
-nav a:hover {
-    color: #38bdf8;
+.nav-links a:hover {
+
+    color: #00d9ff;
+}
+
+.nav-links .active {
+
+    color: #00d9ff;
+}
+
+.donate {
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(0,255,170,.5);
+
+    color: #7dffc9 !important;
+
+    background:
+        rgba(0,255,170,.08);
 }
 
 
@@ -110,128 +166,61 @@ nav a:hover {
 ========================= */
 
 .hero {
+
     text-align: center;
 
     padding: 75px 20px 45px;
-
-    position: relative;
-
-    overflow: hidden;
 }
 
-.hero::before {
-    content: "";
+.hero-icon {
 
-    position: absolute;
+    font-size: 58px;
 
-    width: 400px;
-    height: 400px;
+    margin-bottom: 15px;
 
-    top: -250px;
-    left: -100px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(56, 189, 248, 0.40),
-            transparent 65%
-        );
-
-    filter: blur(30px);
-
-    animation:
-        cyberGlow 5s ease-in-out infinite alternate;
-
-    pointer-events: none;
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    width: 350px;
-    height: 350px;
-
-    top: -200px;
-    right: -100px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(37, 99, 235, 0.35),
-            transparent 65%
-        );
-
-    filter: blur(30px);
-
-    animation:
-        cyberGlow2 6s ease-in-out infinite alternate;
-
-    pointer-events: none;
-}
-
-@keyframes cyberGlow {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(500px);
-    }
-
-}
-
-@keyframes cyberGlow2 {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-500px);
-    }
-
-}
-
-.hero h1,
-.hero h2,
-.hero p {
-    position: relative;
-    z-index: 2;
+    filter:
+        drop-shadow(0 0 18px rgba(0,200,255,.5));
 }
 
 .hero h1 {
-    color: #38bdf8;
 
-    font-size: 25px;
+    font-size:
+        clamp(40px,8vw,70px);
 
-    margin: 0 0 20px;
-}
+    margin-bottom: 12px;
 
-.hero h2 {
-    color: #38bdf8;
+    background:
+        linear-gradient(90deg,#ffffff,#00d9ff);
 
-    font-size: 42px;
+    -webkit-background-clip: text;
 
-    margin: 0 0 15px;
-
-    text-shadow:
-        0 0 25px
-        rgba(56, 189, 248, 0.20);
+    -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-    max-width: 750px;
+
+    color: #9eb2c8;
+
+    max-width: 680px;
 
     margin: auto;
 
-    color: #a9bbcf;
-
-    font-size: 18px;
-
     line-height: 1.7;
+
+    font-size: 17px;
+}
+
+.tagline {
+
+    margin-top: 15px;
+
+    color: #00e5ff;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
 }
 
 
@@ -239,23 +228,18 @@ nav a:hover {
    LAB GRID
 ========================= */
 
-.labs {
+.labs-container {
 
-    max-width: 1100px;
+    width: min(1100px,92%);
 
-    margin: auto;
-
-    padding: 20px;
+    margin: 20px auto 80px;
 
     display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(300px, 1fr)
-        );
+        repeat(2,minmax(0,1fr));
 
-    gap: 22px;
+    gap: 24px;
 }
 
 
@@ -263,70 +247,125 @@ nav a:hover {
    LAB CARD
 ========================= */
 
-.lab {
+.lab-card {
+
+    padding: 28px;
+
+    border-radius: 22px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(17, 26, 51, 0.97),
-            rgba(10, 17, 35, 0.97)
-        );
+        rgba(9,20,35,.72);
 
     border:
-        1px solid
-        rgba(96, 165, 250, 0.20);
+        1px solid rgba(0,190,255,.18);
 
-    border-radius: 18px;
-
-    padding: 25px;
-
-    transition:
-        transform 0.2s,
-        border-color 0.2s,
-        box-shadow 0.2s;
-}
-
-.lab:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(56, 189, 248, 0.60);
+    backdrop-filter: blur(16px);
 
     box-shadow:
-        0 15px 35px
-        rgba(0, 0, 0, 0.25);
+        0 0 35px rgba(0,170,255,.07);
+
+    transition: .3s;
 }
 
-.lab-number {
+.lab-card:hover {
 
-    color: #7dd3fc;
+    transform: translateY(-5px);
 
-    font-size: 13px;
+    border-color:
+        rgba(0,210,255,.45);
 
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
+    box-shadow:
+        0 0 35px rgba(0,190,255,.15);
 }
 
-.lab h3 {
+.lab-icon {
 
-    color: #38bdf8;
+    font-size: 42px;
 
-    font-size: 24px;
-
-    margin:
-        10px 0 12px;
+    margin-bottom: 15px;
 }
 
-.lab p {
+.lab-card h2 {
 
-    color: #c2d0df;
+    font-size: 23px;
+
+    margin-bottom: 10px;
+}
+
+.lab-card p {
+
+    color: #9eb2c8;
 
     line-height: 1.6;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   TAG
+========================= */
+
+.level {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    color: #7de8ff;
+
+    background:
+        rgba(0,200,255,.08);
+
+    border:
+        1px solid rgba(0,200,255,.2);
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   LAB AREA
+========================= */
+
+.lab-area {
+
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0,0,0,.22);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.lab-area.show {
+
+    display: block;
+}
+
+.lab-area h3 {
+
+    margin-bottom: 12px;
+
+    color: #00d9ff;
+}
+
+.lab-area p {
+
+    margin-bottom: 15px;
+
+    color: #aebfd0;
 }
 
 
@@ -334,83 +373,35 @@ nav a:hover {
    INPUTS
 ========================= */
 
-.lab input,
-.lab select {
+input,
+select {
 
     width: 100%;
 
-    padding: 12px;
+    padding: 13px;
 
-    margin:
-        8px 0;
+    margin-bottom: 12px;
 
-    border-radius: 9px;
+    border-radius: 10px;
 
     border:
-        1px solid
-        #315273;
+        1px solid rgba(130,170,200,.2);
 
     background:
-        #0b1728;
+        rgba(0,0,0,.35);
 
     color: white;
 
-    font-size: 15px;
+    outline: none;
 }
 
-.lab input:focus,
-.lab select:focus {
+input:focus,
+select:focus {
 
-    outline: none;
-
-    border-color:
-        #38bdf8;
+    border-color: #00d9ff;
 
     box-shadow:
-        0 0 12px
-        rgba(56, 189, 248, 0.12);
-}
-
-
-/* =========================
-   TEXTAREA
-========================= */
-
-.lab textarea {
-
-    width: 100%;
-
-    min-height: 110px;
-
-    padding: 12px;
-
-    margin:
-        8px 0;
-
-    resize: vertical;
-
-    border-radius: 9px;
-
-    border:
-        1px solid
-        #315273;
-
-    background:
-        #0b1728;
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-}
-
-.lab textarea:focus {
-
-    outline: none;
-
-    border-color:
-        #38bdf8;
+        0 0 15px rgba(0,200,255,.15);
 }
 
 
@@ -418,50 +409,37 @@ nav a:hover {
    BUTTON
 ========================= */
 
-.lab button {
+.lab-button {
 
-    width: 100%;
+    border: none;
 
-    padding: 12px;
+    padding: 12px 19px;
 
-    margin-top: 8px;
+    border-radius: 11px;
 
-    border-radius: 9px;
-
-    border:
-        1px solid
-        #315273;
-
-    background:
-        #10243a;
-
-    color:
-        #7dd3fc;
+    color: white;
 
     font-weight: bold;
 
-    font-size: 15px;
-
     cursor: pointer;
 
-    transition: 0.2s;
+    background:
+        linear-gradient(90deg,#009dff,#00d9ff);
+
+    transition: .25s;
 }
 
-.lab button:hover {
+.lab-button:hover {
 
-    background:
-        #173652;
+    transform: translateY(-2px);
 
-    border-color:
-        #38bdf8;
-
-    transform:
-        translateY(-2px);
+    box-shadow:
+        0 0 25px rgba(0,200,255,.35);
 }
 
 
 /* =========================
-   RESULT BOX
+   RESULT
 ========================= */
 
 .result {
@@ -473,60 +451,62 @@ nav a:hover {
     border-radius: 10px;
 
     background:
-        #091321;
+        rgba(0,190,255,.06);
 
-    border:
-        1px solid
-        rgba(56, 189, 248, 0.20);
+    border-left:
+        3px solid #00d9ff;
 
-    color: #cfe8ff;
+    color: #c1d3e5;
 
     line-height: 1.6;
+}
 
-    min-height: 20px;
+.result strong {
+
+    color: #00d9ff;
 }
 
 
 /* =========================
-   LOG BOX
+   HASH OUTPUT
 ========================= */
 
-.log-box {
+.hash-output {
 
-    background:
-        #050a12;
+    word-break: break-all;
 
-    border:
-        1px solid
-        #263c55;
+    font-family: monospace;
 
-    border-radius: 9px;
+    font-size: 12px;
+
+    color: #7dffc9;
+}
+
+
+/* =========================
+   FIREWALL RULES
+========================= */
+
+.rule {
 
     padding: 12px;
 
-    margin:
-        10px 0;
+    margin-bottom: 10px;
 
-    font-family:
-        monospace;
+    border-radius: 10px;
 
-    font-size: 13px;
+    background:
+        rgba(255,255,255,.035);
 
-    line-height: 1.7;
-
-    overflow-x: auto;
+    border:
+        1px solid rgba(255,255,255,.08);
 }
 
+.rule span {
 
-/* =========================
-   CHOICE BUTTONS
-========================= */
+    color: #00d9ff;
 
-.choice {
-
-    text-align: left;
-
-    margin-top: 8px;
+    font-weight: bold;
 }
 
 
@@ -536,31 +516,21 @@ nav a:hover {
 
 footer {
 
-    margin-top: 60px;
+    text-align: center;
 
     padding: 35px 20px;
 
-    text-align: center;
-
-    background:
-        rgba(11, 16, 32, 0.95);
-
     border-top:
-        1px solid
-        rgba(96, 165, 250, 0.15);
+        1px solid rgba(0,200,255,.12);
 
-    color:
-        #8195aa;
+    color: #6f8499;
+
+    font-size: 13px;
 }
 
-footer p:first-child {
+footer strong {
 
-    color:
-        #38bdf8;
-
-    font-size: 20px;
-
-    font-weight: bold;
+    color: #00d9ff;
 }
 
 
@@ -568,79 +538,37 @@ footer p:first-child {
    MOBILE
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width:850px) {
 
     nav {
 
         flex-direction: column;
 
-        gap: 16px;
-
-        padding:
-            18px 12px;
+        gap: 15px;
     }
 
-    nav div:last-child {
+    .nav-links {
 
-        gap:
-            12px 16px;
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
     }
 
-    nav a {
-
-        font-size: 14px;
-    }
-
-    .hero {
-
-        padding:
-            60px 20px 35px;
-    }
-
-    .hero h2 {
-
-        font-size: 32px;
-    }
-
-    .hero p {
-
-        font-size: 17px;
-    }
-
-    .labs {
-
-        grid-template-columns:
-            1fr;
-    }
-
-}
-
-
-/* =========================
-   EXTRA SMALL PHONES
-========================= */
-
-@media (max-width: 430px) {
-
-    .logo {
-
-        font-size: 22px;
-    }
-
-    nav div:last-child {
-
-        gap:
-            10px 13px;
-    }
-
-    nav a {
+    .nav-links a {
 
         font-size: 13px;
     }
 
-    .hero h2 {
+    .hero {
 
-        font-size: 29px;
+        padding-top: 50px;
+    }
+
+    .labs-container {
+
+        grid-template-columns: 1fr;
     }
 
 }
@@ -660,10 +588,10 @@ footer p:first-child {
 <nav>
 
     <div class="logo">
-        🛡️ CyberStart
+        🛡️ Cyber<span>Start</span>
     </div>
 
-    <div>
+    <div class="nav-links">
 
         <a href="index.html">
             Home
@@ -673,7 +601,7 @@ footer p:first-child {
             Lessons
         </a>
 
-        <a href="labs.html">
+        <a href="labs.html" class="active">
             Labs
         </a>
 
@@ -689,6 +617,10 @@ footer p:first-child {
             Glossary
         </a>
 
+        <a href="donate.html" class="donate">
+            💚 Donate
+        </a>
+
     </div>
 
 </nav>
@@ -700,18 +632,23 @@ footer p:first-child {
 
 <section class="hero">
 
-    <h1>
-        🛡️ CyberStart
-    </h1>
+    <div class="hero-icon">
+        🔬
+    </div>
 
-    <h2>
-        Cybersecurity Labs
-    </h2>
+    <h1>
+        Cyber Labs
+    </h1>
 
     <p>
         Practice cybersecurity concepts through
-        safe, fictional, interactive challenges.
+        interactive simulations and safe fictional
+        experiments.
     </p>
+
+    <div class="tagline">
+        EXPERIMENT • ANALYZE • LEARN
+    </div>
 
 </section>
 
@@ -720,491 +657,834 @@ footer p:first-child {
      LABS
 ========================= -->
 
-<section class="labs">
+<main class="labs-container">
 
 
-<!-- =================================================
+<!-- =========================
      LAB 1
-================================================= -->
+========================= -->
 
-<div class="lab">
+<section class="lab-card">
 
-    <div class="lab-number">
-        Lab 01
+    <div class="lab-icon">
+        🔐
     </div>
 
-    <h3>
-        🔐 Password Strength
-    </h3>
+    <h2>
+        Password Strength Lab
+    </h2>
+
+    <span class="level">
+        BEGINNER
+    </span>
 
     <p>
-        Enter a sample password and learn about
-        characteristics that can make passwords
-        harder to guess.
-    </p>
-
-    <input
-        type="text"
-        id="passwordInput"
-        placeholder="Enter a sample password"
-    >
-
-    <button onclick="checkPassword()">
-        Check Password
-    </button>
-
-    <div
-        class="result"
-        id="passwordResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 2
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 02
-    </div>
-
-    <h3>
-        🎣 Phishing Detective
-    </h3>
-
-    <p>
-        Read the fictional message below and
-        decide whether it contains warning signs.
-    </p>
-
-    <div class="log-box">
-
-        From: security-example@fake-mail.test
-
-        <br>
-
-        Subject: URGENT! Account Problem
-
-        <br><br>
-
-        Your account requires immediate attention.
-        Verify your information through the link
-        provided or access may be restricted.
-
-    </div>
-
-    <button onclick="phishingAnswer(true)">
-        🚨 Suspicious
-    </button>
-
-    <button onclick="phishingAnswer(false)">
-        ✅ Safe
-    </button>
-
-    <div
-        class="result"
-        id="phishingResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 3
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 03
-    </div>
-
-    <h3>
-        #️⃣ Hashing Lab
-    </h3>
-
-    <p>
-        Enter harmless sample text and generate
-        a SHA-256 hash directly in your browser.
-    </p>
-
-    <input
-        type="text"
-        id="hashInput"
-        placeholder="Example: CyberStart"
-    >
-
-    <button onclick="generateHash()">
-        Generate SHA-256 Hash
-    </button>
-
-    <div
-        class="result"
-        id="hashResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 4
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 04
-    </div>
-
-    <h3>
-        🌐 Network Basics
-    </h3>
-
-    <p>
-        Test your knowledge of basic networking
-        concepts.
-    </p>
-
-    <select id="networkQuestion">
-
-        <option value="ip">
-            What identifies a device on a network?
-        </option>
-
-        <option value="dns">
-            What translates domain names into IP addresses?
-        </option>
-
-        <option value="port">
-            What identifies a network service endpoint?
-        </option>
-
-    </select>
-
-    <select id="networkAnswer">
-
-        <option value="ip">
-            IP address
-        </option>
-
-        <option value="dns">
-            DNS
-        </option>
-
-        <option value="port">
-            Port
-        </option>
-
-    </select>
-
-    <button onclick="checkNetwork()">
-        Check Answer
-    </button>
-
-    <div
-        class="result"
-        id="networkResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 5
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 05
-    </div>
-
-    <h3>
-        🕵️ Log Detective
-    </h3>
-
-    <p>
-        Inspect this fictional security log and
-        identify the suspicious event.
-    </p>
-
-    <div class="log-box">
-
-        09:12:04 User login successful
-
-        <br>
-
-        09:14:22 File opened
-
-        <br>
-
-        09:16:08 Password reset requested
-
-        <br>
-
-        09:17:51 Login attempt failed
-
-        <br>
-
-        09:18:02 Login attempt failed
-
-        <br>
-
-        09:18:14 Login attempt failed
-
-    </div>
-
-    <button onclick="logAnswer()">
-        Analyze Log
-    </button>
-
-    <div
-        class="result"
-        id="logResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 6
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 06
-    </div>
-
-    <h3>
-        🔎 Vulnerability Scanner Simulator
-    </h3>
-
-    <p>
-        This is a fictional scanner. Select a
-        simulated system to see example findings.
-    </p>
-
-    <select id="scanTarget">
-
-        <option value="web">
-            Practice Web Server
-        </option>
-
-        <option value="office">
-            Practice Office Computer
-        </option>
-
-        <option value="database">
-            Practice Database
-        </option>
-
-    </select>
-
-    <button onclick="runScan()">
-        Run Simulated Scan
-    </button>
-
-    <div
-        class="result"
-        id="scanResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 7
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 07
-    </div>
-
-    <h3>
-        🔒 Encryption Basics
-    </h3>
-
-    <p>
-        Learn the difference between plaintext
-        and encrypted-looking ciphertext.
-    </p>
-
-    <input
-        type="text"
-        id="encryptInput"
-        placeholder="Enter sample text"
-    >
-
-    <button onclick="demoEncryption()">
-        Run Demo
-    </button>
-
-    <div
-        class="result"
-        id="encryptResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 8
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 08
-    </div>
-
-    <h3>
-        🚨 Incident Response
-    </h3>
-
-    <p>
-        A security alert appears on a fictional
-        company computer. What should an analyst
-        prioritize?
+        Experiment with different password
+        characteristics and learn what makes
+        credentials stronger.
     </p>
 
     <button
-        class="choice"
-        onclick="incidentAnswer('investigate')">
+        class="lab-button"
+        onclick="toggleLab('passwordLab')">
 
-        🔎 Investigate the alert
-
-    </button>
-
-    <button
-        class="choice"
-        onclick="incidentAnswer('ignore')">
-
-        ❌ Ignore it
+        ▶ Open Lab
 
     </button>
 
-    <button
-        class="choice"
-        onclick="incidentAnswer('share')">
-
-        📢 Post the details publicly
-
-    </button>
 
     <div
-        class="result"
-        id="incidentResult">
+        class="lab-area"
+        id="passwordLab">
+
+        <h3>
+            Password Analyzer
+        </h3>
+
+        <p>
+            Enter a fictional password for this
+            educational analyzer. Do not enter a
+            real password.
+        </p>
+
+        <input
+            type="text"
+            id="passwordInput"
+            placeholder="Example: CyberExample123!">
+
+        <button
+            class="lab-button"
+            onclick="analyzePassword()">
+
+            Analyze
+
+        </button>
+
+        <div
+            class="result"
+            id="passwordResult">
+        </div>
+
     </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 9
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 09
-    </div>
-
-    <h3>
-        🛡️ Firewall Rules
-    </h3>
-
-    <p>
-        Practice deciding whether fictional network
-        traffic matches a security rule.
-    </p>
-
-    <select id="firewallTraffic">
-
-        <option value="safe">
-            Approved HTTPS traffic
-        </option>
-
-        <option value="unknown">
-            Unknown connection
-        </option>
-
-        <option value="blocked">
-            Traffic matching a blocked rule
-        </option>
-
-    </select>
-
-    <button onclick="firewallCheck()">
-        Evaluate Traffic
-    </button>
-
-    <div
-        class="result"
-        id="firewallResult">
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     LAB 10
-================================================= -->
-
-<div class="lab">
-
-    <div class="lab-number">
-        Lab 10
-    </div>
-
-    <h3>
-        🎯 Cybersecurity Scenario
-    </h3>
-
-    <p>
-        You receive a message asking you to provide
-        sensitive account information. What is the
-        safest response?
-    </p>
-
-    <button
-        class="choice"
-        onclick="scenarioAnswer('verify')">
-
-        🔎 Verify the request through an official channel
-
-    </button>
-
-    <button
-        class="choice"
-        onclick="scenarioAnswer('send')">
-
-        📤 Send the information immediately
-
-    </button>
-
-    <button
-        class="choice"
-        onclick="scenarioAnswer('share')">
-
-        📢 Share the message with everyone
-
-    </button>
-
-    <div
-        class="result"
-        id="scenarioResult">
-    </div>
-
-</div>
-
 
 </section>
+
+
+<!-- =========================
+     LAB 2
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🎣
+    </div>
+
+    <h2>
+        Phishing Detective
+    </h2>
+
+    <span class="level">
+        BEGINNER
+    </span>
+
+    <p>
+        Analyze a fictional message and identify
+        common phishing warning signs.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('phishingLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="phishingLab">
+
+        <h3>
+            Message Investigation
+        </h3>
+
+        <p>
+            "URGENT: Your account needs verification!
+            Click the link immediately or access
+            may be restricted."
+        </p>
+
+        <select id="phishingChoice">
+
+            <option value="">
+                Choose the warning sign
+            </option>
+
+            <option value="urgency">
+                Urgency and pressure
+            </option>
+
+            <option value="normal">
+                It contains words
+            </option>
+
+            <option value="nothing">
+                There are no warning signs
+            </option>
+
+        </select>
+
+        <button
+            class="lab-button"
+            onclick="checkPhishing()">
+
+            Investigate
+
+        </button>
+
+        <div
+            class="result"
+            id="phishingResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 3
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        #️⃣
+    </div>
+
+    <h2>
+        Hashing Lab
+    </h2>
+
+    <span class="level">
+        INTERMEDIATE
+    </span>
+
+    <p>
+        See how changing input data creates a
+        completely different SHA-256 hash.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('hashLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="hashLab">
+
+        <h3>
+            SHA-256 Demonstration
+        </h3>
+
+        <p>
+            Enter sample text below. This runs
+            entirely in your browser.
+        </p>
+
+        <input
+            type="text"
+            id="hashInput"
+            placeholder="Enter sample text">
+
+        <button
+            class="lab-button"
+            onclick="generateHash()">
+
+            Generate Hash
+
+        </button>
+
+        <div
+            class="result hash-output"
+            id="hashResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 4
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🌐
+    </div>
+
+    <h2>
+        Network Basics
+    </h2>
+
+    <span class="level">
+        BEGINNER
+    </span>
+
+    <p>
+        Test your understanding of IP addresses,
+        DNS, routers, and network communication.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('networkLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="networkLab">
+
+        <h3>
+            Network Challenge
+        </h3>
+
+        <p>
+            Which system translates a domain name
+            such as example.com into an IP address?
+        </p>
+
+        <select id="networkChoice">
+
+            <option value="">
+                Choose an answer
+            </option>
+
+            <option value="dns">
+                DNS
+            </option>
+
+            <option value="monitor">
+                Monitor
+            </option>
+
+            <option value="keyboard">
+                Keyboard
+            </option>
+
+        </select>
+
+        <button
+            class="lab-button"
+            onclick="checkNetwork()">
+
+            Check Answer
+
+        </button>
+
+        <div
+            class="result"
+            id="networkResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 5
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🕵️
+    </div>
+
+    <h2>
+        Log Detective
+    </h2>
+
+    <span class="level">
+        INTERMEDIATE
+    </span>
+
+    <p>
+        Learn how security analysts use logs to
+        investigate unusual activity.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('logLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="logLab">
+
+        <h3>
+            Fictional Log Investigation
+        </h3>
+
+        <div class="rule">
+
+            <span>
+                09:15
+            </span>
+
+            Successful login
+
+        </div>
+
+        <div class="rule">
+
+            <span>
+                09:17
+            </span>
+
+            Password change requested
+
+        </div>
+
+        <div class="rule">
+
+            <span>
+                09:18
+            </span>
+
+            Login from unfamiliar location
+
+        </div>
+
+        <p>
+            Which event deserves the closest
+            investigation?
+        </p>
+
+        <button
+            class="lab-button"
+            onclick="logAnswer()">
+
+            Analyze Logs
+
+        </button>
+
+        <div
+            class="result"
+            id="logResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 6
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🔎
+    </div>
+
+    <h2>
+        Vulnerability Scanner
+    </h2>
+
+    <span class="level">
+        INTERMEDIATE
+    </span>
+
+    <p>
+        Practice reading fictional security scan
+        results and deciding what should be fixed.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('scannerLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="scannerLab">
+
+        <h3>
+            Fictional Scan Results
+        </h3>
+
+        <div class="rule">
+
+            <span>
+                Web Server
+            </span>
+
+            Outdated software detected
+
+        </div>
+
+        <div class="rule">
+
+            <span>
+                Database
+            </span>
+
+            Strong access controls detected
+
+        </div>
+
+        <div class="rule">
+
+            <span>
+                Backup System
+            </span>
+
+            Recent backup detected
+
+        </div>
+
+        <p>
+            Which finding should receive attention
+            first?
+        </p>
+
+        <button
+            class="lab-button"
+            onclick="scannerAnswer()">
+
+            Review Findings
+
+        </button>
+
+        <div
+            class="result"
+            id="scannerResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 7
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🔒
+    </div>
+
+    <h2>
+        Encryption Basics
+    </h2>
+
+    <span class="level">
+        INTERMEDIATE
+    </span>
+
+    <p>
+        Explore the basic idea of converting
+        readable information into another form.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('encryptionLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="encryptionLab">
+
+        <h3>
+            Encoding Demonstration
+        </h3>
+
+        <p>
+            This demonstration uses Base64 encoding.
+            Base64 is NOT encryption.
+        </p>
+
+        <input
+            type="text"
+            id="encodeInput"
+            placeholder="Enter sample text">
+
+        <button
+            class="lab-button"
+            onclick="encodeText()">
+
+            Encode
+
+        </button>
+
+        <div
+            class="result"
+            id="encodeResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 8
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🚨
+    </div>
+
+    <h2>
+        Incident Response
+    </h2>
+
+    <span class="level">
+        ADVANCED
+    </span>
+
+    <p>
+        Practice choosing appropriate defensive
+        actions during a fictional security incident.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('incidentLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="incidentLab">
+
+        <h3>
+            Security Alert
+        </h3>
+
+        <p>
+            A fictional workstation is showing
+            unusual login activity.
+        </p>
+
+        <select id="incidentChoice">
+
+            <option value="">
+                Choose a response
+            </option>
+
+            <option value="investigate">
+                Investigate the alert and follow
+                incident-response procedures
+            </option>
+
+            <option value="ignore">
+                Ignore the alert
+            </option>
+
+            <option value="delete">
+                Delete the security logs
+            </option>
+
+        </select>
+
+        <button
+            class="lab-button"
+            onclick="checkIncident()">
+
+            Respond
+
+        </button>
+
+        <div
+            class="result"
+            id="incidentResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 9
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🧱
+    </div>
+
+    <h2>
+        Firewall Rules
+    </h2>
+
+    <span class="level">
+        ADVANCED
+    </span>
+
+    <p>
+        Learn how firewall rules can allow or
+        block different types of network traffic.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('firewallLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="firewallLab">
+
+        <h3>
+            Rule Analysis
+        </h3>
+
+        <div class="rule">
+
+            <span>
+                Rule 1:
+            </span>
+
+            Allow HTTPS traffic
+
+        </div>
+
+        <div class="rule">
+
+            <span>
+                Rule 2:
+            </span>
+
+            Block unknown inbound traffic
+
+        </div>
+
+        <div class="rule">
+
+            <span>
+                Rule 3:
+            </span>
+
+            Allow approved internal traffic
+
+        </div>
+
+        <p>
+            Why are firewall rules useful?
+        </p>
+
+        <button
+            class="lab-button"
+            onclick="firewallAnswer()">
+
+            Explain
+
+        </button>
+
+        <div
+            class="result"
+            id="firewallResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LAB 10
+========================= -->
+
+<section class="lab-card">
+
+    <div class="lab-icon">
+        🧠
+    </div>
+
+    <h2>
+        Cybersecurity Scenario
+    </h2>
+
+    <span class="level">
+        ADVANCED
+    </span>
+
+    <p>
+        Put your knowledge together and choose
+        the best defensive response.
+    </p>
+
+    <button
+        class="lab-button"
+        onclick="toggleLab('scenarioLab')">
+
+        ▶ Open Lab
+
+    </button>
+
+
+    <div
+        class="lab-area"
+        id="scenarioLab">
+
+        <h3>
+            Final Scenario
+        </h3>
+
+        <p>
+            A fictional employee receives an
+            unexpected message requesting account
+            information.
+        </p>
+
+        <p>
+            What is the best first step?
+        </p>
+
+        <select id="scenarioChoice">
+
+            <option value="">
+                Choose a response
+            </option>
+
+            <option value="verify">
+                Verify the request through an
+                official trusted channel
+            </option>
+
+            <option value="reply">
+                Reply with the requested information
+            </option>
+
+            <option value="share">
+                Forward the message to friends
+            </option>
+
+        </select>
+
+        <button
+            class="lab-button"
+            onclick="checkScenario()">
+
+            Make Decision
+
+        </button>
+
+        <div
+            class="result"
+            id="scenarioResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
 
 
 <!-- =========================
@@ -1214,147 +1494,154 @@ footer p:first-child {
 <footer>
 
     <p>
-        🛡️ CyberStart
+        🛡️ <strong>CyberStart</strong>
     </p>
 
     <p>
-        Learn. Practice. Stay Secure.
+        Learn • Practice • Stay Secure
     </p>
 
-    <p>
-        © 2026 CyberStart
+    <p style="margin-top:10px;">
+        Educational cybersecurity content
     </p>
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
 
 
-/* =================================
-   LAB 1 — PASSWORD
-================================= */
+/* =========================
+   OPEN / CLOSE LAB
+========================= */
 
-function checkPassword() {
+function toggleLab(id) {
+
+    const lab =
+        document.getElementById(id);
+
+    lab.classList.toggle("show");
+
+}
+
+
+/* =========================
+   PASSWORD LAB
+========================= */
+
+function analyzePassword() {
 
     const password =
-        document.getElementById(
-            "passwordInput"
-        ).value;
+        document.getElementById("passwordInput").value;
 
     const result =
-        document.getElementById(
-            "passwordResult"
-        );
+        document.getElementById("passwordResult");
 
-    if (password.length === 0) {
+    if (!password) {
 
         result.innerHTML =
-            "Enter a sample password first.";
+            "<strong>Enter sample text first.</strong>";
 
         return;
     }
 
     let score = 0;
 
-    if (password.length >= 12) {
+    if (password.length >= 12)
         score++;
-    }
 
-    if (/[A-Z]/.test(password)) {
+    if (/[A-Z]/.test(password))
         score++;
-    }
 
-    if (/[a-z]/.test(password)) {
+    if (/[a-z]/.test(password))
         score++;
-    }
 
-    if (/[0-9]/.test(password)) {
+    if (/[0-9]/.test(password))
         score++;
-    }
 
-    if (/[^A-Za-z0-9]/.test(password)) {
+    if (/[^A-Za-z0-9]/.test(password))
         score++;
-    }
 
 
-    if (score <= 2) {
+    if (score >= 5) {
 
         result.innerHTML =
-            "🟡 This sample password could be improved. Consider making it longer and unique.";
+            "<strong>Strong example.</strong><br>" +
+            "This sample has several characteristics " +
+            "associated with stronger passwords.";
 
-    } else if (score <= 4) {
+    } else if (score >= 3) {
 
         result.innerHTML =
-            "🟠 Good start. A longer, unique passphrase can provide better protection.";
+            "<strong>Moderate example.</strong><br>" +
+            "There are some good characteristics, " +
+            "but it could be improved.";
 
     } else {
 
         result.innerHTML =
-            "🟢 Strong characteristics detected. Remember to use unique passwords for important accounts.";
+            "<strong>Weak example.</strong><br>" +
+            "Try using a longer and more unique " +
+            "sample password.";
 
     }
 
 }
 
 
-/* =================================
-   LAB 2 — PHISHING
-================================= */
+/* =========================
+   PHISHING LAB
+========================= */
 
-function phishingAnswer(answer) {
+function checkPhishing() {
+
+    const choice =
+        document.getElementById("phishingChoice").value;
 
     const result =
-        document.getElementById(
-            "phishingResult"
-        );
+        document.getElementById("phishingResult");
 
-    if (answer === true) {
+    if (choice === "urgency") {
 
         result.innerHTML =
-            "🟢 Correct! The message uses urgency and asks the recipient to verify information. Those are common phishing warning signs.";
+            "<strong>✓ Correct!</strong><br>" +
+            "Urgency and pressure are common " +
+            "social-engineering warning signs.";
 
     } else {
 
         result.innerHTML =
-            "🔴 Not quite. The urgency and request for information are warning signs.";
+            "<strong>✗ Try again.</strong><br>" +
+            "Look for pressure, urgency, suspicious " +
+            "requests, and unexpected links.";
 
     }
 
 }
 
 
-/* =================================
-   LAB 3 — HASHING
-================================= */
+/* =========================
+   HASHING LAB
+========================= */
 
 async function generateHash() {
 
-    const input =
-        document.getElementById(
-            "hashInput"
-        ).value;
+    const text =
+        document.getElementById("hashInput").value;
 
     const result =
-        document.getElementById(
-            "hashResult"
-        );
+        document.getElementById("hashResult");
 
-    if (input.length === 0) {
+    if (!text) {
 
         result.innerHTML =
-            "Enter some sample text first.";
+            "Enter sample text first.";
 
         return;
     }
 
-
     const data =
-        new TextEncoder().encode(input);
+        new TextEncoder().encode(text);
 
     const hashBuffer =
         await crypto.subtle.digest(
@@ -1363,147 +1650,101 @@ async function generateHash() {
         );
 
     const hashArray =
-        Array.from(
-            new Uint8Array(hashBuffer)
-        );
+        Array.from(new Uint8Array(hashBuffer));
 
     const hash =
         hashArray
-        .map(
-            byte =>
-                byte
-                .toString(16)
-                .padStart(2, "0")
-        )
-        .join("");
-
+            .map(byte =>
+                byte.toString(16).padStart(2,"0")
+            )
+            .join("");
 
     result.innerHTML =
-        "<strong>SHA-256:</strong><br>" +
+        "<strong>SHA-256:</strong><br><br>" +
         hash;
 
 }
 
 
-/* =================================
-   LAB 4 — NETWORK
-================================= */
+/* =========================
+   NETWORK LAB
+========================= */
 
 function checkNetwork() {
 
-    const question =
-        document.getElementById(
-            "networkQuestion"
-        ).value;
-
-    const answer =
-        document.getElementById(
-            "networkAnswer"
-        ).value;
+    const choice =
+        document.getElementById("networkChoice").value;
 
     const result =
-        document.getElementById(
-            "networkResult"
-        );
+        document.getElementById("networkResult");
 
-
-    if (question === answer) {
+    if (choice === "dns") {
 
         result.innerHTML =
-            "🟢 Correct! You matched the networking concept.";
+            "<strong>✓ Correct!</strong><br>" +
+            "DNS helps translate domain names into " +
+            "IP addresses.";
 
     } else {
 
         result.innerHTML =
-            "🔴 Not quite. Try matching the answer to the question.";
+            "<strong>✗ Not quite.</strong><br>" +
+            "The answer is DNS.";
 
     }
 
 }
 
 
-/* =================================
-   LAB 5 — LOG DETECTIVE
-================================= */
+/* =========================
+   LOG LAB
+========================= */
 
 function logAnswer() {
 
     const result =
-        document.getElementById(
-            "logResult"
-        );
+        document.getElementById("logResult");
 
     result.innerHTML =
-        "🟢 Suspicious activity: multiple failed login attempts in a short period. An analyst would investigate the event and review the surrounding activity.";
+        "<strong>✓ Investigation target:</strong><br>" +
+        "The unfamiliar login deserves attention " +
+        "because it could indicate unauthorized " +
+        "account activity.";
 
 }
 
 
-/* =================================
-   LAB 6 — SCANNER
-================================= */
+/* =========================
+   SCANNER LAB
+========================= */
 
-function runScan() {
-
-    const target =
-        document.getElementById(
-            "scanTarget"
-        ).value;
+function scannerAnswer() {
 
     const result =
-        document.getElementById(
-            "scanResult"
-        );
+        document.getElementById("scannerResult");
 
-
-    if (target === "web") {
-
-        result.innerHTML =
-            "<strong>Practice Web Server</strong><br>" +
-            "Finding: Outdated software detected.<br>" +
-            "Recommendation: Apply current security updates.";
-
-    }
-
-    else if (target === "office") {
-
-        result.innerHTML =
-            "<strong>Practice Office Computer</strong><br>" +
-            "Finding: MFA is not configured in this simulation.<br>" +
-            "Recommendation: Enable MFA where available.";
-
-    }
-
-    else {
-
-        result.innerHTML =
-            "<strong>Practice Database</strong><br>" +
-            "Finding: Excessive permissions detected.<br>" +
-            "Recommendation: Apply least-privilege access.";
-
-    }
+    result.innerHTML =
+        "<strong>✓ Good analysis.</strong><br>" +
+        "The outdated software finding deserves " +
+        "attention because outdated software can " +
+        "contain known security weaknesses.";
 
 }
 
 
-/* =================================
-   LAB 7 — ENCRYPTION
-================================= */
+/* =========================
+   ENCODING LAB
+========================= */
 
-function demoEncryption() {
+function encodeText() {
 
-    const input =
-        document.getElementById(
-            "encryptInput"
-        ).value;
+    const text =
+        document.getElementById("encodeInput").value;
 
     const result =
-        document.getElementById(
-            "encryptResult"
-        );
+        document.getElementById("encodeResult");
 
-
-    if (input.length === 0) {
+    if (!text) {
 
         result.innerHTML =
             "Enter sample text first.";
@@ -1511,120 +1752,100 @@ function demoEncryption() {
         return;
     }
 
-
-    let encoded =
-        btoa(
-            unescape(
-                encodeURIComponent(input)
-            )
-        );
-
+    const encoded =
+        btoa(text);
 
     result.innerHTML =
-        "<strong>Plaintext:</strong><br>" +
-        input +
-        "<br><br>" +
-        "<strong>Encoded example:</strong><br>" +
+        "<strong>Base64 result:</strong><br><br>" +
         encoded +
         "<br><br>" +
-        "This is a demonstration of encoding, not secure encryption.";
+        "<strong>Important:</strong> Base64 is " +
+        "encoding, not encryption.";
 
 }
 
 
-/* =================================
-   LAB 8 — INCIDENT RESPONSE
-================================= */
+/* =========================
+   INCIDENT RESPONSE
+========================= */
 
-function incidentAnswer(answer) {
+function checkIncident() {
+
+    const choice =
+        document.getElementById("incidentChoice").value;
 
     const result =
-        document.getElementById(
-            "incidentResult"
-        );
+        document.getElementById("incidentResult");
 
-
-    if (answer === "investigate") {
+    if (choice === "investigate") {
 
         result.innerHTML =
-            "🟢 Correct! Investigating the alert is an appropriate first step. Analysts gather information before deciding what action is needed.";
+            "<strong>✓ Correct!</strong><br>" +
+            "Investigating and following the proper " +
+            "incident-response process is the safest " +
+            "choice.";
 
     } else {
 
         result.innerHTML =
-            "🔴 Not the best choice. Security alerts should be investigated rather than ignored or publicly shared.";
+            "<strong>✗ Not quite.</strong><br>" +
+            "Security alerts should be investigated " +
+            "rather than ignored or covered up.";
 
     }
 
 }
 
 
-/* =================================
-   LAB 9 — FIREWALL
-================================= */
+/* =========================
+   FIREWALL LAB
+========================= */
 
-function firewallCheck() {
-
-    const traffic =
-        document.getElementById(
-            "firewallTraffic"
-        ).value;
+function firewallAnswer() {
 
     const result =
-        document.getElementById(
-            "firewallResult"
-        );
+        document.getElementById("firewallResult");
 
-
-    if (traffic === "safe") {
-
-        result.innerHTML =
-            "🟢 Example decision: Allow, assuming the traffic matches the organization's approved firewall rules.";
-
-    }
-
-    else if (traffic === "blocked") {
-
-        result.innerHTML =
-            "🛑 Example decision: Block, because the traffic matches a rule that denies it.";
-
-    }
-
-    else {
-
-        result.innerHTML =
-            "🟡 Example decision: Review the traffic and security policy before allowing it.";
-
-    }
+    result.innerHTML =
+        "<strong>✓ Firewall rules reduce risk.</strong><br>" +
+        "They can control which network traffic " +
+        "is allowed or blocked based on defined " +
+        "security policies.";
 
 }
 
 
-/* =================================
-   LAB 10 — SCENARIO
-================================= */
+/* =========================
+   FINAL SCENARIO
+========================= */
 
-function scenarioAnswer(answer) {
+function checkScenario() {
+
+    const choice =
+        document.getElementById("scenarioChoice").value;
 
     const result =
-        document.getElementById(
-            "scenarioResult"
-        );
+        document.getElementById("scenarioResult");
 
-
-    if (answer === "verify") {
+    if (choice === "verify") {
 
         result.innerHTML =
-            "🟢 Correct! Verify unexpected requests through an official channel instead of trusting the message itself.";
+            "<strong>✓ Excellent decision!</strong><br>" +
+            "Verifying an unexpected request through " +
+            "a trusted channel helps avoid phishing " +
+            "and social-engineering scams.";
 
     } else {
 
         result.innerHTML =
-            "🔴 Not the safest choice. Don't provide sensitive information until the request has been independently verified.";
+            "<strong>✗ Not the safest choice.</strong><br>" +
+            "Unexpected requests for sensitive information " +
+            "should be independently verified.";
 
     }
 
 }
+
 
 </script>
 
