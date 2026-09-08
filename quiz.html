@@ -2,1391 +2,1150 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberStart | Quiz</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.15), transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 170, 0.10), transparent 30%),
+                linear-gradient(135deg, #050812, #07111f, #03060d);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* CYBER GRID */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0, 180, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 180, 255, 0.04) 1px, transparent 1px);
+            background-size: 45px 45px;
+            animation: gridMove 18s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes gridMove {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(45px);
+            }
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 16px 6%;
+
+            background: rgba(3, 8, 18, 0.85);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #00d9ff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #c9d7e8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d9ff;
+        }
+
+        .nav-links .active {
+            color: #00d9ff;
+        }
+
+        .donate {
+            padding: 9px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 170, 0.5);
+            color: #7dffc9 !important;
+            background: rgba(0, 255, 170, 0.08);
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 75px 20px 45px;
+        }
+
+        .hero-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 18px rgba(0, 200, 255, 0.5));
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 70px);
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #ffffff, #00d9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #9eb2c8;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .tagline {
+            margin-top: 15px;
+            color: #00e5ff;
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+
+        /* QUIZ AREA */
+
+        .quiz-container {
+            width: min(900px, 92%);
+            margin: 20px auto 80px;
+        }
+
+        .quiz-card {
+            background: rgba(9, 20, 35, 0.72);
+            border: 1px solid rgba(0, 190, 255, 0.18);
+            border-radius: 22px;
+            padding: 32px;
+
+            backdrop-filter: blur(16px);
+
+            box-shadow:
+                0 0 35px rgba(0, 170, 255, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .quiz-card:hover {
+            border-color: rgba(0, 210, 255, 0.4);
+        }
+
+        /* PROGRESS */
+
+        .quiz-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #9eb2c8;
+            font-size: 14px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 9px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 35px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #00aaff, #00ffae);
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+
+        /* QUESTION */
+
+        #question {
+            font-size: 25px;
+            line-height: 1.4;
+            margin-bottom: 25px;
+        }
 
-<meta charset="UTF-8">
+        .question-number {
+            color: #00d9ff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CyberStart | Quiz</title>
-
-<style>
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-
-    background-color: #070b16;
-
-    background-image:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(56, 189, 248, 0.18),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(56, 189, 248, 0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(56, 189, 248, 0.035) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        100% 100%,
-        45px 45px,
-        45px 45px;
-
-    background-attachment: fixed;
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-nav {
-    background: rgba(11, 16, 32, 0.94);
-
-    border-bottom:
-        1px solid
-        rgba(96, 165, 250, 0.15);
-
-    padding: 18px 25px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    position: sticky;
-    top: 0;
-
-    z-index: 1000;
-
-    backdrop-filter: blur(12px);
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #38bdf8;
-    white-space: nowrap;
-}
-
-nav div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-
-    font-weight: bold;
-    font-size: 16px;
-
-    transition: 0.2s;
-}
-
-nav a:hover {
-    color: #38bdf8;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    text-align: center;
-
-    padding: 75px 20px 45px;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 400px;
-    height: 400px;
-
-    top: -250px;
-    left: -100px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(56, 189, 248, 0.40),
-            transparent 65%
-        );
-
-    filter: blur(30px);
-
-    animation:
-        cyberGlow 5s ease-in-out infinite alternate;
-
-    pointer-events: none;
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    width: 350px;
-    height: 350px;
-
-    top: -200px;
-    right: -100px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(37, 99, 235, 0.35),
-            transparent 65%
-        );
-
-    filter: blur(30px);
-
-    animation:
-        cyberGlow2 6s ease-in-out infinite alternate;
-
-    pointer-events: none;
-}
-
-@keyframes cyberGlow {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(500px);
-    }
-
-}
-
-@keyframes cyberGlow2 {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-500px);
-    }
-
-}
-
-.hero h1,
-.hero h2,
-.hero p {
-    position: relative;
-    z-index: 2;
-}
-
-.hero h1 {
-    color: #38bdf8;
-
-    font-size: 25px;
-
-    margin: 0 0 20px;
-}
-
-.hero h2 {
-    color: #38bdf8;
-
-    font-size: 42px;
-
-    margin: 0 0 15px;
-}
-
-.hero p {
-    max-width: 750px;
-
-    margin: auto;
-
-    color: #a9bbcf;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================
-   QUIZ CONTAINER
-========================= */
-
-.quiz-container {
-
-    max-width: 850px;
-
-    margin: auto;
-
-    padding: 20px 20px 60px;
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-.progress-box {
-
-    margin-bottom: 20px;
-
-    text-align: center;
-
-    color: #9fb3c8;
-}
-
-.progress-bar {
-
-    width: 100%;
-
-    height: 9px;
-
-    background: #101c2d;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    margin-top: 10px;
-}
-
-.progress-fill {
-
-    height: 100%;
-
-    width: 0%;
-
-    background: #38bdf8;
-
-    transition: width 0.3s;
-}
-
-
-/* =========================
-   QUESTION CARD
-========================= */
-
-.quiz-card {
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17, 26, 51, 0.97),
-            rgba(10, 17, 35, 0.97)
-        );
-
-    border:
-        1px solid
-        rgba(96, 165, 250, 0.20);
-
-    border-radius: 18px;
-
-    padding: 30px;
-
-    box-shadow:
-        0 15px 35px
-        rgba(0, 0, 0, 0.20);
-}
-
-.question-number {
-
-    color: #7dd3fc;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-}
-
-.quiz-card h3 {
-
-    color: white;
-
-    font-size: 24px;
-
-    line-height: 1.4;
-
-    margin:
-        12px 0 25px;
-}
-
-
-/* =========================
-   ANSWERS
-========================= */
-
-.answers {
-
-    display: grid;
-
-    gap: 12px;
-}
-
-.answer {
-
-    width: 100%;
-
-    padding: 15px;
-
-    border-radius: 10px;
-
-    border:
-        1px solid
-        #315273;
-
-    background:
-        #0b1728;
-
-    color: #d7e5f2;
-
-    text-align: left;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.answer:hover {
-
-    border-color:
-        #38bdf8;
-
-    background:
-        #10243a;
-
-    transform:
-        translateX(3px);
-}
-
-.answer.selected {
-
-    border-color:
-        #38bdf8;
-
-    background:
-        #12304a;
-
-    color: white;
-}
-
-
-/* =========================
-   NAV BUTTONS
-========================= */
-
-.quiz-actions {
-
-    display: flex;
-
-    gap: 12px;
-
-    margin-top: 25px;
-}
-
-.quiz-button {
-
-    flex: 1;
-
-    padding: 14px;
-
-    border-radius: 10px;
-
-    border:
-        1px solid
-        #315273;
-
-    background:
-        #10243a;
-
-    color:
-        #7dd3fc;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.quiz-button:hover {
-
-    background:
-        #173652;
-
-    border-color:
-        #38bdf8;
-}
-
-
-/* =========================
-   RESULT
-========================= */
-
-.result {
-
-    display: none;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17, 26, 51, 0.97),
-            rgba(10, 17, 35, 0.97)
-        );
-
-    border:
-        1px solid
-        rgba(56, 189, 248, 0.35);
-
-    border-radius: 18px;
-
-    padding: 35px;
-
-    margin-top: 25px;
-}
-
-.result h3 {
-
-    color: #38bdf8;
-
-    font-size: 30px;
-}
-
-.score {
-
-    font-size: 48px;
-
-    font-weight: bold;
-
-    color: #7dd3fc;
-
-    margin: 15px;
-}
-
-.result p {
-
-    color: #c2d0df;
-
-    line-height: 1.7;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-
-    margin-top: 30px;
-
-    padding: 35px 20px;
-
-    text-align: center;
-
-    background:
-        rgba(11, 16, 32, 0.95);
-
-    border-top:
-        1px solid
-        rgba(96, 165, 250, 0.15);
-
-    color:
-        #8195aa;
-}
-
-footer p:first-child {
-
-    color:
-        #38bdf8;
-
-    font-size: 20px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-
-    nav {
-
-        flex-direction: column;
-
-        gap: 16px;
-
-        padding:
-            18px 12px;
-    }
-
-    nav div:last-child {
-
-        gap:
-            12px 16px;
-    }
-
-    nav a {
-
-        font-size: 14px;
-    }
-
-    .hero {
-
-        padding:
-            60px 20px 35px;
-    }
-
-    .hero h2 {
-
-        font-size: 32px;
-    }
-
-    .hero p {
-
-        font-size: 17px;
-    }
-
-    .quiz-card {
-
-        padding: 22px;
-    }
-
-    .quiz-card h3 {
-
-        font-size: 21px;
-    }
-
-    .quiz-actions {
-
-        flex-direction: column;
-    }
-
-}
-
-</style>
-
+        /* ANSWERS */
+
+        .answers {
+            display: grid;
+            gap: 14px;
+        }
+
+        .answer {
+            width: 100%;
+            text-align: left;
+
+            padding: 17px 18px;
+
+            border-radius: 14px;
+            border: 1px solid rgba(130, 170, 200, 0.18);
+
+            background: rgba(255, 255, 255, 0.035);
+
+            color: #e7f2ff;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .answer:hover {
+            border-color: #00cfff;
+            background: rgba(0, 190, 255, 0.08);
+            transform: translateX(4px);
+        }
+
+        .answer.correct {
+            border-color: #00ffae;
+            background: rgba(0, 255, 174, 0.12);
+        }
+
+        .answer.wrong {
+            border-color: #ff5577;
+            background: rgba(255, 60, 100, 0.10);
+        }
+
+        .answer:disabled {
+            cursor: default;
+        }
+
+        /* EXPLANATION */
+
+        .explanation {
+            display: none;
+
+            margin-top: 22px;
+            padding: 18px;
+
+            border-left: 3px solid #00d9ff;
+
+            background: rgba(0, 170, 255, 0.06);
+            border-radius: 10px;
+
+            color: #b8cbe0;
+            line-height: 1.6;
+        }
+
+        .explanation strong {
+            color: #00d9ff;
+        }
+
+        /* NEXT BUTTON */
+
+        .next-button {
+            display: none;
+
+            margin-top: 25px;
+            padding: 13px 25px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: linear-gradient(90deg, #009dff, #00d9ff);
+
+            color: white;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 0 20px rgba(0, 190, 255, 0.2);
+
+            transition: 0.25s;
+        }
+
+        .next-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 190, 255, 0.4);
+        }
+
+        /* RESULTS */
+
+        .result {
+            display: none;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        .result h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .score {
+            font-size: 55px;
+            font-weight: bold;
+            color: #00d9ff;
+            margin: 15px 0;
+        }
+
+        .result p {
+            color: #a9bdd0;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .restart {
+            padding: 14px 25px;
+            border-radius: 12px;
+            border: 1px solid #00d9ff;
+            background: rgba(0, 190, 255, 0.08);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .restart:hover {
+            background: rgba(0, 190, 255, 0.18);
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+
+            border-top: 1px solid rgba(0, 200, 255, 0.12);
+
+            color: #6f8499;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #00d9ff;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .quiz-card {
+                padding: 22px;
+            }
+
+            #question {
+                font-size: 21px;
+            }
+
+            .answer {
+                font-size: 15px;
+            }
+        }
+
+    </style>
 </head>
-
 
 <body>
 
+    <!-- NAVIGATION -->
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+    <nav>
 
-<nav>
+        <div class="logo">
+            🛡️ Cyber<span>Start</span>
+        </div>
 
-    <div class="logo">
-        🛡️ CyberStart
-    </div>
+        <div class="nav-links">
 
-    <div>
+            <a href="index.html">Home</a>
 
-        <a href="index.html">
-            Home
-        </a>
+            <a href="lessons.html">Lessons</a>
 
-        <a href="lessons.html">
-            Lessons
-        </a>
+            <a href="labs.html">Labs</a>
 
-        <a href="labs.html">
-            Labs
-        </a>
+            <a href="quiz.html" class="active">Quiz</a>
 
-        <a href="quiz.html">
-            Quiz
-        </a>
+            <a href="games.html">Games</a>
 
-        <a href="games.html">
-            Games
-        </a>
+            <a href="glossary.html">Glossary</a>
 
-        <a href="glossary.html">
-            Glossary
-        </a>
+            <a href="donate.html" class="donate">💚 Donate</a>
 
-    </div>
+        </div>
 
-</nav>
+    </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+    <!-- HERO -->
 
-<section class="hero">
+    <section class="hero">
 
-    <h1>
-        🛡️ CyberStart
-    </h1>
+        <div class="hero-icon">
+            🧠
+        </div>
 
-    <h2>
-        Cybersecurity Quiz
-    </h2>
+        <h1>Cyber Quiz</h1>
 
-    <p>
-        Test your knowledge of cybersecurity
-        concepts, threats, and defenses.
-    </p>
+        <p>
+            Test your cybersecurity knowledge with challenging
+            questions covering attacks, defense, networking,
+            authentication, cryptography, and more.
+        </p>
 
-</section>
+        <div class="tagline">
+            THINK • ANALYZE • SECURE
+        </div>
 
-
-<!-- =========================
-     QUIZ
-========================= -->
-
-<section class="quiz-container">
+    </section>
 
 
-    <div class="progress-box">
+    <!-- QUIZ -->
 
-        <span id="progressText">
-            Question 1 of 20
-        </span>
+    <main class="quiz-container">
 
-        <div class="progress-bar">
+        <div class="quiz-card">
+
+            <!-- QUIZ CONTENT -->
+
+            <div id="quiz">
+
+                <div class="quiz-top">
+
+                    <span id="questionCounter">
+                        Question 1 of 30
+                    </span>
+
+                    <span id="scoreText">
+                        Score: 0
+                    </span>
+
+                </div>
+
+                <div class="progress-container">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar">
+                    </div>
+
+                </div>
+
+                <div class="question-number">
+                    CYBERSTART KNOWLEDGE TEST
+                </div>
+
+                <h2 id="question">
+                    Loading question...
+                </h2>
+
+                <div
+                    class="answers"
+                    id="answers">
+                </div>
+
+                <div
+                    class="explanation"
+                    id="explanation">
+                </div>
+
+                <button
+                    class="next-button"
+                    id="nextButton"
+                    onclick="nextQuestion()">
+
+                    Next Question →
+
+                </button>
+
+            </div>
+
+
+            <!-- RESULTS -->
 
             <div
-                class="progress-fill"
-                id="progressFill">
+                class="result"
+                id="result">
+
+                <div class="result-icon">
+                    🏆
+                </div>
+
+                <h2>
+                    Quiz Complete
+                </h2>
+
+                <div
+                    class="score"
+                    id="finalScore">
+                    0/30
+                </div>
+
+                <p id="resultMessage">
+                    Great work!
+                </p>
+
+                <button
+                    class="restart"
+                    onclick="restartQuiz()">
+
+                    🔄 Try Again
+
+                </button>
+
             </div>
 
         </div>
 
-    </div>
+    </main>
 
 
-    <div
-        class="quiz-card"
-        id="quizCard">
+    <!-- FOOTER -->
 
-        <div
-            class="question-number"
-            id="questionNumber">
+    <footer>
 
-            Question 1
-
-        </div>
-
-        <h3
-            id="questionText">
-        </h3>
-
-
-        <div
-            class="answers"
-            id="answers">
-        </div>
-
-
-        <div class="quiz-actions">
-
-            <button
-                class="quiz-button"
-                id="nextButton"
-                onclick="nextQuestion()">
-
-                Next Question →
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- RESULT -->
-
-    <div
-        class="result"
-        id="result">
-
-        <h3>
-            🎉 Quiz Complete!
-        </h3>
-
-        <div
-            class="score"
-            id="score">
-        </div>
-
-        <p
-            id="resultMessage">
+        <p>
+            🛡️ <strong>CyberStart</strong>
         </p>
 
-        <button
-            class="quiz-button"
-            onclick="restartQuiz()">
+        <p>
+            Learn • Practice • Stay Secure
+        </p>
 
-            🔄 Restart Quiz
+        <p style="margin-top:10px;">
+            Educational cybersecurity content
+        </p>
 
-        </button>
+    </footer>
 
-    </div>
-
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <p>
-        🛡️ CyberStart
-    </p>
-
-    <p>
-        Learn. Practice. Stay Secure.
-    </p>
-
-    <p>
-        © 2026 CyberStart
-    </p>
-
-</footer>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
 
 <script>
-
-
-/* =========================================
-   QUIZ QUESTIONS
-========================================= */
 
 const questions = [
 
     {
-        question:
-            "What does MFA stand for?",
-
+        question: "What is the main purpose of multi-factor authentication (MFA)?",
         answers: [
-            "Multi-Factor Authentication",
-            "Main Firewall Access",
-            "Multiple File Authorization",
-            "Managed Firewall Application"
+            "To make passwords longer",
+            "To require multiple forms of verification",
+            "To encrypt every file on a computer",
+            "To increase internet speed"
         ],
-
-        correct: 0
+        correct: 1,
+        explanation: "MFA adds additional verification factors, such as a password plus a security code or security key."
     },
 
-
     {
-        question:
-            "What is phishing?",
-
+        question: "A user receives an email claiming their account will be deleted unless they click a link immediately. What is the biggest warning sign?",
         answers: [
-            "A type of computer hardware",
-            "A technique used to trick people into revealing information",
-            "A method of encrypting files",
-            "A type of firewall"
+            "The email contains text",
+            "The message creates urgency and asks for an action",
+            "The email has a subject line",
+            "The user has an account"
         ],
-
-        correct: 1
+        correct: 1,
+        explanation: "Attackers commonly use urgency and fear to pressure people into making unsafe decisions."
     },
 
-
     {
-        question:
-            "What does a firewall primarily do?",
-
+        question: "What does a firewall primarily help control?",
         answers: [
-            "Creates passwords",
-            "Deletes every file on a computer",
-            "Controls network traffic according to rules",
-            "Writes computer programs"
+            "Physical computer temperature",
+            "Network traffic",
+            "Keyboard layout",
+            "Screen brightness"
         ],
-
-        correct: 2
+        correct: 1,
+        explanation: "Firewalls inspect and control network traffic based on security rules."
     },
 
+    {
+        question: "Which security principle means users should receive only the access they need?",
+        answers: [
+            "Least privilege",
+            "Maximum access",
+            "Open access",
+            "Shared access"
+        ],
+        correct: 0,
+        explanation: "Least privilege reduces risk by giving users and systems only the permissions required for their tasks."
+    },
 
     {
-        question:
-            "What is malware?",
-
+        question: "What is hashing primarily used for?",
         answers: [
+            "Creating a fixed-size representation of data",
+            "Increasing monitor resolution",
+            "Making Wi-Fi faster",
+            "Deleting networks"
+        ],
+        correct: 0,
+        explanation: "A cryptographic hash converts data into a fixed-length value that can be used for integrity checks and other security purposes."
+    },
+
+    {
+        question: "Which protocol is commonly used to securely access a website?",
+        answers: [
+            "HTTP",
+            "HTTPS",
+            "FTP",
+            "SMTP"
+        ],
+        correct: 1,
+        explanation: "HTTPS uses TLS to protect communication between a browser and website."
+    },
+
+    {
+        question: "What is malware?",
+        answers: [
+            "A type of monitor",
             "Malicious software",
             "A network cable",
-            "A secure password",
-            "A backup system"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What does encryption do?",
-
-        answers: [
-            "Deletes information",
-            "Turns protected data into readable data for everyone",
-            "Transforms information so it can be protected from unauthorized reading",
-            "Makes a computer physically faster"
-        ],
-
-        correct: 2
-    },
-
-
-    {
-        question:
-            "What is a vulnerability?",
-
-        answers: [
-            "A security weakness",
-            "A type of monitor",
-            "A backup copy",
-            "A programming language"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What is hashing commonly used for?",
-
-        answers: [
-            "Increasing screen brightness",
-            "Checking data integrity",
-            "Connecting a keyboard",
-            "Creating Wi-Fi signals"
-        ],
-
-        correct: 1
-    },
-
-
-    {
-        question:
-            "What does DNS help with?",
-
-        answers: [
-            "Translating domain names into IP addresses",
-            "Scanning physical computers",
-            "Creating passwords",
-            "Removing malware automatically"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What is social engineering?",
-
-        answers: [
-            "Building computer networks",
-            "Manipulating people to influence their actions or reveal information",
-            "Installing a graphics card",
-            "Encrypting a hard drive"
-        ],
-
-        correct: 1
-    },
-
-
-    {
-        question:
-            "What is ransomware?",
-
-        answers: [
-            "A type of keyboard",
-            "Malware that can deny access to data or systems and demand payment",
-            "A network protocol",
             "A password manager"
         ],
-
-        correct: 1
+        correct: 1,
+        explanation: "Malware is software designed to perform harmful or unauthorized actions."
     },
 
-
     {
-        question:
-            "What does the principle of least privilege mean?",
-
+        question: "What is a vulnerability?",
         answers: [
-            "Everyone gets administrator access",
-            "Users receive only the access they need",
-            "Passwords should be short",
-            "Networks should have no security rules"
-        ],
-
-        correct: 1
-    },
-
-
-    {
-        question:
-            "What is a zero-day vulnerability?",
-
-        answers: [
-            "A vulnerability that is unknown or not yet patched",
-            "A computer with no storage",
-            "A password that expires daily",
-            "A network with zero users"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What is a brute-force attack?",
-
-        answers: [
-            "Repeatedly trying possible authentication values",
-            "Physically damaging a computer",
-            "Updating antivirus software",
-            "Creating a backup"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What is an IP address?",
-
-        answers: [
-            "A type of malware",
-            "A numerical address associated with a device or network interface",
-            "A password",
-            "An encryption algorithm"
-        ],
-
-        correct: 1
-    },
-
-
-    {
-        question:
-            "What is a VPN?",
-
-        answers: [
-            "A Virtual Private Network",
-            "A Virus Protection Number",
-            "A Virtual Password Node",
-            "A Verified Port Network"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What is incident response?",
-
-        answers: [
-            "The process of handling cybersecurity incidents",
-            "A way to create websites",
-            "A method for increasing internet speed",
-            "A type of computer monitor"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "What is a Trojan?",
-
-        answers: [
-            "Malware that disguises itself as legitimate software or a file",
+            "A security weakness",
+            "A strong password",
             "A firewall rule",
-            "A network cable",
-            "An operating system update"
+            "A backup"
         ],
-
-        correct: 0
+        correct: 0,
+        explanation: "A vulnerability is a weakness that could potentially be exploited or otherwise cause a security problem."
     },
 
+    {
+        question: "What is social engineering?",
+        answers: [
+            "Designing social media websites",
+            "Manipulating people into revealing information or taking actions",
+            "Building computer hardware",
+            "Encrypting a hard drive"
+        ],
+        correct: 1,
+        explanation: "Social engineering targets people rather than relying only on technical vulnerabilities."
+    },
 
     {
-        question:
-            "What is a DDoS attack designed to do?",
-
+        question: "What does DNS primarily do?",
         answers: [
-            "Improve network performance",
+            "Translates domain names into IP addresses",
+            "Creates passwords",
+            "Scans keyboards",
+            "Encrypts USB drives"
+        ],
+        correct: 0,
+        explanation: "DNS helps devices find the IP address associated with a domain name."
+    },
+
+    {
+        question: "What is ransomware?",
+        answers: [
+            "Software that improves Wi-Fi",
+            "Malware that can block access to data and demand payment",
+            "A type of firewall",
+            "A password manager"
+        ],
+        correct: 1,
+        explanation: "Ransomware is malware that can make data or systems inaccessible and then demand payment."
+    },
+
+    {
+        question: "What is the purpose of a software security patch?",
+        answers: [
+            "To fix known problems or vulnerabilities",
+            "To make a screen brighter",
+            "To remove the keyboard",
+            "To increase battery size"
+        ],
+        correct: 0,
+        explanation: "Security patches repair vulnerabilities and other software problems."
+    },
+
+    {
+        question: "What does authentication verify?",
+        answers: [
+            "What permissions a person has",
+            "Who or what someone is",
+            "How fast the network is",
+            "How much storage exists"
+        ],
+        correct: 1,
+        explanation: "Authentication verifies identity. Authorization determines what that identity is allowed to do."
+    },
+
+    {
+        question: "What does authorization determine?",
+        answers: [
+            "Whether someone is allowed to access a resource",
+            "Someone's password length",
+            "The computer's screen size",
+            "The speed of a processor"
+        ],
+        correct: 0,
+        explanation: "Authorization determines what an authenticated user or system is permitted to access."
+    },
+
+    {
+        question: "What is a DDoS attack designed to do?",
+        answers: [
             "Overwhelm a service with large amounts of traffic",
+            "Improve website performance",
             "Create stronger passwords",
             "Encrypt a user's files"
         ],
-
-        correct: 1
+        correct: 0,
+        explanation: "A distributed denial-of-service attack attempts to overwhelm a service so legitimate users have difficulty accessing it."
     },
 
-
     {
-        question:
-            "What is authentication?",
-
+        question: "What is a VPN commonly used for?",
         answers: [
-            "Determining what a user is allowed to access",
-            "Verifying who or what someone is",
-            "Deleting an account",
-            "Updating a firewall"
+            "Creating a protected connection over a network",
+            "Increasing monitor size",
+            "Removing all malware automatically",
+            "Creating new computer hardware"
         ],
-
-        correct: 1
+        correct: 0,
+        explanation: "A VPN can create an encrypted connection between a device and a VPN service."
     },
 
+    {
+        question: "What is a zero-day vulnerability?",
+        answers: [
+            "A vulnerability that has never existed",
+            "A newly discovered vulnerability that may not yet have a fix available",
+            "A vulnerability in a calendar",
+            "A type of password"
+        ],
+        correct: 1,
+        explanation: "A zero-day vulnerability is a security flaw for which defenders may have had little or no time to develop a fix."
+    },
 
     {
-        question:
-            "Which is a good cybersecurity practice?",
-
+        question: "Which is the strongest password practice?",
         answers: [
-            "Reuse the same password everywhere",
-            "Ignore software updates",
-            "Use MFA and keep software updated",
-            "Share account credentials with friends"
+            "Reuse one password everywhere",
+            "Use short passwords",
+            "Use unique strong passwords with a password manager",
+            "Share passwords with friends"
         ],
+        correct: 2,
+        explanation: "Unique strong passwords reduce the damage if one account is compromised. A password manager can help manage them."
+    },
 
-        correct: 2
+    {
+        question: "Why are backups important for cybersecurity?",
+        answers: [
+            "They can help recover data after loss or an incident",
+            "They make passwords unnecessary",
+            "They prevent every cyberattack",
+            "They replace firewalls"
+        ],
+        correct: 0,
+        explanation: "Reliable backups can help organizations recover data after accidental deletion, hardware failure, or certain cyber incidents."
+    },
+
+    {
+        question: "What is an IP address used for?",
+        answers: [
+            "Identifying an endpoint on a network",
+            "Changing keyboard colors",
+            "Creating encryption keys automatically",
+            "Increasing storage"
+        ],
+        correct: 0,
+        explanation: "IP addresses identify network interfaces or endpoints so network traffic can be routed."
+    },
+
+    {
+        question: "What is a Trojan in cybersecurity?",
+        answers: [
+            "A type of malicious program disguised as something legitimate",
+            "A firewall",
+            "A backup system",
+            "A network cable"
+        ],
+        correct: 0,
+        explanation: "A Trojan disguises itself as legitimate software or content to trick users into running it."
+    },
+
+    {
+        question: "What is incident response?",
+        answers: [
+            "The process of handling and recovering from security incidents",
+            "Installing video games",
+            "Changing monitor settings",
+            "Building a computer"
+        ],
+        correct: 0,
+        explanation: "Incident response involves detecting, analyzing, containing, recovering from, and learning from security incidents."
+    },
+
+    {
+        question: "Why is encryption useful?",
+        answers: [
+            "It helps protect data from unauthorized reading",
+            "It makes every password public",
+            "It removes all vulnerabilities",
+            "It increases screen resolution"
+        ],
+        correct: 0,
+        explanation: "Encryption transforms readable data into protected ciphertext that requires the appropriate key to decrypt."
+    },
+
+    {
+        question: "What is a brute-force attack?",
+        answers: [
+            "Trying many possible credentials or combinations",
+            "Installing a firewall",
+            "Backing up files",
+            "Updating software"
+        ],
+        correct: 0,
+        explanation: "Brute-force attacks repeatedly try possible credentials or combinations until a valid one is found."
+    },
+
+    {
+        question: "What is the main purpose of security logs?",
+        answers: [
+            "Record events that can help with monitoring and investigation",
+            "Make websites faster",
+            "Replace passwords",
+            "Turn off networks"
+        ],
+        correct: 0,
+        explanation: "Logs provide a record of events that security teams can analyze when monitoring systems or investigating incidents."
+    },
+
+    {
+        question: "Which action is safest when you receive a suspicious attachment?",
+        answers: [
+            "Open it immediately",
+            "Forward it to everyone",
+            "Verify the sender and context before opening",
+            "Disable security software"
+        ],
+        correct: 2,
+        explanation: "Unexpected attachments should be treated cautiously. Verify the sender and context before interacting with them."
+    },
+
+    {
+        question: "What does the CIA triad represent?",
+        answers: [
+            "Confidentiality, Integrity, Availability",
+            "Computers, Internet, Accounts",
+            "Code, Identity, Authentication",
+            "Cybersecurity, Internet, Applications"
+        ],
+        correct: 0,
+        explanation: "The CIA triad is a core security model focused on confidentiality, integrity, and availability."
+    },
+
+    {
+        question: "What does confidentiality mean in cybersecurity?",
+        answers: [
+            "Information is available to everyone",
+            "Information is protected from unauthorized access",
+            "Information is deleted",
+            "Information is always public"
+        ],
+        correct: 1,
+        explanation: "Confidentiality means preventing unauthorized people or systems from accessing information."
+    },
+
+    {
+        question: "What does integrity mean?",
+        answers: [
+            "Data remains accurate and has not been improperly changed",
+            "Everyone can access the data",
+            "The computer is turned off",
+            "Passwords are removed"
+        ],
+        correct: 0,
+        explanation: "Integrity focuses on keeping information accurate, complete, and protected from unauthorized modification."
+    },
+
+    {
+        question: "What does availability mean?",
+        answers: [
+            "Authorized users can access systems and information when needed",
+            "Passwords are shared publicly",
+            "Every file is encrypted forever",
+            "No one can access a system"
+        ],
+        correct: 0,
+        explanation: "Availability means systems and information remain accessible to authorized users when needed."
     }
 
 ];
 
 
-/* =========================================
-   QUIZ VARIABLES
-========================================= */
-
 let currentQuestion = 0;
-
 let score = 0;
+let answered = false;
 
-let selectedAnswer = null;
 
+const questionElement =
+    document.getElementById("question");
 
-/* =========================================
-   LOAD QUESTION
-========================================= */
+const answersElement =
+    document.getElementById("answers");
+
+const explanationElement =
+    document.getElementById("explanation");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const questionCounter =
+    document.getElementById("questionCounter");
+
+const scoreText =
+    document.getElementById("scoreText");
+
+const quizElement =
+    document.getElementById("quiz");
+
+const resultElement =
+    document.getElementById("result");
+
+const finalScore =
+    document.getElementById("finalScore");
+
+const resultMessage =
+    document.getElementById("resultMessage");
+
 
 function loadQuestion() {
 
-    const question =
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    questionElement.textContent =
+        q.question;
+
+    answersElement.innerHTML = "";
+
+    explanationElement.style.display = "none";
+
+    nextButton.style.display = "none";
+
+
+    questionCounter.textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+
+    scoreText.textContent =
+        `Score: ${score}`;
+
+
+    const progress =
+        ((currentQuestion) / questions.length) * 100;
+
+    progressBar.style.width =
+        progress + "%";
+
+
+    q.answers.forEach((answer, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent = answer;
+
+        button.onclick = () =>
+            selectAnswer(index, button);
+
+        answersElement.appendChild(button);
+
+    });
+
+}
+
+
+function selectAnswer(index, selectedButton) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q =
         questions[currentQuestion];
 
-
-    selectedAnswer = null;
-
-
-    document.getElementById(
-        "questionNumber"
-    ).textContent =
-        "Question " +
-        (currentQuestion + 1);
+    const buttons =
+        document.querySelectorAll(".answer");
 
 
-    document.getElementById(
-        "progressText"
-    ).textContent =
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        questions.length;
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
 
 
-    document.getElementById(
-        "progressFill"
-    ).style.width =
-        (
-            ((currentQuestion + 1)
-            / questions.length)
-            * 100
-        ) + "%";
+    if (index === q.correct) {
 
+        selectedButton.classList.add("correct");
 
-    document.getElementById(
-        "questionText"
-    ).textContent =
-        question.question;
+        score++;
 
+        scoreText.textContent =
+            `Score: ${score}`;
 
-    const answers =
-        document.getElementById(
-            "answers"
-        );
-
-
-    answers.innerHTML = "";
-
-
-    question.answers.forEach(
-        function(answer, index) {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "answer";
-
-
-            button.textContent =
-                answer;
-
-
-            button.onclick =
-                function() {
-
-                    selectAnswer(
-                        index,
-                        button
-                    );
-
-                };
-
-
-            answers.appendChild(
-                button
-            );
-
-        }
-    );
-
-
-    const nextButton =
-        document.getElementById(
-            "nextButton"
-        );
-
-
-    if (
-        currentQuestion ===
-        questions.length - 1
-    ) {
-
-        nextButton.textContent =
-            "Finish Quiz ✓";
+        explanationElement.innerHTML =
+            `<strong>✓ Correct!</strong><br><br>${q.explanation}`;
 
     } else {
 
-        nextButton.textContent =
-            "Next Question →";
+        selectedButton.classList.add("wrong");
+
+        buttons[q.correct].classList.add("correct");
+
+        explanationElement.innerHTML =
+            `<strong>✗ Not quite.</strong><br><br>${q.explanation}`;
 
     }
 
-}
 
+    explanationElement.style.display =
+        "block";
 
-/* =========================================
-   SELECT ANSWER
-========================================= */
-
-function selectAnswer(
-    index,
-    button
-) {
-
-    selectedAnswer = index;
-
-
-    const buttons =
-        document.querySelectorAll(
-            ".answer"
-        );
-
-
-    buttons.forEach(
-        function(item) {
-
-            item.classList.remove(
-                "selected"
-            );
-
-        }
-    );
-
-
-    button.classList.add(
-        "selected"
-    );
+    nextButton.style.display =
+        "inline-block";
 
 }
 
-
-/* =========================================
-   NEXT QUESTION
-========================================= */
 
 function nextQuestion() {
 
-    if (
-        selectedAnswer === null
-    ) {
+    currentQuestion++;
 
-        alert(
-            "Please select an answer first."
-        );
+    if (currentQuestion >= questions.length) {
+
+        showResults();
 
         return;
 
     }
 
-
-    if (
-        selectedAnswer ===
-        questions[currentQuestion].correct
-    ) {
-
-        score++;
-
-    }
-
-
-    currentQuestion++;
-
-
-    if (
-        currentQuestion <
-        questions.length
-    ) {
-
-        loadQuestion();
-
-    } else {
-
-        showResult();
-
-    }
+    loadQuestion();
 
 }
 
 
-/* =========================================
-   SHOW RESULT
-========================================= */
+function showResults() {
 
-function showResult() {
-
-    document.getElementById(
-        "quizCard"
-    ).style.display =
+    quizElement.style.display =
         "none";
 
-
-    document.querySelector(
-        ".progress-box"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "result"
-    ).style.display =
+    resultElement.style.display =
         "block";
 
-
-    document.getElementById(
-        "score"
-    ).textContent =
-        score +
-        " / " +
-        questions.length;
-
-
-    let message;
+    finalScore.textContent =
+        `${score}/${questions.length}`;
 
 
     const percentage =
-        (
-            score /
-            questions.length
-        ) * 100;
+        Math.round((score / questions.length) * 100);
 
 
     if (percentage >= 90) {
 
-        message =
-            "🏆 Excellent work! You have a strong understanding of the cybersecurity fundamentals.";
+        resultMessage.textContent =
+            `Outstanding! You scored ${percentage}%. You have a strong cybersecurity foundation.`;
+
+    } else if (percentage >= 75) {
+
+        resultMessage.textContent =
+            `Great job! You scored ${percentage}%. Keep practicing and you'll get even stronger.`;
+
+    } else if (percentage >= 60) {
+
+        resultMessage.textContent =
+            `Nice work! You scored ${percentage}%. Review the lessons and try again.`;
+
+    } else {
+
+        resultMessage.textContent =
+            `Good start! You scored ${percentage}%. Keep learning and give the quiz another shot.`;
 
     }
-
-    else if (percentage >= 75) {
-
-        message =
-            "🟢 Great job! You have a solid cybersecurity foundation.";
-
-    }
-
-    else if (percentage >= 60) {
-
-        message =
-            "🟡 Good start! Review the Lessons and Labs to strengthen your knowledge.";
-
-    }
-
-    else {
-
-        message =
-            "🔵 Keep learning! Go through the Lessons and Labs and try the quiz again.";
-
-    }
-
-
-    document.getElementById(
-        "resultMessage"
-    ).textContent =
-        message;
 
 }
 
-
-/* =========================================
-   RESTART QUIZ
-========================================= */
 
 function restartQuiz() {
 
@@ -1394,40 +1153,20 @@ function restartQuiz() {
 
     score = 0;
 
-    selectedAnswer = null;
-
-
-    document.getElementById(
-        "quizCard"
-    ).style.display =
-        "block";
-
-
-    document.querySelector(
-        ".progress-box"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "result"
-    ).style.display =
+    resultElement.style.display =
         "none";
 
+    quizElement.style.display =
+        "block";
 
     loadQuestion();
 
 }
 
 
-/* =========================================
-   START QUIZ
-========================================= */
-
 loadQuestion();
 
 </script>
-
 
 </body>
 
