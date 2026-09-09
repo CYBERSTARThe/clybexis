@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CyberStart | Coding Lessons</title>
+<title>CyberStart | CyberCoding</title>
 
 <style>
 
@@ -200,8 +202,8 @@ nav a.active::after {
 
     position: absolute;
 
-    width: 600px;
-    height: 600px;
+    width: 650px;
+    height: 650px;
 
     background:
         radial-gradient(
@@ -213,7 +215,8 @@ nav a.active::after {
     top: -250px;
     left: -200px;
 
-    animation: cyberGlow 7s infinite alternate;
+    animation:
+        cyberGlow 7s infinite alternate;
 }
 
 .hero::after {
@@ -221,8 +224,8 @@ nav a.active::after {
 
     position: absolute;
 
-    width: 600px;
-    height: 600px;
+    width: 650px;
+    height: 650px;
 
     background:
         radial-gradient(
@@ -234,7 +237,8 @@ nav a.active::after {
     bottom: -300px;
     right: -200px;
 
-    animation: cyberGlow2 8s infinite alternate;
+    animation:
+        cyberGlow2 8s infinite alternate;
 }
 
 @keyframes cyberGlow {
@@ -269,7 +273,7 @@ nav a.active::after {
 }
 
 .code-icon {
-    font-size: 75px;
+    font-size: 80px;
 
     margin-bottom: 20px;
 
@@ -277,10 +281,11 @@ nav a.active::after {
         drop-shadow(0 0 12px #00aaff)
         drop-shadow(0 0 25px #39ff88);
 
-    animation: shieldFloat 3s ease-in-out infinite;
+    animation:
+        floatCode 3s ease-in-out infinite;
 }
 
-@keyframes shieldFloat {
+@keyframes floatCode {
 
     0%,100% {
         transform: translateY(0);
@@ -293,7 +298,8 @@ nav a.active::after {
 }
 
 .hero h1 {
-    font-size: clamp(45px, 8vw, 85px);
+    font-size:
+        clamp(50px, 9vw, 90px);
 
     margin-bottom: 15px;
 }
@@ -311,13 +317,13 @@ nav a.active::after {
 }
 
 .tagline {
-    font-size: 14px;
+    font-size: 15px;
 
-    letter-spacing: 4px;
+    letter-spacing: 5px;
 
     font-weight: bold;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .tagline span {
@@ -325,7 +331,7 @@ nav a.active::after {
 }
 
 .hero p {
-    max-width: 700px;
+    max-width: 750px;
 
     margin: auto;
 
@@ -357,14 +363,17 @@ nav a.active::after {
             rgba(4,14,28,0.88)
         );
 
-    border: 1px solid rgba(0,170,255,0.35);
+    border: 1px solid
+        rgba(0,170,255,0.35);
 
     border-radius: 20px;
 
     box-shadow:
-        0 0 30px rgba(0,170,255,0.08);
+        0 0 30px
+        rgba(0,170,255,0.08);
 
     position: relative;
+
     overflow: hidden;
 }
 
@@ -403,15 +412,17 @@ nav a.active::after {
 
     color: #aebdcc;
 
+    line-height: 1.6;
+
     margin-bottom: 30px;
 }
 
 
 /* =========================
-   LESSON CARDS
+   COURSE CARDS
 ========================= */
 
-.lesson-grid {
+.course-grid {
     display: grid;
 
     grid-template-columns:
@@ -420,7 +431,7 @@ nav a.active::after {
     gap: 20px;
 }
 
-.lesson-card {
+.course-card {
     padding: 25px;
 
     border-radius: 16px;
@@ -432,24 +443,26 @@ nav a.active::after {
             rgba(57,255,136,0.04)
         );
 
-    border: 1px solid rgba(0,170,255,0.25);
+    border: 1px solid
+        rgba(0,170,255,0.25);
 
     transition: 0.3s;
 }
 
-.lesson-card:hover {
-    transform: translateY(-5px);
+.course-card:hover {
+    transform: translateY(-6px);
 
     border-color: #00aaff;
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.18);
+        0 0 25px
+        rgba(0,170,255,0.18);
 }
 
-.lesson-number {
+.course-number {
     color: #39ff88;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: bold;
 
@@ -458,13 +471,13 @@ nav a.active::after {
     margin-bottom: 10px;
 }
 
-.lesson-card h3 {
+.course-card h3 {
     color: #00aaff;
 
     margin-bottom: 10px;
 }
 
-.lesson-card p {
+.course-card p {
     color: #b9c7d8;
 
     line-height: 1.6;
@@ -472,7 +485,7 @@ nav a.active::after {
     font-size: 14px;
 }
 
-.lesson-card code {
+.course-card code {
     color: #39ff88;
 
     background: rgba(0,0,0,0.35);
@@ -484,12 +497,147 @@ nav a.active::after {
 
 
 /* =========================
-   CODE EDITOR
+   LEARN / CODE / CHALLENGE
 ========================= */
 
-.editor-section {
-    margin-top: 50px;
+.learning-box {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0,0,0,0.20);
+
+    border: 1px solid
+        rgba(0,170,255,0.20);
 }
+
+.learning-box h3 {
+    color: #39ff88;
+
+    margin-bottom: 12px;
+}
+
+.learning-box p {
+    color: #c2cedb;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   CODE EXAMPLE
+========================= */
+
+.example {
+    margin-top: 18px;
+
+    padding: 20px;
+
+    background: #020812;
+
+    border: 1px solid
+        rgba(0,170,255,0.25);
+
+    border-radius: 12px;
+
+    overflow-x: auto;
+}
+
+.example pre {
+    color: #39ff88;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   CHALLENGE
+========================= */
+
+.challenge {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border: 1px solid
+        rgba(57,255,136,0.3);
+
+    border-radius: 15px;
+
+    background:
+        rgba(57,255,136,0.04);
+}
+
+.challenge h3 {
+    color: #39ff88;
+
+    margin-bottom: 10px;
+}
+
+.challenge p {
+    color: #b9c7d8;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+.challenge input {
+    width: 100%;
+
+    padding: 13px;
+
+    background: #020812;
+
+    color: white;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+}
+
+.challenge button {
+    padding: 11px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0077ff,
+            #39ff88
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 12px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   CODE EDITOR
+========================= */
 
 .editor {
     display: grid;
@@ -507,15 +655,15 @@ nav a.active::after {
 }
 
 .editor-box h3 {
-    margin-bottom: 10px;
-
     color: #00aaff;
+
+    margin-bottom: 10px;
 }
 
 textarea {
     width: 100%;
 
-    min-height: 300px;
+    min-height: 320px;
 
     resize: vertical;
 
@@ -536,20 +684,18 @@ textarea {
     font-size: 14px;
 
     outline: none;
-
-    box-shadow:
-        inset 0 0 20px rgba(0,170,255,0.05);
 }
 
 textarea:focus {
     box-shadow:
-        0 0 15px rgba(0,170,255,0.25);
+        0 0 15px
+        rgba(0,170,255,0.25);
 }
 
 iframe {
     width: 100%;
 
-    min-height: 300px;
+    min-height: 320px;
 
     border-radius: 12px;
 
@@ -582,75 +728,70 @@ iframe {
     cursor: pointer;
 
     box-shadow:
-        0 0 15px rgba(0,170,255,0.35);
-
-    transition: 0.3s;
+        0 0 15px
+        rgba(0,170,255,0.35);
 }
 
 .run-button:hover {
-    transform: translateY(-2px);
-
     box-shadow:
-        0 0 25px rgba(0,170,255,0.55);
+        0 0 25px
+        rgba(0,170,255,0.55);
 }
 
 
 /* =========================
-   CODE EXAMPLES
+   FINAL PROJECT
 ========================= */
 
-.example {
+.final-project {
+    text-align: center;
+}
+
+.final-project h2 {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+.final-project h2 span {
+    color: #39ff88;
+}
+
+.final-project p {
+    color: #b9c7d8;
+
+    line-height: 1.7;
+
+    max-width: 750px;
+
+    margin: 0 auto 25px;
+}
+
+.project-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
     margin-top: 25px;
+}
 
-    padding: 20px;
-
-    background: #020812;
-
-    border: 1px solid rgba(0,170,255,0.25);
+.project-item {
+    padding: 18px;
 
     border-radius: 12px;
 
-    overflow-x: auto;
-}
-
-.example pre {
-    color: #39ff88;
-
-    font-family:
-        Consolas,
-        monospace;
-
-    line-height: 1.6;
-}
-
-
-/* =========================
-   TIP BOX
-========================= */
-
-.tip {
-    margin-top: 30px;
-
-    padding: 25px;
-
-    border-left: 4px solid #39ff88;
+    border: 1px solid
+        rgba(0,170,255,0.25);
 
     background:
-        rgba(57,255,136,0.05);
-
-    border-radius: 10px;
+        rgba(0,170,255,0.05);
 }
 
-.tip h3 {
-    color: #39ff88;
-
-    margin-bottom: 8px;
-}
-
-.tip p {
-    color: #c0ccd9;
-
-    line-height: 1.6;
+.project-item strong {
+    color: #00aaff;
 }
 
 
@@ -667,21 +808,17 @@ footer {
 
     background: #030914;
 
-    border-top: 1px solid rgba(0,170,255,0.3);
+    border-top:
+        1px solid
+        rgba(0,170,255,0.3);
 }
 
 footer h2 {
     margin-bottom: 10px;
 }
 
-footer span {
+footer h2 span {
     color: #00aaff;
-}
-
-footer p {
-    color: #7f8da0;
-
-    margin-top: 8px;
 }
 
 .footer-line {
@@ -700,6 +837,12 @@ footer p {
 
     box-shadow:
         0 0 10px #00aaff;
+}
+
+footer p {
+    color: #7f8da0;
+
+    margin-top: 8px;
 }
 
 
@@ -723,12 +866,18 @@ footer p {
         gap: 12px;
     }
 
-    .lesson-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .course-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .editor {
         grid-template-columns: 1fr;
+    }
+
+    .project-list {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 }
@@ -748,13 +897,13 @@ footer p {
     }
 
     .hero {
-        min-height: 500px;
+        min-height: 520px;
 
         padding: 60px 15px;
     }
 
     .hero h1 {
-        font-size: 48px;
+        font-size: 50px;
     }
 
     .hero p {
@@ -765,13 +914,18 @@ footer p {
         padding: 22px 15px;
     }
 
-    .lesson-grid {
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-list {
         grid-template-columns: 1fr;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -843,6 +997,7 @@ footer p {
 </nav>
 
 
+
 <!-- =========================
      HERO
 ========================= -->
@@ -860,16 +1015,21 @@ footer p {
         </h1>
 
         <div class="tagline">
-            LEARN <span>/</span>
-            BUILD <span>/</span>
+
+            LEARN
+            <span>/</span>
+            BUILD
+            <span>/</span>
             CREATE
+
         </div>
 
         <p>
-            Learn the coding skills behind websites,
-            cybersecurity tools, games, and technology.
-            Start with HTML, move into CSS, and then
-            learn JavaScript.
+
+            Learn how websites and programs are built.
+            Start with HTML, style your projects with CSS,
+            and then use JavaScript to make them interactive.
+
         </p>
 
     </div>
@@ -877,130 +1037,86 @@ footer p {
 </section>
 
 
+
 <!-- =========================
-     HTML LESSONS
+     COURSE ROADMAP
 ========================= -->
 
 <section class="section">
 
     <h2 class="section-title">
-        🧱 HTML — Build the Structure
+        🚀 Coding Roadmap
     </h2>
 
     <p class="section-description">
-        HTML is the language used to create the structure
-        of webpages.
+
+        Follow the lessons in order and build your
+        skills step by step.
+
     </p>
 
 
-    <div class="lesson-grid">
+    <div class="course-grid">
 
-        <div class="lesson-card">
 
-            <div class="lesson-number">
-                HTML 01
+        <div class="course-card">
+
+            <div class="course-number">
+                LEVEL 01
             </div>
 
             <h3>
-                What Is HTML?
+                🧱 HTML
             </h3>
 
             <p>
-                HTML stands for HyperText Markup Language.
-                It tells the browser what elements belong
-                on a webpage.
+
+                Learn the structure of webpages.
+                Create headings, paragraphs, links,
+                images, buttons, and sections.
+
             </p>
 
         </div>
 
 
-        <div class="lesson-card">
+        <div class="course-card">
 
-            <div class="lesson-number">
-                HTML 02
+            <div class="course-number">
+                LEVEL 02
             </div>
 
             <h3>
-                HTML Tags
+                🎨 CSS
             </h3>
 
             <p>
-                Tags define elements such as headings,
-                paragraphs, links, buttons, and images.
+
+                Learn how to design webpages with
+                colors, fonts, spacing, layouts,
+                animations, and responsive design.
+
             </p>
 
         </div>
 
 
-        <div class="lesson-card">
+        <div class="course-card">
 
-            <div class="lesson-number">
-                HTML 03
+            <div class="course-number">
+                LEVEL 03
             </div>
 
             <h3>
-                Headings & Paragraphs
+                ⚡ JavaScript
             </h3>
 
             <p>
-                Use <code>&lt;h1&gt;</code> for major
-                headings and <code>&lt;p&gt;</code>
-                for paragraphs.
-            </p>
 
-        </div>
+                Learn programming logic, variables,
+                conditions, functions, events, and
+                interactive webpages.
 
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                HTML 04
-            </div>
-
-            <h3>
-                Links
-            </h3>
-
-            <p>
-                The <code>&lt;a&gt;</code> tag creates
-                links that allow visitors to move between
-                webpages.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                HTML 05
-            </div>
-
-            <h3>
-                Images
-            </h3>
-
-            <p>
-                The <code>&lt;img&gt;</code> element lets
-                you display images on your webpage.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                HTML 06
-            </div>
-
-            <h3>
-                Lists
-            </h3>
-
-            <p>
-                Use ordered and unordered lists to organize
-                information for visitors.
             </p>
 
         </div>
@@ -1010,279 +1126,253 @@ footer p {
 </section>
 
 
+
 <!-- =========================
-     CSS LESSONS
+     LESSON 1
 ========================= -->
 
 <section class="section">
 
     <h2 class="section-title">
-        🎨 CSS — Design Your Website
+        Lesson 1 — 🧱 HTML Basics
     </h2>
 
-    <p class="section-description">
-        CSS controls the appearance of HTML elements.
-    </p>
+    <div class="learning-box">
+
+        <h3>
+            📖 Learn
+        </h3>
+
+        <p>
+
+            HTML is the language used to create the
+            structure of a webpage.
+
+            Think of HTML as the skeleton of a website.
+
+            It tells the browser where headings,
+            paragraphs, buttons, images, and other
+            elements belong.
+
+        </p>
+
+    </div>
 
 
-    <div class="lesson-grid">
+    <div class="example">
 
-        <div class="lesson-card">
+<pre>
+&lt;h1&gt;My Website&lt;/h1&gt;
 
-            <div class="lesson-number">
-                CSS 01
-            </div>
+&lt;p&gt;Welcome to my website!&lt;/p&gt;
 
-            <h3>
-                What Is CSS?
-            </h3>
+&lt;button&gt;Click Me&lt;/button&gt;
+</pre>
 
-            <p>
-                CSS stands for Cascading Style Sheets.
-                It controls colors, spacing, fonts,
-                layouts, and animations.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="lesson-card">
+    <div class="challenge">
 
-            <div class="lesson-number">
-                CSS 02
-            </div>
+        <h3>
+            🧪 Challenge
+        </h3>
 
-            <h3>
-                Selectors
-            </h3>
+        <p>
 
-            <p>
-                Selectors tell CSS which HTML elements
-                should receive a particular style.
-            </p>
+            What HTML tag is normally used for
+            the largest/main heading?
 
-        </div>
+        </p>
 
+        <input
+            id="htmlAnswer"
+            type="text"
+            placeholder="Type your answer..."
+        >
 
-        <div class="lesson-card">
+        <button onclick="checkHTML()">
+            Check Answer
+        </button>
 
-            <div class="lesson-number">
-                CSS 03
-            </div>
-
-            <h3>
-                Colors & Fonts
-            </h3>
-
-            <p>
-                CSS can change text color, background color,
-                font size, font family, and more.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                CSS 04
-            </div>
-
-            <h3>
-                Box Model
-            </h3>
-
-            <p>
-                Every HTML element can have content,
-                padding, borders, and margins.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                CSS 05
-            </div>
-
-            <h3>
-                Flexbox
-            </h3>
-
-            <p>
-                Flexbox makes it easier to arrange elements
-                horizontally and vertically.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                CSS 06
-            </div>
-
-            <h3>
-                Responsive Design
-            </h3>
-
-            <p>
-                Responsive design allows websites to work
-                properly on phones, tablets, and computers.
-            </p>
-
-        </div>
+        <div
+            id="htmlResult"
+            class="result"
+        ></div>
 
     </div>
 
 </section>
 
 
+
 <!-- =========================
-     JAVASCRIPT LESSONS
+     LESSON 2
 ========================= -->
 
 <section class="section">
 
     <h2 class="section-title">
-        ⚡ JavaScript — Make It Interactive
+        Lesson 2 — 🎨 CSS Basics
     </h2>
 
-    <p class="section-description">
-        JavaScript allows webpages to respond to users
-        and perform actions.
-    </p>
+    <div class="learning-box">
+
+        <h3>
+            📖 Learn
+        </h3>
+
+        <p>
+
+            CSS controls how your HTML looks.
+
+            You can use CSS to change colors,
+            fonts, backgrounds, spacing, borders,
+            layouts, and animations.
+
+        </p>
+
+    </div>
 
 
-    <div class="lesson-grid">
+    <div class="example">
 
-        <div class="lesson-card">
+<pre>
+body {
+    background: #050b16;
+    color: white;
+}
 
-            <div class="lesson-number">
-                JS 01
-            </div>
+h1 {
+    color: #00aaff;
+}
+</pre>
 
-            <h3>
-                What Is JavaScript?
-            </h3>
-
-            <p>
-                JavaScript is a programming language that
-                can make websites interactive.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="lesson-card">
+    <div class="challenge">
 
-            <div class="lesson-number">
-                JS 02
-            </div>
+        <h3>
+            🧪 Challenge
+        </h3>
 
-            <h3>
-                Variables
-            </h3>
+        <p>
 
-            <p>
-                Variables store information that your program
-                can use later.
-            </p>
+            What does CSS control?
 
-        </div>
+        </p>
 
+        <input
+            id="cssAnswer"
+            type="text"
+            placeholder="Type your answer..."
+        >
 
-        <div class="lesson-card">
+        <button onclick="checkCSS()">
+            Check Answer
+        </button>
 
-            <div class="lesson-number">
-                JS 03
-            </div>
-
-            <h3>
-                If / Else
-            </h3>
-
-            <p>
-                Conditional statements allow programs to
-                make decisions based on information.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                JS 04
-            </div>
-
-            <h3>
-                Functions
-            </h3>
-
-            <p>
-                Functions group instructions together so
-                you can run them when needed.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                JS 05
-            </div>
-
-            <h3>
-                Events
-            </h3>
-
-            <p>
-                Events allow JavaScript to respond when
-                someone clicks or interacts with a page.
-            </p>
-
-        </div>
-
-
-        <div class="lesson-card">
-
-            <div class="lesson-number">
-                JS 06
-            </div>
-
-            <h3>
-                Arrays
-            </h3>
-
-            <p>
-                Arrays allow programs to store multiple
-                pieces of information in one collection.
-            </p>
-
-        </div>
+        <div
+            id="cssResult"
+            class="result"
+        ></div>
 
     </div>
 
 </section>
 
 
+
 <!-- =========================
-     CODE EDITOR
+     LESSON 3
 ========================= -->
 
-<section class="section editor-section">
+<section class="section">
 
     <h2 class="section-title">
-        🧪 Try Coding
+        Lesson 3 — ⚡ JavaScript Basics
+    </h2>
+
+    <div class="learning-box">
+
+        <h3>
+            📖 Learn
+        </h3>
+
+        <p>
+
+            JavaScript is a programming language
+            that allows websites to respond to
+            users and perform actions.
+
+        </p>
+
+    </div>
+
+
+    <div class="example">
+
+<pre>
+let score = 10;
+
+if (score >= 10) {
+    console.log("Great job!");
+}
+</pre>
+
+    </div>
+
+
+    <div class="challenge">
+
+        <h3>
+            🧪 Challenge
+        </h3>
+
+        <p>
+
+            Which language can make a webpage
+            interactive?
+
+        </p>
+
+        <input
+            id="jsAnswer"
+            type="text"
+            placeholder="Type your answer..."
+        >
+
+        <button onclick="checkJS()">
+            Check Answer
+        </button>
+
+        <div
+            id="jsResult"
+            class="result"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LIVE CODING LAB
+========================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        💻 Live Coding Lab
     </h2>
 
     <p class="section-description">
-        Write HTML on the left and see your webpage
-        appear on the right.
+
+        Write your own HTML and see the result
+        immediately.
+
     </p>
 
 
@@ -1292,10 +1382,11 @@ footer p {
         <div class="editor-box">
 
             <h3>
-                💻 Your Code
+                💻 Code
             </h3>
 
             <textarea id="codeInput"><!DOCTYPE html>
+
 <html>
 
 <head>
@@ -1307,18 +1398,22 @@ body {
     color: white;
     font-family: Arial;
     text-align: center;
-    padding: 50px;
+    padding: 40px;
 }
 
 h1 {
     color: #00aaff;
 }
 
+p {
+    color: #39ff88;
+}
+
 button {
+    padding: 12px 20px;
     background: #00aaff;
     color: white;
     border: none;
-    padding: 12px 20px;
     border-radius: 8px;
 }
 
@@ -1328,11 +1423,11 @@ button {
 
 <body>
 
-<h1>Hello CyberStart!</h1>
+<h1>CyberStart</h1>
 
-<p>I am learning to code.</p>
+<p>I am learning to code!</p>
 
-<button onclick="alert('Great job!')">
+<button onclick="alert('You made it work!')">
 Click Me
 </button>
 
@@ -1345,7 +1440,9 @@ Click Me
                 class="run-button"
                 onclick="runCode()"
             >
+
                 ▶ Run Code
+
             </button>
 
         </div>
@@ -1366,78 +1463,260 @@ Click Me
 
     </div>
 
-
-    <div class="tip">
-
-        <h3>
-            💡 Coding Tip
-        </h3>
-
-        <p>
-            Don't try to memorize everything at once.
-            Learn what each part does, experiment with it,
-            and build small projects. That's how coding
-            starts to make sense.
-        </p>
-
-    </div>
-
 </section>
 
 
+
 <!-- =========================
-     QUICK EXAMPLES
+     MORE LESSONS
 ========================= -->
 
 <section class="section">
 
     <h2 class="section-title">
-        📚 Quick Code Examples
+        📚 What's Next?
     </h2>
 
+    <p class="section-description">
 
-    <div class="example">
+        After the basics, continue learning these
+        important coding concepts.
 
-<pre>
-&lt;h1&gt;My Website&lt;/h1&gt;
-
-&lt;p&gt;Welcome to my website!&lt;/p&gt;
-
-&lt;button&gt;Click Me&lt;/button&gt;
-</pre>
-
-    </div>
+    </p>
 
 
-    <div class="example">
-
-<pre>
-body {
-    background: #050b16;
-    color: white;
-}
-
-h1 {
-    color: #00aaff;
-}
-</pre>
-
-    </div>
+    <div class="course-grid">
 
 
-    <div class="example">
+        <div class="course-card">
 
-<pre>
-let score = 10;
+            <div class="course-number">
+                HTML 04
+            </div>
 
-if (score &gt;= 10) {
-    console.log("Great job!");
-}
-</pre>
+            <h3>
+                🔗 Links & Images
+            </h3>
+
+            <p>
+
+                Learn how to connect pages together
+                and display images on your website.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                CSS 04
+            </div>
+
+            <h3>
+                📦 Box Model
+            </h3>
+
+            <p>
+
+                Learn about margins, borders,
+                padding, and content.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                JS 04
+            </div>
+
+            <h3>
+                🧠 Functions
+            </h3>
+
+            <p>
+
+                Learn how to group instructions
+                together and reuse your code.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                JS 05
+            </div>
+
+            <h3>
+                🔀 If / Else
+            </h3>
+
+            <p>
+
+                Teach your programs how to make
+                decisions.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                JS 06
+            </div>
+
+            <h3>
+                🔁 Loops
+            </h3>
+
+            <p>
+
+                Learn how to repeat instructions
+                efficiently.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                JS 07
+            </div>
+
+            <h3>
+                🎮 Mini Games
+            </h3>
+
+            <p>
+
+                Combine HTML, CSS, and JavaScript
+                to create a simple game.
+
+            </p>
+
+        </div>
 
     </div>
 
 </section>
+
+
+
+<!-- =========================
+     FINAL PROJECT
+========================= -->
+
+<section class="section final-project">
+
+    <h2>
+        🏆 <span>Final Coding Project</span>
+    </h2>
+
+    <p>
+
+        Once you've learned the basics, build your
+        own cybersecurity-themed webpage.
+
+        Try to include each of the following:
+
+    </p>
+
+
+    <div class="project-list">
+
+
+        <div class="project-item">
+
+            <strong>
+                HTML
+            </strong>
+
+            <br>
+
+            A title and sections
+
+        </div>
+
+
+        <div class="project-item">
+
+            <strong>
+                CSS
+            </strong>
+
+            <br>
+
+            Your own cyber design
+
+        </div>
+
+
+        <div class="project-item">
+
+            <strong>
+                JavaScript
+            </strong>
+
+            <br>
+
+            An interactive button
+
+        </div>
+
+
+        <div class="project-item">
+
+            <strong>
+                Navigation
+            </strong>
+
+            <br>
+
+            Links to other pages
+
+        </div>
+
+
+        <div class="project-item">
+
+            <strong>
+                Security
+            </strong>
+
+            <br>
+
+            A cybersecurity topic
+
+        </div>
+
+
+        <div class="project-item">
+
+            <strong>
+                Creativity
+            </strong>
+
+            <br>
+
+            Make it your own
+
+        </div>
+
+    </div>
+
+</section>
+
 
 
 <!-- =========================
@@ -1463,33 +1742,72 @@ if (score &gt;= 10) {
 </footer>
 
 
+
 <!-- =========================
      JAVASCRIPT
 ========================= -->
 
 <script>
 
-function runCode() {
 
-    const code =
-        document.getElementById("codeInput").value;
+/* =========================
+   HTML CHALLENGE
+========================= */
 
-    const preview =
-        document.getElementById("preview");
+function checkHTML() {
 
-    preview.srcdoc = code;
+    const answer =
+        document
+        .getElementById("htmlAnswer")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const result =
+        document.getElementById("htmlResult");
+
+
+    if (
+        answer === "<h1>" ||
+        answer === "h1"
+    ) {
+
+        result.textContent =
+            "✅ Correct! <h1> is commonly used for the main heading.";
+
+    } else {
+
+        result.textContent =
+            "❌ Not quite. Try h1.";
+
+    }
 
 }
 
-window.onload = function() {
 
-    runCode();
+/* =========================
+   CSS CHALLENGE
+========================= */
 
-};
+function checkCSS() {
 
-</script>
+    const answer =
+        document
+        .getElementById("cssAnswer")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const result =
+        document.getElementById("cssResult");
 
 
-</body>
+    if (
+        answer.includes("design") ||
+        answer.includes("appearance") ||
+        answer.includes("style") ||
+        answer.includes("look")
+    ) {
 
-</html>
+        result.textContent =
+            "✅
