@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberStart | Simulators</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            min-height: 100vh;
+            background-color: #050b16;
+
+            background-image:
+                linear-gradient(
+                    rgba(0,170,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,170,255,0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 5%;
+
+            background: linear-gradient(
+                90deg,
+                rgba(5,15,35,0.97),
+                rgba(5,25,45,0.97)
+            );
+
+            border-bottom: 1px solid #00aaff;
+
+            box-shadow:
+                0 0 20px rgba(0,170,255,0.15);
+
+            backdrop-filter: blur(15px);
+        }
+
+        nav::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #00ff88,
+                #00aaff
+            );
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #00aaff;
+        }
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00aaff;
+        }
+
+        nav a.active {
+            color: #00ff88;
+        }
+
+        nav a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 100%;
+            height: 2px;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #00ff88
+            );
+
+            box-shadow:
+                0 0 8px #00aaff;
+        }
+
+        .donate {
+            padding: 9px 14px;
+
+            border: 1px solid #00ff88;
+            border-radius: 20px;
+
+            background: rgba(0,255,136,0.08);
+
+            color: #00ff88 !important;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 90px 20px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 20% 30%,
+                    rgba(0,170,255,0.14),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(0,255,136,0.10),
+                    transparent 35%
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            top: -250px;
+            left: 10%;
+
+            background: #008cff;
+
+            filter: blur(150px);
+
+            opacity: 0.12;
+
+            animation: cyberGlow 7s infinite alternate;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            right: 5%;
+            bottom: -250px;
+
+            background: #00ff88;
+
+            filter: blur(150px);
+
+            opacity: 0.08;
+
+            animation: cyberGlow2 8s infinite alternate;
+        }
+
+        @keyframes cyberGlow {
+
+            from {
+                transform: translateX(-80px);
+            }
+
+            to {
+                transform: translateX(120px);
+            }
+
+        }
+
+        @keyframes cyberGlow2 {
+
+            from {
+                transform: translateX(80px);
+            }
+
+            to {
+                transform: translateX(-120px);
+            }
+
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+        .hero-icon {
+            font-size: 75px;
+
+            margin-bottom: 15px;
+
+            filter:
+                drop-shadow(0 0 15px #00aaff)
+                drop-shadow(0 0 25px #00ff88);
+
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 78px);
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #00eaff,
+                #00ff88
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #b8c7d9;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+        .tagline {
+            margin-top: 20px;
+
+            color: #00ff88;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           SIMULATOR AREA
+        ========================= */
+
+        .simulator-section {
+            width: 94%;
+            max-width: 1150px;
+
+            margin: 0 auto 80px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            font-size: 32px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+
+            color: #91a4ba;
+
+            margin-bottom: 35px;
+        }
+
+        .security-lab {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(12,28,52,0.97),
+                    rgba(5,14,28,0.97)
+                );
+
+            border: 1px solid rgba(0,170,255,0.55);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 35px rgba(0,170,255,0.12),
+                inset 0 0 35px rgba(0,170,255,0.025);
+        }
+
+        .security-lab::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #00ff88,
+                #00aaff
+            );
+
+            box-shadow:
+                0 0 15px #00aaff;
+        }
+
+        /* =========================
+           LAB HEADER
+        ========================= */
+
+        .lab-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 22px 25px;
+
+            border-bottom: 1px solid rgba(0,170,255,0.2);
+
+            background: rgba(0,10,25,0.45);
+        }
+
+        .lab-name {
+            font-size: 19px;
+
+            font-weight: bold;
+
+            color: #00aaff;
+        }
+
+        .status {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #00ff88;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #00ff88;
+
+            box-shadow:
+                0 0 10px #00ff88;
+        }
+
+        /* =========================
+           ALERT
+        ========================= */
+
+        .alert {
+            margin: 25px;
+
+            padding: 18px;
+
+            border-left: 4px solid #00aaff;
+
+            background: rgba(0,170,255,0.07);
+
+            border-radius: 8px;
+        }
+
+        .alert strong {
+            color: #00aaff;
+        }
+
+        .alert p {
+            margin-top: 7px;
+
+            color: #c4d1df;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           EMAIL
+        ========================= */
+
+        .email {
+            margin: 25px;
+
+            background: #08111f;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .email-top {
+            padding: 18px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            background: rgba(255,255,255,0.025);
+        }
+
+        .email-row {
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 8px;
+
+            color: #b6c5d7;
+
+            font-size: 14px;
+        }
+
+        .email-row strong {
+            color: white;
+
+            min-width: 65px;
+        }
+
+        .email-body {
+            padding: 25px;
+
+            line-height: 1.7;
+
+            color: #d5dfeb;
+        }
+
+        .email-body h3 {
+            color: white;
+
+            margin-bottom: 15px;
+
+            font-size: 21px;
+        }
+
+        .email-body p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CLUES
+        ========================= */
+
+        .clue {
+            display: inline;
+
+            padding: 3px 5px;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            border: 1px dashed rgba(0,170,255,0.45);
+
+            background: rgba(0,170,255,0.04);
+        }
+
+        .clue:hover {
+            background: rgba(0,170,255,0.15);
+
+            color: #00eaff;
+
+            box-shadow:
+                0 0 10px rgba(0,170,255,0.15);
+        }
+
+        .clue.found {
+            background: rgba(0,255,136,0.12);
+
+            border-color: #00ff88;
+
+            color: #00ff88;
+
+            cursor: default;
+        }
+
+        /* =========================
+           INVESTIGATION
+        ========================= */
+
+        .investigation {
+            margin: 25px;
+
+            padding: 22px;
+
+            background: rgba(0,0,0,0.2);
+
+            border: 1px solid rgba(0,170,255,0.15);
+
+            border-radius: 12px;
+        }
+
+        .investigation h3 {
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+
+            background: #07101d;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin: 15px 0;
+        }
+
+        .progress {
+            width: 0%;
+
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #00ff88
+            );
+
+            transition: width 0.4s;
+        }
+
+        .progress-text {
+            color: #9fb1c5;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           FEEDBACK
+        ========================= */
+
+        .feedback {
+            display: none;
+
+            margin: 25px;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            background: rgba(0,255,136,0.06);
+
+            border: 1px solid rgba(0,255,136,0.35);
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback h3 {
+            color: #00ff88;
+
+            margin-bottom: 10px;
+        }
+
+        .feedback p {
+            color: #c4d1df;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            padding: 10px 25px 30px;
+        }
+
+        button {
+            border: none;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            color: white;
+
+            background: linear-gradient(
+                90deg,
+                #0077ff,
+                #00aaff
+            );
+
+            box-shadow:
+                0 0 15px rgba(0,170,255,0.2);
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 22px rgba(0,170,255,0.4);
+        }
+
+        .reset {
+            background: transparent;
+
+            border: 1px solid #00ff88;
+
+            color: #00ff88;
+
+            box-shadow: none;
+        }
+
+        .reset:hover {
+            background: rgba(0,255,136,0.08);
+
+            box-shadow:
+                0 0 15px rgba(0,255,136,0.2);
+        }
+
+        /* =========================
+           SIMULATOR CARDS
+        ========================= */
+
+        .future-simulators {
+            margin-top: 70px;
+        }
+
+        .simulator-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .sim-card {
+            padding: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,30,55,0.8),
+                    rgba(7,15,29,0.8)
+                );
+
+            border: 1px solid rgba(0,170,255,0.2);
+
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+        .sim-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #00aaff;
+
+            box-shadow:
+                0 0 25px rgba(0,170,255,0.12);
+        }
+
+        .sim-icon {
+            font-size: 38px;
+
+            margin-bottom: 15px;
+        }
+
+        .sim-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .sim-card p {
+            color: #91a4ba;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+        .coming {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            color: #00ff88;
+
+            border: 1px solid rgba(0,255,136,0.35);
+
+            background: rgba(0,255,136,0.05);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 45px 20px;
+
+            border-top: 1px solid rgba(0,170,255,0.2);
+
+            color: #71849a;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        footer .line {
+            width: 70px;
+            height: 2px;
+
+            margin: 15px auto;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #00ff88
+            );
+        }
+
+        footer p {
+            margin: 7px 0;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+            .simulator-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 10px;
+            }
+
+            nav ul {
+                gap: 11px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 420px;
+
+                padding: 70px 18px;
+            }
+
+            .hero-icon {
+                font-size: 60px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .security-lab {
+                border-radius: 14px;
+            }
+
+            .lab-header {
+                padding: 18px;
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                align-items: flex-start;
+            }
+
+            .alert,
+            .email,
+            .investigation,
+            .feedback {
+                margin: 15px;
+            }
+
+            .email-body {
+                padding: 18px;
+            }
+
+            .simulator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        🛡️ Cyber<span>Start</span>
+    </a>
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="lessons.html">
+                Lessons
+            </a>
+        </li>
+
+        <li>
+            <a href="labs.html">
+                Labs
+            </a>
+        </li>
+
+        <li>
+            <a href="quiz.html">
+                Quiz
+            </a>
+        </li>
+
+        <li>
+            <a href="games.html">
+                Games
+            </a>
+        </li>
+
+        <li>
+            <a href="glossary.html">
+                Glossary
+            </a>
+        </li>
+
+        <li>
+            <a href="coding.html">
+                💻 Coding
+            </a>
+        </li>
+
+        <li>
+            <a href="simulators.html" class="active">
+                🧪 Simulators
+            </a>
+        </li>
+
+        <li>
+            <a href="donate.html" class="donate">
+                💚 Donate
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-icon">
+            🧪
+        </div>
+
+        <h1>
+            Cyber<span>Simulators</span>
+        </h1>
+
+        <p>
+            Practice cybersecurity skills inside safe,
+            fictional environments designed to help you
+            think like a security analyst.
+        </p>
+
+        <div class="tagline">
+            INVESTIGATE / DECIDE / LEARN
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN SIMULATOR
+========================= -->
+
+<section class="simulator-section">
+
+    <h2 class="section-title">
+        🎣 Phishing Email Simulator
+    </h2>
+
+    <p class="section-subtitle">
+        Can you find all the warning signs?
+    </p>
+
+
+    <div class="security-lab">
+
+        <div class="lab-header">
+
+            <div class="lab-name">
+                🖥️ CYBERSTART SECURITY LAB
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                SIMULATION ONLINE
+
+            </div>
+
+        </div>
+
+
+        <div class="alert">
+
+            <strong>
+                🚨 SECURITY ALERT
+            </strong>
+
+            <p>
+                A fictional employee has received the email
+                below. Your job is to investigate it and identify
+                the suspicious clues.
+            </p>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="email">
+
+            <div class="email-top">
+
+                <div class="email-row">
+                    <strong>From:</strong>
+                    billing@paypa1-security.example
+                </div>
+
+                <div class="email-row">
+                    <strong>To:</strong>
+                    employee@cyberstart.example
+                </div>
+
+                <div class="email-row">
+                    <strong>Subject:</strong>
+                    URGENT: Your account requires immediate verification
+                </div>
+
+            </div>
+
+
+            <div class="email-body">
+
+                <h3>
+                    ⚠️ Account Verification Required
+                </h3>
+
+                <p>
+                    Hello Customer,
+                </p>
+
+                <p>
+                    We detected unusual activity on your account.
+                    Your account may be restricted unless you
+                    <span class="clue"
+                          onclick="findClue(this, 'sender')">
+                        verify your information immediately
+                    </span>.
+                </p>
+
+                <p>
+                    To avoid interruption of your service,
+                    please complete the verification process
+                    within
+                    <span class="clue"
+                          onclick="findClue(this, 'urgency')">
+                        24 hours
+                    </span>.
+                </p>
+
+                <p>
+                    Click the link below:
+                </p>
+
+                <p>
+                    <span class="clue"
+                          onclick="findClue(this, 'link')">
+                        http://account-verification.example
+                    </span>
+                </p>
+
+                <p>
+                    We may request your
+                    <span class="clue"
+                          onclick="findClue(this, 'information')">
+                        username, password, and security information
+                    </span>
+                    during verification.
+                </p>
+
+                <p>
+                    Thank you,<br>
+                    Account Security Team
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- INVESTIGATION -->
+
+        <div class="investigation">
+
+            <h3>
+                🔎 Investigation Progress
+            </h3>
+
+            <p class="progress-text">
+                Find the suspicious clues hidden in the email.
+            </p>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress"
+                    id="progress">
+                </div>
+
+            </div>
+
+            <p class="progress-text">
+
+                Clues found:
+                <strong id="clueCount">0</strong> / 4
+
+            </p>
+
+        </div>
+
+
+        <!-- FEEDBACK -->
+
+        <div
+            class="feedback"
+            id="feedback">
+
+            <h3>
+                ✅ Investigation Complete
+            </h3>
+
+            <p id="feedbackText">
+                Great work! You identified the major warning signs.
+            </p>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+            <button onclick="finishInvestigation()">
+                🚨 Analyze Email
+            </button>
+
+            <button
+                class="reset"
+                onclick="resetSimulator()">
+                🔄 Reset Simulator
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         OTHER SIMULATORS
+    ========================= -->
+
+    <div class="future-simulators">
+
+        <h2 class="section-title">
+            🧪 More Security Simulators
+        </h2>
+
+        <p class="section-subtitle">
+            More fictional training environments are coming.
+        </p>
+
+
+        <div class="simulator-grid">
+
+
+            <div class="sim-card">
+
+                <div class="sim-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    Log Detective
+                </h3>
+
+                <p>
+                    Examine fictional computer logs and
+                    identify unusual activity.
+                </p>
+
+                <span class="coming">
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="sim-card">
+
+                <div class="sim-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Network Traffic
+                </h3>
+
+                <p>
+                    Explore a fictional network and learn
+                    how analysts recognize suspicious patterns.
+                </p>
+
+                <span class="coming">
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="sim-card">
+
+                <div class="sim-icon">
+                    🧱
+                </div>
+
+                <h3>
+                    Firewall Rules
+                </h3>
+
+                <p>
+                    Decide whether fictional network requests
+                    should be allowed or blocked.
+                </p>
+
+                <span class="coming">
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="sim-card">
+
+                <div class="sim-icon">
+                    🚨
+                </div>
+
+                <h3>
+                    Incident Response
+                </h3>
+
+                <p>
+                    Work through a fictional security incident
+                    and decide what an analyst should do next.
+                </p>
+
+                <span class="coming">
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="sim-card">
+
+                <div class="sim-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Password Security
+                </h3>
+
+                <p>
+                    Learn how password length, uniqueness,
+                    and MFA improve account security.
+                </p>
+
+                <span class="coming">
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="sim-card">
+
+                <div class="sim-icon">
+                    🕵️
+                </div>
+
+                <h3>
+                    Security Analyst
+                </h3>
+
+                <p>
+                    Combine clues from several fictional
+                    security events and make an investigation.
+                </p>
+
+                <span class="coming">
+                    COMING SOON
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <strong>
+        🛡️ CyberStart
+    </strong>
+
+    <div class="line"></div>
+
+    <p>
+        LEARN. PRACTICE. STAY SECURE.
+    </p>
+
+    <p>
+        © 2026 CyberStart
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    let foundClues = 0;
+
+    const totalClues = 4;
+
+
+    function findClue(element, type) {
+
+        if (element.classList.contains("found")) {
+            return;
+        }
+
+        element.classList.add("found");
+
+        foundClues++;
+
+        document.getElementById("clueCount").textContent =
+            foundClues;
+
+        const progress =
+            (foundClues / totalClues) * 100;
+
+        document.getElementById("progress").style.width =
+            progress + "%";
+
+
+        if (foundClues === totalClues) {
+
+            const feedback =
+                document.getElementById("feedback");
+
+            const feedbackText =
+                document.getElementById("feedbackText");
+
+            feedbackText.textContent =
+                "Excellent investigation! You found the suspicious sender, artificial urgency, suspicious link, and request for sensitive information. These are common warning signs of phishing.";
+
+            feedback.classList.add("show");
+
+        }
+
+    }
+
+
+    function finishInvestigation() {
+
+        const feedback =
+            document.getElementById("feedback");
+
+        const feedbackText =
+            document.getElementById("feedbackText");
+
+
+        if (foundClues === totalClues) {
+
+            feedbackText.textContent =
+                "Investigation successful! You identified all four major warning signs. In a real situation, avoid clicking suspicious links and report the message through your organization's security process.";
+
+        } else {
+
+            feedbackText.textContent =
+                "Keep investigating. Look carefully at the sender, urgency, link, and information the message asks for.";
+
+        }
+
+        feedback.classList.add("show");
+
+    }
+
+
+    function resetSimulator() {
+
+        foundClues = 0;
+
+        document.getElementById("clueCount").textContent =
+            "0";
+
+        document.getElementById("progress").style.width =
+            "0%";
+
+        document.getElementById("feedback").classList.remove(
+            "show"
+        );
+
+
+        const clues =
+            document.querySelectorAll(".clue");
+
+        clues.forEach(function(clue) {
+
+            clue.classList.remove("found");
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
