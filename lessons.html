@@ -3,731 +3,1043 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CyberStart | Lessons</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CyberStart | Lessons</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    min-height: 100vh;
+
+    background-color: #050b16;
+
+    background-image:
+        linear-gradient(
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            min-height: 100vh;
-
-            background-color: #050b16;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-            background-image:
-                linear-gradient(
-                    rgba(0,170,255,0.035) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(0,170,255,0.035) 1px,
-                    transparent 1px
-                );
+    padding: 16px 6%;
 
-            background-size: 40px 40px;
-        }
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4,12,27,0.98),
+            rgba(7,20,40,0.96),
+            rgba(4,12,27,0.98)
+        );
 
-        /* =========================
-           NAVIGATION
-        ========================= */
+    border-bottom: 1px solid #00aaff;
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.25),
+        0 3px 25px rgba(0,0,0,0.5);
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+    backdrop-filter: blur(15px);
+}
 
-            padding: 16px 6%;
+nav::before {
+    content: "";
 
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(4,12,27,0.98),
-                    rgba(7,20,40,0.96),
-                    rgba(4,12,27,0.98)
-                );
+    position: absolute;
 
-            border-bottom: 1px solid #00aaff;
+    top: 0;
+    left: 8%;
 
-            box-shadow:
-                0 0 15px rgba(0,170,255,0.25),
-                0 3px 25px rgba(0,0,0,0.5);
+    width: 84%;
+    height: 2px;
 
-            backdrop-filter: blur(15px);
-        }
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00aaff,
+            #39ff88,
+            #00aaff,
+            transparent
+        );
 
-        nav::before {
-            content: "";
+    box-shadow:
+        0 0 12px #00aaff,
+        0 0 18px #39ff88;
+}
 
-            position: absolute;
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
 
-            top: 0;
-            left: 8%;
+.logo span {
+    color: #00aaff;
 
-            width: 84%;
-            height: 2px;
+    text-shadow:
+        0 0 10px #00aaff,
+        0 0 20px rgba(0,170,255,0.5);
+}
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #00aaff,
-                    #39ff88,
-                    #00aaff,
-                    transparent
-                );
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
 
-            box-shadow:
-                0 0 12px #00aaff,
-                0 0 18px #39ff88;
-        }
+nav a {
+    color: #e7f5ff;
 
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
+    text-decoration: none;
 
-            letter-spacing: -1px;
+    font-size: 15px;
+    font-weight: 600;
 
-            white-space: nowrap;
-        }
+    padding: 10px 4px;
 
-        .logo span {
-            color: #00aaff;
+    transition: 0.3s;
+}
 
-            text-shadow:
-                0 0 10px #00aaff,
-                0 0 20px rgba(0,170,255,0.5);
-        }
+nav a:hover {
+    color: #00d9ff;
 
-        nav ul {
-            display: flex;
-            align-items: center;
+    text-shadow:
+        0 0 10px #00aaff;
+}
 
-            gap: 20px;
+nav a.active {
+    color: #00d9ff;
+}
 
-            list-style: none;
-        }
+nav a.active::after {
+    content: "";
 
-        nav a {
-            color: #e7f5ff;
+    display: block;
 
-            text-decoration: none;
+    height: 3px;
 
-            font-size: 15px;
-            font-weight: 600;
+    margin-top: 5px;
 
-            padding: 10px 4px;
+    border-radius: 10px;
 
-            transition: 0.3s;
-        }
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
 
-        nav a:hover {
-            color: #00d9ff;
+    box-shadow:
+        0 0 8px #00aaff;
+}
 
-            text-shadow:
-                0 0 10px #00aaff;
-        }
+nav a.donate {
+    padding: 10px 17px;
 
-        nav a.active {
-            color: #00d9ff;
-        }
+    border: 1px solid #39ff88;
 
-        nav a.active::after {
-            content: "";
+    border-radius: 30px;
 
-            display: block;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,170,255,0.12),
+            rgba(57,255,136,0.12)
+        );
 
-            height: 3px;
+    box-shadow:
+        0 0 10px rgba(57,255,136,0.3);
+}
 
-            margin-top: 5px;
 
-            border-radius: 10px;
+/* =========================
+   HERO
+========================= */
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #00aaff,
-                    #39ff88
-                );
+.hero {
+    position: relative;
 
-            box-shadow:
-                0 0 8px #00aaff;
-        }
+    overflow: hidden;
 
-        nav a.donate {
-            padding: 10px 17px;
+    text-align: center;
 
-            border: 1px solid #39ff88;
+    padding: 90px 20px 70px;
 
-            border-radius: 30px;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(0,150,255,0.18),
+            transparent 40%
+        );
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,170,255,0.12),
-                    rgba(57,255,136,0.12)
-                );
+.hero::before {
+    content: "";
 
-            box-shadow:
-                0 0 10px rgba(57,255,136,0.3);
-        }
+    position: absolute;
 
-        /* =========================
-           HERO
-        ========================= */
+    width: 400px;
+    height: 400px;
 
-        .hero {
-            position: relative;
+    border-radius: 50%;
 
-            overflow: hidden;
+    background: rgba(0,140,255,0.15);
 
-            text-align: center;
+    filter: blur(100px);
 
-            padding: 90px 20px 70px;
+    top: -150px;
+    left: 5%;
 
-            background:
-                radial-gradient(
-                    circle at 50% 30%,
-                    rgba(0,150,255,0.18),
-                    transparent 40%
-                );
-        }
+    animation: glowMove 8s infinite alternate;
+}
 
-        .hero::before {
-            content: "";
+.hero::after {
+    content: "";
 
-            position: absolute;
+    position: absolute;
 
-            width: 400px;
-            height: 400px;
+    width: 350px;
+    height: 350px;
 
-            border-radius: 50%;
+    border-radius: 50%;
 
-            background: rgba(0,140,255,0.15);
+    background: rgba(57,255,136,0.08);
 
-            filter: blur(100px);
+    filter: blur(100px);
 
-            top: -150px;
-            left: 5%;
+    right: 5%;
+    bottom: -100px;
 
-            animation: glowMove 8s infinite alternate;
-        }
+    animation: glowMove2 9s infinite alternate;
+}
 
-        .hero::after {
-            content: "";
+@keyframes glowMove {
 
-            position: absolute;
+    from {
+        transform: translateX(0);
+    }
 
-            width: 350px;
-            height: 350px;
+    to {
+        transform: translateX(220px);
+    }
 
-            border-radius: 50%;
+}
 
-            background: rgba(57,255,136,0.08);
+@keyframes glowMove2 {
 
-            filter: blur(100px);
+    from {
+        transform: translateX(0);
+    }
 
-            right: 5%;
-            bottom: -100px;
+    to {
+        transform: translateX(-220px);
+    }
 
-            animation: glowMove2 9s infinite alternate;
-        }
+}
 
-        @keyframes glowMove {
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
 
-            from {
-                transform: translateX(0);
-            }
+.hero-icon {
+    font-size: 70px;
 
-            to {
-                transform: translateX(220px);
-            }
+    margin-bottom: 15px;
 
-        }
+    filter:
+        drop-shadow(0 0 15px #00aaff)
+        drop-shadow(0 0 20px rgba(57,255,136,0.3));
+}
 
-        @keyframes glowMove2 {
+.hero h1 {
+    font-size: clamp(45px, 8vw, 80px);
 
-            from {
-                transform: translateX(0);
-            }
+    margin-bottom: 20px;
 
-            to {
-                transform: translateX(-220px);
-            }
+    font-weight: 900;
+}
 
-        }
+.hero h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #00d9ff,
+            #39ff88
+        );
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+    -webkit-background-clip: text;
+    background-clip: text;
 
-        .hero-icon {
-            font-size: 70px;
+    color: transparent;
+}
 
-            margin-bottom: 15px;
+.hero p {
+    max-width: 720px;
 
-            filter:
-                drop-shadow(0 0 15px #00aaff)
-                drop-shadow(0 0 20px rgba(57,255,136,0.3));
-        }
+    margin: auto;
 
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 80px);
+    color: #b9cada;
 
-            margin-bottom: 20px;
+    font-size: 18px;
 
-            font-weight: 900;
-        }
+    line-height: 1.7;
+}
 
-        .hero h1 span {
-            background:
-                linear-gradient(
-                    90deg,
-                    #00aaff,
-                    #00d9ff,
-                    #39ff88
-                );
 
-            -webkit-background-clip: text;
-            background-clip: text;
+/* =========================
+   VISUAL LESSONS
+========================= */
 
-            color: transparent;
-        }
+.visual-lessons {
+    width: 92%;
+    max-width: 1200px;
 
-        .hero p {
-            max-width: 720px;
+    margin: 70px auto 90px;
+}
 
-            margin: auto;
+.visual-title {
+    text-align: center;
 
-            color: #b9cada;
+    margin-bottom: 35px;
+}
 
-            font-size: 18px;
+.visual-title h2 {
+    font-size: 38px;
 
-            line-height: 1.7;
-        }
+    margin-bottom: 10px;
 
-        /* =========================
-           LESSON CONTAINER
-        ========================= */
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #00d9ff,
+            #39ff88
+        );
 
-        .lessons-container {
+    -webkit-background-clip: text;
+    background-clip: text;
 
-            width: 92%;
-            max-width: 1200px;
+    color: transparent;
+}
 
-            margin: 60px auto 100px;
-        }
+.visual-title p {
+    color: #9db2c5;
 
-        /* =========================
-           LEVEL HEADERS
-        ========================= */
+    line-height: 1.6;
 
-        .level {
-            margin-bottom: 60px;
-        }
+    font-size: 17px;
+}
 
-        .level-header {
 
-            display: flex;
+/* =========================
+   DIAGRAM CARD
+========================= */
 
-            align-items: center;
+.diagram-card {
+    position: relative;
 
-            gap: 15px;
+    overflow: hidden;
 
-            margin-bottom: 25px;
+    padding: 38px;
 
-            padding-bottom: 15px;
+    border-radius: 22px;
 
-            border-bottom: 1px solid rgba(0,170,255,0.25);
-        }
+    border: 1px solid rgba(0,170,255,0.35);
 
-        .level-number {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,24,45,0.96),
+            rgba(3,12,25,0.96)
+        );
 
-            width: 48px;
-            height: 48px;
+    box-shadow:
+        0 0 30px rgba(0,170,255,0.08),
+        0 15px 45px rgba(0,0,0,0.3);
+}
 
-            display: flex;
+.diagram-card::before {
+    content: "";
 
-            justify-content: center;
-            align-items: center;
+    position: absolute;
 
-            border-radius: 14px;
+    top: 0;
+    left: 0;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,170,255,0.2),
-                    rgba(57,255,136,0.12)
-                );
+    width: 100%;
+    height: 3px;
 
-            border: 1px solid #00aaff;
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88,
+            #00aaff
+        );
 
-            box-shadow:
-                0 0 15px rgba(0,170,255,0.25);
+    box-shadow:
+        0 0 15px #00aaff;
+}
 
-            font-weight: bold;
-        }
+.diagram-heading {
+    text-align: center;
 
-        .level-header h2 {
-            font-size: 28px;
-        }
+    margin-bottom: 38px;
+}
 
-        .level-header p {
-            color: #7f96ac;
+.diagram-heading h3 {
+    font-size: 29px;
 
-            margin-left: auto;
-        }
+    margin-bottom: 9px;
+}
 
-        /* =========================
-           LESSON GRID
-        ========================= */
+.diagram-heading p {
+    color: #8fa7ba;
 
-        .lesson-grid {
+    line-height: 1.6;
+}
 
-            display: grid;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+/* =========================
+   DIAGRAM FLOW
+========================= */
 
-            gap: 22px;
-        }
+.diagram-flow {
+    display: flex;
 
-        /* =========================
-           LESSON CARD
-        ========================= */
+    align-items: center;
 
-        .lesson-card {
+    justify-content: center;
 
-            position: relative;
+    gap: 12px;
 
-            overflow: hidden;
+    flex-wrap: wrap;
+}
 
-            padding: 27px;
+.diagram-node {
+    width: 190px;
 
-            min-height: 245px;
+    min-height: 155px;
 
-            border-radius: 18px;
+    display: flex;
 
-            border: 1px solid rgba(0,170,255,0.2);
+    flex-direction: column;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(11,25,45,0.95),
-                    rgba(5,14,28,0.95)
-                );
+    justify-content: center;
 
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.25);
+    align-items: center;
 
-            transition: 0.3s;
-        }
+    text-align: center;
 
-        .lesson-card::before {
+    padding: 20px;
 
-            content: "";
+    border-radius: 18px;
 
-            position: absolute;
+    border: 1px solid rgba(0,170,255,0.4);
 
-            top: 0;
-            left: 0;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.09),
+            rgba(57,255,136,0.05)
+        );
 
-            width: 100%;
-            height: 3px;
+    transition: 0.3s;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #00aaff,
-                    #39ff88
-                );
+    box-shadow:
+        inset 0 0 20px rgba(0,170,255,0.03);
+}
 
-            opacity: 0.7;
-        }
+.diagram-node:hover {
+    transform: translateY(-7px);
 
-        .lesson-card:hover {
+    border-color: #00d9ff;
 
-            transform: translateY(-6px);
+    box-shadow:
+        0 0 22px rgba(0,170,255,0.25);
+}
 
-            border-color: rgba(0,210,255,0.65);
+.diagram-icon {
+    font-size: 43px;
 
-            box-shadow:
-                0 15px 35px rgba(0,120,255,0.15);
-        }
+    margin-bottom: 10px;
 
-        .lesson-icon {
+    filter:
+        drop-shadow(0 0 9px rgba(0,170,255,0.5));
+}
 
-            font-size: 40px;
+.diagram-node h4 {
+    font-size: 17px;
 
-            margin-bottom: 15px;
+    margin-bottom: 7px;
+}
 
-            filter:
-                drop-shadow(0 0 8px rgba(0,170,255,0.5));
-        }
+.diagram-node p {
+    color: #91a8ba;
 
-        .lesson-card h3 {
+    font-size: 13px;
 
-            font-size: 21px;
+    line-height: 1.5;
+}
 
-            margin-bottom: 12px;
-        }
+.diagram-arrow {
+    font-size: 30px;
 
-        .lesson-card p {
+    color: #39ff88;
 
-            color: #a9bacc;
+    text-shadow:
+        0 0 10px #39ff88,
+        0 0 20px rgba(57,255,136,0.4);
+}
 
-            line-height: 1.65;
 
-            font-size: 15px;
-        }
+/* =========================
+   DIAGRAM EXPLANATION
+========================= */
 
-        .lesson-tag {
+.diagram-explanation {
+    margin-top: 35px;
 
-            display: inline-block;
+    padding: 22px;
 
-            margin-top: 18px;
+    border-radius: 15px;
 
-            padding: 5px 10px;
+    border: 1px solid rgba(57,255,136,0.25);
 
-            border-radius: 20px;
+    background:
+        rgba(57,255,136,0.04);
+}
 
-            font-size: 11px;
+.diagram-explanation strong {
+    color: #39ff88;
+}
 
-            font-weight: bold;
+.diagram-explanation p {
+    color: #b5c7d5;
 
-            letter-spacing: 1px;
+    line-height: 1.7;
+}
 
-            color: #9feaff;
 
-            border: 1px solid rgba(0,170,255,0.35);
+/* =========================
+   DIAGRAM CONTROLS
+========================= */
 
-            background: rgba(0,170,255,0.08);
-        }
+.diagram-controls {
+    display: flex;
 
-        /* =========================
-           LEARNING TIP
-        ========================= */
+    justify-content: center;
 
-        .tip-box {
+    gap: 15px;
 
-            margin-top: 50px;
+    margin-top: 30px;
+}
 
-            padding: 30px;
+.diagram-btn {
+    border: 1px solid #00aaff;
 
-            border-radius: 18px;
+    background:
+        rgba(0,170,255,0.08);
 
-            border: 1px solid rgba(57,255,136,0.35);
+    color: white;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(57,255,136,0.08),
-                    rgba(0,170,255,0.07)
-                );
+    padding: 12px 22px;
 
-            box-shadow:
-                0 0 25px rgba(57,255,136,0.05);
+    border-radius: 25px;
 
-            text-align: center;
-        }
+    cursor: pointer;
 
-        .tip-box h2 {
+    font-weight: bold;
 
-            margin-bottom: 12px;
+    transition: 0.3s;
+}
 
-            color: #39ff88;
-        }
+.diagram-btn:hover {
+    background:
+        rgba(0,170,255,0.2);
 
-        .tip-box p {
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.3);
 
-            color: #b8c8d7;
+    transform: translateY(-2px);
+}
 
-            line-height: 1.7;
-        }
+.diagram-counter {
+    text-align: center;
 
-        /* =========================
-           FOOTER
-        ========================= */
+    margin-top: 15px;
 
-        footer {
+    color: #6f899d;
 
-            text-align: center;
+    font-size: 13px;
+}
 
-            padding: 50px 20px;
 
-            border-top: 1px solid rgba(0,170,255,0.25);
+/* =========================
+   LESSON CONTAINER
+========================= */
 
-            background: rgba(3,9,20,0.8);
+.lessons-container {
+    width: 92%;
+    max-width: 1200px;
 
-            color: #7f91a4;
-        }
+    margin: 60px auto 100px;
+}
 
-        .footer-logo {
 
-            font-size: 27px;
+/* =========================
+   LEVEL HEADERS
+========================= */
 
-            font-weight: bold;
+.level {
+    margin-bottom: 60px;
+}
 
-            color: white;
+.level-header {
+    display: flex;
 
-            margin-bottom: 15px;
-        }
+    align-items: center;
 
-        .footer-logo span {
+    gap: 15px;
 
-            color: #00aaff;
-        }
+    margin-bottom: 25px;
 
-        .slogan {
+    padding-bottom: 15px;
 
-            font-size: 12px;
+    border-bottom: 1px solid rgba(0,170,255,0.25);
+}
 
-            letter-spacing: 5px;
+.level-number {
+    width: 48px;
+    height: 48px;
 
-            color: #b9c9d8;
+    display: flex;
 
-            margin-bottom: 20px;
-        }
+    justify-content: center;
+    align-items: center;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    border-radius: 14px;
 
-        @media (max-width: 950px) {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,170,255,0.2),
+            rgba(57,255,136,0.12)
+        );
 
-            nav {
+    border: 1px solid #00aaff;
 
-                flex-direction: column;
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.25);
 
-                gap: 14px;
-            }
+    font-weight: bold;
+}
 
-            nav ul {
+.level-header h2 {
+    font-size: 28px;
+}
 
-                justify-content: center;
+.level-header p {
+    color: #7f96ac;
 
-                flex-wrap: wrap;
+    margin-left: auto;
+}
 
-                gap: 12px;
-            }
 
-            .lesson-grid {
+/* =========================
+   LESSON GRID
+========================= */
 
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
+.lesson-grid {
+    display: grid;
 
-            .level-header {
+    grid-template-columns:
+        repeat(3, 1fr);
 
-                flex-wrap: wrap;
-            }
+    gap: 22px;
+}
 
-            .level-header p {
 
-                width: 100%;
+/* =========================
+   LESSON CARD
+========================= */
 
-                margin-left: 63px;
-            }
-        }
+.lesson-card {
+    position: relative;
 
-        @media (max-width: 600px) {
+    overflow: hidden;
 
-            nav {
+    padding: 27px;
 
-                padding: 15px 10px;
-            }
+    min-height: 245px;
 
-            .logo {
+    border-radius: 18px;
 
-                font-size: 24px;
-            }
+    border: 1px solid rgba(0,170,255,0.2);
 
-            nav ul {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11,25,45,0.95),
+            rgba(5,14,28,0.95)
+        );
 
-                gap: 8px 12px;
-            }
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
 
-            nav a {
+    transition: 0.3s;
+}
 
-                font-size: 13px;
-            }
+.lesson-card::before {
+    content: "";
 
-            nav a.donate {
+    position: absolute;
 
-                padding: 8px 12px;
-            }
+    top: 0;
+    left: 0;
 
-            .hero {
+    width: 100%;
+    height: 3px;
 
-                padding: 65px 18px 55px;
-            }
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
 
-            .hero-icon {
+    opacity: 0.7;
+}
 
-                font-size: 55px;
-            }
+.lesson-card:hover {
+    transform: translateY(-6px);
 
-            .hero h1 {
+    border-color: rgba(0,210,255,0.65);
 
-                font-size: 48px;
-            }
+    box-shadow:
+        0 15px 35px rgba(0,120,255,0.15);
+}
 
-            .hero p {
+.lesson-icon {
+    font-size: 40px;
 
-                font-size: 16px;
-            }
+    margin-bottom: 15px;
 
-            .lessons-container {
+    filter:
+        drop-shadow(0 0 8px rgba(0,170,255,0.5));
+}
 
-                width: 94%;
+.lesson-card h3 {
+    font-size: 21px;
 
-                margin-top: 40px;
-            }
+    margin-bottom: 12px;
+}
 
-            .lesson-grid {
+.lesson-card p {
+    color: #a9bacc;
 
-                grid-template-columns: 1fr;
-            }
+    line-height: 1.65;
 
-            .level-header h2 {
+    font-size: 15px;
+}
 
-                font-size: 24px;
-            }
+.lesson-tag {
+    display: inline-block;
 
-            .level-header p {
+    margin-top: 18px;
 
-                margin-left: 0;
-            }
+    padding: 5px 10px;
 
-            .lesson-card {
+    border-radius: 20px;
 
-                min-height: auto;
-            }
+    font-size: 11px;
 
-            .tip-box {
+    font-weight: bold;
 
-                padding: 25px 20px;
-            }
+    letter-spacing: 1px;
 
-        }
+    color: #9feaff;
 
-    </style>
+    border: 1px solid rgba(0,170,255,0.35);
+
+    background:
+        rgba(0,170,255,0.08);
+}
+
+
+/* =========================
+   LEARNING TIP
+========================= */
+
+.tip-box {
+    margin-top: 50px;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(57,255,136,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(57,255,136,0.08),
+            rgba(0,170,255,0.07)
+        );
+
+    box-shadow:
+        0 0 25px rgba(57,255,136,0.05);
+
+    text-align: center;
+}
+
+.tip-box h2 {
+    margin-bottom: 12px;
+
+    color: #39ff88;
+}
+
+.tip-box p {
+    color: #b8c8d7;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    border-top: 1px solid rgba(0,170,255,0.25);
+
+    background:
+        rgba(3,9,20,0.8);
+
+    color: #7f91a4;
+}
+
+.footer-logo {
+    font-size: 27px;
+
+    font-weight: bold;
+
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+.footer-logo span {
+    color: #00aaff;
+}
+
+.slogan {
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    color: #b9c9d8;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+    nav ul {
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+    .lesson-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .level-header {
+        flex-wrap: wrap;
+    }
+
+    .level-header p {
+        width: 100%;
+
+        margin-left: 63px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 10px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    nav ul {
+        gap: 8px 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    nav a.donate {
+        padding: 8px 12px;
+    }
+
+    .hero {
+        padding: 65px 18px 55px;
+    }
+
+    .hero-icon {
+        font-size: 55px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .visual-lessons {
+        width: 94%;
+
+        margin-top: 45px;
+    }
+
+    .visual-title h2 {
+        font-size: 29px;
+    }
+
+    .visual-title p {
+        font-size: 15px;
+    }
+
+    .diagram-card {
+        padding: 25px 15px;
+    }
+
+    .diagram-heading h3 {
+        font-size: 23px;
+    }
+
+    .diagram-flow {
+        flex-direction: column;
+    }
+
+    .diagram-arrow {
+        transform: rotate(90deg);
+    }
+
+    .diagram-node {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .diagram-controls {
+        flex-direction: column;
+    }
+
+    .diagram-btn {
+        width: 100%;
+    }
+
+    .lessons-container {
+        width: 94%;
+
+        margin-top: 40px;
+    }
+
+    .lesson-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .level-header h2 {
+        font-size: 24px;
+    }
+
+    .level-header p {
+        margin-left: 0;
+    }
+
+    .lesson-card {
+        min-height: auto;
+    }
+
+    .tip-box {
+        padding: 25px 20px;
+    }
+
+}
+
+</style>
 
 </head>
+
 
 <body>
 
@@ -780,8 +1092,6 @@
             </a>
         </li>
 
-        <!-- NEW CODING LINK -->
-
         <li>
             <a href="coding.html">
                 💻 Coding
@@ -816,11 +1126,9 @@
         </h1>
 
         <p>
-
             Follow the CyberStart learning path
             from cybersecurity fundamentals to
             advanced security concepts.
-
         </p>
 
     </div>
@@ -829,592 +1137,680 @@
 
 
 <!-- =========================
-     LESSONS
+     VISUAL DIAGRAM LESSONS
+========================= -->
+
+<section class="visual-lessons">
+
+    <div class="visual-title">
+
+        <h2>
+            🧠 Visual Cyber Lessons
+        </h2>
+
+        <p>
+            Don't just read cybersecurity concepts.
+            See how the pieces connect.
+        </p>
+
+    </div>
+
+
+    <div class="diagram-card">
+
+        <div class="diagram-heading">
+
+            <h3 id="diagramTitle">
+                🎣 How Phishing Works
+            </h3>
+
+            <p id="diagramSubtitle">
+                Follow the path from suspicious message
+                to a protected decision.
+            </p>
+
+        </div>
+
+
+        <div
+            class="diagram-flow"
+            id="diagramFlow">
+
+        </div>
+
+
+        <div class="diagram-explanation">
+
+            <p id="diagramExplanation">
+
+                <strong>
+                    What to remember:
+                </strong>
+
+                Phishing relies on deception.
+                Slow down, verify unexpected requests,
+                and avoid entering information into
+                suspicious websites.
+
+            </p>
+
+        </div>
+
+
+        <div class="diagram-controls">
+
+            <button
+                class="diagram-btn"
+                onclick="previousDiagram()">
+
+                ← Previous
+
+            </button>
+
+
+            <button
+                class="diagram-btn"
+                onclick="nextDiagram()">
+
+                Next Lesson →
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="diagram-counter"
+            id="diagramCounter">
+
+            Lesson 1 of 8
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NORMAL LESSONS
 ========================= -->
 
 <main class="lessons-container">
 
 
-    <!-- =========================
-         BEGINNER
-    ========================= -->
+<!-- =========================
+     BEGINNER
+========================= -->
 
-    <section class="level">
+<section class="level">
 
-        <div class="level-header">
+    <div class="level-header">
 
-            <div class="level-number">
-                01
-            </div>
-
-            <div>
-
-                <h2>
-                    🟢 Beginner
-                </h2>
-
-            </div>
-
-            <p>
-                Build your foundation
-            </p>
-
+        <div class="level-number">
+            01
         </div>
 
-
-        <div class="lesson-grid">
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🛡️
-                </div>
-
-                <h3>
-                    What Is Cybersecurity?
-                </h3>
-
-                <p>
-                    Learn what cybersecurity is,
-                    why it matters, and what
-                    security professionals protect.
-                </p>
-
-                <span class="lesson-tag">
-                    FUNDAMENTALS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🎣
-                </div>
-
-                <h3>
-                    Phishing
-                </h3>
-
-                <p>
-                    Learn how attackers use
-                    deceptive messages and websites
-                    to trick people.
-                </p>
-
-                <span class="lesson-tag">
-                    THREATS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🔐
-                </div>
-
-                <h3>
-                    Strong Passwords
-                </h3>
-
-                <p>
-                    Understand why unique passwords
-                    and password managers can improve
-                    account security.
-                </p>
-
-                <span class="lesson-tag">
-                    ACCOUNT SECURITY
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    📱
-                </div>
-
-                <h3>
-                    Multi-Factor Authentication
-                </h3>
-
-                <p>
-                    Learn how MFA adds another layer
-                    of protection when signing into
-                    an account.
-                </p>
-
-                <span class="lesson-tag">
-                    AUTHENTICATION
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🦠
-                </div>
-
-                <h3>
-                    Malware
-                </h3>
-
-                <p>
-                    Explore what malware is and learn
-                    about common categories such as
-                    viruses, worms, and trojans.
-                </p>
-
-                <span class="lesson-tag">
-                    THREATS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🌐
-                </div>
-
-                <h3>
-                    Network Security
-                </h3>
-
-                <p>
-                    Learn why networks need security
-                    controls and how defenders protect
-                    connected systems.
-                </p>
-
-                <span class="lesson-tag">
-                    NETWORKS
-                </span>
-
-            </article>
-
+        <div>
+            <h2>
+                🟢 Beginner
+            </h2>
         </div>
-
-    </section>
-
-
-    <!-- =========================
-         INTERMEDIATE
-    ========================= -->
-
-    <section class="level">
-
-        <div class="level-header">
-
-            <div class="level-number">
-                02
-            </div>
-
-            <div>
-
-                <h2>
-                    🔵 Intermediate
-                </h2>
-
-            </div>
-
-            <p>
-                Understand attacks and defenses
-            </p>
-
-        </div>
-
-
-        <div class="lesson-grid">
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🔒
-                </div>
-
-                <h3>
-                    Encryption
-                </h3>
-
-                <p>
-                    Learn how encryption helps protect
-                    information by making data unreadable
-                    without the appropriate key.
-                </p>
-
-                <span class="lesson-tag">
-                    CRYPTOGRAPHY
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    #️⃣
-                </div>
-
-                <h3>
-                    Hashing
-                </h3>
-
-                <p>
-                    Understand how hash functions create
-                    fixed-size values and why hashing is
-                    useful in security.
-                </p>
-
-                <span class="lesson-tag">
-                    CRYPTOGRAPHY
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🧱
-                </div>
-
-                <h3>
-                    Firewalls
-                </h3>
-
-                <p>
-                    Learn how firewalls can filter network
-                    traffic according to security rules.
-                </p>
-
-                <span class="lesson-tag">
-                    DEFENSE
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🧠
-                </div>
-
-                <h3>
-                    Social Engineering
-                </h3>
-
-                <p>
-                    Discover how attackers may manipulate
-                    people instead of directly attacking
-                    technology.
-                </p>
-
-                <span class="lesson-tag">
-                    HUMAN FACTORS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🚨
-                </div>
-
-                <h3>
-                    Incident Response
-                </h3>
-
-                <p>
-                    Learn the basic process defenders use
-                    to identify, contain, investigate,
-                    and recover from security incidents.
-                </p>
-
-                <span class="lesson-tag">
-                    DEFENSE
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🔧
-                </div>
-
-                <h3>
-                    Vulnerabilities & Patching
-                </h3>
-
-                <p>
-                    Learn what vulnerabilities are and
-                    why software updates are important
-                    for reducing security risk.
-                </p>
-
-                <span class="lesson-tag">
-                    VULNERABILITIES
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    👤
-                </div>
-
-                <h3>
-                    Authentication vs Authorization
-                </h3>
-
-                <p>
-                    Understand the difference between
-                    proving who you are and determining
-                    what you are allowed to access.
-                </p>
-
-                <span class="lesson-tag">
-                    ACCESS CONTROL
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🚪
-                </div>
-
-                <h3>
-                    Access Control
-                </h3>
-
-                <p>
-                    Learn how organizations control which
-                    users and systems can access resources.
-                </p>
-
-                <span class="lesson-tag">
-                    SECURITY
-                </span>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ADVANCED
-    ========================= -->
-
-    <section class="level">
-
-        <div class="level-header">
-
-            <div class="level-number">
-                03
-            </div>
-
-            <div>
-
-                <h2>
-                    🟣 Advanced
-                </h2>
-
-            </div>
-
-            <p>
-                Think like a security analyst
-            </p>
-
-        </div>
-
-
-        <div class="lesson-grid">
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    ⚖️
-                </div>
-
-                <h3>
-                    Least Privilege
-                </h3>
-
-                <p>
-                    Learn why users and systems should
-                    receive only the access they actually
-                    need.
-                </p>
-
-                <span class="lesson-tag">
-                    ACCESS CONTROL
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🔗
-                </div>
-
-                <h3>
-                    VPNs
-                </h3>
-
-                <p>
-                    Understand the basic purpose of VPNs
-                    and how they can create protected
-                    connections across networks.
-                </p>
-
-                <span class="lesson-tag">
-                    NETWORKS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    📡
-                </div>
-
-                <h3>
-                    DNS
-                </h3>
-
-                <p>
-                    Learn how DNS helps translate domain
-                    names into IP addresses.
-                </p>
-
-                <span class="lesson-tag">
-                    NETWORKS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🏷️
-                </div>
-
-                <h3>
-                    IP Addresses
-                </h3>
-
-                <p>
-                    Learn what IP addresses are and how
-                    they help devices communicate across
-                    networks.
-                </p>
-
-                <span class="lesson-tag">
-                    NETWORKS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🌊
-                </div>
-
-                <h3>
-                    DDoS Attacks
-                </h3>
-
-                <p>
-                    Understand the concept of distributed
-                    denial-of-service attacks and how
-                    defenders can reduce their impact.
-                </p>
-
-                <span class="lesson-tag">
-                    THREATS
-                </span>
-
-            </article>
-
-
-            <article class="lesson-card">
-
-                <div class="lesson-icon">
-                    🔴
-                </div>
-
-                <h3>
-                    Ransomware
-                </h3>
-
-                <p>
-                    Learn how ransomware can disrupt
-                    organizations and why backups and
-                    layered security matter.
-                </p>
-
-                <span class="lesson-tag">
-                    THREATS
-                </span>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         TIP
-    ========================= -->
-
-    <div class="tip-box">
-
-        <h2>
-            💡 CyberStart Learning Tip
-        </h2>
 
         <p>
-
-            Don't try to memorize everything at once.
-            Learn a concept, test yourself with the quiz,
-            then practice it in a lab. Repetition is one
-            of the best ways to build cybersecurity knowledge.
-
+            Build your foundation
         </p>
 
     </div>
+
+
+    <div class="lesson-grid">
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🛡️
+            </div>
+
+            <h3>
+                What Is Cybersecurity?
+            </h3>
+
+            <p>
+                Learn what cybersecurity is,
+                why it matters, and what
+                security professionals protect.
+            </p>
+
+            <span class="lesson-tag">
+                FUNDAMENTALS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🎣
+            </div>
+
+            <h3>
+                Phishing
+            </h3>
+
+            <p>
+                Learn how attackers use
+                deceptive messages and websites
+                to trick people.
+            </p>
+
+            <span class="lesson-tag">
+                THREATS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🔐
+            </div>
+
+            <h3>
+                Strong Passwords
+            </h3>
+
+            <p>
+                Understand why unique passwords
+                and password managers can improve
+                account security.
+            </p>
+
+            <span class="lesson-tag">
+                ACCOUNT SECURITY
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                📱
+            </div>
+
+            <h3>
+                Multi-Factor Authentication
+            </h3>
+
+            <p>
+                Learn how MFA adds another layer
+                of protection when signing into
+                an account.
+            </p>
+
+            <span class="lesson-tag">
+                AUTHENTICATION
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🦠
+            </div>
+
+            <h3>
+                Malware
+            </h3>
+
+            <p>
+                Explore what malware is and learn
+                about common categories such as
+                viruses, worms, and trojans.
+            </p>
+
+            <span class="lesson-tag">
+                THREATS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🌐
+            </div>
+
+            <h3>
+                Network Security
+            </h3>
+
+            <p>
+                Learn why networks need security
+                controls and how defenders protect
+                connected systems.
+            </p>
+
+            <span class="lesson-tag">
+                NETWORKS
+            </span>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTERMEDIATE
+========================= -->
+
+<section class="level">
+
+    <div class="level-header">
+
+        <div class="level-number">
+            02
+        </div>
+
+        <div>
+            <h2>
+                🔵 Intermediate
+            </h2>
+        </div>
+
+        <p>
+            Understand attacks and defenses
+        </p>
+
+    </div>
+
+
+    <div class="lesson-grid">
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🔒
+            </div>
+
+            <h3>
+                Encryption
+            </h3>
+
+            <p>
+                Learn how encryption helps protect
+                information by making data unreadable
+                without the appropriate key.
+            </p>
+
+            <span class="lesson-tag">
+                CRYPTOGRAPHY
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                #️⃣
+            </div>
+
+            <h3>
+                Hashing
+            </h3>
+
+            <p>
+                Understand how hash functions create
+                fixed-size values and why hashing is
+                useful in security.
+            </p>
+
+            <span class="lesson-tag">
+                CRYPTOGRAPHY
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🧱
+            </div>
+
+            <h3>
+                Firewalls
+            </h3>
+
+            <p>
+                Learn how firewalls can filter network
+                traffic according to security rules.
+            </p>
+
+            <span class="lesson-tag">
+                DEFENSE
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🧠
+            </div>
+
+            <h3>
+                Social Engineering
+            </h3>
+
+            <p>
+                Discover how attackers may manipulate
+                people instead of directly attacking
+                technology.
+            </p>
+
+            <span class="lesson-tag">
+                HUMAN FACTORS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🚨
+            </div>
+
+            <h3>
+                Incident Response
+            </h3>
+
+            <p>
+                Learn the basic process defenders use
+                to identify, contain, investigate,
+                and recover from security incidents.
+            </p>
+
+            <span class="lesson-tag">
+                DEFENSE
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🔧
+            </div>
+
+            <h3>
+                Vulnerabilities & Patching
+            </h3>
+
+            <p>
+                Learn what vulnerabilities are and
+                why software updates are important
+                for reducing security risk.
+            </p>
+
+            <span class="lesson-tag">
+                VULNERABILITIES
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                👤
+            </div>
+
+            <h3>
+                Authentication vs Authorization
+            </h3>
+
+            <p>
+                Understand the difference between
+                proving who you are and determining
+                what you are allowed to access.
+            </p>
+
+            <span class="lesson-tag">
+                ACCESS CONTROL
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🚪
+            </div>
+
+            <h3>
+                Access Control
+            </h3>
+
+            <p>
+                Learn how organizations control which
+                users and systems can access resources.
+            </p>
+
+            <span class="lesson-tag">
+                SECURITY
+            </span>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADVANCED
+========================= -->
+
+<section class="level">
+
+    <div class="level-header">
+
+        <div class="level-number">
+            03
+        </div>
+
+        <div>
+            <h2>
+                🟣 Advanced
+            </h2>
+        </div>
+
+        <p>
+            Think like a security analyst
+        </p>
+
+    </div>
+
+
+    <div class="lesson-grid">
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Least Privilege
+            </h3>
+
+            <p>
+                Learn why users and systems should
+                receive only the access they actually
+                need.
+            </p>
+
+            <span class="lesson-tag">
+                ACCESS CONTROL
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🔗
+            </div>
+
+            <h3>
+                VPNs
+            </h3>
+
+            <p>
+                Understand the basic purpose of VPNs
+                and how they can create protected
+                connections across networks.
+            </p>
+
+            <span class="lesson-tag">
+                NETWORKS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                📡
+            </div>
+
+            <h3>
+                DNS
+            </h3>
+
+            <p>
+                Learn how DNS helps translate domain
+                names into IP addresses.
+            </p>
+
+            <span class="lesson-tag">
+                NETWORKS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🏷️
+            </div>
+
+            <h3>
+                IP Addresses
+            </h3>
+
+            <p>
+                Learn what IP addresses are and how
+                they help devices communicate across
+                networks.
+            </p>
+
+            <span class="lesson-tag">
+                NETWORKS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🌊
+            </div>
+
+            <h3>
+                DDoS Attacks
+            </h3>
+
+            <p>
+                Understand the concept of distributed
+                denial-of-service attacks and how
+                defenders can reduce their impact.
+            </p>
+
+            <span class="lesson-tag">
+                THREATS
+            </span>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <div class="lesson-icon">
+                🔴
+            </div>
+
+            <h3>
+                Ransomware
+            </h3>
+
+            <p>
+                Learn how ransomware can disrupt
+                organizations and why backups and
+                layered security matter.
+            </p>
+
+            <span class="lesson-tag">
+                THREATS
+            </span>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TIP
+========================= -->
+
+<div class="tip-box">
+
+    <h2>
+        💡 CyberStart Learning Tip
+    </h2>
+
+    <p>
+        Don't try to memorize everything at once.
+        Learn a concept, study the visual diagram,
+        test yourself with the quiz, then practice
+        it in a lab. Repetition is one of the best
+        ways to build cybersecurity knowledge.
+    </p>
+
+</div>
 
 
 </main>
@@ -1443,6 +1839,467 @@
     </p>
 
 </footer>
+
+
+<!-- =========================
+     VISUAL LESSON JAVASCRIPT
+========================= -->
+
+<script>
+
+const visualLessons = [
+
+    {
+        title: "🎣 How Phishing Works",
+
+        subtitle:
+            "Follow the path from suspicious message to a protected decision.",
+
+        steps: [
+
+            [
+                "📨",
+                "Message",
+                "A suspicious message arrives."
+            ],
+
+            [
+                "👀",
+                "User Sees It",
+                "The message tries to look trustworthy."
+            ],
+
+            [
+                "🔎",
+                "Check",
+                "The user verifies the sender and request."
+            ],
+
+            [
+                "🛡️",
+                "Defend",
+                "The suspicious message is reported or ignored."
+            ]
+
+        ],
+
+        explanation:
+            "Phishing relies on deception. Slow down, verify unexpected requests, and avoid entering information into suspicious websites."
+    },
+
+
+    {
+        title: "🔐 How Encryption Works",
+
+        subtitle:
+            "See how readable information can be protected.",
+
+        steps: [
+
+            [
+                "📄",
+                "Original Data",
+                "Information starts in readable form."
+            ],
+
+            [
+                "🔑",
+                "Encryption",
+                "A cryptographic process protects the data."
+            ],
+
+            [
+                "🔒",
+                "Protected Data",
+                "The information becomes unreadable without the needed key."
+            ],
+
+            [
+                "👤",
+                "Authorized User",
+                "The intended recipient can access the protected information."
+            ]
+
+        ],
+
+        explanation:
+            "Encryption helps protect information while it is stored or transmitted."
+    },
+
+
+    {
+        title: "🌐 How the Internet Works",
+
+        subtitle:
+            "Follow a simple path from your device to a website.",
+
+        steps: [
+
+            [
+                "📱",
+                "Your Device",
+                "You request a website."
+            ],
+
+            [
+                "📖",
+                "DNS",
+                "DNS helps find the website's IP address."
+            ],
+
+            [
+                "🌐",
+                "Network",
+                "Your request travels across networks."
+            ],
+
+            [
+                "🖥️",
+                "Server",
+                "A server sends information back to your device."
+            ]
+
+        ],
+
+        explanation:
+            "The internet is a network of connected systems. DNS helps translate human-friendly domain names into IP addresses."
+    },
+
+
+    {
+        title: "🧱 How a Firewall Works",
+
+        subtitle:
+            "See how security rules can filter network traffic.",
+
+        steps: [
+
+            [
+                "📡",
+                "Traffic",
+                "Network traffic attempts to enter or leave."
+            ],
+
+            [
+                "🧱",
+                "Firewall",
+                "Traffic is compared with security rules."
+            ],
+
+            [
+                "✅",
+                "Allowed",
+                "Approved traffic can continue."
+            ],
+
+            [
+                "🚫",
+                "Blocked",
+                "Traffic that violates the rules can be denied."
+            ]
+
+        ],
+
+        explanation:
+            "A firewall is one layer of defense. Good security usually uses multiple layers rather than relying on one control."
+    },
+
+
+    {
+        title: "🔑 Password Security",
+
+        subtitle:
+            "Understand the basic path to a safer account.",
+
+        steps: [
+
+            [
+                "🔑",
+                "Password",
+                "A unique password protects an account."
+            ],
+
+            [
+                "🗄️",
+                "Password Manager",
+                "A password manager can help create and store unique passwords."
+            ],
+
+            [
+                "📱",
+                "MFA",
+                "An additional authentication factor provides another layer."
+            ],
+
+            [
+                "🛡️",
+                "Protected Account",
+                "Multiple layers make unauthorized access harder."
+            ]
+
+        ],
+
+        explanation:
+            "Use unique passwords for important accounts and enable MFA when available."
+    },
+
+
+    {
+        title: "📱 How MFA Works",
+
+        subtitle:
+            "See how multiple authentication factors work together.",
+
+        steps: [
+
+            [
+                "👤",
+                "Identity",
+                "A person begins signing in."
+            ],
+
+            [
+                "🔑",
+                "Something You Know",
+                "A password is entered."
+            ],
+
+            [
+                "📱",
+                "Something You Have",
+                "Another approved factor is required."
+            ],
+
+            [
+                "✅",
+                "Access",
+                "The account can allow the sign-in."
+            ]
+
+        ],
+
+        explanation:
+            "MFA combines different types of authentication evidence to provide stronger account protection."
+    },
+
+
+    {
+        title: "🚨 Incident Response",
+
+        subtitle:
+            "See the basic defensive process after a security incident.",
+
+        steps: [
+
+            [
+                "🚨",
+                "Detect",
+                "A possible security incident is identified."
+            ],
+
+            [
+                "🔎",
+                "Investigate",
+                "Defenders gather information and determine what happened."
+            ],
+
+            [
+                "🛡️",
+                "Contain",
+                "Actions are taken to limit the incident."
+            ],
+
+            [
+                "🔧",
+                "Recover",
+                "Systems are restored and lessons are recorded."
+            ]
+
+        ],
+
+        explanation:
+            "Incident response helps organizations react in an organized way instead of making random decisions during an emergency."
+    },
+
+
+    {
+        title: "🦠 Understanding Malware",
+
+        subtitle:
+            "Learn the defensive view of how malware can affect systems.",
+
+        steps: [
+
+            [
+                "📥",
+                "Entry",
+                "Malware may reach a system through unsafe or compromised sources."
+            ],
+
+            [
+                "💻",
+                "Execution",
+                "Malicious software may run on the affected system."
+            ],
+
+            [
+                "⚠️",
+                "Impact",
+                "The system or its information may be affected."
+            ],
+
+            [
+                "🛡️",
+                "Defense",
+                "Updates, security tools, backups, and safe behavior reduce risk."
+            ]
+
+        ],
+
+        explanation:
+            "Malware comes in many forms. The safest approach is to focus on prevention, detection, containment, and recovery."
+    }
+
+];
+
+
+let currentDiagram = 0;
+
+
+function loadDiagram() {
+
+    const lesson =
+        visualLessons[currentDiagram];
+
+
+    document.getElementById(
+        "diagramTitle"
+    ).textContent =
+        lesson.title;
+
+
+    document.getElementById(
+        "diagramSubtitle"
+    ).textContent =
+        lesson.subtitle;
+
+
+    document.getElementById(
+        "diagramExplanation"
+    ).innerHTML =
+        "<strong>What to remember:</strong> " +
+        lesson.explanation;
+
+
+    const flow =
+        document.getElementById(
+            "diagramFlow"
+        );
+
+
+    flow.innerHTML = "";
+
+
+    lesson.steps.forEach(
+        (step, index) => {
+
+            const node =
+                document.createElement("div");
+
+            node.className =
+                "diagram-node";
+
+
+            node.innerHTML = `
+
+                <div class="diagram-icon">
+                    ${step[0]}
+                </div>
+
+                <h4>
+                    ${step[1]}
+                </h4>
+
+                <p>
+                    ${step[2]}
+                </p>
+
+            `;
+
+
+            flow.appendChild(node);
+
+
+            if (
+                index <
+                lesson.steps.length - 1
+            ) {
+
+                const arrow =
+                    document.createElement("div");
+
+                arrow.className =
+                    "diagram-arrow";
+
+                arrow.textContent =
+                    "→";
+
+                flow.appendChild(arrow);
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "diagramCounter"
+    ).textContent =
+        "Lesson " +
+        (currentDiagram + 1) +
+        " of " +
+        visualLessons.length;
+
+}
+
+
+function nextDiagram() {
+
+    currentDiagram++;
+
+    if (
+        currentDiagram >=
+        visualLessons.length
+    ) {
+
+        currentDiagram = 0;
+
+    }
+
+    loadDiagram();
+
+}
+
+
+function previousDiagram() {
+
+    currentDiagram--;
+
+    if (currentDiagram < 0) {
+
+        currentDiagram =
+            visualLessons.length - 1;
+
+    }
+
+    loadDiagram();
+
+}
+
+
+loadDiagram();
+
+</script>
 
 
 </body>
