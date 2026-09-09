@@ -1810,4 +1810,86 @@ function checkCSS() {
     ) {
 
         result.textContent =
-            "✅
+            "✅ Correct! CSS controls the appearance and design of a webpage.";
+
+    } else {
+
+        result.textContent =
+            "❌ Try again. Think about how a webpage looks.";
+
+    }
+
+}
+
+
+/* =========================
+   JAVASCRIPT CHALLENGE
+========================= */
+
+function checkJS() {
+
+    const answer =
+        document
+        .getElementById("jsAnswer")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const result =
+        document.getElementById("jsResult");
+
+
+    if (
+        answer === "javascript" ||
+        answer === "js"
+    ) {
+
+        result.textContent =
+            "✅ Correct! JavaScript can add interactivity.";
+
+    } else {
+
+        result.textContent =
+            "❌ Not quite. The answer is JavaScript.";
+
+    }
+
+}
+
+
+/* =========================
+   LIVE CODE EDITOR
+========================= */
+
+function runCode() {
+
+    const code =
+        document
+        .getElementById("codeInput")
+        .value;
+
+    const preview =
+        document
+        .getElementById("preview");
+
+    preview.srcdoc = code;
+
+}
+
+
+/* =========================
+   LOAD PREVIEW
+========================= */
+
+window.onload = function() {
+
+    runCode();
+
+};
+
+</script>
+
+
+</body>
+
+</html>
