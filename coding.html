@@ -2,619 +2,1007 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CyberStart | Coding Lessons</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.12), transparent 30%),
-                radial-gradient(circle at 80% 10%, rgba(0, 255, 170, 0.08), transparent 30%),
-                linear-gradient(135deg, #050814, #07111f, #050814);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* CYBER GRID */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0, 180, 255, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 180, 255, 0.035) 1px, transparent 1px);
-            background-size: 45px 45px;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        /* MOVING GLOW */
-
-        body::after {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 180, 255, 0.10), transparent 70%);
-            top: -150px;
-            left: 20%;
-            animation: glowMove 8s infinite alternate ease-in-out;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        @keyframes glowMove {
-            from {
-                transform: translateX(-150px) translateY(0);
-            }
-
-            to {
-                transform: translateX(350px) translateY(180px);
-            }
-        }
-
-        /* NAVBAR */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 18px 7%;
-
-            background: rgba(5, 10, 22, 0.82);
-            backdrop-filter: blur(14px);
-
-            border-bottom: 1px solid rgba(0, 200, 255, 0.18);
-        }
-
-        .logo {
-            font-size: 23px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            color: #00d9ff;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            color: #c9d7e5;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00d9ff;
-            text-shadow: 0 0 12px rgba(0, 217, 255, 0.8);
-        }
-
-        .nav-links .active {
-            color: #00d9ff;
-        }
-
-        .donate {
-            padding: 9px 15px;
-            border: 1px solid rgba(0, 255, 160, 0.5);
-            border-radius: 20px;
-            color: #5fffc1 !important;
-            box-shadow: 0 0 15px rgba(0, 255, 160, 0.08);
-        }
-
-        /* HERO */
-
-        .hero {
-            text-align: center;
-            padding: 90px 20px 60px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .hero-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.6));
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 72px);
-            margin-bottom: 12px;
-            background: linear-gradient(90deg, #ffffff, #00d9ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero .tagline {
-            color: #00d9ff;
-            letter-spacing: 4px;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            color: #aebdcb;
-            line-height: 1.7;
-            max-width: 720px;
-            margin: auto;
-            font-size: 17px;
-        }
-
-        /* LEVEL SECTION */
-
-        .level {
-            max-width: 1150px;
-            margin: 35px auto 70px;
-            padding: 0 20px;
-        }
-
-        .level-title {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 25px;
-        }
-
-        .level-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 48px;
-            height: 48px;
-
-            border-radius: 14px;
-
-            background: rgba(0, 200, 255, 0.08);
-            border: 1px solid rgba(0, 200, 255, 0.35);
-
-            color: #00d9ff;
-            font-weight: bold;
-            font-size: 18px;
-
-            box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
-        }
-
-        .level-title h2 {
-            font-size: 28px;
-        }
-
-        .level-title p {
-            color: #8394a6;
-            font-size: 14px;
-        }
-
-        /* LESSON GRID */
-
-        .lesson-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .lesson-card {
-            background: rgba(10, 20, 36, 0.68);
-            border: 1px solid rgba(0, 200, 255, 0.14);
-            border-radius: 18px;
-            padding: 24px;
-
-            backdrop-filter: blur(12px);
-
-            transition: 0.3s;
-
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.18),
-                inset 0 1px rgba(255, 255, 255, 0.02);
-        }
-
-        .lesson-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 217, 255, 0.42);
-            box-shadow:
-                0 0 25px rgba(0, 180, 255, 0.10),
-                0 20px 50px rgba(0, 0, 0, 0.22);
-        }
-
-        .lesson-card h3 {
-            margin-bottom: 10px;
-            font-size: 19px;
-        }
-
-        .lesson-card p {
-            color: #9fb0c1;
-            line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-
-        .lesson-tag {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 20px;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            color: #00d9ff;
-            background: rgba(0, 217, 255, 0.08);
-            border: 1px solid rgba(0, 217, 255, 0.2);
-        }
-
-        /* CODE LAB */
-
-        .code-lab {
-            max-width: 1150px;
-            margin: 20px auto 80px;
-            padding: 0 20px;
-        }
-
-        .code-box {
-            background: rgba(7, 15, 28, 0.88);
-            border: 1px solid rgba(0, 217, 255, 0.25);
-            border-radius: 20px;
-            overflow: hidden;
-
-            box-shadow:
-                0 0 35px rgba(0, 150, 255, 0.07),
-                0 20px 60px rgba(0, 0, 0, 0.25);
-        }
-
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 15px 18px;
-
-            background: rgba(0, 217, 255, 0.045);
-            border-bottom: 1px solid rgba(0, 217, 255, 0.12);
-        }
-
-        .code-header strong {
-            color: #d9f7ff;
-        }
-
-        .code-header span {
-            color: #718396;
-            font-size: 12px;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 240px;
-
-            resize: vertical;
-
-            background: #030711;
-            color: #d9f7ff;
-
-            border: none;
-            outline: none;
-
-            padding: 20px;
-
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .run-area {
-            padding: 15px 18px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .run-button {
-            border: none;
-            border-radius: 10px;
-
-            padding: 12px 20px;
-
-            background: linear-gradient(90deg, #00bfff, #00d9ff);
-            color: #001018;
-
-            font-weight: bold;
-            cursor: pointer;
-
-            transition: 0.25s;
-        }
-
-        .run-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
-        }
-
-        .preview-title {
-            padding: 15px 18px 5px;
-            color: #8fa4b8;
-            font-size: 13px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 260px;
-            border: none;
-            background: white;
-        }
-
-        /* TIP */
-
-        .tip {
-            max-width: 900px;
-            margin: 0 auto 80px;
-            padding: 28px;
-
-            border-radius: 18px;
-
-            background: rgba(0, 255, 160, 0.035);
-            border: 1px solid rgba(0, 255, 160, 0.15);
-        }
-
-        .tip h2 {
-            color: #5fffc1;
-            margin-bottom: 10px;
-        }
-
-        .tip p {
-            color: #9fb0c1;
-            line-height: 1.7;
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 35px 20px;
-
-            border-top: 1px solid rgba(0, 200, 255, 0.12);
-
-            background: rgba(2, 7, 16, 0.7);
-        }
-
-        footer strong {
-            color: #00d9ff;
-        }
-
-        footer p {
-            margin-top: 8px;
-            color: #6f8193;
-            font-size: 13px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 850px) {
-
-            nav {
-                padding: 15px 4%;
-            }
-
-            .nav-links {
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: flex-end;
-            }
-
-            .nav-links a {
-                font-size: 11px;
-            }
-
-            .lesson-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 65px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            nav {
-                align-items: flex-start;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .nav-links {
-                max-width: 220px;
-            }
-
-            .nav-links a {
-                font-size: 10px;
-            }
-
-            .hero h1 {
-                font-size: 45px;
-            }
-
-            .level-title h2 {
-                font-size: 22px;
-            }
-
-            textarea {
-                min-height: 220px;
-                font-size: 13px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CyberStart | Coding Lessons</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    min-height: 100vh;
+
+    background-color: #050b16;
+
+    background-image:
+        linear-gradient(
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 5%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,15,35,0.98),
+            rgba(5,20,40,0.95)
+        );
+
+    border-bottom: 1px solid #00aaff;
+
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.25);
+
+    backdrop-filter: blur(15px);
+}
+
+nav::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88,
+            #00aaff
+        );
+
+    box-shadow:
+        0 0 12px #00aaff;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00aaff;
+}
+
+nav ul {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+nav a {
+    position: relative;
+
+    color: white;
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00aaff;
+
+    text-shadow:
+        0 0 10px #00aaff;
+}
+
+nav a.active {
+    color: #39ff88;
+}
+
+nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
+    box-shadow:
+        0 0 8px #00aaff;
+}
+
+.donate {
+    padding: 8px 14px;
+
+    border: 1px solid #39ff88;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.15),
+            rgba(57,255,136,0.15)
+        );
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+
+    min-height: 560px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    padding: 80px 20px;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,170,255,0.18),
+            transparent 70%
+        );
+
+    top: -250px;
+    left: -200px;
+
+    animation: cyberGlow 7s infinite alternate;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(57,255,136,0.12),
+            transparent 70%
+        );
+
+    bottom: -300px;
+    right: -200px;
+
+    animation: cyberGlow2 8s infinite alternate;
+}
+
+@keyframes cyberGlow {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(150px,100px);
+    }
+
+}
+
+@keyframes cyberGlow2 {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(-150px,-100px);
+    }
+
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+.code-icon {
+    font-size: 75px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(0 0 12px #00aaff)
+        drop-shadow(0 0 25px #39ff88);
+
+    animation: shieldFloat 3s ease-in-out infinite;
+}
+
+@keyframes shieldFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 85px);
+
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.tagline span {
+    color: #39ff88;
+}
+
+.hero p {
+    max-width: 700px;
+
+    margin: auto;
+
+    color: #b9c7d8;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    width: 94%;
+
+    max-width: 1250px;
+
+    margin: 40px auto;
+
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,25,45,0.92),
+            rgba(4,14,28,0.88)
+        );
+
+    border: 1px solid rgba(0,170,255,0.35);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 30px rgba(0,170,255,0.08);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
+    box-shadow:
+        0 0 12px #00aaff;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: 34px;
+
+    margin-bottom: 12px;
+}
+
+.section-description {
+    text-align: center;
+
+    color: #aebdcc;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   LESSON CARDS
+========================= */
+
+.lesson-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.lesson-card {
+    padding: 25px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.08),
+            rgba(57,255,136,0.04)
+        );
+
+    border: 1px solid rgba(0,170,255,0.25);
+
+    transition: 0.3s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #00aaff;
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.18);
+}
+
+.lesson-number {
+    color: #39ff88;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.lesson-card h3 {
+    color: #00aaff;
+
+    margin-bottom: 10px;
+}
+
+.lesson-card p {
+    color: #b9c7d8;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+.lesson-card code {
+    color: #39ff88;
+
+    background: rgba(0,0,0,0.35);
+
+    padding: 3px 6px;
+
+    border-radius: 5px;
+}
+
+
+/* =========================
+   CODE EDITOR
+========================= */
+
+.editor-section {
+    margin-top: 50px;
+}
+
+.editor {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+.editor-box {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.editor-box h3 {
+    margin-bottom: 10px;
+
+    color: #00aaff;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 300px;
+
+    resize: vertical;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #00aaff;
+
+    background: #020812;
+
+    color: #39ff88;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 0 20px rgba(0,170,255,0.05);
+}
+
+textarea:focus {
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.25);
+}
+
+iframe {
+    width: 100%;
+
+    min-height: 300px;
+
+    border-radius: 12px;
+
+    border: 1px solid #39ff88;
+
+    background: white;
+}
+
+.run-button {
+    margin-top: 15px;
+
+    padding: 13px 25px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0077ff,
+            #00aaff,
+            #39ff88
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.35);
+
+    transition: 0.3s;
+}
+
+.run-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.55);
+}
+
+
+/* =========================
+   CODE EXAMPLES
+========================= */
+
+.example {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #020812;
+
+    border: 1px solid rgba(0,170,255,0.25);
+
+    border-radius: 12px;
+
+    overflow-x: auto;
+}
+
+.example pre {
+    color: #39ff88;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   TIP BOX
+========================= */
+
+.tip {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border-left: 4px solid #39ff88;
+
+    background:
+        rgba(57,255,136,0.05);
+
+    border-radius: 10px;
+}
+
+.tip h3 {
+    color: #39ff88;
+
+    margin-bottom: 8px;
+}
+
+.tip p {
+    color: #c0ccd9;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 70px;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: #030914;
+
+    border-top: 1px solid rgba(0,170,255,0.3);
+}
+
+footer h2 {
+    margin-bottom: 10px;
+}
+
+footer span {
+    color: #00aaff;
+}
+
+footer p {
+    color: #7f8da0;
+
+    margin-top: 8px;
+}
+
+.footer-line {
+    width: 120px;
+
+    height: 2px;
+
+    margin: 15px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
+    box-shadow:
+        0 0 10px #00aaff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 950px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    .lesson-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .editor {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 10px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 500px;
+
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 22px 15px;
+    }
+
+    .lesson-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-<!-- NAVBAR -->
+
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
 
-    <a href="index.html" class="logo">
+    <div class="logo">
         🛡️ Cyber<span>Start</span>
-    </a>
-
-    <div class="nav-links">
-
-        <a href="index.html">Home</a>
-
-        <a href="lessons.html">Lessons</a>
-
-        <a href="labs.html">Labs</a>
-
-        <a href="quiz.html">Quiz</a>
-
-        <a href="games.html">Games</a>
-
-        <a href="glossary.html">Glossary</a>
-
-        <a href="coding.html" class="active">💻 Coding</a>
-
-        <a href="donate.html" class="donate">💚 Donate</a>
-
     </div>
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="lessons.html">
+                Lessons
+            </a>
+        </li>
+
+        <li>
+            <a href="labs.html">
+                Labs
+            </a>
+        </li>
+
+        <li>
+            <a href="quiz.html">
+                Quiz
+            </a>
+        </li>
+
+        <li>
+            <a href="games.html">
+                Games
+            </a>
+        </li>
+
+        <li>
+            <a href="glossary.html">
+                Glossary
+            </a>
+        </li>
+
+        <li>
+            <a href="coding.html" class="active">
+                💻 Coding
+            </a>
+        </li>
+
+        <li>
+            <a href="donate.html" class="donate">
+                💚 Donate
+            </a>
+        </li>
+
+    </ul>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
-    <div class="hero-icon">💻</div>
+    <div class="hero-content">
 
-    <h1>CyberCoding</h1>
+        <div class="code-icon">
+            💻
+        </div>
 
-    <div class="tagline">
-        LEARN • BUILD • CREATE
+        <h1>
+            Cyber<span>Coding</span>
+        </h1>
+
+        <div class="tagline">
+            LEARN <span>/</span>
+            BUILD <span>/</span>
+            CREATE
+        </div>
+
+        <p>
+            Learn the coding skills behind websites,
+            cybersecurity tools, games, and technology.
+            Start with HTML, move into CSS, and then
+            learn JavaScript.
+        </p>
+
     </div>
 
-    <p>
-        Learn how websites and applications are built by actually
-        writing code. Start with HTML, move into CSS, and then
-        learn JavaScript.
+</section>
+
+
+<!-- =========================
+     HTML LESSONS
+========================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🧱 HTML — Build the Structure
+    </h2>
+
+    <p class="section-description">
+        HTML is the language used to create the structure
+        of webpages.
     </p>
 
-</section>
-
-
-<!-- LEVEL 1 -->
-
-<section class="level">
-
-    <div class="level-title">
-
-        <div class="level-number">01</div>
-
-        <div>
-            <h2>HTML — Build the Structure</h2>
-            <p>Learn how webpages are organized.</p>
-        </div>
-
-    </div>
-
 
     <div class="lesson-grid">
 
         <div class="lesson-card">
-            <h3>🧱 What Is HTML?</h3>
+
+            <div class="lesson-number">
+                HTML 01
+            </div>
+
+            <h3>
+                What Is HTML?
+            </h3>
+
             <p>
                 HTML stands for HyperText Markup Language.
-                It gives a webpage its structure and content.
+                It tells the browser what elements belong
+                on a webpage.
             </p>
-            <span class="lesson-tag">BEGINNER</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>🏷️ HTML Tags</h3>
-            <p>
-                Learn how tags such as h1, p, a, and div
-                tell the browser what different pieces of content are.
-            </p>
-            <span class="lesson-tag">HTML</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>🔤 Headings & Paragraphs</h3>
+
+            <div class="lesson-number">
+                HTML 02
+            </div>
+
+            <h3>
+                HTML Tags
+            </h3>
+
             <p>
-                Learn how to create titles, headings, and
-                paragraphs on a webpage.
+                Tags define elements such as headings,
+                paragraphs, links, buttons, and images.
             </p>
-            <span class="lesson-tag">HTML</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>🔗 Links</h3>
-            <p>
-                Learn how the anchor tag can connect one webpage
-                to another.
-            </p>
-            <span class="lesson-tag">HTML</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>🖼️ Images</h3>
+
+            <div class="lesson-number">
+                HTML 03
+            </div>
+
+            <h3>
+                Headings & Paragraphs
+            </h3>
+
             <p>
-                Learn how webpages display images using the
-                HTML image element.
+                Use <code>&lt;h1&gt;</code> for major
+                headings and <code>&lt;p&gt;</code>
+                for paragraphs.
             </p>
-            <span class="lesson-tag">HTML</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>📋 Lists</h3>
-            <p>
-                Learn how to create ordered and unordered lists.
-            </p>
-            <span class="lesson-tag">HTML</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>🔘 Buttons</h3>
+
+            <div class="lesson-number">
+                HTML 04
+            </div>
+
+            <h3>
+                Links
+            </h3>
+
             <p>
-                Learn how to add buttons that users can interact with.
+                The <code>&lt;a&gt;</code> tag creates
+                links that allow visitors to move between
+                webpages.
             </p>
-            <span class="lesson-tag">HTML</span>
+
         </div>
 
+
         <div class="lesson-card">
-            <h3>📦 Divs & Sections</h3>
+
+            <div class="lesson-number">
+                HTML 05
+            </div>
+
+            <h3>
+                Images
+            </h3>
+
             <p>
-                Learn how divs and semantic sections help organize
-                larger webpages.
+                The <code>&lt;img&gt;</code> element lets
+                you display images on your webpage.
             </p>
-            <span class="lesson-tag">HTML</span>
+
+        </div>
+
+
+        <div class="lesson-card">
+
+            <div class="lesson-number">
+                HTML 06
+            </div>
+
+            <h3>
+                Lists
+            </h3>
+
+            <p>
+                Use ordered and unordered lists to organize
+                information for visitors.
+            </p>
+
         </div>
 
     </div>
@@ -622,92 +1010,129 @@
 </section>
 
 
-<!-- LEVEL 2 -->
+<!-- =========================
+     CSS LESSONS
+========================= -->
 
-<section class="level">
+<section class="section">
 
-    <div class="level-title">
+    <h2 class="section-title">
+        🎨 CSS — Design Your Website
+    </h2>
 
-        <div class="level-number">02</div>
-
-        <div>
-            <h2>CSS — Design the Page</h2>
-            <p>Turn plain HTML into professional websites.</p>
-        </div>
-
-    </div>
+    <p class="section-description">
+        CSS controls the appearance of HTML elements.
+    </p>
 
 
     <div class="lesson-grid">
 
         <div class="lesson-card">
-            <h3>🎨 What Is CSS?</h3>
+
+            <div class="lesson-number">
+                CSS 01
+            </div>
+
+            <h3>
+                What Is CSS?
+            </h3>
+
             <p>
-                CSS controls the appearance of HTML elements,
-                including colors, spacing, fonts, and layouts.
+                CSS stands for Cascading Style Sheets.
+                It controls colors, spacing, fonts,
+                layouts, and animations.
             </p>
-            <span class="lesson-tag">BEGINNER</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>🎯 CSS Selectors</h3>
-            <p>
-                Learn how CSS selects specific HTML elements
-                so you can style them.
-            </p>
-            <span class="lesson-tag">CSS</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>✍️ Fonts & Text</h3>
+
+            <div class="lesson-number">
+                CSS 02
+            </div>
+
+            <h3>
+                Selectors
+            </h3>
+
             <p>
-                Learn how to change font size, alignment,
-                weight, spacing, and more.
+                Selectors tell CSS which HTML elements
+                should receive a particular style.
             </p>
-            <span class="lesson-tag">CSS</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>📦 The Box Model</h3>
-            <p>
-                Learn about content, padding, borders, and margins.
-            </p>
-            <span class="lesson-tag">CSS</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>↔️ Flexbox</h3>
+
+            <div class="lesson-number">
+                CSS 03
+            </div>
+
+            <h3>
+                Colors & Fonts
+            </h3>
+
             <p>
-                Learn how Flexbox helps arrange elements in rows
-                and columns.
+                CSS can change text color, background color,
+                font size, font family, and more.
             </p>
-            <span class="lesson-tag">CSS</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>▦ CSS Grid</h3>
-            <p>
-                Learn how to create powerful two-dimensional layouts.
-            </p>
-            <span class="lesson-tag">CSS</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>✨ Hover Effects</h3>
+
+            <div class="lesson-number">
+                CSS 04
+            </div>
+
+            <h3>
+                Box Model
+            </h3>
+
             <p>
-                Learn how websites react visually when a user
-                moves their pointer over an element.
+                Every HTML element can have content,
+                padding, borders, and margins.
             </p>
-            <span class="lesson-tag">CSS</span>
+
         </div>
 
+
         <div class="lesson-card">
-            <h3>📱 Responsive Design</h3>
+
+            <div class="lesson-number">
+                CSS 05
+            </div>
+
+            <h3>
+                Flexbox
+            </h3>
+
             <p>
-                Learn how to make your website work on phones,
-                tablets, and computers.
+                Flexbox makes it easier to arrange elements
+                horizontally and vertically.
             </p>
-            <span class="lesson-tag">CSS</span>
+
+        </div>
+
+
+        <div class="lesson-card">
+
+            <div class="lesson-number">
+                CSS 06
+            </div>
+
+            <h3>
+                Responsive Design
+            </h3>
+
+            <p>
+                Responsive design allows websites to work
+                properly on phones, tablets, and computers.
+            </p>
+
         </div>
 
     </div>
@@ -715,90 +1140,129 @@
 </section>
 
 
-<!-- LEVEL 3 -->
+<!-- =========================
+     JAVASCRIPT LESSONS
+========================= -->
 
-<section class="level">
+<section class="section">
 
-    <div class="level-title">
+    <h2 class="section-title">
+        ⚡ JavaScript — Make It Interactive
+    </h2>
 
-        <div class="level-number">03</div>
-
-        <div>
-            <h2>JavaScript — Make It Interactive</h2>
-            <p>Give webpages logic and interaction.</p>
-        </div>
-
-    </div>
+    <p class="section-description">
+        JavaScript allows webpages to respond to users
+        and perform actions.
+    </p>
 
 
     <div class="lesson-grid">
 
         <div class="lesson-card">
-            <h3>⚡ What Is JavaScript?</h3>
+
+            <div class="lesson-number">
+                JS 01
+            </div>
+
+            <h3>
+                What Is JavaScript?
+            </h3>
+
             <p>
-                JavaScript allows webpages to respond to users
-                and perform actions.
+                JavaScript is a programming language that
+                can make websites interactive.
             </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>📦 Variables</h3>
-            <p>
-                Learn how programs store information that can
-                be used later.
-            </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>🔢 Numbers & Strings</h3>
+
+            <div class="lesson-number">
+                JS 02
+            </div>
+
+            <h3>
+                Variables
+            </h3>
+
             <p>
-                Learn how JavaScript works with numbers and text.
+                Variables store information that your program
+                can use later.
             </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>❓ If / Else</h3>
-            <p>
-                Learn how programs make decisions based on conditions.
-            </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>🔁 Loops</h3>
+
+            <div class="lesson-number">
+                JS 03
+            </div>
+
+            <h3>
+                If / Else
+            </h3>
+
             <p>
-                Learn how programs can repeat actions efficiently.
+                Conditional statements allow programs to
+                make decisions based on information.
             </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
+
         </div>
 
-        <div class="lesson-card">
-            <h3>🧩 Functions</h3>
-            <p>
-                Learn how to group reusable instructions together.
-            </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
-        </div>
 
         <div class="lesson-card">
-            <h3>🖱️ Button Events</h3>
+
+            <div class="lesson-number">
+                JS 04
+            </div>
+
+            <h3>
+                Functions
+            </h3>
+
             <p>
-                Learn how JavaScript can react when a user
-                clicks a button.
+                Functions group instructions together so
+                you can run them when needed.
             </p>
-            <span class="lesson-tag">JAVASCRIPT</span>
+
         </div>
 
+
         <div class="lesson-card">
-            <h3>🎮 Build a Mini Game</h3>
+
+            <div class="lesson-number">
+                JS 05
+            </div>
+
+            <h3>
+                Events
+            </h3>
+
             <p>
-                Put your new JavaScript skills together to create
-                a simple browser game.
+                Events allow JavaScript to respond when
+                someone clicks or interacts with a page.
             </p>
-            <span class="lesson-tag">PROJECT</span>
+
+        </div>
+
+
+        <div class="lesson-card">
+
+            <div class="lesson-number">
+                JS 06
+            </div>
+
+            <h3>
+                Arrays
+            </h3>
+
+            <p>
+                Arrays allow programs to store multiple
+                pieces of information in one collection.
+            </p>
+
         </div>
 
     </div>
@@ -806,121 +1270,222 @@
 </section>
 
 
-<!-- INTERACTIVE CODE LAB -->
+<!-- =========================
+     CODE EDITOR
+========================= -->
 
-<section class="code-lab">
+<section class="section editor-section">
 
-    <div class="level-title">
+    <h2 class="section-title">
+        🧪 Try Coding
+    </h2>
 
-        <div class="level-number">🧪</div>
-
-        <div>
-            <h2>Try Your Code</h2>
-            <p>Write HTML and see what the browser creates.</p>
-        </div>
-
-    </div>
-
-
-    <div class="code-box">
-
-        <div class="code-header">
-
-            <strong>💻 CyberStart Code Editor</strong>
-
-            <span>HTML Playground</span>
-
-        </div>
+    <p class="section-description">
+        Write HTML on the left and see your webpage
+        appear on the right.
+    </p>
 
 
-        <textarea id="codeEditor"><!DOCTYPE html>
+    <div class="editor">
+
+
+        <div class="editor-box">
+
+            <h3>
+                💻 Your Code
+            </h3>
+
+            <textarea id="codeInput"><!DOCTYPE html>
 <html>
 
 <head>
-    <title>My CyberStart Page</title>
+
+<style>
+
+body {
+    background: #050b16;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #00aaff;
+}
+
+button {
+    background: #00aaff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <h1>Hello CyberStart!</h1>
+<h1>Hello CyberStart!</h1>
 
-    <p>I am learning to code.</p>
+<p>I am learning to code.</p>
 
-    <button>Click Me</button>
+<button onclick="alert('Great job!')">
+Click Me
+</button>
 
 </body>
 
 </html></textarea>
 
 
-        <div class="run-area">
-
-            <button class="run-button" onclick="runCode()">
+            <button
+                class="run-button"
+                onclick="runCode()"
+            >
                 ▶ Run Code
             </button>
 
         </div>
 
 
-        <div class="preview-title">
-            YOUR PREVIEW
+        <div class="editor-box">
+
+            <h3>
+                🌐 Preview
+            </h3>
+
+            <iframe
+                id="preview"
+                sandbox="allow-scripts">
+            </iframe>
+
         </div>
 
-        <iframe id="preview" sandbox="allow-scripts"></iframe>
+    </div>
+
+
+    <div class="tip">
+
+        <h3>
+            💡 Coding Tip
+        </h3>
+
+        <p>
+            Don't try to memorize everything at once.
+            Learn what each part does, experiment with it,
+            and build small projects. That's how coding
+            starts to make sense.
+        </p>
 
     </div>
 
 </section>
 
 
-<!-- LEARNING TIP -->
+<!-- =========================
+     QUICK EXAMPLES
+========================= -->
 
-<section class="tip">
+<section class="section">
 
-    <h2>🧠 CyberStart Coding Tip</h2>
+    <h2 class="section-title">
+        📚 Quick Code Examples
+    </h2>
 
-    <p>
-        Don't worry about memorizing everything immediately.
-        Coding is learned through practice. Change one thing,
-        run your code, see what happens, and experiment.
-        Making mistakes is part of learning how programming works.
-    </p>
+
+    <div class="example">
+
+<pre>
+&lt;h1&gt;My Website&lt;/h1&gt;
+
+&lt;p&gt;Welcome to my website!&lt;/p&gt;
+
+&lt;button&gt;Click Me&lt;/button&gt;
+</pre>
+
+    </div>
+
+
+    <div class="example">
+
+<pre>
+body {
+    background: #050b16;
+    color: white;
+}
+
+h1 {
+    color: #00aaff;
+}
+</pre>
+
+    </div>
+
+
+    <div class="example">
+
+<pre>
+let score = 10;
+
+if (score &gt;= 10) {
+    console.log("Great job!");
+}
+</pre>
+
+    </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <strong>🛡️ CyberStart</strong>
+    <h2>
+        🛡️ Cyber<span>Start</span>
+    </h2>
+
+    <div class="footer-line"></div>
 
     <p>
-        Learn • Practice • Build • Stay Secure
+        LEARN. PRACTICE. STAY SECURE.
+    </p>
+
+    <p>
+        © 2026 CyberStart
     </p>
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-    function runCode() {
+function runCode() {
 
-        const code = document.getElementById("codeEditor").value;
+    const code =
+        document.getElementById("codeInput").value;
 
-        const preview = document.getElementById("preview");
+    const preview =
+        document.getElementById("preview");
 
-        preview.srcdoc = code;
+    preview.srcdoc = code;
 
-    }
+}
 
-    // Run the starter example automatically
+window.onload = function() {
 
-    window.addEventListener("load", function () {
+    runCode();
 
-        runCode();
-
-    });
+};
 
 </script>
 
