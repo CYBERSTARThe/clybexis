@@ -11,9 +11,9 @@
 
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -47,9 +47,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 nav {
     position: sticky;
@@ -166,6 +166,7 @@ nav a.active::after {
     padding: 8px 14px;
 
     border: 1px solid #39ff88;
+
     border-radius: 20px;
 
     background:
@@ -177,14 +178,14 @@ nav a.active::after {
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     position: relative;
 
-    min-height: 560px;
+    min-height: 520px;
 
     display: flex;
     justify-content: center;
@@ -202,8 +203,8 @@ nav a.active::after {
 
     position: absolute;
 
-    width: 650px;
-    height: 650px;
+    width: 700px;
+    height: 700px;
 
     background:
         radial-gradient(
@@ -212,8 +213,8 @@ nav a.active::after {
             transparent 70%
         );
 
-    top: -250px;
-    left: -200px;
+    top: -280px;
+    left: -220px;
 
     animation:
         cyberGlow 7s infinite alternate;
@@ -235,7 +236,7 @@ nav a.active::after {
         );
 
     bottom: -300px;
-    right: -200px;
+    right: -220px;
 
     animation:
         cyberGlow2 8s infinite alternate;
@@ -267,9 +268,10 @@ nav a.active::after {
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
-    max-width: 900px;
+    max-width: 950px;
 }
 
 .code-icon {
@@ -328,10 +330,12 @@ nav a.active::after {
 
 .tagline span {
     color: #39ff88;
+
+    margin: 0 6px;
 }
 
 .hero p {
-    max-width: 750px;
+    max-width: 780px;
 
     margin: auto;
 
@@ -342,15 +346,53 @@ nav a.active::after {
     font-size: 17px;
 }
 
+.hero-button {
+    display: inline-block;
 
-/* =========================
+    margin-top: 30px;
+
+    padding: 15px 28px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0077ff,
+            #00aaff,
+            #39ff88
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(0,170,255,0.35);
+
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,170,255,0.6);
+}
+
+
+/* =========================================================
    SECTION
-========================= */
+========================================================= */
 
 .section {
     width: 94%;
 
-    max-width: 1250px;
+    max-width: 1350px;
 
     margin: 40px auto;
 
@@ -359,8 +401,8 @@ nav a.active::after {
     background:
         linear-gradient(
             145deg,
-            rgba(8,25,45,0.92),
-            rgba(4,14,28,0.88)
+            rgba(8,25,45,0.94),
+            rgba(4,14,28,0.90)
         );
 
     border: 1px solid
@@ -418,9 +460,427 @@ nav a.active::after {
 }
 
 
-/* =========================
+/* =========================================================
+   LIVE LAB INTRO
+========================================================= */
+
+.lab-intro {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.lab-status {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    margin-bottom: 15px;
+
+    border-radius: 20px;
+
+    color: #39ff88;
+
+    border: 1px solid
+        rgba(57,255,136,0.4);
+
+    background:
+        rgba(57,255,136,0.05);
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.lab-intro h2 {
+    font-size:
+        clamp(30px, 6vw, 55px);
+
+    margin-bottom: 15px;
+}
+
+.lab-intro h2 span {
+    color: #00aaff;
+}
+
+.lab-intro p {
+    color: #aebdcc;
+
+    max-width: 800px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   EDITOR
+========================================================= */
+
+.editor-shell {
+    border-radius: 18px;
+
+    border: 1px solid
+        rgba(0,170,255,0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.06),
+            rgba(57,255,136,0.03)
+        );
+
+    padding: 18px;
+
+    box-shadow:
+        0 0 35px
+        rgba(0,170,255,0.08);
+}
+
+.editor-topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 15px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid
+        rgba(0,170,255,0.18);
+}
+
+.editor-title {
+    font-weight: bold;
+
+    color: #00aaff;
+
+    font-size: 18px;
+}
+
+.editor-status {
+    color: #39ff88;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.editor-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr;
+
+    gap: 18px;
+}
+
+.code-side {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.code-tabs {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+.code-tab {
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    border: 1px solid
+        rgba(0,170,255,0.35);
+
+    background:
+        rgba(0,170,255,0.06);
+
+    color: #b9c7d8;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.code-tab:hover {
+    border-color: #00aaff;
+
+    color: white;
+}
+
+.code-tab.active {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.2),
+            rgba(57,255,136,0.12)
+        );
+
+    color: #39ff88;
+
+    border-color: #39ff88;
+
+    box-shadow:
+        0 0 12px
+        rgba(57,255,136,0.15);
+}
+
+.editor-label {
+    color: #aebdcc;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 470px;
+
+    resize: vertical;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #00aaff;
+
+    background: #020812;
+
+    color: #39ff88;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    outline: none;
+
+    tab-size: 4;
+}
+
+textarea:focus {
+    box-shadow:
+        0 0 20px
+        rgba(0,170,255,0.2);
+}
+
+.preview-side {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.preview-title {
+    color: #39ff88;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.preview-window {
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid #39ff88;
+
+    min-height: 470px;
+
+    box-shadow:
+        0 0 20px
+        rgba(57,255,136,0.12);
+}
+
+iframe {
+    width: 100%;
+
+    height: 470px;
+
+    border: none;
+
+    background: white;
+}
+
+.editor-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 12px;
+}
+
+.run-button,
+.save-button,
+.reset-button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.run-button {
+    background:
+        linear-gradient(
+            90deg,
+            #0077ff,
+            #00aaff,
+            #39ff88
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(0,170,255,0.3);
+}
+
+.save-button {
+    background:
+        rgba(57,255,136,0.10);
+
+    border: 1px solid #39ff88;
+}
+
+.reset-button {
+    background:
+        rgba(255,70,70,0.08);
+
+    border: 1px solid
+        rgba(255,100,100,0.5);
+}
+
+.run-button:hover,
+.save-button:hover,
+.reset-button:hover {
+    transform: translateY(-2px);
+}
+
+.run-button:hover {
+    box-shadow:
+        0 0 25px
+        rgba(0,170,255,0.55);
+}
+
+.save-message {
+    margin-top: 8px;
+
+    color: #39ff88;
+
+    font-size: 13px;
+
+    min-height: 18px;
+}
+
+
+/* =========================================================
+   BUILD STEPS
+========================================================= */
+
+.build-steps {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.build-card {
+    padding: 22px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0,170,255,0.05);
+
+    border: 1px solid
+        rgba(0,170,255,0.25);
+
+    transition: 0.3s;
+}
+
+.build-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #00aaff;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,170,255,0.15);
+}
+
+.build-number {
+    color: #39ff88;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.build-card h3 {
+    color: #00aaff;
+
+    margin-bottom: 10px;
+}
+
+.build-card p {
+    color: #b9c7d8;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
    COURSE CARDS
-========================= */
+========================================================= */
 
 .course-grid {
     display: grid;
@@ -485,20 +945,10 @@ nav a.active::after {
     font-size: 14px;
 }
 
-.course-card code {
-    color: #39ff88;
 
-    background: rgba(0,0,0,0.35);
-
-    padding: 3px 6px;
-
-    border-radius: 5px;
-}
-
-
-/* =========================
-   LEARN / CODE / CHALLENGE
-========================= */
+/* =========================================================
+   LESSON BOX
+========================================================= */
 
 .learning-box {
     margin-top: 25px;
@@ -527,9 +977,9 @@ nav a.active::after {
 }
 
 
-/* =========================
-   CODE EXAMPLE
-========================= */
+/* =========================================================
+   EXAMPLE
+========================================================= */
 
 .example {
     margin-top: 18px;
@@ -551,15 +1001,16 @@ nav a.active::after {
 
     font-family:
         Consolas,
+        "Courier New",
         monospace;
 
     line-height: 1.6;
 }
 
 
-/* =========================
+/* =========================================================
    CHALLENGE
-========================= */
+========================================================= */
 
 .challenge {
     margin-top: 25px;
@@ -635,113 +1086,9 @@ nav a.active::after {
 }
 
 
-/* =========================
-   CODE EDITOR
-========================= */
-
-.editor {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 20px;
-}
-
-.editor-box {
-    display: flex;
-
-    flex-direction: column;
-}
-
-.editor-box h3 {
-    color: #00aaff;
-
-    margin-bottom: 10px;
-}
-
-textarea {
-    width: 100%;
-
-    min-height: 320px;
-
-    resize: vertical;
-
-    padding: 18px;
-
-    border-radius: 12px;
-
-    border: 1px solid #00aaff;
-
-    background: #020812;
-
-    color: #39ff88;
-
-    font-family:
-        Consolas,
-        monospace;
-
-    font-size: 14px;
-
-    outline: none;
-}
-
-textarea:focus {
-    box-shadow:
-        0 0 15px
-        rgba(0,170,255,0.25);
-}
-
-iframe {
-    width: 100%;
-
-    min-height: 320px;
-
-    border-radius: 12px;
-
-    border: 1px solid #39ff88;
-
-    background: white;
-}
-
-.run-button {
-    margin-top: 15px;
-
-    padding: 13px 25px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0077ff,
-            #00aaff,
-            #39ff88
-        );
-
-    color: white;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 15px
-        rgba(0,170,255,0.35);
-}
-
-.run-button:hover {
-    box-shadow:
-        0 0 25px
-        rgba(0,170,255,0.55);
-}
-
-
-/* =========================
+/* =========================================================
    FINAL PROJECT
-========================= */
+========================================================= */
 
 .final-project {
     text-align: center;
@@ -795,9 +1142,9 @@ iframe {
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
     margin-top: 70px;
@@ -846,11 +1193,11 @@ footer p {
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
 
     nav {
         flex-direction: column;
@@ -866,16 +1213,16 @@ footer p {
         gap: 12px;
     }
 
-    .course-grid {
+    .editor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .build-steps {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
-    .editor {
-        grid-template-columns: 1fr;
-    }
-
-    .project-list {
+    .course-grid {
         grid-template-columns:
             repeat(2, 1fr);
     }
@@ -897,7 +1244,7 @@ footer p {
     }
 
     .hero {
-        min-height: 520px;
+        min-height: 500px;
 
         padding: 60px 15px;
     }
@@ -914,12 +1261,38 @@ footer p {
         padding: 22px 15px;
     }
 
+    .editor-shell {
+        padding: 12px;
+    }
+
+    textarea {
+        min-height: 360px;
+
+        font-size: 13px;
+    }
+
+    iframe {
+        height: 360px;
+    }
+
+    .preview-window {
+        min-height: 360px;
+    }
+
+    .build-steps {
+        grid-template-columns: 1fr;
+    }
+
     .course-grid {
         grid-template-columns: 1fr;
     }
 
     .project-list {
         grid-template-columns: 1fr;
+    }
+
+    .editor-buttons button {
+        width: 100%;
     }
 
 }
@@ -932,9 +1305,9 @@ footer p {
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      NAVBAR
-========================= -->
+========================================================= -->
 
 <nav>
 
@@ -987,6 +1360,12 @@ footer p {
         </li>
 
         <li>
+            <a href="simulators.html">
+                🧪 Simulators
+            </a>
+        </li>
+
+        <li>
             <a href="donate.html" class="donate">
                 💚 Donate
             </a>
@@ -998,9 +1377,9 @@ footer p {
 
 
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero">
 
@@ -1026,11 +1405,21 @@ footer p {
 
         <p>
 
-            Learn how websites and programs are built.
-            Start with HTML, style your projects with CSS,
-            and then use JavaScript to make them interactive.
+            Learn how websites are built,
+            experiment with real code,
+            and build your own webpages
+            directly inside Clyvexis.
 
         </p>
+
+        <a
+            href="#live-lab"
+            class="hero-button"
+        >
+
+            💻 Enter the Live Coding Lab ↓
+
+        </a>
 
     </div>
 
@@ -1038,9 +1427,362 @@ footer p {
 
 
 
-<!-- =========================
-     COURSE ROADMAP
-========================= -->
+<!-- =========================================================
+     LIVE CODING LAB
+========================================================= -->
+
+<section
+    class="section"
+    id="live-lab"
+>
+
+    <div class="lab-intro">
+
+        <div class="lab-status">
+            ● LIVE CODING ENVIRONMENT
+        </div>
+
+        <h2>
+            💻 Build Your <span>Website</span>
+        </h2>
+
+        <p>
+
+            This is your coding workspace.
+
+            Write HTML to create the structure,
+            CSS to design it, and JavaScript to
+            make it interactive.
+
+            Then press Run and see your website
+            come alive instantly.
+
+        </p>
+
+    </div>
+
+
+    <div class="editor-shell">
+
+
+        <div class="editor-topbar">
+
+            <div class="editor-title">
+                🖥️ CLYVEXIS WEB BUILDER
+            </div>
+
+            <div class="editor-status">
+                ● READY
+            </div>
+
+        </div>
+
+
+        <div class="editor-grid">
+
+
+            <!-- CODE SIDE -->
+
+            <div class="code-side">
+
+
+                <div class="code-tabs">
+
+                    <button
+                        class="code-tab active"
+                        onclick="showEditor('html')"
+                        id="htmlTab"
+                    >
+                        🧱 HTML
+                    </button>
+
+                    <button
+                        class="code-tab"
+                        onclick="showEditor('css')"
+                        id="cssTab"
+                    >
+                        🎨 CSS
+                    </button>
+
+                    <button
+                        class="code-tab"
+                        onclick="showEditor('js')"
+                        id="jsTab"
+                    >
+                        ⚡ JavaScript
+                    </button>
+
+                </div>
+
+
+                <!-- HTML -->
+
+                <div id="htmlEditor">
+
+                    <div class="editor-label">
+                        HTML — PAGE STRUCTURE
+                    </div>
+
+                    <textarea id="htmlCode"><h1>My Cyber Website</h1>
+
+<p>Welcome to my website!</p>
+
+<button onclick="sayHello()">
+    Click Me
+</button></textarea>
+
+                </div>
+
+
+                <!-- CSS -->
+
+                <div
+                    id="cssEditor"
+                    style="display:none;"
+                >
+
+                    <div class="editor-label">
+                        CSS — WEBSITE DESIGN
+                    </div>
+
+                    <textarea id="cssCode">body {
+    background: #050b16;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #00aaff;
+}
+
+p {
+    color: #39ff88;
+    font-size: 18px;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #00aaff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #39ff88;
+}</textarea>
+
+                </div>
+
+
+                <!-- JAVASCRIPT -->
+
+                <div
+                    id="jsEditor"
+                    style="display:none;"
+                >
+
+                    <div class="editor-label">
+                        JAVASCRIPT — INTERACTIVITY
+                    </div>
+
+                    <textarea id="jsCode">function sayHello() {
+
+    alert("You made your website interactive!");
+
+}</textarea>
+
+                </div>
+
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-button"
+                        onclick="runCode()"
+                    >
+                        ▶ Run Website
+                    </button>
+
+                    <button
+                        class="save-button"
+                        onclick="saveCode()"
+                    >
+                        💾 Save
+                    </button>
+
+                    <button
+                        class="reset-button"
+                        onclick="resetCode()"
+                    >
+                        🔄 Reset
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="saveMessage"
+                    class="save-message"
+                ></div>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div class="preview-side">
+
+                <div class="preview-title">
+                    🌐 LIVE WEBSITE PREVIEW
+                </div>
+
+                <div class="preview-window">
+
+                    <iframe
+                        id="preview"
+                        sandbox="allow-scripts"
+                    ></iframe>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HOW TO BUILD
+========================================================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🏗️ How To Build A Website
+    </h2>
+
+    <p class="section-description">
+
+        Think of your website like a digital building.
+        Each coding language has a different job.
+
+    </p>
+
+
+    <div class="build-steps">
+
+
+        <div class="build-card">
+
+            <div class="build-number">
+                STEP 01
+            </div>
+
+            <h3>
+                🧱 HTML
+            </h3>
+
+            <p>
+
+                Build the structure.
+
+                Add headings, paragraphs,
+                buttons, images, links,
+                and sections.
+
+            </p>
+
+        </div>
+
+
+        <div class="build-card">
+
+            <div class="build-number">
+                STEP 02
+            </div>
+
+            <h3>
+                🎨 CSS
+            </h3>
+
+            <p>
+
+                Design your website.
+
+                Change colors, fonts,
+                spacing, borders,
+                layouts, and animations.
+
+            </p>
+
+        </div>
+
+
+        <div class="build-card">
+
+            <div class="build-number">
+                STEP 03
+            </div>
+
+            <h3>
+                ⚡ JavaScript
+            </h3>
+
+            <p>
+
+                Add behavior.
+
+                Make buttons work,
+                create quizzes,
+                change content,
+                and build interactive features.
+
+            </p>
+
+        </div>
+
+
+        <div class="build-card">
+
+            <div class="build-number">
+                STEP 04
+            </div>
+
+            <h3>
+                🚀 BUILD
+            </h3>
+
+            <p>
+
+                Combine everything and
+                create your own website.
+
+                Experiment and see what
+                you can build.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CODING ROADMAP
+========================================================= -->
 
 <section class="section">
 
@@ -1050,8 +1792,8 @@ footer p {
 
     <p class="section-description">
 
-        Follow the lessons in order and build your
-        skills step by step.
+        Learn the concepts below, then immediately
+        experiment with them in the Live Coding Lab.
 
     </p>
 
@@ -1072,8 +1814,10 @@ footer p {
             <p>
 
                 Learn the structure of webpages.
-                Create headings, paragraphs, links,
-                images, buttons, and sections.
+
+                Create headings, paragraphs,
+                links, images, buttons,
+                lists, and sections.
 
             </p>
 
@@ -1092,9 +1836,9 @@ footer p {
 
             <p>
 
-                Learn how to design webpages with
-                colors, fonts, spacing, layouts,
-                animations, and responsive design.
+                Learn how to style your webpages
+                using colors, fonts, spacing,
+                layouts, borders, and animations.
 
             </p>
 
@@ -1113,9 +1857,10 @@ footer p {
 
             <p>
 
-                Learn programming logic, variables,
-                conditions, functions, events, and
-                interactive webpages.
+                Learn programming logic,
+                variables, conditions,
+                functions, events,
+                and interactive webpages.
 
             </p>
 
@@ -1127,15 +1872,16 @@ footer p {
 
 
 
-<!-- =========================
-     LESSON 1
-========================= -->
+<!-- =========================================================
+     HTML LESSON
+========================================================= -->
 
 <section class="section">
 
     <h2 class="section-title">
         Lesson 1 — 🧱 HTML Basics
     </h2>
+
 
     <div class="learning-box">
 
@@ -1145,14 +1891,15 @@ footer p {
 
         <p>
 
-            HTML is the language used to create the
-            structure of a webpage.
+            HTML stands for HyperText Markup Language.
 
-            Think of HTML as the skeleton of a website.
+            It creates the structure of a webpage.
 
-            It tells the browser where headings,
-            paragraphs, buttons, images, and other
-            elements belong.
+            Think of HTML as the skeleton of your
+            website.
+
+            It tells the browser what elements
+            should appear on the page.
 
         </p>
 
@@ -1181,7 +1928,7 @@ footer p {
         <p>
 
             What HTML tag is normally used for
-            the largest/main heading?
+            the main/largest heading?
 
         </p>
 
@@ -1206,15 +1953,16 @@ footer p {
 
 
 
-<!-- =========================
-     LESSON 2
-========================= -->
+<!-- =========================================================
+     CSS LESSON
+========================================================= -->
 
 <section class="section">
 
     <h2 class="section-title">
         Lesson 2 — 🎨 CSS Basics
     </h2>
+
 
     <div class="learning-box">
 
@@ -1224,11 +1972,13 @@ footer p {
 
         <p>
 
+            CSS stands for Cascading Style Sheets.
+
             CSS controls how your HTML looks.
 
             You can use CSS to change colors,
-            fonts, backgrounds, spacing, borders,
-            layouts, and animations.
+            fonts, spacing, borders, layouts,
+            backgrounds, and animations.
 
         </p>
 
@@ -1284,15 +2034,16 @@ h1 {
 
 
 
-<!-- =========================
-     LESSON 3
-========================= -->
+<!-- =========================================================
+     JAVASCRIPT LESSON
+========================================================= -->
 
 <section class="section">
 
     <h2 class="section-title">
         Lesson 3 — ⚡ JavaScript Basics
     </h2>
+
 
     <div class="learning-box">
 
@@ -1303,8 +2054,12 @@ h1 {
         <p>
 
             JavaScript is a programming language
-            that allows websites to respond to
-            users and perform actions.
+            that can make webpages interactive.
+
+            It can respond to button clicks,
+            change webpage content,
+            perform calculations,
+            and control different behaviors.
 
         </p>
 
@@ -1317,7 +2072,9 @@ h1 {
 let score = 10;
 
 if (score >= 10) {
+
     console.log("Great job!");
+
 }
 </pre>
 
@@ -1358,118 +2115,9 @@ if (score >= 10) {
 
 
 
-<!-- =========================
-     LIVE CODING LAB
-========================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        💻 Live Coding Lab
-    </h2>
-
-    <p class="section-description">
-
-        Write your own HTML and see the result
-        immediately.
-
-    </p>
-
-
-    <div class="editor">
-
-
-        <div class="editor-box">
-
-            <h3>
-                💻 Code
-            </h3>
-
-            <textarea id="codeInput"><!DOCTYPE html>
-
-<html>
-
-<head>
-
-<style>
-
-body {
-    background: #050b16;
-    color: white;
-    font-family: Arial;
-    text-align: center;
-    padding: 40px;
-}
-
-h1 {
-    color: #00aaff;
-}
-
-p {
-    color: #39ff88;
-}
-
-button {
-    padding: 12px 20px;
-    background: #00aaff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>Clyvexis</h1>
-
-<p>I am learning to code!</p>
-
-<button onclick="alert('You made it work!')">
-Click Me
-</button>
-
-</body>
-
-</html></textarea>
-
-
-            <button
-                class="run-button"
-                onclick="runCode()"
-            >
-
-                ▶ Run Code
-
-            </button>
-
-        </div>
-
-
-        <div class="editor-box">
-
-            <h3>
-                🌐 Preview
-            </h3>
-
-            <iframe
-                id="preview"
-                sandbox="allow-scripts">
-            </iframe>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
+<!-- =========================================================
      MORE LESSONS
-========================= -->
+========================================================= -->
 
 <section class="section">
 
@@ -1479,8 +2127,8 @@ Click Me
 
     <p class="section-description">
 
-        After the basics, continue learning these
-        important coding concepts.
+        Keep learning and then test every concept
+        inside your Live Coding Lab.
 
     </p>
 
@@ -1500,8 +2148,28 @@ Click Me
 
             <p>
 
-                Learn how to connect pages together
-                and display images on your website.
+                Learn how to connect webpages together
+                and display images.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                HTML 05
+            </div>
+
+            <h3>
+                📝 Forms
+            </h3>
+
+            <p>
+
+                Learn how websites collect information
+                using safe form examples.
 
             </p>
 
@@ -1520,8 +2188,28 @@ Click Me
 
             <p>
 
-                Learn about margins, borders,
+                Learn margins, borders,
                 padding, and content.
+
+            </p>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                CSS 05
+            </div>
+
+            <h3>
+                📐 Layouts
+            </h3>
+
+            <p>
+
+                Learn Flexbox and Grid to
+                organize your webpage.
 
             </p>
 
@@ -1560,8 +2248,8 @@ Click Me
 
             <p>
 
-                Teach your programs how to make
-                decisions.
+                Teach your programs how to
+                make decisions.
 
             </p>
 
@@ -1601,11 +2289,32 @@ Click Me
             <p>
 
                 Combine HTML, CSS, and JavaScript
-                to create a simple game.
+                to create simple games.
 
             </p>
 
         </div>
+
+
+        <div class="course-card">
+
+            <div class="course-number">
+                NEXT LEVEL
+            </div>
+
+            <h3>
+                🚀 Projects
+            </h3>
+
+            <p>
+
+                Use everything you've learned
+                to build complete webpages.
+
+            </p>
+
+        </div>
+
 
     </div>
 
@@ -1613,22 +2322,24 @@ Click Me
 
 
 
-<!-- =========================
+<!-- =========================================================
      FINAL PROJECT
-========================= -->
+========================================================= -->
 
 <section class="section final-project">
 
     <h2>
-        🏆 <span>Final Coding Project</span>
+        🏆 <span>Build Your Own Website</span>
     </h2>
 
     <p>
 
-        Once you've learned the basics, build your
-        own cybersecurity-themed webpage.
+        Your final goal isn't just to memorize code.
 
-        Try to include each of the following:
+        It's to use what you learned to build
+        something of your own.
+
+        Start small, experiment, and keep improving it.
 
     </p>
 
@@ -1639,12 +2350,12 @@ Click Me
         <div class="project-item">
 
             <strong>
-                HTML
+                01 — HTML
             </strong>
 
             <br>
 
-            A title and sections
+            Create your page structure
 
         </div>
 
@@ -1652,12 +2363,12 @@ Click Me
         <div class="project-item">
 
             <strong>
-                CSS
+                02 — CSS
             </strong>
 
             <br>
 
-            Your own cyber design
+            Create your own design
 
         </div>
 
@@ -1665,12 +2376,12 @@ Click Me
         <div class="project-item">
 
             <strong>
-                JavaScript
+                03 — JavaScript
             </strong>
 
             <br>
 
-            An interactive button
+            Add something interactive
 
         </div>
 
@@ -1678,12 +2389,12 @@ Click Me
         <div class="project-item">
 
             <strong>
-                Navigation
+                04 — Navigation
             </strong>
 
             <br>
 
-            Links to other pages
+            Connect your webpages
 
         </div>
 
@@ -1691,12 +2402,12 @@ Click Me
         <div class="project-item">
 
             <strong>
-                Security
+                05 — Content
             </strong>
 
             <br>
 
-            A cybersecurity topic
+            Teach or explain something
 
         </div>
 
@@ -1704,12 +2415,12 @@ Click Me
         <div class="project-item">
 
             <strong>
-                Creativity
+                06 — Creativity
             </strong>
 
             <br>
 
-            Make it your own
+            Make the website yours
 
         </div>
 
@@ -1719,9 +2430,9 @@ Click Me
 
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
@@ -1732,7 +2443,7 @@ Click Me
     <div class="footer-line"></div>
 
     <p>
-        LEARN. PRACTICE. STAY SECURE.
+        LEARN. PRACTICE. BUILD.
     </p>
 
     <p>
@@ -1743,16 +2454,344 @@ Click Me
 
 
 
-<!-- =========================
+<!-- =========================================================
      JAVASCRIPT
-========================= -->
+========================================================= -->
 
 <script>
 
 
-/* =========================
+/* =========================================================
+   DEFAULT CODE
+========================================================= */
+
+const defaultHTML = `<h1>My Cyber Website</h1>
+
+<p>Welcome to my website!</p>
+
+<button onclick="sayHello()">
+    Click Me
+</button>`;
+
+
+const defaultCSS = `body {
+    background: #050b16;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #00aaff;
+}
+
+p {
+    color: #39ff88;
+    font-size: 18px;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #00aaff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #39ff88;
+}`;
+
+
+const defaultJS = `function sayHello() {
+
+    alert("You made your website interactive!");
+
+}`;
+
+
+/* =========================================================
+   EDITOR TABS
+========================================================= */
+
+function showEditor(type) {
+
+    const htmlEditor =
+        document.getElementById("htmlEditor");
+
+    const cssEditor =
+        document.getElementById("cssEditor");
+
+    const jsEditor =
+        document.getElementById("jsEditor");
+
+
+    const htmlTab =
+        document.getElementById("htmlTab");
+
+    const cssTab =
+        document.getElementById("cssTab");
+
+    const jsTab =
+        document.getElementById("jsTab");
+
+
+    htmlEditor.style.display = "none";
+    cssEditor.style.display = "none";
+    jsEditor.style.display = "none";
+
+
+    htmlTab.classList.remove("active");
+    cssTab.classList.remove("active");
+    jsTab.classList.remove("active");
+
+
+    if (type === "html") {
+
+        htmlEditor.style.display = "block";
+
+        htmlTab.classList.add("active");
+
+    }
+
+
+    if (type === "css") {
+
+        cssEditor.style.display = "block";
+
+        cssTab.classList.add("active");
+
+    }
+
+
+    if (type === "js") {
+
+        jsEditor.style.display = "block";
+
+        jsTab.classList.add("active");
+
+    }
+
+}
+
+
+/* =========================================================
+   RUN WEBSITE
+========================================================= */
+
+function runCode() {
+
+    const html =
+        document
+        .getElementById("htmlCode")
+        .value;
+
+    const css =
+        document
+        .getElementById("cssCode")
+        .value;
+
+    const js =
+        document
+        .getElementById("jsCode")
+        .value;
+
+
+    const preview =
+        document
+        .getElementById("preview");
+
+
+    const completePage = `
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+
+${css}
+
+</style>
+
+</head>
+
+<body>
+
+${html}
+
+<script>
+
+${js}
+
+<\/script>
+
+</body>
+
+</html>
+
+`;
+
+
+    preview.srcdoc = completePage;
+
+}
+
+
+/* =========================================================
+   SAVE CODE
+========================================================= */
+
+function saveCode() {
+
+    const html =
+        document
+        .getElementById("htmlCode")
+        .value;
+
+    const css =
+        document
+        .getElementById("cssCode")
+        .value;
+
+    const js =
+        document
+        .getElementById("jsCode")
+        .value;
+
+
+    localStorage.setItem(
+        "clyvexisHTML",
+        html
+    );
+
+    localStorage.setItem(
+        "clyvexisCSS",
+        css
+    );
+
+    localStorage.setItem(
+        "clyvexisJS",
+        js
+    );
+
+
+    const message =
+        document
+        .getElementById("saveMessage");
+
+
+    message.textContent =
+        "✅ Your code was saved on this device.";
+
+}
+
+
+/* =========================================================
+   LOAD SAVED CODE
+========================================================= */
+
+function loadSavedCode() {
+
+    const savedHTML =
+        localStorage.getItem(
+            "clyvexisHTML"
+        );
+
+    const savedCSS =
+        localStorage.getItem(
+            "clyvexisCSS"
+        );
+
+    const savedJS =
+        localStorage.getItem(
+            "clyvexisJS"
+        );
+
+
+    if (savedHTML !== null) {
+
+        document
+        .getElementById("htmlCode")
+        .value = savedHTML;
+
+    }
+
+
+    if (savedCSS !== null) {
+
+        document
+        .getElementById("cssCode")
+        .value = savedCSS;
+
+    }
+
+
+    if (savedJS !== null) {
+
+        document
+        .getElementById("jsCode")
+        .value = savedJS;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESET CODE
+========================================================= */
+
+function resetCode() {
+
+    document
+    .getElementById("htmlCode")
+    .value = defaultHTML;
+
+
+    document
+    .getElementById("cssCode")
+    .value = defaultCSS;
+
+
+    document
+    .getElementById("jsCode")
+    .value = defaultJS;
+
+
+    localStorage.removeItem(
+        "clyvexisHTML"
+    );
+
+    localStorage.removeItem(
+        "clyvexisCSS"
+    );
+
+    localStorage.removeItem(
+        "clyvexisJS"
+    );
+
+
+    document
+    .getElementById("saveMessage")
+    .textContent =
+        "🔄 Coding lab reset.";
+
+
+    runCode();
+
+}
+
+
+/* =========================================================
    HTML CHALLENGE
-========================= */
+========================================================= */
 
 function checkHTML() {
 
@@ -1763,8 +2802,10 @@ function checkHTML() {
         .trim()
         .toLowerCase();
 
+
     const result =
-        document.getElementById("htmlResult");
+        document
+        .getElementById("htmlResult");
 
 
     if (
@@ -1785,9 +2826,9 @@ function checkHTML() {
 }
 
 
-/* =========================
+/* =========================================================
    CSS CHALLENGE
-========================= */
+========================================================= */
 
 function checkCSS() {
 
@@ -1798,8 +2839,10 @@ function checkCSS() {
         .trim()
         .toLowerCase();
 
+
     const result =
-        document.getElementById("cssResult");
+        document
+        .getElementById("cssResult");
 
 
     if (
@@ -1822,9 +2865,9 @@ function checkCSS() {
 }
 
 
-/* =========================
+/* =========================================================
    JAVASCRIPT CHALLENGE
-========================= */
+========================================================= */
 
 function checkJS() {
 
@@ -1835,8 +2878,10 @@ function checkJS() {
         .trim()
         .toLowerCase();
 
+
     const result =
-        document.getElementById("jsResult");
+        document
+        .getElementById("jsResult");
 
 
     if (
@@ -1857,31 +2902,13 @@ function checkJS() {
 }
 
 
-/* =========================
-   LIVE CODE EDITOR
-========================= */
-
-function runCode() {
-
-    const code =
-        document
-        .getElementById("codeInput")
-        .value;
-
-    const preview =
-        document
-        .getElementById("preview");
-
-    preview.srcdoc = code;
-
-}
-
-
-/* =========================
-   LOAD PREVIEW
-========================= */
+/* =========================================================
+   START LAB
+========================================================= */
 
 window.onload = function() {
+
+    loadSavedCode();
 
     runCode();
 
