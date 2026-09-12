@@ -3,726 +3,393 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Clyvexis | Cybersecurity Glossary</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            min-height: 100vh;
-            background-color: #050b16;
-
-            background-image:
-                linear-gradient(
-                    rgba(0, 170, 255, 0.035) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(0, 170, 255, 0.035) 1px,
-                    transparent 1px
-                );
-
-            background-size: 40px 40px;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            background: linear-gradient(
-                90deg,
-                #050b16,
-                #08152b,
-                #050b16
-            );
-
-            border-bottom: 1px solid #00aaff;
-
-            box-shadow:
-                0 0 20px rgba(0, 170, 255, 0.25);
-
-            backdrop-filter: blur(15px);
-
-            padding: 18px 5%;
-        }
-
-        nav::before {
-            content: "";
-
-            position: absolute;
-            left: 0;
-            top: 0;
-
-            width: 100%;
-            height: 2px;
-
-            background: linear-gradient(
-                90deg,
-                #00aaff,
-                #00ff88,
-                #00aaff
-            );
-
-            box-shadow:
-                0 0 12px #00aaff;
-        }
-
-        .nav-container {
-            max-width: 1300px;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-
-            white-space: nowrap;
-
-            text-shadow:
-                0 0 10px rgba(0, 170, 255, 0.5);
-        }
-
-        .logo span {
-            color: #00aaff;
-        }
-
-        nav ul {
-            list-style: none;
-
-            display: flex;
-            align-items: center;
-
-            gap: 18px;
-
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        nav a {
-            position: relative;
-
-            color: #ffffff;
-            text-decoration: none;
-
-            font-size: 14px;
-            font-weight: bold;
-
-            transition: 0.3s;
-
-            padding: 6px 0;
-        }
-
-        nav a:hover {
-            color: #00aaff;
-
-            text-shadow:
-                0 0 10px rgba(0, 170, 255, 0.8);
-        }
-
-        nav a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            bottom: 0;
-
-            width: 0;
-            height: 2px;
-
-            background: linear-gradient(
-                90deg,
-                #00aaff,
-                #00ff88
-            );
-
-            transition: 0.3s;
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-        nav a.active {
-            color: #00aaff;
-        }
-
-        .donate {
-            border: 1px solid #00ff88;
-
-            padding: 8px 13px !important;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0, 170, 255, 0.08),
-                    rgba(0, 255, 136, 0.08)
-                );
-
-            box-shadow:
-                0 0 12px rgba(0, 255, 136, 0.15);
-        }
-
-        .donate:hover {
-            color: #00ff88;
-
-            box-shadow:
-                0 0 18px rgba(0, 255, 136, 0.3);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            position: relative;
-
-            overflow: hidden;
-
-            text-align: center;
-
-            padding: 100px 20px 80px;
-
-            background:
-                radial-gradient(
-                    circle at 50% 20%,
-                    rgba(0, 170, 255, 0.15),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at 80% 70%,
-                    rgba(0, 255, 136, 0.07),
-                    transparent 30%
-                );
-        }
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 170, 255, 0.12),
-                    transparent 70%
-                );
-
-            top: -250px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            animation: cyberGlow 6s infinite alternate;
-        }
-
-        @keyframes cyberGlow {
-
-            from {
-                opacity: 0.4;
-                transform: translateX(-50%) scale(1);
-            }
-
-            to {
-                opacity: 0.9;
-                transform: translateX(-50%) scale(1.3);
-            }
-
-        }
-
-        .hero-icon {
-            font-size: 70px;
-
-            margin-bottom: 20px;
-
-            filter:
-                drop-shadow(0 0 15px #00aaff)
-                drop-shadow(0 0 20px #00ff88);
-
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        @keyframes floatIcon {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-        }
-
-        .hero h1 {
-            position: relative;
-
-            font-size: clamp(42px, 7vw, 75px);
-
-            margin-bottom: 15px;
-
-            letter-spacing: -2px;
-        }
-
-        .hero h1 span {
-            background:
-                linear-gradient(
-                    90deg,
-                    #00aaff,
-                    #00ffff,
-                    #00ff88
-                );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            position: relative;
-
-            max-width: 750px;
-
-            margin: auto;
-
-            color: #b8c7d9;
-
-            font-size: 18px;
-
-            line-height: 1.7;
-        }
-
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search-section {
-            width: 94%;
-            max-width: 1000px;
-
-            margin: -20px auto 45px;
-
-            position: relative;
-            z-index: 5;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-
-            padding: 18px 22px 18px 55px;
-
-            border-radius: 14px;
-
-            border: 1px solid rgba(0, 170, 255, 0.4);
-
-            background:
-                rgba(8, 18, 35, 0.92);
-
-            color: white;
-
-            font-size: 17px;
-
-            outline: none;
-
-            box-shadow:
-                0 0 25px rgba(0, 170, 255, 0.08);
-
-            transition: 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: #00aaff;
-
-            box-shadow:
-                0 0 25px rgba(0, 170, 255, 0.2);
-        }
-
-        .search-box span {
-            position: absolute;
-
-            left: 20px;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            font-size: 22px;
-
-            color: #00aaff;
-        }
-
-        /* =========================
-           FILTER BUTTONS
-        ========================= */
-
-        .filters {
-            width: 94%;
-            max-width: 1250px;
-
-            margin: 0 auto 40px;
-
-            display: flex;
-
-            justify-content: center;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-        }
-
-        .filter-btn {
-            cursor: pointer;
-
-            border: 1px solid rgba(0, 170, 255, 0.3);
-
-            background:
-                rgba(8, 18, 35, 0.8);
-
-            color: #b8c7d9;
-
-            padding: 9px 15px;
-
-            border-radius: 20px;
-
-            font-size: 13px;
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .filter-btn:hover {
-            color: white;
-
-            border-color: #00aaff;
-
-            box-shadow:
-                0 0 12px rgba(0, 170, 255, 0.2);
-        }
-
-        .filter-btn.active {
-            color: white;
-
-            border-color: #00aaff;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0, 170, 255, 0.2),
-                    rgba(0, 255, 136, 0.12)
-                );
-
-            box-shadow:
-                0 0 15px rgba(0, 170, 255, 0.2);
-        }
-
-        /* =========================
-           GLOSSARY GRID
-        ========================= */
-
-        .glossary-container {
-            width: 94%;
-            max-width: 1300px;
-
-            margin: auto;
-
-            padding-bottom: 80px;
-        }
-
-        .glossary-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 20px;
-        }
-
-        .term-card {
-            position: relative;
-
-            padding: 25px;
-
-            min-height: 220px;
-
-            border-radius: 16px;
-
-            border: 1px solid
-                rgba(0, 170, 255, 0.22);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(12, 27, 50, 0.9),
-                    rgba(5, 12, 25, 0.94)
-                );
-
-            box-shadow:
-                inset 0 0 25px
-                rgba(0, 170, 255, 0.025);
-
-            transition: 0.3s;
-
-            overflow: hidden;
-        }
-
-        .term-card::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 2px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #00aaff,
-                    #00ff88,
-                    transparent
-                );
-
-            opacity: 0.6;
-        }
-
-        .term-card:hover {
-            transform: translateY(-5px);
-
-            border-color:
-                rgba(0, 170, 255, 0.65);
-
-            box-shadow:
-                0 0 25px
-                rgba(0, 170, 255, 0.12);
-        }
-
-        .term-number {
-            display: inline-block;
-
-            color: #00ff88;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            margin-bottom: 8px;
-
-            letter-spacing: 1px;
-        }
-
-        .term-card h3 {
-            color: #00aaff;
-
-            font-size: 21px;
-
-            margin-bottom: 12px;
-        }
-
-        .term-card p {
-            color: #b9c8d9;
-
-            line-height: 1.6;
-
-            font-size: 14px;
-
-            margin-bottom: 10px;
-        }
-
-        .term-card strong {
-            color: white;
-        }
-
-        .example {
-            padding: 10px 12px;
-
-            margin-top: 12px;
-
-            border-left: 2px solid #00ff88;
-
-            background:
-                rgba(0, 255, 136, 0.04);
-
-            color: #9fb1c6;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-        }
-
-        .example strong {
-            color: #00ff88;
-        }
-
-        .no-results {
-            display: none;
-
-            text-align: center;
-
-            padding: 60px 20px;
-
-            color: #9fb1c6;
-
-            font-size: 18px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-
-            padding: 40px 20px;
-
-            border-top:
-                1px solid rgba(0, 170, 255, 0.2);
-
-            background:
-                rgba(3, 8, 17, 0.85);
-        }
-
-        footer h2 {
-            font-size: 22px;
-
-            margin-bottom: 12px;
-        }
-
-        footer span {
-            color: #00aaff;
-        }
-
-        .footer-line {
-            width: 80px;
-            height: 2px;
-
-            margin: 15px auto;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #00aaff,
-                    #00ff88
-                );
-
-            box-shadow:
-                0 0 10px #00aaff;
-        }
-
-        footer p {
-            color: #77899e;
-
-            font-size: 13px;
-
-            line-height: 1.6;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 950px) {
-
-            .glossary-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .nav-container {
-                flex-direction: column;
-            }
-
-        }
-
-        @media (max-width: 600px) {
-
-            nav {
-                padding: 15px 4%;
-            }
-
-            nav ul {
-                gap: 12px;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .hero {
-                padding:
-                    75px 18px 65px;
-            }
-
-            .hero-icon {
-                font-size: 55px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .glossary-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .term-card {
-                min-height: auto;
-            }
-
-            .search-box input {
-                font-size: 15px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Clyvexis | Cybersecurity Glossary</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background:
+        linear-gradient(rgba(0,170,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,170,255,0.035) 1px, transparent 1px),
+        #050b16;
+    background-size: 40px 40px;
+    min-height: 100vh;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5,11,22,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,170,255,0.25);
+    box-shadow: 0 0 25px rgba(0,170,255,0.08);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px 10px;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    color: #c9eaff;
+    text-decoration: none;
+    padding: 10px 13px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.25s ease;
+    display: block;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background: rgba(0,170,255,0.12);
+    box-shadow: 0 0 15px rgba(0,170,255,0.18);
+}
+
+nav a.active {
+    color: #00aaff;
+    background: rgba(0,170,255,0.10);
+    box-shadow:
+        0 0 12px rgba(0,170,255,0.22),
+        inset 0 0 10px rgba(0,170,255,0.05);
+}
+
+nav a.donate {
+    color: #39ff88;
+}
+
+nav a.donate:hover {
+    background: rgba(57,255,136,0.10);
+    box-shadow: 0 0 15px rgba(57,255,136,0.20);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: #008cff;
+    opacity: 0.08;
+    filter: blur(120px);
+    border-radius: 50%;
+    top: -250px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: glowMove 6s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove {
+    from {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    to {
+        transform: translateX(-50%) translateY(60px);
+    }
+}
+
+.hero h1 {
+    position: relative;
+    font-size: clamp(42px, 8vw, 78px);
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow:
+        0 0 10px rgba(0,170,255,0.7),
+        0 0 30px rgba(0,170,255,0.35);
+}
+
+.hero h1 span {
+    color: #00aaff;
+}
+
+.hero p {
+    position: relative;
+    max-width: 750px;
+    margin: auto;
+    color: #9db6ca;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    max-width: 850px;
+    margin: 0 auto 35px;
+    padding: 0 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 17px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,170,255,0.3);
+    background: rgba(8,18,35,0.9);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 0 20px rgba(0,170,255,0.06);
+    transition: 0.25s ease;
+}
+
+.search-container input:focus {
+    border-color: #00aaff;
+    box-shadow: 0 0 20px rgba(0,170,255,0.18);
+}
+
+.search-container input::placeholder {
+    color: #71869a;
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.filters {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-btn {
+    border: 1px solid rgba(0,170,255,0.25);
+    background: rgba(8,18,35,0.8);
+    color: #9db6ca;
+    padding: 9px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.25s ease;
+}
+
+.filter-btn:hover {
+    color: white;
+    border-color: #00aaff;
+    box-shadow: 0 0 12px rgba(0,170,255,0.15);
+}
+
+.filter-btn.active {
+    color: #ffffff;
+    background: rgba(0,170,255,0.15);
+    border-color: #00aaff;
+    box-shadow: 0 0 15px rgba(0,170,255,0.15);
+}
+
+/* =========================
+   GLOSSARY GRID
+========================= */
+
+.glossary-container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 20px 70px;
+}
+
+.glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 18px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.term-card {
+    position: relative;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,23,43,0.95),
+            rgba(5,12,25,0.95)
+        );
+    border: 1px solid rgba(0,170,255,0.18);
+    border-radius: 14px;
+    padding: 22px;
+    min-height: 190px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.term-card::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #00aaff;
+    opacity: 0.035;
+    filter: blur(40px);
+    top: -30px;
+    right: -30px;
+    border-radius: 50%;
+}
+
+.term-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,170,255,0.55);
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.35),
+        0 0 20px rgba(0,170,255,0.10);
+}
+
+.term-number {
+    color: #00aaff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+}
+
+.term-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.term-card p {
+    color: #9db6ca;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.category {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #39ff88;
+    background: rgba(57,255,136,0.07);
+    border: 1px solid rgba(57,255,136,0.16);
+}
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: #7f95a8;
+}
+
+.no-results h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    border-top: 1px solid rgba(0,170,255,0.15);
+    background: rgba(3,8,17,0.8);
+}
+
+footer p {
+    color: #61788d;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+footer strong {
+    color: #00aaff;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    nav ul {
+        gap: 3px;
+        padding: 10px 5px;
+    }
+
+    nav a {
+        padding: 8px 8px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 65px 18px 50px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .glossary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .term-card {
+        min-height: auto;
+    }
+
+}
+
+</style>
 
 </head>
 
-
 <body>
-
 
 <!-- =========================
      NAVIGATION
@@ -730,65 +397,63 @@
 
 <nav>
 
-    <div class="nav-container">
+<ul>
 
-        <a href="index.html" class="logo">
-            🛡️ Cly<span>vexis</span>
+    <li>
+        <a href="index.html">
+            Home
         </a>
+    </li>
 
-        <ul>
+    <li>
+        <a href="lessons.html">
+            Lessons
+        </a>
+    </li>
 
-            <li>
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
+    <li>
+        <a href="labs.html">
+            Labs
+        </a>
+    </li>
 
-            <li>
-                <a href="lessons.html">
-                    Lessons
-                </a>
-            </li>
+    <li>
+        <a href="quiz.html">
+            Quiz
+        </a>
+    </li>
 
-            <li>
-                <a href="labs.html">
-                    Labs
-                </a>
-            </li>
+    <li>
+        <a href="games.html">
+            Games
+        </a>
+    </li>
 
-            <li>
-                <a href="quiz.html">
-                    Quiz
-                </a>
-            </li>
+    <li>
+        <a href="glossary.html" class="active">
+            Glossary
+        </a>
+    </li>
 
-            <li>
-                <a href="games.html">
-                    Games
-                </a>
-            </li>
+    <li>
+        <a href="coding.html">
+            💻 Coding
+        </a>
+    </li>
 
-            <li>
-                <a href="glossary.html" class="active">
-                    Glossary
-                </a>
-            </li>
+    <li>
+        <a href="simulators.html">
+            🖥️ Simulators
+        </a>
+    </li>
 
-            <li>
-                <a href="coding.html">
-                    💻 Coding
-                </a>
-            </li>
+    <li>
+        <a href="donate.html" class="donate">
+            💚 Donate
+        </a>
+    </li>
 
-            <li>
-                <a href="donate.html" class="donate">
-                    💚 Donate
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
+</ul>
 
 </nav>
 
@@ -799,17 +464,14 @@
 
 <section class="hero">
 
-    <div class="hero-icon">
-        📚
-    </div>
-
     <h1>
-        Clyvexis <span>Glossary</span>
+        Cly<span>vexis</span> Glossary
     </h1>
 
     <p>
-        Learn the important words, concepts, technologies,
-        attacks, defenses, and tools used in cybersecurity.
+        Learn the cybersecurity terms, concepts, attacks,
+        defenses, and technologies that every future
+        cybersecurity professional should know.
     </p>
 
 </section>
@@ -819,23 +481,15 @@
      SEARCH
 ========================= -->
 
-<section class="search-section">
+<div class="search-container">
 
-    <div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔎 Search cybersecurity terms..."
+    >
 
-        <span>
-            🔎
-        </span>
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search cybersecurity terms..."
-        >
-
-    </div>
-
-</section>
+</div>
 
 
 <!-- =========================
@@ -844,87 +498,59 @@
 
 <div class="filters">
 
-    <button
-        class="filter-btn active"
-        data-filter="all">
+    <button class="filter-btn active" data-category="All">
         All
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="fundamentals">
+    <button class="filter-btn" data-category="Fundamentals">
         Fundamentals
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="networking">
+    <button class="filter-btn" data-category="Networking">
         Networking
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="authentication">
+    <button class="filter-btn" data-category="Authentication">
         Authentication
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="cryptography">
+    <button class="filter-btn" data-category="Cryptography">
         Cryptography
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="malware">
+    <button class="filter-btn" data-category="Malware">
         Malware
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="social">
+    <button class="filter-btn" data-category="Social Engineering">
         Social Engineering
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="attacks">
+    <button class="filter-btn" data-category="Attacks">
         Attacks
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="defense">
+    <button class="filter-btn" data-category="Defense">
         Defense
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="web">
+    <button class="filter-btn" data-category="Web Security">
         Web Security
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="cloud">
+    <button class="filter-btn" data-category="Cloud">
         Cloud
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="operations">
+    <button class="filter-btn" data-category="Security Operations">
         Security Operations
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="forensics">
+    <button class="filter-btn" data-category="Forensics">
         Forensics
     </button>
 
-    <button
-        class="filter-btn"
-        data-filter="careers">
+    <button class="filter-btn" data-category="Careers & Tools">
         Careers & Tools
     </button>
 
@@ -937,2167 +563,1823 @@
 
 <main class="glossary-container">
 
-    <div class="glossary-grid" id="glossaryGrid">
+<div class="glossary-grid" id="glossaryGrid">
 
 
-        <!-- FUNDAMENTALS -->
+<!-- 001 -->
 
-        <div class="term-card" data-category="fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-            <span class="term-number">
-                #001 • FUNDAMENTALS
-            </span>
+<div class="term-number">#001</div>
 
-            <h3>Cybersecurity</h3>
+<h2>Cybersecurity</h2>
 
-            <p>
-                The practice of protecting computers,
-                networks, systems, accounts, and data
-                from digital threats.
-            </p>
+<p>
+The practice of protecting computers, networks,
+systems, applications, and data from digital threats.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Protecting a website from unauthorized access.
-            </div>
+<span class="category">Fundamentals</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="fundamentals">
+<!-- 002 -->
 
-            <span class="term-number">
-                #002 • FUNDAMENTALS
-            </span>
+<div class="term-card" data-category="Fundamentals">
 
-            <h3>Threat</h3>
+<div class="term-number">#002</div>
 
-            <p>
-                Something that could potentially cause
-                harm to a computer system, network,
-                account, or piece of information.
-            </p>
+<h2>Threat</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Malware can be a threat to a computer.
-            </div>
+<p>
+Anything that has the potential to cause harm to
+a computer system, network, or piece of data.
+</p>
 
-        </div>
+<span class="category">Fundamentals</span>
 
+</div>
 
-        <div class="term-card" data-category="fundamentals">
 
-            <span class="term-number">
-                #003 • FUNDAMENTALS
-            </span>
+<!-- 003 -->
 
-            <h3>Vulnerability</h3>
+<div class="term-card" data-category="Fundamentals">
 
-            <p>
-                A weakness in software, hardware,
-                configuration, or a process that could
-                potentially be exploited.
-            </p>
+<div class="term-number">#003</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Outdated software may contain vulnerabilities.
-            </div>
+<h2>Vulnerability</h2>
 
-        </div>
+<p>
+A weakness in software, hardware, configuration,
+or procedures that could be exploited.
+</p>
 
+<span class="category">Fundamentals</span>
 
-        <div class="term-card" data-category="fundamentals">
+</div>
 
-            <span class="term-number">
-                #004 • FUNDAMENTALS
-            </span>
 
-            <h3>Risk</h3>
+<!-- 004 -->
 
-            <p>
-                The possibility that a threat could take
-                advantage of a vulnerability and cause harm.
-            </p>
+<div class="term-card" data-category="Fundamentals">
 
-            <div class="example">
-                <strong>Example:</strong>
-                An unpatched server may create security risk.
-            </div>
+<div class="term-number">#004</div>
 
-        </div>
+<h2>Exploit</h2>
 
+<p>
+A technique or piece of code that takes advantage
+of a vulnerability.
+</p>
 
-        <div class="term-card" data-category="fundamentals">
+<span class="category">Fundamentals</span>
 
-            <span class="term-number">
-                #005 • FUNDAMENTALS
-            </span>
+</div>
 
-            <h3>Asset</h3>
 
-            <p>
-                Something valuable that needs protection.
-                Assets can include data, devices, accounts,
-                applications, and networks.
-            </p>
+<!-- 005 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A company's customer database is an asset.
-            </div>
+<div class="term-card" data-category="Fundamentals">
 
-        </div>
+<div class="term-number">#005</div>
 
+<h2>Risk</h2>
 
-        <div class="term-card" data-category="fundamentals">
+<p>
+The possibility that a threat could take advantage
+of a vulnerability and cause damage.
+</p>
 
-            <span class="term-number">
-                #006 • FUNDAMENTALS
-            </span>
+<span class="category">Fundamentals</span>
 
-            <h3>CIA Triad</h3>
+</div>
 
-            <p>
-                Confidentiality, Integrity, and Availability.
-                These are three major goals of cybersecurity.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Security teams use the CIA Triad when
-                designing protections.
-            </div>
+<!-- 006 -->
 
-        </div>
+<div class="term-card" data-category="Networking">
 
+<div class="term-number">#006</div>
 
-        <div class="term-card" data-category="fundamentals">
+<h2>IP Address</h2>
 
-            <span class="term-number">
-                #007 • FUNDAMENTALS
-            </span>
+<p>
+A numerical address used to identify a device
+on a network.
+</p>
 
-            <h3>Confidentiality</h3>
+<span class="category">Networking</span>
 
-            <p>
-                Making sure information is only accessible
-                to people or systems that are authorized.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Passwords help keep private accounts confidential.
-            </div>
 
-        </div>
+<!-- 007 -->
 
+<div class="term-card" data-category="Networking">
 
-        <div class="term-card" data-category="fundamentals">
+<div class="term-number">#007</div>
 
-            <span class="term-number">
-                #008 • FUNDAMENTALS
-            </span>
+<h2>MAC Address</h2>
 
-            <h3>Integrity</h3>
+<p>
+A hardware identifier assigned to a network
+interface.
+</p>
 
-            <p>
-                Making sure information remains accurate
-                and has not been changed without authorization.
-            </p>
+<span class="category">Networking</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Hashes can help detect unexpected changes.
-            </div>
+</div>
 
-        </div>
 
+<!-- 008 -->
 
-        <div class="term-card" data-category="fundamentals">
+<div class="term-card" data-category="Networking">
 
-            <span class="term-number">
-                #009 • FUNDAMENTALS
-            </span>
+<div class="term-number">#008</div>
 
-            <h3>Availability</h3>
+<h2>Router</h2>
 
-            <p>
-                Making sure systems and information are
-                available when authorized users need them.
-            </p>
+<p>
+A device that directs network traffic between
+different networks.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Backup systems can help maintain availability.
-            </div>
+<span class="category">Networking</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="fundamentals">
+<!-- 009 -->
 
-            <span class="term-number">
-                #010 • FUNDAMENTALS
-            </span>
+<div class="term-card" data-category="Networking">
 
-            <h3>Cyber Attack</h3>
+<div class="term-number">#009</div>
 
-            <p>
-                An attempt to gain unauthorized access,
-                steal information, disrupt systems,
-                or cause other digital harm.
-            </p>
+<h2>Firewall</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A criminal attempting to access an account.
-            </div>
+<p>
+A security system that monitors and controls
+network traffic based on rules.
+</p>
 
-        </div>
+<span class="category">Networking</span>
 
+</div>
 
-        <!-- NETWORKING -->
 
-        <div class="term-card" data-category="networking">
+<!-- 010 -->
 
-            <span class="term-number">
-                #011 • NETWORKING
-            </span>
+<div class="term-card" data-category="Networking">
 
-            <h3>Network</h3>
+<div class="term-number">#010</div>
 
-            <p>
-                A group of connected devices that can
-                communicate and share information.
-            </p>
+<h2>Port</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Computers connected to the same Wi-Fi network.
-            </div>
+<p>
+A logical communication endpoint used by network
+services and applications.
+</p>
 
-        </div>
+<span class="category">Networking</span>
 
+</div>
 
-        <div class="term-card" data-category="networking">
 
-            <span class="term-number">
-                #012 • NETWORKING
-            </span>
+<!-- 011 -->
 
-            <h3>IP Address</h3>
+<div class="term-card" data-category="Authentication">
 
-            <p>
-                A numerical address used to identify
-                a device or network interface on a network.
-            </p>
+<div class="term-number">#011</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                192.168.1.10 can be a private IPv4 address.
-            </div>
+<h2>Authentication</h2>
 
-        </div>
+<p>
+The process of verifying that someone or something
+is who they claim to be.
+</p>
 
+<span class="category">Authentication</span>
 
-        <div class="term-card" data-category="networking">
+</div>
 
-            <span class="term-number">
-                #013 • NETWORKING
-            </span>
 
-            <h3>IPv4</h3>
+<!-- 012 -->
 
-            <p>
-                A common version of Internet Protocol that
-                uses 32-bit addresses.
-            </p>
+<div class="term-card" data-category="Authentication">
 
-            <div class="example">
-                <strong>Example:</strong>
-                8.8.8.8 is an IPv4 address.
-            </div>
+<div class="term-number">#012</div>
 
-        </div>
+<h2>Authorization</h2>
 
+<p>
+The process of deciding what an authenticated user
+or system is allowed to access.
+</p>
 
-        <div class="term-card" data-category="networking">
+<span class="category">Authentication</span>
 
-            <span class="term-number">
-                #014 • NETWORKING
-            </span>
+</div>
 
-            <h3>IPv6</h3>
 
-            <p>
-                A newer version of Internet Protocol that
-                uses 128-bit addresses.
-            </p>
+<!-- 013 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                IPv6 provides a much larger address space.
-            </div>
+<div class="term-card" data-category="Authentication">
 
-        </div>
+<div class="term-number">#013</div>
 
+<h2>MFA</h2>
 
-        <div class="term-card" data-category="networking">
+<p>
+Multi-factor authentication requires multiple
+forms of verification before access is granted.
+</p>
 
-            <span class="term-number">
-                #015 • NETWORKING
-            </span>
+<span class="category">Authentication</span>
 
-            <h3>DNS</h3>
+</div>
 
-            <p>
-                Domain Name System. It translates domain
-                names into IP addresses.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                DNS helps your browser find the server
-                behind a website name.
-            </div>
+<!-- 014 -->
 
-        </div>
+<div class="term-card" data-category="Authentication">
 
+<div class="term-number">#014</div>
 
-        <div class="term-card" data-category="networking">
+<h2>Biometrics</h2>
 
-            <span class="term-number">
-                #016 • NETWORKING
-            </span>
+<p>
+Authentication using physical or behavioral
+characteristics such as fingerprints.
+</p>
 
-            <h3>Router</h3>
+<span class="category">Authentication</span>
 
-            <p>
-                A device that forwards network traffic
-                between different networks.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A home router connects your devices
-                to the internet.
-            </div>
 
-        </div>
+<!-- 015 -->
 
+<div class="term-card" data-category="Authentication">
 
-        <div class="term-card" data-category="networking">
+<div class="term-number">#015</div>
 
-            <span class="term-number">
-                #017 • NETWORKING
-            </span>
+<h2>Passphrase</h2>
 
-            <h3>Firewall</h3>
+<p>
+A password made from multiple words or a longer
+sequence that can be easier to remember.
+</p>
 
-            <p>
-                A security system that monitors and controls
-                network traffic based on rules.
-            </p>
+<span class="category">Authentication</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A firewall can block unwanted network connections.
-            </div>
+</div>
 
-        </div>
 
+<!-- 016 -->
 
-        <div class="term-card" data-category="networking">
+<div class="term-card" data-category="Cryptography">
 
-            <span class="term-number">
-                #018 • NETWORKING
-            </span>
+<div class="term-number">#016</div>
 
-            <h3>Port</h3>
+<h2>Encryption</h2>
 
-            <p>
-                A logical communication endpoint used
-                by network services.
-            </p>
+<p>
+The process of transforming readable information
+into protected data that requires a key to decrypt.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                HTTPS commonly uses TCP port 443.
-            </div>
+<span class="category">Cryptography</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="networking">
+<!-- 017 -->
 
-            <span class="term-number">
-                #019 • NETWORKING
-            </span>
+<div class="term-card" data-category="Cryptography">
 
-            <h3>TCP</h3>
+<div class="term-number">#017</div>
 
-            <p>
-                Transmission Control Protocol. It provides
-                reliable, ordered communication between devices.
-            </p>
+<h2>Decryption</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                TCP helps ensure data arrives correctly.
-            </div>
+<p>
+The process of converting encrypted information
+back into readable information.
+</p>
 
-        </div>
+<span class="category">Cryptography</span>
 
+</div>
 
-        <div class="term-card" data-category="networking">
 
-            <span class="term-number">
-                #020 • NETWORKING
-            </span>
+<!-- 018 -->
 
-            <h3>UDP</h3>
+<div class="term-card" data-category="Cryptography">
 
-            <p>
-                User Datagram Protocol. A faster,
-                connectionless network protocol.
-            </p>
+<div class="term-number">#018</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                UDP is commonly useful when speed matters.
-            </div>
+<h2>Hash</h2>
 
-        </div>
+<p>
+A one-way mathematical result generated from
+data.
+</p>
 
+<span class="category">Cryptography</span>
 
-        <!-- AUTHENTICATION -->
+</div>
 
-        <div class="term-card" data-category="authentication">
 
-            <span class="term-number">
-                #021 • AUTHENTICATION
-            </span>
+<!-- 019 -->
 
-            <h3>Authentication</h3>
+<div class="term-card" data-category="Cryptography">
 
-            <p>
-                The process of verifying who a user
-                or system claims to be.
-            </p>
+<div class="term-number">#019</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Logging into an account with a password.
-            </div>
+<h2>SHA-256</h2>
 
-        </div>
+<p>
+A cryptographic hash function that produces
+a 256-bit hash value.
+</p>
 
+<span class="category">Cryptography</span>
 
-        <div class="term-card" data-category="authentication">
+</div>
 
-            <span class="term-number">
-                #022 • AUTHENTICATION
-            </span>
 
-            <h3>Authorization</h3>
+<!-- 020 -->
 
-            <p>
-                Determining what an authenticated user
-                or system is allowed to access or do.
-            </p>
+<div class="term-card" data-category="Cryptography">
 
-            <div class="example">
-                <strong>Example:</strong>
-                An employee may be allowed to view
-                certain files but not others.
-            </div>
+<div class="term-number">#020</div>
 
-        </div>
+<h2>Digital Signature</h2>
 
+<p>
+A cryptographic method used to verify the
+authenticity and integrity of digital information.
+</p>
 
-        <div class="term-card" data-category="authentication">
+<span class="category">Cryptography</span>
 
-            <span class="term-number">
-                #023 • AUTHENTICATION
-            </span>
+</div>
 
-            <h3>MFA</h3>
 
-            <p>
-                Multi-Factor Authentication requires
-                multiple types of verification.
-            </p>
+<!-- 021 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                Password plus a verification code.
-            </div>
+<div class="term-card" data-category="Malware">
 
-        </div>
+<div class="term-number">#021</div>
 
+<h2>Malware</h2>
 
-        <div class="term-card" data-category="authentication">
+<p>
+Software intentionally designed to harm, disrupt,
+spy on, or gain unauthorized access to systems.
+</p>
 
-            <span class="term-number">
-                #024 • AUTHENTICATION
-            </span>
+<span class="category">Malware</span>
 
-            <h3>Biometrics</h3>
+</div>
 
-            <p>
-                Authentication using physical or behavioral
-                characteristics.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Fingerprint or facial recognition.
-            </div>
+<!-- 022 -->
 
-        </div>
+<div class="term-card" data-category="Malware">
 
+<div class="term-number">#022</div>
 
-        <div class="term-card" data-category="authentication">
+<h2>Virus</h2>
 
-            <span class="term-number">
-                #025 • AUTHENTICATION
-            </span>
+<p>
+Malware that attaches itself to files or programs
+and can spread when they are executed.
+</p>
 
-            <h3>Password Manager</h3>
+<span class="category">Malware</span>
 
-            <p>
-                Software designed to securely store and
-                manage passwords.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A password manager can generate unique passwords.
-            </div>
 
-        </div>
+<!-- 023 -->
 
+<div class="term-card" data-category="Malware">
 
-        <div class="term-card" data-category="authentication">
+<div class="term-number">#023</div>
 
-            <span class="term-number">
-                #026 • AUTHENTICATION
-            </span>
+<h2>Worm</h2>
 
-            <h3>Least Privilege</h3>
+<p>
+Malware capable of spreading between systems
+without needing to attach to another file.
+</p>
 
-            <p>
-                Giving users and systems only the access
-                they need to perform their job.
-            </p>
+<span class="category">Malware</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A student account does not need administrator access.
-            </div>
+</div>
 
-        </div>
 
+<!-- 024 -->
 
-        <div class="term-card" data-category="authentication">
+<div class="term-card" data-category="Malware">
 
-            <span class="term-number">
-                #027 • AUTHENTICATION
-            </span>
+<div class="term-number">#024</div>
 
-            <h3>Access Control</h3>
+<h2>Trojan</h2>
 
-            <p>
-                Rules and technologies used to control
-                who can access resources.
-            </p>
+<p>
+Malware that disguises itself as legitimate
+software or a useful file.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                File permissions control who can open a document.
-            </div>
+<span class="category">Malware</span>
 
-        </div>
+</div>
 
 
-        <!-- CRYPTOGRAPHY -->
+<!-- 025 -->
 
-        <div class="term-card" data-category="cryptography">
+<div class="term-card" data-category="Malware">
 
-            <span class="term-number">
-                #028 • CRYPTOGRAPHY
-            </span>
+<div class="term-number">#025</div>
 
-            <h3>Encryption</h3>
+<h2>Ransomware</h2>
 
-            <p>
-                Converting readable information into a protected
-                form that requires the appropriate key to decrypt.
-            </p>
+<p>
+Malware that blocks access to information or systems
+and demands payment from victims.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                HTTPS protects information sent between
-                your browser and a website.
-            </div>
+<span class="category">Malware</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="cryptography">
+<!-- 026 -->
 
-            <span class="term-number">
-                #029 • CRYPTOGRAPHY
-            </span>
+<div class="term-card" data-category="Malware">
 
-            <h3>Decryption</h3>
+<div class="term-number">#026</div>
 
-            <p>
-                The process of converting encrypted information
-                back into a readable form.
-            </p>
+<h2>Spyware</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                An authorized system decrypts protected data.
-            </div>
+<p>
+Software designed to secretly monitor activity
+or collect information.
+</p>
 
-        </div>
+<span class="category">Malware</span>
 
+</div>
 
-        <div class="term-card" data-category="cryptography">
 
-            <span class="term-number">
-                #030 • CRYPTOGRAPHY
-            </span>
+<!-- 027 -->
 
-            <h3>Hash</h3>
+<div class="term-card" data-category="Malware">
 
-            <p>
-                A fixed-length value generated from data
-                using a hash function.
-            </p>
+<div class="term-number">#027</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                SHA-256 can create a hash from text.
-            </div>
+<h2>Keylogger</h2>
 
-        </div>
+<p>
+Software or hardware that records keystrokes,
+sometimes used maliciously to steal information.
+</p>
 
+<span class="category">Malware</span>
 
-        <div class="term-card" data-category="cryptography">
+</div>
 
-            <span class="term-number">
-                #031 • CRYPTOGRAPHY
-            </span>
 
-            <h3>SHA-256</h3>
+<!-- 028 -->
 
-            <p>
-                A widely used cryptographic hash algorithm
-                that produces a 256-bit hash.
-            </p>
+<div class="term-card" data-category="Malware">
 
-            <div class="example">
-                <strong>Example:</strong>
-                It can be used to verify that data has not changed.
-            </div>
+<div class="term-number">#028</div>
 
-        </div>
+<h2>Botnet</h2>
 
+<p>
+A group of compromised devices controlled
+together by an attacker.
+</p>
 
-        <div class="term-card" data-category="cryptography">
+<span class="category">Malware</span>
 
-            <span class="term-number">
-                #032 • CRYPTOGRAPHY
-            </span>
+</div>
 
-            <h3>Encryption Key</h3>
 
-            <p>
-                A value used by an encryption algorithm
-                to protect or recover information.
-            </p>
+<!-- 029 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A system may use a key to encrypt stored data.
-            </div>
+<div class="term-card" data-category="Malware">
 
-        </div>
+<div class="term-number">#029</div>
 
+<h2>Rootkit</h2>
 
-        <div class="term-card" data-category="cryptography">
+<p>
+Malicious software designed to hide unauthorized
+activity or maintain privileged access.
+</p>
 
-            <span class="term-number">
-                #033 • CRYPTOGRAPHY
-            </span>
+<span class="category">Malware</span>
 
-            <h3>Symmetric Encryption</h3>
+</div>
 
-            <p>
-                Encryption where the same secret key is used
-                for encryption and decryption.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                AES is a symmetric encryption algorithm.
-            </div>
+<!-- 030 -->
 
-        </div>
+<div class="term-card" data-category="Malware">
 
+<div class="term-number">#030</div>
 
-        <div class="term-card" data-category="cryptography">
+<h2>Adware</h2>
 
-            <span class="term-number">
-                #034 • CRYPTOGRAPHY
-            </span>
+<p>
+Software that displays unwanted advertisements,
+sometimes while collecting information.
+</p>
 
-            <h3>Asymmetric Encryption</h3>
+<span class="category">Malware</span>
 
-            <p>
-                Encryption that uses a related public key
-                and private key.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Public-key cryptography is used in many secure systems.
-            </div>
 
-        </div>
+<!-- 031 -->
 
+<div class="term-card" data-category="Social Engineering">
 
-        <div class="term-card" data-category="cryptography">
+<div class="term-number">#031</div>
 
-            <span class="term-number">
-                #035 • CRYPTOGRAPHY
-            </span>
+<h2>Phishing</h2>
 
-            <h3>Digital Signature</h3>
+<p>
+A social engineering technique that uses deceptive
+messages to trick people into revealing information.
+</p>
 
-            <p>
-                A cryptographic mechanism used to help verify
-                authenticity and integrity.
-            </p>
+<span class="category">Social Engineering</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Software publishers can digitally sign applications.
-            </div>
+</div>
 
-        </div>
 
+<!-- 032 -->
 
-        <div class="term-card" data-category="cryptography">
+<div class="term-card" data-category="Social Engineering">
 
-            <span class="term-number">
-                #036 • CRYPTOGRAPHY
-            </span>
+<div class="term-number">#032</div>
 
-            <h3>Certificate</h3>
+<h2>Spear Phishing</h2>
 
-            <p>
-                A digital document used to associate an identity
-                with a public key.
-            </p>
+<p>
+A targeted phishing attack designed for a specific
+person or organization.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Websites use certificates with HTTPS.
-            </div>
+<span class="category">Social Engineering</span>
 
-        </div>
+</div>
 
 
-        <!-- MALWARE -->
+<!-- 033 -->
 
-        <div class="term-card" data-category="malware">
+<div class="term-card" data-category="Social Engineering">
 
-            <span class="term-number">
-                #037 • MALWARE
-            </span>
+<div class="term-number">#033</div>
 
-            <h3>Malware</h3>
+<h2>Smishing</h2>
 
-            <p>
-                Malicious software designed to disrupt,
-                damage, spy on, or gain unauthorized access
-                to systems.
-            </p>
+<p>
+Phishing attacks delivered through text messages.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Viruses and ransomware are types of malware.
-            </div>
+<span class="category">Social Engineering</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="malware">
+<!-- 034 -->
 
-            <span class="term-number">
-                #038 • MALWARE
-            </span>
+<div class="term-card" data-category="Social Engineering">
 
-            <h3>Virus</h3>
+<div class="term-number">#034</div>
 
-            <p>
-                A type of malware that can attach itself
-                to files or programs and spread when executed.
-            </p>
+<h2>Vishing</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A malicious file could carry a virus.
-            </div>
+<p>
+Phishing attacks carried out through voice calls
+or other phone-based communication.
+</p>
 
-        </div>
+<span class="category">Social Engineering</span>
 
+</div>
 
-        <div class="term-card" data-category="malware">
 
-            <span class="term-number">
-                #039 • MALWARE
-            </span>
+<!-- 035 -->
 
-            <h3>Worm</h3>
+<div class="term-card" data-category="Social Engineering">
 
-            <p>
-                Malware capable of spreading between systems
-                without needing to attach to another file.
-            </p>
+<div class="term-number">#035</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A worm may spread through vulnerable systems.
-            </div>
+<h2>Pretexting</h2>
 
-        </div>
+<p>
+Creating a believable story or situation to persuade
+someone to provide information or perform an action.
+</p>
 
+<span class="category">Social Engineering</span>
 
-        <div class="term-card" data-category="malware">
+</div>
 
-            <span class="term-number">
-                #040 • MALWARE
-            </span>
 
-            <h3>Trojan</h3>
+<!-- 036 -->
 
-            <p>
-                Malware that disguises itself as something
-                legitimate or useful.
-            </p>
+<div class="term-card" data-category="Social Engineering">
 
-            <div class="example">
-                <strong>Example:</strong>
-                A fake application could contain a Trojan.
-            </div>
+<div class="term-number">#036</div>
 
-        </div>
+<h2>Baiting</h2>
 
+<p>
+Using something attractive or interesting as bait
+to trick someone into taking an unsafe action.
+</p>
 
-        <div class="term-card" data-category="malware">
+<span class="category">Social Engineering</span>
 
-            <span class="term-number">
-                #041 • MALWARE
-            </span>
+</div>
 
-            <h3>Ransomware</h3>
 
-            <p>
-                Malware that can make data or systems
-                inaccessible and demands payment from victims.
-            </p>
+<!-- 037 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                Organizations prepare backups to help recover.
-            </div>
+<div class="term-card" data-category="Social Engineering">
 
-        </div>
+<div class="term-number">#037</div>
 
+<h2>Tailgating</h2>
 
-        <div class="term-card" data-category="malware">
+<p>
+Following an authorized person into a restricted
+physical area without permission.
+</p>
 
-            <span class="term-number">
-                #042 • MALWARE
-            </span>
+<span class="category">Social Engineering</span>
 
-            <h3>Spyware</h3>
+</div>
 
-            <p>
-                Malware designed to secretly monitor activity
-                or collect information.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Spyware may attempt to collect sensitive information.
-            </div>
+<!-- 038 -->
 
-        </div>
+<div class="term-card" data-category="Social Engineering">
 
+<div class="term-number">#038</div>
 
-        <div class="term-card" data-category="malware">
+<h2>Impersonation</h2>
 
-            <span class="term-number">
-                #043 • MALWARE
-            </span>
+<p>
+Pretending to be another person or trusted entity
+to influence someone's actions.
+</p>
 
-            <h3>Keylogger</h3>
+<span class="category">Social Engineering</span>
 
-            <p>
-                Software or hardware designed to record
-                keyboard input.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Security software can detect some keylogging threats.
-            </div>
 
-        </div>
+<!-- 039 -->
 
+<div class="term-card" data-category="Attacks">
 
-        <div class="term-card" data-category="malware">
+<div class="term-number">#039</div>
 
-            <span class="term-number">
-                #044 • MALWARE
-            </span>
+<h2>Brute Force</h2>
 
-            <h3>Botnet</h3>
+<p>
+An attack that repeatedly tries possible passwords
+or credentials until one works.
+</p>
 
-            <p>
-                A group of compromised devices controlled
-                by an attacker.
-            </p>
+<span class="category">Attacks</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Botnets can be used to generate large amounts
-                of unwanted traffic.
-            </div>
+</div>
 
-        </div>
 
+<!-- 040 -->
 
-        <!-- SOCIAL ENGINEERING -->
+<div class="term-card" data-category="Attacks">
 
-        <div class="term-card" data-category="social">
+<div class="term-number">#040</div>
 
-            <span class="term-number">
-                #045 • SOCIAL ENGINEERING
-            </span>
+<h2>DDoS</h2>
 
-            <h3>Phishing</h3>
+<p>
+A distributed denial-of-service attack attempts to
+overwhelm a service with excessive traffic.
+</p>
 
-            <p>
-                A scam that attempts to trick people into
-                revealing information or taking an unsafe action.
-            </p>
+<span class="category">Attacks</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A fake login email asking for account information.
-            </div>
+</div>
 
-        </div>
 
+<!-- 041 -->
 
-        <div class="term-card" data-category="social">
+<div class="term-card" data-category="Attacks">
 
-            <span class="term-number">
-                #046 • SOCIAL ENGINEERING
-            </span>
+<div class="term-number">#041</div>
 
-            <h3>Spear Phishing</h3>
+<h2>DoS</h2>
 
-            <p>
-                A targeted phishing attempt designed for
-                a particular person or organization.
-            </p>
+<p>
+A denial-of-service attack attempts to make a
+service unavailable to legitimate users.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A scam message customized for a specific employee.
-            </div>
+<span class="category">Attacks</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="social">
+<!-- 042 -->
 
-            <span class="term-number">
-                #047 • SOCIAL ENGINEERING
-            </span>
+<div class="term-card" data-category="Attacks">
 
-            <h3>Smishing</h3>
+<div class="term-number">#042</div>
 
-            <p>
-                Phishing delivered through text messages
-                or SMS.
-            </p>
+<h2>Man-in-the-Middle</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A fake delivery text asking you to click a link.
-            </div>
+<p>
+An attacker secretly positions themselves between
+two communicating parties.
+</p>
 
-        </div>
+<span class="category">Attacks</span>
 
+</div>
 
-        <div class="term-card" data-category="social">
 
-            <span class="term-number">
-                #048 • SOCIAL ENGINEERING
-            </span>
+<!-- 043 -->
 
-            <h3>Vishing</h3>
+<div class="term-card" data-category="Attacks">
 
-            <p>
-                A social engineering scam conducted
-                through voice calls.
-            </p>
+<div class="term-number">#043</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Someone pretending to be a legitimate company
-                over the phone.
-            </div>
+<h2>Credential Stuffing</h2>
 
-        </div>
+<p>
+Using stolen username and password combinations
+against other accounts.
+</p>
 
+<span class="category">Attacks</span>
 
-        <div class="term-card" data-category="social">
+</div>
 
-            <span class="term-number">
-                #049 • SOCIAL ENGINEERING
-            </span>
 
-            <h3>Pretexting</h3>
+<!-- 044 -->
 
-            <p>
-                Creating a believable story or situation
-                to manipulate someone into providing information.
-            </p>
+<div class="term-card" data-category="Attacks">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Someone falsely claiming to be technical support.
-            </div>
+<div class="term-number">#044</div>
 
-        </div>
+<h2>Password Spraying</h2>
 
+<p>
+Trying a small number of commonly used passwords
+against many accounts.
+</p>
 
-        <div class="term-card" data-category="social">
+<span class="category">Attacks</span>
 
-            <span class="term-number">
-                #050 • SOCIAL ENGINEERING
-            </span>
+</div>
 
-            <h3>Baiting</h3>
 
-            <p>
-                Using something attractive or interesting
-                to trick someone into taking an unsafe action.
-            </p>
+<!-- 045 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A suspicious download advertised as something desirable.
-            </div>
+<div class="term-card" data-category="Attacks">
 
-        </div>
+<div class="term-number">#045</div>
 
+<h2>SQL Injection</h2>
 
-        <!-- ATTACKS -->
+<p>
+An attack that attempts to manipulate database
+queries through unsafe application input.
+</p>
 
-        <div class="term-card" data-category="attacks">
+<span class="category">Attacks</span>
 
-            <span class="term-number">
-                #051 • ATTACKS
-            </span>
+</div>
 
-            <h3>Brute Force</h3>
 
-            <p>
-                An attack that repeatedly tries many possible
-                passwords or authentication values.
-            </p>
+<!-- 046 -->
 
-            <div class="example">
-                <strong>Defense:</strong>
-                Strong passwords, MFA, and rate limiting help.
-            </div>
+<div class="term-card" data-category="Attacks">
 
-        </div>
+<div class="term-number">#046</div>
 
+<h2>Zero-Day</h2>
 
-        <div class="term-card" data-category="attacks">
+<p>
+A vulnerability that is unknown or has no available
+patch when it is exploited.
+</p>
 
-            <span class="term-number">
-                #052 • ATTACKS
-            </span>
+<span class="category">Attacks</span>
 
-            <h3>Credential Stuffing</h3>
+</div>
 
-            <p>
-                Attempting to use stolen username and password
-                combinations on other services.
-            </p>
 
-            <div class="example">
-                <strong>Defense:</strong>
-                Use unique passwords for every account.
-            </div>
+<!-- 047 -->
 
-        </div>
+<div class="term-card" data-category="Defense">
 
+<div class="term-number">#047</div>
 
-        <div class="term-card" data-category="attacks">
+<h2>Patch</h2>
 
-            <span class="term-number">
-                #053 • ATTACKS
-            </span>
+<p>
+A software update designed to fix bugs,
+vulnerabilities, or security problems.
+</p>
 
-            <h3>DDoS</h3>
+<span class="category">Defense</span>
 
-            <p>
-                Distributed Denial-of-Service attacks attempt
-                to overwhelm a service with large amounts of traffic.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Defense:</strong>
-                Traffic filtering and mitigation services can help.
-            </div>
 
-        </div>
+<!-- 048 -->
 
+<div class="term-card" data-category="Defense">
 
-        <div class="term-card" data-category="attacks">
+<div class="term-number">#048</div>
 
-            <span class="term-number">
-                #054 • ATTACKS
-            </span>
+<h2>Antivirus</h2>
 
-            <h3>Man-in-the-Middle</h3>
+<p>
+Security software designed to detect, block,
+and remove malicious software.
+</p>
 
-            <p>
-                A situation where an attacker attempts to
-                intercept communications between parties.
-            </p>
+<span class="category">Defense</span>
 
-            <div class="example">
-                <strong>Defense:</strong>
-                Encryption and secure protocols help protect communications.
-            </div>
+</div>
 
-        </div>
 
+<!-- 049 -->
 
-        <div class="term-card" data-category="attacks">
+<div class="term-card" data-category="Defense">
 
-            <span class="term-number">
-                #055 • ATTACKS
-            </span>
+<div class="term-number">#049</div>
 
-            <h3>SQL Injection</h3>
+<h2>EDR</h2>
 
-            <p>
-                An attack involving malicious input that attempts
-                to manipulate database queries.
-            </p>
+<p>
+Endpoint detection and response technology monitors
+devices for suspicious activity.
+</p>
 
-            <div class="example">
-                <strong>Defense:</strong>
-                Parameterized queries and input validation help.
-            </div>
+<span class="category">Defense</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="attacks">
+<!-- 050 -->
 
-            <span class="term-number">
-                #056 • ATTACKS
-            </span>
+<div class="term-card" data-category="Defense">
 
-            <h3>Cross-Site Scripting</h3>
+<div class="term-number">#050</div>
 
-            <p>
-                A web security issue where untrusted content
-                can cause unwanted scripts to run in a user's browser.
-            </p>
+<h2>IDS</h2>
 
-            <div class="example">
-                <strong>Defense:</strong>
-                Output encoding and secure web development practices.
-            </div>
+<p>
+An intrusion detection system monitors activity
+for potential security threats.
+</p>
 
-        </div>
+<span class="category">Defense</span>
 
+</div>
 
-        <div class="term-card" data-category="attacks">
 
-            <span class="term-number">
-                #057 • ATTACKS
-            </span>
+<!-- 051 -->
 
-            <h3>Zero-Day</h3>
+<div class="term-card" data-category="Defense">
 
-            <p>
-                A vulnerability that is unknown or has not yet
-                been fully addressed by the affected vendor.
-            </p>
+<div class="term-number">#051</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Security teams monitor for newly discovered vulnerabilities.
-            </div>
+<h2>IPS</h2>
 
-        </div>
+<p>
+An intrusion prevention system can detect and
+actively block certain malicious activity.
+</p>
 
+<span class="category">Defense</span>
 
-        <div class="term-card" data-category="attacks">
+</div>
 
-            <span class="term-number">
-                #058 • ATTACKS
-            </span>
 
-            <h3>Exploit</h3>
+<!-- 052 -->
 
-            <p>
-                Code, data, or a technique that takes advantage
-                of a vulnerability.
-            </p>
+<div class="term-card" data-category="Defense">
 
-            <div class="example">
-                <strong>Example:</strong>
-                A security update may fix the weakness an exploit targets.
-            </div>
+<div class="term-number">#052</div>
 
-        </div>
+<h2>Zero Trust</h2>
 
+<p>
+A security approach that continuously verifies
+access instead of automatically trusting users
+or devices.
+</p>
 
-        <!-- DEFENSE -->
+<span class="category">Defense</span>
 
-        <div class="term-card" data-category="defense">
+</div>
 
-            <span class="term-number">
-                #059 • DEFENSE
-            </span>
 
-            <h3>Patch</h3>
+<!-- 053 -->
 
-            <p>
-                A software update that fixes bugs,
-                vulnerabilities, or other problems.
-            </p>
+<div class="term-card" data-category="Defense">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Installing operating system security updates.
-            </div>
+<div class="term-number">#053</div>
 
-        </div>
+<h2>Least Privilege</h2>
 
+<p>
+Giving users and systems only the permissions
+needed to perform their tasks.
+</p>
 
-        <div class="term-card" data-category="defense">
+<span class="category">Defense</span>
 
-            <span class="term-number">
-                #060 • DEFENSE
-            </span>
+</div>
 
-            <h3>Antivirus</h3>
 
-            <p>
-                Security software designed to detect,
-                block, and remove certain malicious software.
-            </p>
+<!-- 054 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                Antivirus software can scan files for threats.
-            </div>
+<div class="term-card" data-category="Defense">
 
-        </div>
+<div class="term-number">#054</div>
 
+<h2>Backup</h2>
 
-        <div class="term-card" data-category="defense">
+<p>
+A separate copy of data that can be used to
+restore information after loss or damage.
+</p>
 
-            <span class="term-number">
-                #061 • DEFENSE
-            </span>
+<span class="category">Defense</span>
 
-            <h3>EDR</h3>
+</div>
 
-            <p>
-                Endpoint Detection and Response tools monitor
-                endpoint activity and help security teams investigate threats.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                EDR can help investigate suspicious activity on computers.
-            </div>
+<!-- 055 -->
 
-        </div>
+<div class="term-card" data-category="Web Security">
 
+<div class="term-number">#055</div>
 
-        <div class="term-card" data-category="defense">
+<h2>HTTPS</h2>
 
-            <span class="term-number">
-                #062 • DEFENSE
-            </span>
+<p>
+A secure version of HTTP that uses encryption
+to protect web communications.
+</p>
 
-            <h3>Backup</h3>
+<span class="category">Web Security</span>
 
-            <p>
-                A separate copy of important data that can
-                be used for recovery.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Backups can help recover after data loss.
-            </div>
 
-        </div>
+<!-- 056 -->
 
+<div class="term-card" data-category="Web Security">
 
-        <div class="term-card" data-category="defense">
+<div class="term-number">#056</div>
 
-            <span class="term-number">
-                #063 • DEFENSE
-            </span>
+<h2>SSL/TLS</h2>
 
-            <h3>Security Policy</h3>
+<p>
+Protocols used to protect data exchanged over
+networks through encryption.
+</p>
 
-            <p>
-                A set of rules and guidelines explaining
-                how an organization protects systems and information.
-            </p>
+<span class="category">Web Security</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A company may have a password policy.
-            </div>
+</div>
 
-        </div>
 
+<!-- 057 -->
 
-        <div class="term-card" data-category="defense">
+<div class="term-card" data-category="Web Security">
 
-            <span class="term-number">
-                #064 • DEFENSE
-            </span>
+<div class="term-number">#057</div>
 
-            <h3>Defense in Depth</h3>
+<h2>XSS</h2>
 
-            <p>
-                Using multiple layers of security so one
-                failed protection does not expose everything.
-            </p>
+<p>
+Cross-site scripting is a vulnerability where
+untrusted scripts can be injected into web pages.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                MFA plus firewalls plus monitoring.
-            </div>
+<span class="category">Web Security</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="defense">
+<!-- 058 -->
 
-            <span class="term-number">
-                #065 • DEFENSE
-            </span>
+<div class="term-card" data-category="Web Security">
 
-            <h3>Security Awareness</h3>
+<div class="term-number">#058</div>
 
-            <p>
-                Training people to recognize and respond
-                safely to security threats.
-            </p>
+<h2>CSRF</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Learning how to recognize phishing messages.
-            </div>
+<p>
+Cross-site request forgery tricks a user's browser
+into sending an unwanted request.
+</p>
 
-        </div>
+<span class="category">Web Security</span>
 
+</div>
 
-        <!-- WEB SECURITY -->
 
-        <div class="term-card" data-category="web">
+<!-- 059 -->
 
-            <span class="term-number">
-                #066 • WEB SECURITY
-            </span>
+<div class="term-card" data-category="Web Security">
 
-            <h3>HTTP</h3>
+<div class="term-number">#059</div>
 
-            <p>
-                Hypertext Transfer Protocol is used for
-                communication between web clients and servers.
-            </p>
+<h2>Cookie</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Browsers use HTTP-based requests to retrieve web resources.
-            </div>
+<p>
+A small piece of information stored by a website
+in a user's browser.
+</p>
 
-        </div>
+<span class="category">Web Security</span>
 
+</div>
 
-        <div class="term-card" data-category="web">
 
-            <span class="term-number">
-                #067 • WEB SECURITY
-            </span>
+<!-- 060 -->
 
-            <h3>HTTPS</h3>
+<div class="term-card" data-category="Web Security">
 
-            <p>
-                HTTP protected using TLS encryption.
-            </p>
+<div class="term-number">#060</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Secure websites commonly begin with HTTPS.
-            </div>
+<h2>Session</h2>
 
-        </div>
+<p>
+A temporary period of interaction between a user
+and a web application.
+</p>
 
+<span class="category">Web Security</span>
 
-        <div class="term-card" data-category="web">
+</div>
 
-            <span class="term-number">
-                #068 • WEB SECURITY
-            </span>
 
-            <h3>Cookie</h3>
+<!-- 061 -->
 
-            <p>
-                Small pieces of information that websites
-                can store in a browser.
-            </p>
+<div class="term-card" data-category="Cloud">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Cookies can help maintain a login session.
-            </div>
+<div class="term-number">#061</div>
 
-        </div>
+<h2>Cloud Computing</h2>
 
+<p>
+Using remote computing resources such as servers,
+storage, and applications over a network.
+</p>
 
-        <div class="term-card" data-category="web">
+<span class="category">Cloud</span>
 
-            <span class="term-number">
-                #069 • WEB SECURITY
-            </span>
+</div>
 
-            <h3>Session</h3>
 
-            <p>
-                A period of interaction between a user
-                and an application.
-            </p>
+<!-- 062 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A website can maintain a user's signed-in session.
-            </div>
+<div class="term-card" data-category="Cloud">
 
-        </div>
+<div class="term-number">#062</div>
 
+<h2>Cloud Security</h2>
 
-        <div class="term-card" data-category="web">
+<p>
+Protecting cloud systems, services, applications,
+and data from security threats.
+</p>
 
-            <span class="term-number">
-                #070 • WEB SECURITY
-            </span>
+<span class="category">Cloud</span>
 
-            <h3>API</h3>
+</div>
 
-            <p>
-                Application Programming Interface. A defined
-                way for software systems to communicate.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A website can use an API to request information.
-            </div>
+<!-- 063 -->
 
-        </div>
+<div class="term-card" data-category="Cloud">
 
+<div class="term-number">#063</div>
 
-        <div class="term-card" data-category="web">
+<h2>IAM</h2>
 
-            <span class="term-number">
-                #071 • WEB SECURITY
-            </span>
+<p>
+Identity and access management controls who can
+access resources and what they can do.
+</p>
 
-            <h3>Input Validation</h3>
+<span class="category">Cloud</span>
 
-            <p>
-                Checking user-provided information before
-                allowing an application to process it.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A form can verify that an email field
-                contains a valid format.
-            </div>
 
-        </div>
+<!-- 064 -->
 
+<div class="term-card" data-category="Cloud">
 
-        <div class="term-card" data-category="web">
+<div class="term-number">#064</div>
 
-            <span class="term-number">
-                #072 • WEB SECURITY
-            </span>
+<h2>Virtual Machine</h2>
 
-            <h3>CORS</h3>
+<p>
+A software-based computer that runs inside another
+physical computer.
+</p>
 
-            <p>
-                Cross-Origin Resource Sharing controls
-                certain cross-origin browser requests.
-            </p>
+<span class="category">Cloud</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A server can specify which origins may access resources.
-            </div>
+</div>
 
-        </div>
 
+<!-- 065 -->
 
-        <!-- CLOUD -->
+<div class="term-card" data-category="Cloud">
 
-        <div class="term-card" data-category="cloud">
+<div class="term-number">#065</div>
 
-            <span class="term-number">
-                #073 • CLOUD
-            </span>
+<h2>Container</h2>
 
-            <h3>Cloud Computing</h3>
+<p>
+A lightweight isolated environment used to run
+applications and their dependencies.
+</p>
 
-            <p>
-                Using computing resources such as servers,
-                storage, and databases over a network.
-            </p>
+<span class="category">Cloud</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Hosting an application on a cloud platform.
-            </div>
+</div>
 
-        </div>
 
+<!-- 066 -->
 
-        <div class="term-card" data-category="cloud">
+<div class="term-card" data-category="Security Operations">
 
-            <span class="term-number">
-                #074 • CLOUD
-            </span>
+<div class="term-number">#066</div>
 
-            <h3>Cloud Storage</h3>
+<h2>SOC</h2>
 
-            <p>
-                Storing data on remote systems that can
-                be accessed through a network.
-            </p>
+<p>
+A security operations center monitors, investigates,
+and responds to security events.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Online file storage services.
-            </div>
+<span class="category">Security Operations</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="cloud">
+<!-- 067 -->
 
-            <span class="term-number">
-                #075 • CLOUD
-            </span>
+<div class="term-card" data-category="Security Operations">
 
-            <h3>IaaS</h3>
+<div class="term-number">#067</div>
 
-            <p>
-                Infrastructure as a Service provides
-                computing infrastructure through a service.
-            </p>
+<h2>SIEM</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Renting virtual servers from a cloud provider.
-            </div>
+<p>
+Security information and event management systems
+collect and analyze security logs and events.
+</p>
 
-        </div>
+<span class="category">Security Operations</span>
 
+</div>
 
-        <div class="term-card" data-category="cloud">
 
-            <span class="term-number">
-                #076 • CLOUD
-            </span>
+<!-- 068 -->
 
-            <h3>PaaS</h3>
+<div class="term-card" data-category="Security Operations">
 
-            <p>
-                Platform as a Service provides tools and
-                infrastructure for developing applications.
-            </p>
+<div class="term-number">#068</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Developers can deploy applications without
-                managing every underlying server.
-            </div>
+<h2>Log</h2>
 
-        </div>
+<p>
+A record of events or activities generated by
+systems, applications, or devices.
+</p>
 
+<span class="category">Security Operations</span>
 
-        <div class="term-card" data-category="cloud">
+</div>
 
-            <span class="term-number">
-                #077 • CLOUD
-            </span>
 
-            <h3>SaaS</h3>
+<!-- 069 -->
 
-            <p>
-                Software as a Service provides software
-                through a network rather than requiring local installation.
-            </p>
+<div class="term-card" data-category="Security Operations">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Web-based productivity applications.
-            </div>
+<div class="term-number">#069</div>
 
-        </div>
+<h2>Incident</h2>
 
+<p>
+A security-related event that may threaten the
+confidentiality, integrity, or availability of systems.
+</p>
 
-        <!-- SECURITY OPERATIONS -->
+<span class="category">Security Operations</span>
 
-        <div class="term-card" data-category="operations">
+</div>
 
-            <span class="term-number">
-                #078 • SECURITY OPERATIONS
-            </span>
 
-            <h3>SOC</h3>
+<!-- 070 -->
 
-            <p>
-                Security Operations Center. A team or facility
-                responsible for monitoring and responding to security events.
-            </p>
+<div class="term-card" data-category="Security Operations">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Analysts investigate suspicious activity.
-            </div>
+<div class="term-number">#070</div>
 
-        </div>
+<h2>Incident Response</h2>
 
+<p>
+The process of detecting, investigating, containing,
+and recovering from security incidents.
+</p>
 
-        <div class="term-card" data-category="operations">
+<span class="category">Security Operations</span>
 
-            <span class="term-number">
-                #079 • SECURITY OPERATIONS
-            </span>
+</div>
 
-            <h3>SIEM</h3>
 
-            <p>
-                Security Information and Event Management
-                systems collect and analyze security-related logs.
-            </p>
+<!-- 071 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A SIEM can help analysts investigate alerts.
-            </div>
+<div class="term-card" data-category="Security Operations">
 
-        </div>
+<div class="term-number">#071</div>
 
+<h2>Threat Intelligence</h2>
 
-        <div class="term-card" data-category="operations">
+<p>
+Information about threats that helps security teams
+understand and respond to attacks.
+</p>
 
-            <span class="term-number">
-                #080 • SECURITY OPERATIONS
-            </span>
+<span class="category">Security Operations</span>
 
-            <h3>Log</h3>
+</div>
 
-            <p>
-                A recorded event or activity generated
-                by a system, application, or device.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Login attempts can be recorded in logs.
-            </div>
+<!-- 072 -->
 
-        </div>
+<div class="term-card" data-category="Security Operations">
 
+<div class="term-number">#072</div>
 
-        <div class="term-card" data-category="operations">
+<h2>IOC</h2>
 
-            <span class="term-number">
-                #081 • SECURITY OPERATIONS
-            </span>
+<p>
+An indicator of compromise is evidence that a system
+may have been affected by malicious activity.
+</p>
 
-            <h3>Alert</h3>
+<span class="category">Security Operations</span>
 
-            <p>
-                A notification that potentially suspicious
-                or important activity has been detected.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A security system may alert analysts about
-                unusual login activity.
-            </div>
 
-        </div>
+<!-- 073 -->
 
+<div class="term-card" data-category="Security Operations">
 
-        <div class="term-card" data-category="operations">
+<div class="term-number">#073</div>
 
-            <span class="term-number">
-                #082 • SECURITY OPERATIONS
-            </span>
+<h2>SIEM Rule</h2>
 
-            <h3>Incident Response</h3>
+<p>
+A detection rule used to identify suspicious patterns
+within collected security events.
+</p>
 
-            <p>
-                The organized process of detecting,
-                analyzing, containing, and recovering from security incidents.
-            </p>
+<span class="category">Security Operations</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A security team investigates a compromised account.
-            </div>
+</div>
 
-        </div>
 
+<!-- 074 -->
 
-        <div class="term-card" data-category="operations">
+<div class="term-card" data-category="Forensics">
 
-            <span class="term-number">
-                #083 • SECURITY OPERATIONS
-            </span>
+<div class="term-number">#074</div>
 
-            <h3>Threat Intelligence</h3>
+<h2>Digital Forensics</h2>
 
-            <p>
-                Information about threats that helps security
-                teams understand and prepare for attacks.
-            </p>
+<p>
+The process of collecting and analyzing digital
+evidence during an investigation.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Analysts track information about emerging threats.
-            </div>
+<span class="category">Forensics</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="operations">
+<!-- 075 -->
 
-            <span class="term-number">
-                #084 • SECURITY OPERATIONS
-            </span>
+<div class="term-card" data-category="Forensics">
 
-            <h3>IOC</h3>
+<div class="term-number">#075</div>
 
-            <p>
-                Indicator of Compromise. Evidence that may
-                suggest a system has been affected by a security incident.
-            </p>
+<h2>Digital Evidence</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A suspicious file hash can be an IOC.
-            </div>
+<p>
+Information stored or transmitted digitally that
+may help establish what happened during an incident.
+</p>
 
-        </div>
+<span class="category">Forensics</span>
 
+</div>
 
-        <!-- FORENSICS -->
 
-        <div class="term-card" data-category="forensics">
+<!-- 076 -->
 
-            <span class="term-number">
-                #085 • FORENSICS
-            </span>
+<div class="term-card" data-category="Forensics">
 
-            <h3>Digital Forensics</h3>
+<div class="term-number">#076</div>
 
-            <p>
-                The process of collecting and analyzing
-                digital evidence.
-            </p>
+<h2>Chain of Custody</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Investigators may examine system logs after an incident.
-            </div>
+<p>
+Documentation showing how evidence was collected,
+handled, transferred, and stored.
+</p>
 
-        </div>
+<span class="category">Forensics</span>
 
+</div>
 
-        <div class="term-card" data-category="forensics">
 
-            <span class="term-number">
-                #086 • FORENSICS
-            </span>
+<!-- 077 -->
 
-            <h3>Digital Evidence</h3>
+<div class="term-card" data-category="Forensics">
 
-            <p>
-                Information stored or transmitted digitally
-                that may help answer questions during an investigation.
-            </p>
+<div class="term-number">#077</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Logs can provide evidence about system activity.
-            </div>
+<h2>Memory Forensics</h2>
 
-        </div>
+<p>
+The analysis of data stored in a computer's
+volatile memory.
+</p>
 
+<span class="category">Forensics</span>
 
-        <div class="term-card" data-category="forensics">
+</div>
 
-            <span class="term-number">
-                #087 • FORENSICS
-            </span>
 
-            <h3>Chain of Custody</h3>
+<!-- 078 -->
 
-            <p>
-                Documentation showing how evidence was
-                collected, handled, transferred, and stored.
-            </p>
+<div class="term-card" data-category="Forensics">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Investigators document who handled evidence.
-            </div>
+<div class="term-number">#078</div>
 
-        </div>
+<h2>Disk Image</h2>
 
+<p>
+A bit-for-bit copy of a storage device used
+for analysis or investigation.
+</p>
 
-        <div class="term-card" data-category="forensics">
+<span class="category">Forensics</span>
 
-            <span class="term-number">
-                #088 • FORENSICS
-            </span>
+</div>
 
-            <h3>Metadata</h3>
 
-            <p>
-                Information that describes other data.
-            </p>
+<!-- 079 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A photo can contain information about its
-                creation time.
-            </div>
+<div class="term-card" data-category="Forensics">
 
-        </div>
+<div class="term-number">#079</div>
 
+<h2>Metadata</h2>
 
-        <!-- CAREERS & TOOLS -->
+<p>
+Information that describes other data, such as
+timestamps, file size, or file type.
+</p>
 
-        <div class="term-card" data-category="careers">
+<span class="category">Forensics</span>
 
-            <span class="term-number">
-                #089 • CAREERS & TOOLS
-            </span>
+</div>
 
-            <h3>Ethical Hacker</h3>
 
-            <p>
-                A security professional who is authorized
-                to test systems for weaknesses.
-            </p>
+<!-- 080 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                A company may hire an ethical hacker
-                to test its security.
-            </div>
+<div class="term-card" data-category="Forensics">
 
-        </div>
+<div class="term-number">#080</div>
 
+<h2>Timeline Analysis</h2>
 
-        <div class="term-card" data-category="careers">
+<p>
+Organizing digital events by time to help
+reconstruct what happened.
+</p>
 
-            <span class="term-number">
-                #090 • CAREERS & TOOLS
-            </span>
+<span class="category">Forensics</span>
 
-            <h3>Penetration Testing</h3>
+</div>
 
-            <p>
-                Authorized security testing designed to
-                identify and evaluate weaknesses.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A security team tests a company's own application.
-            </div>
+<!-- 081 -->
 
-        </div>
+<div class="term-card" data-category="Careers & Tools">
 
+<div class="term-number">#081</div>
 
-        <div class="term-card" data-category="careers">
+<h2>Penetration Testing</h2>
 
-            <span class="term-number">
-                #091 • CAREERS & TOOLS
-            </span>
+<p>
+Authorized security testing designed to identify
+weaknesses before malicious attackers can exploit them.
+</p>
 
-            <h3>Vulnerability Scanner</h3>
+<span class="category">Careers & Tools</span>
 
-            <p>
-                A tool that searches systems or applications
-                for known security weaknesses.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                A scanner can identify outdated software.
-            </div>
 
-        </div>
+<!-- 082 -->
 
+<div class="term-card" data-category="Careers & Tools">
 
-        <div class="term-card" data-category="careers">
+<div class="term-number">#082</div>
 
-            <span class="term-number">
-                #092 • CAREERS & TOOLS
-            </span>
+<h2>Ethical Hacker</h2>
 
-            <h3>Network Administrator</h3>
+<p>
+A security professional who performs authorized
+testing to help organizations improve security.
+</p>
 
-            <p>
-                A professional who manages and maintains
-                computer networks.
-            </p>
+<span class="category">Careers & Tools</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Managing routers, switches, and network access.
-            </div>
+</div>
 
-        </div>
 
+<!-- 083 -->
 
-        <div class="term-card" data-category="careers">
+<div class="term-card" data-category="Careers & Tools">
 
-            <span class="term-number">
-                #093 • CAREERS & TOOLS
-            </span>
+<div class="term-number">#083</div>
 
-            <h3>Security Analyst</h3>
+<h2>Red Team</h2>
 
-            <p>
-                A cybersecurity professional who monitors,
-                investigates, and helps respond to security threats.
-            </p>
+<p>
+A security team that simulates realistic attacks
+to test an organization's defenses.
+</p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                An analyst investigates suspicious login alerts.
-            </div>
+<span class="category">Careers & Tools</span>
 
-        </div>
+</div>
 
 
-        <div class="term-card" data-category="careers">
+<!-- 084 -->
 
-            <span class="term-number">
-                #094 • CAREERS & TOOLS
-            </span>
+<div class="term-card" data-category="Careers & Tools">
 
-            <h3>Security Engineer</h3>
+<div class="term-number">#084</div>
 
-            <p>
-                A professional who designs, builds,
-                and maintains security systems.
-            </p>
+<h2>Blue Team</h2>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Building secure network or cloud infrastructure.
-            </div>
+<p>
+A security team focused on defending systems,
+detecting threats, and responding to incidents.
+</p>
 
-        </div>
+<span class="category">Careers & Tools</span>
 
+</div>
 
-        <div class="term-card" data-category="careers">
 
-            <span class="term-number">
-                #095 • CAREERS & TOOLS
-            </span>
+<!-- 085 -->
 
-            <h3>Incident Responder</h3>
+<div class="term-card" data-category="Careers & Tools">
 
-            <p>
-                A cybersecurity professional who helps
-                investigate and respond to security incidents.
-            </p>
+<div class="term-number">#085</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Helping an organization recover from a security event.
-            </div>
+<h2>Purple Team</h2>
 
-        </div>
+<p>
+A collaborative approach that combines offensive
+and defensive security teams.
+</p>
 
+<span class="category">Careers & Tools</span>
 
-        <div class="term-card" data-category="careers">
+</div>
 
-            <span class="term-number">
-                #096 • CAREERS & TOOLS
-            </span>
 
-            <h3>Python</h3>
+<!-- 086 -->
 
-            <p>
-                A programming language widely used for
-                automation, data analysis, security tools,
-                and many other tasks.
-            </p>
+<div class="term-card" data-category="Careers & Tools">
 
-            <div class="example">
-                <strong>Example:</strong>
-                Python can automate repetitive security tasks.
-            </div>
+<div class="term-number">#086</div>
 
-        </div>
+<h2>CTF</h2>
 
+<p>
+Capture the Flag competitions provide cybersecurity
+challenges designed for learning and practice.
+</p>
 
-        <div class="term-card" data-category="careers">
+<span class="category">Careers & Tools</span>
 
-            <span class="term-number">
-                #097 • CAREERS & TOOLS
-            </span>
+</div>
 
-            <h3>Linux</h3>
 
-            <p>
-                A family of open-source operating systems
-                commonly used in servers, development,
-                networking, and cybersecurity.
-            </p>
+<!-- 087 -->
 
-            <div class="example">
-                <strong>Example:</strong>
-                Many security professionals use Linux environments.
-            </div>
+<div class="term-card" data-category="Careers & Tools">
 
-        </div>
+<div class="term-number">#087</div>
 
+<h2>Command Line</h2>
 
-        <div class="term-card" data-category="careers">
+<p>
+A text-based interface used to interact with a
+computer by entering commands.
+</p>
 
-            <span class="term-number">
-                #098 • CAREERS & TOOLS
-            </span>
+<span class="category">Careers & Tools</span>
 
-            <h3>Command Line</h3>
+</div>
 
-            <p>
-                A text-based interface used to interact
-                with an operating system or program.
-            </p>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Commands can be used to navigate files
-                and inspect system information.
-            </div>
+<!-- 088 -->
 
-        </div>
+<div class="term-card" data-category="Careers & Tools">
 
+<div class="term-number">#088</div>
 
-        <div class="term-card" data-category="careers">
+<h2>Linux</h2>
 
-            <span class="term-number">
-                #099 • CAREERS & TOOLS
-            </span>
+<p>
+An open-source operating system family widely used
+in servers, cybersecurity, and development.
+</p>
 
-            <h3>Git</h3>
+<span class="category">Careers & Tools</span>
 
-            <p>
-                A version control system used to track
-                changes to files and software projects.
-            </p>
+</div>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Developers use Git to manage code changes.
-            </div>
 
-        </div>
+<!-- 089 -->
 
+<div class="term-card" data-category="Careers & Tools">
 
-        <div class="term-card" data-category="careers">
+<div class="term-number">#089</div>
 
-            <span class="term-number">
-                #100 • CAREERS & TOOLS
-            </span>
+<h2>Virtualization</h2>
 
-            <h3>GitHub</h3>
+<p>
+Technology that allows virtual computers or other
+resources to run on physical hardware.
+</p>
 
-            <p>
-                A platform for hosting and collaborating
-                on software projects using Git.
-            </p>
+<span class="category">Careers & Tools</span>
 
-            <div class="example">
-                <strong>Example:</strong>
-                Clyvexis website files can be stored
-                in a GitHub repository.
-            </div>
+</div>
 
-        </div>
 
+<!-- 090 -->
 
-    </div>
+<div class="term-card" data-category="Careers & Tools">
 
+<div class="term-number">#090</div>
 
-    <div class="no-results" id="noResults">
+<h2>Open Source</h2>
 
-        🔎 No cybersecurity terms found.
+<p>
+Software whose source code is available for people
+to inspect, modify, and share under its license.
+</p>
 
-        <br><br>
+<span class="category">Careers & Tools</span>
 
+</div>
+
+
+<!-- 091 -->
+
+<div class="term-card" data-category="Fundamentals">
+
+<div class="term-number">#091</div>
+
+<h2>CIA Triad</h2>
+
+<p>
+Confidentiality, integrity, and availability are
+three foundational goals of cybersecurity.
+</p>
+
+<span class="category">Fundamentals</span>
+
+</div>
+
+
+<!-- 092 -->
+
+<div class="term-card" data-category="Fundamentals">
+
+<div class="term-number">#092</div>
+
+<h2>Confidentiality</h2>
+
+<p>
+Ensuring information is accessible only to
+authorized people or systems.
+</p>
+
+<span class="category">Fundamentals</span>
+
+</div>
+
+
+<!-- 093 -->
+
+<div class="term-card" data-category="Fundamentals">
+
+<div class="term-number">#093</div>
+
+<h2>Integrity</h2>
+
+<p>
+Ensuring information remains accurate and has
+not been improperly changed.
+</p>
+
+<span class="category">Fundamentals</span>
+
+</div>
+
+
+<!-- 094 -->
+
+<div class="term-card" data-category="Fundamentals">
+
+<div class="term-number">#094</div>
+
+<h2>Availability</h2>
+
+<p>
+Ensuring authorized users can access systems
+and information when needed.
+</p>
+
+<span class="category">Fundamentals</span>
+
+</div>
+
+
+<!-- 095 -->
+
+<div class="term-card" data-category="Networking">
+
+<div class="term-number">#095</div>
+
+<h2>DNS</h2>
+
+<p>
+The Domain Name System translates domain names
+into IP addresses.
+</p>
+
+<span class="category">Networking</span>
+
+</div>
+
+
+<!-- 096 -->
+
+<div class="term-card" data-category="Networking">
+
+<div class="term-number">#096</div>
+
+<h2>VPN</h2>
+
+<p>
+A virtual private network creates an encrypted
+connection between a device and a network service.
+</p>
+
+<span class="category">Networking</span>
+
+</div>
+
+
+<!-- 097 -->
+
+<div class="term-card" data-category="Networking">
+
+<div class="term-number">#097</div>
+
+<h2>Proxy</h2>
+
+<p>
+A system that acts as an intermediary between
+a client and another network service.
+</p>
+
+<span class="category">Networking</span>
+
+</div>
+
+
+<!-- 098 -->
+
+<div class="term-card" data-category="Defense">
+
+<div class="term-number">#098</div>
+
+<h2>Security Policy</h2>
+
+<p>
+A set of rules and guidelines describing how an
+organization protects information and systems.
+</p>
+
+<span class="category">Defense</span>
+
+</div>
+
+
+<!-- 099 -->
+
+<div class="term-card" data-category="Defense">
+
+<div class="term-number">#099</div>
+
+<h2>Security Awareness</h2>
+
+<p>
+Training and knowledge that help people recognize
+and avoid security threats.
+</p>
+
+<span class="category">Defense</span>
+
+</div>
+
+
+<!-- 100 -->
+
+<div class="term-card" data-category="Careers & Tools">
+
+<div class="term-number">#100</div>
+
+<h2>Cybersecurity Analyst</h2>
+
+<p>
+A professional who monitors systems, investigates
+security events, and helps protect an organization.
+</p>
+
+<span class="category">Careers & Tools</span>
+
+</div>
+
+
+</div>
+
+
+<!-- NO RESULTS -->
+
+<div class="no-results" id="noResults">
+
+    <h2>No terms found</h2>
+
+    <p>
         Try a different search or category.
+    </p>
 
-    </div>
+</div>
 
 </main>
 
@@ -3108,21 +2390,14 @@
 
 <footer>
 
-    <h2>
-        🛡️ Cly<span>vexis</span>
-    </h2>
+<p>
+    <strong>LEARN. PRACTICE. STAY SECURE.</strong>
+</p>
 
-    <div class="footer-line"></div>
-
-    <p>
-        LEARN. PRACTICE. STAY SECURE.
-    </p>
-
-    <br>
-
-    <p>
-        © 2026 Clyvexis
-    </p>
+<p>
+    © 2026 Clyvexis. Built for the next generation
+    of cybersecurity learners.
+</p>
 
 </footer>
 
@@ -3133,116 +2408,109 @@
 
 <script>
 
-    const searchInput =
-        document.getElementById("searchInput");
+const searchInput = document.getElementById("searchInput");
 
-    const cards =
-        document.querySelectorAll(".term-card");
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
 
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
+const cards =
+    document.querySelectorAll(".term-card");
 
-    const noResults =
-        document.getElementById("noResults");
+const noResults =
+    document.getElementById("noResults");
 
-
-    let currentFilter = "all";
+let selectedCategory = "All";
 
 
-    function filterGlossary() {
+function filterGlossary() {
 
-        const searchText =
-            searchInput.value
-                .toLowerCase()
-                .trim();
+    const searchTerm =
+        searchInput.value.toLowerCase().trim();
 
-        let visibleCount = 0;
+    let visibleCount = 0;
 
 
-        cards.forEach(card => {
+    cards.forEach(card => {
 
-            const category =
-                card.dataset.category;
+        const title =
+            card.querySelector("h2").textContent.toLowerCase();
 
-            const text =
-                card.textContent.toLowerCase();
+        const description =
+            card.querySelector("p").textContent.toLowerCase();
 
-
-            const matchesSearch =
-                text.includes(searchText);
-
-            const matchesCategory =
-                currentFilter === "all" ||
-                category === currentFilter;
+        const category =
+            card.dataset.category;
 
 
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
+        const matchesSearch =
+            title.includes(searchTerm) ||
+            description.includes(searchTerm);
 
-                card.style.display = "block";
-
-                visibleCount++;
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
+        const matchesCategory =
+            selectedCategory === "All" ||
+            category === selectedCategory;
 
 
-        if (visibleCount === 0) {
+        if (matchesSearch && matchesCategory) {
 
-            noResults.style.display = "block";
+            card.style.display = "";
+
+            visibleCount++;
 
         } else {
 
-            noResults.style.display = "none";
+            card.style.display = "none";
 
         }
-
-    }
-
-
-    searchInput.addEventListener(
-        "input",
-        filterGlossary
-    );
-
-
-    filterButtons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                filterButtons.forEach(btn => {
-
-                    btn.classList.remove("active");
-
-                });
-
-
-                button.classList.add("active");
-
-
-                currentFilter =
-                    button.dataset.filter;
-
-
-                filterGlossary();
-
-            }
-        );
 
     });
 
 
-</script>
+    if (visibleCount === 0) {
 
+        noResults.style.display = "block";
+
+    } else {
+
+        noResults.style.display = "none";
+
+    }
+
+}
+
+
+searchInput.addEventListener(
+    "input",
+    filterGlossary
+);
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        selectedCategory =
+            button.dataset.category;
+
+
+        filterGlossary();
+
+    });
+
+});
+
+
+</script>
 
 </body>
 
