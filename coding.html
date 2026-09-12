@@ -7,13 +7,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Clyvexis | CyberCoding</title>
+<meta name="description" content="Clyvexis CyberCoding Lab — learn HTML, CSS, JavaScript and build interactive websites in a safe coding environment.">
+
+<title>Clyvexis | CyberCoding Lab</title>
 
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -27,9 +29,8 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: #ffffff;
     min-height: 100vh;
-
     background-color: #050b16;
 
     background-image:
@@ -44,12 +45,19 @@ body {
         );
 
     background-size: 40px 40px;
+
+    overflow-x: hidden;
+}
+
+button,
+textarea {
+    font-family: inherit;
 }
 
 
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 nav {
     position: sticky;
@@ -65,14 +73,14 @@ nav {
     background:
         linear-gradient(
             90deg,
-            rgba(5,15,35,0.98),
-            rgba(5,20,40,0.95)
+            rgba(4,13,30,0.98),
+            rgba(4,20,38,0.96)
         );
 
-    border-bottom: 1px solid #00aaff;
+    border-bottom: 1px solid rgba(0,170,255,0.65);
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.25);
+        0 0 25px rgba(0,170,255,0.18);
 
     backdrop-filter: blur(15px);
 }
@@ -81,6 +89,7 @@ nav::before {
     content: "";
 
     position: absolute;
+
     top: 0;
     left: 0;
 
@@ -92,16 +101,35 @@ nav::before {
             90deg,
             #00aaff,
             #39ff88,
+            #00aaff,
+            #39ff88,
             #00aaff
         );
 
+    background-size: 300% 100%;
+
+    animation: navScan 6s linear infinite;
+
     box-shadow:
-        0 0 12px #00aaff;
+        0 0 15px #00aaff;
+}
+
+@keyframes navScan {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+
 }
 
 .logo {
     font-size: 26px;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -123,8 +151,8 @@ nav a {
     color: white;
     text-decoration: none;
 
-    font-weight: bold;
     font-size: 14px;
+    font-weight: bold;
 
     transition: 0.3s;
 }
@@ -159,7 +187,7 @@ nav a.active::after {
         );
 
     box-shadow:
-        0 0 8px #00aaff;
+        0 0 10px #00aaff;
 }
 
 .donate {
@@ -171,20 +199,20 @@ nav a.active::after {
     background:
         linear-gradient(
             90deg,
-            rgba(0,170,255,0.15),
-            rgba(57,255,136,0.15)
+            rgba(0,170,255,0.12),
+            rgba(57,255,136,0.12)
         );
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     position: relative;
 
-    min-height: 480px;
+    min-height: 500px;
 
     display: flex;
     justify-content: center;
@@ -192,9 +220,9 @@ nav a.active::after {
 
     text-align: center;
 
-    overflow: hidden;
-
     padding: 80px 20px;
+
+    overflow: hidden;
 }
 
 .hero::before {
@@ -202,21 +230,21 @@ nav a.active::after {
 
     position: absolute;
 
-    width: 650px;
-    height: 650px;
+    width: 700px;
+    height: 700px;
+
+    top: -300px;
+    left: -250px;
 
     background:
         radial-gradient(
             circle,
-            rgba(0,170,255,0.18),
+            rgba(0,170,255,0.20),
             transparent 70%
         );
 
-    top: -250px;
-    left: -200px;
-
     animation:
-        cyberGlow 7s infinite alternate;
+        cyberGlow 8s infinite alternate;
 }
 
 .hero::after {
@@ -224,21 +252,21 @@ nav a.active::after {
 
     position: absolute;
 
-    width: 650px;
-    height: 650px;
+    width: 700px;
+    height: 700px;
+
+    right: -250px;
+    bottom: -350px;
 
     background:
         radial-gradient(
             circle,
-            rgba(57,255,136,0.12),
+            rgba(57,255,136,0.14),
             transparent 70%
         );
 
-    bottom: -300px;
-    right: -200px;
-
     animation:
-        cyberGlow2 8s infinite alternate;
+        cyberGlow2 9s infinite alternate;
 }
 
 @keyframes cyberGlow {
@@ -248,7 +276,7 @@ nav a.active::after {
     }
 
     to {
-        transform: translate(150px,100px);
+        transform: translate(170px,120px);
     }
 
 }
@@ -260,7 +288,7 @@ nav a.active::after {
     }
 
     to {
-        transform: translate(-150px,-100px);
+        transform: translate(-170px,-120px);
     }
 
 }
@@ -269,11 +297,12 @@ nav a.active::after {
     position: relative;
     z-index: 2;
 
-    max-width: 900px;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .code-icon {
-    font-size: 75px;
+    font-size: 76px;
 
     margin-bottom: 15px;
 
@@ -299,9 +328,11 @@ nav a.active::after {
 
 .hero h1 {
     font-size:
-        clamp(50px, 9vw, 90px);
+        clamp(48px, 8vw, 88px);
 
-    margin-bottom: 15px;
+    line-height: 1.05;
+
+    margin-bottom: 18px;
 }
 
 .hero h1 span {
@@ -323,7 +354,7 @@ nav a.active::after {
 
     font-weight: bold;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
 .tagline span {
@@ -331,50 +362,91 @@ nav a.active::after {
 }
 
 .hero p {
-    max-width: 750px;
+    max-width: 760px;
 
     margin: auto;
 
     color: #b9c7d8;
 
-    line-height: 1.7;
+    line-height: 1.8;
 
     font-size: 17px;
 }
 
 
-/* =========================
+/* =========================================================
+   HERO STATUS
+========================================================= */
+
+.system-status {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+.status-chip {
+    padding: 9px 14px;
+
+    border-radius: 30px;
+
+    border: 1px solid
+        rgba(0,170,255,0.3);
+
+    background:
+        rgba(0,170,255,0.06);
+
+    color: #b9c7d8;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.status-chip span {
+    color: #39ff88;
+}
+
+
+/* =========================================================
    SECTION
-========================= */
+========================================================= */
 
 .section {
     width: 94%;
 
-    max-width: 1400px;
+    max-width: 1450px;
 
-    margin: 40px auto;
+    margin: 45px auto;
 
-    padding: 35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,25,45,0.92),
-            rgba(4,14,28,0.88)
-        );
-
-    border: 1px solid
-        rgba(0,170,255,0.35);
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 0 30px
-        rgba(0,170,255,0.08);
+    padding: 38px;
 
     position: relative;
 
     overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,25,45,0.94),
+            rgba(3,12,25,0.91)
+        );
+
+    border: 1px solid
+        rgba(0,170,255,0.32);
+
+    box-shadow:
+        0 0 35px
+        rgba(0,170,255,0.07);
 }
 
 .section::before {
@@ -392,11 +464,12 @@ nav a.active::after {
         linear-gradient(
             90deg,
             #00aaff,
-            #39ff88
+            #39ff88,
+            #00aaff
         );
 
     box-shadow:
-        0 0 12px #00aaff;
+        0 0 15px #00aaff;
 }
 
 .section-title {
@@ -408,21 +481,26 @@ nav a.active::after {
 }
 
 .section-description {
+    max-width: 800px;
+
+    margin:
+        0 auto 30px;
+
     text-align: center;
 
     color: #aebdcc;
 
-    line-height: 1.6;
-
-    margin-bottom: 30px;
+    line-height: 1.7;
 }
 
 
-/* =========================
+/* =========================================================
    ROADMAP
-========================= */
+========================================================= */
 
-.course-grid {
+.roadmap {
+    position: relative;
+
     display: grid;
 
     grid-template-columns:
@@ -431,92 +509,166 @@ nav a.active::after {
     gap: 20px;
 }
 
-.course-card {
-    padding: 25px;
+.roadmap::before {
+    content: "";
 
-    border-radius: 16px;
+    position: absolute;
+
+    top: 50%;
+
+    left: 10%;
+
+    right: 10%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00aaff,
+            #39ff88,
+            #00aaff,
+            transparent
+        );
+
+    opacity: 0.35;
+}
+
+.course-card {
+    position: relative;
+
+    z-index: 2;
+
+    padding: 28px;
+
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(0,170,255,0.08),
-            rgba(57,255,136,0.04)
+            rgba(0,170,255,0.09),
+            rgba(57,255,136,0.035)
         );
 
     border: 1px solid
         rgba(0,170,255,0.25);
 
-    transition: 0.3s;
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
 }
 
 .course-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-7px);
 
     border-color: #00aaff;
 
     box-shadow:
-        0 0 25px
+        0 0 28px
         rgba(0,170,255,0.18);
 }
 
 .course-number {
     color: #39ff88;
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: bold;
 
     letter-spacing: 2px;
 
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
 .course-card h3 {
     color: #00aaff;
 
-    margin-bottom: 10px;
+    font-size: 22px;
+
+    margin-bottom: 12px;
 }
 
 .course-card p {
     color: #b9c7d8;
 
-    line-height: 1.6;
+    line-height: 1.7;
 
     font-size: 14px;
 }
 
+.level-bar {
+    height: 5px;
 
-/* =========================
-   LIVE LAB
-========================= */
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.07);
+}
+
+.level-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+}
+
+.html-level {
+    width: 35%;
+}
+
+.css-level {
+    width: 60%;
+}
+
+.js-level {
+    width: 85%;
+}
+
+
+/* =========================================================
+   CODING LAB
+========================================================= */
 
 .lab-section {
     width: 96%;
 
-    max-width: 1500px;
+    max-width: 1550px;
 
-    margin: 50px auto;
+    margin: 55px auto;
 
-    padding: 35px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(3,20,38,0.98),
-            rgba(2,10,22,0.98)
-        );
-
-    border: 1px solid #00aaff;
-
-    box-shadow:
-        0 0 40px rgba(0,170,255,0.15),
-        inset 0 0 40px rgba(0,170,255,0.03);
+    padding: 38px;
 
     position: relative;
 
     overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3,20,38,0.99),
+            rgba(1,8,18,0.99)
+        );
+
+    border: 1px solid
+        rgba(0,170,255,0.7);
+
+    box-shadow:
+        0 0 45px rgba(0,170,255,0.13),
+        inset 0 0 50px rgba(0,170,255,0.025);
 }
 
 .lab-section::before {
@@ -535,11 +687,104 @@ nav a.active::after {
             90deg,
             #00aaff,
             #39ff88,
+            #00aaff,
+            #39ff88,
             #00aaff
         );
 
+    background-size: 300% 100%;
+
+    animation: labScan 5s linear infinite;
+
     box-shadow:
         0 0 20px #00aaff;
+}
+
+@keyframes labScan {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+
+}
+
+.lab-topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 20px;
+
+    border-bottom:
+        1px solid
+        rgba(0,170,255,0.16);
+}
+
+.lab-id {
+    color: #7f8da0;
+
+    font-family: Consolas, monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+.lab-live {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #39ff88;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #39ff88;
+
+    box-shadow:
+        0 0 10px #39ff88;
+
+    animation:
+        pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.75);
+    }
+
 }
 
 .lab-header {
@@ -549,7 +794,8 @@ nav a.active::after {
 }
 
 .lab-header h2 {
-    font-size: 40px;
+    font-size:
+        clamp(30px, 5vw, 46px);
 
     margin-bottom: 10px;
 
@@ -567,94 +813,164 @@ nav a.active::after {
 .lab-header p {
     color: #aebdcc;
 
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 
-/* =========================
+/* =========================================================
    PROJECT SELECTOR
-========================= */
+========================================================= */
 
 .project-selector {
-    display: flex;
+    display: grid;
 
-    flex-wrap: wrap;
-
-    justify-content: center;
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 12px;
 
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .project-button {
-    padding: 12px 18px;
+    position: relative;
 
-    border-radius: 10px;
+    min-height: 72px;
+
+    padding: 14px;
+
+    border-radius: 12px;
 
     border: 1px solid
-        rgba(0,170,255,0.35);
+        rgba(0,170,255,0.25);
 
     background:
-        rgba(0,170,255,0.07);
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.07),
+            rgba(255,255,255,0.015)
+        );
 
     color: white;
 
-    font-weight: bold;
-
     cursor: pointer;
 
-    transition: 0.3s;
+    text-align: left;
+
+    font-weight: bold;
+
+    transition:
+        0.3s;
+
+    overflow: hidden;
+}
+
+.project-button small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #7f8da0;
+
+    font-size: 11px;
+
+    font-weight: normal;
 }
 
 .project-button:hover {
+    transform: translateY(-3px);
+
     border-color: #00aaff;
 
     box-shadow:
-        0 0 15px
-        rgba(0,170,255,0.25);
-
-    transform: translateY(-2px);
+        0 0 18px
+        rgba(0,170,255,0.18);
 }
 
 .project-button.active-project {
+    border-color: #39ff88;
+
     background:
         linear-gradient(
-            90deg,
-            #0077ff,
-            #39ff88
+            145deg,
+            rgba(0,170,255,0.17),
+            rgba(57,255,136,0.10)
         );
 
-    border-color: transparent;
+    box-shadow:
+        0 0 20px
+        rgba(57,255,136,0.10);
+}
+
+.project-button.active-project::after {
+    content: "ACTIVE";
+
+    position: absolute;
+
+    top: 8px;
+    right: 9px;
+
+    color: #39ff88;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
 }
 
 
-/* =========================
-   EDITOR
-========================= */
+/* =========================================================
+   EDITOR WORKSPACE
+========================================================= */
+
+.workspace-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    color: #7f8da0;
+
+    font-family: Consolas, monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
 
 .editor-wrapper {
     display: grid;
 
     grid-template-columns:
-        1fr 1.1fr;
+        1fr 1fr;
 
-    gap: 20px;
+    gap: 18px;
 }
 
 .editor-panel,
 .preview-panel {
+    min-width: 0;
+
     background: #020812;
 
-    border-radius: 16px;
+    border-radius: 17px;
 
-    border: 1px solid
+    border:
+        1px solid
         rgba(0,170,255,0.3);
 
     overflow: hidden;
+
+    box-shadow:
+        inset 0 0 30px
+        rgba(0,170,255,0.025);
 }
 
 .panel-header {
+    min-height: 48px;
+
     padding: 13px 16px;
 
     display: flex;
@@ -666,63 +982,170 @@ nav a.active::after {
     background:
         linear-gradient(
             90deg,
-            rgba(0,170,255,0.1),
-            rgba(57,255,136,0.05)
+            rgba(0,170,255,0.10),
+            rgba(57,255,136,0.035)
         );
 
-    border-bottom: 1px solid
-        rgba(0,170,255,0.2);
+    border-bottom:
+        1px solid
+        rgba(0,170,255,0.18);
+}
+
+.panel-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.window-dots {
+    display: flex;
+
+    gap: 5px;
+}
+
+.window-dots span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.35);
 }
 
 .panel-header strong {
     color: #00aaff;
+
+    font-size: 13px;
 }
 
 .status {
     color: #39ff88;
 
-    font-size: 12px;
+    font-size: 10px;
 
     font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CODE EDITOR
+========================================================= */
+
+.editor-body {
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.025),
+            transparent 15%
+        );
+}
+
+.line-info {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 44px;
+
+    height: 100%;
+
+    padding-top: 20px;
+
+    text-align: right;
+
+    padding-right: 10px;
+
+    color: #3c4b5e;
+
+    background:
+        rgba(0,0,0,0.22);
+
+    font-family: Consolas, monospace;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    pointer-events: none;
+
+    user-select: none;
 }
 
 textarea {
+    display: block;
+
     width: 100%;
 
-    height: 550px;
+    height: 560px;
 
     resize: vertical;
 
-    padding: 20px;
+    padding:
+        20px 20px 20px 58px;
 
     border: none;
 
     outline: none;
 
-    background: #01050c;
+    background: transparent;
 
-    color: #39ff88;
+    color: #d8f6ff;
 
     font-family:
         Consolas,
         Monaco,
         monospace;
 
-    font-size: 14px;
+    font-size: 13px;
 
     line-height: 1.6;
+
+    tab-size: 4;
+
+    white-space: pre;
+
+    overflow: auto;
 }
 
 textarea:focus {
     box-shadow:
-        inset 0 0 20px
-        rgba(0,170,255,0.08);
+        inset 0 0 25px
+        rgba(0,170,255,0.07);
+}
+
+.editor-footer {
+    padding: 9px 14px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #66778c;
+
+    font-family: Consolas, monospace;
+
+    font-size: 10px;
+
+    background:
+        #01050c;
+
+    border-top:
+        1px solid
+        rgba(0,170,255,0.12);
 }
 
 
-/* =========================
+/* =========================================================
    PREVIEW
-========================= */
+========================================================= */
 
 .preview-container {
     padding: 12px;
@@ -740,7 +1163,7 @@ textarea:focus {
 iframe {
     width: 100%;
 
-    height: 550px;
+    height: 560px;
 
     display: block;
 
@@ -751,10 +1174,30 @@ iframe {
     background: white;
 }
 
+.preview-footer {
+    padding: 9px 14px;
 
-/* =========================
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #66778c;
+
+    font-family: Consolas, monospace;
+
+    font-size: 10px;
+
+    background: #01050c;
+
+    border-top:
+        1px solid
+        rgba(0,170,255,0.12);
+}
+
+
+/* =========================================================
    CONTROLS
-========================= */
+========================================================= */
 
 .lab-controls {
     display: flex;
@@ -768,13 +1211,11 @@ iframe {
 
 .run-button,
 .reset-button {
-    padding: 14px 24px;
+    min-height: 48px;
 
-    border: none;
+    padding: 13px 22px;
 
     border-radius: 10px;
-
-    color: white;
 
     font-weight: bold;
 
@@ -784,6 +1225,10 @@ iframe {
 }
 
 .run-button {
+    border: none;
+
+    color: white;
+
     background:
         linear-gradient(
             90deg,
@@ -794,15 +1239,18 @@ iframe {
 
     box-shadow:
         0 0 20px
-        rgba(0,170,255,0.3);
+        rgba(0,170,255,0.25);
 }
 
 .reset-button {
-    background:
-        rgba(255,255,255,0.06);
+    color: #c7d2df;
 
-    border: 1px solid
-        rgba(255,255,255,0.2);
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
 }
 
 .run-button:hover,
@@ -812,55 +1260,221 @@ iframe {
 
 .run-button:hover {
     box-shadow:
-        0 0 30px
-        rgba(0,170,255,0.55);
+        0 0 32px
+        rgba(0,170,255,0.5);
+}
+
+.reset-button:hover {
+    border-color: #00aaff;
+
+    color: white;
 }
 
 
-/* =========================
-   BUILD TIPS
-========================= */
+/* =========================================================
+   BUILD TIP
+========================================================= */
 
 .build-tips {
-    margin-top: 25px;
+    display: grid;
 
-    padding: 22px;
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+
+    margin-top: 22px;
+}
+
+.tip-card {
+    padding: 20px;
 
     border-radius: 14px;
 
     background:
-        rgba(57,255,136,0.04);
+        rgba(57,255,136,0.035);
 
-    border: 1px solid
-        rgba(57,255,136,0.2);
+    border:
+        1px solid
+        rgba(57,255,136,0.18);
 }
 
-.build-tips h3 {
+.tip-card h3 {
     color: #39ff88;
+
+    margin-bottom: 10px;
+
+    font-size: 16px;
+}
+
+.tip-card p {
+    color: #aebdcc;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+.tip-card code {
+    color: #39ff88;
+
+    background:
+        rgba(0,0,0,0.4);
+
+    padding:
+        3px 6px;
+
+    border-radius: 5px;
+
+    font-family: Consolas, monospace;
+}
+
+
+/* =========================================================
+   MISSION
+========================================================= */
+
+.mission-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 0.8fr;
+
+    gap: 20px;
+}
+
+.mission-card,
+.mission-status {
+    padding: 25px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.07),
+            rgba(57,255,136,0.025)
+        );
+
+    border:
+        1px solid
+        rgba(0,170,255,0.23);
+}
+
+.mission-label {
+    color: #39ff88;
+
+    font-family: Consolas, monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.mission-card h3 {
+    color: #00aaff;
+
+    font-size: 23px;
 
     margin-bottom: 12px;
 }
 
-.build-tips p {
+.mission-card p {
     color: #b9c7d8;
 
     line-height: 1.7;
+
+    font-size: 14px;
 }
 
-.build-tips code {
+.mission-steps {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.mission-step {
+    padding: 8px 10px;
+
+    border-radius: 7px;
+
+    color: #7f8da0;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.1);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.mission-step.active {
     color: #39ff88;
 
-    background: rgba(0,0,0,0.4);
+    border-color:
+        rgba(57,255,136,0.4);
 
-    padding: 3px 6px;
+    background:
+        rgba(57,255,136,0.05);
+}
 
-    border-radius: 5px;
+.progress-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #b9c7d8;
+
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.progress-title span {
+    color: #39ff88;
+}
+
+.progress-bar {
+    width: 100%;
+
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.07);
+}
+
+.progress-value {
+    width: 25%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
+    border-radius: inherit;
 }
 
 
-/* =========================
+/* =========================================================
    LEARNING CARDS
-========================= */
+========================================================= */
 
 .learning-grid {
     display: grid;
@@ -874,13 +1488,27 @@ iframe {
 .learning-card {
     padding: 25px;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
     background:
-        rgba(0,170,255,0.05);
+        rgba(0,170,255,0.045);
 
-    border: 1px solid
-        rgba(0,170,255,0.22);
+    border:
+        1px solid
+        rgba(0,170,255,0.2);
+
+    transition: 0.3s;
+}
+
+.learning-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(0,170,255,0.55);
+
+    box-shadow:
+        0 0 22px
+        rgba(0,170,255,0.1);
 }
 
 .learning-card h3 {
@@ -906,28 +1534,120 @@ iframe {
 
     background: #01050c;
 
+    border:
+        1px solid
+        rgba(255,255,255,0.05);
+
     overflow-x: auto;
 }
 
 .example pre {
     color: #39ff88;
 
-    font-family: Consolas, monospace;
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
 
-    font-size: 13px;
+    font-size: 12px;
 
     line-height: 1.5;
 }
 
 
-/* =========================
+/* =========================================================
+   NEXT PROJECTS
+========================================================= */
+
+.project-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.next-card {
+    padding: 26px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid
+        rgba(0,170,255,0.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.06),
+            rgba(57,255,136,0.025)
+        );
+
+    transition: 0.3s;
+}
+
+.next-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #39ff88;
+
+    box-shadow:
+        0 0 25px
+        rgba(57,255,136,0.1);
+}
+
+.next-icon {
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+.next-card h3 {
+    color: #00aaff;
+
+    margin-bottom: 10px;
+}
+
+.next-card p {
+    color: #aebdcc;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+.difficulty {
+    display: inline-block;
+
+    margin-top: 16px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    color: #39ff88;
+
+    border:
+        1px solid
+        rgba(57,255,136,0.3);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
-    margin-top: 70px;
+    margin-top: 75px;
 
-    padding: 40px 20px;
+    padding: 45px 20px;
 
     text-align: center;
 
@@ -947,7 +1667,7 @@ footer h2 span {
 }
 
 .footer-line {
-    width: 120px;
+    width: 130px;
 
     height: 2px;
 
@@ -961,7 +1681,7 @@ footer h2 span {
         );
 
     box-shadow:
-        0 0 10px #00aaff;
+        0 0 12px #00aaff;
 }
 
 footer p {
@@ -971,11 +1691,11 @@ footer p {
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 950px) {
+@media (max-width: 1100px) {
 
     nav {
         flex-direction: column;
@@ -991,14 +1711,38 @@ footer p {
         gap: 12px;
     }
 
-    .course-grid,
+    .roadmap {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .roadmap::before {
+        display: none;
+    }
+
     .learning-grid {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
-    .editor-wrapper {
+    .project-selector {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    .editor-wrapper,
+    .mission-grid,
+    .build-tips {
         grid-template-columns: 1fr;
+    }
+
+    .project-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 }
@@ -1010,51 +1754,101 @@ footer p {
     }
 
     nav ul {
-        gap: 10px;
+        gap: 9px;
     }
 
     nav a {
-        font-size: 12px;
+        font-size: 11px;
+    }
+
+    .logo {
+        font-size: 23px;
     }
 
     .hero {
-        min-height: 430px;
+        min-height: 450px;
 
-        padding: 60px 15px;
+        padding:
+            60px 15px;
     }
 
     .hero h1 {
-        font-size: 50px;
+        font-size: 48px;
     }
 
     .hero p {
         font-size: 15px;
     }
 
-    .section,
-    .lab-section {
-        padding: 22px 15px;
+    .tagline {
+        letter-spacing: 3px;
+
+        font-size: 12px;
     }
 
-    .course-grid,
-    .learning-grid {
+    .section,
+    .lab-section {
+        width: 94%;
+
+        padding:
+            24px 15px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .roadmap,
+    .learning-grid,
+    .project-grid {
         grid-template-columns: 1fr;
     }
 
-    .lab-header h2 {
-        font-size: 30px;
+    .project-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .project-button {
+        width: 100%;
     }
 
     textarea {
         height: 430px;
+
+        font-size: 12px;
+
+        padding-left: 48px;
     }
 
     iframe {
         height: 430px;
     }
 
-    .project-button {
+    .line-info {
+        width: 36px;
+
+        font-size: 10px;
+
+        padding-right: 7px;
+    }
+
+    .lab-controls {
+        flex-direction: column;
+    }
+
+    .run-button,
+    .reset-button {
         width: 100%;
+    }
+
+    .system-status {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .status-chip {
+        text-align: center;
     }
 
 }
@@ -1067,9 +1861,9 @@ footer p {
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      NAVBAR
-========================= -->
+========================================================= -->
 
 <nav>
 
@@ -1138,9 +1932,9 @@ footer p {
 </nav>
 
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero">
 
@@ -1166,21 +1960,46 @@ footer p {
 
         <p>
 
-            Learn how websites are built,
-            experiment with real code,
-            and create your own projects
-            directly inside Clyvexis.
+            Enter the Clyvexis coding lab.
+            Learn how websites work, experiment
+            with real HTML, CSS, and JavaScript,
+            and build your own projects.
 
         </p>
+
+
+        <div class="system-status">
+
+            <div class="status-chip">
+                SYSTEM:
+                <span>ONLINE</span>
+            </div>
+
+            <div class="status-chip">
+                EDITOR:
+                <span>READY</span>
+            </div>
+
+            <div class="status-chip">
+                MODE:
+                <span>LEARNING</span>
+            </div>
+
+            <div class="status-chip">
+                ENVIRONMENT:
+                <span>SAFE</span>
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      ROADMAP
-========================= -->
+========================================================= -->
 
 <section class="section">
 
@@ -1190,17 +2009,19 @@ footer p {
 
     <p class="section-description">
 
-        Learn the three main technologies
-        that power modern webpages.
+        Master the three technologies behind
+        most interactive websites.
 
     </p>
 
-    <div class="course-grid">
+
+    <div class="roadmap">
+
 
         <div class="course-card">
 
             <div class="course-number">
-                LEVEL 01
+                LEVEL 01 • FOUNDATION
             </div>
 
             <h3>
@@ -1208,10 +2029,16 @@ footer p {
             </h3>
 
             <p>
-                Build the structure of your website
-                using headings, paragraphs, links,
-                images, buttons, and sections.
+
+                Learn how webpages are structured.
+                Build headings, paragraphs, links,
+                images, buttons, forms, and sections.
+
             </p>
+
+            <div class="level-bar">
+                <div class="level-fill html-level"></div>
+            </div>
 
         </div>
 
@@ -1219,7 +2046,7 @@ footer p {
         <div class="course-card">
 
             <div class="course-number">
-                LEVEL 02
+                LEVEL 02 • DESIGN
             </div>
 
             <h3>
@@ -1227,10 +2054,16 @@ footer p {
             </h3>
 
             <p>
-                Design your website with colors,
+
+                Learn how to control colors,
                 spacing, layouts, borders,
                 animations, and responsive design.
+
             </p>
+
+            <div class="level-bar">
+                <div class="level-fill css-level"></div>
+            </div>
 
         </div>
 
@@ -1238,7 +2071,7 @@ footer p {
         <div class="course-card">
 
             <div class="course-number">
-                LEVEL 03
+                LEVEL 03 • LOGIC
             </div>
 
             <h3>
@@ -1246,10 +2079,16 @@ footer p {
             </h3>
 
             <p>
-                Add logic and interactivity with
+
+                Make webpages interactive using
                 variables, functions, events,
-                buttons, and conditions.
+                conditions, and dynamic content.
+
             </p>
+
+            <div class="level-bar">
+                <div class="level-fill js-level"></div>
+            </div>
 
         </div>
 
@@ -1258,11 +2097,29 @@ footer p {
 </section>
 
 
-<!-- =========================
-     BIG LIVE CODING LAB
-========================= -->
+<!-- =========================================================
+     CODING LAB
+========================================================= -->
 
 <section class="lab-section" id="coding-lab">
+
+
+    <div class="lab-topbar">
+
+        <div class="lab-id">
+            CLYVEXIS // CYBERCODING LAB // SESSION_001
+        </div>
+
+        <div class="lab-live">
+
+            <span class="live-dot"></span>
+
+            LIVE TRAINING ENVIRONMENT
+
+        </div>
+
+    </div>
+
 
     <div class="lab-header">
 
@@ -1272,64 +2129,120 @@ footer p {
 
         <p>
 
-            This is your workspace.
-            Choose a project, edit the code,
-            run it, and build your own website.
+            Choose a project, inspect the code,
+            make changes, and run your website
+            in the live preview.
 
         </p>
 
     </div>
 
 
-    <!-- PROJECT BUTTONS -->
+    <!-- =====================================================
+         PROJECT SELECTOR
+    ====================================================== -->
 
     <div class="project-selector">
 
         <button
             class="project-button active-project"
-            onclick="loadProject('cyber')"
+            onclick="loadProject('cyber', this)"
         >
+
             🛡️ Cyber Website
+
+            <small>
+                Beginner • HTML + CSS + JS
+            </small>
+
         </button>
+
 
         <button
             class="project-button"
-            onclick="loadProject('portfolio')"
+            onclick="loadProject('portfolio', this)"
         >
+
             👤 Portfolio
+
+            <small>
+                Beginner • Personal Website
+            </small>
+
         </button>
+
 
         <button
             class="project-button"
-            onclick="loadProject('game')"
+            onclick="loadProject('game', this)"
         >
+
             🎮 Mini Game
+
+            <small>
+                JavaScript • Interactive
+            </small>
+
         </button>
+
 
         <button
             class="project-button"
-            onclick="loadProject('neon')"
+            onclick="loadProject('neon', this)"
         >
+
             ⚡ Neon Page
+
+            <small>
+                CSS • Visual Design
+            </small>
+
         </button>
 
     </div>
 
 
-    <!-- EDITOR + PREVIEW -->
+    <!-- =====================================================
+         WORKSPACE
+    ====================================================== -->
+
+    <div class="workspace-label">
+
+        <span>
+            WORKSPACE
+        </span>
+
+        <span id="projectStatus">
+            PROJECT: CYBER WEBSITE
+        </span>
+
+    </div>
+
 
     <div class="editor-wrapper">
 
 
-        <!-- CODE -->
+        <!-- =================================================
+             CODE EDITOR
+        ================================================== -->
 
         <div class="editor-panel">
 
             <div class="panel-header">
 
-                <strong>
-                    💻 YOUR CODE
-                </strong>
+                <div class="panel-title">
+
+                    <div class="window-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <strong>
+                        💻 CODE EDITOR
+                    </strong>
+
+                </div>
 
                 <span class="status">
                     ● EDITABLE
@@ -1337,20 +2250,71 @@ footer p {
 
             </div>
 
-            <textarea id="codeInput"></textarea>
+
+            <div class="editor-body">
+
+                <div
+                    class="line-info"
+                    id="lineNumbers"
+                >
+                    1<br>
+                    2<br>
+                    3<br>
+                    4<br>
+                    5<br>
+                    6<br>
+                    7<br>
+                    8<br>
+                    9<br>
+                    10
+                </div>
+
+
+                <textarea
+                    id="codeInput"
+                    spellcheck="false"
+                    oninput="updateEditorStats()"
+                ></textarea>
+
+            </div>
+
+
+            <div class="editor-footer">
+
+                <span id="lineCount">
+                    LINES: 0
+                </span>
+
+                <span>
+                    HTML • CSS • JS
+                </span>
+
+            </div>
 
         </div>
 
 
-        <!-- PREVIEW -->
+        <!-- =================================================
+             PREVIEW
+        ================================================== -->
 
         <div class="preview-panel">
 
             <div class="panel-header">
 
-                <strong>
-                    🌐 LIVE PREVIEW
-                </strong>
+                <div class="panel-title">
+
+                    <div class="window-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <strong>
+                        🌐 LIVE PREVIEW
+                    </strong>
+
+                </div>
 
                 <span class="status">
                     ● READY
@@ -1358,12 +2322,27 @@ footer p {
 
             </div>
 
+
             <div class="preview-container">
 
                 <iframe
                     id="preview"
                     sandbox="allow-scripts"
+                    title="Live coding preview"
                 ></iframe>
+
+            </div>
+
+
+            <div class="preview-footer">
+
+                <span>
+                    PREVIEW: SANDBOXED
+                </span>
+
+                <span>
+                    STATUS: ONLINE
+                </span>
 
             </div>
 
@@ -1372,7 +2351,9 @@ footer p {
     </div>
 
 
-    <!-- CONTROLS -->
+    <!-- =====================================================
+         CONTROLS
+    ====================================================== -->
 
     <div class="lab-controls">
 
@@ -1380,48 +2361,174 @@ footer p {
             class="run-button"
             onclick="runCode()"
         >
-            ▶ Run My Website
+            ▶ RUN MY WEBSITE
         </button>
+
 
         <button
             class="reset-button"
             onclick="resetProject()"
         >
-            🔄 Reset Project
+            🔄 RESET PROJECT
         </button>
 
     </div>
 
 
-    <!-- TIPS -->
+    <!-- =====================================================
+         TIPS
+    ====================================================== -->
 
     <div class="build-tips">
 
-        <h3>
-            🧠 Build Tip
-        </h3>
+        <div class="tip-card">
 
-        <p>
+            <h3>
+                🧠 Build Tip
+            </h3>
 
-            Try changing the text inside
-            <code>&lt;h1&gt;</code>,
-            changing CSS colors,
-            adding buttons,
-            and creating your own sections.
+            <p>
 
-            Don't be afraid to experiment —
-            that's how you learn to code.
+                Start small. Try changing the text
+                inside <code>&lt;h1&gt;</code>,
+                change a CSS color, or add a new
+                paragraph. Then press Run.
 
-        </p>
+            </p>
+
+        </div>
+
+
+        <div class="tip-card">
+
+            <h3>
+                🔬 Experiment
+            </h3>
+
+            <p>
+
+                You don't have to get everything
+                right immediately. Change something,
+                run the page, observe what happened,
+                and learn from the result.
+
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
+     CODING MISSION
+========================================================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🎯 Your Coding Mission
+    </h2>
+
+    <p class="section-description">
+
+        Build your skills one step at a time.
+        Your first mission is to understand
+        how the pieces of a webpage connect.
+
+    </p>
+
+
+    <div class="mission-grid">
+
+
+        <div class="mission-card">
+
+            <div class="mission-label">
+                CURRENT MISSION
+            </div>
+
+            <h3>
+                Build Your First Custom Page
+            </h3>
+
+            <p>
+
+                Modify one of the projects above.
+                Change its title, colors, text,
+                and layout. Then add something
+                completely of your own.
+
+            </p>
+
+
+            <div class="mission-steps">
+
+                <div class="mission-step active">
+                    01 • EDIT
+                </div>
+
+                <div class="mission-step">
+                    02 • TEST
+                </div>
+
+                <div class="mission-step">
+                    03 • DEBUG
+                </div>
+
+                <div class="mission-step">
+                    04 • BUILD
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="mission-status">
+
+            <div class="progress-title">
+
+                <span>
+                    Mission Progress
+                </span>
+
+                <span>
+                    25%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div class="progress-value"></div>
+
+            </div>
+
+
+            <p style="
+                color:#7f8da0;
+                margin-top:18px;
+                font-size:13px;
+                line-height:1.6;
+            ">
+
+                Complete the steps by experimenting
+                with the live coding environment.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
      WHAT YOU ARE LEARNING
-========================= -->
+========================================================= -->
 
 <section class="section">
 
@@ -1431,8 +2538,8 @@ footer p {
 
     <p class="section-description">
 
-        Everything you create in the lab teaches
-        you real web development concepts.
+        Understand the purpose behind the code,
+        not just what to type.
 
     </p>
 
@@ -1449,16 +2556,21 @@ footer p {
             <p>
 
                 HTML creates the elements that
-                appear on a webpage.
+                make up your webpage.
 
             </p>
+
 
             <div class="example">
 
 <pre>
-&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;h1&gt;
+    Hello World
+&lt;/h1&gt;
 
-&lt;p&gt;My website!&lt;/p&gt;
+&lt;p&gt;
+    My website!
+&lt;/p&gt;
 </pre>
 
             </div>
@@ -1474,10 +2586,11 @@ footer p {
 
             <p>
 
-                CSS changes how those elements
-                look and how the page is arranged.
+                CSS controls how your HTML
+                elements look and are arranged.
 
             </p>
+
 
             <div class="example">
 
@@ -1504,16 +2617,19 @@ body {
 
             <p>
 
-                JavaScript lets your website
-                respond to actions.
+                JavaScript adds behavior and
+                allows your page to react to actions.
 
             </p>
+
 
             <div class="example">
 
 <pre>
 function sayHello() {
+
     alert("Hello!");
+
 }
 </pre>
 
@@ -1527,9 +2643,9 @@ function sayHello() {
 </section>
 
 
-<!-- =========================
-     NEXT STEPS
-========================= -->
+<!-- =========================================================
+     NEXT PROJECTS
+========================================================= -->
 
 <section class="section">
 
@@ -1540,52 +2656,84 @@ function sayHello() {
     <p class="section-description">
 
         Once you understand the basics,
-        start creating your own projects.
+        start turning your ideas into projects.
 
     </p>
 
 
-    <div class="course-grid">
+    <div class="project-grid">
 
 
-        <div class="course-card">
+        <div class="next-card">
+
+            <div class="next-icon">
+                🌐
+            </div>
 
             <h3>
-                🌐 Personal Website
+                Personal Website
             </h3>
 
             <p>
-                Create a website about yourself,
-                your interests, or your projects.
+
+                Create a website that introduces
+                yourself, your interests, skills,
+                or projects.
+
             </p>
+
+            <span class="difficulty">
+                BEGINNER
+            </span>
 
         </div>
 
 
-        <div class="course-card">
+        <div class="next-card">
+
+            <div class="next-icon">
+                🛡️
+            </div>
 
             <h3>
-                🛡️ Cybersecurity Website
+                Cybersecurity Website
             </h3>
 
             <p>
-                Build a site that teaches visitors
-                about cybersecurity.
+
+                Build educational pages that
+                explain cybersecurity concepts
+                to other learners.
+
             </p>
+
+            <span class="difficulty">
+                INTERMEDIATE
+            </span>
 
         </div>
 
 
-        <div class="course-card">
+        <div class="next-card">
+
+            <div class="next-icon">
+                🎮
+            </div>
 
             <h3>
-                🎮 JavaScript Game
+                JavaScript Game
             </h3>
 
             <p>
+
                 Combine HTML, CSS, and JavaScript
-                to create an interactive game.
+                to create your own interactive game.
+
             </p>
+
+            <span class="difficulty">
+                INTERMEDIATE
+            </span>
 
         </div>
 
@@ -1595,9 +2743,9 @@ function sayHello() {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
@@ -1618,74 +2766,116 @@ function sayHello() {
 </footer>
 
 
-<!-- =========================
+<!-- =========================================================
      JAVASCRIPT
-========================= -->
+========================================================= -->
 
 <script>
 
 
-/* =========================
-   PROJECTS
-========================= */
+/* =========================================================
+   PROJECT DATABASE
+========================================================= */
 
 const projects = {
 
 
+/* =========================================================
+   CYBER WEBSITE
+========================================================= */
+
 cyber: `<!DOCTYPE html>
 <html>
+
 <head>
 
 <style>
 
 body {
+
     margin: 0;
+
     font-family: Arial;
+
     background: #050b16;
+
     color: white;
+
     text-align: center;
+
 }
 
 nav {
+
     padding: 20px;
+
     background: #020812;
+
     color: #00aaff;
+
 }
 
 .hero {
+
     padding: 70px 20px;
+
 }
 
 h1 {
+
     font-size: 55px;
+
     color: #00aaff;
+
 }
 
 p {
+
     color: #39ff88;
+
 }
 
 .card {
+
     max-width: 500px;
+
     margin: 30px auto;
+
     padding: 30px;
+
     background: #0b1628;
+
     border: 1px solid #00aaff;
+
     border-radius: 15px;
+
 }
 
 button {
+
     padding: 13px 25px;
-    background: linear-gradient(90deg,#0077ff,#39ff88);
+
+    background:
+        linear-gradient(
+            90deg,
+            #0077ff,
+            #39ff88
+        );
+
     color: white;
+
     border: none;
+
     border-radius: 8px;
+
     cursor: pointer;
+
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -1693,23 +2883,33 @@ button {
 🛡️ CYBER WEBSITE
 </nav>
 
+
 <div class="hero">
 
-<h1>Welcome</h1>
+<h1>
+Welcome
+</h1>
 
-<p>My first website built with code.</p>
+<p>
+My first website built with code.
+</p>
+
 
 <div class="card">
 
-<h2>Cybersecurity</h2>
+<h2>
+Cybersecurity
+</h2>
 
 <p>
 Learn. Practice. Stay Secure.
 </p>
 
+
 <button onclick="changeText()">
 Click Me
 </button>
+
 
 <p id="message"></p>
 
@@ -1717,21 +2917,26 @@ Click Me
 
 </div>
 
+
 <script>
 
 function changeText() {
 
-document.getElementById("message").textContent =
-"You just used JavaScript!";
+    document.getElementById("message").textContent =
+        "You just used JavaScript!";
 
 }
 
 <\/script>
 
 </body>
+
 </html>`,
 
 
+/* =========================================================
+   PORTFOLIO
+========================================================= */
 
 portfolio: `<!DOCTYPE html>
 <html>
@@ -1741,45 +2946,74 @@ portfolio: `<!DOCTYPE html>
 <style>
 
 body {
+
     font-family: Arial;
+
     background: #111;
+
     color: white;
+
     text-align: center;
+
     padding: 60px 20px;
+
 }
 
 h1 {
+
     font-size: 55px;
+
     color: #39ff88;
+
 }
 
 .card {
+
     max-width: 500px;
+
     margin: auto;
+
     padding: 30px;
+
     background: #222;
+
     border-radius: 20px;
+
 }
 
 button {
+
     padding: 12px 20px;
+
     border: none;
+
     border-radius: 8px;
+
     background: #00aaff;
+
     color: white;
+
+    cursor: pointer;
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<h1>My Portfolio</h1>
+<h1>
+My Portfolio
+</h1>
+
 
 <div class="card">
 
-<h2>My Name</h2>
+<h2>
+My Name
+</h2>
 
 <p>
 I am learning how to code.
@@ -1793,6 +3027,7 @@ My skills:
 HTML • CSS • JavaScript
 </p>
 
+
 <button onclick="alert('Thanks for visiting!')">
 Contact Me
 </button>
@@ -1800,9 +3035,13 @@ Contact Me
 </div>
 
 </body>
+
 </html>`,
 
 
+/* =========================================================
+   MINI GAME
+========================================================= */
 
 game: `<!DOCTYPE html>
 <html>
@@ -1812,83 +3051,124 @@ game: `<!DOCTYPE html>
 <style>
 
 body {
+
     background: #050b16;
+
     color: white;
+
     text-align: center;
+
     font-family: Arial;
+
     padding: 50px 20px;
+
 }
 
 h1 {
+
     color: #00aaff;
+
 }
 
 #score {
+
     font-size: 40px;
+
     color: #39ff88;
+
 }
 
 button {
+
     padding: 15px 25px;
+
     margin: 10px;
+
     border: none;
+
     border-radius: 10px;
+
     background: #00aaff;
+
     color: white;
+
     font-weight: bold;
+
     cursor: pointer;
+
 }
 
 button:hover {
+
     transform: scale(1.05);
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<h1>⚡ Click Game</h1>
+<h1>
+⚡ Click Game
+</h1>
 
-<p>How many points can you get?</p>
+<p>
+How many points can you get?
+</p>
 
-<div id="score">0</div>
+
+<div id="score">
+0
+</div>
+
 
 <button onclick="addPoint()">
 CLICK ME
 </button>
 
+
 <button onclick="resetScore()">
 RESET
 </button>
+
 
 <script>
 
 let score = 0;
 
+
 function addPoint() {
 
-score++;
+    score++;
 
-document.getElementById("score").textContent = score;
+    document.getElementById("score").textContent =
+        score;
 
 }
 
+
 function resetScore() {
 
-score = 0;
+    score = 0;
 
-document.getElementById("score").textContent = score;
+    document.getElementById("score").textContent =
+        score;
 
 }
 
 <\/script>
 
 </body>
+
 </html>`,
 
 
+/* =========================================================
+   NEON PAGE
+========================================================= */
 
 neon: `<!DOCTYPE html>
 <html>
@@ -1898,55 +3178,94 @@ neon: `<!DOCTYPE html>
 <style>
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     background: #02040a;
+
     font-family: Arial;
+
 }
 
 .box {
+
     padding: 50px;
+
     text-align: center;
+
     border: 2px solid #00aaff;
+
     border-radius: 20px;
+
     box-shadow:
         0 0 20px #00aaff,
         0 0 60px #39ff88;
+
 }
 
 h1 {
+
     color: #00aaff;
+
     font-size: 50px;
+
 }
 
 p {
+
     color: #39ff88;
+
 }
 
 button {
+
     padding: 12px 25px;
+
     background: transparent;
+
     color: white;
+
     border: 1px solid #39ff88;
+
     border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+button:hover {
+
+    box-shadow:
+        0 0 15px #39ff88;
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="box">
 
-<h1>NEON</h1>
+<h1>
+NEON
+</h1>
 
 <p>
 Welcome to my futuristic website.
 </p>
+
 
 <button onclick="alert('SYSTEM ONLINE')">
 ACTIVATE
@@ -1954,52 +3273,92 @@ ACTIVATE
 
 </div>
 
-</body>
-</html>`
 
+</body>
+
+</html>`
 
 };
 
 
-/* =========================
+/* =========================================================
    CURRENT PROJECT
-========================= */
+========================================================= */
 
 let currentProject = "cyber";
 
 
-/* =========================
-   LOAD PROJECT
-========================= */
+/* =========================================================
+   PROJECT NAMES
+========================================================= */
 
-function loadProject(projectName) {
+const projectNames = {
+
+    cyber:
+        "CYBER WEBSITE",
+
+    portfolio:
+        "PORTFOLIO",
+
+    game:
+        "MINI GAME",
+
+    neon:
+        "NEON PAGE"
+
+};
+
+
+/* =========================================================
+   LOAD PROJECT
+========================================================= */
+
+function loadProject(projectName, clickedButton) {
 
     currentProject = projectName;
+
 
     document.getElementById("codeInput").value =
         projects[projectName];
 
-    runCode();
+
+    document.getElementById("projectStatus").textContent =
+        "PROJECT: " +
+        projectNames[projectName];
 
 
     const buttons =
         document.querySelectorAll(".project-button");
 
+
     buttons.forEach(button => {
 
-        button.classList.remove("active-project");
+        button.classList.remove(
+            "active-project"
+        );
 
     });
 
 
-    event.target.classList.add("active-project");
+    if (clickedButton) {
+
+        clickedButton.classList.add(
+            "active-project"
+        );
+
+    }
+
+
+    updateEditorStats();
+
+    runCode();
 
 }
 
 
-/* =========================
+/* =========================================================
    RUN CODE
-========================= */
+========================================================= */
 
 function runCode() {
 
@@ -2008,42 +3367,148 @@ function runCode() {
         .getElementById("codeInput")
         .value;
 
+
     const preview =
         document
         .getElementById("preview");
 
+
     preview.srcdoc = code;
+
+
+    updateEditorStats();
 
 }
 
 
-/* =========================
-   RESET
-========================= */
+/* =========================================================
+   RESET PROJECT
+========================================================= */
 
 function resetProject() {
 
     document.getElementById("codeInput").value =
         projects[currentProject];
 
+
+    updateEditorStats();
+
     runCode();
 
 }
 
 
-/* =========================
-   LOAD FIRST PROJECT
-========================= */
+/* =========================================================
+   EDITOR STATS
+========================================================= */
 
-window.onload = function() {
+function updateEditorStats() {
 
-    document.getElementById("codeInput").value =
-        projects.cyber;
+    const code =
+        document
+        .getElementById("codeInput")
+        .value;
 
-    runCode();
 
-};
+    const lines =
+        code.split("\n");
 
+
+    document.getElementById("lineCount").textContent =
+        "LINES: " + lines.length;
+
+
+    let numbers = "";
+
+    for (
+        let i = 1;
+        i <= lines.length;
+        i++
+    ) {
+
+        numbers +=
+            i + "<br>";
+
+    }
+
+
+    document.getElementById("lineNumbers").innerHTML =
+        numbers;
+
+}
+
+
+/* =========================================================
+   KEYBOARD SUPPORT
+========================================================= */
+
+document
+.getElementById("codeInput")
+.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        /* TAB SUPPORT */
+
+        if (event.key === "Tab") {
+
+            event.preventDefault();
+
+
+            const start =
+                this.selectionStart;
+
+            const end =
+                this.selectionEnd;
+
+
+            this.value =
+                this.value.substring(
+                    0,
+                    start
+                )
+                +
+                "    "
+                +
+                this.value.substring(
+                    end
+                );
+
+
+            this.selectionStart =
+                this.selectionEnd =
+                    start + 4;
+
+
+            updateEditorStats();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        document.getElementById(
+            "codeInput"
+        ).value =
+            projects.cyber;
+
+
+        updateEditorStats();
+
+        runCode();
+
+    }
+);
 
 </script>
 
