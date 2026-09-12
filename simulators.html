@@ -1143,6 +1143,167 @@ main {
 }
 
 /* ==================================================
+   NEW: CYBERSECURITY LEARNING LIBRARY
+================================================== */
+
+.learning-library {
+    margin-top: 90px;
+}
+
+.library-intro {
+    max-width: 800px;
+
+    margin: 0 auto 30px;
+
+    text-align: center;
+
+    color: #91a4ba;
+
+    line-height: 1.7;
+}
+
+.library-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+.library-card {
+    position: relative;
+
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,20,40,0.96),
+            rgba(5,12,25,0.96)
+        );
+
+    border: 1px solid #263b55;
+
+    border-radius: 16px;
+
+    transition: 0.3s;
+
+    overflow: hidden;
+}
+
+.library-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
+    opacity: 0.7;
+}
+
+.library-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #00aaff;
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.12);
+}
+
+.library-icon {
+    font-size: 38px;
+
+    margin-bottom: 14px;
+}
+
+.library-card h3 {
+    color: #ffffff;
+
+    font-size: 20px;
+
+    margin-bottom: 9px;
+}
+
+.library-card > p {
+    color: #91a4ba;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 18px;
+}
+
+.learn-btn {
+    padding: 10px 15px;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 9px;
+
+    background:
+        rgba(0,170,255,0.06);
+
+    color: #00d9ff;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.learn-btn:hover {
+    background:
+        rgba(0,170,255,0.15);
+
+    border-color: #39ff88;
+
+    color: #39ff88;
+}
+
+.library-details {
+    display: none;
+
+    margin-top: 16px;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    border-left: 3px solid #39ff88;
+
+    background:
+        rgba(57,255,136,0.04);
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.library-details.show {
+    display: block;
+}
+
+.library-details strong {
+    color: #39ff88;
+}
+
+/* ==================================================
    FUTURE SIMULATORS
 ================================================== */
 
@@ -1259,7 +1420,8 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 
-    .future-grid {
+    .future-grid,
+    .library-grid {
         grid-template-columns: 1fr 1fr;
     }
 
@@ -1287,7 +1449,8 @@ footer {
 
     .decision-grid,
     .clues,
-    .future-grid {
+    .future-grid,
+    .library-grid {
         grid-template-columns: 1fr;
     }
 
@@ -2154,6 +2317,594 @@ investigation.
 
 
 <!-- ==================================================
+     NEW: CYBERSECURITY LEARNING LIBRARY
+================================================== -->
+
+<section class="learning-library">
+
+<div class="section-heading">
+
+<h2>
+📚 Cybersecurity Learning Library
+</h2>
+
+<p>
+Learn the concepts behind the simulations before
+putting your knowledge into practice.
+</p>
+
+</div>
+
+<p class="library-intro">
+The Clyvexis Learning Library is a quick-reference
+collection of cybersecurity concepts. Choose a topic
+to learn what it means, why it matters, and how it
+connects to real-world defensive security.
+</p>
+
+
+<div class="library-grid">
+
+
+<!-- AUTHENTICATION -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🔐
+</div>
+
+<h3>
+Authentication & MFA
+</h3>
+
+<p>
+Learn how systems verify identity and how
+multi-factor authentication adds protection.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+Authentication verifies who a user or system is.
+MFA adds additional verification factors, such as
+a password plus a security code or security key.
+
+<br><br>
+
+<strong>Why it matters:</strong><br>
+
+A stolen password is less useful to an attacker
+when another verification factor is required.
+
+</div>
+
+</div>
+
+
+<!-- PHISHING -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🎣
+</div>
+
+<h3>
+Phishing & Social Engineering
+</h3>
+
+<p>
+Understand how attackers manipulate people into
+revealing information or taking unsafe actions.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+Phishing uses deceptive messages, websites, or
+other communication to trick people. Social
+engineering is the broader idea of manipulating
+people rather than relying only on technical flaws.
+
+<br><br>
+
+<strong>Watch for:</strong><br>
+
+Urgency, unexpected requests, suspicious links,
+unusual sender addresses, and requests for sensitive
+information.
+
+</div>
+
+</div>
+
+
+<!-- NETWORKING -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🌐
+</div>
+
+<h3>
+Networking & DNS
+</h3>
+
+<p>
+Learn how devices communicate and how DNS helps
+connect domain names to network addresses.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+Networks allow devices and systems to communicate.
+DNS, or the Domain Name System, helps translate
+domain names into IP addresses.
+
+<br><br>
+
+<strong>Why it matters:</strong><br>
+
+Understanding networking helps security analysts
+recognize unusual connections and network activity.
+
+</div>
+
+</div>
+
+
+<!-- MALWARE -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🦠
+</div>
+
+<h3>
+Malware
+</h3>
+
+<p>
+Learn about malicious software and how defenders
+recognize and respond to suspicious behavior.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+Malware is software designed to perform harmful
+or unauthorized actions.
+
+<br><br>
+
+<strong>Examples:</strong><br>
+
+Viruses, worms, Trojans, ransomware, and spyware
+are different categories of malicious software.
+
+<br><br>
+
+<strong>Defense:</strong><br>
+
+Security updates, endpoint protection, careful
+software installation, and monitoring can reduce risk.
+
+</div>
+
+</div>
+
+
+<!-- ENCRYPTION -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🔒
+</div>
+
+<h3>
+Encryption & Hashing
+</h3>
+
+<p>
+Understand two important security concepts used
+to protect and verify information.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>Encryption:</strong><br>
+
+Encryption transforms readable data into protected
+ciphertext so unauthorized people cannot easily
+read it.
+
+<br><br>
+
+<strong>Hashing:</strong><br>
+
+Hashing creates a fixed-size representation of
+data. Cryptographic hashes can help verify
+integrity and are used in many security systems.
+
+</div>
+
+</div>
+
+
+<!-- FIREWALL -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🧱
+</div>
+
+<h3>
+Firewalls
+</h3>
+
+<p>
+Learn how firewalls help control network traffic
+using security rules.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+A firewall monitors and controls network traffic
+according to configured security rules.
+
+<br><br>
+
+<strong>Why it matters:</strong><br>
+
+Firewalls can help restrict unwanted connections
+and reduce the exposure of systems and services.
+
+</div>
+
+</div>
+
+
+<!-- INCIDENT RESPONSE -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🚨
+</div>
+
+<h3>
+Incident Response
+</h3>
+
+<p>
+Learn how security teams investigate, contain,
+recover from, and learn from incidents.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+Incident response is the organized process of
+handling a cybersecurity incident.
+
+<br><br>
+
+<strong>Common stages:</strong><br>
+
+Detection, analysis, containment, eradication,
+recovery, and lessons learned.
+
+</div>
+
+</div>
+
+
+<!-- LOGS -->
+
+<div class="library-card">
+
+<div class="library-icon">
+📋
+</div>
+
+<h3>
+Security Logs
+</h3>
+
+<p>
+Learn how analysts use recorded system events
+to investigate suspicious activity.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What are logs?</strong><br>
+
+Logs are records of events occurring within
+systems, applications, networks, and other
+technology environments.
+
+<br><br>
+
+<strong>Why they matter:</strong><br>
+
+Analysts can compare timestamps, accounts,
+devices, and actions to understand what happened.
+
+</div>
+
+</div>
+
+
+<!-- PASSWORDS -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🔑
+</div>
+
+<h3>
+Password Security
+</h3>
+
+<p>
+Learn why unique passwords and password managers
+are important for account security.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>Good practice:</strong><br>
+
+Use unique, strong passwords for different
+accounts and avoid sharing passwords.
+
+<br><br>
+
+<strong>Password managers:</strong><br>
+
+A password manager can help generate and store
+unique passwords so users do not have to memorize
+every one.
+
+</div>
+
+</div>
+
+
+<!-- LEAST PRIVILEGE -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🛡️
+</div>
+
+<h3>
+Least Privilege
+</h3>
+
+<p>
+Understand why users and systems should receive
+only the access they actually need.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+The principle of least privilege means giving
+users, applications, and systems only the
+permissions necessary to perform their tasks.
+
+<br><br>
+
+<strong>Why it matters:</strong><br>
+
+Limiting permissions can reduce the potential
+impact of a compromised account or application.
+
+</div>
+
+</div>
+
+
+<!-- THREAT DETECTION -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🕵️
+</div>
+
+<h3>
+Threat Detection
+</h3>
+
+<p>
+Learn how defenders identify unusual behavior
+that may require investigation.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>What is it?</strong><br>
+
+Threat detection involves monitoring systems
+and identifying signs of potentially malicious
+or unauthorized activity.
+
+<br><br>
+
+<strong>Examples:</strong><br>
+
+Unusual logins, unexpected processes, suspicious
+network connections, and repeated failed access
+attempts can all deserve investigation.
+
+</div>
+
+</div>
+
+
+<!-- CIA TRIAD -->
+
+<div class="library-card">
+
+<div class="library-icon">
+🧠
+</div>
+
+<h3>
+CIA Triad
+</h3>
+
+<p>
+Learn one of the foundational models used to
+think about cybersecurity objectives.
+</p>
+
+<button
+class="learn-btn"
+onclick="toggleLibrary(this)">
+
+Learn More →
+
+</button>
+
+<div class="library-details">
+
+<strong>C — Confidentiality:</strong><br>
+
+Protect information from unauthorized access.
+
+<br><br>
+
+<strong>I — Integrity:</strong><br>
+
+Keep information accurate and protected from
+unauthorized modification.
+
+<br><br>
+
+<strong>A — Availability:</strong><br>
+
+Keep systems and information accessible to
+authorized users when needed.
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
      FUTURE SIMULATORS
 ================================================== -->
 
@@ -2572,6 +3323,36 @@ function logDetective(button, suspicious) {
             "two suspicious events. Security analysts use " +
             "logs to understand what happened and determine " +
             "what should be investigated next.";
+
+    }
+
+}
+
+
+/* ==================================================
+   NEW: LEARNING LIBRARY
+================================================== */
+
+function toggleLibrary(button) {
+
+    const details =
+        button.nextElementSibling;
+
+    if (details.classList.contains("show")) {
+
+        details.classList.remove("show");
+
+        button.textContent =
+            "Learn More →";
+
+    }
+
+    else {
+
+        details.classList.add("show");
+
+        button.textContent =
+            "Hide ▲";
 
     }
 
