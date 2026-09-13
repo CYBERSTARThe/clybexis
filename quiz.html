@@ -2,591 +2,1269 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Clyvexis | Quiz</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #ffffff;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.15), transparent 30%),
-                radial-gradient(circle at 80% 80%, rgba(0, 255, 170, 0.10), transparent 30%),
-                linear-gradient(135deg, #050812, #07111f, #03060d);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* CYBER GRID */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image:
-                linear-gradient(rgba(0, 180, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 180, 255, 0.04) 1px, transparent 1px);
-            background-size: 45px 45px;
-            animation: gridMove 18s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes gridMove {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(45px);
-            }
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 16px 6%;
-
-            background: rgba(3, 8, 18, 0.85);
-            backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid rgba(0, 200, 255, 0.15);
-        }
-
-        .logo {
-            font-size: 23px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            color: #00d9ff;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: #c9d7e8;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00d9ff;
-        }
-
-        .nav-links .active {
-            color: #00d9ff;
-        }
-
-        .donate {
-            padding: 9px 15px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 170, 0.5);
-            color: #7dffc9 !important;
-            background: rgba(0, 255, 170, 0.08);
-        }
-
-        /* HERO */
-
-        .hero {
-            text-align: center;
-            padding: 75px 20px 45px;
-        }
-
-        .hero-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 18px rgba(0, 200, 255, 0.5));
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 70px);
-            margin-bottom: 12px;
-            background: linear-gradient(90deg, #ffffff, #00d9ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: #9eb2c8;
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.7;
-            font-size: 17px;
-        }
-
-        .tagline {
-            margin-top: 15px;
-            color: #00e5ff;
-            font-size: 13px;
-            letter-spacing: 4px;
-            font-weight: bold;
-        }
-
-        /* QUIZ AREA */
-
-        .quiz-container {
-            width: min(900px, 92%);
-            margin: 20px auto 80px;
-        }
-
-        .quiz-card {
-            background: rgba(9, 20, 35, 0.72);
-            border: 1px solid rgba(0, 190, 255, 0.18);
-            border-radius: 22px;
-            padding: 32px;
-
-            backdrop-filter: blur(16px);
-
-            box-shadow:
-                0 0 35px rgba(0, 170, 255, 0.08);
-
-            transition: 0.3s;
-        }
-
-        .quiz-card:hover {
-            border-color: rgba(0, 210, 255, 0.4);
-        }
-
-        /* PROGRESS */
-
-        .quiz-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            color: #9eb2c8;
-            font-size: 14px;
-        }
-
-        .progress-container {
-            width: 100%;
-            height: 9px;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 35px;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #00aaff, #00ffae);
-            border-radius: 20px;
-            transition: width 0.4s ease;
-        }
-
-        /* QUESTION */
-
-        #question {
-            font-size: 25px;
-            line-height: 1.4;
-            margin-bottom: 25px;
-        }
 
-        .question-number {
-            color: #00d9ff;
-            font-size: 14px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* ANSWERS */
-
-        .answers {
-            display: grid;
-            gap: 14px;
-        }
-
-        .answer {
-            width: 100%;
-            text-align: left;
-
-            padding: 17px 18px;
-
-            border-radius: 14px;
-            border: 1px solid rgba(130, 170, 200, 0.18);
-
-            background: rgba(255, 255, 255, 0.035);
-
-            color: #e7f2ff;
-
-            font-size: 16px;
-
-            cursor: pointer;
-
-            transition: 0.25s;
-        }
-
-        .answer:hover {
-            border-color: #00cfff;
-            background: rgba(0, 190, 255, 0.08);
-            transform: translateX(4px);
-        }
-
-        .answer.correct {
-            border-color: #00ffae;
-            background: rgba(0, 255, 174, 0.12);
-        }
-
-        .answer.wrong {
-            border-color: #ff5577;
-            background: rgba(255, 60, 100, 0.10);
-        }
-
-        .answer:disabled {
-            cursor: default;
-        }
-
-        /* EXPLANATION */
-
-        .explanation {
-            display: none;
-
-            margin-top: 22px;
-            padding: 18px;
-
-            border-left: 3px solid #00d9ff;
-
-            background: rgba(0, 170, 255, 0.06);
-            border-radius: 10px;
-
-            color: #b8cbe0;
-            line-height: 1.6;
-        }
-
-        .explanation strong {
-            color: #00d9ff;
-        }
-
-        /* NEXT BUTTON */
-
-        .next-button {
-            display: none;
-
-            margin-top: 25px;
-            padding: 13px 25px;
-
-            border: none;
-            border-radius: 12px;
-
-            background: linear-gradient(90deg, #009dff, #00d9ff);
-
-            color: white;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            box-shadow: 0 0 20px rgba(0, 190, 255, 0.2);
-
-            transition: 0.25s;
-        }
-
-        .next-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(0, 190, 255, 0.4);
-        }
-
-        /* RESULTS */
-
-        .result {
-            display: none;
-            text-align: center;
-        }
-
-        .result-icon {
-            font-size: 70px;
-            margin-bottom: 15px;
-        }
-
-        .result h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
-        }
-
-        .score {
-            font-size: 55px;
-            font-weight: bold;
-            color: #00d9ff;
-            margin: 15px 0;
-        }
-
-        .result p {
-            color: #a9bdd0;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-
-        .restart {
-            padding: 14px 25px;
-            border-radius: 12px;
-            border: 1px solid #00d9ff;
-            background: rgba(0, 190, 255, 0.08);
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .restart:hover {
-            background: rgba(0, 190, 255, 0.18);
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 35px 20px;
-
-            border-top: 1px solid rgba(0, 200, 255, 0.12);
-
-            color: #6f8499;
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: #00d9ff;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 850px) {
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-            }
-
-            .hero {
-                padding-top: 50px;
-            }
-
-            .quiz-card {
-                padding: 22px;
-            }
-
-            #question {
-                font-size: 21px;
-            }
-
-            .answer {
-                font-size: 15px;
-            }
-        }
-
-    </style>
+<meta name="description"
+content="Clyvexis cybersecurity quiz. Test your knowledge of cybersecurity, networking, authentication, cryptography, attacks, and defense.">
+
+<title>Clyvexis | Cybersecurity Quiz</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HTML
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0,170,255,0.20),
+            transparent 38%
+        ),
+        linear-gradient(
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        ),
+        #050b16;
+
+    background-size:
+        auto,
+        35px 35px,
+        35px 35px,
+        auto;
+
+    background-attachment: fixed;
+}
+
+
+/* =========================
+   ANIMATED CYBER GLOW
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: -250px;
+    left: 50%;
+
+    width: 700px;
+    height: 500px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,170,255,0.18),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation:
+        cyberGlow
+        6s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes cyberGlow {
+
+    from {
+        transform:
+            translateX(-50%)
+            scale(0.9);
+
+        opacity: 0.55;
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(1.15);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 6%;
+
+    background:
+        rgba(3,8,18,0.88);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(0,200,255,0.15);
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.25);
+}
+
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 15px
+        rgba(0,200,255,0.25);
+}
+
+
+.logo span {
+    color: #00d9ff;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-links a {
+    color: #c9d7e8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        color 0.3s,
+        text-shadow 0.3s;
+}
+
+
+.nav-links a:hover {
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 10px
+        rgba(0,217,255,0.5);
+}
+
+
+.nav-links .active {
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 10px
+        rgba(0,217,255,0.45);
+}
+
+
+/* DONATE */
+
+.donate {
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(0,255,170,0.5);
+
+    color: #7dffc9 !important;
+
+    background:
+        rgba(0,255,170,0.08);
+}
+
+
+.donate:hover {
+    background:
+        rgba(0,255,170,0.16);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,255,170,0.15);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+
+    padding:
+        75px
+        20px
+        45px;
+}
+
+
+.hero-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(0,200,255,0.5)
+        );
+
+    animation:
+        iconPulse
+        3s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes iconPulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            70px
+        );
+
+    margin-bottom: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #00d9ff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 30px
+        rgba(0,200,255,0.15);
+}
+
+
+.hero p {
+
+    color: #9eb2c8;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+}
+
+
+.tagline {
+
+    margin-top: 15px;
+
+    color: #00e5ff;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   QUIZ AREA
+========================= */
+
+.quiz-container {
+
+    position: relative;
+    z-index: 1;
+
+    width:
+        min(
+            900px,
+            92%
+        );
+
+    margin:
+        20px
+        auto
+        80px;
+}
+
+
+/* =========================
+   QUIZ CARD
+========================= */
+
+.quiz-card {
+
+    background:
+        rgba(9,20,35,0.72);
+
+    border:
+        1px solid
+        rgba(0,190,255,0.18);
+
+    border-radius: 22px;
+
+    padding: 32px;
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 0 35px
+        rgba(0,170,255,0.08);
+
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+
+.quiz-card:hover {
+
+    border-color:
+        rgba(0,210,255,0.4);
+
+    box-shadow:
+        0 0 45px
+        rgba(0,170,255,0.12);
+}
+
+
+/* =========================
+   PROGRESS TOP
+========================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    color: #9eb2c8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress-container {
+
+    width: 100%;
+
+    height: 9px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 35px;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #00ffae
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width 0.4s ease;
+
+    box-shadow:
+        0 0 12px
+        rgba(0,210,255,0.35);
+}
+
+
+/* =========================
+   QUESTION
+========================= */
+
+.question-number {
+
+    color: #00d9ff;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+
+    letter-spacing: 1px;
+
+    font-weight: bold;
+}
+
+
+#question {
+
+    font-size: 25px;
+
+    line-height: 1.4;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+.answers {
+
+    display: grid;
+
+    gap: 14px;
+}
+
+
+.answer {
+
+    width: 100%;
+
+    text-align: left;
+
+    padding:
+        17px
+        18px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(130,170,200,0.18);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    color: #e7f2ff;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        0.25s;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+.answer:hover {
+
+    border-color:
+        #00cfff;
+
+    background:
+        rgba(0,190,255,0.08);
+
+    transform:
+        translateX(4px);
+
+    box-shadow:
+        0 0 15px
+        rgba(0,190,255,0.08);
+}
+
+
+.answer.correct {
+
+    border-color:
+        #00ffae;
+
+    background:
+        rgba(0,255,174,0.12);
+
+    box-shadow:
+        0 0 15px
+        rgba(0,255,174,0.08);
+}
+
+
+.answer.wrong {
+
+    border-color:
+        #ff5577;
+
+    background:
+        rgba(255,60,100,0.10);
+}
+
+
+.answer:disabled {
+
+    cursor: default;
+}
+
+
+/* =========================
+   EXPLANATION
+========================= */
+
+.explanation {
+
+    display: none;
+
+    margin-top: 22px;
+
+    padding: 18px;
+
+    border-left:
+        3px solid
+        #00d9ff;
+
+    background:
+        rgba(0,170,255,0.06);
+
+    border-radius: 10px;
+
+    color: #b8cbe0;
+
+    line-height: 1.6;
+
+    animation:
+        explanationIn
+        0.3s
+        ease;
+}
+
+
+@keyframes explanationIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.explanation strong {
+
+    color: #00d9ff;
+}
+
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.next-button {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding:
+        13px
+        25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #009dff,
+            #00d9ff
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,190,255,0.2);
+
+    transition:
+        0.25s;
+}
+
+
+.next-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,190,255,0.4);
+}
+
+
+.next-button:active {
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+.result {
+
+    display: none;
+
+    text-align: center;
+
+    padding:
+        20px
+        0;
+}
+
+
+.result-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(0,200,255,0.3)
+        );
+}
+
+
+.result h2 {
+
+    font-size: 38px;
+
+    margin-bottom: 12px;
+}
+
+
+.score {
+
+    font-size: 55px;
+
+    font-weight: bold;
+
+    color: #00d9ff;
+
+    margin: 15px 0;
+
+    text-shadow:
+        0 0 20px
+        rgba(0,217,255,0.25);
+}
+
+
+.result p {
+
+    color: #a9bdd0;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   RESTART BUTTON
+========================= */
+
+.restart {
+
+    padding:
+        14px
+        25px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        #00d9ff;
+
+    background:
+        rgba(0,190,255,0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition:
+        0.25s;
+}
+
+
+.restart:hover {
+
+    background:
+        rgba(0,190,255,0.18);
+
+    box-shadow:
+        0 0 20px
+        rgba(0,190,255,0.15);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+
+    padding:
+        35px
+        20px;
+
+    border-top:
+        1px solid
+        rgba(0,200,255,0.12);
+
+    color: #6f8499;
+
+    font-size: 13px;
+}
+
+
+footer strong {
+
+    color: #00d9ff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    nav {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding:
+            15px
+            5%;
+    }
+
+
+    .nav-links {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 10px 13px;
+    }
+
+
+    .nav-links a {
+
+        font-size: 13px;
+    }
+
+
+    .hero {
+
+        padding:
+            50px
+            20px
+            35px;
+    }
+
+
+    .hero-icon {
+
+        font-size: 48px;
+    }
+
+
+    .hero p {
+
+        font-size: 15px;
+    }
+
+
+    .tagline {
+
+        font-size: 11px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .quiz-card {
+
+        padding: 22px;
+
+        border-radius: 18px;
+    }
+
+
+    .quiz-top {
+
+        font-size: 13px;
+    }
+
+
+    #question {
+
+        font-size: 21px;
+    }
+
+
+    .answer {
+
+        font-size: 15px;
+
+        padding:
+            15px;
+    }
+
+
+    .result h2 {
+
+        font-size: 30px;
+    }
+
+
+    .score {
+
+        font-size: 45px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 480px) {
+
+    .logo {
+
+        font-size: 21px;
+    }
+
+
+    .nav-links {
+
+        gap: 9px 11px;
+    }
+
+
+    .nav-links a {
+
+        font-size: 12px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 40px;
+    }
+
+
+    .quiz-container {
+
+        width: 94%;
+    }
+
+
+    .quiz-card {
+
+        padding: 18px;
+    }
+
+
+    .quiz-top {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 6px;
+    }
+
+
+    #question {
+
+        font-size: 20px;
+    }
+
+
+    .answer {
+
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION -->
 
-    <nav>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-        <div class="logo">
-            🛡️ Cly<span>vexis</span>
-        </div>
+<nav>
 
-        <div class="nav-links">
-
-            <a href="index.html">Home</a>
-
-            <a href="lessons.html">Lessons</a>
-
-            <a href="labs.html">Labs</a>
-
-            <a href="quiz.html" class="active">Quiz</a>
-
-            <a href="games.html">Games</a>
-
-            <a href="glossary.html">Glossary</a>
-
-            <a href="coding.html">💻 Coding</a>
-
-            <a href="simulators.html">🖥️ Simulators</a>
-
-            <a href="donate.html" class="donate">💚 Donate</a>
-
-        </div>
-
-    </nav>
+    <div class="logo">
+        🛡️ Cly<span>vexis</span>
+    </div>
 
 
-    <!-- HERO -->
+    <div class="nav-links">
 
-    <section class="hero">
+        <a href="index.html">
+            Home
+        </a>
 
-        <div class="hero-icon">
-            🧠
-        </div>
+        <a href="lessons.html">
+            Lessons
+        </a>
 
-        <h1>Clyvexis Quiz</h1>
+        <a href="labs.html">
+            Labs
+        </a>
 
-        <p>
-            Test your cybersecurity knowledge with challenging
-            questions covering attacks, defense, networking,
-            authentication, cryptography, and more.
-        </p>
+        <a href="quiz.html"
+           class="active">
+            Quiz
+        </a>
 
-        <div class="tagline">
-            THINK • ANALYZE • SECURE
-        </div>
+        <a href="games.html">
+            Games
+        </a>
 
-    </section>
+        <a href="cyber-defense.html">
+            🛡️ Defense
+        </a>
+
+        <a href="glossary.html">
+            Glossary
+        </a>
+
+        <a href="coding.html">
+            💻 Coding
+        </a>
+
+        <a href="simulators.html">
+            🖥️ Simulators
+        </a>
+
+        <a href="donate.html"
+           class="donate">
+            💚 Donate
+        </a>
+
+    </div>
+
+</nav>
 
 
-    <!-- QUIZ -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <main class="quiz-container">
+<section class="hero">
 
-        <div class="quiz-card">
+    <div class="hero-icon">
+        🧠
+    </div>
 
-            <!-- QUIZ CONTENT -->
 
-            <div id="quiz">
+    <h1>
+        Clyvexis Quiz
+    </h1>
 
-                <div class="quiz-top">
 
-                    <span id="questionCounter">
-                        Question 1 of 30
-                    </span>
+    <p>
+        Test your cybersecurity knowledge with challenging
+        questions covering attacks, defense, networking,
+        authentication, cryptography, and more.
+    </p>
 
-                    <span id="scoreText">
-                        Score: 0
-                    </span>
 
-                </div>
+    <div class="tagline">
+        THINK • ANALYZE • SECURE
+    </div>
 
-                <div class="progress-container">
+</section>
 
-                    <div
-                        class="progress-bar"
-                        id="progressBar">
-                    </div>
 
-                </div>
+<!-- =========================
+     QUIZ
+========================= -->
 
-                <div class="question-number">
-                    CLYVEXIS KNOWLEDGE TEST
-                </div>
+<main class="quiz-container">
 
-                <h2 id="question">
-                    Loading question...
-                </h2>
+    <div class="quiz-card">
 
-                <div
-                    class="answers"
-                    id="answers">
-                </div>
 
-                <div
-                    class="explanation"
-                    id="explanation">
-                </div>
+        <!-- QUIZ CONTENT -->
 
-                <button
-                    class="next-button"
-                    id="nextButton"
-                    onclick="nextQuestion()">
+        <div id="quiz">
 
-                    Next Question →
 
-                </button>
+            <div class="quiz-top">
+
+                <span id="questionCounter">
+                    Question 1 of 30
+                </span>
+
+
+                <span id="scoreText">
+                    Score: 0
+                </span>
 
             </div>
 
 
-            <!-- RESULTS -->
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+
+            <div class="question-number">
+                CLYVEXIS KNOWLEDGE TEST
+            </div>
+
+
+            <h2 id="question">
+                Loading question...
+            </h2>
+
 
             <div
-                class="result"
-                id="result">
-
-                <div class="result-icon">
-                    🏆
-                </div>
-
-                <h2>
-                    Quiz Complete
-                </h2>
-
-                <div
-                    class="score"
-                    id="finalScore">
-                    0/30
-                </div>
-
-                <p id="resultMessage">
-                    Great work!
-                </p>
-
-                <button
-                    class="restart"
-                    onclick="restartQuiz()">
-
-                    🔄 Try Again
-
-                </button>
-
+                class="answers"
+                id="answers">
             </div>
+
+
+            <div
+                class="explanation"
+                id="explanation">
+            </div>
+
+
+            <button
+                class="next-button"
+                id="nextButton"
+                onclick="nextQuestion()">
+
+                Next Question →
+
+            </button>
 
         </div>
 
-    </main>
+
+        <!-- =========================
+             RESULTS
+        ========================= -->
+
+        <div
+            class="result"
+            id="result">
 
 
-    <!-- FOOTER -->
+            <div class="result-icon">
+                🏆
+            </div>
 
-    <footer>
 
-        <p>
-            🛡️ <strong>Clyvexis</strong>
-        </p>
+            <h2>
+                Quiz Complete
+            </h2>
 
-        <p>
-            Learn • Practice • Stay Secure
-        </p>
 
-        <p style="margin-top:10px;">
-            Educational cybersecurity content
-        </p>
+            <div
+                class="score"
+                id="finalScore">
 
-    </footer>
+                0/30
+
+            </div>
+
+
+            <p id="resultMessage">
+                Great work!
+            </p>
+
+
+            <button
+                class="restart"
+                onclick="restartQuiz()">
+
+                🔄 Try Again
+
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        🛡️ <strong>Clyvexis</strong>
+    </p>
+
+
+    <p>
+        Learn • Practice • Stay Secure
+    </p>
+
+
+    <p style="margin-top:10px;">
+        Educational cybersecurity content
+    </p>
+
+</footer>
 
 
 <script>
+
+/* =========================
+   QUIZ QUESTIONS
+========================= */
 
 const questions = [
 
@@ -953,10 +1631,20 @@ const questions = [
 ];
 
 
+/* =========================
+   QUIZ VARIABLES
+========================= */
+
 let currentQuestion = 0;
+
 let score = 0;
+
 let answered = false;
 
+
+/* =========================
+   DOM ELEMENTS
+========================= */
 
 const questionElement =
     document.getElementById("question");
@@ -992,20 +1680,32 @@ const resultMessage =
     document.getElementById("resultMessage");
 
 
+/* =========================
+   LOAD QUESTION
+========================= */
+
 function loadQuestion() {
 
     answered = false;
 
-    const q = questions[currentQuestion];
+    const q =
+        questions[currentQuestion];
+
 
     questionElement.textContent =
         q.question;
 
-    answersElement.innerHTML = "";
 
-    explanationElement.style.display = "none";
+    answersElement.innerHTML =
+        "";
 
-    nextButton.style.display = "none";
+
+    explanationElement.style.display =
+        "none";
+
+
+    nextButton.style.display =
+        "none";
 
 
     questionCounter.textContent =
@@ -1017,66 +1717,112 @@ function loadQuestion() {
 
 
     const progress =
-        ((currentQuestion) / questions.length) * 100;
+        ((currentQuestion) /
+        questions.length) *
+        100;
+
 
     progressBar.style.width =
         progress + "%";
 
 
-    q.answers.forEach((answer, index) => {
+    q.answers.forEach(
+        (answer, index) => {
 
-        const button =
-            document.createElement("button");
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.className = "answer";
 
-        button.textContent = answer;
+            button.className =
+                "answer";
 
-        button.onclick = () =>
-            selectAnswer(index, button);
 
-        answersElement.appendChild(button);
+            button.textContent =
+                answer;
 
-    });
+
+            button.onclick = () =>
+                selectAnswer(
+                    index,
+                    button
+                );
+
+
+            answersElement.appendChild(
+                button
+            );
+
+        }
+    );
 
 }
 
 
-function selectAnswer(index, selectedButton) {
+/* =========================
+   SELECT ANSWER
+========================= */
+
+function selectAnswer(
+    index,
+    selectedButton
+) {
 
     if (answered) return;
 
+
     answered = true;
+
 
     const q =
         questions[currentQuestion];
 
+
     const buttons =
-        document.querySelectorAll(".answer");
+        document.querySelectorAll(
+            ".answer"
+        );
 
 
-    buttons.forEach(button => {
-        button.disabled = true;
-    });
+    buttons.forEach(
+        button => {
+
+            button.disabled =
+                true;
+
+        }
+    );
 
 
     if (index === q.correct) {
 
-        selectedButton.classList.add("correct");
+        selectedButton.classList.add(
+            "correct"
+        );
+
 
         score++;
 
+
         scoreText.textContent =
             `Score: ${score}`;
+
 
         explanationElement.innerHTML =
             `<strong>✓ Correct!</strong><br><br>${q.explanation}`;
 
     } else {
 
-        selectedButton.classList.add("wrong");
+        selectedButton.classList.add(
+            "wrong"
+        );
 
-        buttons[q.correct].classList.add("correct");
+
+        buttons[q.correct].classList.add(
+            "correct"
+        );
+
 
         explanationElement.innerHTML =
             `<strong>✗ Not quite.</strong><br><br>${q.explanation}`;
@@ -1087,17 +1833,26 @@ function selectAnswer(index, selectedButton) {
     explanationElement.style.display =
         "block";
 
+
     nextButton.style.display =
         "inline-block";
 
 }
 
 
+/* =========================
+   NEXT QUESTION
+========================= */
+
 function nextQuestion() {
 
     currentQuestion++;
 
-    if (currentQuestion >= questions.length) {
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
 
         showResults();
 
@@ -1105,25 +1860,36 @@ function nextQuestion() {
 
     }
 
+
     loadQuestion();
 
 }
 
+
+/* =========================
+   SHOW RESULTS
+========================= */
 
 function showResults() {
 
     quizElement.style.display =
         "none";
 
+
     resultElement.style.display =
         "block";
+
 
     finalScore.textContent =
         `${score}/${questions.length}`;
 
 
     const percentage =
-        Math.round((score / questions.length) * 100);
+        Math.round(
+            (score /
+            questions.length) *
+            100
+        );
 
 
     if (percentage >= 90) {
@@ -1131,17 +1897,23 @@ function showResults() {
         resultMessage.textContent =
             `Outstanding! You scored ${percentage}%. You have a strong cybersecurity foundation.`;
 
-    } else if (percentage >= 75) {
+    }
+
+    else if (percentage >= 75) {
 
         resultMessage.textContent =
             `Great job! You scored ${percentage}%. Keep practicing and you'll get even stronger.`;
 
-    } else if (percentage >= 60) {
+    }
+
+    else if (percentage >= 60) {
 
         resultMessage.textContent =
             `Nice work! You scored ${percentage}%. Review the lessons and try again.`;
 
-    } else {
+    }
+
+    else {
 
         resultMessage.textContent =
             `Good start! You scored ${percentage}%. Keep learning and give the quiz another shot.`;
@@ -1151,22 +1923,33 @@ function showResults() {
 }
 
 
+/* =========================
+   RESTART QUIZ
+========================= */
+
 function restartQuiz() {
 
     currentQuestion = 0;
 
     score = 0;
 
+
     resultElement.style.display =
         "none";
 
+
     quizElement.style.display =
         "block";
+
 
     loadQuestion();
 
 }
 
+
+/* =========================
+   START QUIZ
+========================= */
 
 loadQuestion();
 
