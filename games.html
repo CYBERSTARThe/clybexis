@@ -11,147 +11,267 @@
 
     <style>
 
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+
+        /* =========================
+           BODY
+        ========================= */
+
         body {
             font-family: Arial, Helvetica, sans-serif;
+
             color: white;
+
             min-height: 100vh;
 
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.15), transparent 30%),
-                radial-gradient(circle at 80% 80%, rgba(0, 255, 170, 0.10), transparent 30%),
-                linear-gradient(135deg, #050812, #07111f, #03060d);
-
             overflow-x: hidden;
+
+            position: relative;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(0,170,255,0.20),
+                    transparent 38%
+                ),
+                linear-gradient(
+                    rgba(0,170,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,170,255,0.035) 1px,
+                    transparent 1px
+                ),
+                #050b16;
+
+            background-size:
+                auto,
+                35px 35px,
+                35px 35px,
+                auto;
+
+            background-attachment: fixed;
         }
+
+
+        /* =========================
+           ANIMATED CYBER GLOW
+        ========================= */
 
         body::before {
+
             content: "";
+
             position: fixed;
-            inset: 0;
+
+            top: -250px;
+            left: 50%;
+
+            width: 700px;
+            height: 500px;
+
+            transform: translateX(-50%);
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(0,170,255,0.18),
+                    transparent 70%
+                );
+
             pointer-events: none;
 
-            background-image:
-                linear-gradient(rgba(0, 180, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 180, 255, 0.04) 1px, transparent 1px);
+            z-index: 0;
 
-            background-size: 45px 45px;
-
-            animation: gridMove 18s linear infinite;
-
-            z-index: -1;
+            animation:
+                cyberGlow 6s ease-in-out infinite alternate;
         }
 
-        @keyframes gridMove {
+
+        @keyframes cyberGlow {
 
             from {
-                transform: translateY(0);
+
+                transform:
+                    translateX(-50%)
+                    scale(0.9);
+
+                opacity: 0.55;
+
             }
 
             to {
-                transform: translateY(45px);
+
+                transform:
+                    translateX(-50%)
+                    scale(1.15);
+
+                opacity: 1;
+
             }
 
         }
 
-        /* NAVIGATION */
+
+        /* =========================
+           NAVIGATION
+        ========================= */
 
         nav {
+
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
             padding: 16px 6%;
 
-            background: rgba(3, 8, 18, 0.85);
+            background:
+                rgba(3, 8, 18, 0.85);
 
-            backdrop-filter: blur(18px);
+            backdrop-filter:
+                blur(18px);
 
-            border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+            border-bottom:
+                1px solid rgba(0, 200, 255, 0.15);
         }
 
+
         .logo {
+
             font-size: 23px;
+
             font-weight: bold;
+
             white-space: nowrap;
         }
 
+
         .logo span {
+
             color: #00d9ff;
         }
 
+
         .nav-links {
+
             display: flex;
+
             align-items: center;
+
             gap: 20px;
         }
 
+
         .nav-links a {
+
             color: #c9d7e8;
+
             text-decoration: none;
+
             font-size: 14px;
+
             transition: 0.3s;
         }
 
+
         .nav-links a:hover {
+
             color: #00d9ff;
         }
+
 
         .nav-links .active {
+
             color: #00d9ff;
         }
 
+
         .donate {
+
             padding: 9px 15px;
 
             border-radius: 20px;
 
-            border: 1px solid rgba(0, 255, 170, 0.5);
+            border:
+                1px solid rgba(0, 255, 170, 0.5);
 
             color: #7dffc9 !important;
 
-            background: rgba(0, 255, 170, 0.08);
+            background:
+                rgba(0, 255, 170, 0.08);
         }
 
-        /* HERO */
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
+
+            position: relative;
+
+            z-index: 1;
+
             text-align: center;
 
             padding: 75px 20px 45px;
         }
 
+
         .hero-icon {
+
             font-size: 58px;
 
             margin-bottom: 15px;
 
             filter:
-                drop-shadow(0 0 18px rgba(0, 200, 255, 0.5));
+                drop-shadow(
+                    0 0 18px
+                    rgba(0, 200, 255, 0.5)
+                );
         }
 
+
         .hero h1 {
-            font-size: clamp(40px, 8vw, 70px);
+
+            font-size:
+                clamp(40px, 8vw, 70px);
 
             margin-bottom: 12px;
 
             background:
-                linear-gradient(90deg, #ffffff, #00d9ff);
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #00d9ff
+                );
 
             -webkit-background-clip: text;
+
             -webkit-text-fill-color: transparent;
         }
 
+
         .hero p {
+
             color: #9eb2c8;
 
             max-width: 680px;
@@ -163,7 +283,9 @@
             font-size: 17px;
         }
 
+
         .tagline {
+
             margin-top: 15px;
 
             color: #00e5ff;
@@ -175,12 +297,22 @@
             font-weight: bold;
         }
 
-        /* GAME GRID */
+
+        /* =========================
+           GAME GRID
+        ========================= */
 
         .games-container {
-            width: min(1100px, 92%);
 
-            margin: 20px auto 80px;
+            position: relative;
+
+            z-index: 1;
+
+            width:
+                min(1100px, 92%);
+
+            margin:
+                20px auto 80px;
 
             display: grid;
 
@@ -190,9 +322,13 @@
             gap: 24px;
         }
 
-        /* GAME CARD */
+
+        /* =========================
+           GAME CARD
+        ========================= */
 
         .game-card {
+
             position: relative;
 
             padding: 28px;
@@ -205,37 +341,49 @@
             border:
                 1px solid rgba(0, 190, 255, 0.18);
 
-            backdrop-filter: blur(16px);
+            backdrop-filter:
+                blur(16px);
 
             box-shadow:
-                0 0 35px rgba(0, 170, 255, 0.07);
+                0 0 35px
+                rgba(0, 170, 255, 0.07);
 
             transition: 0.3s;
         }
 
+
         .game-card:hover {
-            transform: translateY(-5px);
+
+            transform:
+                translateY(-5px);
 
             border-color:
                 rgba(0, 210, 255, 0.45);
 
             box-shadow:
-                0 0 35px rgba(0, 190, 255, 0.15);
+                0 0 35px
+                rgba(0, 190, 255, 0.15);
         }
 
+
         .game-icon {
+
             font-size: 42px;
 
             margin-bottom: 15px;
         }
 
+
         .game-card h2 {
+
             font-size: 23px;
 
             margin-bottom: 10px;
         }
 
+
         .game-card p {
+
             color: #9eb2c8;
 
             line-height: 1.6;
@@ -243,7 +391,9 @@
             margin-bottom: 20px;
         }
 
+
         .difficulty {
+
             display: inline-block;
 
             padding: 6px 10px;
@@ -263,9 +413,13 @@
             margin-bottom: 20px;
         }
 
-        /* BUTTON */
+
+        /* =========================
+           BUTTON
+        ========================= */
 
         .game-button {
+
             width: 100%;
 
             padding: 13px 18px;
@@ -283,24 +437,37 @@
             font-weight: bold;
 
             background:
-                linear-gradient(90deg, #008cff, #00d9ff);
+                linear-gradient(
+                    90deg,
+                    #008cff,
+                    #00d9ff
+                );
 
             box-shadow:
-                0 0 18px rgba(0, 180, 255, 0.18);
+                0 0 18px
+                rgba(0, 180, 255, 0.18);
 
             transition: 0.3s;
         }
 
+
         .game-button:hover {
-            transform: translateY(-2px);
+
+            transform:
+                translateY(-2px);
 
             box-shadow:
-                0 0 25px rgba(0, 210, 255, 0.35);
+                0 0 25px
+                rgba(0, 210, 255, 0.35);
         }
 
-        /* GAME AREA */
+
+        /* =========================
+           GAME AREA
+        ========================= */
 
         .game-area {
+
             display: none;
 
             margin-top: 20px;
@@ -313,14 +480,19 @@
                 rgba(0, 0, 0, 0.22);
 
             border:
-                1px solid rgba(255, 255, 255, 0.08);
+                1px solid
+                rgba(255, 255, 255, 0.08);
         }
 
+
         .game-area.show {
+
             display: block;
         }
 
+
         .scenario {
+
             color: #dcecff;
 
             line-height: 1.6;
@@ -328,9 +500,13 @@
             margin-bottom: 18px;
         }
 
-        /* OPTIONS */
+
+        /* =========================
+           OPTIONS
+        ========================= */
 
         .option {
+
             width: 100%;
 
             padding: 13px 15px;
@@ -345,7 +521,8 @@
                 rgba(255, 255, 255, 0.035);
 
             border:
-                1px solid rgba(130, 170, 200, 0.18);
+                1px solid
+                rgba(130, 170, 200, 0.18);
 
             border-radius: 10px;
 
@@ -354,15 +531,21 @@
             transition: 0.25s;
         }
 
+
         .option:hover {
-            border-color: #00d9ff;
+
+            border-color:
+                #00d9ff;
 
             background:
                 rgba(0, 190, 255, 0.08);
         }
 
+
         .option.correct {
-            border-color: #00ffae;
+
+            border-color:
+                #00ffae;
 
             background:
                 rgba(0, 255, 170, 0.10);
@@ -370,8 +553,11 @@
             color: #8fffd3;
         }
 
+
         .option.wrong {
-            border-color: #ff5c7a;
+
+            border-color:
+                #ff5c7a;
 
             background:
                 rgba(255, 60, 100, 0.08);
@@ -379,7 +565,9 @@
             color: #ff9caf;
         }
 
+
         .result {
+
             margin-top: 15px;
 
             font-weight: bold;
@@ -387,7 +575,9 @@
             min-height: 22px;
         }
 
+
         .next-button {
+
             margin-top: 15px;
 
             padding: 10px 16px;
@@ -398,16 +588,25 @@
 
             cursor: pointer;
 
-            background: #00d9ff;
+            background:
+                #00d9ff;
 
             color: #03101c;
 
             font-weight: bold;
         }
 
-        /* FOOTER */
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
+
+            position: relative;
+
+            z-index: 1;
+
             text-align: center;
 
             padding: 40px 20px;
@@ -415,34 +614,47 @@
             color: #71859b;
 
             border-top:
-                1px solid rgba(0, 190, 255, 0.10);
+                1px solid
+                rgba(0, 190, 255, 0.10);
         }
 
+
         footer strong {
+
             color: #00d9ff;
         }
 
-        /* MOBILE */
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 900px) {
 
             .nav-links {
+
                 gap: 10px;
             }
 
+
             .nav-links a {
+
                 font-size: 12px;
             }
 
+
             .games-container {
+
                 grid-template-columns: 1fr;
             }
 
         }
 
+
         @media (max-width: 650px) {
 
             nav {
+
                 flex-direction: column;
 
                 gap: 15px;
@@ -450,7 +662,9 @@
                 padding: 15px;
             }
 
+
             .nav-links {
+
                 width: 100%;
 
                 justify-content: center;
@@ -460,11 +674,15 @@
                 gap: 12px;
             }
 
+
             .hero {
+
                 padding-top: 50px;
             }
 
+
             .game-card {
+
                 padding: 22px;
             }
 
@@ -474,15 +692,20 @@
 
 </head>
 
+
 <body>
 
-    <!-- NAVIGATION -->
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
     <nav>
 
         <div class="logo">
             🛡️ Cly<span>vexis</span>
         </div>
+
 
         <div class="nav-links">
 
@@ -506,6 +729,10 @@
                 Games
             </a>
 
+            <a href="cyber-defense.html">
+                🛡️ Defense
+            </a>
+
             <a href="glossary.html">
                 Glossary
             </a>
@@ -527,7 +754,9 @@
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
@@ -535,14 +764,17 @@
             🎮
         </div>
 
+
         <h1>
             Clyvexis Games
         </h1>
+
 
         <p>
             Practice cybersecurity skills through safe,
             interactive challenges and scenarios.
         </p>
+
 
         <div class="tagline">
             THINK • ANALYZE • DEFEND
@@ -551,7 +783,9 @@
     </section>
 
 
-    <!-- GAMES -->
+    <!-- =========================
+         GAMES
+    ========================= -->
 
     <main class="games-container">
 
@@ -564,29 +798,38 @@
                 🎣
             </div>
 
+
             <h2>
                 Phishing Spotter
             </h2>
+
 
             <p>
                 Learn how to recognize suspicious messages,
                 fake links, and common phishing warning signs.
             </p>
 
+
             <span class="difficulty">
                 BEGINNER
             </span>
 
+
             <button
                 class="game-button"
                 onclick="startGame('phishing')">
+
                 ▶ Start Game
+
             </button>
+
 
             <div id="phishing" class="game-area">
 
                 <div class="scenario">
+
                     You receive an email saying:
+
                     <br><br>
 
                     <strong>
@@ -597,28 +840,42 @@
                     <br><br>
 
                     What should you do?
+
                 </div>
+
 
                 <button
                     class="option"
                     onclick="answer(this, true, 'phishingResult')">
+
                     Check the message carefully and verify it through
                     the organization's official website.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'phishingResult')">
+
                     Click the link immediately.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'phishingResult')">
+
                     Reply with your password.
+
                 </button>
 
-                <div id="phishingResult" class="result"></div>
+
+                <div
+                    id="phishingResult"
+                    class="result">
+                </div>
 
             </div>
 
@@ -633,52 +890,74 @@
                 🔐
             </div>
 
+
             <h2>
                 Password Defender
             </h2>
+
 
             <p>
                 Test your understanding of what makes a password
                 harder to guess.
             </p>
 
+
             <span class="difficulty">
                 BEGINNER
             </span>
 
+
             <button
                 class="game-button"
                 onclick="startGame('password')">
+
                 ▶ Start Game
+
             </button>
+
 
             <div id="password" class="game-area">
 
                 <div class="scenario">
+
                     Which choice is the strongest password
                     strategy?
+
                 </div>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'passwordResult')">
+
                     Use the same short password everywhere.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, true, 'passwordResult')">
+
                     Use a unique, long password or passphrase
                     for each important account.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'passwordResult')">
+
                     Use your birthday because it is easy to remember.
+
                 </button>
 
-                <div id="passwordResult" class="result"></div>
+
+                <div
+                    id="passwordResult"
+                    class="result">
+                </div>
 
             </div>
 
@@ -693,24 +972,31 @@
                 🕵️
             </div>
 
+
             <h2>
                 Cyber Mystery
             </h2>
+
 
             <p>
                 Analyze a fictional security incident and
                 determine what probably happened.
             </p>
 
+
             <span class="difficulty">
                 INTERMEDIATE
             </span>
 
+
             <button
                 class="game-button"
                 onclick="startGame('mystery')">
+
                 ▶ Start Game
+
             </button>
+
 
             <div id="mystery" class="game-area">
 
@@ -727,25 +1013,38 @@
 
                 </div>
 
+
                 <button
                     class="option"
                     onclick="answer(this, true, 'mysteryResult')">
+
                     A possible phishing or social-engineering campaign.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'mysteryResult')">
+
                     A printer running out of paper.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'mysteryResult')">
+
                     A normal software update.
+
                 </button>
 
-                <div id="mysteryResult" class="result"></div>
+
+                <div
+                    id="mysteryResult"
+                    class="result">
+                </div>
 
             </div>
 
@@ -760,24 +1059,31 @@
                 🌐
             </div>
 
+
             <h2>
                 Network Detective
             </h2>
+
 
             <p>
                 Learn basic networking concepts by solving
                 simple defensive scenarios.
             </p>
 
+
             <span class="difficulty">
                 INTERMEDIATE
             </span>
 
+
             <button
                 class="game-button"
                 onclick="startGame('network')">
+
                 ▶ Start Game
+
             </button>
+
 
             <div id="network" class="game-area">
 
@@ -792,25 +1098,38 @@
 
                 </div>
 
+
                 <button
                     class="option"
                     onclick="answer(this, true, 'networkResult')">
+
                     DNS
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'networkResult')">
+
                     HDMI
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'networkResult')">
+
                     USB
+
                 </button>
 
-                <div id="networkResult" class="result"></div>
+
+                <div
+                    id="networkResult"
+                    class="result">
+                </div>
 
             </div>
 
@@ -825,24 +1144,31 @@
                 🚨
             </div>
 
+
             <h2>
                 Incident Response
             </h2>
+
 
             <p>
                 Practice choosing sensible first steps when
                 responding to a fictional security incident.
             </p>
 
+
             <span class="difficulty">
                 ADVANCED
             </span>
 
+
             <button
                 class="game-button"
                 onclick="startGame('incident')">
+
                 ▶ Start Game
+
             </button>
+
 
             <div id="incident" class="game-area">
 
@@ -857,26 +1183,39 @@
 
                 </div>
 
+
                 <button
                     class="option"
                     onclick="answer(this, true, 'incidentResult')">
+
                     Follow the organization's incident-response
                     procedure and investigate safely.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'incidentResult')">
+
                     Ignore the alert.
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'incidentResult')">
+
                     Immediately delete all system records.
+
                 </button>
 
-                <div id="incidentResult" class="result"></div>
+
+                <div
+                    id="incidentResult"
+                    class="result">
+                </div>
 
             </div>
 
@@ -891,24 +1230,31 @@
                 🧠
             </div>
 
+
             <h2>
                 Cyber Trivia
             </h2>
+
 
             <p>
                 Test your knowledge of cybersecurity concepts
                 with quick questions.
             </p>
 
+
             <span class="difficulty">
                 MIXED
             </span>
 
+
             <button
                 class="game-button"
                 onclick="startGame('trivia')">
+
                 ▶ Start Game
+
             </button>
+
 
             <div id="trivia" class="game-area">
 
@@ -918,25 +1264,38 @@
 
                 </div>
 
+
                 <button
                     class="option"
                     onclick="answer(this, true, 'triviaResult')">
+
                     Multi-Factor Authentication
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'triviaResult')">
+
                     Main Firewall Access
+
                 </button>
+
 
                 <button
                     class="option"
                     onclick="answer(this, false, 'triviaResult')">
+
                     Malware File Analysis
+
                 </button>
 
-                <div id="triviaResult" class="result"></div>
+
+                <div
+                    id="triviaResult"
+                    class="result">
+                </div>
 
             </div>
 
@@ -946,11 +1305,15 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
-        <strong>Clyvexis</strong>
+        <strong>
+            Clyvexis
+        </strong>
 
         <br><br>
 
@@ -963,13 +1326,16 @@
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
 
         function startGame(gameId) {
 
-            const area = document.getElementById(gameId);
+            const area =
+                document.getElementById(gameId);
 
             if (!area) {
                 return;
@@ -982,10 +1348,14 @@
 
         function answer(button, correct, resultId) {
 
-            const result = document.getElementById(resultId);
+            const result =
+                document.getElementById(resultId);
+
 
             const buttons =
-                button.parentElement.querySelectorAll(".option");
+                button.parentElement
+                .querySelectorAll(".option");
+
 
             buttons.forEach(function(btn) {
 
@@ -998,19 +1368,25 @@
 
                 button.classList.add("correct");
 
+
                 result.textContent =
                     "✅ Correct! Great cybersecurity thinking.";
 
-                result.style.color = "#00ffae";
+
+                result.style.color =
+                    "#00ffae";
 
             } else {
 
                 button.classList.add("wrong");
 
+
                 result.textContent =
                     "❌ Not quite. Think about the safest defensive choice.";
 
-                result.style.color = "#ff7b91";
+
+                result.style.color =
+                    "#ff7b91";
 
             }
 
