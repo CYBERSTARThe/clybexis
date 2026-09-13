@@ -4,18 +4,18 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="Clyvexis Cyber Defense Operations — a safe interactive cybersecurity training game for learning defensive security skills.">
+<meta name="description" content="Clyvexis Cyber Defense Operations — practice defensive cybersecurity decisions through interactive missions.">
 
 <title>Clyvexis | Cyber Defense Operations</title>
 
 <style>
 
-/* =========================================================
+/* =========================
    RESET
-========================================================= */
+========================= */
 
 * {
     margin: 0;
@@ -29,10 +29,25 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+
     background:
-        radial-gradient(circle at 50% -10%, rgba(0,170,255,0.18), transparent 35%),
-        linear-gradient(rgba(0,170,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,170,255,0.025) 1px, transparent 1px),
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0,170,255,0.20),
+            transparent 38%
+        ),
+        linear-gradient(
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.035) 1px,
+            transparent 1px
+        ),
         #050b16;
 
     background-size:
@@ -41,237 +56,279 @@ body {
         35px 35px,
         auto;
 
-    color: white;
-    min-height: 100vh;
-    overflow-x: hidden;
+    background-attachment: fixed;
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* =========================
+   MOVING CYBER GLOW
+========================= */
 
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+body::before {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 15px 7%;
-
-    background: rgba(5,11,22,0.9);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid rgba(0,170,255,0.22);
-
-    box-shadow: 0 0 25px rgba(0,170,255,0.06);
-}
-
-.logo {
-    color: #00aaff;
-    text-decoration: none;
-
-    font-size: 21px;
-    font-weight: bold;
-
-    text-shadow: 0 0 10px rgba(0,170,255,0.7);
-}
-
-.nav-links {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-}
-
-.nav-links a {
-    color: #9db1c4;
-    text-decoration: none;
-    font-size: 13px;
-
-    transition: 0.25s;
-}
-
-.nav-links a:hover {
-    color: #00aaff;
-    text-shadow: 0 0 8px #00aaff;
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    position: relative;
-
-    padding: 75px 20px 45px;
-
-    text-align: center;
-
-    overflow: hidden;
-}
-
-.hero::before {
     content: "";
 
-    position: absolute;
+    position: fixed;
 
-    width: 600px;
-    height: 600px;
-
+    top: -250px;
     left: 50%;
-    top: -450px;
+
+    width: 700px;
+    height: 500px;
 
     transform: translateX(-50%);
 
     background:
         radial-gradient(
-            circle,
-            rgba(0,170,255,0.35),
-            transparent 68%
+            ellipse,
+            rgba(0,170,255,0.18),
+            transparent 70%
         );
 
-    animation: pulse 5s infinite alternate;
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation: cyberGlow 6s ease-in-out infinite alternate;
 }
 
-@keyframes pulse {
+@keyframes cyberGlow {
 
     from {
-        opacity: 0.45;
-        transform: translateX(-50%) scale(0.9);
+        transform:
+            translateX(-50%)
+            scale(0.9);
+
+        opacity: 0.55;
     }
 
     to {
+        transform:
+            translateX(-50%)
+            scale(1.15);
+
         opacity: 1;
-        transform: translateX(-50%) scale(1.15);
     }
 
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 16px 6%;
+
+    background: rgba(5,11,22,0.92);
+
+    border-bottom: 1px solid rgba(0,170,255,0.25);
+
+    backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.08);
 }
 
-.badge {
+.logo {
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    color: #00aaff;
+
+    text-decoration: none;
+
+    text-shadow:
+        0 0 10px rgba(0,170,255,0.7);
+
+    white-space: nowrap;
+}
+
+.nav-links {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.nav-links a {
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    transition: 0.25s;
+}
+
+.nav-links a:hover {
+
+    color: #00aaff;
+
+    background: rgba(0,170,255,0.08);
+
+    text-shadow:
+        0 0 8px rgba(0,170,255,0.7);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    width: min(1100px, 90%);
+
+    margin: 70px auto 40px;
+
+    text-align: center;
+}
+
+.status {
+
     display: inline-block;
 
     padding: 7px 14px;
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 
-    border: 1px solid rgba(57,255,136,0.3);
+    border: 1px solid rgba(57,255,136,0.4);
 
-    border-radius: 999px;
+    border-radius: 30px;
 
     color: #39ff88;
 
-    background: rgba(57,255,136,0.04);
+    background: rgba(57,255,136,0.06);
 
-    font-size: 12px;
+    font-size: 13px;
 
-    letter-spacing: 1.5px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 18px rgba(57,255,136,0.08);
 }
 
 .hero h1 {
-    font-size: clamp(38px, 7vw, 70px);
 
-    margin-bottom: 15px;
+    font-size: clamp(36px, 7vw, 70px);
 
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88,
-            #00aaff
-        );
+    line-height: 1.05;
 
-    background-size: 200%;
+    margin-bottom: 18px;
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: white;
 
-    color: transparent;
-
-    animation: gradient 5s linear infinite;
+    text-shadow:
+        0 0 20px rgba(0,170,255,0.35);
 }
 
-@keyframes gradient {
+.hero h1 span {
 
-    from {
-        background-position: 0%;
-    }
+    color: #00aaff;
 
-    to {
-        background-position: 200%;
-    }
-
+    text-shadow:
+        0 0 20px rgba(0,170,255,0.7);
 }
 
 .hero p {
-    max-width: 700px;
+
+    max-width: 720px;
 
     margin: auto;
 
-    color: #9eb0c1;
+    color: #94a3b8;
+
+    font-size: 17px;
 
     line-height: 1.7;
-
-    font-size: 16px;
 }
 
-/* =========================================================
-   MAIN CONTAINER
-========================================================= */
-
-.container {
-    width: min(1150px, 92%);
-
-    margin: auto;
-}
-
-section {
-    padding: 35px 0;
-}
-
-/* =========================================================
-   OPERATIONS DASHBOARD
-========================================================= */
+/* =========================
+   DASHBOARD
+========================= */
 
 .dashboard {
+
+    width: min(1100px, 90%);
+
+    margin: 30px auto;
 
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 14px;
-
-    margin-bottom: 25px;
+    gap: 15px;
 }
 
 .stat {
 
-    padding: 20px;
-
     background:
         linear-gradient(
             145deg,
-            rgba(12,28,47,0.9),
-            rgba(7,15,27,0.9)
+            rgba(15,25,43,0.95),
+            rgba(5,11,22,0.95)
         );
 
-    border: 1px solid rgba(0,170,255,0.16);
+    border: 1px solid rgba(0,170,255,0.18);
 
-    border-radius: 12px;
+    border-radius: 14px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.04);
+
+    transition: 0.25s;
+}
+
+.stat:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(0,170,255,0.45);
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.10);
 }
 
 .stat-label {
 
-    color: #71869a;
+    color: #64748b;
 
-    font-size: 11px;
+    font-size: 12px;
+
+    text-transform: uppercase;
 
     letter-spacing: 1px;
 
@@ -280,29 +337,33 @@ section {
 
 .stat-value {
 
-    font-size: 25px;
-
-    font-weight: bold;
-
     color: #00aaff;
+
+    font-size: 27px;
+
+    font-weight: 900;
 }
 
-.stat-green {
+/* =========================
+   MAIN PANEL
+========================= */
 
-    color: #39ff88;
-}
+.game-container {
 
-/* =========================================================
-   GAME PANEL
-========================================================= */
+    width: min(900px, 90%);
 
-.game-panel {
+    margin: 35px auto 80px;
 
-    background: rgba(8,17,30,0.92);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,20,35,0.96),
+            rgba(5,11,22,0.96)
+        );
 
-    border: 1px solid rgba(0,170,255,0.2);
+    border: 1px solid rgba(0,170,255,0.22);
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     overflow: hidden;
 
@@ -310,9 +371,15 @@ section {
         0 0 45px rgba(0,170,255,0.07);
 }
 
-/* TOP */
+/* =========================
+   MISSION HEADER
+========================= */
 
-.panel-top {
+.mission-header {
+
+    padding: 25px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 
     display: flex;
 
@@ -320,66 +387,62 @@ section {
 
     align-items: center;
 
-    padding: 15px 20px;
-
-    background: #091321;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.06);
+    gap: 20px;
 }
 
-.panel-title {
+.mission-title {
 
-    color: #dce8f3;
+    font-size: 20px;
 
-    font-size: 14px;
-
-    font-weight: bold;
+    font-weight: 900;
 }
 
-.live {
+.mission-number {
 
     color: #39ff88;
 
-    font-size: 11px;
+    font-size: 13px;
 
-    letter-spacing: 1px;
+    font-weight: bold;
+
+    margin-bottom: 5px;
 }
 
-/* =========================================================
-   PROGRESS
-========================================================= */
+.difficulty {
 
-.progress-area {
+    padding: 7px 12px;
 
-    padding: 20px;
-
-    background: #07101c;
-
-}
-
-.progress-info {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    color: #7f93a7;
+    border-radius: 8px;
 
     font-size: 12px;
 
-    margin-bottom: 8px;
+    font-weight: bold;
+
+    background: rgba(0,170,255,0.08);
+
+    border: 1px solid rgba(0,170,255,0.2);
+
+    color: #00aaff;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-wrapper {
+
+    padding: 0 25px 20px;
 }
 
 .progress-bar {
 
-    width: 100%;
-
     height: 7px;
 
-    background: #172333;
+    width: 100%;
 
-    border-radius: 10px;
+    background: #111827;
+
+    border-radius: 20px;
 
     overflow: hidden;
 }
@@ -388,7 +451,7 @@ section {
 
     height: 100%;
 
-    width: 0%;
+    width: 10%;
 
     background:
         linear-gradient(
@@ -397,343 +460,241 @@ section {
             #39ff88
         );
 
-    transition: width 0.5s;
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,0.6);
 }
 
-/* =========================================================
-   MISSION
-========================================================= */
+/* =========================
+   MISSION CONTENT
+========================= */
 
-.mission {
+.mission-content {
 
     padding: 30px;
 }
 
-.mission-header {
+.scenario {
 
-    display: flex;
+    background: rgba(0,0,0,0.22);
 
-    justify-content: space-between;
+    border-left: 3px solid #00aaff;
 
-    align-items: center;
+    padding: 20px;
 
-    gap: 15px;
-
-    margin-bottom: 22px;
-}
-
-.mission-type {
-
-    color: #39ff88;
-
-    font-size: 11px;
-
-    letter-spacing: 1.5px;
-}
-
-.difficulty {
-
-    padding: 6px 10px;
-
-    border-radius: 6px;
-
-    background: rgba(0,170,255,0.08);
-
-    border: 1px solid rgba(0,170,255,0.2);
-
-    color: #00aaff;
-
-    font-size: 11px;
-}
-
-.mission h2 {
-
-    font-size: 28px;
-
-    margin-bottom: 12px;
-}
-
-.mission-description {
-
-    color: #9fb1c2;
-
-    line-height: 1.7;
+    border-radius: 8px;
 
     margin-bottom: 25px;
+
+    color: #cbd5e1;
+
+    line-height: 1.7;
 }
 
-/* =========================================================
-   EVIDENCE
-========================================================= */
+.scenario strong {
 
-.evidence {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    margin-bottom: 28px;
+    color: #00aaff;
 }
 
-.evidence-card {
+.question {
 
-    padding: 17px;
+    font-size: 21px;
 
-    background: #07111e;
+    font-weight: bold;
 
-    border: 1px solid rgba(255,255,255,0.07);
+    line-height: 1.5;
 
-    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.evidence-label {
-
-    color: #657b90;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 7px;
-}
-
-.evidence-value {
-
-    color: #d5e1ec;
-
-    font-family: monospace;
-
-    font-size: 13px;
-
-    word-break: break-word;
-}
-
-/* =========================================================
-   DECISIONS
-========================================================= */
-
-.decision-title {
-
-    color: #8095a8;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 12px;
-}
+/* =========================
+   ANSWERS
+========================= */
 
 .answers {
 
     display: grid;
 
-    gap: 10px;
+    gap: 12px;
 }
 
 .answer {
 
     width: 100%;
 
-    text-align: left;
-
     padding: 17px 18px;
 
-    background: #0b1726;
+    text-align: left;
 
-    border: 1px solid rgba(0,170,255,0.14);
+    color: #dbeafe;
+
+    background:
+        rgba(15,23,42,0.85);
+
+    border: 1px solid rgba(148,163,184,0.12);
 
     border-radius: 10px;
 
-    color: #d6e1eb;
-
     cursor: pointer;
 
-    transition: 0.2s;
+    font-size: 15px;
 
-    font-size: 14px;
+    line-height: 1.5;
+
+    transition: 0.25s;
 }
 
 .answer:hover {
 
-    border-color: #00aaff;
+    border-color: rgba(0,170,255,0.5);
 
     background:
-        rgba(0,170,255,0.08);
+        rgba(0,170,255,0.06);
 
     transform: translateX(4px);
 }
 
-.answer:disabled {
+.answer.correct {
+
+    border-color: #39ff88;
+
+    background:
+        rgba(57,255,136,0.08);
+
+    color: #39ff88;
+}
+
+.answer.wrong {
+
+    border-color: #ff5c5c;
+
+    background:
+        rgba(255,92,92,0.08);
+
+    color: #ff8c8c;
+}
+
+.answer.disabled {
 
     cursor: default;
 
     transform: none;
 }
 
-/* =========================================================
+/* =========================
    FEEDBACK
-========================================================= */
+========================= */
 
 .feedback {
 
     display: none;
 
-    margin-top: 20px;
+    margin-top: 25px;
 
     padding: 20px;
 
     border-radius: 10px;
 
+    background:
+        rgba(0,0,0,0.25);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
     line-height: 1.7;
 }
 
-.feedback.correct {
+.feedback.show {
 
     display: block;
-
-    background: rgba(57,255,136,0.06);
-
-    border: 1px solid rgba(57,255,136,0.25);
-
-    color: #b9eacb;
 }
 
-.feedback.wrong {
+.feedback-title {
 
-    display: block;
-
-    background: rgba(255,100,100,0.05);
-
-    border: 1px solid rgba(255,100,100,0.2);
-
-    color: #e2baba;
-}
-
-.feedback strong {
-
-    display: block;
+    font-weight: 900;
 
     margin-bottom: 8px;
-
-    color: white;
 }
 
-/* =========================================================
+.feedback.correct-feedback {
+
+    border-color: rgba(57,255,136,0.35);
+}
+
+.feedback.correct-feedback .feedback-title {
+
+    color: #39ff88;
+}
+
+.feedback.wrong-feedback {
+
+    border-color: rgba(255,92,92,0.35);
+}
+
+.feedback.wrong-feedback .feedback-title {
+
+    color: #ff7b7b;
+}
+
+/* =========================
    NEXT BUTTON
-========================================================= */
+========================= */
 
 .next-button {
 
     display: none;
 
-    margin-top: 18px;
+    margin-top: 20px;
 
-    padding: 12px 20px;
+    width: 100%;
 
-    border: none;
-
-    border-radius: 8px;
-
-    background: #00aaff;
-
-    color: #00121d;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.next-button:hover {
-
-    box-shadow:
-        0 0 20px rgba(0,170,255,0.4);
-}
-
-/* =========================================================
-   START SCREEN
-========================================================= */
-
-.start-screen {
-
-    padding: 55px 30px;
-
-    text-align: center;
-}
-
-.start-icon {
-
-    font-size: 55px;
-
-    margin-bottom: 18px;
-
-    filter:
-        drop-shadow(
-            0 0 15px rgba(0,170,255,0.5)
-        );
-}
-
-.start-screen h2 {
-
-    font-size: 30px;
-
-    margin-bottom: 12px;
-}
-
-.start-screen p {
-
-    max-width: 650px;
-
-    margin: 0 auto 25px;
-
-    color: #95a9bb;
-
-    line-height: 1.7;
-}
-
-.start-button {
-
-    padding: 14px 30px;
+    padding: 15px;
 
     border: none;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     background:
         linear-gradient(
             90deg,
-            #00aaff,
-            #39ff88
+            #008dcc,
+            #00aaff
         );
 
-    color: #031019;
+    color: white;
 
-    font-weight: bold;
-
-    cursor: pointer;
+    font-weight: 900;
 
     font-size: 15px;
 
+    cursor: pointer;
+
     transition: 0.25s;
+
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.15);
 }
 
-.start-button:hover {
+.next-button.show {
+
+    display: block;
+}
+
+.next-button:hover {
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.35);
+        0 0 25px rgba(0,170,255,0.3);
 }
 
-/* =========================================================
-   RESULTS
-========================================================= */
+/* =========================
+   FINAL SCREEN
+========================= */
 
-.results {
+.final-screen {
 
     display: none;
 
@@ -742,149 +703,131 @@ section {
     text-align: center;
 }
 
+.final-screen.show {
+
+    display: block;
+}
+
+.final-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 20px;
+}
+
+.final-screen h2 {
+
+    font-size: 35px;
+
+    margin-bottom: 12px;
+
+    color: #00aaff;
+}
+
+.final-screen p {
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+
+    margin: auto;
+}
+
 .rank {
 
-    display: inline-block;
+    margin: 30px auto;
 
-    margin: 15px 0;
+    padding: 20px;
 
-    padding: 10px 20px;
-
-    border-radius: 999px;
-
-    background: rgba(57,255,136,0.07);
+    max-width: 500px;
 
     border: 1px solid rgba(57,255,136,0.25);
 
+    border-radius: 12px;
+
+    background: rgba(57,255,136,0.05);
+}
+
+.rank-title {
+
     color: #39ff88;
 
-    font-weight: bold;
+    font-size: 24px;
+
+    font-weight: 900;
+
+    margin-bottom: 8px;
 }
 
-.final-score {
+.restart {
 
-    font-size: 55px;
+    padding: 14px 25px;
 
-    font-weight: bold;
+    border: none;
 
-    color: #00aaff;
+    border-radius: 9px;
 
-    margin: 10px 0;
-}
-
-.results p {
-
-    color: #98acbe;
-
-    line-height: 1.7;
-}
-
-.restart-button {
-
-    margin-top: 25px;
-
-    padding: 12px 22px;
-
-    background: #172535;
+    background: #00aaff;
 
     color: white;
 
-    border: 1px solid rgba(0,170,255,0.2);
-
-    border-radius: 8px;
+    font-weight: 900;
 
     cursor: pointer;
+
+    transition: 0.25s;
 }
 
-/* =========================================================
-   TRAINING INFO
-========================================================= */
+.restart:hover {
 
-.info-grid {
+    transform: translateY(-2px);
 
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-
-    margin-top: 25px;
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.35);
 }
 
-.info-card {
-
-    padding: 24px;
-
-    background: rgba(10,20,34,0.7);
-
-    border: 1px solid rgba(0,170,255,0.12);
-
-    border-radius: 12px;
-}
-
-.info-icon {
-
-    font-size: 25px;
-
-    margin-bottom: 12px;
-}
-
-.info-card h3 {
-
-    margin-bottom: 9px;
-
-    color: #00aaff;
-}
-
-.info-card p {
-
-    color: #8fa4b7;
-
-    line-height: 1.6;
-
-    font-size: 14px;
-}
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer {
 
-    margin-top: 50px;
-
-    padding: 40px 20px;
-
     text-align: center;
 
-    border-top:
-        1px solid rgba(0,170,255,0.12);
+    padding: 30px;
 
-    color: #607386;
+    color: #475569;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+
+    font-size: 13px;
 }
 
-footer strong {
-
-    color: #00aaff;
-}
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
 
     nav {
 
         flex-direction: column;
 
-        gap: 13px;
+        padding: 15px 4%;
     }
 
     .nav-links {
 
-        justify-content: center;
+        gap: 4px;
+    }
+
+    .nav-links a {
+
+        font-size: 12px;
+
+        padding: 7px;
     }
 
     .dashboard {
@@ -893,65 +836,45 @@ footer strong {
             repeat(2, 1fr);
     }
 
-    .evidence {
+    .hero {
 
-        grid-template-columns: 1fr;
+        margin-top: 45px;
     }
 
-    .info-grid {
+    .mission-header {
 
-        grid-template-columns: 1fr;
+        flex-direction: column;
+
+        align-items: flex-start;
     }
 
 }
 
-@media (max-width: 550px) {
-
-    .hero {
-
-        padding-top: 55px;
-    }
-
-    .nav-links {
-
-        gap: 10px;
-    }
-
-    .nav-links a {
-
-        font-size: 11px;
-    }
+@media (max-width: 500px) {
 
     .dashboard {
 
         grid-template-columns: 1fr 1fr;
     }
 
-    .stat {
-
-        padding: 15px;
-    }
-
-    .stat-value {
-
-        font-size: 20px;
-    }
-
-    .mission {
+    .mission-content {
 
         padding: 20px;
     }
 
-    .mission h2 {
+    .scenario {
 
-        font-size: 23px;
+        padding: 15px;
     }
 
-    .mission-header {
+    .question {
 
-        align-items: flex-start;
+        font-size: 18px;
+    }
 
-        flex-direction: column;
+    .answer {
+
+        font-size: 14px;
     }
 
 }
@@ -960,1077 +883,553 @@ footer strong {
 
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
+<!-- =========================
      NAVIGATION
-========================================================= -->
+========================= -->
 
 <nav>
 
-<a href="index.html" class="logo">
-🛡️ Clyvexis
-</a>
+    <a class="logo" href="index.html">
+        🛡️ Clyvexis
+    </a>
 
-<div class="nav-links">
+    <div class="nav-links">
 
-<a href="index.html">Home</a>
-<a href="lessons.html">Lessons</a>
-<a href="labs.html">Labs</a>
-<a href="quiz.html">Quiz</a>
-<a href="games.html">Games</a>
-<a href="glossary.html">Glossary</a>
-<a href="coding.html">Coding</a>
-<a href="simulators.html">Simulators</a>
-<a href="donate.html">Donate</a>
+        <a href="index.html">Home</a>
 
-</div>
+        <a href="lessons.html">Lessons</a>
+
+        <a href="labs.html">Labs</a>
+
+        <a href="quiz.html">Quiz</a>
+
+        <a href="games.html">Games</a>
+
+        <a href="cyber-defense.html">
+            🛡️ Defense
+        </a>
+
+        <a href="glossary.html">Glossary</a>
+
+        <a href="coding.html">Coding</a>
+
+        <a href="simulators.html">Simulators</a>
+
+        <a href="donate.html">Donate</a>
+
+    </div>
 
 </nav>
 
 
-<!-- =========================================================
+<!-- =========================
      HERO
-========================================================= -->
-
-<header class="hero">
-
-<div class="hero-content">
-
-<div class="badge">
-CLYVEXIS SECURITY TRAINING SYSTEM
-</div>
-
-<h1>Cyber Defense Operations</h1>
-
-<p>
-Enter a fictional security operations environment and make
-defensive decisions based on the evidence provided.
-Every mission teaches a real cybersecurity concept.
-</p>
-
-</div>
-
-</header>
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main>
-
-<div class="container">
-
-
-<!-- =========================================================
-     DASHBOARD
-========================================================= -->
-
-<div class="dashboard">
-
-<div class="stat">
-
-<div class="stat-label">
-SCORE
-</div>
-
-<div class="stat-value"
-id="score">
-0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-label">
-STREAK
-</div>
-
-<div class="stat-value stat-green"
-id="streak">
-0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-label">
-MISSION
-</div>
-
-<div class="stat-value"
-id="missionNumber">
-0 / 10
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-label">
-THREAT LEVEL
-</div>
-
-<div class="stat-value"
-id="threat">
-LOW
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME
-========================================================= -->
-
-<div class="game-panel">
-
-
-<div class="panel-top">
-
-<div class="panel-title">
-🖥️ SECURITY OPERATIONS CENTER
-</div>
-
-<div class="live">
-● TRAINING MODE
-</div>
-
-</div>
-
-
-<!-- START SCREEN -->
-
-<div id="startScreen"
-class="start-screen">
-
-<div class="start-icon">
-🛡️
-</div>
-
-<h2>
-Ready for Deployment?
-</h2>
-
-<p>
-You have been assigned to a fictional security operations team.
-Analyze each situation, identify the safest defensive response,
-and protect the simulated environment.
-</p>
-
-<button
-class="start-button"
-onclick="startGame()">
-
-START OPERATION
-
-</button>
-
-</div>
-
-
-<!-- GAME SCREEN -->
-
-<div id="gameScreen"
-style="display:none;">
-
-
-<div class="progress-area">
-
-<div class="progress-info">
-
-<span>
-OPERATION PROGRESS
-</span>
-
-<span id="progressText">
-0%
-</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div
-class="progress-fill"
-id="progressFill">
-</div>
-
-</div>
-
-</div>
-
-
-<div class="mission">
-
-
-<div class="mission-header">
-
-<div>
-
-<div class="mission-type"
-id="missionType">
-MISSION
-</div>
-
-</div>
-
-<div
-class="difficulty"
-id="difficulty">
-ROOKIE
-</div>
-
-</div>
-
-
-<h2 id="missionTitle">
-Mission
-</h2>
-
-
-<p
-class="mission-description"
-id="missionDescription">
-</p>
-
-
-<!-- EVIDENCE -->
-
-<div
-class="evidence"
-id="evidence">
-</div>
-
-
-<div class="decision-title">
-SELECT YOUR DEFENSIVE RESPONSE
-</div>
-
-
-<div
-class="answers"
-id="answers">
-</div>
-
-
-<div
-class="feedback"
-id="feedback">
-</div>
-
-
-<button
-class="next-button"
-id="nextButton"
-onclick="nextMission()">
-
-NEXT MISSION →
-
-</button>
-
-
-</div>
-
-</div>
-
-
-<!-- RESULTS -->
-
-<div
-class="results"
-id="results">
-
-<div class="start-icon">
-🏆
-</div>
-
-<h2>
-Operation Complete
-</h2>
-
-<div
-class="final-score"
-id="finalScore">
-0
-</div>
-
-<div
-class="rank"
-id="rank">
-ROOKIE DEFENDER
-</div>
-
-<p id="resultMessage">
-</p>
-
-<button
-class="restart-button"
-onclick="restartGame()">
-
-RUN OPERATION AGAIN
-
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     TRAINING INFO
-========================================================= -->
-
-<section>
-
-<div class="info-grid">
-
-<div class="info-card">
-
-<div class="info-icon">
-🎣
-</div>
-
-<h3>
-Phishing Detection
-</h3>
-
-<p>
-Learn how suspicious messages can contain warning signs such as
-unexpected requests, unusual addresses, or pressure to act quickly.
-</p>
-
-</div>
-
-
-<div class="info-card">
-
-<div class="info-icon">
-🔐
-</div>
-
-<h3>
-Account Security
-</h3>
-
-<p>
-Practice choosing safer responses when an account shows signs of
-suspicious activity.
-</p>
-
-</div>
-
-
-<div class="info-card">
-
-<div class="info-icon">
-🚨
-</div>
-
-<h3>
-Incident Response
-</h3>
-
-<p>
-Learn the importance of investigating alerts carefully and
-following a structured defensive response.
-</p>
-
-</div>
-
-</div>
+========================= -->
+
+<section class="hero">
+
+    <div class="status">
+        ● DEFENSIVE TRAINING SYSTEM ONLINE
+    </div>
+
+    <h1>
+        Cyber Defense
+        <span>Operations</span>
+    </h1>
+
+    <p>
+        Train your cybersecurity decision-making skills through
+        realistic fictional security scenarios. Analyze threats,
+        protect systems, and make the right defensive decision.
+    </p>
 
 </section>
 
 
-</div>
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<section class="dashboard">
+
+    <div class="stat">
+
+        <div class="stat-label">
+            Score
+        </div>
+
+        <div class="stat-value" id="score">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-label">
+            Streak
+        </div>
+
+        <div class="stat-value" id="streak">
+            0
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-label">
+            Mission
+        </div>
+
+        <div class="stat-value" id="missionStat">
+            1/10
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-label">
+            Threat Level
+        </div>
+
+        <div class="stat-value" id="threat">
+            LOW
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<main class="game-container">
+
+    <div class="mission-header">
+
+        <div>
+
+            <div class="mission-number" id="missionNumber">
+                MISSION 01
+            </div>
+
+            <div class="mission-title" id="missionTitle">
+                Suspicious Email
+            </div>
+
+        </div>
+
+        <div class="difficulty" id="difficulty">
+            BEGINNER
+        </div>
+
+    </div>
+
+
+    <div class="progress-wrapper">
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="mission-content" id="missionScreen">
+
+        <div class="scenario" id="scenario">
+
+        </div>
+
+
+        <div class="question" id="question">
+
+        </div>
+
+
+        <div class="answers" id="answers">
+
+        </div>
+
+
+        <div class="feedback" id="feedback">
+
+            <div
+                class="feedback-title"
+                id="feedbackTitle">
+            </div>
+
+            <div
+                id="feedbackText">
+            </div>
+
+        </div>
+
+
+        <button
+            class="next-button"
+            id="nextButton">
+
+            Next Mission →
+
+        </button>
+
+    </div>
+
+
+    <!-- FINAL SCREEN -->
+
+    <div
+        class="final-screen"
+        id="finalScreen">
+
+        <div class="final-icon">
+            🛡️
+        </div>
+
+        <h2>
+            Operations Complete
+        </h2>
+
+        <p>
+            You completed the Cyber Defense Operations training.
+            Your final score and defensive rank are shown below.
+        </p>
+
+
+        <div class="rank">
+
+            <div
+                class="rank-title"
+                id="rankTitle">
+            </div>
+
+            <div id="finalScore">
+            </div>
+
+        </div>
+
+
+        <button
+            class="restart"
+            onclick="restartGame()">
+
+            Run Training Again
+
+        </button>
+
+    </div>
 
 </main>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer>
 
-<p>
-<strong>Clyvexis</strong> — Learn. Build. Defend.
-</p>
-
-<p>
-Cyber Defense Operations is an educational fictional simulation.
-</p>
+    Clyvexis Cyber Defense Operations
+    <br><br>
+    Educational defensive cybersecurity training.
+    All scenarios are fictional.
 
 </footer>
 
 
 <script>
 
-/* =========================================================
-   GAME DATA
-========================================================= */
+/* =========================
+   MISSIONS
+========================= */
 
 const missions = [
 
-/* ---------------------------------------------------------
-   1
---------------------------------------------------------- */
+    {
+        title: "Suspicious Email",
+        difficulty: "BEGINNER",
+        threat: "LOW",
 
-{
-    type: "PHISHING INVESTIGATION",
+        scenario:
+            "An employee receives an email claiming their account will be locked unless they verify their information immediately. The message contains a link to an unfamiliar website.",
 
-    title: "The Unexpected Security Email",
+        question:
+            "What should the employee do first?",
 
-    difficulty: "ROOKIE",
+        answers: [
 
-    description:
-    "An employee receives an unexpected message claiming that their account needs immediate attention. The message contains a link and asks the employee to sign in.",
+            "Click the link and verify the account.",
 
-    evidence: [
+            "Reply to the sender and ask if it is real.",
 
-        ["SENDER",
-        "security-alert@example.invalid"],
+            "Avoid the link and report the message through the proper security process.",
 
-        ["URGENCY",
-        "Immediate action requested"],
+            "Forward the message to everyone so they know about it."
 
-        ["LINK",
-        "Unfamiliar sign-in page"]
+        ],
 
-    ],
+        correct: 2,
 
-    answers: [
+        explanation:
+            "The safest response is to avoid interacting with the suspicious link and report the message. Security teams can investigate the email without exposing the employee to the potential phishing site."
+    },
 
-        {
-            text:
-            "Click the link and sign in immediately.",
 
-            correct: false,
+    {
+        title: "Account Protection",
+        difficulty: "BEGINNER",
+        threat: "LOW",
 
-            explanation:
-            "Unexpected login requests should be treated cautiously. Clicking the link could expose the user to a fraudulent page."
-        },
+        scenario:
+            "A user has an important account protected only by a password. The organization recently enabled multi-factor authentication.",
 
-        {
-            text:
-            "Report the message through the organization's security process and avoid the link.",
+        question:
+            "Which security improvement should the user make?",
 
-            correct: true,
+        answers: [
 
-            explanation:
-            "Correct. Reporting suspicious messages and avoiding unknown links is a safer defensive response."
-        },
+            "Disable the account.",
 
-        {
-            text:
-            "Forward the message to everyone so they know about it.",
+            "Enable multi-factor authentication.",
 
-            correct: false,
+            "Share the password with a trusted friend.",
 
-            explanation:
-            "Forwarding suspicious messages can spread the threat. Use the organization's reporting process instead."
-        }
+            "Use the same password everywhere."
 
-    ]
+        ],
 
-},
+        correct: 1,
 
+        explanation:
+            "Multi-factor authentication adds another verification step, making it harder for someone to access an account using only a stolen password."
+    },
 
-/* ---------------------------------------------------------
-   2
---------------------------------------------------------- */
 
-{
-    type: "ACCOUNT SECURITY",
+    {
+        title: "Password Security",
+        difficulty: "BEGINNER",
+        threat: "LOW",
 
-    title: "The Strange Login Alert",
+        scenario:
+            "A security review discovers that several employees use simple passwords based on names, birthdays, or common words.",
 
-    difficulty: "ROOKIE",
+        question:
+            "What is the best defensive recommendation?",
 
-    description:
-    "A user receives an unexpected notification about a login they do not recognize.",
+        answers: [
 
-    evidence: [
+            "Make the passwords shorter.",
 
-        ["ALERT",
-        "New login detected"],
+            "Use the same password for every account.",
 
-        ["LOCATION",
-        "Unrecognized location"],
+            "Use strong unique passwords and a trusted password manager.",
 
-        ["USER",
-        "User does not recognize activity"]
+            "Write passwords on a public notice board."
 
-    ],
+        ],
 
-    answers: [
+        correct: 2,
 
-        {
-            text:
-            "Ignore it because security notifications are usually harmless.",
+        explanation:
+            "Strong, unique passwords reduce the damage caused by a compromised account. A password manager can help users safely manage many unique passwords."
+    },
 
-            correct: false,
 
-            explanation:
-            "Unexpected account activity should not automatically be ignored."
-        },
+    {
+        title: "Malware Warning",
+        difficulty: "INTERMEDIATE",
+        threat: "MEDIUM",
 
-        {
-            text:
-            "Verify the activity using the account's official security settings and report suspicious activity.",
+        scenario:
+            "A workstation suddenly begins behaving unusually after a user opens an unexpected attachment. The employee notices unfamiliar pop-ups and reports the problem.",
 
-            correct: true,
+        question:
+            "What is the best defensive response?",
 
-            explanation:
-            "Correct. Verify through a trusted method rather than using links in unexpected messages."
-        },
+        answers: [
 
-        {
-            text:
-            "Share the notification publicly to ask strangers what it means.",
+            "Ignore the behavior.",
 
-            correct: false,
+            "Continue opening files to see what happens.",
 
-            explanation:
-            "Security notifications may contain information that should remain private."
-        }
+            "Report the incident and follow the organization's response procedure.",
 
-    ]
+            "Post screenshots of the system online."
 
-},
+        ],
 
+        correct: 2,
 
-/* ---------------------------------------------------------
-   3
---------------------------------------------------------- */
+        explanation:
+            "Unexpected system behavior after opening an attachment could indicate a security incident. Reporting it quickly allows the security team to investigate and contain the issue."
+    },
 
-{
-    type: "PASSWORD SECURITY",
 
-    title: "The Reused Password",
+    {
+        title: "Network Security",
+        difficulty: "INTERMEDIATE",
+        threat: "MEDIUM",
 
-    difficulty: "ROOKIE",
+        scenario:
+            "A company notices an unfamiliar device connected to an internal network. The device is not listed in the organization's inventory.",
 
-    description:
-    "A user tells the security team they use the same password for several unrelated accounts.",
+        question:
+            "What should the security team do?",
 
-    evidence: [
+        answers: [
 
-        ["RISK",
-        "Password reused"],
+            "Immediately give the device administrator access.",
 
-        ["ACCOUNTS",
-        "Multiple services"],
+            "Ignore it because the network is private.",
 
-        ["SECURITY",
-        "One password could affect several accounts"]
+            "Investigate the device and follow the organization's network security procedure.",
 
-    ],
+            "Share the network credentials with the device owner."
 
-    answers: [
+        ],
 
-        {
-            text:
-            "Keep using it because remembering passwords is difficult.",
+        correct: 2,
 
-            correct: false,
+        explanation:
+            "Unknown devices should be investigated. Asset inventories, network monitoring, and access-control procedures help determine whether the device is authorized."
+    },
 
-            explanation:
-            "Password reuse increases the potential impact of a compromised password."
-        },
 
-        {
-            text:
-            "Use a unique password for each important account and enable MFA where available.",
+    {
+        title: "Incident Response",
+        difficulty: "INTERMEDIATE",
+        threat: "HIGH",
 
-            correct: true,
+        scenario:
+            "Security monitoring detects unusual activity on a workstation. The security team believes the system may be compromised.",
 
-            explanation:
-            "Correct. Unique passwords reduce the chance that one compromised password affects multiple accounts."
-        },
+        question:
+            "What is an important incident-response goal?",
 
-        {
-            text:
-            "Write the password on a public note so it cannot be forgotten.",
+        answers: [
 
-            correct: false,
+            "Hide the event from everyone.",
 
-            explanation:
-            "Passwords should not be publicly exposed."
-        }
+            "Contain the potential incident and investigate what happened.",
 
-    ]
+            "Delete every computer in the organization.",
 
-},
+            "Immediately publish the investigation online."
 
+        ],
 
-/* ---------------------------------------------------------
-   4
---------------------------------------------------------- */
+        correct: 1,
 
-{
-    type: "MFA DEFENSE",
+        explanation:
+            "Incident response focuses on identifying, containing, investigating, and recovering from security incidents while preserving useful information for analysis."
+    },
 
-    title: "The Unexpected MFA Request",
 
-    difficulty: "ANALYST",
+    {
+        title: "Data Protection",
+        difficulty: "INTERMEDIATE",
+        threat: "MEDIUM",
 
-    description:
-    "A user receives an authentication request they did not initiate.",
+        scenario:
+            "An employee needs to send sensitive company information to another authorized employee.",
 
-    evidence: [
+        question:
+            "Which approach is most appropriate?",
 
-        ["REQUEST",
-        "Unexpected authentication prompt"],
+        answers: [
 
-        ["USER",
-        "Did not attempt login"],
+            "Post the information publicly.",
 
-        ["ACCOUNT",
-        "Important account"]
+            "Use an approved secure method for sharing the information.",
 
-    ],
+            "Send it to a random email address.",
 
-    answers: [
+            "Remove all security controls."
 
-        {
-            text:
-            "Approve the request to make it disappear.",
+        ],
 
-            correct: false,
+        correct: 1,
 
-            explanation:
-            "Approving an unexpected authentication request can allow an unauthorized login attempt to succeed."
-        },
+        explanation:
+            "Sensitive information should be shared only through approved and secure systems with authorized people."
+    },
 
-        {
-            text:
-            "Deny the request and report the suspicious activity through a trusted security process.",
 
-            correct: true,
+    {
+        title: "Security Analysis",
+        difficulty: "ADVANCED",
+        threat: "HIGH",
 
-            explanation:
-            "Correct. Unexpected authentication requests should be denied and investigated."
-        },
+        scenario:
+            "A monitoring system reports several failed login attempts followed by a successful login from an unusual location.",
 
-        {
-            text:
-            "Send the approval notification to another person.",
+        question:
+            "What should a defender consider when investigating this event?",
 
-            correct: false,
+        answers: [
 
-            explanation:
-            "Authentication requests are security events and should not be casually shared."
-        }
+            "Only the successful login matters.",
 
-    ]
+            "The event should be ignored if the password was correct.",
 
-},
+            "The timing, source, account activity, and other available security logs should be reviewed.",
 
+            "All logs should be deleted."
 
-/* ---------------------------------------------------------
-   5
---------------------------------------------------------- */
+        ],
 
-{
-    type: "MALWARE AWARENESS",
+        correct: 2,
 
-    title: "The Suspicious Download",
+        explanation:
+            "Security analysis relies on context. Reviewing authentication logs, timing, source information, and related activity can help determine whether the login is legitimate or suspicious."
+    },
 
-    difficulty: "ANALYST",
 
-    description:
-    "A workstation user reports that an unexpected file appeared after visiting an unfamiliar website.",
+    {
+        title: "Security Decision",
+        difficulty: "ADVANCED",
+        threat: "HIGH",
 
-    evidence: [
+        scenario:
+            "A security analyst receives several alerts involving the same user account. The events appear connected and occurred within a short period.",
 
-        ["FILE",
-        "Unknown executable"],
+        question:
+            "What is the strongest defensive approach?",
 
-        ["SOURCE",
-        "Unfamiliar website"],
+        answers: [
 
-        ["USER",
-        "Did not intentionally download it"]
+            "Investigate the alerts together and look for a larger pattern.",
 
-    ],
+            "Close every alert immediately.",
 
-    answers: [
+            "Ignore the alerts because there are several of them.",
 
-        {
-            text:
-            "Open the file to see what it does.",
+            "Share the account password with another analyst."
 
-            correct: false,
+        ],
 
-            explanation:
-            "Opening an unknown executable can introduce unnecessary risk."
-        },
+        correct: 0,
 
-        {
-            text:
-            "Avoid opening it and report the file to the appropriate security team.",
-
-            correct: true,
-
-            explanation:
-            "Correct. Unknown files should be treated cautiously and investigated through safe procedures."
-        },
-
-        {
-            text:
-            "Send the file to friends so they can test it.",
-
-            correct: false,
-
-            explanation:
-            "Sharing an unknown file could expose other systems to the same risk."
-        }
-
-    ]
-
-},
-
-
-/* ---------------------------------------------------------
-   6
---------------------------------------------------------- */
-
-{
-    type: "NETWORK SECURITY",
-
-    title: "The Unusual Network Alert",
-
-    difficulty: "ANALYST",
-
-    description:
-    "A monitoring system reports unusual activity involving a workstation.",
-
-    evidence: [
-
-        ["ALERT",
-        "Unusual connection detected"],
-
-        ["DEVICE",
-        "Employee workstation"],
-
-        ["STATUS",
-        "Activity requires investigation"]
-
-    ],
-
-    answers: [
-
-        {
-            text:
-            "Ignore the alert because it might be a false alarm.",
-
-            correct: false,
-
-            explanation:
-            "Security alerts should be reviewed rather than automatically ignored."
-        },
-
-        {
-            text:
-            "Document the alert and follow the organization's investigation procedure.",
-
-            correct: true,
-
-            explanation:
-            "Correct. Security teams investigate alerts using documented procedures and evidence."
-        },
-
-        {
-            text:
-            "Publicly post the workstation information.",
-
-            correct: false,
-
-            explanation:
-            "Security information should be handled carefully and shared only through appropriate channels."
-        }
-
-    ]
-
-},
-
-
-/* ---------------------------------------------------------
-   7
---------------------------------------------------------- */
-
-{
-    type: "INCIDENT RESPONSE",
-
-    title: "Multiple Warning Signs",
-
-    difficulty: "DEFENDER",
-
-    description:
-    "Several users report similar suspicious messages within a short period of time.",
-
-    evidence: [
-
-        ["REPORTS",
-        "Multiple users"],
-
-        ["TIMING",
-        "Same day"],
-
-        ["PATTERN",
-        "Similar messages"]
-
-    ],
-
-    answers: [
-
-        {
-            text:
-            "Treat every report as unrelated without investigating the pattern.",
-
-            correct: false,
-
-            explanation:
-            "Similar reports can indicate a broader security event and deserve investigation."
-        },
-
-        {
-            text:
-            "Collect the reports and escalate the pattern through the security response process.",
-
-            correct: true,
-
-            explanation:
-            "Correct. Recognizing patterns can help defenders identify a larger incident."
-        },
-
-        {
-            text:
-            "Tell users to keep responding normally.",
-
-            correct: false,
-
-            explanation:
-            "Potentially suspicious activity should be handled through appropriate security procedures."
-        }
-
-    ]
-
-},
-
-
-/* ---------------------------------------------------------
-   8
---------------------------------------------------------- */
-
-{
-    type: "DATA PROTECTION",
-
-    title: "The Sensitive File",
-
-    difficulty: "DEFENDER",
-
-    description:
-    "A team discovers that a sensitive document was accidentally shared with someone who does not need access.",
-
-    evidence: [
-
-        ["FILE",
-        "Sensitive document"],
-
-        ["ACCESS",
-        "Unexpected recipient"],
-
-        ["RISK",
-        "Information exposure"]
-
-    ],
-
-    answers: [
-
-        {
-            text:
-            "Leave the file shared because changing access is inconvenient.",
-
-            correct: false,
-
-            explanation:
-            "Unnecessary access can increase the chance of sensitive information being exposed."
-        },
-
-        {
-            text:
-            "Follow the organization's access-control and incident-reporting process.",
-
-            correct: true,
-
-            explanation:
-            "Correct. Access issues should be addressed through approved security procedures."
-        },
-
-        {
-            text:
-            "Copy the document to more people as a backup.",
-
-            correct: false,
-
-            explanation:
-            "Creating more copies can increase exposure."
-        }
-
-    ]
-
-},
-
-
-/* ---------------------------------------------------------
-   9
---------------------------------------------------------- */
-
-{
-    type: "SECURITY ANALYSIS",
-
-    title: "The Urgent Request",
-
-    difficulty: "DEFENDER",
-
-    description:
-    "Someone receives a message claiming to be from a manager and asking for sensitive information immediately.",
-
-    evidence: [
-
-        ["REQUEST",
-        "Sensitive information"],
-
-        ["PRESSURE",
-        "Immediate response"],
-
-        ["VERIFICATION",
-        "No independent verification"]
-
-    ],
-
-    answers: [
-
-        {
-            text:
-            "Send the requested information immediately.",
-
-            correct: false,
-
-            explanation:
-            "Urgency should not replace proper verification when sensitive information is involved."
-        },
-
-        {
-            text:
-            "Verify the request using a trusted communication method before sharing anything.",
-
-            correct: true,
-
-            explanation:
-            "Correct. Independent verification is an important defense against impersonation and social engineering."
-        },
-
-        {
-            text:
-            "Post the request publicly to prove whether it is real.",
-
-            correct: false,
-
-            explanation:
-            "Sensitive requests should be handled privately through trusted channels."
-        }
-
-    ]
-
-},
-
-
-/* ---------------------------------------------------------
-   10
---------------------------------------------------------- */
-
-{
-    type: "FINAL INCIDENT",
-
-    title: "The Security Incident",
-
-    difficulty: "SOC SPECIALIST",
-
-    description:
-    "Your team has received several related security reports. Your job is to choose the safest overall response.",
-
-    evidence: [
-
-        ["REPORTS",
-        "Multiple suspicious events"],
-
-        ["PATTERN",
-        "Events may be connected"],
-
-        ["PRIORITY",
-        "Protect users and investigate"]
-
-    ],
-
-    answers: [
-
-        {
-            text:
-            "Ignore the reports until someone confirms a serious incident.",
-
-            correct: false,
-
-            explanation:
-            "Waiting without following the established response process can allow a security problem to continue."
-        },
-
-        {
-            text:
-            "Document the evidence, protect affected users, and escalate through the incident-response process.",
-
-            correct: true,
-
-            explanation:
-            "Correct. A structured response combines evidence collection, protection, communication, and escalation."
-        },
-
-        {
-            text:
-            "Delete all evidence so nobody has to worry about the incident.",
-
-            correct: false,
-
-            explanation:
-            "Evidence can be important for understanding and responding to security incidents."
-        }
-
-    ]
-
-}
+        explanation:
+            "Related security alerts can reveal a larger pattern. Analysts should correlate available information rather than examining every event completely in isolation."
+    }
 
 ];
 
 
-/* =========================================================
-   GAME STATE
-========================================================= */
+/* =========================
+   GAME VARIABLES
+========================= */
 
 let currentMission = 0;
 
@@ -2041,95 +1440,71 @@ let streak = 0;
 let answered = false;
 
 
-/* =========================================================
+/* =========================
    ELEMENTS
-========================================================= */
-
-const startScreen =
-document.getElementById("startScreen");
-
-const gameScreen =
-document.getElementById("gameScreen");
-
-const results =
-document.getElementById("results");
-
-const scoreElement =
-document.getElementById("score");
-
-const streakElement =
-document.getElementById("streak");
-
-const missionNumber =
-document.getElementById("missionNumber");
-
-const threatElement =
-document.getElementById("threat");
-
-const progressFill =
-document.getElementById("progressFill");
-
-const progressText =
-document.getElementById("progressText");
-
-const missionType =
-document.getElementById("missionType");
-
-const difficulty =
-document.getElementById("difficulty");
+========================= */
 
 const missionTitle =
-document.getElementById("missionTitle");
+    document.getElementById("missionTitle");
 
-const missionDescription =
-document.getElementById("missionDescription");
+const missionNumber =
+    document.getElementById("missionNumber");
 
-const evidence =
-document.getElementById("evidence");
+const difficulty =
+    document.getElementById("difficulty");
+
+const threat =
+    document.getElementById("threat");
+
+const scenario =
+    document.getElementById("scenario");
+
+const question =
+    document.getElementById("question");
 
 const answers =
-document.getElementById("answers");
+    document.getElementById("answers");
 
 const feedback =
-document.getElementById("feedback");
+    document.getElementById("feedback");
+
+const feedbackTitle =
+    document.getElementById("feedbackTitle");
+
+const feedbackText =
+    document.getElementById("feedbackText");
 
 const nextButton =
-document.getElementById("nextButton");
+    document.getElementById("nextButton");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const scoreDisplay =
+    document.getElementById("score");
+
+const streakDisplay =
+    document.getElementById("streak");
+
+const missionStat =
+    document.getElementById("missionStat");
+
+const finalScreen =
+    document.getElementById("finalScreen");
+
+const missionScreen =
+    document.getElementById("missionScreen");
+
+const finalScore =
+    document.getElementById("finalScore");
+
+const rankTitle =
+    document.getElementById("rankTitle");
 
 
-/* =========================================================
-   START GAME
-========================================================= */
-
-function startGame() {
-
-    currentMission = 0;
-
-    score = 0;
-
-    streak = 0;
-
-    answered = false;
-
-    startScreen.style.display =
-        "none";
-
-    results.style.display =
-        "none";
-
-    gameScreen.style.display =
-        "block";
-
-    updateDashboard();
-
-    loadMission();
-
-}
-
-
-/* =========================================================
+/* =========================
    LOAD MISSION
-========================================================= */
+========================= */
 
 function loadMission() {
 
@@ -2138,68 +1513,40 @@ function loadMission() {
     const mission =
         missions[currentMission];
 
-    missionNumber.textContent =
-        `${currentMission + 1} / ${missions.length}`;
-
-    const percent =
-        Math.round(
-            (currentMission /
-            missions.length) * 100
-        );
-
-    progressFill.style.width =
-        percent + "%";
-
-    progressText.textContent =
-        percent + "%";
-
-    missionType.textContent =
-        mission.type;
-
-    difficulty.textContent =
-        mission.difficulty;
 
     missionTitle.textContent =
         mission.title;
 
-    missionDescription.textContent =
-        mission.description;
+    missionNumber.textContent =
+        "MISSION " +
+        String(currentMission + 1).padStart(2, "0");
 
 
-    /* EVIDENCE */
-
-    evidence.innerHTML = "";
-
-    mission.evidence.forEach(
-        item => {
-
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "evidence-card";
-
-            card.innerHTML = `
-
-                <div class="evidence-label">
-                    ${item[0]}
-                </div>
-
-                <div class="evidence-value">
-                    ${item[1]}
-                </div>
-
-            `;
-
-            evidence.appendChild(card);
-
-        }
-    );
+    difficulty.textContent =
+        mission.difficulty;
 
 
-    /* ANSWERS */
+    threat.textContent =
+        mission.threat;
+
+
+    missionStat.textContent =
+        (currentMission + 1) +
+        "/" +
+        missions.length;
+
+
+    scenario.innerHTML =
+        "<strong>Situation:</strong><br><br>" +
+        mission.scenario;
+
+
+    question.textContent =
+        mission.question;
+
 
     answers.innerHTML = "";
+
 
     mission.answers.forEach(
         (answer, index) => {
@@ -2211,13 +1558,10 @@ function loadMission() {
                 "answer";
 
             button.textContent =
-                `${String.fromCharCode(65 + index)}. ${answer.text}`;
+                answer;
 
             button.onclick =
-                () => chooseAnswer(
-                    answer,
-                    button
-                );
+                () => chooseAnswer(index, button);
 
             answers.appendChild(button);
 
@@ -2228,23 +1572,24 @@ function loadMission() {
     feedback.className =
         "feedback";
 
-    feedback.innerHTML =
-        "";
 
-    nextButton.style.display =
-        "none";
+    nextButton.className =
+        "next-button";
 
 
-    updateThreatLevel();
+    progressFill.style.width =
+        ((currentMission) /
+        missions.length * 100) +
+        "%";
 
 }
 
 
-/* =========================================================
-   CHOOSE ANSWER
-========================================================= */
+/* =========================
+   ANSWER
+========================= */
 
-function chooseAnswer(answer, selectedButton) {
+function chooseAnswer(index, button) {
 
     if (answered) {
         return;
@@ -2253,248 +1598,257 @@ function chooseAnswer(answer, selectedButton) {
     answered = true;
 
 
-    document
-        .querySelectorAll(".answer")
-        .forEach(button => {
-
-            button.disabled = true;
-
-        });
+    const mission =
+        missions[currentMission];
 
 
-    if (answer.correct) {
+    const allAnswers =
+        document.querySelectorAll(".answer");
+
+
+    allAnswers.forEach(
+        answer => {
+
+            answer.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (index === mission.correct) {
+
+        button.classList.add(
+            "correct"
+        );
+
+        score += 100;
 
         streak++;
 
-        const bonus =
-            streak >= 3
-            ? 50
-            : 25;
-
-        score += bonus;
-
 
         feedback.className =
-            "feedback correct";
+            "feedback show correct-feedback";
 
-        feedback.innerHTML = `
+        feedbackTitle.textContent =
+            "✓ Correct Defensive Decision";
 
-            <strong>
-                ✓ DEFENSIVE DECISION APPROVED
-            </strong>
-
-            +${bonus} points
-
-            <br><br>
-
-            ${answer.explanation}
-
-        `;
+        feedbackText.textContent =
+            mission.explanation;
 
     } else {
 
+        button.classList.add(
+            "wrong"
+        );
+
         streak = 0;
 
+
+        allAnswers[
+            mission.correct
+        ].classList.add(
+            "correct"
+        );
+
+
         feedback.className =
-            "feedback wrong";
+            "feedback show wrong-feedback";
 
-        feedback.innerHTML = `
+        feedbackTitle.textContent =
+            "✕ Incorrect Decision";
 
-            <strong>
-                ⚠ DECISION REQUIRES REVIEW
-            </strong>
-
-            ${answer.explanation}
-
-        `;
+        feedbackText.textContent =
+            mission.explanation;
 
     }
 
 
-    updateDashboard();
+    scoreDisplay.textContent =
+        score;
 
-    nextButton.style.display =
-        "inline-block";
+    streakDisplay.textContent =
+        streak;
+
+
+    if (
+        currentMission ===
+        missions.length - 1
+    ) {
+
+        nextButton.textContent =
+            "View Final Results →";
+
+    } else {
+
+        nextButton.textContent =
+            "Next Mission →";
+
+    }
+
+
+    nextButton.className =
+        "next-button show";
+
+
+    progressFill.style.width =
+        ((currentMission + 1) /
+        missions.length * 100) +
+        "%";
 
 }
 
 
-/* =========================================================
+/* =========================
    NEXT MISSION
-========================================================= */
+========================= */
 
-function nextMission() {
+nextButton.onclick =
+    function() {
 
-    currentMission++;
+        currentMission++;
 
-    if (
-        currentMission >=
-        missions.length
-    ) {
 
-        finishGame();
+        if (
+            currentMission >=
+            missions.length
+        ) {
 
-        return;
+            finishGame();
+
+            return;
+
+        }
+
+
+        loadMission();
+
+    };
+
+
+/* =========================
+   FINISH GAME
+========================= */
+
+function finishGame() {
+
+    missionScreen.style.display =
+        "none";
+
+    finalScreen.classList.add(
+        "show"
+    );
+
+
+    finalScore.innerHTML =
+        "<strong>Final Score:</strong> " +
+        score +
+        " / " +
+        (missions.length * 100);
+
+
+    let rank;
+
+
+    if (score < 500) {
+
+        rank =
+            "ROOKIE DEFENDER";
+
+    } else if (score < 700) {
+
+        rank =
+            "SECURITY ANALYST";
+
+    } else if (score < 900) {
+
+        rank =
+            "CYBER DEFENDER";
+
+    } else {
+
+        rank =
+            "SOC SPECIALIST";
 
     }
+
+
+    rankTitle.textContent =
+        rank;
+
+
+    saveBestScore();
+
+}
+
+
+/* =========================
+   RESTART
+========================= */
+
+function restartGame() {
+
+    currentMission = 0;
+
+    score = 0;
+
+    streak = 0;
+
+
+    scoreDisplay.textContent =
+        "0";
+
+    streakDisplay.textContent =
+        "0";
+
+
+    finalScreen.classList.remove(
+        "show"
+    );
+
+    missionScreen.style.display =
+        "block";
+
 
     loadMission();
 
 }
 
 
-/* =========================================================
-   UPDATE DASHBOARD
-========================================================= */
+/* =========================
+   BEST SCORE
+========================= */
 
-function updateDashboard() {
+function saveBestScore() {
 
-    scoreElement.textContent =
-        score;
-
-    streakElement.textContent =
-        streak;
-
-    missionNumber.textContent =
-        `${Math.min(
-            currentMission + 1,
-            missions.length
-        )} / ${missions.length}`;
-
-}
+    const oldScore =
+        Number(
+            localStorage.getItem(
+                "clyvexisDefenseBest"
+            ) || 0
+        );
 
 
-/* =========================================================
-   THREAT LEVEL
-========================================================= */
+    if (score > oldScore) {
 
-function updateThreatLevel() {
-
-    if (currentMission < 3) {
-
-        threatElement.textContent =
-            "LOW";
-
-    } else if (currentMission < 6) {
-
-        threatElement.textContent =
-            "ELEVATED";
-
-    } else if (currentMission < 9) {
-
-        threatElement.textContent =
-            "HIGH";
-
-    } else {
-
-        threatElement.textContent =
-            "CRITICAL";
+        localStorage.setItem(
+            "clyvexisDefenseBest",
+            score
+        );
 
     }
 
 }
 
 
-/* =========================================================
-   FINISH GAME
-========================================================= */
+/* =========================
+   START
+========================= */
 
-function finishGame() {
-
-    gameScreen.style.display =
-        "none";
-
-    results.style.display =
-        "block";
-
-    progressFill.style.width =
-        "100%";
-
-    progressText.textContent =
-        "100%";
-
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        score;
-
-
-    let rank =
-        "ROOKIE DEFENDER";
-
-    let message =
-        "Good start. Keep studying cybersecurity concepts and practice analyzing situations carefully.";
-
-
-    if (score >= 250) {
-
-        rank =
-            "SECURITY ANALYST";
-
-        message =
-            "Strong performance. You demonstrated good defensive decision-making and security awareness.";
-
-    }
-
-    if (score >= 350) {
-
-        rank =
-            "CYBER DEFENDER";
-
-        message =
-            "Excellent work. You showed strong understanding of several core defensive cybersecurity concepts.";
-
-    }
-
-    if (score >= 450) {
-
-        rank =
-            "SOC SPECIALIST";
-
-        message =
-            "Outstanding operation. You consistently made careful, evidence-based defensive decisions.";
-
-    }
-
-
-    document.getElementById(
-        "rank"
-    ).textContent =
-        rank;
-
-    document.getElementById(
-        "resultMessage"
-    ).textContent =
-        message;
-
-
-    localStorage.setItem(
-        "clyvexisCyberDefenseBest",
-        Math.max(
-            score,
-            Number(
-                localStorage.getItem(
-                    "clyvexisCyberDefenseBest"
-                ) || 0
-            )
-        )
-    );
-
-}
-
-
-/* =========================================================
-   RESTART
-========================================================= */
-
-function restartGame() {
-
-    startGame();
-
-}
+loadMission();
 
 </script>
-
 
 </body>
 
