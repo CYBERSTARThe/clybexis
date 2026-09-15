@@ -1,2767 +1,3226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Clyvexis CyberCoding Lab — learn HTML, CSS, JavaScript and Python through interactive lessons, coding challenges, facts, and a safe browser-based coding sandbox.">
+
+<meta name="description" content="Clyvexis CyberCoding Lab — learn HTML, CSS, JavaScript, Python, and cybersecurity through an interactive coding sandbox.">
+
 <title>Clyvexis | CyberCoding Lab</title>
+
 <style>
-/* =========================================================
+
+/* =========================
    RESET
-========================================================= */
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0,170,255,0.16), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(57,255,136,0.07), transparent 25%),
+        #050b16;
     min-height: 100vh;
-    background-color: #050b16;
-    background-image:
-        linear-gradient(
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
-        );
-    background-size: 40px 40px;
     overflow-x: hidden;
 }
-button,
-textarea,
-select {
-    font-family: inherit;
+
+/* =========================
+   CYBER GRID
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0,170,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,170,255,0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -3;
 }
-/* =========================================================
-   NAVBAR
-========================================================= */
+
+body::after {
+    content: "";
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 60%;
+    background: radial-gradient(
+        ellipse,
+        rgba(0,170,255,0.10),
+        transparent 65%
+    );
+    animation: cyberGlow 10s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: -2;
+}
+
+@keyframes cyberGlow {
+    0% {
+        transform: translateY(-20px) translateX(-30px);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(80px) translateX(30px);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
 nav {
     position: sticky;
     top: 0;
     z-index: 1000;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 18px 5%;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(4,13,30,0.98),
-            rgba(4,20,38,0.96)
-        );
-    border-bottom: 1px solid rgba(0,170,255,0.65);
+    justify-content: space-between;
+
+    padding: 14px 6%;
+
+    background: rgba(5,11,22,0.88);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(0,170,255,0.18);
+
     box-shadow:
-        0 0 25px rgba(0,170,255,0.18);
-    backdrop-filter: blur(15px);
+        0 0 25px rgba(0,170,255,0.08);
 }
-nav::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88,
-            #00aaff,
-            #39ff88,
-            #00aaff
-        );
-    background-size: 300% 100%;
-    animation: navScan 6s linear infinite;
-    box-shadow:
-        0 0 15px #00aaff;
-}
-@keyframes navScan {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 300% 50%;
-    }
-}
+
 .logo {
-    font-size: 26px;
-    font-weight: bold;
-    white-space: nowrap;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
 }
+
 .logo span {
     color: #00aaff;
 }
-nav ul {
-    list-style: none;
+
+.nav-links {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
+    flex-wrap: wrap;
 }
-nav a {
-    position: relative;
-    color: white;
+
+.nav-links a {
+    color: #b9c7d9;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    transition: 0.3s;
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    padding: 8px 4px;
+
+    transition: 0.25s ease;
 }
-nav a:hover {
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,170,255,0.8);
+}
+
+.nav-links a.active {
     color: #00aaff;
-    text-shadow:
-        0 0 10px #00aaff;
+    text-shadow: 0 0 12px rgba(0,170,255,0.8);
 }
-nav a.active {
-    color: #39ff88;
-}
-nav a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 100%;
-    height: 2px;
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88
-        );
-    box-shadow:
-        0 0 10px #00aaff;
-}
-.donate {
-    padding: 8px 14px;
-    border: 1px solid #39ff88;
-    border-radius: 20px;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,170,255,0.12),
-            rgba(57,255,136,0.12)
-        );
-}
-/* =========================================================
+
+/* =========================
    HERO
-========================================================= */
+========================= */
+
 .hero {
     position: relative;
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    padding: 80px 20px;
+
+    padding: 90px 20px 65px;
+
     overflow: hidden;
 }
-.hero::before {
-    content: "";
+
+.scan-line {
     position: absolute;
-    width: 700px;
-    height: 700px;
-    top: -300px;
-    left: -250px;
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,170,255,0.20),
-            transparent 70%
-        );
-    animation:
-        cyberGlow 8s infinite alternate;
-}
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    right: -250px;
-    bottom: -350px;
-    background:
-        radial-gradient(
-            circle,
-            rgba(57,255,136,0.14),
-            transparent 70%
-        );
-    animation:
-        cyberGlow2 9s infinite alternate;
-}
-@keyframes cyberGlow {
-    from {
-        transform: translate(0,0);
-    }
-    to {
-        transform: translate(170px,120px);
-    }
-}
-@keyframes cyberGlow2 {
-    from {
-        transform: translate(0,0);
-    }
-    to {
-        transform: translate(-170px,-120px);
-    }
-}
-.hero-content {
-    position: relative;
-    z-index: 2;
+    left: 0;
     width: 100%;
-    max-width: 1000px;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00aaff,
+        #39ff88,
+        #00aaff,
+        transparent
+    );
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,0.9);
+
+    animation: scan 5s linear infinite;
 }
-.code-icon {
-    font-size: 76px;
-    margin-bottom: 15px;
-    filter:
-        drop-shadow(0 0 12px #00aaff)
-        drop-shadow(0 0 25px #39ff88);
-    animation:
-        floatCode 3s ease-in-out infinite;
-}
-@keyframes floatCode {
-    0%,100% {
-        transform: translateY(0);
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
     }
-    50% {
-        transform: translateY(-12px);
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
     }
 }
-.hero h1 {
-    font-size:
-        clamp(48px, 8vw, 88px);
-    line-height: 1.05;
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 14px;
     margin-bottom: 18px;
-}
-.hero h1 span {
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88
-        );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.tagline {
-    font-size: 15px;
-    letter-spacing: 5px;
-    font-weight: bold;
-    margin-bottom: 24px;
-}
-.tagline span {
+
+    border: 1px solid rgba(0,170,255,0.35);
+    border-radius: 999px;
+
+    background: rgba(0,170,255,0.06);
+
     color: #39ff88;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
 }
+
+.hero h1 {
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    line-height: 1;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 20px rgba(0,170,255,0.25);
+}
+
+.hero h1 span {
+    color: #00aaff;
+}
+
 .hero p {
     max-width: 780px;
     margin: auto;
-    color: #b9c7d8;
-    line-height: 1.8;
-    font-size: 17px;
+
+    color: #9fb1c7;
+    line-height: 1.7;
+    font-size: 1rem;
 }
-/* =========================================================
+
+/* =========================
    STATUS
-========================================================= */
-.system-status {
+========================= */
+
+.status-row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+
     margin-top: 28px;
 }
+
 .status-chip {
-    padding: 9px 14px;
-    border-radius: 30px;
-    border: 1px solid
-        rgba(0,170,255,0.3);
-    background:
-        rgba(0,170,255,0.06);
-    color: #b9c7d8;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    padding: 8px 12px;
+
+    border: 1px solid rgba(0,170,255,0.18);
+    border-radius: 8px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: #a9bad0;
+
+    font-size: 0.78rem;
 }
-.status-chip span {
+
+.status-chip strong {
     color: #39ff88;
 }
-/* =========================================================
-   SECTION
-========================================================= */
-.section {
-    width: 94%;
-    max-width: 1450px;
-    margin: 45px auto;
-    padding: 38px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,25,45,0.94),
-            rgba(3,12,25,0.91)
-        );
-    border: 1px solid
-        rgba(0,170,255,0.32);
-    box-shadow:
-        0 0 35px
-        rgba(0,170,255,0.07);
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    width: min(1400px, 92%);
+    margin: auto;
 }
-.section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88,
-            #00aaff
-        );
-    box-shadow:
-        0 0 15px #00aaff;
+
+section {
+    margin-bottom: 80px;
 }
+
 .section-title {
-    text-align: center;
-    font-size: 34px;
-    margin-bottom: 12px;
-}
-.section-description {
-    max-width: 800px;
-    margin:
-        0 auto 30px;
-    text-align: center;
-    color: #aebdcc;
-    line-height: 1.7;
-}
-/* =========================================================
-   ROADMAP
-========================================================= */
-.roadmap {
-    display: grid;
-    grid-template-columns:
-        repeat(5, 1fr);
-    gap: 16px;
-}
-.course-card {
-    position: relative;
-    padding: 25px;
-    border-radius: 18px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.09),
-            rgba(57,255,136,0.035)
-        );
-    border: 1px solid
-        rgba(0,170,255,0.25);
-    transition:
-        transform 0.3s,
-        border-color 0.3s,
-        box-shadow 0.3s;
-}
-.course-card:hover {
-    transform: translateY(-7px);
-    border-color: #00aaff;
-    box-shadow:
-        0 0 28px
-        rgba(0,170,255,0.18);
-}
-.course-number {
-    color: #39ff88;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    margin-bottom: 13px;
-}
-.course-card h3 {
-    color: #00aaff;
-    font-size: 21px;
-    margin-bottom: 12px;
-}
-.course-card p {
-    color: #b9c7d8;
-    line-height: 1.7;
-    font-size: 13px;
-}
-.level-bar {
-    height: 5px;
-    margin-top: 20px;
-    overflow: hidden;
-    border-radius: 10px;
-    background:
-        rgba(255,255,255,0.07);
-}
-.level-fill {
-    height: 100%;
-    border-radius: inherit;
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88
-        );
-}
-.html-level {
-    width: 35%;
-}
-.css-level {
-    width: 50%;
-}
-.js-level {
-    width: 65%;
-}
-.python-level {
-    width: 20%;
-}
-.cyber-level {
-    width: 10%;
-}
-/* =========================================================
-   CODING FACT
-========================================================= */
-.fact-box {
-    max-width: 950px;
-    margin: 0 auto;
-    padding: 25px;
-    text-align: center;
-    border-radius: 18px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.08),
-            rgba(57,255,136,0.04)
-        );
-    border:
-        1px solid
-        rgba(57,255,136,0.25);
-    box-shadow:
-        0 0 25px
-        rgba(57,255,136,0.05);
-}
-.fact-label {
-    color: #39ff88;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 2px;
     margin-bottom: 10px;
+
+    font-size: 1.8rem;
 }
-#factText {
-    color: #d8e5f0;
-    font-size: 16px;
+
+.section-subtitle {
+    color: #8fa3bb;
     line-height: 1.7;
-}
-/* =========================================================
-   CODING LAB
-========================================================= */
-.lab-section {
-    width: 96%;
-    max-width: 1550px;
-    margin: 55px auto;
-    padding: 38px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 28px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(3,20,38,0.99),
-            rgba(1,8,18,0.99)
-        );
-    border: 1px solid
-        rgba(0,170,255,0.7);
-    box-shadow:
-        0 0 45px rgba(0,170,255,0.13),
-        inset 0 0 50px rgba(0,170,255,0.025);
-}
-.lab-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88,
-            #00aaff,
-            #39ff88,
-            #00aaff
-        );
-    background-size: 300% 100%;
-    animation: labScan 5s linear infinite;
-    box-shadow:
-        0 0 20px #00aaff;
-}
-@keyframes labScan {
-    0% {
-        background-position: 0%;
-    }
-    100% {
-        background-position: 300%;
-    }
-}
-.lab-topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom:
-        1px solid
-        rgba(0,170,255,0.16);
-}
-.lab-id {
-    color: #7f8da0;
-    font-family: Consolas, monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-.lab-live {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #39ff88;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-.live-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #39ff88;
-    box-shadow:
-        0 0 10px #39ff88;
-    animation:
-        pulseDot 1.5s infinite;
-}
-@keyframes pulseDot {
-    0%,100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.4;
-        transform: scale(0.75);
-    }
-}
-.lab-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-.lab-header h2 {
-    font-size:
-        clamp(30px, 5vw, 46px);
-    margin-bottom: 10px;
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88
-        );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.lab-header p {
-    color: #aebdcc;
-    line-height: 1.7;
-}
-/* =========================================================
-   LANGUAGE SELECTOR
-========================================================= */
-.language-selector {
-    display: grid;
-    grid-template-columns:
-        repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-}
-.language-button {
-    min-height: 62px;
-    padding: 13px;
-    border-radius: 12px;
-    border:
-        1px solid
-        rgba(0,170,255,0.25);
-    background:
-        rgba(0,170,255,0.05);
-    color: white;
-    cursor: pointer;
-    text-align: left;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.language-button small {
-    display: block;
-    margin-top: 5px;
-    color: #7f8da0;
-    font-size: 10px;
-    font-weight: normal;
-}
-.language-button:hover {
-    border-color: #00aaff;
-    transform: translateY(-2px);
-}
-.language-button.active-language {
-    border-color: #39ff88;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.16),
-            rgba(57,255,136,0.09)
-        );
-    box-shadow:
-        0 0 20px
-        rgba(57,255,136,0.09);
-}
-/* =========================================================
-   PROJECT SELECTOR
-========================================================= */
-.project-selector {
-    display: grid;
-    grid-template-columns:
-        repeat(4, 1fr);
-    gap: 12px;
     margin-bottom: 25px;
 }
-.project-button {
-    position: relative;
-    min-height: 72px;
-    padding: 14px;
-    border-radius: 12px;
-    border: 1px solid
-        rgba(0,170,255,0.25);
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.07),
-            rgba(255,255,255,0.015)
-        );
-    color: white;
-    cursor: pointer;
-    text-align: left;
-    font-weight: bold;
-    transition:
-        0.3s;
-    overflow: hidden;
-}
-.project-button small {
-    display: block;
-    margin-top: 6px;
-    color: #7f8da0;
-    font-size: 11px;
-    font-weight: normal;
-}
-.project-button:hover {
-    transform: translateY(-3px);
-    border-color: #00aaff;
-    box-shadow:
-        0 0 18px
-        rgba(0,170,255,0.18);
-}
-.project-button.active-project {
-    border-color: #39ff88;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.17),
-            rgba(57,255,136,0.10)
-        );
-}
-/* =========================================================
-   WORKSPACE
-========================================================= */
-.workspace-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    color: #7f8da0;
-    font-family: Consolas, monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-.editor-wrapper {
+
+/* =========================
+   ROADMAP
+========================= */
+
+.roadmap {
     display: grid;
-    grid-template-columns:
-        1fr 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
 }
-.editor-panel,
-.preview-panel {
-    min-width: 0;
-    background: #020812;
-    border-radius: 17px;
-    border:
-        1px solid
-        rgba(0,170,255,0.3);
-    overflow: hidden;
+
+.roadmap-card {
+    padding: 22px;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid rgba(0,170,255,0.12);
+    border-radius: 14px;
+
+    transition: 0.25s ease;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(0,170,255,0.35);
+
     box-shadow:
-        inset 0 0 30px
-        rgba(0,170,255,0.025);
+        0 0 25px rgba(0,170,255,0.08);
 }
-.panel-header {
-    min-height: 48px;
-    padding: 13px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,170,255,0.10),
-            rgba(57,255,136,0.035)
-        );
-    border-bottom:
-        1px solid
-        rgba(0,170,255,0.18);
-}
-.panel-title {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-.window-dots {
-    display: flex;
-    gap: 5px;
-}
-.window-dots span {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background:
-        rgba(255,255,255,0.35);
-}
-.panel-header strong {
+
+.roadmap-number {
     color: #00aaff;
-    font-size: 13px;
-}
-.status {
-    color: #39ff88;
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 0.75rem;
+    font-weight: 800;
     letter-spacing: 1px;
 }
-/* =========================================================
-   EDITOR
-========================================================= */
-.editor-body {
-    position: relative;
+
+.roadmap-card h3 {
+    margin: 8px 0;
+
+    font-size: 1rem;
+}
+
+.roadmap-card p {
+    color: #8296ad;
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+/* =========================
+   CODING FACT
+========================= */
+
+.fact-box {
+    padding: 22px 25px;
+
+    border: 1px solid rgba(57,255,136,0.16);
+    border-radius: 14px;
+
     background:
         linear-gradient(
-            90deg,
-            rgba(0,170,255,0.025),
-            transparent 15%
+            135deg,
+            rgba(57,255,136,0.05),
+            rgba(0,170,255,0.04)
         );
+
+    margin-bottom: 35px;
 }
-.line-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 44px;
-    height: 100%;
-    padding-top: 20px;
-    text-align: right;
-    padding-right: 10px;
-    color: #3c4b5e;
-    background:
-        rgba(0,0,0,0.22);
-    font-family: Consolas, monospace;
-    font-size: 12px;
-    line-height: 1.6;
-    pointer-events: none;
-    user-select: none;
-}
-textarea {
-    display: block;
-    width: 100%;
-    height: 560px;
-    resize: vertical;
-    padding:
-        20px 20px 20px 58px;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: #d8f6ff;
-    font-family:
-        Consolas,
-        Monaco,
-        monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    tab-size: 4;
-    white-space: pre;
-    overflow: auto;
-}
-textarea:focus {
-    box-shadow:
-        inset 0 0 25px
-        rgba(0,170,255,0.07);
-}
-.editor-footer {
-    padding: 9px 14px;
-    display: flex;
-    justify-content: space-between;
-    color: #66778c;
-    font-family: Consolas, monospace;
-    font-size: 10px;
-    background:
-        #01050c;
-    border-top:
-        1px solid
-        rgba(0,170,255,0.12);
-}
-/* =========================================================
-   PREVIEW
-========================================================= */
-.preview-container {
-    padding: 12px;
-    background:
-        repeating-linear-gradient(
-            45deg,
-            #020812,
-            #020812 10px,
-            #030b16 10px,
-            #030b16 20px
-        );
-}
-iframe {
-    width: 100%;
-    height: 560px;
-    display: block;
-    border: none;
-    border-radius: 10px;
-    background: white;
-}
-.preview-footer {
-    padding: 9px 14px;
-    display: flex;
-    justify-content: space-between;
-    color: #66778c;
-    font-family: Consolas, monospace;
-    font-size: 10px;
-    background: #01050c;
-    border-top:
-        1px solid
-        rgba(0,170,255,0.12);
-}
-/* =========================================================
-   PYTHON OUTPUT
-========================================================= */
-.python-output {
-    height: 560px;
-    padding: 20px;
-    overflow: auto;
-    background: #01050c;
+
+.fact-label {
     color: #39ff88;
-    font-family:
-        Consolas,
-        Monaco,
-        monospace;
-    font-size: 13px;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 8px;
+}
+
+#codingFact {
+    color: #c4d2e2;
     line-height: 1.6;
-    white-space: pre-wrap;
 }
-.python-placeholder {
-    color: #66778c;
-}
-/* =========================================================
-   CONTROLS
-========================================================= */
-.lab-controls {
+
+/* =========================
+   LANGUAGE SELECTOR
+========================= */
+
+.language-selector {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
+    gap: 10px;
+
+    margin-bottom: 18px;
 }
-.run-button,
-.reset-button,
-.clear-button {
-    min-height: 48px;
-    padding: 13px 22px;
-    border-radius: 10px;
-    font-weight: bold;
+
+.language-btn {
+    padding: 10px 15px;
+
+    border: 1px solid rgba(0,170,255,0.18);
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: #aebed1;
+
     cursor: pointer;
-    transition: 0.3s;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
 }
-.run-button {
-    border: none;
-    color: white;
-    background:
-        linear-gradient(
-            90deg,
-            #0077ff,
-            #00aaff,
-            #39ff88
-        );
-    box-shadow:
-        0 0 20px
-        rgba(0,170,255,0.25);
+
+.language-btn:hover {
+    border-color: rgba(0,170,255,0.4);
+    color: #ffffff;
 }
-.reset-button,
-.clear-button {
-    color: #c7d2df;
-    background:
-        rgba(255,255,255,0.04);
-    border:
-        1px solid
-        rgba(255,255,255,0.18);
-}
-.run-button:hover,
-.reset-button:hover,
-.clear-button:hover {
-    transform: translateY(-2px);
-}
-.run-button:hover {
-    box-shadow:
-        0 0 32px
-        rgba(0,170,255,0.5);
-}
-.reset-button:hover,
-.clear-button:hover {
+
+.language-btn.active {
+    background: rgba(0,170,255,0.10);
     border-color: #00aaff;
-    color: white;
+    color: #00aaff;
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.12);
 }
-/* =========================================================
-   TIPS
-========================================================= */
-.build-tips {
-    display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 22px;
+
+/* =========================
+   PROJECT SELECTOR
+========================= */
+
+.project-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    margin-bottom: 22px;
 }
-.tip-card {
-    padding: 20px;
-    border-radius: 14px;
-    background:
-        rgba(57,255,136,0.035);
-    border:
-        1px solid
-        rgba(57,255,136,0.18);
+
+.project-btn {
+    padding: 9px 13px;
+
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: #91a4ba;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
-.tip-card h3 {
-    color: #39ff88;
-    margin-bottom: 10px;
-    font-size: 16px;
+
+.project-btn:hover {
+    color: #ffffff;
+    border-color: rgba(0,170,255,0.3);
 }
-.tip-card p {
-    color: #aebdcc;
-    line-height: 1.7;
-    font-size: 13px;
+
+.project-btn.active {
+    color: #ffffff;
+
+    border-color: rgba(57,255,136,0.45);
+
+    background: rgba(57,255,136,0.06);
 }
-.tip-card code {
-    color: #39ff88;
-    background:
-        rgba(0,0,0,0.4);
-    padding:
-        3px 6px;
-    border-radius: 5px;
-    font-family: Consolas, monospace;
-}
-/* =========================================================
-   CHALLENGE
-========================================================= */
-.challenge-box {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 28px;
+
+/* =========================
+   SANDBOX
+========================= */
+
+.sandbox {
+    border: 1px solid rgba(0,170,255,0.18);
     border-radius: 18px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.08),
-            rgba(57,255,136,0.03)
-        );
-    border:
-        1px solid
-        rgba(0,170,255,0.28);
-}
-.challenge-label {
-    color: #39ff88;
-    font-family: Consolas, monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-.challenge-box h3 {
-    color: #00aaff;
-    font-size: 25px;
-    margin-bottom: 12px;
-}
-.challenge-box p {
-    color: #b9c7d8;
-    line-height: 1.7;
-}
-.challenge-code {
-    margin-top: 18px;
-    padding: 18px;
-    background: #01050c;
-    border-radius: 12px;
-    border:
-        1px solid
-        rgba(57,255,136,0.15);
-    color: #39ff88;
-    font-family: Consolas, monospace;
-    overflow-x: auto;
-}
-/* =========================================================
-   CYBER CONNECTION
-========================================================= */
-.cyber-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
-    gap: 20px;
-}
-.cyber-card {
-    padding: 25px;
-    border-radius: 16px;
-    background:
-        rgba(0,170,255,0.045);
-    border:
-        1px solid
-        rgba(0,170,255,0.2);
-}
-.cyber-card h3 {
-    color: #00aaff;
-    margin-bottom: 12px;
-}
-.cyber-card p {
-    color: #b9c7d8;
-    line-height: 1.7;
-    font-size: 14px;
-}
-/* =========================================================
-   LEARNING
-========================================================= */
-.learning-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
-    gap: 20px;
-}
-.learning-card {
-    padding: 25px;
-    border-radius: 16px;
-    background:
-        rgba(0,170,255,0.045);
-    border:
-        1px solid
-        rgba(0,170,255,0.2);
-    transition: 0.3s;
-}
-.learning-card:hover {
-    transform: translateY(-5px);
-    border-color:
-        rgba(0,170,255,0.55);
+
+    background: rgba(3,8,17,0.85);
+
     box-shadow:
-        0 0 22px
-        rgba(0,170,255,0.1);
+        0 0 35px rgba(0,170,255,0.07);
+
+    overflow: hidden;
 }
-.learning-card h3 {
-    color: #00aaff;
-    margin-bottom: 12px;
+
+.sandbox-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    background: rgba(0,170,255,0.035);
+
+    border-bottom: 1px solid rgba(0,170,255,0.12);
 }
-.learning-card p {
-    color: #b9c7d8;
-    line-height: 1.7;
-    font-size: 14px;
-}
-.example {
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #01050c;
-    border:
-        1px solid
-        rgba(255,255,255,0.05);
-    overflow-x: auto;
-}
-.example pre {
-    color: #39ff88;
-    font-family:
-        Consolas,
-        Monaco,
-        monospace;
-    font-size: 12px;
-    line-height: 1.5;
-}
-/* =========================================================
-   NEXT PROJECTS
-========================================================= */
-.project-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
-    gap: 20px;
-}
-.next-card {
-    padding: 26px;
-    border-radius: 16px;
-    border:
-        1px solid
-        rgba(0,170,255,0.22);
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,0.06),
-            rgba(57,255,136,0.025)
-        );
-    transition: 0.3s;
-}
-.next-card:hover {
-    transform: translateY(-6px);
-    border-color: #39ff88;
-    box-shadow:
-        0 0 25px
-        rgba(57,255,136,0.1);
-}
-.next-icon {
-    font-size: 30px;
-    margin-bottom: 15px;
-}
-.next-card h3 {
-    color: #00aaff;
-    margin-bottom: 10px;
-}
-.next-card p {
-    color: #aebdcc;
-    line-height: 1.7;
-    font-size: 14px;
-}
-.difficulty {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 5px 9px;
-    border-radius: 20px;
-    color: #39ff88;
-    border:
-        1px solid
-        rgba(57,255,136,0.3);
-    font-size: 9px;
-    font-weight: bold;
+
+.sandbox-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+
     letter-spacing: 1px;
 }
-/* =========================================================
-   FOOTER
-========================================================= */
-footer {
-    margin-top: 75px;
-    padding: 45px 20px;
-    text-align: center;
-    background: #030914;
-    border-top:
-        1px solid
-        rgba(0,170,255,0.3);
+
+.sandbox-status {
+    color: #39ff88;
+    font-size: 0.75rem;
 }
-footer h2 {
+
+.sandbox-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 0;
+}
+
+/* =========================
+   CODE STACK
+========================= */
+
+.code-stack {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    min-width: 0;
+}
+
+.editor-panel {
+    border: 1px solid rgba(0,170,255,0.13);
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    background: #02060d;
+}
+
+.editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 9px 12px;
+
+    background: rgba(0,170,255,0.045);
+
+    border-bottom: 1px solid rgba(0,170,255,0.10);
+}
+
+.editor-file {
+    font-family: monospace;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    color: #c7d5e5;
+}
+
+.editor-type {
+    font-size: 0.68rem;
+
+    color: #00aaff;
+
+    letter-spacing: 1px;
+}
+
+.editor-body {
+    display: flex;
+
+    height: 190px;
+
+    min-height: 0;
+}
+
+.line-numbers {
+    width: 43px;
+
+    flex-shrink: 0;
+
+    padding: 12px 7px;
+
+    overflow: hidden;
+
+    background: #030912;
+
+    border-right: 1px solid rgba(0,170,255,0.08);
+
+    color: #44576c;
+
+    font-family: monospace;
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    text-align: right;
+
+    user-select: none;
+}
+
+.code-editor {
+    flex: 1;
+
+    width: 100%;
+    height: 100%;
+
+    resize: none;
+
+    border: none;
+    outline: none;
+
+    padding: 12px;
+
+    background: #02060d;
+
+    color: #d9e6f4;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    tab-size: 4;
+
+    overflow: auto;
+
+    white-space: pre;
+}
+
+.code-editor:focus {
+    box-shadow:
+        inset 0 0 0 1px rgba(0,170,255,0.15);
+}
+
+.editor-footer {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 6px 10px;
+
+    color: #53677d;
+
+    font-family: monospace;
+
+    font-size: 0.67rem;
+
+    border-top: 1px solid rgba(0,170,255,0.07);
+}
+
+/* =========================
+   PREVIEW
+========================= */
+
+.preview-panel {
+    min-width: 0;
+
+    padding: 15px;
+
+    border-left: 1px solid rgba(0,170,255,0.12);
+
+    background: rgba(0,0,0,0.18);
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     margin-bottom: 10px;
+
+    color: #91a6bd;
+
+    font-size: 0.78rem;
 }
-footer h2 span {
+
+.preview-dot {
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 6px;
+
+    border-radius: 50%;
+
+    background: #39ff88;
+
+    box-shadow:
+        0 0 8px rgba(57,255,136,0.8);
+}
+
+#preview {
+    display: block;
+
+    width: 100%;
+    height: 635px;
+
+    border: 1px solid rgba(0,170,255,0.16);
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 15px;
+
+    border-top: 1px solid rgba(0,170,255,0.12);
+}
+
+.control-btn {
+    padding: 11px 16px;
+
+    border: 1px solid rgba(0,170,255,0.22);
+    border-radius: 9px;
+
+    background: rgba(0,170,255,0.055);
+
+    color: #c9d8e8;
+
+    cursor: pointer;
+
+    font-weight: 800;
+    font-size: 0.78rem;
+
+    transition: 0.2s ease;
+}
+
+.control-btn:hover {
+    transform: translateY(-1px);
+
+    border-color: #00aaff;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.10);
+}
+
+.control-btn.primary {
+    background: rgba(0,170,255,0.12);
+    border-color: #00aaff;
     color: #00aaff;
 }
-.footer-line {
-    width: 130px;
-    height: 2px;
-    margin: 15px auto;
+
+.control-btn.green {
+    border-color: rgba(57,255,136,0.35);
+    color: #39ff88;
+}
+
+/* =========================
+   PYTHON
+========================= */
+
+.python-lab {
+    display: none;
+}
+
+.python-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border: 1px solid rgba(0,170,255,0.18);
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    background: #02060d;
+}
+
+.python-editor-wrap,
+.python-output-wrap {
+    min-width: 0;
+}
+
+.python-editor-wrap {
+    border-right: 1px solid rgba(0,170,255,0.12);
+}
+
+.python-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 15px;
+
+    background: rgba(0,170,255,0.04);
+
+    border-bottom: 1px solid rgba(0,170,255,0.10);
+}
+
+.python-header span:first-child {
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.python-header span:last-child {
+    color: #39ff88;
+
+    font-size: 0.7rem;
+}
+
+.python-editor-body {
+    display: flex;
+
+    height: 500px;
+}
+
+#pythonInput {
+    flex: 1;
+
+    resize: none;
+
+    border: none;
+    outline: none;
+
+    padding: 15px;
+
+    background: #02060d;
+
+    color: #dce8f5;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    tab-size: 4;
+}
+
+#pythonOutput {
+    height: 500px;
+
+    margin: 0;
+
+    padding: 15px;
+
+    overflow: auto;
+
+    background: #010409;
+
+    color: #b8ffd2;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+}
+
+/* =========================
+   TIPS / CARDS
+========================= */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+.info-card {
+    padding: 22px;
+
+    border: 1px solid rgba(0,170,255,0.12);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.025);
+}
+
+.info-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 1rem;
+}
+
+.info-card p {
+    color: #879bb2;
+
+    line-height: 1.7;
+
+    font-size: 0.88rem;
+}
+
+.info-card ul {
+    padding-left: 18px;
+
+    color: #879bb2;
+
+    line-height: 1.8;
+
+    font-size: 0.88rem;
+}
+
+/* =========================
+   CHALLENGE
+========================= */
+
+.challenge {
+    padding: 25px;
+
+    border: 1px solid rgba(57,255,136,0.15);
+    border-radius: 15px;
+
     background:
         linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88
+            135deg,
+            rgba(57,255,136,0.04),
+            rgba(0,170,255,0.04)
         );
-    box-shadow:
-        0 0 12px #00aaff;
 }
-footer p {
-    color: #7f8da0;
-    margin-top: 8px;
+
+.challenge h3 {
+    margin-bottom: 9px;
+
+    color: #39ff88;
 }
-/* =========================================================
-   MOBILE
-========================================================= */
-@media (max-width: 1200px) {
+
+.challenge p {
+    color: #9aadc2;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(0,170,255,0.10);
+
+    color: #63768b;
+
+    font-size: 0.8rem;
+}
+
+footer strong {
+    color: #00aaff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+
+    .roadmap {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .sandbox-body {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        border-left: none;
+
+        border-top: 1px solid rgba(0,170,255,0.12);
+    }
+
+    .preview-panel #preview {
+        height: 500px;
+    }
+}
+
+@media (max-width: 800px) {
+
     nav {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
-    nav ul {
-        flex-wrap: wrap;
+
+    .nav-links {
         justify-content: center;
         gap: 12px;
     }
+
     .roadmap {
-        grid-template-columns:
-            repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-    .project-selector {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-}
-@media (max-width: 950px) {
-    .roadmap {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-    .editor-wrapper,
-    .cyber-grid,
-    .learning-grid,
-    .build-tips {
+
+    .card-grid {
         grid-template-columns: 1fr;
     }
-    .project-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+
+    .python-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .python-editor-wrap {
+        border-right: none;
+
+        border-bottom: 1px solid rgba(0,170,255,0.12);
     }
 }
-@media (max-width: 600px) {
-    nav {
-        padding: 15px 10px;
-    }
-    nav ul {
-        gap: 9px;
-    }
-    nav a {
-        font-size: 11px;
-    }
-    .logo {
-        font-size: 23px;
-    }
+
+@media (max-width: 560px) {
+
     .hero {
-        min-height: 450px;
-        padding:
-            60px 15px;
+        padding-top: 65px;
     }
-    .hero h1 {
-        font-size: 48px;
-    }
-    .hero p {
-        font-size: 15px;
-    }
-    .tagline {
-        letter-spacing: 3px;
-        font-size: 12px;
-    }
-    .section,
-    .lab-section {
-        width: 94%;
-        padding:
-            24px 15px;
-    }
-    .section-title {
-        font-size: 28px;
-    }
-    .roadmap,
-    .project-grid,
-    .project-selector,
-    .language-selector {
+
+    .roadmap {
         grid-template-columns: 1fr;
     }
-    textarea {
-        height: 430px;
-        font-size: 12px;
-        padding-left: 48px;
+
+    .nav-links {
+        gap: 8px;
     }
-    iframe,
-    .python-output {
-        height: 430px;
+
+    .nav-links a {
+        font-size: 0.76rem;
     }
-    .line-info {
-        width: 36px;
-        font-size: 10px;
-        padding-right: 7px;
-    }
-    .lab-controls {
+
+    .sandbox-header {
+        align-items: flex-start;
         flex-direction: column;
     }
-    .run-button,
-    .reset-button,
-    .clear-button {
+
+    .editor-body {
+        height: 220px;
+    }
+
+    #preview {
+        height: 420px !important;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .control-btn {
         width: 100%;
     }
-    .system-status {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .status-chip {
-        text-align: center;
-    }
 }
+
 </style>
+
 </head>
+
 <body>
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
-    <div class="logo">
-        🛡️ Cly<span>vexis</span>
-    </div>
-    <ul>
-        <li>
-            <a href="index.html">
-                Home
-            </a>
-        </li>
-        <li>
-            <a href="lessons.html">
-                Lessons
-            </a>
-        </li>
-        <li>
-            <a href="labs.html">
-                Labs
-            </a>
-        </li>
-        <li>
-            <a href="quiz.html">
-                Quiz
-            </a>
-        </li>
-        <li>
-            <a href="games.html">
-                Games
-            </a>
-        </li>
-        <li>
-            <a href="glossary.html">
-                Glossary
-            </a>
-        </li>
-        <li>
-            <a href="coding.html" class="active">
-                💻 Coding
-            </a>
-        </li>
-        <li>
-            <a href="simulators.html">
-                🧪 Simulators
-            </a>
-        </li>
-        <li>
-            <a href="donate.html" class="donate">
-                💚 Donate
-            </a>
-        </li>
-    </ul>
+
+<a href="index.html" class="logo">
+    🛡️ <span>Clyvexis</span>
+</a>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+
+<a href="lessons.html">Lessons</a>
+
+<a href="labs.html">Labs</a>
+
+<a href="quiz.html">Quiz</a>
+
+<a href="games.html">Games</a>
+
+<a href="defense.html">Defense</a>
+
+<a href="glossary.html">Glossary</a>
+
+<a href="coding.html" class="active">Coding</a>
+
+<a href="simulators.html">Simulators</a>
+
+<a href="donate.html">Donate</a>
+
+</div>
+
 </nav>
-<!-- =========================================================
+
+
+<!-- =========================
      HERO
-========================================================= -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="code-icon">
-            💻
-        </div>
-        <h1>
-            Cly<span>vexis Coding</span>
-        </h1>
-        <div class="tagline">
-            LEARN
-            <span>/</span>
-            BUILD
-            <span>/</span>
-            CREATE
-        </div>
-        <p>
-            Learn programming by actually writing code.
-            Experiment inside a safe browser-based sandbox,
-            build projects, solve challenges, and discover
-            how programming connects to cybersecurity.
-        </p>
-        <div class="system-status">
-            <div class="status-chip">
-                SYSTEM:
-                <span>ONLINE</span>
-            </div>
-            <div class="status-chip">
-                WEB LAB:
-                <span>READY</span>
-            </div>
-            <div class="status-chip">
-                PYTHON:
-                <span>BETA</span>
-            </div>
-            <div class="status-chip">
-                ENVIRONMENT:
-                <span>SAFE</span>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- =========================================================
+========================= -->
+
+<header class="hero">
+
+<div class="scan-line"></div>
+
+<div class="hero-badge">
+    CLYVEXIS CYBERCODING LAB
+</div>
+
+<h1>
+    Build. <span>Code.</span> Experiment.
+</h1>
+
+<p>
+    Learn programming by actually building things.
+    Write HTML, CSS, JavaScript, and Python inside the Clyvexis
+    interactive coding environment.
+</p>
+
+<div class="status-row">
+
+<div class="status-chip">
+    <strong>HTML</strong> Structure
+</div>
+
+<div class="status-chip">
+    <strong>CSS</strong> Design
+</div>
+
+<div class="status-chip">
+    <strong>JS</strong> Logic
+</div>
+
+<div class="status-chip">
+    <strong>PYTHON</strong> Programming
+</div>
+
+<div class="status-chip">
+    <strong>CYBER</strong> Security
+</div>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================
      ROADMAP
-========================================================= -->
-<section class="section">
-    <h2 class="section-title">
-        🚀 Coding Roadmap
-    </h2>
-    <p class="section-description">
-        Start with the foundations of the web,
-        learn programming logic, and eventually
-        connect your coding skills to cybersecurity.
-    </p>
-    <div class="roadmap">
-        <div class="course-card">
-            <div class="course-number">
-                LEVEL 01
-            </div>
-            <h3>
-                🧱 HTML
-            </h3>
-            <p>
-                Learn webpage structure, elements,
-                links, forms, buttons, and sections.
-            </p>
-            <div class="level-bar">
-                <div class="level-fill html-level"></div>
-            </div>
-        </div>
-        <div class="course-card">
-            <div class="course-number">
-                LEVEL 02
-            </div>
-            <h3>
-                🎨 CSS
-            </h3>
-            <p>
-                Learn layouts, colors, spacing,
-                animations, and responsive design.
-            </p>
-            <div class="level-bar">
-                <div class="level-fill css-level"></div>
-            </div>
-        </div>
-        <div class="course-card">
-            <div class="course-number">
-                LEVEL 03
-            </div>
-            <h3>
-                ⚡ JavaScript
-            </h3>
-            <p>
-                Learn variables, functions, events,
-                conditions, and interactive webpages.
-            </p>
-            <div class="level-bar">
-                <div class="level-fill js-level"></div>
-            </div>
-        </div>
-        <div class="course-card">
-            <div class="course-number">
-                LEVEL 04
-            </div>
-            <h3>
-                🐍 Python
-            </h3>
-            <p>
-                Learn variables, conditions, loops,
-                functions, lists, and automation.
-            </p>
-            <div class="level-bar">
-                <div class="level-fill python-level"></div>
-            </div>
-        </div>
-        <div class="course-card">
-            <div class="course-number">
-                LEVEL 05
-            </div>
-            <h3>
-                🛡️ Cyber
-            </h3>
-            <p>
-                Apply programming knowledge to
-                defensive cybersecurity projects.
-            </p>
-            <div class="level-bar">
-                <div class="level-fill cyber-level"></div>
-            </div>
-        </div>
-    </div>
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+    Programming Roadmap
+</h2>
+
+<p class="section-subtitle">
+    Learn the foundations first, then combine programming with cybersecurity.
+</p>
+
+<div class="roadmap">
+
+<div class="roadmap-card">
+
+<div class="roadmap-number">
+    01 — HTML
+</div>
+
+<h3>Structure</h3>
+
+<p>
+    Learn how webpages are built using elements,
+    headings, links, forms, images, and containers.
+</p>
+
+</div>
+
+
+<div class="roadmap-card">
+
+<div class="roadmap-number">
+    02 — CSS
+</div>
+
+<h3>Design</h3>
+
+<p>
+    Control colors, spacing, layouts, animations,
+    responsive design, and visual effects.
+</p>
+
+</div>
+
+
+<div class="roadmap-card">
+
+<div class="roadmap-number">
+    03 — JAVASCRIPT
+</div>
+
+<h3>Logic</h3>
+
+<p>
+    Make websites interactive using variables,
+    functions, events, conditions, and loops.
+</p>
+
+</div>
+
+
+<div class="roadmap-card">
+
+<div class="roadmap-number">
+    04 — PYTHON
+</div>
+
+<h3>Programming</h3>
+
+<p>
+    Build your programming fundamentals using
+    Python variables, functions, loops, and logic.
+</p>
+
+</div>
+
+
+<div class="roadmap-card">
+
+<div class="roadmap-number">
+    05 — CYBER
+</div>
+
+<h3>Security</h3>
+
+<p>
+    Combine coding knowledge with cybersecurity,
+    automation, analysis, and defensive development.
+</p>
+
+</div>
+
+</div>
+
 </section>
-<!-- =========================================================
+
+
+<!-- =========================
      CODING FACT
-========================================================= -->
-<section class="section">
-    <div class="fact-box">
-        <div class="fact-label">
-            💡 CODING FACT
-        </div>
-        <p id="factText">
-            Python is used for automation, data analysis,
-            scripting, and many cybersecurity workflows.
-        </p>
-    </div>
+========================= -->
+
+<section>
+
+<div class="fact-box">
+
+<div class="fact-label">
+    ⚡ CODING FACT
+</div>
+
+<p id="codingFact">
+    Every website you visit is ultimately built from
+    instructions that a browser interprets.
+</p>
+
+</div>
+
 </section>
-<!-- =========================================================
+
+
+<!-- =========================
      CODING LAB
-========================================================= -->
-<section class="lab-section" id="coding-lab">
-    <div class="lab-topbar">
-        <div class="lab-id">
-            CLYVEXIS // CYBERCODING LAB // SESSION_002
-        </div>
-        <div class="lab-live">
-            <span class="live-dot"></span>
-            SANDBOX ENVIRONMENT
-        </div>
-    </div>
-    <div class="lab-header">
-        <h2>
-            💻 INTERACTIVE CODING SANDBOX
-        </h2>
-        <p>
-            Write code, run it, observe the result,
-            change something, and experiment again.
-            Learning happens through testing.
-        </p>
-    </div>
-    <!-- =====================================================
-         LANGUAGE SELECTOR
-    ====================================================== -->
-    <div class="language-selector">
-        <button
-            class="language-button active-language"
-            id="webLanguageButton"
-            onclick="selectLanguage('web', this)"
-        >
-            🌐 WEB LAB
-            <small>
-                HTML + CSS + JavaScript
-            </small>
-        </button>
-        <button
-            class="language-button"
-            id="pythonLanguageButton"
-            onclick="selectLanguage('python', this)"
-        >
-            🐍 PYTHON LAB
-            <small>
-                Python browser sandbox
-            </small>
-        </button>
-    </div>
-    <!-- =====================================================
-         WEB PROJECTS
-    ====================================================== -->
-    <div id="webWorkspace">
-        <div class="project-selector">
-            <button
-                class="project-button active-project"
-                onclick="loadProject('cyber', this)"
-            >
-                🛡️ Cyber Website
-                <small>
-                    HTML + CSS + JS
-                </small>
-            </button>
-            <button
-                class="project-button"
-                onclick="loadProject('portfolio', this)"
-            >
-                👤 Portfolio
-                <small>
-                    Personal Website
-                </small>
-            </button>
-            <button
-                class="project-button"
-                onclick="loadProject('game', this)"
-            >
-                🎮 Mini Game
-                <small>
-                    JavaScript
-                </small>
-            </button>
-            <button
-                class="project-button"
-                onclick="loadProject('neon', this)"
-            >
-                ⚡ Neon Page
-                <small>
-                    CSS Design
-                </small>
-            </button>
-        </div>
-        <div class="workspace-label">
-            <span>
-                WEB WORKSPACE
-            </span>
-            <span id="projectStatus">
-                PROJECT: CYBER WEBSITE
-            </span>
-        </div>
-        <div class="editor-wrapper">
-            <div class="editor-panel">
-                <div class="panel-header">
-                    <div class="panel-title">
-                        <div class="window-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <strong>
-                            💻 CODE EDITOR
-                        </strong>
-                    </div>
-                    <span class="status">
-                        ● EDITABLE
-                    </span>
-                </div>
-                <div class="editor-body">
-                    <div
-                        class="line-info"
-                        id="lineNumbers"
-                    >
-                        1
-                    </div>
-                    <textarea
-                        id="codeInput"
-                        spellcheck="false"
-                    ></textarea>
-                </div>
-                <div class="editor-footer">
-                    <span id="lineCount">
-                        LINES: 0
-                    </span>
-                    <span>
-                        HTML • CSS • JS
-                    </span>
-                </div>
-            </div>
-            <div class="preview-panel">
-                <div class="panel-header">
-                    <div class="panel-title">
-                        <div class="window-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <strong>
-                            🌐 LIVE PREVIEW
-                        </strong>
-                    </div>
-                    <span class="status">
-                        ● SANDBOXED
-                    </span>
-                </div>
-                <div class="preview-container">
-                    <iframe
-                        id="preview"
-                        sandbox="allow-scripts"
-                        title="Live coding preview"
-                    ></iframe>
-                </div>
-                <div class="preview-footer">
-                    <span>
-                        PREVIEW: SANDBOXED
-                    </span>
-                    <span>
-                        STATUS: READY
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- =====================================================
-         PYTHON WORKSPACE
-    ====================================================== -->
-    <div id="pythonWorkspace" style="display:none;">
-        <div class="workspace-label">
-            <span>
-                PYTHON WORKSPACE
-            </span>
-            <span id="pythonStatus">
-                PYTHON: READY
-            </span>
-        </div>
-        <div class="editor-wrapper">
-            <div class="editor-panel">
-                <div class="panel-header">
-                    <div class="panel-title">
-                        <div class="window-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <strong>
-                            🐍 PYTHON EDITOR
-                        </strong>
-                    </div>
-                    <span class="status">
-                        ● EDITABLE
-                    </span>
-                </div>
-                <div class="editor-body">
-                    <div
-                        class="line-info"
-                        id="pythonLineNumbers"
-                    >
-                        1
-                    </div>
-                    <textarea
-                        id="pythonInput"
-                        spellcheck="false"
-                    >print("Hello from Clyvexis!")
-name = "CyberStudent"
-print("Welcome,", name)</textarea>
-                </div>
-                <div class="editor-footer">
-                    <span id="pythonLineCount">
-                        LINES: 3
-                    </span>
-                    <span>
-                        PYTHON 3
-                    </span>
-                </div>
-            </div>
-            <div class="preview-panel">
-                <div class="panel-header">
-                    <div class="panel-title">
-                        <div class="window-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <strong>
-                            🖥️ PYTHON OUTPUT
-                        </strong>
-                    </div>
-                    <span
-                        class="status"
-                        id="pythonOutputStatus"
-                    >
-                        ● READY
-                    </span>
-                </div>
-                <div
-                    class="python-output"
-                    id="pythonOutput"
-                >
-<span class="python-placeholder">
-Click RUN PYTHON to execute your code.
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+    Interactive Coding Sandbox
+</h2>
+
+<p class="section-subtitle">
+    Choose a language, load a starter project, edit the code,
+    and run it directly inside the browser.
+</p>
+
+
+<!-- LANGUAGE SELECTOR -->
+
+<div class="language-selector">
+
+<button
+    class="language-btn active"
+    onclick="selectLanguage('web', this)"
+>
+    🌐 WEB LAB
+</button>
+
+<button
+    class="language-btn"
+    onclick="selectLanguage('python', this)"
+>
+    🐍 PYTHON LAB
+</button>
+
+</div>
+
+
+<!-- =========================
+     WEB LAB
+========================= -->
+
+<div id="webLab">
+
+
+<!-- PROJECT SELECTOR -->
+
+<div class="project-selector">
+
+<button
+    class="project-btn active"
+    onclick="loadProject('cyber', this)"
+>
+    🛡️ Cyber Website
+</button>
+
+<button
+    class="project-btn"
+    onclick="loadProject('portfolio', this)"
+>
+    👤 Portfolio
+</button>
+
+<button
+    class="project-btn"
+    onclick="loadProject('game', this)"
+>
+    🎮 Mini Game
+</button>
+
+<button
+    class="project-btn"
+    onclick="loadProject('neon', this)"
+>
+    💠 Neon Page
+</button>
+
+<button
+    class="project-btn"
+    onclick="loadProject('blank', this)"
+>
+    🆕 Blank Project
+</button>
+
+</div>
+
+
+<!-- SANDBOX -->
+
+<div class="sandbox">
+
+<div class="sandbox-header">
+
+<div class="sandbox-title">
+    INTERACTIVE CODING SANDBOX
+</div>
+
+<div class="sandbox-status" id="webStatus">
+    ● READY
+</div>
+
+</div>
+
+
+<div class="sandbox-body">
+
+
+<!-- =========================
+     CODE EDITORS
+========================= -->
+
+<div class="code-stack">
+
+
+<!-- HTML -->
+
+<div class="editor-panel">
+
+<div class="editor-header">
+
+<span class="editor-file">
+    index.html
 </span>
-                </div>
-                <div class="preview-footer">
-                    <span>
-                        ENVIRONMENT: BROWSER
-                    </span>
-                    <span>
-                        STATUS: READY
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- =====================================================
-         CONTROLS
-    ====================================================== -->
-    <div class="lab-controls">
-        <button
-            class="run-button"
-            id="runButton"
-            onclick="runCurrentCode()"
-        >
-            ▶ RUN MY CODE
-        </button>
-        <button
-            class="reset-button"
-            onclick="resetCurrentProject()"
-        >
-            🔄 RESET
-        </button>
-        <button
-            class="clear-button"
-            onclick="clearOutput()"
-        >
-            🧹 CLEAR OUTPUT
-        </button>
-    </div>
-    <!-- =====================================================
-         TIPS
-    ====================================================== -->
-    <div class="build-tips">
-        <div class="tip-card">
-            <h3>
-                🧠 THINK
-            </h3>
-            <p>
-                Don't just copy code. Try changing
-                one thing and predict what will happen.
-            </p>
-        </div>
-        <div class="tip-card">
-            <h3>
-                🧪 EXPERIMENT
-            </h3>
-            <p>
-                Run your code, observe the result,
-                then change it and run it again.
-            </p>
-        </div>
-        <div class="tip-card">
-            <h3>
-                🐛 DEBUG
-            </h3>
-            <p>
-                Errors are part of programming.
-                Read the message and figure out
-                what the computer is telling you.
-            </p>
-        </div>
-    </div>
+
+<span class="editor-type">
+    HTML
+</span>
+
+</div>
+
+<div class="editor-body">
+
+<div
+    class="line-numbers"
+    id="htmlNumbers"
+>
+1
+</div>
+
+<textarea
+    id="htmlInput"
+    class="code-editor"
+    spellcheck="false"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    oninput="updateAllEditorStats()"
+    onscroll="syncLineNumbers('htmlInput','htmlNumbers')"
+></textarea>
+
+</div>
+
+<div class="editor-footer">
+
+<span id="htmlStats">
+    0 lines
+</span>
+
+<span>
+    HTML
+</span>
+
+</div>
+
+</div>
+
+
+<!-- CSS -->
+
+<div class="editor-panel">
+
+<div class="editor-header">
+
+<span class="editor-file">
+    style.css
+</span>
+
+<span class="editor-type">
+    CSS
+</span>
+
+</div>
+
+<div class="editor-body">
+
+<div
+    class="line-numbers"
+    id="cssNumbers"
+>
+1
+</div>
+
+<textarea
+    id="cssInput"
+    class="code-editor"
+    spellcheck="false"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    oninput="updateAllEditorStats()"
+    onscroll="syncLineNumbers('cssInput','cssNumbers')"
+></textarea>
+
+</div>
+
+<div class="editor-footer">
+
+<span id="cssStats">
+    0 lines
+</span>
+
+<span>
+    CSS
+</span>
+
+</div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<div class="editor-panel">
+
+<div class="editor-header">
+
+<span class="editor-file">
+    script.js
+</span>
+
+<span class="editor-type">
+    JAVASCRIPT
+</span>
+
+</div>
+
+<div class="editor-body">
+
+<div
+    class="line-numbers"
+    id="jsNumbers"
+>
+1
+</div>
+
+<textarea
+    id="jsInput"
+    class="code-editor"
+    spellcheck="false"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    oninput="updateAllEditorStats()"
+    onscroll="syncLineNumbers('jsInput','jsNumbers')"
+></textarea>
+
+</div>
+
+<div class="editor-footer">
+
+<span id="jsStats">
+    0 lines
+</span>
+
+<span>
+    JS
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     PREVIEW
+========================= -->
+
+<div class="preview-panel">
+
+<div class="preview-header">
+
+<span>
+    <span class="preview-dot"></span>
+    LIVE PREVIEW
+</span>
+
+<span id="previewStatus">
+    Ready
+</span>
+
+</div>
+
+<iframe
+    id="preview"
+    title="Clyvexis Code Preview"
+    sandbox="allow-scripts"
+></iframe>
+
+</div>
+
+</div>
+
+
+<!-- CONTROLS -->
+
+<div class="controls">
+
+<button
+    class="control-btn primary"
+    onclick="runCurrentCode()"
+>
+    ▶ RUN
+</button>
+
+<button
+    class="control-btn"
+    onclick="resetCurrentProject()"
+>
+    ↻ RESET
+</button>
+
+<button
+    class="control-btn"
+    onclick="clearPreview()"
+>
+    🧹 CLEAR PREVIEW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     PYTHON LAB
+========================= -->
+
+<div
+    id="pythonLab"
+    class="python-lab"
+>
+
+<div class="python-workspace">
+
+
+<div class="python-editor-wrap">
+
+<div class="python-header">
+
+<span>
+    main.py
+</span>
+
+<span>
+    PYTHON
+</span>
+
+</div>
+
+<div class="python-editor-body">
+
+<div
+    class="line-numbers"
+    id="pythonNumbers"
+>
+1
+</div>
+
+<textarea
+    id="pythonInput"
+    spellcheck="false"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    oninput="updatePythonStats()"
+    onscroll="syncLineNumbers('pythonInput','pythonNumbers')"
+>print("Hello from Clyvexis!")
+
+name = "CyberStudent"
+
+print("Welcome,", name)
+
+# Try changing the code above.
+# Then press RUN PYTHON.
+</textarea>
+
+</div>
+
+<div class="editor-footer">
+
+<span id="pythonStats">
+    0 lines
+</span>
+
+<span>
+    PYTHON
+</span>
+
+</div>
+
+</div>
+
+
+<div class="python-output-wrap">
+
+<div class="python-header">
+
+<span>
+    terminal
+</span>
+
+<span>
+    OUTPUT
+</span>
+
+</div>
+
+<pre id="pythonOutput"></pre>
+
+</div>
+
+</div>
+
+
+<div class="controls">
+
+<button
+    class="control-btn primary"
+    onclick="runPython()"
+>
+    ▶ RUN PYTHON
+</button>
+
+<button
+    class="control-btn"
+    onclick="resetPython()"
+>
+    ↻ RESET
+</button>
+
+<button
+    class="control-btn green"
+    onclick="clearOutput()"
+>
+    🧹 CLEAR OUTPUT
+</button>
+
+</div>
+
+</div>
+
+
 </section>
-<!-- =========================================================
-     CHALLENGE
-========================================================= -->
-<section class="section">
-    <h2 class="section-title">
-        🎯 Coding Challenge
-    </h2>
-    <p class="section-description">
-        Practice by modifying real code instead
-        of only reading about it.
-    </p>
-    <div class="challenge-box">
-        <div class="challenge-label">
-            CHALLENGE_001 • PYTHON
-        </div>
-        <h3>
-            Create Your First Variable
-        </h3>
-        <p>
-            Open the Python Lab above. Create a variable
-            called <strong>username</strong>, give it a value,
-            and print it to the output.
-        </p>
-        <div class="challenge-code">
-username = "YourName"
-print(username)
-        </div>
-    </div>
+
+
+<!-- =========================
+     TIPS
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+    Coding Tips
+</h2>
+
+<p class="section-subtitle">
+    The goal isn't just to make the code work.
+    The goal is to understand why it works.
+</p>
+
+<div class="card-grid">
+
+<div class="info-card">
+
+<h3>🧠 Read the Code</h3>
+
+<p>
+    Before changing something, try to understand
+    what the existing code is doing.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>🔬 Experiment</h3>
+
+<p>
+    Change one thing at a time and run the project.
+    This makes it easier to understand cause and effect.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>🐛 Debug</h3>
+
+<p>
+    Errors are part of programming. Find the line,
+    understand the problem, then test a fix.
+</p>
+
+</div>
+
+</div>
+
 </section>
-<!-- =========================================================
-     CYBERSECURITY CONNECTION
-========================================================= -->
-<section class="section">
-    <h2 class="section-title">
-        🛡️ Coding + Cybersecurity
-    </h2>
-    <p class="section-description">
-        Programming becomes especially powerful when
-        you understand how it connects to defensive security.
-    </p>
-    <div class="cyber-grid">
-        <div class="cyber-card">
-            <h3>
-                🤖 Automation
-            </h3>
-            <p>
-                Python can help automate repetitive
-                tasks so security professionals can
-                spend more time investigating problems.
-            </p>
-        </div>
-        <div class="cyber-card">
-            <h3>
-                📊 Data
-            </h3>
-            <p>
-                Programs can process large amounts of
-                information and help defenders identify
-                patterns that deserve attention.
-            </p>
-        </div>
-        <div class="cyber-card">
-            <h3>
-                🔎 Investigation
-            </h3>
-            <p>
-                Coding can help security learners
-                understand logs, organize information,
-                and build defensive tools.
-            </p>
-        </div>
-    </div>
+
+
+<!-- =========================
+     CODING CHALLENGE
+========================= -->
+
+<section>
+
+<div class="challenge">
+
+<h3>
+    ⚡ Coding Challenge
+</h3>
+
+<p>
+    Create a webpage with a title, a short cybersecurity
+    message, a button, and a visual effect.
+    Then use JavaScript to make the button interact with the page.
+</p>
+
+</div>
+
 </section>
-<!-- =========================================================
-     WHAT YOU ARE LEARNING
-========================================================= -->
-<section class="section">
-    <h2 class="section-title">
-        📚 Programming Foundations
-    </h2>
-    <p class="section-description">
-        Learn the ideas behind the code,
-        not just the syntax.
-    </p>
-    <div class="learning-grid">
-        <div class="learning-card">
-            <h3>
-                🧱 Variables
-            </h3>
-            <p>
-                Variables store information that
-                your program can use later.
-            </p>
-            <div class="example">
-<pre>
-name = "Alex"
-age = 16
-print(name)
-</pre>
-            </div>
-        </div>
-        <div class="learning-card">
-            <h3>
-                🔀 Conditions
-            </h3>
-            <p>
-                Conditions let programs make
-                decisions based on information.
-            </p>
-            <div class="example">
-<pre>
-age = 16
-if age >= 13:
-    print("Student")
-</pre>
-            </div>
-        </div>
-        <div class="learning-card">
-            <h3>
-                🔁 Loops
-            </h3>
-            <p>
-                Loops allow a program to repeat
-                instructions efficiently.
-            </p>
-            <div class="example">
-<pre>
-for number in range(5):
-    print(number)
-</pre>
-            </div>
-        </div>
-    </div>
+
+
+<!-- =========================
+     CYBER CONNECTION
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+    Coding + Cybersecurity
+</h2>
+
+<p class="section-subtitle">
+    Programming becomes especially powerful when you understand
+    how it connects to cybersecurity.
+</p>
+
+<div class="card-grid">
+
+<div class="info-card">
+
+<h3>🌐 Web Security</h3>
+
+<p>
+    Understanding HTML, CSS, and JavaScript helps you understand
+    how websites work and where security problems can appear.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>🤖 Automation</h3>
+
+<p>
+    Python can automate repetitive tasks and help security
+    professionals process information efficiently.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>🔐 Secure Development</h3>
+
+<p>
+    Learning to code also teaches you how software should
+    handle input, data, permissions, and errors.
+</p>
+
+</div>
+
+</div>
+
 </section>
-<!-- =========================================================
+
+
+<!-- =========================
+     FOUNDATIONS
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+    Programming Foundations
+</h2>
+
+<p class="section-subtitle">
+    These concepts appear across almost every programming language.
+</p>
+
+<div class="card-grid">
+
+<div class="info-card">
+
+<h3>Variables</h3>
+
+<p>
+    Variables store information that your program can use.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>Conditions</h3>
+
+<p>
+    Conditions allow programs to make decisions based on information.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>Loops</h3>
+
+<p>
+    Loops allow programs to repeat instructions efficiently.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>Functions</h3>
+
+<p>
+    Functions group instructions together so they can be reused.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>Objects</h3>
+
+<p>
+    Objects allow programs to organize related information and behavior.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>Debugging</h3>
+
+<p>
+    Debugging means identifying and fixing problems in a program.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
      NEXT PROJECTS
-========================================================= -->
-<section class="section">
-    <h2 class="section-title">
-        🚀 What To Build Next
-    </h2>
-    <p class="section-description">
-        Your next project should be slightly
-        harder than the last one.
-    </p>
-    <div class="project-grid">
-        <div class="next-card">
-            <div class="next-icon">
-                🌐
-            </div>
-            <h3>
-                Personal Website
-            </h3>
-            <p>
-                Build a website that introduces
-                yourself, your interests, skills,
-                or projects.
-            </p>
-            <span class="difficulty">
-                BEGINNER
-            </span>
-        </div>
-        <div class="next-card">
-            <div class="next-icon">
-                🐍
-            </div>
-            <h3>
-                Python Utility
-            </h3>
-            <p>
-                Build a small Python program that
-                takes information and produces
-                a useful result.
-            </p>
-            <span class="difficulty">
-                BEGINNER
-            </span>
-        </div>
-        <div class="next-card">
-            <div class="next-icon">
-                🛡️
-            </div>
-            <h3>
-                Defensive Tool
-            </h3>
-            <p>
-                Use programming concepts to create
-                a safe educational cybersecurity
-                utility.
-            </p>
-            <span class="difficulty">
-                INTERMEDIATE
-            </span>
-        </div>
-    </div>
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+    Next Projects
+</h2>
+
+<p class="section-subtitle">
+    Once you're comfortable with the sandbox, start building your own tools.
+</p>
+
+<div class="card-grid">
+
+<div class="info-card">
+
+<h3>🛡️ Password Analyzer</h3>
+
+<p>
+    Build a beginner-friendly tool that explains
+    password security concepts without using real passwords.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>🔎 Log Analyzer</h3>
+
+<p>
+    Create a program that reads sample security logs
+    and identifies interesting events.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>🧪 Security Dashboard</h3>
+
+<p>
+    Combine HTML, CSS, and JavaScript into a
+    cybersecurity-themed dashboard.
+</p>
+
+</div>
+
+</div>
+
 </section>
-<!-- =========================================================
+
+
+</main>
+
+
+<!-- =========================
      FOOTER
-========================================================= -->
+========================= -->
+
 <footer>
-    <h2>
-        🛡️ Cly<span>vexis</span>
-    </h2>
-    <div class="footer-line"></div>
-    <p>
-        LEARN. BUILD. CREATE.
-    </p>
-    <p>
-        © 2026 Clyvexis
-    </p>
+
+<p>
+    <strong>🛡️ Clyvexis</strong> — Learn. Build. Defend.
+</p>
+
+<p style="margin-top:8px;">
+    CyberCoding Lab
+</p>
+
 </footer>
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+
+
 <script>
+
 /* =========================================================
    PROJECT DATABASE
 ========================================================= */
+
 const projects = {
-cyber: `<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #050b16;
-    color: white;
-    text-align: center;
-}
-nav {
-    padding: 20px;
-    background: #020812;
-    color: #00aaff;
-}
-.hero {
-    padding: 70px 20px;
-}
-h1 {
-    font-size: 55px;
-    color: #00aaff;
-}
-p {
-    color: #39ff88;
-}
-.card {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 30px;
-    background: #0b1628;
-    border: 1px solid #00aaff;
-    border-radius: 15px;
-}
-button {
-    padding: 13px 25px;
-    background: linear-gradient(90deg,#0077ff,#39ff88);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-</style>
-</head>
-<body>
-<nav>
-🛡️ CYBER WEBSITE
-</nav>
-<div class="hero">
-<h1>
-Welcome
-</h1>
-<p>
-My first website built with code.
-</p>
-<div class="card">
-<h2>
-Cybersecurity
-</h2>
-<p>
-Learn. Practice. Stay Secure.
-</p>
-<button onclick="changeText()">
-Click Me
-</button>
-<p id="message"></p>
+
+cyber: {
+
+html: `
+<div class="page">
+    <div class="badge">CYBERSECURITY</div>
+
+    <h1>🛡️ Clyvexis</h1>
+
+    <p>
+        Learn cybersecurity. Build skills. Defend systems.
+    </p>
+
+    <button onclick="showMessage()">
+        Run Security Check
+    </button>
+
+    <div id="message"></div>
 </div>
-</div>
-<script>
-function changeText() {
-    document.getElementById("message").textContent =
-        "You just used JavaScript!";
+`,
+
+css: `
+* {
+    box-sizing: border-box;
 }
-<\/script>
-</body>
-</html>`,
-portfolio: `<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-    font-family: Arial;
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-h1 {
-    font-size: 55px;
-    color: #39ff88;
-}
-.card {
-    max-width: 500px;
-    margin: auto;
-    padding: 30px;
-    background: #222;
-    border-radius: 20px;
-}
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #00aaff;
-    color: white;
-    cursor: pointer;
-}
-</style>
-</head>
-<body>
-<h1>
-My Portfolio
-</h1>
-<div class="card">
-<h2>
-My Name
-</h2>
-<p>
-I am learning how to code.
-</p>
-<p>
-My skills:
-</p>
-<p>
-HTML • CSS • JavaScript
-</p>
-<button onclick="alert('Thanks for visiting!')">
-Contact Me
-</button>
-</div>
-</body>
-</html>`,
-game: `<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-    background: #050b16;
-    color: white;
-    text-align: center;
-    font-family: Arial;
-    padding: 50px 20px;
-}
-h1 {
-    color: #00aaff;
-}
-#score {
-    font-size: 40px;
-    color: #39ff88;
-}
-button {
-    padding: 15px 25px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #00aaff;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-button:hover {
-    transform: scale(1.05);
-}
-</style>
-</head>
-<body>
-<h1>
-⚡ Click Game
-</h1>
-<p>
-How many points can you get?
-</p>
-<div id="score">
-0
-</div>
-<button onclick="addPoint()">
-CLICK ME
-</button>
-<button onclick="resetScore()">
-RESET
-</button>
-<script>
-let score = 0;
-function addPoint() {
-    score++;
-    document.getElementById("score").textContent =
-        score;
-}
-function resetScore() {
-    score = 0;
-    document.getElementById("score").textContent =
-        score;
-}
-<\/script>
-</body>
-</html>`,
-neon: `<!DOCTYPE html>
-<html>
-<head>
-<style>
+
 body {
     margin: 0;
     min-height: 100vh;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: #02040a;
-    font-family: Arial;
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #12304a,
+            #050b16 60%
+        );
+
+    color: white;
 }
-.box {
-    padding: 50px;
+
+.page {
+    width: min(600px, 90%);
+
+    padding: 40px;
+
     text-align: center;
-    border: 2px solid #00aaff;
-    border-radius: 20px;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 18px;
+
+    background: rgba(0,0,0,0.45);
+
     box-shadow:
-        0 0 20px #00aaff,
-        0 0 60px #39ff88;
+        0 0 35px rgba(0,170,255,0.18);
 }
+
+.badge {
+    color: #39ff88;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
 h1 {
+    font-size: 42px;
+
+    margin: 0 0 15px;
+
     color: #00aaff;
-    font-size: 50px;
 }
+
 p {
+    color: #b7c9dc;
+
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 20px;
+
+    padding: 12px 18px;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 8px;
+
+    background: rgba(0,170,255,0.1);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+button:hover {
+    background: rgba(0,170,255,0.25);
+}
+
+#message {
+    margin-top: 20px;
+
+    color: #39ff88;
+
+    font-weight: bold;
+}
+`,
+
+js: `
+function showMessage() {
+
+    const message =
+        document.getElementById("message");
+
+    message.textContent =
+        "✓ Security system ready.";
+}
+`
+
+},
+
+
+portfolio: {
+
+html: `
+<div class="portfolio">
+
+    <h1>Your Name</h1>
+
+    <p class="role">
+        Cybersecurity Student
+    </p>
+
+    <div class="card">
+        <h2>About Me</h2>
+
+        <p>
+            I'm learning programming and cybersecurity
+            by building projects.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Skills</h2>
+
+        <p>
+            HTML • CSS • JavaScript • Python
+        </p>
+    </div>
+
+    <button onclick="sayHello()">
+        Contact
+    </button>
+
+</div>
+`,
+
+css: `
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+
+    background: #07111f;
+
+    color: white;
+}
+
+.portfolio {
+    width: min(650px, 90%);
+
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+
+    color: #00aaff;
+}
+
+.role {
     color: #39ff88;
 }
+
+.card {
+    margin: 15px 0;
+
+    padding: 20px;
+
+    border: 1px solid #1c4965;
+
+    border-radius: 12px;
+
+    background: #0b1727;
+}
+
 button {
-    padding: 12px 25px;
-    background: transparent;
-    color: white;
-    border: 1px solid #39ff88;
+    padding: 12px 22px;
+
+    border: 1px solid #00aaff;
+
     border-radius: 8px;
+
+    background: transparent;
+
+    color: white;
+
     cursor: pointer;
 }
+`,
+
+js: `
+function sayHello() {
+
+    alert("Thanks for checking out my portfolio!");
+}
+`
+
+},
+
+
+game: {
+
+html: `
+<div class="game">
+
+    <h1>⚡ Cyber Clicker</h1>
+
+    <p>
+        Click the button to defend the network.
+    </p>
+
+    <div id="score">
+        Score: 0
+    </div>
+
+    <button onclick="defend()">
+        🛡️ DEFEND
+    </button>
+
+</div>
+`,
+
+css: `
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #050b16;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+}
+
+.game {
+    text-align: center;
+
+    padding: 40px;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 18px;
+
+    background: #091524;
+}
+
+h1 {
+    color: #00aaff;
+}
+
+#score {
+    margin: 20px;
+
+    color: #39ff88;
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+button {
+    padding: 14px 22px;
+
+    border: 1px solid #39ff88;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #39ff88;
+
+    cursor: pointer;
+}
+`,
+
+js: `
+let score = 0;
+
+function defend() {
+
+    score++;
+
+    document.getElementById("score")
+        .textContent = "Score: " + score;
+}
+`
+
+},
+
+
+neon: {
+
+html: `
+<div class="neon-card">
+
+    <div class="small">
+        CLYVEXIS
+    </div>
+
+    <h1>NEON SYSTEM</h1>
+
+    <p>
+        Build something futuristic.
+    </p>
+
+    <button onclick="activate()">
+        ACTIVATE
+    </button>
+
+</div>
+`,
+
+css: `
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #02050a;
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+}
+
+.neon-card {
+    text-align: center;
+
+    padding: 50px;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.4),
+        inset 0 0 20px rgba(0,170,255,0.05);
+}
+
+.small {
+    color: #39ff88;
+
+    letter-spacing: 5px;
+
+    font-size: 12px;
+}
+
+h1 {
+    color: #00aaff;
+
+    text-shadow:
+        0 0 15px #00aaff;
+}
+
+p {
+    color: #91a7bd;
+}
+
+button {
+    margin-top: 20px;
+
+    padding: 12px 22px;
+
+    border: 1px solid #00aaff;
+
+    border-radius: 8px;
+
+    background: rgba(0,170,255,0.08);
+
+    color: white;
+
+    cursor: pointer;
+}
+
 button:hover {
     box-shadow:
-        0 0 15px #39ff88;
+        0 0 20px rgba(0,170,255,0.6);
 }
-</style>
-</head>
-<body>
-<div class="box">
-<h1>
-NEON
-</h1>
+`,
+
+js: `
+function activate() {
+
+    document.body.style.background =
+        "radial-gradient(circle, #07304a, #02050a 65%)";
+}
+`
+
+},
+
+
+blank: {
+
+html: `
+<h1>Hello, Clyvexis!</h1>
+
 <p>
-Welcome to my futuristic website.
+    Start building your project here.
 </p>
-<button onclick="alert('SYSTEM ONLINE')">
-ACTIVATE
-</button>
-</div>
-</body>
-</html>`
+`,
+
+css: `
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: #050b16;
+
+    color: white;
+}
+
+h1 {
+    color: #00aaff;
+}
+
+p {
+    color: #9fb1c7;
+}
+`,
+
+js: `
+console.log("Clyvexis project started!");
+`
+
+}
+
 };
+
+
 /* =========================================================
-   PYTHON STARTER
+   STATE
 ========================================================= */
-const pythonStarter = `print("Hello from Clyvexis!")
-name = "CyberStudent"
-print("Welcome,", name)
-# Try changing the code above.
-# Then click RUN PYTHON.
-`;
-/* =========================================================
-   CURRENT STATE
-========================================================= */
+
 let currentProject = "cyber";
+
 let currentLanguage = "web";
+
+let pyodide = null;
+
+let pythonLoading = false;
+
+
 /* =========================================================
-   PROJECT NAMES
+   LANGUAGE SWITCHER
 ========================================================= */
-const projectNames = {
-    cyber:
-        "CYBER WEBSITE",
-    portfolio:
-        "PORTFOLIO",
-    game:
-        "MINI GAME",
-    neon:
-        "NEON PAGE"
-};
-/* =========================================================
-   SELECT LANGUAGE
-========================================================= */
-function selectLanguage(language, clickedButton) {
+
+function selectLanguage(language, button) {
+
     currentLanguage = language;
+
     document
-        .querySelectorAll(".language-button")
-        .forEach(button => {
-            button.classList.remove(
-                "active-language"
-            );
+        .querySelectorAll(".language-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
         });
-    if (clickedButton) {
-        clickedButton.classList.add(
-            "active-language"
-        );
+
+    if (button) {
+        button.classList.add("active");
     }
+
+    const webLab =
+        document.getElementById("webLab");
+
+    const pythonLab =
+        document.getElementById("pythonLab");
+
     if (language === "web") {
-        document.getElementById(
-            "webWorkspace"
-        ).style.display = "block";
-        document.getElementById(
-            "pythonWorkspace"
-        ).style.display = "none";
-        document.getElementById(
-            "runButton"
-        ).textContent =
-            "▶ RUN MY WEBSITE";
-    }
-    if (language === "python") {
-        document.getElementById(
-            "webWorkspace"
-        ).style.display = "none";
-        document.getElementById(
-            "pythonWorkspace"
-        ).style.display = "block";
-        document.getElementById(
-            "runButton"
-        ).textContent =
-            "▶ RUN PYTHON";
+
+        webLab.style.display = "block";
+
+        pythonLab.style.display = "none";
+
+    } else {
+
+        webLab.style.display = "none";
+
+        pythonLab.style.display = "block";
+
         updatePythonStats();
     }
 }
+
+
 /* =========================================================
-   LOAD WEB PROJECT
+   LOAD PROJECT
 ========================================================= */
-function loadProject(projectName, clickedButton) {
-    currentProject = projectName;
-    document.getElementById(
-        "codeInput"
-    ).value =
-        projects[projectName];
-    document.getElementById(
-        "projectStatus"
-    ).textContent =
-        "PROJECT: " +
-        projectNames[projectName];
+
+function loadProject(name, button) {
+
+    currentProject = name;
+
+    const project = projects[name];
+
+    if (!project) return;
+
+    document.getElementById("htmlInput").value =
+        project.html;
+
+    document.getElementById("cssInput").value =
+        project.css;
+
+    document.getElementById("jsInput").value =
+        project.js;
+
     document
-        .querySelectorAll(".project-button")
-        .forEach(button => {
-            button.classList.remove(
-                "active-project"
-            );
+        .querySelectorAll(".project-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
         });
-    if (clickedButton) {
-        clickedButton.classList.add(
-            "active-project"
-        );
+
+    if (button) {
+        button.classList.add("active");
     }
-    updateEditorStats();
+
+    updateAllEditorStats();
+
     runWebCode();
 }
+
+
 /* =========================================================
    RUN CURRENT CODE
 ========================================================= */
+
 function runCurrentCode() {
+
     if (currentLanguage === "web") {
+
         runWebCode();
+
     } else {
+
         runPython();
     }
 }
+
+
 /* =========================================================
-   RUN WEB CODE
+   BUILD WEB PROJECT
 ========================================================= */
+
 function runWebCode() {
-    const code =
-        document
-        .getElementById("codeInput")
-        .value;
+
+    const html =
+        document.getElementById("htmlInput").value;
+
+    const css =
+        document.getElementById("cssInput").value;
+
+    let js =
+        document.getElementById("jsInput").value;
+
+
+    /*
+        Prevent a user's closing script tag from
+        accidentally ending the generated script element.
+    */
+
+    js = js.replace(
+        /<\/script/gi,
+        "<\\/script"
+    );
+
+
+    const documentCode = `
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<style>
+
+${css}
+
+</style>
+
+</head>
+
+<body>
+
+${html}
+
+<script>
+
+${js}
+
+<\/script>
+
+</body>
+
+</html>
+`;
+
+
     const preview =
-        document
-        .getElementById("preview");
-    preview.srcdoc = code;
-    updateEditorStats();
+        document.getElementById("preview");
+
+
+    preview.srcdoc = documentCode;
+
+
+    document.getElementById("webStatus")
+        .textContent = "● RUNNING";
+
+    document.getElementById("previewStatus")
+        .textContent = "Updated";
+
+
+    setTimeout(() => {
+
+        document.getElementById("webStatus")
+            .textContent = "● READY";
+
+    }, 700);
 }
+
+
 /* =========================================================
-   RESET CURRENT PROJECT
+   RESET WEB PROJECT
 ========================================================= */
+
 function resetCurrentProject() {
-    if (currentLanguage === "web") {
-        document.getElementById(
-            "codeInput"
-        ).value =
-            projects[currentProject];
-        updateEditorStats();
-        runWebCode();
-    } else {
-        document.getElementById(
-            "pythonInput"
-        ).value =
-            pythonStarter;
-        updatePythonStats();
-        document.getElementById(
-            "pythonOutput"
-        ).innerHTML =
-            '<span class="python-placeholder">' +
-            'Python workspace reset. Click RUN PYTHON to execute.' +
-            '</span>';
+
+    if (currentLanguage !== "web") {
+
+        resetPython();
+
+        return;
     }
+
+    const project =
+        projects[currentProject];
+
+    if (!project) return;
+
+    document.getElementById("htmlInput").value =
+        project.html;
+
+    document.getElementById("cssInput").value =
+        project.css;
+
+    document.getElementById("jsInput").value =
+        project.js;
+
+    updateAllEditorStats();
+
+    runWebCode();
 }
+
+
 /* =========================================================
-   CLEAR OUTPUT
+   CLEAR PREVIEW
 ========================================================= */
-function clearOutput() {
-    if (currentLanguage === "python") {
-        document.getElementById(
-            "pythonOutput"
-        ).textContent = "";
-    }
+
+function clearPreview() {
+
+    const preview =
+        document.getElementById("preview");
+
+    preview.srcdoc = `
+<!DOCTYPE html>
+
+<html>
+
+<body
+    style="
+        margin:0;
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-family:Arial;
+        background:#050b16;
+        color:#71849a;
+    "
+>
+
+Preview cleared.
+
+</body>
+
+</html>
+`;
+
+    document.getElementById("previewStatus")
+        .textContent = "Cleared";
 }
+
+
 /* =========================================================
-   WEB EDITOR STATS
+   EDITOR STATISTICS
 ========================================================= */
-function updateEditorStats() {
-    const code =
-        document
-        .getElementById("codeInput")
-        .value;
+
+function updateEditorStats(
+    inputId,
+    statsId,
+    numbersId
+) {
+
+    const editor =
+        document.getElementById(inputId);
+
+    const stats =
+        document.getElementById(statsId);
+
+    const numbers =
+        document.getElementById(numbersId);
+
+    if (!editor || !stats || !numbers) return;
+
+
+    const value = editor.value;
+
     const lines =
-        code.split("\n");
-    document.getElementById(
-        "lineCount"
-    ).textContent =
-        "LINES: " +
-        lines.length;
-    let numbers = "";
-    for (
-        let i = 1;
-        i <= lines.length;
-        i++
-    ) {
-        numbers +=
-            i + "<br>";
+        value.length === 0
+            ? 1
+            : value.split("\n").length;
+
+
+    const characters =
+        value.length;
+
+
+    stats.textContent =
+        `${lines} lines • ${characters} chars`;
+
+
+    let output = "";
+
+    for (let i = 1; i <= lines; i++) {
+
+        output += i + "\n";
     }
-    document.getElementById(
-        "lineNumbers"
-    ).innerHTML =
-        numbers;
+
+    numbers.textContent =
+        output;
 }
+
+
+function updateAllEditorStats() {
+
+    updateEditorStats(
+        "htmlInput",
+        "htmlStats",
+        "htmlNumbers"
+    );
+
+    updateEditorStats(
+        "cssInput",
+        "cssStats",
+        "cssNumbers"
+    );
+
+    updateEditorStats(
+        "jsInput",
+        "jsStats",
+        "jsNumbers"
+    );
+}
+
+
 /* =========================================================
    PYTHON STATS
 ========================================================= */
+
 function updatePythonStats() {
-    const code =
-        document
-        .getElementById("pythonInput")
-        .value;
-    const lines =
-        code.split("\n");
-    document.getElementById(
-        "pythonLineCount"
-    ).textContent =
-        "LINES: " +
-        lines.length;
-    let numbers = "";
-    for (
-        let i = 1;
-        i <= lines.length;
-        i++
-    ) {
-        numbers +=
-            i + "<br>";
-    }
-    document.getElementById(
-        "pythonLineNumbers"
-    ).innerHTML =
-        numbers;
+
+    updateEditorStats(
+        "pythonInput",
+        "pythonStats",
+        "pythonNumbers"
+    );
 }
+
+
 /* =========================================================
-   PYTHON EDITOR INPUT
+   LINE NUMBER SCROLLING
 ========================================================= */
-document
-    .getElementById("pythonInput")
-    .addEventListener(
-        "input",
-        updatePythonStats
-    );
-/* =========================================================
-   WEB EDITOR INPUT
-========================================================= */
-document
-    .getElementById("codeInput")
-    .addEventListener(
-        "input",
-        updateEditorStats
-    );
+
+function syncLineNumbers(
+    editorId,
+    numbersId
+) {
+
+    const editor =
+        document.getElementById(editorId);
+
+    const numbers =
+        document.getElementById(numbersId);
+
+    if (!editor || !numbers) return;
+
+    numbers.scrollTop =
+        editor.scrollTop;
+}
+
+
 /* =========================================================
    TAB SUPPORT
 ========================================================= */
-function addTabSupport(textarea, updateFunction) {
+
+function addTabSupport(textareaId) {
+
+    const textarea =
+        document.getElementById(textareaId);
+
+    if (!textarea) return;
+
+
     textarea.addEventListener(
         "keydown",
         function(event) {
-            if (event.key === "Tab") {
-                event.preventDefault();
-                const start =
-                    this.selectionStart;
-                const end =
-                    this.selectionEnd;
-                this.value =
-                    this.value.substring(
-                        0,
-                        start
-                    )
-                    +
-                    "    "
-                    +
-                    this.value.substring(
-                        end
-                    );
-                this.selectionStart =
-                    this.selectionEnd =
-                        start + 4;
-                updateFunction();
+
+            if (event.key !== "Tab") {
+                return;
             }
+
+            event.preventDefault();
+
+
+            const start =
+                textarea.selectionStart;
+
+            const end =
+                textarea.selectionEnd;
+
+
+            textarea.value =
+                textarea.value.substring(
+                    0,
+                    start
+                )
+                +
+                "    "
+                +
+                textarea.value.substring(
+                    end
+                );
+
+
+            textarea.selectionStart =
+                textarea.selectionEnd =
+                    start + 4;
+
+
+            updateAllEditorStats();
+
+            updatePythonStats();
         }
     );
 }
-addTabSupport(
-    document.getElementById("codeInput"),
-    updateEditorStats
-);
-addTabSupport(
-    document.getElementById("pythonInput"),
-    updatePythonStats
-);
+
+
 /* =========================================================
    PYTHON RUNTIME
 ========================================================= */
-let pyodide = null;
-let pythonLoading = false;
-/* =========================================================
-   LOAD PYTHON
-========================================================= */
-async function loadPython() {
+
+async function loadPythonRuntime() {
+
     if (pyodide) {
         return pyodide;
     }
+
     if (pythonLoading) {
         return null;
     }
+
     pythonLoading = true;
-    document.getElementById(
-        "pythonStatus"
-    ).textContent =
-        "PYTHON: LOADING";
-    document.getElementById(
-        "pythonOutputStatus"
-    ).textContent =
-        "● LOADING";
+
+
+    const output =
+        document.getElementById("pythonOutput");
+
+    output.textContent =
+        "Loading Python runtime...\n";
+
+
     try {
-        if (
-            typeof loadPyodide !==
-            "function"
-        ) {
-            await new Promise(
-                (resolve, reject) => {
-                    const script =
-                        document.createElement(
-                            "script"
-                        );
-                    script.src =
-                        "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js";
-                    script.onload =
-                        resolve;
-                    script.onerror =
-                        reject;
-                    document
-                        .head
-                        .appendChild(script);
-                }
-            );
-        }
+
+        const script =
+            document.createElement("script");
+
+        script.src =
+            "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js";
+
+
+        document.head.appendChild(script);
+
+
+        await new Promise(
+            (resolve, reject) => {
+
+                script.onload = resolve;
+
+                script.onerror = reject;
+            }
+        );
+
+
         pyodide =
             await loadPyodide();
-        pythonLoading = false;
-        document.getElementById(
-            "pythonStatus"
-        ).textContent =
-            "PYTHON: READY";
-        document.getElementById(
-            "pythonOutputStatus"
-        ).textContent =
-            "● READY";
+
+
+        output.textContent =
+            "Python runtime ready.\n";
+
         return pyodide;
+
     } catch (error) {
-        pythonLoading = false;
-        document.getElementById(
-            "pythonStatus"
-        ).textContent =
-            "PYTHON: ERROR";
-        document.getElementById(
-            "pythonOutputStatus"
-        ).textContent =
-            "● ERROR";
-        document.getElementById(
-            "pythonOutput"
-        ).textContent =
-            "Python could not be loaded. Check your internet connection and try again.";
-        console.error(error);
+
+        output.textContent =
+            "Could not load Python runtime.\n\n"
+            +
+            error.message;
+
         return null;
+
+    } finally {
+
+        pythonLoading = false;
     }
 }
+
+
 /* =========================================================
    RUN PYTHON
 ========================================================= */
+
 async function runPython() {
+
     const output =
-        document.getElementById(
-            "pythonOutput"
-        );
+        document.getElementById("pythonOutput");
+
     const code =
-        document.getElementById(
-            "pythonInput"
-        ).value;
+        document.getElementById("pythonInput").value;
+
+
     output.textContent =
-        "Starting Python environment...\n";
-    document.getElementById(
-        "pythonOutputStatus"
-    ).textContent =
-        "● RUNNING";
+        "Running Python...\n";
+
+
     const runtime =
-        await loadPython();
+        await loadPythonRuntime();
+
+
     if (!runtime) {
         return;
     }
-    try {
-        let capturedOutput = "";
-        runtime.setStdout({
-            batched:
-                text => {
-                    capturedOutput +=
-                        text;
-                }
-        });
-        runtime.setStderr({
-            batched:
-                text => {
-                    capturedOutput +=
-                        text;
-                }
-        });
-        await runtime.runPythonAsync(
-            code
-        );
-        if (
-            capturedOutput.trim() === ""
-        ) {
-            capturedOutput =
-                "Code finished successfully.\n";
+
+
+    let result = "";
+
+
+    runtime.setStdout({
+        batched: text => {
+            result += text;
         }
+    });
+
+
+    runtime.setStderr({
+        batched: text => {
+            result += text;
+        }
+    });
+
+
+    try {
+
+        await runtime.runPythonAsync(code);
+
         output.textContent =
-            capturedOutput;
-        document.getElementById(
-            "pythonOutputStatus"
-        ).textContent =
-            "● COMPLETE";
+            result || "Program finished with no output.";
+
     } catch (error) {
+
         output.textContent =
-            "Python error:\n\n" +
-            error;
-        document.getElementById(
-            "pythonOutputStatus"
-        ).textContent =
-            "● ERROR";
+            result
+            +
+            "\nERROR:\n"
+            +
+            error.message;
     }
 }
+
+
+/* =========================================================
+   RESET PYTHON
+========================================================= */
+
+function resetPython() {
+
+    document.getElementById("pythonInput").value = `
+print("Hello from Clyvexis!")
+
+name = "CyberStudent"
+
+print("Welcome,", name)
+
+# Try changing the code above.
+# Then press RUN PYTHON.
+`.trim();
+
+
+    document.getElementById("pythonOutput")
+        .textContent = "";
+
+
+    updatePythonStats();
+}
+
+
+/* =========================================================
+   CLEAR PYTHON OUTPUT
+========================================================= */
+
+function clearOutput() {
+
+    document.getElementById("pythonOutput")
+        .textContent = "";
+}
+
+
 /* =========================================================
    CODING FACTS
 ========================================================= */
+
 const codingFacts = [
-    "Python is widely used for automation, data analysis, scripting, and many cybersecurity workflows.",
-    "HTML describes the structure of a webpage.",
-    "CSS controls how webpages look and respond to different screen sizes.",
-    "JavaScript allows webpages to react to user actions.",
-    "A variable is a named place used by a program to store information.",
-    "Loops allow programmers to repeat instructions without writing the same code again and again.",
-    "Functions help programmers organize reusable pieces of code.",
-    "Debugging means finding and fixing problems in a program.",
-    "Learning to read error messages is one of the most important programming skills.",
-    "Python uses indentation to show the structure of many blocks of code."
+
+"Every website you visit is ultimately built from instructions that a browser interprets.",
+
+"HTML controls the structure of a webpage.",
+
+"CSS controls the visual presentation of a webpage.",
+
+"JavaScript allows webpages to respond to user actions.",
+
+"Python is widely used for automation, data processing, and security tooling.",
+
+"Debugging is the process of finding and fixing problems in code.",
+
+"Variables allow programs to store information.",
+
+"Functions allow programmers to organize reusable instructions.",
+
+"Loops allow a program to repeat instructions.",
+
+"Cybersecurity and programming overlap heavily because security professionals often need to understand how software works."
+
 ];
+
+
 let factIndex = 0;
+
+
 function rotateFact() {
-    factIndex++;
-    if (
-        factIndex >=
-        codingFacts.length
-    ) {
-        factIndex = 0;
-    }
-    document.getElementById(
-        "factText"
-    ).textContent =
-        codingFacts[factIndex];
+
+    factIndex =
+        (factIndex + 1)
+        %
+        codingFacts.length;
+
+
+    document.getElementById("codingFact")
+        .textContent =
+            codingFacts[factIndex];
 }
+
+
 setInterval(
     rotateFact,
     6000
 );
+
+
 /* =========================================================
-   INITIALIZE
+   INITIALIZATION
 ========================================================= */
-window.addEventListener(
-    "load",
+
+document.addEventListener(
+    "DOMContentLoaded",
     function() {
-        document.getElementById(
-            "codeInput"
-        ).value =
-            projects.cyber;
-        updateEditorStats();
+
+        loadProject("cyber");
+
+        updateAllEditorStats();
+
         updatePythonStats();
-        runWebCode();
+
+
+        addTabSupport("htmlInput");
+
+        addTabSupport("cssInput");
+
+        addTabSupport("jsInput");
+
+        addTabSupport("pythonInput");
+
+
+        clearPreview();
     }
 );
+
 </script>
+
 </body>
+
 </html>
