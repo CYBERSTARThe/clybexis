@@ -153,6 +153,170 @@ footer strong{color:#00d9ff}
     .choice-row{grid-template-columns:1fr}
 }
 </style>
+
+<style>
+/* PHISHING HUNT */
+.phish-arcade {
+  margin-top: 28px;
+  border: 1px solid rgba(0,170,255,.28);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(0,170,255,.055), rgba(57,255,136,.025));
+  box-shadow: 0 0 45px rgba(0,170,255,.08);
+  overflow: hidden;
+}
+.phish-topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:16px 20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.18);
+}
+.phish-mission {
+  font-weight:800;
+  letter-spacing:.12em;
+  color:#39ff88;
+  font-size:.78rem;
+}
+.phish-hud {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.phish-stat {
+  min-width:72px;
+  text-align:center;
+  padding:7px 10px;
+  border:1px solid rgba(0,170,255,.18);
+  border-radius:10px;
+  background:rgba(0,170,255,.045);
+}
+.phish-stat b { display:block; color:#fff; font-size:1rem; }
+.phish-stat small { color:#7f9ab3; font-size:.62rem; letter-spacing:.08em; }
+.phish-board { padding:26px; }
+.phish-email {
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;
+  background:#09111d;
+  overflow:hidden;
+  box-shadow:inset 0 0 30px rgba(0,170,255,.025);
+}
+.phish-email-head {
+  padding:18px 20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.phish-row {
+  display:flex;
+  gap:10px;
+  margin:7px 0;
+  color:#a9bdd0;
+  word-break:break-word;
+}
+.phish-row span { width:72px; color:#5d7890; font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; }
+.phish-row strong { color:#eaf6ff; font-weight:650; }
+.phish-email-body { padding:24px 20px; color:#c5d7e5; line-height:1.7; min-height:105px; }
+.phish-difficulty {
+  display:inline-block;
+  margin:0 0 16px;
+  padding:5px 9px;
+  border:1px solid rgba(57,255,136,.25);
+  border-radius:999px;
+  color:#39ff88;
+  font-size:.66rem;
+  font-weight:800;
+  letter-spacing:.1em;
+}
+.phish-actions {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px;
+}
+.phish-answer {
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:13px;
+  padding:14px;
+  background:#0b1623;
+  color:#e8f6ff;
+  cursor:pointer;
+  font-weight:800;
+  letter-spacing:.06em;
+  transition:.2s ease;
+}
+.phish-answer:hover { transform:translateY(-2px); border-color:rgba(0,170,255,.5); box-shadow:0 0 22px rgba(0,170,255,.1); }
+.phish-answer.safe:hover { border-color:rgba(57,255,136,.55); }
+.phish-answer.phish:hover { border-color:rgba(255,91,91,.55); }
+.phish-tools { margin-top:18px; }
+.phish-tools-title { color:#6f8aa0; font-size:.72rem; letter-spacing:.1em; margin-bottom:9px; }
+#phishClues { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.clue-btn {
+  border:1px solid rgba(0,170,255,.2);
+  background:rgba(0,170,255,.04);
+  color:#7ecbff;
+  padding:7px 10px;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:.68rem;
+  font-weight:800;
+}
+.clue-btn:hover { border-color:rgba(0,170,255,.55); }
+.phish-clue-text {
+  width:100%;
+  padding:9px 11px;
+  border-left:2px solid #00aaff;
+  background:rgba(0,170,255,.035);
+  color:#a8c6da;
+  font-size:.78rem;
+}
+.phish-feedback {
+  margin-top:18px;
+  padding:14px 16px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  color:#a9bfd0;
+  line-height:1.55;
+}
+.phish-feedback.good { border-color:rgba(57,255,136,.3); background:rgba(57,255,136,.035); color:#b9ffd3; }
+.phish-feedback.bad { border-color:rgba(255,91,91,.28); background:rgba(255,91,91,.035); color:#ffd0d0; }
+.phish-next-wrap { text-align:right; margin-top:12px; }
+.game-btn {
+  border:1px solid rgba(0,170,255,.3);
+  border-radius:10px;
+  padding:11px 15px;
+  background:#0b1623;
+  color:#eaf7ff;
+  cursor:pointer;
+  font-weight:800;
+}
+.game-btn.primary { background:linear-gradient(135deg,#00aaff,#39ff88); color:#041019; border:0; }
+.phish-final {
+  padding:42px 26px;
+  text-align:center;
+}
+.final-icon { font-size:3rem; }
+.final-kicker { margin-top:8px; color:#39ff88; font-weight:900; letter-spacing:.14em; font-size:.72rem; }
+.phish-final h3 { margin:8px 0 20px; font-size:2rem; color:#fff; }
+.final-stats { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.final-stats span {
+  min-width:105px;
+  padding:14px;
+  border:1px solid rgba(0,170,255,.18);
+  border-radius:13px;
+  background:rgba(0,170,255,.035);
+}
+.final-stats b { display:block; color:#fff; font-size:1.25rem; }
+.final-stats small { color:#718ba0; letter-spacing:.08em; font-size:.62rem; }
+.phish-final p { max-width:650px; margin:0 auto 24px; color:#9eb5c7; line-height:1.6; }
+@media (max-width:700px) {
+  .phish-topbar { align-items:flex-start; flex-direction:column; }
+  .phish-hud { justify-content:flex-start; }
+  .phish-board { padding:16px; }
+  .phish-actions { grid-template-columns:1fr; }
+}
+</style>
+
 </head>
 
 <body>
@@ -201,7 +365,8 @@ footer strong{color:#00d9ff}
 <div class="game-card" data-category="cyber">
 <div class="game-top"><div class="game-icon">🎣</div><div class="game-number">GAME 01</div></div>
 <h2>Phishing Hunt</h2><p>Inspect a fictional message and find the clues that reveal a phishing attempt.</p>
-<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">SOCIAL ENGINEERING</span></div>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">SOCIAL ENGINEERING</span><button class="game-btn primary" onclick="startPhishingHunt()">▶ PLAY PHISHING HUNT</button>
+</div>
 <button class="game-button" onclick="toggleGame('g1')">▶ Play Game</button>
 <div id="g1" class="game-area">
 <div class="challenge"><strong>MISSION:</strong> Which clue should make you suspicious?</div>
@@ -475,6 +640,48 @@ LEARN. PRACTICE. STAY SECURE.<br><br>
 © 2026 Clyvexis • Cyber Arcade
 </footer>
 
+
+<section class="phish-arcade" id="phishingHuntGame" style="display:none;">
+  <div class="phish-topbar">
+    <div class="phish-mission">🕵️ PHISHING HUNT // LIVE MISSION</div>
+    <div class="phish-hud">
+      <div class="phish-stat"><b id="phishScore">0</b><small>SCORE</small></div>
+      <div class="phish-stat"><b id="phishStreak">0</b><small>STREAK</small></div>
+      <div class="phish-stat"><b id="phishTimer">20s</b><small>TIMER</small></div>
+      <div class="phish-stat"><b id="phishRound">1 / 8</b><small>ROUND</small></div>
+    </div>
+  </div>
+
+  <div class="phish-board" id="phishBoard">
+    <div class="phish-email">
+      <div class="phish-email-head">
+        <span class="phish-difficulty" id="phishDifficulty">EASY</span>
+        <div class="phish-row"><span>From</span><strong id="phishSender"></strong></div>
+        <div class="phish-row"><span>Subject</span><strong id="phishSubject"></strong></div>
+      </div>
+      <div class="phish-email-body" id="phishBody"></div>
+    </div>
+
+    <div class="phish-tools">
+      <div class="phish-tools-title">OPTIONAL INTELLIGENCE CLUES</div>
+      <div id="phishClues"></div>
+    </div>
+
+    <div class="phish-actions">
+      <button class="phish-answer safe" onclick="answerPhishing('safe')">✓ LEGITIMATE</button>
+      <button class="phish-answer phish" onclick="answerPhishing('phishing')">⚠ PHISHING</button>
+    </div>
+
+    <div class="phish-feedback" id="phishFeedback">Analyze the message, then make your call.</div>
+
+    <div class="phish-next-wrap">
+      <button class="game-btn primary" id="phishNext" style="display:none;" onclick="nextPhishingRound()">NEXT ROUND →</button>
+    </div>
+  </div>
+
+  <div class="phish-final" id="phishFinal" style="display:none;"></div>
+</section>
+
 <script>
 function toggleGame(id){
     const area=document.getElementById(id);
@@ -526,6 +733,335 @@ function filterGames(category,button){
     document.querySelectorAll(".game-card").forEach(card=>{
         card.style.display=(category==="all"||card.dataset.category===category)?"block":"none";
     });
+}
+</script>
+
+
+<script>
+/* =========================================================
+   CLYVEXIS — PHISHING HUNT: MULTI-ROUND ARCADE ENGINE
+   ========================================================= */
+const phishingRounds = [
+  {
+    difficulty: "EASY",
+    sender: "security@paypa1-alert.example",
+    subject: "URGENT: Verify your account",
+    body: "We noticed unusual activity. Verify your account immediately or access may be limited.",
+    clues: [
+      "The sender uses 'paypa1' with the number 1.",
+      "The message creates urgency.",
+      "It asks you to verify your account."
+    ],
+    answer: "phishing",
+    explanation: "This is a simulated phishing message. The look-alike sender and urgent request are strong warning signs."
+  },
+  {
+    difficulty: "EASY",
+    sender: "updates@clyvexis.example",
+    subject: "Your weekly learning summary",
+    body: "Your Clyvexis learning summary is ready. Open your dashboard when you have time.",
+    clues: [
+      "There is no urgent threat.",
+      "The message does not ask for a password.",
+      "The request is consistent with a normal notification."
+    ],
+    answer: "safe",
+    explanation: "For this game, this message is classified as safe. Always verify unexpected messages independently in real life."
+  },
+  {
+    difficulty: "MEDIUM",
+    sender: "helpdesk@micros0ft-security.example",
+    subject: "Password expires today",
+    body: "Your password will expire in 30 minutes. Sign in now using the link below to keep access.",
+    clues: [
+      "The domain contains a zero in 'micros0ft'.",
+      "The message uses a short deadline.",
+      "It pushes you toward a sign-in link."
+    ],
+    answer: "phishing",
+    explanation: "The look-alike domain, deadline pressure, and sign-in request make this a phishing simulation."
+  },
+  {
+    difficulty: "MEDIUM",
+    sender: "teacher@school.example",
+    subject: "Class project reminder",
+    body: "Reminder: the project outline is due Friday. Bring your notes to class.",
+    clues: [
+      "The message contains no login request.",
+      "There is no suspicious attachment or link.",
+      "The request matches a normal school reminder."
+    ],
+    answer: "safe",
+    explanation: "This round is classified as safe because it contains no obvious phishing indicators."
+  },
+  {
+    difficulty: "HARD",
+    sender: "billing@paypa1-support.example",
+    subject: "Payment review required",
+    body: "A recent payment needs review. Use the secure portal to confirm the transaction before it is finalized.",
+    clues: [
+      "The brand name is altered.",
+      "The sender claims to be a billing department.",
+      "The message tries to move you to a portal."
+    ],
+    answer: "phishing",
+    explanation: "A look-alike brand domain plus a request to use a portal are major warning signs in this simulation."
+  },
+  {
+    difficulty: "HARD",
+    sender: "alerts@library.example",
+    subject: "New cybersecurity book available",
+    body: "A book you saved is now available. You can view it from your normal library account.",
+    clues: [
+      "The message does not ask for credentials.",
+      "It directs you to use your normal account.",
+      "There is no threat or unusual deadline."
+    ],
+    answer: "safe",
+    explanation: "This round is classified as safe. In real life, still confirm the sender and destination before clicking."
+  },
+  {
+    difficulty: "EXPERT",
+    sender: "support@account-secure.example",
+    subject: "Security notice",
+    body: "Your account requires a security review. Instead of clicking the email link, open the service's official website yourself and check for alerts.",
+    clues: [
+      "The message specifically avoids asking you to click its link.",
+      "It recommends navigating independently.",
+      "It does not request a password by email."
+    ],
+    answer: "safe",
+    explanation: "This is classified as safe in the game because it recommends independent verification rather than directing you through a suspicious link."
+  },
+  {
+    difficulty: "EXPERT",
+    sender: "admin@clyvexis-login.example",
+    subject: "Admin access confirmation",
+    body: "Confirm your admin access by replying with your password and recovery code. This request must be completed today.",
+    clues: [
+      "It asks for a password.",
+      "It asks for a recovery code.",
+      "It adds deadline pressure."
+    ],
+    answer: "phishing",
+    explanation: "Passwords and recovery codes should not be requested through ordinary email. The urgency adds another warning sign."
+  }
+];
+
+let phishingIndex = 0;
+let phishingScore = 0;
+let phishingStreak = 0;
+let phishingCorrect = 0;
+let phishingLocked = false;
+let phishingTimer = null;
+let phishingSeconds = 20;
+
+function startPhishingHunt() {
+  const panel = document.getElementById("phishingHuntGame");
+  if (!panel) return;
+
+  panel.style.display = "block";
+  phishingIndex = 0;
+  phishingScore = 0;
+  phishingStreak = 0;
+  phishingCorrect = 0;
+  showPhishingRound();
+  panel.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function stopPhishingTimer() {
+  if (phishingTimer) {
+    clearInterval(phishingTimer);
+    phishingTimer = null;
+  }
+}
+
+function startPhishingTimer() {
+  stopPhishingTimer();
+  phishingSeconds = 20;
+  updatePhishingHUD();
+
+  phishingTimer = setInterval(() => {
+    phishingSeconds--;
+    updatePhishingHUD();
+
+    if (phishingSeconds <= 0) {
+      stopPhishingTimer();
+      if (!phishingLocked) {
+        phishingLocked = true;
+        phishingStreak = 0;
+        showPhishingFeedback(false, true);
+      }
+    }
+  }, 1000);
+}
+
+function updatePhishingHUD() {
+  const score = document.getElementById("phishScore");
+  const streak = document.getElementById("phishStreak");
+  const timer = document.getElementById("phishTimer");
+  const round = document.getElementById("phishRound");
+
+  if (score) score.textContent = phishingScore;
+  if (streak) streak.textContent = phishingStreak;
+  if (timer) timer.textContent = phishingSeconds + "s";
+  if (round) round.textContent = `${Math.min(phishingIndex + 1, phishingRounds.length)} / ${phishingRounds.length}`;
+}
+
+function showPhishingRound() {
+  stopPhishingTimer();
+  phishingLocked = false;
+
+  const r = phishingRounds[phishingIndex];
+  const sender = document.getElementById("phishSender");
+  const subject = document.getElementById("phishSubject");
+  const body = document.getElementById("phishBody");
+  const difficulty = document.getElementById("phishDifficulty");
+  const clues = document.getElementById("phishClues");
+  const feedback = document.getElementById("phishFeedback");
+  const next = document.getElementById("phishNext");
+
+  if (!sender || !subject || !body || !difficulty || !clues) return;
+
+  sender.textContent = r.sender;
+  subject.textContent = r.subject;
+  body.textContent = r.body;
+  difficulty.textContent = r.difficulty;
+  difficulty.dataset.level = r.difficulty;
+
+  clues.innerHTML = r.clues.map((clue, i) =>
+    `<button class="clue-btn" onclick="togglePhishClue(${i})">CLUE ${i + 1}</button>`
+  ).join("");
+
+  document.querySelectorAll(".phish-clue-text").forEach(el => el.remove());
+
+  if (feedback) {
+    feedback.className = "phish-feedback";
+    feedback.textContent = "Analyze the message, then make your call.";
+  }
+  if (next) next.style.display = "none";
+
+  updatePhishingHUD();
+  startPhishingTimer();
+}
+
+function togglePhishClue(i) {
+  const r = phishingRounds[phishingIndex];
+  const clues = document.getElementById("phishClues");
+  if (!clues || !r) return;
+
+  const old = clues.querySelector(`[data-clue="${i}"]`);
+  if (old) {
+    old.remove();
+    return;
+  }
+
+  const item = document.createElement("div");
+  item.className = "phish-clue-text";
+  item.dataset.clue = i;
+  item.textContent = "↳ " + r.clues[i];
+  clues.appendChild(item);
+}
+
+function answerPhishing(choice) {
+  if (phishingLocked) return;
+
+  phishingLocked = true;
+  stopPhishingTimer();
+
+  const r = phishingRounds[phishingIndex];
+  const correct = choice === r.answer;
+
+  if (correct) {
+    phishingCorrect++;
+    phishingStreak++;
+    const timeBonus = Math.max(0, phishingSeconds * 2);
+    const streakBonus = phishingStreak * 5;
+    phishingScore += 100 + timeBonus + streakBonus;
+  } else {
+    phishingStreak = 0;
+    phishingScore = Math.max(0, phishingScore - 25);
+  }
+
+  updatePhishingHUD();
+  showPhishingFeedback(correct, false);
+}
+
+function showPhishingFeedback(correct, timedOut) {
+  const r = phishingRounds[phishingIndex];
+  const feedback = document.getElementById("phishFeedback");
+  const next = document.getElementById("phishNext");
+
+  if (!feedback || !next) return;
+
+  if (timedOut) {
+    feedback.innerHTML = `<strong>TIMEOUT</strong> — The message was <strong>${r.answer.toUpperCase()}</strong>.<br>${r.explanation}`;
+  } else if (correct) {
+    feedback.innerHTML = `<strong>CORRECT</strong> — Nice analysis.<br>${r.explanation}`;
+  } else {
+    feedback.innerHTML = `<strong>NOT QUITE</strong> — The message was <strong>${r.answer.toUpperCase()}</strong>.<br>${r.explanation}`;
+  }
+
+  feedback.className = "phish-feedback " + (correct ? "good" : "bad");
+  next.style.display = "inline-flex";
+  next.textContent = phishingIndex === phishingRounds.length - 1 ? "VIEW RESULTS →" : "NEXT ROUND →";
+}
+
+function nextPhishingRound() {
+  if (phishingIndex >= phishingRounds.length - 1) {
+    finishPhishingHunt();
+    return;
+  }
+
+  phishingIndex++;
+  showPhishingRound();
+}
+
+function finishPhishingHunt() {
+  stopPhishingTimer();
+
+  const panel = document.getElementById("phishingHuntGame");
+  const result = document.getElementById("phishFinal");
+  if (!panel || !result) return;
+
+  const percent = Math.round((phishingCorrect / phishingRounds.length) * 100);
+  let rank = "ANALYST";
+  if (phishingScore >= 950) rank = "SOC COMMANDER";
+  else if (phishingScore >= 700) rank = "THREAT HUNTER";
+  else if (phishingScore >= 450) rank = "SECURITY ANALYST";
+
+  result.innerHTML = `
+    <div class="final-icon">🏆</div>
+    <div class="final-kicker">MISSION COMPLETE</div>
+    <h3>${rank}</h3>
+    <div class="final-stats">
+      <span><b>${phishingScore}</b><small>SCORE</small></span>
+      <span><b>${phishingCorrect}/${phishingRounds.length}</b><small>CORRECT</small></span>
+      <span><b>${percent}%</b><small>ACCURACY</small></span>
+    </div>
+    <p>${percent >= 80
+      ? "Strong work. You consistently looked for warning signs instead of trusting the message at face value."
+      : "Good practice round. Review the clues and try again to sharpen your phishing-detection skills."}</p>
+    <button class="game-btn primary" onclick="restartPhishingHunt()">↻ PLAY AGAIN</button>
+  `;
+
+  result.style.display = "block";
+  document.getElementById("phishBoard").style.display = "none";
+  result.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function restartPhishingHunt() {
+  const result = document.getElementById("phishFinal");
+  const board = document.getElementById("phishBoard");
+
+  if (result) result.style.display = "none";
+  if (board) board.style.display = "block";
+
+  phishingIndex = 0;
+  phishingScore = 0;
+  phishingStreak = 0;
+  phishingCorrect = 0;
+  showPhishingRound();
 }
 </script>
 
