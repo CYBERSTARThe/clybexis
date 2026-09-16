@@ -9,9 +9,11 @@ The platform combines cybersecurity lessons, hands-on labs, quizzes, games, simu
 Learn. Build. Defend.
 
 🌐 Website: https://cyberstarthe.github.io/clybexis/
+
 ## 📸 Clyvexis
 
-![Clyvexis Home](YOUR-SCREENSHOT-FILENAME.png)
+![Clyvexis Home](IMG_0891.jpeg)
+
 ⸻
 
 🚀 What Is Clyvexis?
