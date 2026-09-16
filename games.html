@@ -1,1399 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Clyvexis | Games</title>
-
-    <style>
-
-        /* =========================
-           RESET
-        ========================= */
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-
-        /* =========================
-           BODY
-        ========================= */
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-
-            color: white;
-
-            min-height: 100vh;
-
-            overflow-x: hidden;
-
-            position: relative;
-
-            background:
-                radial-gradient(
-                    circle at 50% -10%,
-                    rgba(0,170,255,0.20),
-                    transparent 38%
-                ),
-                linear-gradient(
-                    rgba(0,170,255,0.035) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(0,170,255,0.035) 1px,
-                    transparent 1px
-                ),
-                #050b16;
-
-            background-size:
-                auto,
-                35px 35px,
-                35px 35px,
-                auto;
-
-            background-attachment: fixed;
-        }
-
-
-        /* =========================
-           ANIMATED CYBER GLOW
-        ========================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            top: -250px;
-            left: 50%;
-
-            width: 700px;
-            height: 500px;
-
-            transform: translateX(-50%);
-
-            background:
-                radial-gradient(
-                    ellipse,
-                    rgba(0,170,255,0.18),
-                    transparent 70%
-                );
-
-            pointer-events: none;
-
-            z-index: 0;
-
-            animation:
-                cyberGlow 6s ease-in-out infinite alternate;
-        }
-
-
-        @keyframes cyberGlow {
-
-            from {
-
-                transform:
-                    translateX(-50%)
-                    scale(0.9);
-
-                opacity: 0.55;
-
-            }
-
-            to {
-
-                transform:
-                    translateX(-50%)
-                    scale(1.15);
-
-                opacity: 1;
-
-            }
-
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            padding: 16px 6%;
-
-            background:
-                rgba(3, 8, 18, 0.85);
-
-            backdrop-filter:
-                blur(18px);
-
-            border-bottom:
-                1px solid rgba(0, 200, 255, 0.15);
-        }
-
-
-        .logo {
-
-            font-size: 23px;
-
-            font-weight: bold;
-
-            white-space: nowrap;
-        }
-
-
-        .logo span {
-
-            color: #00d9ff;
-        }
-
-
-        .nav-links {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 20px;
-        }
-
-
-        .nav-links a {
-
-            color: #c9d7e8;
-
-            text-decoration: none;
-
-            font-size: 14px;
-
-            transition: 0.3s;
-        }
-
-
-        .nav-links a:hover {
-
-            color: #00d9ff;
-        }
-
-
-        .nav-links .active {
-
-            color: #00d9ff;
-        }
-
-
-        .donate {
-
-            padding: 9px 15px;
-
-            border-radius: 20px;
-
-            border:
-                1px solid rgba(0, 255, 170, 0.5);
-
-            color: #7dffc9 !important;
-
-            background:
-                rgba(0, 255, 170, 0.08);
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-
-            position: relative;
-
-            z-index: 1;
-
-            text-align: center;
-
-            padding: 75px 20px 45px;
-        }
-
-
-        .hero-icon {
-
-            font-size: 58px;
-
-            margin-bottom: 15px;
-
-            filter:
-                drop-shadow(
-                    0 0 18px
-                    rgba(0, 200, 255, 0.5)
-                );
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                clamp(40px, 8vw, 70px);
-
-            margin-bottom: 12px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #00d9ff
-                );
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-        }
-
-
-        .hero p {
-
-            color: #9eb2c8;
-
-            max-width: 680px;
-
-            margin: auto;
-
-            line-height: 1.7;
-
-            font-size: 17px;
-        }
-
-
-        .tagline {
-
-            margin-top: 15px;
-
-            color: #00e5ff;
-
-            font-size: 13px;
-
-            letter-spacing: 4px;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           GAME GRID
-        ========================= */
-
-        .games-container {
-
-            position: relative;
-
-            z-index: 1;
-
-            width:
-                min(1100px, 92%);
-
-            margin:
-                20px auto 80px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
-            gap: 24px;
-        }
-
-
-        /* =========================
-           GAME CARD
-        ========================= */
-
-        .game-card {
-
-            position: relative;
-
-            padding: 28px;
-
-            border-radius: 22px;
-
-            background:
-                rgba(9, 20, 35, 0.72);
-
-            border:
-                1px solid rgba(0, 190, 255, 0.18);
-
-            backdrop-filter:
-                blur(16px);
-
-            box-shadow:
-                0 0 35px
-                rgba(0, 170, 255, 0.07);
-
-            transition: 0.3s;
-        }
-
-
-        .game-card:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                rgba(0, 210, 255, 0.45);
-
-            box-shadow:
-                0 0 35px
-                rgba(0, 190, 255, 0.15);
-        }
-
-
-        .game-icon {
-
-            font-size: 42px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .game-card h2 {
-
-            font-size: 23px;
-
-            margin-bottom: 10px;
-        }
-
-
-        .game-card p {
-
-            color: #9eb2c8;
-
-            line-height: 1.6;
-
-            margin-bottom: 20px;
-        }
-
-
-        .difficulty {
-
-            display: inline-block;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 11px;
-
-            color: #7de8ff;
-
-            background:
-                rgba(0, 200, 255, 0.08);
-
-            border:
-                1px solid rgba(0, 200, 255, 0.2);
-
-            margin-bottom: 20px;
-        }
-
-
-        /* =========================
-           BUTTON
-        ========================= */
-
-        .game-button {
-
-            width: 100%;
-
-            padding: 13px 18px;
-
-            border: none;
-
-            border-radius: 10px;
-
-            cursor: pointer;
-
-            color: white;
-
-            font-size: 15px;
-
-            font-weight: bold;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #008cff,
-                    #00d9ff
-                );
-
-            box-shadow:
-                0 0 18px
-                rgba(0, 180, 255, 0.18);
-
-            transition: 0.3s;
-        }
-
-
-        .game-button:hover {
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 0 25px
-                rgba(0, 210, 255, 0.35);
-        }
-
-
-        /* =========================
-           GAME AREA
-        ========================= */
-
-        .game-area {
-
-            display: none;
-
-            margin-top: 20px;
-
-            padding: 20px;
-
-            border-radius: 15px;
-
-            background:
-                rgba(0, 0, 0, 0.22);
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.08);
-        }
-
-
-        .game-area.show {
-
-            display: block;
-        }
-
-
-        .scenario {
-
-            color: #dcecff;
-
-            line-height: 1.6;
-
-            margin-bottom: 18px;
-        }
-
-
-        /* =========================
-           OPTIONS
-        ========================= */
-
-        .option {
-
-            width: 100%;
-
-            padding: 13px 15px;
-
-            margin-bottom: 10px;
-
-            text-align: left;
-
-            color: #e7f2ff;
-
-            background:
-                rgba(255, 255, 255, 0.035);
-
-            border:
-                1px solid
-                rgba(130, 170, 200, 0.18);
-
-            border-radius: 10px;
-
-            cursor: pointer;
-
-            transition: 0.25s;
-        }
-
-
-        .option:hover {
-
-            border-color:
-                #00d9ff;
-
-            background:
-                rgba(0, 190, 255, 0.08);
-        }
-
-
-        .option.correct {
-
-            border-color:
-                #00ffae;
-
-            background:
-                rgba(0, 255, 170, 0.10);
-
-            color: #8fffd3;
-        }
-
-
-        .option.wrong {
-
-            border-color:
-                #ff5c7a;
-
-            background:
-                rgba(255, 60, 100, 0.08);
-
-            color: #ff9caf;
-        }
-
-
-        .result {
-
-            margin-top: 15px;
-
-            font-weight: bold;
-
-            min-height: 22px;
-        }
-
-
-        .next-button {
-
-            margin-top: 15px;
-
-            padding: 10px 16px;
-
-            border: none;
-
-            border-radius: 9px;
-
-            cursor: pointer;
-
-            background:
-                #00d9ff;
-
-            color: #03101c;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-
-            position: relative;
-
-            z-index: 1;
-
-            text-align: center;
-
-            padding: 40px 20px;
-
-            color: #71859b;
-
-            border-top:
-                1px solid
-                rgba(0, 190, 255, 0.10);
-        }
-
-
-        footer strong {
-
-            color: #00d9ff;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .nav-links {
-
-                gap: 10px;
-            }
-
-
-            .nav-links a {
-
-                font-size: 12px;
-            }
-
-
-            .games-container {
-
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-
-        @media (max-width: 650px) {
-
-            nav {
-
-                flex-direction: column;
-
-                gap: 15px;
-
-                padding: 15px;
-            }
-
-
-            .nav-links {
-
-                width: 100%;
-
-                justify-content: center;
-
-                flex-wrap: wrap;
-
-                gap: 12px;
-            }
-
-
-            .hero {
-
-                padding-top: 50px;
-            }
-
-
-            .game-card {
-
-                padding: 22px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Clyvexis Cyber Arcade — 20 interactive coding and cybersecurity games.">
+<title>Clyvexis | Cyber Arcade</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Arial,Helvetica,sans-serif;color:#fff;min-height:100vh;
+    overflow-x:hidden;position:relative;
+    background:
+      radial-gradient(circle at 50% -10%,rgba(0,170,255,.22),transparent 38%),
+      linear-gradient(rgba(0,170,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,170,255,.035) 1px,transparent 1px),#050b16;
+    background-size:auto,35px 35px,35px 35px,auto;
+    background-attachment:fixed;
+}
+body:before{
+    content:"";position:fixed;top:-250px;left:50%;width:700px;height:500px;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse,rgba(0,170,255,.18),transparent 70%);
+    pointer-events:none;z-index:0;animation:cyberGlow 6s ease-in-out infinite alternate;
+}
+@keyframes cyberGlow{
+    from{transform:translateX(-50%) scale(.9);opacity:.55}
+    to{transform:translateX(-50%) scale(1.15);opacity:1}
+}
+nav{
+    position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;
+    align-items:center;padding:16px 6%;background:rgba(3,8,18,.88);
+    backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,200,255,.15)
+}
+.logo{font-size:23px;font-weight:bold;white-space:nowrap}.logo span{color:#00d9ff}
+.nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{color:#c9d7e8;text-decoration:none;font-size:14px;transition:.3s}
+.nav-links a:hover,.nav-links .active{color:#00d9ff}
+.donate{padding:9px 15px;border-radius:20px;border:1px solid rgba(0,255,170,.5);color:#7dffc9!important;background:rgba(0,255,170,.08)}
+
+.hero{position:relative;z-index:1;text-align:center;padding:68px 20px 30px}
+.hero-icon{font-size:60px;margin-bottom:12px;filter:drop-shadow(0 0 18px rgba(0,200,255,.5))}
+.hero h1{
+    font-size:clamp(40px,8vw,72px);margin-bottom:12px;
+    background:linear-gradient(90deg,#fff,#00d9ff,#39ff88);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.hero p{color:#9eb2c8;max-width:720px;margin:auto;line-height:1.7;font-size:17px}
+.tagline{margin-top:15px;color:#00e5ff;font-size:13px;letter-spacing:4px;font-weight:bold}
+.arcade-status{
+    width:min(1100px,92%);margin:28px auto 0;position:relative;z-index:1;
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap
+}
+.status-box{
+    padding:12px 18px;border:1px solid rgba(0,210,255,.18);border-radius:14px;
+    background:rgba(9,20,35,.65);color:#9eb2c8;font-size:13px
+}
+.status-box strong{color:#fff}.green{color:#39ff88!important}
+
+.filters{
+    position:relative;z-index:1;width:min(1100px,92%);margin:25px auto 20px;
+    display:flex;gap:10px;justify-content:center;flex-wrap:wrap
+}
+.filter{
+    padding:10px 15px;border-radius:999px;border:1px solid rgba(0,190,255,.2);
+    background:rgba(255,255,255,.03);color:#b9cce0;cursor:pointer;font-weight:bold
+}
+.filter:hover,.filter.active{background:rgba(0,190,255,.1);border-color:#00d9ff;color:#00d9ff}
+
+.games-container{
+    position:relative;z-index:1;width:min(1100px,92%);margin:0 auto 80px;
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px
+}
+.game-card{
+    position:relative;padding:25px;border-radius:22px;background:rgba(9,20,35,.72);
+    border:1px solid rgba(0,190,255,.18);backdrop-filter:blur(16px);
+    box-shadow:0 0 35px rgba(0,170,255,.07);transition:.3s;overflow:hidden
+}
+.game-card:after{
+    content:"";position:absolute;left:-30%;top:0;width:60%;height:2px;
+    background:linear-gradient(90deg,transparent,#00d9ff,transparent);
+    animation:scan 4s linear infinite;opacity:.65
+}
+@keyframes scan{from{left:-60%}to{left:120%}}
+.game-card:hover{transform:translateY(-5px);border-color:rgba(0,210,255,.45);box-shadow:0 0 35px rgba(0,190,255,.15)}
+.game-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.game-icon{font-size:42px}.game-number{font-size:11px;color:#5f7890;letter-spacing:2px;font-weight:bold}
+.game-card h2{font-size:22px;margin:13px 0 9px}
+.game-card p{color:#9eb2c8;line-height:1.6;margin-bottom:17px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.tag,.difficulty{
+    display:inline-block;padding:6px 9px;border-radius:20px;font-size:10px;
+    letter-spacing:.5px;color:#7de8ff;background:rgba(0,200,255,.08);
+    border:1px solid rgba(0,200,255,.2)
+}
+.difficulty.advanced{color:#ffca7a;border-color:rgba(255,180,70,.25);background:rgba(255,180,70,.06)}
+.difficulty.intermediate{color:#c7a7ff;border-color:rgba(170,110,255,.25);background:rgba(170,110,255,.06)}
+.game-button{
+    width:100%;padding:13px 18px;border:none;border-radius:10px;cursor:pointer;
+    color:#fff;font-size:15px;font-weight:bold;
+    background:linear-gradient(90deg,#008cff,#00d9ff);
+    box-shadow:0 0 18px rgba(0,180,255,.18);transition:.3s
+}
+.game-button:hover{transform:translateY(-2px);box-shadow:0 0 25px rgba(0,210,255,.35)}
+.game-area{
+    display:none;margin-top:18px;padding:18px;border-radius:15px;
+    background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.08)
+}
+.game-area.show{display:block}
+.challenge{
+    color:#dcecff;line-height:1.6;margin-bottom:15px
+}
+.option{
+    width:100%;padding:12px 14px;margin-bottom:9px;text-align:left;color:#e7f2ff;
+    background:rgba(255,255,255,.035);border:1px solid rgba(130,170,200,.18);
+    border-radius:10px;cursor:pointer;transition:.25s
+}
+.option:hover{border-color:#00d9ff;background:rgba(0,190,255,.08)}
+.option.correct{border-color:#00ffae;background:rgba(0,255,170,.10);color:#8fffd3}
+.option.wrong{border-color:#ff5c7a;background:rgba(255,60,100,.08);color:#ff9caf}
+.result{margin-top:10px;font-weight:bold;min-height:22px;line-height:1.5}
+.mini-input{
+    width:100%;padding:12px;border-radius:9px;border:1px solid rgba(0,200,255,.22);
+    background:#07101d;color:#fff;margin-bottom:10px;outline:none
+}
+.mini-input:focus{border-color:#00d9ff}
+.mini-button{
+    padding:10px 14px;border:0;border-radius:8px;background:#00d9ff;color:#03101c;
+    font-weight:bold;cursor:pointer
+}
+.code-box{
+    padding:14px;border-radius:10px;background:#02070e;border:1px solid rgba(0,210,255,.16);
+    color:#b9eaff;font-family:Consolas,monospace;font-size:13px;white-space:pre-wrap;
+    margin-bottom:12px
+}
+.choice-row{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.hidden{display:none!important}
+
+footer{
+    position:relative;z-index:1;text-align:center;padding:40px 20px;color:#71859b;
+    border-top:1px solid rgba(0,190,255,.10)
+}
+footer strong{color:#00d9ff}
+
+@media(max-width:900px){.games-container{grid-template-columns:1fr}}
+@media(max-width:650px){
+    nav{flex-direction:column;gap:15px;padding:15px}
+    .nav-links{width:100%;justify-content:center;gap:11px}
+    .nav-links a{font-size:12px}
+    .hero{padding-top:45px}.game-card{padding:21px}
+    .choice-row{grid-template-columns:1fr}
+}
+</style>
 </head>
-
 
 <body>
 
-
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
-
-    <nav>
-
-        <div class="logo">
-            🛡️ Cly<span>vexis</span>
-        </div>
-
-
-        <div class="nav-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="lessons.html">
-                Lessons
-            </a>
-
-            <a href="labs.html">
-                Labs
-            </a>
-
-            <a href="quiz.html">
-                Quiz
-            </a>
-
-            <a href="games.html" class="active">
-                Games
-            </a>
-
-            <a href="cyber-defense.html">
-                🛡️ Defense
-            </a>
-
-            <a href="glossary.html">
-                Glossary
-            </a>
-
-            <a href="coding.html">
-                💻 Coding
-            </a>
-
-            <a href="simulators.html">
-                🖥️ Simulators
-            </a>
-
-            <a href="donate.html" class="donate">
-                💚 Donate
-            </a>
-
-        </div>
-
-    </nav>
-
-
-    <!-- =========================
-         HERO
-    ========================= -->
-
-    <section class="hero">
-
-        <div class="hero-icon">
-            🎮
-        </div>
-
-
-        <h1>
-            Clyvexis Games
-        </h1>
-
-
-        <p>
-            Practice cybersecurity skills through safe,
-            interactive challenges and scenarios.
-        </p>
-
-
-        <div class="tagline">
-            THINK • ANALYZE • DEFEND
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         GAMES
-    ========================= -->
-
-    <main class="games-container">
-
-
-        <!-- GAME 1 -->
-
-        <div class="game-card">
-
-            <div class="game-icon">
-                🎣
-            </div>
-
-
-            <h2>
-                Phishing Spotter
-            </h2>
-
-
-            <p>
-                Learn how to recognize suspicious messages,
-                fake links, and common phishing warning signs.
-            </p>
-
-
-            <span class="difficulty">
-                BEGINNER
-            </span>
-
-
-            <button
-                class="game-button"
-                onclick="startGame('phishing')">
-
-                ▶ Start Game
-
-            </button>
-
-
-            <div id="phishing" class="game-area">
-
-                <div class="scenario">
-
-                    You receive an email saying:
-
-                    <br><br>
-
-                    <strong>
-                        "Your account needs immediate verification.
-                        Click the link to keep your account active."
-                    </strong>
-
-                    <br><br>
-
-                    What should you do?
-
-                </div>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, true, 'phishingResult')">
-
-                    Check the message carefully and verify it through
-                    the organization's official website.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'phishingResult')">
-
-                    Click the link immediately.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'phishingResult')">
-
-                    Reply with your password.
-
-                </button>
-
-
-                <div
-                    id="phishingResult"
-                    class="result">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GAME 2 -->
-
-        <div class="game-card">
-
-            <div class="game-icon">
-                🔐
-            </div>
-
-
-            <h2>
-                Password Defender
-            </h2>
-
-
-            <p>
-                Test your understanding of what makes a password
-                harder to guess.
-            </p>
-
-
-            <span class="difficulty">
-                BEGINNER
-            </span>
-
-
-            <button
-                class="game-button"
-                onclick="startGame('password')">
-
-                ▶ Start Game
-
-            </button>
-
-
-            <div id="password" class="game-area">
-
-                <div class="scenario">
-
-                    Which choice is the strongest password
-                    strategy?
-
-                </div>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'passwordResult')">
-
-                    Use the same short password everywhere.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, true, 'passwordResult')">
-
-                    Use a unique, long password or passphrase
-                    for each important account.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'passwordResult')">
-
-                    Use your birthday because it is easy to remember.
-
-                </button>
-
-
-                <div
-                    id="passwordResult"
-                    class="result">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GAME 3 -->
-
-        <div class="game-card">
-
-            <div class="game-icon">
-                🕵️
-            </div>
-
-
-            <h2>
-                Cyber Mystery
-            </h2>
-
-
-            <p>
-                Analyze a fictional security incident and
-                determine what probably happened.
-            </p>
-
-
-            <span class="difficulty">
-                INTERMEDIATE
-            </span>
-
-
-            <button
-                class="game-button"
-                onclick="startGame('mystery')">
-
-                ▶ Start Game
-
-            </button>
-
-
-            <div id="mystery" class="game-area">
-
-                <div class="scenario">
-
-                    A fictional company notices several
-                    employees received identical suspicious
-                    messages shortly before unusual account
-                    activity occurred.
-
-                    <br><br>
-
-                    What is the most likely warning sign?
-
-                </div>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, true, 'mysteryResult')">
-
-                    A possible phishing or social-engineering campaign.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'mysteryResult')">
-
-                    A printer running out of paper.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'mysteryResult')">
-
-                    A normal software update.
-
-                </button>
-
-
-                <div
-                    id="mysteryResult"
-                    class="result">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GAME 4 -->
-
-        <div class="game-card">
-
-            <div class="game-icon">
-                🌐
-            </div>
-
-
-            <h2>
-                Network Detective
-            </h2>
-
-
-            <p>
-                Learn basic networking concepts by solving
-                simple defensive scenarios.
-            </p>
-
-
-            <span class="difficulty">
-                INTERMEDIATE
-            </span>
-
-
-            <button
-                class="game-button"
-                onclick="startGame('network')">
-
-                ▶ Start Game
-
-            </button>
-
-
-            <div id="network" class="game-area">
-
-                <div class="scenario">
-
-                    A device needs to translate a website name
-                    such as example.com into an IP address.
-
-                    <br><br>
-
-                    Which system performs this task?
-
-                </div>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, true, 'networkResult')">
-
-                    DNS
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'networkResult')">
-
-                    HDMI
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'networkResult')">
-
-                    USB
-
-                </button>
-
-
-                <div
-                    id="networkResult"
-                    class="result">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GAME 5 -->
-
-        <div class="game-card">
-
-            <div class="game-icon">
-                🚨
-            </div>
-
-
-            <h2>
-                Incident Response
-            </h2>
-
-
-            <p>
-                Practice choosing sensible first steps when
-                responding to a fictional security incident.
-            </p>
-
-
-            <span class="difficulty">
-                ADVANCED
-            </span>
-
-
-            <button
-                class="game-button"
-                onclick="startGame('incident')">
-
-                ▶ Start Game
-
-            </button>
-
-
-            <div id="incident" class="game-area">
-
-                <div class="scenario">
-
-                    A security team notices unusual activity
-                    on a fictional workstation.
-
-                    <br><br>
-
-                    What should the team do first?
-
-                </div>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, true, 'incidentResult')">
-
-                    Follow the organization's incident-response
-                    procedure and investigate safely.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'incidentResult')">
-
-                    Ignore the alert.
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'incidentResult')">
-
-                    Immediately delete all system records.
-
-                </button>
-
-
-                <div
-                    id="incidentResult"
-                    class="result">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GAME 6 -->
-
-        <div class="game-card">
-
-            <div class="game-icon">
-                🧠
-            </div>
-
-
-            <h2>
-                Cyber Trivia
-            </h2>
-
-
-            <p>
-                Test your knowledge of cybersecurity concepts
-                with quick questions.
-            </p>
-
-
-            <span class="difficulty">
-                MIXED
-            </span>
-
-
-            <button
-                class="game-button"
-                onclick="startGame('trivia')">
-
-                ▶ Start Game
-
-            </button>
-
-
-            <div id="trivia" class="game-area">
-
-                <div class="scenario">
-
-                    What does MFA stand for?
-
-                </div>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, true, 'triviaResult')">
-
-                    Multi-Factor Authentication
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'triviaResult')">
-
-                    Main Firewall Access
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="answer(this, false, 'triviaResult')">
-
-                    Malware File Analysis
-
-                </button>
-
-
-                <div
-                    id="triviaResult"
-                    class="result">
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        <strong>
-            Clyvexis
-        </strong>
-
-        <br><br>
-
-        LEARN. PRACTICE. STAY SECURE.
-
-        <br><br>
-
-        © 2026 Clyvexis
-
-    </footer>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
-
-    <script>
-
-        function startGame(gameId) {
-
-            const area =
-                document.getElementById(gameId);
-
-            if (!area) {
-                return;
-            }
-
-            area.classList.toggle("show");
-
-        }
-
-
-        function answer(button, correct, resultId) {
-
-            const result =
-                document.getElementById(resultId);
-
-
-            const buttons =
-                button.parentElement
-                .querySelectorAll(".option");
-
-
-            buttons.forEach(function(btn) {
-
-                btn.disabled = true;
-
-            });
-
-
-            if (correct) {
-
-                button.classList.add("correct");
-
-
-                result.textContent =
-                    "✅ Correct! Great cybersecurity thinking.";
-
-
-                result.style.color =
-                    "#00ffae";
-
-            } else {
-
-                button.classList.add("wrong");
-
-
-                result.textContent =
-                    "❌ Not quite. Think about the safest defensive choice.";
-
-
-                result.style.color =
-                    "#ff7b91";
-
-            }
-
-        }
-
-    </script>
+<nav>
+    <div class="logo">🛡️ Cly<span>vexis</span></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="labs.html">Labs</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="games.html" class="active">Games</a>
+        <a href="cyber-defense.html">🛡️ Defense</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="coding.html">💻 Coding</a>
+        <a href="simulators.html">🖥️ Simulators</a>
+        <a href="donate.html" class="donate">💚 Donate</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-icon">🎮</div>
+    <h1>Clyvexis Cyber Arcade</h1>
+    <p>20 interactive coding and cybersecurity games built to make learning feel like an arcade.</p>
+    <div class="tagline">LEARN • CODE • ANALYZE • DEFEND</div>
+</section>
+
+<div class="arcade-status">
+    <div class="status-box">🎮 <strong>20</strong> Games</div>
+    <div class="status-box">💻 <strong>7</strong> Coding Games</div>
+    <div class="status-box">🛡️ <strong>10</strong> Cyber Games</div>
+    <div class="status-box">🧠 <strong>3</strong> Challenge Games</div>
+    <div class="status-box green">● ARCADE ONLINE</div>
+</div>
+
+<div class="filters">
+    <button class="filter active" onclick="filterGames('all',this)">ALL GAMES</button>
+    <button class="filter" onclick="filterGames('cyber',this)">🛡️ CYBERSECURITY</button>
+    <button class="filter" onclick="filterGames('coding',this)">💻 CODING</button>
+    <button class="filter" onclick="filterGames('challenge',this)">🧠 CHALLENGES</button>
+</div>
+
+<main class="games-container">
+
+<!-- 01 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🎣</div><div class="game-number">GAME 01</div></div>
+<h2>Phishing Hunt</h2><p>Inspect a fictional message and find the clues that reveal a phishing attempt.</p>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">SOCIAL ENGINEERING</span></div>
+<button class="game-button" onclick="toggleGame('g1')">▶ Play Game</button>
+<div id="g1" class="game-area">
+<div class="challenge"><strong>MISSION:</strong> Which clue should make you suspicious?</div>
+<button class="option" onclick="pick(this,true,'r1')">Urgent language asking you to act immediately.</button>
+<button class="option" onclick="pick(this,false,'r1')">The message has normal spacing.</button>
+<button class="option" onclick="pick(this,false,'r1')">The email contains a greeting.</button>
+<div id="r1" class="result"></div></div></div>
+
+<!-- 02 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🔐</div><div class="game-number">GAME 02</div></div>
+<h2>Password Vault</h2><p>Protect the fictional vault by choosing the safest password strategy.</p>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">ACCOUNT SECURITY</span></div>
+<button class="game-button" onclick="toggleGame('g2')">▶ Play Game</button>
+<div id="g2" class="game-area">
+<div class="challenge"><strong>VAULT LOCKED:</strong> Choose the best strategy.</div>
+<button class="option" onclick="pick(this,false,'r2')">Use one short password on every account.</button>
+<button class="option" onclick="pick(this,true,'r2')">Use unique, long passwords or passphrases for important accounts.</button>
+<button class="option" onclick="pick(this,false,'r2')">Use easy personal information.</button>
+<div id="r2" class="result"></div></div></div>
+
+<!-- 03 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🕵️</div><div class="game-number">GAME 03</div></div>
+<h2>Cyber Mystery</h2><p>Investigate a fictional incident by connecting clues and identifying the warning sign.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">INVESTIGATION</span></div>
+<button class="game-button" onclick="toggleGame('g3')">▶ Play Game</button>
+<div id="g3" class="game-area">
+<div class="challenge">Several employees receive nearly identical suspicious messages before unusual account activity. What is the strongest lead?</div>
+<button class="option" onclick="pick(this,true,'r3')">A possible phishing or social-engineering campaign.</button>
+<button class="option" onclick="pick(this,false,'r3')">A printer issue.</button>
+<button class="option" onclick="pick(this,false,'r3')">A routine software update.</button>
+<div id="r3" class="result"></div></div></div>
+
+<!-- 04 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🛡️</div><div class="game-number">GAME 04</div></div>
+<h2>Defense Grid</h2><p>Choose defensive actions to protect a fictional network during a simulated alert.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">DEFENSE</span></div>
+<button class="game-button" onclick="toggleGame('g4')">▶ Play Game</button>
+<div id="g4" class="game-area">
+<div class="challenge">ALERT: A workstation shows unusual activity. Which first action fits a safe incident-response process?</div>
+<button class="option" onclick="pick(this,true,'r4')">Follow the organization's incident-response procedure and investigate safely.</button>
+<button class="option" onclick="pick(this,false,'r4')">Ignore the alert.</button>
+<button class="option" onclick="pick(this,false,'r4')">Delete all records immediately.</button>
+<div id="r4" class="result"></div></div></div>
+
+<!-- 05 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🌐</div><div class="game-number">GAME 05</div></div>
+<h2>Packet Pursuit</h2><p>Learn basic networking by identifying what different network systems do.</p>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">NETWORKING</span></div>
+<button class="game-button" onclick="toggleGame('g5')">▶ Play Game</button>
+<div id="g5" class="game-area">
+<div class="challenge">A device needs to translate a website name into an IP address. Which system helps?</div>
+<button class="option" onclick="pick(this,true,'r5')">DNS</button>
+<button class="option" onclick="pick(this,false,'r5')">HDMI</button>
+<button class="option" onclick="pick(this,false,'r5')">USB</button>
+<div id="r5" class="result"></div></div></div>
+
+<!-- 06 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🚨</div><div class="game-number">GAME 06</div></div>
+<h2>Incident Response</h2><p>Make safe decisions while a fictional security team responds to an alert.</p>
+<div class="tags"><span class="difficulty advanced">ADVANCED</span><span class="tag">BLUE TEAM</span></div>
+<button class="game-button" onclick="toggleGame('g6')">▶ Play Game</button>
+<div id="g6" class="game-area">
+<div class="challenge">SYSTEM ALERT: Multiple unusual events are being investigated. What principle matters first?</div>
+<button class="option" onclick="pick(this,true,'r6')">Preserve evidence, follow procedure, and investigate safely.</button>
+<button class="option" onclick="pick(this,false,'r6')">Make random changes to every system.</button>
+<button class="option" onclick="pick(this,false,'r6')">Erase logs before investigating.</button>
+<div id="r6" class="result"></div></div></div>
+
+<!-- 07 -->
+<div class="game-card" data-category="challenge">
+<div class="game-top"><div class="game-icon">🧠</div><div class="game-number">GAME 07</div></div>
+<h2>Cipher Challenge</h2><p>Decode a simple educational cipher and learn the idea behind encryption.</p>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">CRYPTOGRAPHY</span></div>
+<button class="game-button" onclick="toggleGame('g7')">▶ Play Game</button>
+<div id="g7" class="game-area">
+<div class="challenge">A fictional Caesar cipher shifts every letter forward by 1. Decode: <strong>IFMMP</strong></div>
+<input class="mini-input" id="cipherInput" placeholder="Type the decoded word">
+<button class="mini-button" onclick="checkInput('cipherInput','HELLO','r7')">Submit</button>
+<div id="r7" class="result"></div></div></div>
+
+<!-- 08 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🔎</div><div class="game-number">GAME 08</div></div>
+<h2>Log Detective</h2><p>Read fictional logs and identify which event deserves investigation.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">LOG ANALYSIS</span></div>
+<button class="game-button" onclick="toggleGame('g8')">▶ Play Game</button>
+<div id="g8" class="game-area">
+<div class="code-box">08:41 LOGIN user=alex status=success
+08:44 LOGIN user=alex status=success
+08:45 LOGIN user=alex status=failed
+08:45 LOGIN user=alex status=failed</div>
+<div class="challenge">Which pattern deserves closer investigation?</div>
+<button class="option" onclick="pick(this,true,'r8')">The repeated failed login attempts.</button>
+<button class="option" onclick="pick(this,false,'r8')">The successful login at 08:41.</button>
+<button class="option" onclick="pick(this,false,'r8')">The timestamp format.</button>
+<div id="r8" class="result"></div></div></div>
+
+<!-- 09 -->
+<div class="game-card" data-category="challenge">
+<div class="game-top"><div class="game-icon">⚡</div><div class="game-number">GAME 09</div></div>
+<h2>Terminal Rush</h2><p>Practice recognizing safe command-line concepts in a fictional terminal.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">CLI</span></div>
+<button class="game-button" onclick="toggleGame('g9')">▶ Play Game</button>
+<div id="g9" class="game-area">
+<div class="challenge">MISSION: In a Unix-like terminal, which command is commonly used to display the current directory?</div>
+<button class="option" onclick="pick(this,true,'r9')">pwd</button>
+<button class="option" onclick="pick(this,false,'r9')">paint</button>
+<button class="option" onclick="pick(this,false,'r9')">screenmode</button>
+<div id="r9" class="result"></div></div></div>
+
+<!-- 10 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🔥</div><div class="game-number">GAME 10</div></div>
+<h2>Firewall Frenzy</h2><p>Learn the idea of network filtering by choosing which fictional traffic should be allowed.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">NETWORK DEFENSE</span></div>
+<button class="game-button" onclick="toggleGame('g10')">▶ Play Game</button>
+<div id="g10" class="game-area">
+<div class="challenge">A fictional firewall rule should allow approved web traffic while blocking unknown traffic. What is the defensive principle?</div>
+<button class="option" onclick="pick(this,true,'r10')">Only allow traffic that matches approved rules.</button>
+<button class="option" onclick="pick(this,false,'r10')">Allow everything automatically.</button>
+<button class="option" onclick="pick(this,false,'r10')">Disable the firewall.</button>
+<div id="r10" class="result"></div></div></div>
+
+<!-- 11 -->
+<div class="game-card" data-category="coding">
+<div class="game-top"><div class="game-icon">🐛</div><div class="game-number">GAME 11</div></div>
+<h2>Bug Hunter</h2><p>Find the bug in a tiny JavaScript snippet before the program crashes.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">JAVASCRIPT</span></div>
+<button class="game-button" onclick="toggleGame('g11')">▶ Play Game</button>
+<div id="g11" class="game-area">
+<div class="code-box">let score = 10;
+score = score + "5";
+console.log(score);</div>
+<div class="challenge">What is the main issue?</div>
+<button class="option" onclick="pick(this,true,'r11')">The code mixes a number and a string, which can cause unexpected behavior.</button>
+<button class="option" onclick="pick(this,false,'r11')">console.log is always a security vulnerability.</button>
+<button class="option" onclick="pick(this,false,'r11')">let cannot store numbers.</button>
+<div id="r11" class="result"></div></div></div>
+
+<!-- 12 -->
+<div class="game-card" data-category="coding">
+<div class="game-top"><div class="game-icon">🏗️</div><div class="game-number">GAME 12</div></div>
+<h2>HTML Hacker</h2><p>Repair a fictional webpage by identifying the correct HTML element.</p>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">HTML</span></div>
+<button class="game-button" onclick="toggleGame('g12')">▶ Play Game</button>
+<div id="g12" class="game-area">
+<div class="challenge">Which HTML element is normally used for the largest main heading?</div>
+<button class="option" onclick="pick(this,true,'r12')">&lt;h1&gt;</button>
+<button class="option" onclick="pick(this,false,'r12')">&lt;heading&gt;</button>
+<button class="option" onclick="pick(this,false,'r12')">&lt;titletext&gt;</button>
+<div id="r12" class="result"></div></div></div>
+
+<!-- 13 -->
+<div class="game-card" data-category="coding">
+<div class="game-top"><div class="game-icon">🎨</div><div class="game-number">GAME 13</div></div>
+<h2>CSS Crash Lab</h2><p>Choose the CSS property that controls an element's text color.</p>
+<div class="tags"><span class="difficulty">BEGINNER</span><span class="tag">CSS</span></div>
+<button class="game-button" onclick="toggleGame('g13')">▶ Play Game</button>
+<div id="g13" class="game-area">
+<div class="challenge">Which CSS property changes the color of text?</div>
+<button class="option" onclick="pick(this,true,'r13')">color</button>
+<button class="option" onclick="pick(this,false,'r13')">text-paint</button>
+<button class="option" onclick="pick(this,false,'r13')">font-shade</button>
+<div id="r13" class="result"></div></div></div>
+
+<!-- 14 -->
+<div class="game-card" data-category="coding">
+<div class="game-top"><div class="game-icon">⚙️</div><div class="game-number">GAME 14</div></div>
+<h2>JavaScript Reactor</h2><p>Keep the fictional reactor stable by choosing the correct JavaScript concept.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">JAVASCRIPT</span></div>
+<button class="game-button" onclick="toggleGame('g14')">▶ Play Game</button>
+<div id="g14" class="game-area">
+<div class="challenge">Which keyword creates a variable that cannot be reassigned?</div>
+<button class="option" onclick="pick(this,true,'r14')">const</button>
+<button class="option" onclick="pick(this,false,'r14')">fixed</button>
+<button class="option" onclick="pick(this,false,'r14')">permanent</button>
+<div id="r14" class="result"></div></div></div>
+
+<!-- 15 -->
+<div class="game-card" data-category="coding">
+<div class="game-top"><div class="game-icon">🐍</div><div class="game-number">GAME 15</div></div>
+<h2>Python Protocol</h2><p>Solve short Python questions and keep the protocol running.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">PYTHON</span></div>
+<button class="game-button" onclick="toggleGame('g15')">▶ Play Game</button>
+<div id="g15" class="game-area">
+<div class="challenge">What does <strong>print("Hello")</strong> do?</div>
+<button class="option" onclick="pick(this,true,'r15')">Displays Hello as output.</button>
+<button class="option" onclick="pick(this,false,'r15')">Deletes the word Hello.</button>
+<button class="option" onclick="pick(this,false,'r15')">Creates a new Python file.</button>
+<div id="r15" class="result"></div></div></div>
+
+<!-- 16 -->
+<div class="game-card" data-category="coding">
+<div class="game-top"><div class="game-icon">🧩</div><div class="game-number">GAME 16</div></div>
+<h2>Code Breaker</h2><p>Complete a small programming challenge to unlock the next stage.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">LOGIC</span></div>
+<button class="game-button" onclick="toggleGame('g16')">▶ Play Game</button>
+<div id="g16" class="game-area">
+<div class="challenge">What value will this JavaScript expression produce?</div>
+<div class="code-box">5 + 3 * 2</div>
+<button class="option" onclick="pick(this,false,'r16')">16</button>
+<button class="option" onclick="pick(this,true,'r16')">11</button>
+<button class="option" onclick="pick(this,false,'r16')">13</button>
+<div id="r16" class="result"></div></div></div>
+
+<!-- 17 -->
+<div class="game-card" data-category="challenge">
+<div class="game-top"><div class="game-icon">🗺️</div><div class="game-number">GAME 17</div></div>
+<h2>Network Mapper</h2><p>Read a fictional network diagram and identify the device that connects local devices.</p>
+<div class="tags"><span class="difficulty intermediate">INTERMEDIATE</span><span class="tag">NETWORKING</span></div>
+<button class="game-button" onclick="toggleGame('g17')">▶ Play Game</button>
+<div id="g17" class="game-area">
+<div class="code-box">[Laptop A] ─┐
+[Laptop B] ─┼─ [Switch] ─ [Router] ─ Internet
+[Printer ] ─┘</div>
+<div class="challenge">Which device connects the local devices shown here?</div>
+<button class="option" onclick="pick(this,true,'r17')">Switch</button>
+<button class="option" onclick="pick(this,false,'r17')">Printer</button>
+<button class="option" onclick="pick(this,false,'r17')">Internet</button>
+<div id="r17" class="result"></div></div></div>
+
+<!-- 18 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🤖</div><div class="game-number">GAME 18</div></div>
+<h2>Bot Battle</h2><p>Defend a fictional service by recognizing suspicious automated activity.</p>
+<div class="tags"><span class="difficulty advanced">ADVANCED</span><span class="tag">DEFENSE</span></div>
+<button class="game-button" onclick="toggleGame('g18')">▶ Play Game</button>
+<div id="g18" class="game-area">
+<div class="challenge">A fictional service receives thousands of repetitive requests in a short period. What should the team investigate?</div>
+<button class="option" onclick="pick(this,true,'r18')">A possible automated traffic or abuse pattern.</button>
+<button class="option" onclick="pick(this,false,'r18')">The monitor brightness.</button>
+<button class="option" onclick="pick(this,false,'r18')">The keyboard layout.</button>
+<div id="r18" class="result"></div></div></div>
+
+<!-- 19 -->
+<div class="game-card" data-category="cyber">
+<div class="game-top"><div class="game-icon">🗝️</div><div class="game-number">GAME 19</div></div>
+<h2>Access Control</h2><p>Protect a fictional organization by choosing appropriate permissions.</p>
+<div class="tags"><span class="difficulty advanced">ADVANCED</span><span class="tag">IDENTITY</span></div>
+<button class="game-button" onclick="toggleGame('g19')">▶ Play Game</button>
+<div id="g19" class="game-area">
+<div class="challenge">A new employee only needs access to one project. Which principle should guide permissions?</div>
+<button class="option" onclick="pick(this,true,'r19')">Give only the access needed for the job.</button>
+<button class="option" onclick="pick(this,false,'r19')">Give every employee administrator access.</button>
+<button class="option" onclick="pick(this,false,'r19')">Share one account with everyone.</button>
+<div id="r19" class="result"></div></div></div>
+
+<!-- 20 -->
+<div class="game-card" data-category="challenge">
+<div class="game-top"><div class="game-icon">🏆</div><div class="game-number">GAME 20</div></div>
+<h2>Clyvexis Cyber Gauntlet</h2><p>The final mixed challenge. Coding, networking, security, and logic all in one run.</p>
+<div class="tags"><span class="difficulty advanced">ADVANCED</span><span class="tag">FINAL CHALLENGE</span></div>
+<button class="game-button" onclick="toggleGame('g20')">▶ Play Game</button>
+<div id="g20" class="game-area">
+<div class="challenge"><strong>FINAL ROUND:</strong> What is the safest response when a suspicious message asks for sensitive account information?</div>
+<button class="option" onclick="pickGauntlet(this,1)">Provide the information quickly.</button>
+<button class="option" onclick="pickGauntlet(this,0)">Verify the request independently and avoid sharing sensitive information through the suspicious message.</button>
+<button class="option" onclick="pickGauntlet(this,0)">Forward the message to random people.</button>
+<div id="r20" class="result"></div></div></div>
+
+</main>
+
+<footer>
+<strong>Clyvexis</strong><br><br>
+LEARN. PRACTICE. STAY SECURE.<br><br>
+© 2026 Clyvexis • Cyber Arcade
+</footer>
+
+<script>
+function toggleGame(id){
+    const area=document.getElementById(id);
+    if(area) area.classList.toggle("show");
+}
+function pick(button,correct,resultId){
+    const parent=button.parentElement;
+    const buttons=parent.querySelectorAll(".option");
+    buttons.forEach(b=>b.disabled=true);
+    const result=document.getElementById(resultId);
+    if(correct){
+        button.classList.add("correct");
+        result.textContent="✅ Correct! Strong cybersecurity thinking.";
+        result.style.color="#39ff88";
+    }else{
+        button.classList.add("wrong");
+        result.textContent="❌ Not quite. Review the clue and try another game.";
+        result.style.color="#ff7b91";
+    }
+}
+function pickGauntlet(button,score){
+    const parent=button.parentElement;
+    parent.querySelectorAll(".option").forEach(b=>b.disabled=true);
+    const result=document.getElementById("r20");
+    if(score){
+        button.classList.add("correct");
+        result.textContent="🏆 GAUNTLET COMPLETE! You made the safe choice.";
+        result.style.color="#39ff88";
+    }else{
+        button.classList.add("wrong");
+        result.textContent="❌ The gauntlet caught that decision. Think: verify first.";
+        result.style.color="#ff7b91";
+    }
+}
+function checkInput(inputId,expected,resultId){
+    const input=document.getElementById(inputId);
+    const result=document.getElementById(resultId);
+    if(input.value.trim().toUpperCase()===expected){
+        result.textContent="✅ Cipher solved! HELLO was the decoded message.";
+        result.style.color="#39ff88";
+    }else{
+        result.textContent="❌ Try again. Remember the cipher shifts each letter forward by 1.";
+        result.style.color="#ff7b91";
+    }
+}
+function filterGames(category,button){
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+    button.classList.add("active");
+    document.querySelectorAll(".game-card").forEach(card=>{
+        card.style.display=(category==="all"||card.dataset.category===category)?"block":"none";
+    });
+}
+</script>
 
 </body>
-
 </html>
