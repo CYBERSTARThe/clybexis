@@ -7,13 +7,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta name="description" content="Clyvexis Cybersecurity Glossary — learn 100 essential cybersecurity terms, concepts, attacks, defenses, technologies, and career topics.">
+
 <title>Clyvexis | Cybersecurity Glossary</title>
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -26,40 +28,90 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: white;
+
     min-height: 100vh;
+
     overflow-x: hidden;
 
     background:
         radial-gradient(
             circle at 50% -10%,
-            rgba(0,170,255,0.20),
+            rgba(0,170,255,0.16),
             transparent 38%
         ),
-        linear-gradient(
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
-        ),
         #050b16;
-
-    background-size:
-        auto,
-        35px 35px,
-        35px 35px,
-        auto;
-
-    background-attachment: fixed;
 }
 
-/* =========================
+/* =========================================================
+   GLOBAL CYBER NETWORK CANVAS
+========================================================= */
+
+#network-canvas {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.72;
+}
+
+/* =========================================================
+   BACKGROUND OVERLAYS
+========================================================= */
+
+.cyber-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            rgba(0,170,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            ellipse at center,
+            transparent 25%,
+            rgba(5,11,22,0.35) 70%,
+            rgba(5,11,22,0.78) 100%
+        );
+
+    background-size:
+        40px 40px,
+        40px 40px,
+        100% 100%;
+}
+
+/* =========================================================
    MOVING CYBER GLOW
-========================= */
+========================================================= */
 
 body::before {
 
@@ -70,10 +122,11 @@ body::before {
     top: -250px;
     left: 50%;
 
-    width: 700px;
-    height: 500px;
+    width: 750px;
+    height: 520px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     background:
         radial-gradient(
@@ -84,14 +137,16 @@ body::before {
 
     pointer-events: none;
 
-    z-index: -1;
+    z-index: 1;
 
-    animation: cyberGlow 6s ease-in-out infinite alternate;
+    animation:
+        cyberGlow 7s ease-in-out infinite alternate;
 }
 
 @keyframes cyberGlow {
 
     from {
+
         transform:
             translateX(-50%)
             scale(0.9);
@@ -100,6 +155,7 @@ body::before {
     }
 
     to {
+
         transform:
             translateX(-50%)
             scale(1.15);
@@ -108,24 +164,145 @@ body::before {
     }
 }
 
-/* =========================
+/* =========================================================
+   CYBER HUD LABELS
+========================================================= */
+
+.network-hud {
+
+    position: fixed;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    color: rgba(0,170,255,0.42);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.hud-top-left {
+
+    top: 90px;
+    left: 20px;
+}
+
+.hud-top-right {
+
+    top: 90px;
+    right: 20px;
+
+    text-align: right;
+}
+
+.hud-bottom-left {
+
+    bottom: 18px;
+    left: 20px;
+}
+
+.hud-bottom-right {
+
+    bottom: 18px;
+    right: 20px;
+
+    text-align: right;
+}
+
+.hud-green {
+
+    color: rgba(57,255,136,0.45);
+}
+
+/* =========================================================
+   PAGE CONTENT LAYER
+========================================================= */
+
+nav,
+.hero,
+.search-container,
+.filters,
+.glossary-container,
+footer {
+
+    position: relative;
+
+    z-index: 3;
+}
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 nav {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
-    background: rgba(5,11,22,0.94);
+    background:
+        rgba(5,11,22,0.91);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
 
     border-bottom:
         1px solid rgba(0,170,255,0.25);
 
     box-shadow:
         0 0 25px rgba(0,170,255,0.08);
+}
+
+/* Moving blue line across navigation */
+
+nav::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00aaff,
+            #39ff88,
+            #00aaff,
+            transparent
+        );
+
+    background-size: 200% 100%;
+
+    animation:
+        navScan 5s linear infinite;
+}
+
+@keyframes navScan {
+
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
 }
 
 nav ul {
@@ -146,6 +323,7 @@ nav ul {
 }
 
 nav li {
+
     display: inline-block;
 }
 
@@ -161,7 +339,8 @@ nav a {
 
     font-size: 14px;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 
     display: block;
 }
@@ -203,9 +382,9 @@ nav a.donate:hover {
         0 0 15px rgba(57,255,136,0.20);
 }
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
 
@@ -213,7 +392,8 @@ nav a.donate:hover {
 
     text-align: center;
 
-    padding: 90px 20px 70px;
+    padding:
+        90px 20px 70px;
 
     overflow: hidden;
 }
@@ -229,7 +409,7 @@ nav a.donate:hover {
 
     background: #008cff;
 
-    opacity: 0.08;
+    opacity: 0.07;
 
     filter: blur(120px);
 
@@ -238,7 +418,8 @@ nav a.donate:hover {
     top: -250px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     animation:
         glowMove 6s ease-in-out infinite alternate;
@@ -247,12 +428,14 @@ nav a.donate:hover {
 @keyframes glowMove {
 
     from {
+
         transform:
             translateX(-50%)
             translateY(0);
     }
 
     to {
+
         transform:
             translateX(-50%)
             translateY(60px);
@@ -295,9 +478,9 @@ nav a.donate:hover {
     line-height: 1.7;
 }
 
-/* =========================
+/* =========================================================
    SEARCH
-========================= */
+========================================================= */
 
 .search-container {
 
@@ -322,7 +505,10 @@ nav a.donate:hover {
         1px solid rgba(0,170,255,0.3);
 
     background:
-        rgba(8,18,35,0.9);
+        rgba(8,18,35,0.88);
+
+    backdrop-filter:
+        blur(8px);
 
     color: white;
 
@@ -333,15 +519,18 @@ nav a.donate:hover {
     box-shadow:
         0 0 20px rgba(0,170,255,0.06);
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .search-container input:focus {
 
-    border-color: #00aaff;
+    border-color:
+        #00aaff;
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.18);
+        0 0 20px rgba(0,170,255,0.18),
+        0 0 45px rgba(0,170,255,0.05);
 }
 
 .search-container input::placeholder {
@@ -349,9 +538,9 @@ nav a.donate:hover {
     color: #71869a;
 }
 
-/* =========================
+/* =========================================================
    FILTERS
-========================= */
+========================================================= */
 
 .filters {
 
@@ -378,7 +567,7 @@ nav a.donate:hover {
         1px solid rgba(0,170,255,0.25);
 
     background:
-        rgba(8,18,35,0.8);
+        rgba(8,18,35,0.78);
 
     color: #9db6ca;
 
@@ -391,14 +580,16 @@ nav a.donate:hover {
 
     font-size: 13px;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .filter-btn:hover {
 
     color: white;
 
-    border-color: #00aaff;
+    border-color:
+        #00aaff;
 
     box-shadow:
         0 0 12px rgba(0,170,255,0.15);
@@ -411,15 +602,16 @@ nav a.donate:hover {
     background:
         rgba(0,170,255,0.15);
 
-    border-color: #00aaff;
+    border-color:
+        #00aaff;
 
     box-shadow:
         0 0 15px rgba(0,170,255,0.15);
 }
 
-/* =========================
-   GLOSSARY GRID
-========================= */
+/* =========================================================
+   GLOSSARY CONTAINER
+========================================================= */
 
 .glossary-container {
 
@@ -444,9 +636,9 @@ nav a.donate:hover {
     gap: 18px;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* =========================================================
+   TERM CARDS
+========================================================= */
 
 .term-card {
 
@@ -455,8 +647,8 @@ nav a.donate:hover {
     background:
         linear-gradient(
             145deg,
-            rgba(10,23,43,0.95),
-            rgba(5,12,25,0.95)
+            rgba(10,23,43,0.94),
+            rgba(5,12,25,0.94)
         );
 
     border:
@@ -470,7 +662,11 @@ nav a.donate:hover {
 
     overflow: hidden;
 
-    transition: 0.3s ease;
+    transition:
+        0.3s ease;
+
+    backdrop-filter:
+        blur(5px);
 }
 
 .term-card::before {
@@ -492,6 +688,37 @@ nav a.donate:hover {
     right: -30px;
 
     border-radius: 50%;
+}
+
+.term-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -100%;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,170,255,0.65),
+            transparent
+        );
+
+    transition:
+        0.5s ease;
+}
+
+.term-card:hover::after {
+
+    left: 100%;
 }
 
 .term-card:hover {
@@ -559,9 +786,9 @@ nav a.donate:hover {
         1px solid rgba(57,255,136,0.16);
 }
 
-/* =========================
+/* =========================================================
    NO RESULTS
-========================= */
+========================================================= */
 
 .no-results {
 
@@ -581,9 +808,9 @@ nav a.donate:hover {
     margin-bottom: 10px;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
 
@@ -595,7 +822,10 @@ footer {
         1px solid rgba(0,170,255,0.15);
 
     background:
-        rgba(3,8,17,0.8);
+        rgba(3,8,17,0.88);
+
+    backdrop-filter:
+        blur(10px);
 }
 
 footer p {
@@ -612,9 +842,9 @@ footer strong {
     color: #00aaff;
 }
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -647,14 +877,55 @@ footer strong {
 
     .glossary-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .term-card {
 
-        min-height: auto;
+        min-height:
+            auto;
     }
 
+    .network-hud {
+
+        display: none;
+    }
+
+    #network-canvas {
+
+        opacity: 0.45;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+    #network-canvas {
+
+        opacity: 0.35;
+    }
 }
 
 </style>
@@ -663,10 +934,34 @@ footer strong {
 
 <body>
 
+<!-- =========================================================
+     GLOBAL CYBER NETWORK
+========================================================= -->
 
-<!-- =========================
+<canvas id="network-canvas"></canvas>
+
+<div class="cyber-overlay"></div>
+
+<div class="network-hud hud-top-left">
+    GLOBAL NETWORK // ACTIVE
+</div>
+
+<div class="network-hud hud-top-right">
+    KNOWLEDGE SYSTEM // ONLINE
+</div>
+
+<div class="network-hud hud-bottom-left hud-green">
+    SECURITY LAYER // ONLINE
+</div>
+
+<div class="network-hud hud-bottom-right">
+    CLYVEXIS // CYBER KNOWLEDGE
+</div>
+
+
+<!-- =========================================================
      NAVIGATION
-========================= -->
+========================================================= -->
 
 <nav>
 
@@ -739,9 +1034,9 @@ footer strong {
 </nav>
 
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero">
 
@@ -758,9 +1053,9 @@ footer strong {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      SEARCH
-========================= -->
+========================================================= -->
 
 <div class="search-container">
 
@@ -768,156 +1063,93 @@ footer strong {
         type="text"
         id="searchInput"
         placeholder="🔎 Search cybersecurity terms..."
+        aria-label="Search cybersecurity terms"
     >
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      FILTERS
-========================= -->
+========================================================= -->
 
 <div class="filters">
 
-    <button
-        class="filter-btn active"
-        data-category="All">
-
+    <button class="filter-btn active" data-category="All">
         All
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Fundamentals">
-
+    <button class="filter-btn" data-category="Fundamentals">
         Fundamentals
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Networking">
-
+    <button class="filter-btn" data-category="Networking">
         Networking
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Authentication">
-
+    <button class="filter-btn" data-category="Authentication">
         Authentication
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Cryptography">
-
+    <button class="filter-btn" data-category="Cryptography">
         Cryptography
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Malware">
-
+    <button class="filter-btn" data-category="Malware">
         Malware
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Social Engineering">
-
+    <button class="filter-btn" data-category="Social Engineering">
         Social Engineering
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Attacks">
-
+    <button class="filter-btn" data-category="Attacks">
         Attacks
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Defense">
-
+    <button class="filter-btn" data-category="Defense">
         Defense
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Web Security">
-
+    <button class="filter-btn" data-category="Web Security">
         Web Security
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Cloud">
-
+    <button class="filter-btn" data-category="Cloud">
         Cloud
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Security Operations">
-
+    <button class="filter-btn" data-category="Security Operations">
         Security Operations
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Forensics">
-
+    <button class="filter-btn" data-category="Forensics">
         Forensics
-
     </button>
 
-    <button
-        class="filter-btn"
-        data-category="Careers & Tools">
-
+    <button class="filter-btn" data-category="Careers & Tools">
         Careers & Tools
-
     </button>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      GLOSSARY
-========================= -->
+========================================================= -->
 
 <main class="glossary-container">
 
-<div
-    class="glossary-grid"
-    id="glossaryGrid">
+<div class="glossary-grid" id="glossaryGrid">
 
 
 <!-- 001 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#001
-</div>
+<div class="term-number">#001</div>
 
-<h2>
-Cybersecurity
-</h2>
+<h2>Cybersecurity</h2>
 
 <p>
 The practice of protecting computers,
@@ -934,17 +1166,11 @@ Fundamentals
 
 <!-- 002 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#002
-</div>
+<div class="term-number">#002</div>
 
-<h2>
-Threat
-</h2>
+<h2>Threat</h2>
 
 <p>
 Anything that has the potential to cause harm
@@ -960,17 +1186,11 @@ Fundamentals
 
 <!-- 003 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#003
-</div>
+<div class="term-number">#003</div>
 
-<h2>
-Vulnerability
-</h2>
+<h2>Vulnerability</h2>
 
 <p>
 A weakness in software, hardware, configuration,
@@ -986,17 +1206,11 @@ Fundamentals
 
 <!-- 004 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#004
-</div>
+<div class="term-number">#004</div>
 
-<h2>
-Exploit
-</h2>
+<h2>Exploit</h2>
 
 <p>
 A technique or piece of code that takes advantage
@@ -1012,17 +1226,11 @@ Fundamentals
 
 <!-- 005 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#005
-</div>
+<div class="term-number">#005</div>
 
-<h2>
-Risk
-</h2>
+<h2>Risk</h2>
 
 <p>
 The possibility that a threat could take advantage
@@ -1038,17 +1246,11 @@ Fundamentals
 
 <!-- 006 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#006
-</div>
+<div class="term-number">#006</div>
 
-<h2>
-IP Address
-</h2>
+<h2>IP Address</h2>
 
 <p>
 A numerical address used to identify a device
@@ -1064,17 +1266,11 @@ Networking
 
 <!-- 007 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#007
-</div>
+<div class="term-number">#007</div>
 
-<h2>
-MAC Address
-</h2>
+<h2>MAC Address</h2>
 
 <p>
 A hardware identifier assigned to a network
@@ -1090,17 +1286,11 @@ Networking
 
 <!-- 008 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#008
-</div>
+<div class="term-number">#008</div>
 
-<h2>
-Router
-</h2>
+<h2>Router</h2>
 
 <p>
 A device that directs network traffic between
@@ -1116,17 +1306,11 @@ Networking
 
 <!-- 009 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#009
-</div>
+<div class="term-number">#009</div>
 
-<h2>
-Firewall
-</h2>
+<h2>Firewall</h2>
 
 <p>
 A security system that monitors and controls
@@ -1142,17 +1326,11 @@ Networking
 
 <!-- 010 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#010
-</div>
+<div class="term-number">#010</div>
 
-<h2>
-Port
-</h2>
+<h2>Port</h2>
 
 <p>
 A logical communication endpoint used by
@@ -1168,17 +1346,11 @@ Networking
 
 <!-- 011 -->
 
-<div
-    class="term-card"
-    data-category="Authentication">
+<div class="term-card" data-category="Authentication">
 
-<div class="term-number">
-#011
-</div>
+<div class="term-number">#011</div>
 
-<h2>
-Authentication
-</h2>
+<h2>Authentication</h2>
 
 <p>
 The process of verifying that someone or
@@ -1194,17 +1366,11 @@ Authentication
 
 <!-- 012 -->
 
-<div
-    class="term-card"
-    data-category="Authentication">
+<div class="term-card" data-category="Authentication">
 
-<div class="term-number">
-#012
-</div>
+<div class="term-number">#012</div>
 
-<h2>
-Authorization
-</h2>
+<h2>Authorization</h2>
 
 <p>
 The process of deciding what an authenticated
@@ -1220,17 +1386,11 @@ Authentication
 
 <!-- 013 -->
 
-<div
-    class="term-card"
-    data-category="Authentication">
+<div class="term-card" data-category="Authentication">
 
-<div class="term-number">
-#013
-</div>
+<div class="term-number">#013</div>
 
-<h2>
-MFA
-</h2>
+<h2>MFA</h2>
 
 <p>
 Multi-factor authentication requires multiple
@@ -1246,17 +1406,11 @@ Authentication
 
 <!-- 014 -->
 
-<div
-    class="term-card"
-    data-category="Authentication">
+<div class="term-card" data-category="Authentication">
 
-<div class="term-number">
-#014
-</div>
+<div class="term-number">#014</div>
 
-<h2>
-Biometrics
-</h2>
+<h2>Biometrics</h2>
 
 <p>
 Authentication using physical or behavioral
@@ -1272,17 +1426,11 @@ Authentication
 
 <!-- 015 -->
 
-<div
-    class="term-card"
-    data-category="Authentication">
+<div class="term-card" data-category="Authentication">
 
-<div class="term-number">
-#015
-</div>
+<div class="term-number">#015</div>
 
-<h2>
-Passphrase
-</h2>
+<h2>Passphrase</h2>
 
 <p>
 A password made from multiple words or a longer
@@ -1298,17 +1446,11 @@ Authentication
 
 <!-- 016 -->
 
-<div
-    class="term-card"
-    data-category="Cryptography">
+<div class="term-card" data-category="Cryptography">
 
-<div class="term-number">
-#016
-</div>
+<div class="term-number">#016</div>
 
-<h2>
-Encryption
-</h2>
+<h2>Encryption</h2>
 
 <p>
 The process of transforming readable information
@@ -1324,17 +1466,11 @@ Cryptography
 
 <!-- 017 -->
 
-<div
-    class="term-card"
-    data-category="Cryptography">
+<div class="term-card" data-category="Cryptography">
 
-<div class="term-number">
-#017
-</div>
+<div class="term-number">#017</div>
 
-<h2>
-Decryption
-</h2>
+<h2>Decryption</h2>
 
 <p>
 The process of converting encrypted information
@@ -1350,17 +1486,11 @@ Cryptography
 
 <!-- 018 -->
 
-<div
-    class="term-card"
-    data-category="Cryptography">
+<div class="term-card" data-category="Cryptography">
 
-<div class="term-number">
-#018
-</div>
+<div class="term-number">#018</div>
 
-<h2>
-Hash
-</h2>
+<h2>Hash</h2>
 
 <p>
 A one-way mathematical result generated
@@ -1376,17 +1506,11 @@ Cryptography
 
 <!-- 019 -->
 
-<div
-    class="term-card"
-    data-category="Cryptography">
+<div class="term-card" data-category="Cryptography">
 
-<div class="term-number">
-#019
-</div>
+<div class="term-number">#019</div>
 
-<h2>
-SHA-256
-</h2>
+<h2>SHA-256</h2>
 
 <p>
 A cryptographic hash function that produces
@@ -1402,17 +1526,11 @@ Cryptography
 
 <!-- 020 -->
 
-<div
-    class="term-card"
-    data-category="Cryptography">
+<div class="term-card" data-category="Cryptography">
 
-<div class="term-number">
-#020
-</div>
+<div class="term-number">#020</div>
 
-<h2>
-Digital Signature
-</h2>
+<h2>Digital Signature</h2>
 
 <p>
 A cryptographic method used to verify the
@@ -1428,17 +1546,11 @@ Cryptography
 
 <!-- 021 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#021
-</div>
+<div class="term-number">#021</div>
 
-<h2>
-Malware
-</h2>
+<h2>Malware</h2>
 
 <p>
 Software intentionally designed to harm,
@@ -1455,17 +1567,11 @@ Malware
 
 <!-- 022 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#022
-</div>
+<div class="term-number">#022</div>
 
-<h2>
-Virus
-</h2>
+<h2>Virus</h2>
 
 <p>
 Malware that attaches itself to files or programs
@@ -1481,17 +1587,11 @@ Malware
 
 <!-- 023 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#023
-</div>
+<div class="term-number">#023</div>
 
-<h2>
-Worm
-</h2>
+<h2>Worm</h2>
 
 <p>
 Malware capable of spreading between systems
@@ -1507,17 +1607,11 @@ Malware
 
 <!-- 024 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#024
-</div>
+<div class="term-number">#024</div>
 
-<h2>
-Trojan
-</h2>
+<h2>Trojan</h2>
 
 <p>
 Malware that disguises itself as legitimate
@@ -1533,17 +1627,11 @@ Malware
 
 <!-- 025 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#025
-</div>
+<div class="term-number">#025</div>
 
-<h2>
-Ransomware
-</h2>
+<h2>Ransomware</h2>
 
 <p>
 Malware that blocks access to information or
@@ -1559,17 +1647,11 @@ Malware
 
 <!-- 026 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#026
-</div>
+<div class="term-number">#026</div>
 
-<h2>
-Spyware
-</h2>
+<h2>Spyware</h2>
 
 <p>
 Software designed to secretly monitor activity
@@ -1585,17 +1667,11 @@ Malware
 
 <!-- 027 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#027
-</div>
+<div class="term-number">#027</div>
 
-<h2>
-Keylogger
-</h2>
+<h2>Keylogger</h2>
 
 <p>
 Software or hardware that records keystrokes,
@@ -1611,17 +1687,11 @@ Malware
 
 <!-- 028 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#028
-</div>
+<div class="term-number">#028</div>
 
-<h2>
-Botnet
-</h2>
+<h2>Botnet</h2>
 
 <p>
 A group of compromised devices controlled
@@ -1637,17 +1707,11 @@ Malware
 
 <!-- 029 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#029
-</div>
+<div class="term-number">#029</div>
 
-<h2>
-Rootkit
-</h2>
+<h2>Rootkit</h2>
 
 <p>
 Malicious software designed to hide unauthorized
@@ -1663,17 +1727,11 @@ Malware
 
 <!-- 030 -->
 
-<div
-    class="term-card"
-    data-category="Malware">
+<div class="term-card" data-category="Malware">
 
-<div class="term-number">
-#030
-</div>
+<div class="term-number">#030</div>
 
-<h2>
-Adware
-</h2>
+<h2>Adware</h2>
 
 <p>
 Software that displays unwanted advertisements,
@@ -1689,17 +1747,11 @@ Malware
 
 <!-- 031 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#031
-</div>
+<div class="term-number">#031</div>
 
-<h2>
-Phishing
-</h2>
+<h2>Phishing</h2>
 
 <p>
 A social engineering technique that uses deceptive
@@ -1715,17 +1767,11 @@ Social Engineering
 
 <!-- 032 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#032
-</div>
+<div class="term-number">#032</div>
 
-<h2>
-Spear Phishing
-</h2>
+<h2>Spear Phishing</h2>
 
 <p>
 A targeted phishing attack designed for a specific
@@ -1741,17 +1787,11 @@ Social Engineering
 
 <!-- 033 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#033
-</div>
+<div class="term-number">#033</div>
 
-<h2>
-Smishing
-</h2>
+<h2>Smishing</h2>
 
 <p>
 Phishing attacks delivered through text messages.
@@ -1766,17 +1806,11 @@ Social Engineering
 
 <!-- 034 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#034
-</div>
+<div class="term-number">#034</div>
 
-<h2>
-Vishing
-</h2>
+<h2>Vishing</h2>
 
 <p>
 Phishing attacks carried out through voice calls
@@ -1792,17 +1826,11 @@ Social Engineering
 
 <!-- 035 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#035
-</div>
+<div class="term-number">#035</div>
 
-<h2>
-Pretexting
-</h2>
+<h2>Pretexting</h2>
 
 <p>
 Creating a believable story or situation to persuade
@@ -1818,17 +1846,11 @@ Social Engineering
 
 <!-- 036 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#036
-</div>
+<div class="term-number">#036</div>
 
-<h2>
-Baiting
-</h2>
+<h2>Baiting</h2>
 
 <p>
 Using something attractive or interesting as bait
@@ -1844,17 +1866,11 @@ Social Engineering
 
 <!-- 037 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#037
-</div>
+<div class="term-number">#037</div>
 
-<h2>
-Tailgating
-</h2>
+<h2>Tailgating</h2>
 
 <p>
 Following an authorized person into a restricted
@@ -1870,17 +1886,11 @@ Social Engineering
 
 <!-- 038 -->
 
-<div
-    class="term-card"
-    data-category="Social Engineering">
+<div class="term-card" data-category="Social Engineering">
 
-<div class="term-number">
-#038
-</div>
+<div class="term-number">#038</div>
 
-<h2>
-Impersonation
-</h2>
+<h2>Impersonation</h2>
 
 <p>
 Pretending to be another person or trusted entity
@@ -1896,17 +1906,11 @@ Social Engineering
 
 <!-- 039 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#039
-</div>
+<div class="term-number">#039</div>
 
-<h2>
-Brute Force
-</h2>
+<h2>Brute Force</h2>
 
 <p>
 An attack that repeatedly tries possible passwords
@@ -1922,17 +1926,11 @@ Attacks
 
 <!-- 040 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#040
-</div>
+<div class="term-number">#040</div>
 
-<h2>
-DDoS
-</h2>
+<h2>DDoS</h2>
 
 <p>
 A distributed denial-of-service attack attempts
@@ -1948,17 +1946,11 @@ Attacks
 
 <!-- 041 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#041
-</div>
+<div class="term-number">#041</div>
 
-<h2>
-DoS
-</h2>
+<h2>DoS</h2>
 
 <p>
 A denial-of-service attack attempts to make a
@@ -1974,17 +1966,11 @@ Attacks
 
 <!-- 042 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#042
-</div>
+<div class="term-number">#042</div>
 
-<h2>
-Man-in-the-Middle
-</h2>
+<h2>Man-in-the-Middle</h2>
 
 <p>
 An attacker secretly positions themselves between
@@ -2000,17 +1986,11 @@ Attacks
 
 <!-- 043 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#043
-</div>
+<div class="term-number">#043</div>
 
-<h2>
-Credential Stuffing
-</h2>
+<h2>Credential Stuffing</h2>
 
 <p>
 Using stolen username and password combinations
@@ -2026,17 +2006,11 @@ Attacks
 
 <!-- 044 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#044
-</div>
+<div class="term-number">#044</div>
 
-<h2>
-Password Spraying
-</h2>
+<h2>Password Spraying</h2>
 
 <p>
 Trying a small number of commonly used passwords
@@ -2052,17 +2026,11 @@ Attacks
 
 <!-- 045 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#045
-</div>
+<div class="term-number">#045</div>
 
-<h2>
-SQL Injection
-</h2>
+<h2>SQL Injection</h2>
 
 <p>
 An attack that attempts to manipulate database
@@ -2078,17 +2046,11 @@ Attacks
 
 <!-- 046 -->
 
-<div
-    class="term-card"
-    data-category="Attacks">
+<div class="term-card" data-category="Attacks">
 
-<div class="term-number">
-#046
-</div>
+<div class="term-number">#046</div>
 
-<h2>
-Zero-Day
-</h2>
+<h2>Zero-Day</h2>
 
 <p>
 A vulnerability that is unknown or has no available
@@ -2104,17 +2066,11 @@ Attacks
 
 <!-- 047 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#047
-</div>
+<div class="term-number">#047</div>
 
-<h2>
-Patch
-</h2>
+<h2>Patch</h2>
 
 <p>
 A software update designed to fix bugs,
@@ -2130,17 +2086,11 @@ Defense
 
 <!-- 048 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#048
-</div>
+<div class="term-number">#048</div>
 
-<h2>
-Antivirus
-</h2>
+<h2>Antivirus</h2>
 
 <p>
 Security software designed to detect, block,
@@ -2156,17 +2106,11 @@ Defense
 
 <!-- 049 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#049
-</div>
+<div class="term-number">#049</div>
 
-<h2>
-EDR
-</h2>
+<h2>EDR</h2>
 
 <p>
 Endpoint detection and response technology monitors
@@ -2182,17 +2126,11 @@ Defense
 
 <!-- 050 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#050
-</div>
+<div class="term-number">#050</div>
 
-<h2>
-IDS
-</h2>
+<h2>IDS</h2>
 
 <p>
 An intrusion detection system monitors activity
@@ -2208,17 +2146,11 @@ Defense
 
 <!-- 051 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#051
-</div>
+<div class="term-number">#051</div>
 
-<h2>
-IPS
-</h2>
+<h2>IPS</h2>
 
 <p>
 An intrusion prevention system can detect and
@@ -2234,17 +2166,11 @@ Defense
 
 <!-- 052 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#052
-</div>
+<div class="term-number">#052</div>
 
-<h2>
-Zero Trust
-</h2>
+<h2>Zero Trust</h2>
 
 <p>
 A security approach that continuously verifies
@@ -2261,17 +2187,11 @@ Defense
 
 <!-- 053 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#053
-</div>
+<div class="term-number">#053</div>
 
-<h2>
-Least Privilege
-</h2>
+<h2>Least Privilege</h2>
 
 <p>
 Giving users and systems only the permissions
@@ -2287,17 +2207,11 @@ Defense
 
 <!-- 054 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#054
-</div>
+<div class="term-number">#054</div>
 
-<h2>
-Backup
-</h2>
+<h2>Backup</h2>
 
 <p>
 A separate copy of data that can be used to
@@ -2313,17 +2227,11 @@ Defense
 
 <!-- 055 -->
 
-<div
-    class="term-card"
-    data-category="Web Security">
+<div class="term-card" data-category="Web Security">
 
-<div class="term-number">
-#055
-</div>
+<div class="term-number">#055</div>
 
-<h2>
-HTTPS
-</h2>
+<h2>HTTPS</h2>
 
 <p>
 A secure version of HTTP that uses encryption
@@ -2339,17 +2247,11 @@ Web Security
 
 <!-- 056 -->
 
-<div
-    class="term-card"
-    data-category="Web Security">
+<div class="term-card" data-category="Web Security">
 
-<div class="term-number">
-#056
-</div>
+<div class="term-number">#056</div>
 
-<h2>
-SSL/TLS
-</h2>
+<h2>SSL/TLS</h2>
 
 <p>
 Protocols used to protect data exchanged over
@@ -2365,17 +2267,11 @@ Web Security
 
 <!-- 057 -->
 
-<div
-    class="term-card"
-    data-category="Web Security">
+<div class="term-card" data-category="Web Security">
 
-<div class="term-number">
-#057
-</div>
+<div class="term-number">#057</div>
 
-<h2>
-XSS
-</h2>
+<h2>XSS</h2>
 
 <p>
 Cross-site scripting is a vulnerability where
@@ -2391,17 +2287,11 @@ Web Security
 
 <!-- 058 -->
 
-<div
-    class="term-card"
-    data-category="Web Security">
+<div class="term-card" data-category="Web Security">
 
-<div class="term-number">
-#058
-</div>
+<div class="term-number">#058</div>
 
-<h2>
-CSRF
-</h2>
+<h2>CSRF</h2>
 
 <p>
 Cross-site request forgery tricks a user's browser
@@ -2417,17 +2307,11 @@ Web Security
 
 <!-- 059 -->
 
-<div
-    class="term-card"
-    data-category="Web Security">
+<div class="term-card" data-category="Web Security">
 
-<div class="term-number">
-#059
-</div>
+<div class="term-number">#059</div>
 
-<h2>
-Cookie
-</h2>
+<h2>Cookie</h2>
 
 <p>
 A small piece of information stored by a website
@@ -2443,17 +2327,11 @@ Web Security
 
 <!-- 060 -->
 
-<div
-    class="term-card"
-    data-category="Web Security">
+<div class="term-card" data-category="Web Security">
 
-<div class="term-number">
-#060
-</div>
+<div class="term-number">#060</div>
 
-<h2>
-Session
-</h2>
+<h2>Session</h2>
 
 <p>
 A temporary period of interaction between a user
@@ -2469,17 +2347,11 @@ Web Security
 
 <!-- 061 -->
 
-<div
-    class="term-card"
-    data-category="Cloud">
+<div class="term-card" data-category="Cloud">
 
-<div class="term-number">
-#061
-</div>
+<div class="term-number">#061</div>
 
-<h2>
-Cloud Computing
-</h2>
+<h2>Cloud Computing</h2>
 
 <p>
 Using remote computing resources such as servers,
@@ -2495,17 +2367,11 @@ Cloud
 
 <!-- 062 -->
 
-<div
-    class="term-card"
-    data-category="Cloud">
+<div class="term-card" data-category="Cloud">
 
-<div class="term-number">
-#062
-</div>
+<div class="term-number">#062</div>
 
-<h2>
-Cloud Security
-</h2>
+<h2>Cloud Security</h2>
 
 <p>
 Protecting cloud systems, services, applications,
@@ -2521,17 +2387,11 @@ Cloud
 
 <!-- 063 -->
 
-<div
-    class="term-card"
-    data-category="Cloud">
+<div class="term-card" data-category="Cloud">
 
-<div class="term-number">
-#063
-</div>
+<div class="term-number">#063</div>
 
-<h2>
-IAM
-</h2>
+<h2>IAM</h2>
 
 <p>
 Identity and access management controls who can
@@ -2547,17 +2407,11 @@ Cloud
 
 <!-- 064 -->
 
-<div
-    class="term-card"
-    data-category="Cloud">
+<div class="term-card" data-category="Cloud">
 
-<div class="term-number">
-#064
-</div>
+<div class="term-number">#064</div>
 
-<h2>
-Virtual Machine
-</h2>
+<h2>Virtual Machine</h2>
 
 <p>
 A software-based computer that runs inside
@@ -2573,17 +2427,11 @@ Cloud
 
 <!-- 065 -->
 
-<div
-    class="term-card"
-    data-category="Cloud">
+<div class="term-card" data-category="Cloud">
 
-<div class="term-number">
-#065
-</div>
+<div class="term-number">#065</div>
 
-<h2>
-Container
-</h2>
+<h2>Container</h2>
 
 <p>
 A lightweight isolated environment used to run
@@ -2599,17 +2447,11 @@ Cloud
 
 <!-- 066 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#066
-</div>
+<div class="term-number">#066</div>
 
-<h2>
-SOC
-</h2>
+<h2>SOC</h2>
 
 <p>
 A security operations center monitors, investigates,
@@ -2625,17 +2467,11 @@ Security Operations
 
 <!-- 067 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#067
-</div>
+<div class="term-number">#067</div>
 
-<h2>
-SIEM
-</h2>
+<h2>SIEM</h2>
 
 <p>
 Security information and event management systems
@@ -2651,17 +2487,11 @@ Security Operations
 
 <!-- 068 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#068
-</div>
+<div class="term-number">#068</div>
 
-<h2>
-Log
-</h2>
+<h2>Log</h2>
 
 <p>
 A record of events or activities generated by
@@ -2677,17 +2507,11 @@ Security Operations
 
 <!-- 069 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#069
-</div>
+<div class="term-number">#069</div>
 
-<h2>
-Incident
-</h2>
+<h2>Incident</h2>
 
 <p>
 A security-related event that may threaten the
@@ -2703,17 +2527,11 @@ Security Operations
 
 <!-- 070 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#070
-</div>
+<div class="term-number">#070</div>
 
-<h2>
-Incident Response
-</h2>
+<h2>Incident Response</h2>
 
 <p>
 The process of detecting, investigating, containing,
@@ -2729,17 +2547,11 @@ Security Operations
 
 <!-- 071 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#071
-</div>
+<div class="term-number">#071</div>
 
-<h2>
-Threat Intelligence
-</h2>
+<h2>Threat Intelligence</h2>
 
 <p>
 Information about threats that helps security teams
@@ -2755,17 +2567,11 @@ Security Operations
 
 <!-- 072 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#072
-</div>
+<div class="term-number">#072</div>
 
-<h2>
-IOC
-</h2>
+<h2>IOC</h2>
 
 <p>
 An indicator of compromise is evidence that a system
@@ -2781,17 +2587,11 @@ Security Operations
 
 <!-- 073 -->
 
-<div
-    class="term-card"
-    data-category="Security Operations">
+<div class="term-card" data-category="Security Operations">
 
-<div class="term-number">
-#073
-</div>
+<div class="term-number">#073</div>
 
-<h2>
-SIEM Rule
-</h2>
+<h2>SIEM Rule</h2>
 
 <p>
 A detection rule used to identify suspicious patterns
@@ -2807,17 +2607,11 @@ Security Operations
 
 <!-- 074 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#074
-</div>
+<div class="term-number">#074</div>
 
-<h2>
-Digital Forensics
-</h2>
+<h2>Digital Forensics</h2>
 
 <p>
 The process of collecting and analyzing digital
@@ -2833,17 +2627,11 @@ Forensics
 
 <!-- 075 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#075
-</div>
+<div class="term-number">#075</div>
 
-<h2>
-Digital Evidence
-</h2>
+<h2>Digital Evidence</h2>
 
 <p>
 Information stored or transmitted digitally that
@@ -2859,17 +2647,11 @@ Forensics
 
 <!-- 076 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#076
-</div>
+<div class="term-number">#076</div>
 
-<h2>
-Chain of Custody
-</h2>
+<h2>Chain of Custody</h2>
 
 <p>
 Documentation showing how evidence was collected,
@@ -2885,17 +2667,11 @@ Forensics
 
 <!-- 077 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#077
-</div>
+<div class="term-number">#077</div>
 
-<h2>
-Memory Forensics
-</h2>
+<h2>Memory Forensics</h2>
 
 <p>
 The analysis of data stored in a computer's
@@ -2911,17 +2687,11 @@ Forensics
 
 <!-- 078 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#078
-</div>
+<div class="term-number">#078</div>
 
-<h2>
-Disk Image
-</h2>
+<h2>Disk Image</h2>
 
 <p>
 A bit-for-bit copy of a storage device used
@@ -2937,17 +2707,11 @@ Forensics
 
 <!-- 079 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#079
-</div>
+<div class="term-number">#079</div>
 
-<h2>
-Metadata
-</h2>
+<h2>Metadata</h2>
 
 <p>
 Information that describes other data, such as
@@ -2963,17 +2727,11 @@ Forensics
 
 <!-- 080 -->
 
-<div
-    class="term-card"
-    data-category="Forensics">
+<div class="term-card" data-category="Forensics">
 
-<div class="term-number">
-#080
-</div>
+<div class="term-number">#080</div>
 
-<h2>
-Timeline Analysis
-</h2>
+<h2>Timeline Analysis</h2>
 
 <p>
 Organizing digital events by time to help
@@ -2989,17 +2747,11 @@ Forensics
 
 <!-- 081 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#081
-</div>
+<div class="term-number">#081</div>
 
-<h2>
-Penetration Testing
-</h2>
+<h2>Penetration Testing</h2>
 
 <p>
 Authorized security testing designed to identify
@@ -3015,17 +2767,11 @@ Careers & Tools
 
 <!-- 082 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#082
-</div>
+<div class="term-number">#082</div>
 
-<h2>
-Ethical Hacker
-</h2>
+<h2>Ethical Hacker</h2>
 
 <p>
 A security professional who performs authorized
@@ -3041,17 +2787,11 @@ Careers & Tools
 
 <!-- 083 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#083
-</div>
+<div class="term-number">#083</div>
 
-<h2>
-Red Team
-</h2>
+<h2>Red Team</h2>
 
 <p>
 A security team that simulates realistic attacks
@@ -3067,17 +2807,11 @@ Careers & Tools
 
 <!-- 084 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#084
-</div>
+<div class="term-number">#084</div>
 
-<h2>
-Blue Team
-</h2>
+<h2>Blue Team</h2>
 
 <p>
 A security team focused on defending systems,
@@ -3093,17 +2827,11 @@ Careers & Tools
 
 <!-- 085 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#085
-</div>
+<div class="term-number">#085</div>
 
-<h2>
-Purple Team
-</h2>
+<h2>Purple Team</h2>
 
 <p>
 A collaborative approach that combines offensive
@@ -3119,17 +2847,11 @@ Careers & Tools
 
 <!-- 086 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#086
-</div>
+<div class="term-number">#086</div>
 
-<h2>
-CTF
-</h2>
+<h2>CTF</h2>
 
 <p>
 Capture the Flag competitions provide cybersecurity
@@ -3145,17 +2867,11 @@ Careers & Tools
 
 <!-- 087 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#087
-</div>
+<div class="term-number">#087</div>
 
-<h2>
-Command Line
-</h2>
+<h2>Command Line</h2>
 
 <p>
 A text-based interface used to interact with a
@@ -3171,17 +2887,11 @@ Careers & Tools
 
 <!-- 088 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#088
-</div>
+<div class="term-number">#088</div>
 
-<h2>
-Linux
-</h2>
+<h2>Linux</h2>
 
 <p>
 An open-source operating system family widely used
@@ -3197,17 +2907,11 @@ Careers & Tools
 
 <!-- 089 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#089
-</div>
+<div class="term-number">#089</div>
 
-<h2>
-Virtualization
-</h2>
+<h2>Virtualization</h2>
 
 <p>
 Technology that allows virtual computers or other
@@ -3223,17 +2927,11 @@ Careers & Tools
 
 <!-- 090 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#090
-</div>
+<div class="term-number">#090</div>
 
-<h2>
-Open Source
-</h2>
+<h2>Open Source</h2>
 
 <p>
 Software whose source code is available for people
@@ -3249,17 +2947,11 @@ Careers & Tools
 
 <!-- 091 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#091
-</div>
+<div class="term-number">#091</div>
 
-<h2>
-CIA Triad
-</h2>
+<h2>CIA Triad</h2>
 
 <p>
 Confidentiality, integrity, and availability are
@@ -3275,17 +2967,11 @@ Fundamentals
 
 <!-- 092 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#092
-</div>
+<div class="term-number">#092</div>
 
-<h2>
-Confidentiality
-</h2>
+<h2>Confidentiality</h2>
 
 <p>
 Ensuring information is accessible only to
@@ -3301,17 +2987,11 @@ Fundamentals
 
 <!-- 093 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#093
-</div>
+<div class="term-number">#093</div>
 
-<h2>
-Integrity
-</h2>
+<h2>Integrity</h2>
 
 <p>
 Ensuring information remains accurate and has
@@ -3327,17 +3007,11 @@ Fundamentals
 
 <!-- 094 -->
 
-<div
-    class="term-card"
-    data-category="Fundamentals">
+<div class="term-card" data-category="Fundamentals">
 
-<div class="term-number">
-#094
-</div>
+<div class="term-number">#094</div>
 
-<h2>
-Availability
-</h2>
+<h2>Availability</h2>
 
 <p>
 Ensuring authorized users can access systems
@@ -3353,17 +3027,11 @@ Fundamentals
 
 <!-- 095 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#095
-</div>
+<div class="term-number">#095</div>
 
-<h2>
-DNS
-</h2>
+<h2>DNS</h2>
 
 <p>
 The Domain Name System translates domain names
@@ -3379,17 +3047,11 @@ Networking
 
 <!-- 096 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#096
-</div>
+<div class="term-number">#096</div>
 
-<h2>
-VPN
-</h2>
+<h2>VPN</h2>
 
 <p>
 A virtual private network creates an encrypted
@@ -3405,17 +3067,11 @@ Networking
 
 <!-- 097 -->
 
-<div
-    class="term-card"
-    data-category="Networking">
+<div class="term-card" data-category="Networking">
 
-<div class="term-number">
-#097
-</div>
+<div class="term-number">#097</div>
 
-<h2>
-Proxy
-</h2>
+<h2>Proxy</h2>
 
 <p>
 A system that acts as an intermediary between
@@ -3431,17 +3087,11 @@ Networking
 
 <!-- 098 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#098
-</div>
+<div class="term-number">#098</div>
 
-<h2>
-Security Policy
-</h2>
+<h2>Security Policy</h2>
 
 <p>
 A set of rules and guidelines describing how an
@@ -3457,17 +3107,11 @@ Defense
 
 <!-- 099 -->
 
-<div
-    class="term-card"
-    data-category="Defense">
+<div class="term-card" data-category="Defense">
 
-<div class="term-number">
-#099
-</div>
+<div class="term-number">#099</div>
 
-<h2>
-Security Awareness
-</h2>
+<h2>Security Awareness</h2>
 
 <p>
 Training and knowledge that help people recognize
@@ -3483,17 +3127,11 @@ Defense
 
 <!-- 100 -->
 
-<div
-    class="term-card"
-    data-category="Careers & Tools">
+<div class="term-card" data-category="Careers & Tools">
 
-<div class="term-number">
-#100
-</div>
+<div class="term-number">#100</div>
 
-<h2>
-Cybersecurity Analyst
-</h2>
+<h2>Cybersecurity Analyst</h2>
 
 <p>
 A professional who monitors systems, investigates
@@ -3510,13 +3148,11 @@ Careers & Tools
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      NO RESULTS
-========================= -->
+========================================================= -->
 
-<div
-    class="no-results"
-    id="noResults">
+<div class="no-results" id="noResults">
 
     <h2>
         No terms found
@@ -3531,9 +3167,9 @@ Careers & Tools
 </main>
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
@@ -3551,9 +3187,9 @@ Careers & Tools
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- =========================================================
+     GLOSSARY JAVASCRIPT
+========================================================= -->
 
 <script>
 
@@ -3589,7 +3225,6 @@ function filterGlossary() {
 
     let visibleCount = 0;
 
-
     cards.forEach(card => {
 
         const title =
@@ -3607,16 +3242,13 @@ function filterGlossary() {
         const category =
             card.dataset.category;
 
-
         const matchesSearch =
             title.includes(searchTerm) ||
             description.includes(searchTerm);
 
-
         const matchesCategory =
             selectedCategory === "All" ||
             category === selectedCategory;
-
 
         if (
             matchesSearch &&
@@ -3635,19 +3267,10 @@ function filterGlossary() {
 
     });
 
-
-    if (visibleCount === 0) {
-
-        noResults.style.display =
-            "block";
-
-    } else {
-
-        noResults.style.display =
-            "none";
-
-    }
-
+    noResults.style.display =
+        visibleCount === 0
+            ? "block"
+            : "none";
 }
 
 
@@ -3671,15 +3294,12 @@ filterButtons.forEach(button => {
 
             });
 
-
             button.classList.add(
                 "active"
             );
 
-
             selectedCategory =
                 button.dataset.category;
-
 
             filterGlossary();
 
@@ -3687,6 +3307,665 @@ filterButtons.forEach(button => {
     );
 
 });
+
+
+/* =========================================================
+   GLOBAL CYBER NETWORK ENGINE
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "network-canvas"
+    );
+
+const ctx =
+    canvas.getContext("2d");
+
+let width = 0;
+let height = 0;
+let dpr = 1;
+
+let networkNodes = [];
+
+let animationFrame;
+
+let reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* ---------------------------------------------------------
+   NETWORK CONFIGURATION
+--------------------------------------------------------- */
+
+function getNodeCount() {
+
+    if (window.innerWidth < 600) {
+        return 65;
+    }
+
+    if (window.innerWidth < 1000) {
+        return 105;
+    }
+
+    return 155;
+}
+
+
+/* ---------------------------------------------------------
+   RESIZE
+--------------------------------------------------------- */
+
+function resizeNetwork() {
+
+    width =
+        window.innerWidth;
+
+    height =
+        window.innerHeight;
+
+    dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+    canvas.width =
+        width * dpr;
+
+    canvas.height =
+        height * dpr;
+
+    canvas.style.width =
+        width + "px";
+
+    canvas.style.height =
+        height + "px";
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    createNetwork();
+
+    drawNetwork(0);
+}
+
+
+/* ---------------------------------------------------------
+   CREATE NETWORK
+--------------------------------------------------------- */
+
+function createNetwork() {
+
+    networkNodes = [];
+
+    const count =
+        getNodeCount();
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+        const theta =
+            Math.random() *
+            Math.PI * 2;
+
+        const phi =
+            Math.acos(
+                2 * Math.random() - 1
+            );
+
+        const radius =
+            0.72 +
+            Math.random() * 0.28;
+
+        networkNodes.push({
+
+            theta,
+            phi,
+            radius,
+
+            size:
+                0.7 +
+                Math.random() * 1.8,
+
+            depth: 0,
+
+            x: 0,
+            y: 0,
+
+            pulse:
+                Math.random() *
+                Math.PI * 2
+        });
+    }
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 3D GLOBE
+--------------------------------------------------------- */
+
+function projectNode(node, time) {
+
+    const centerX =
+        width * 0.50;
+
+    const centerY =
+        height * 0.49;
+
+    const globeWidth =
+        Math.min(
+            width * 0.43,
+            440
+        );
+
+    const globeHeight =
+        Math.min(
+            height * 0.58,
+            500
+        );
+
+    const rotation =
+        time * 0.00008;
+
+    const theta =
+        node.theta + rotation;
+
+    const sinPhi =
+        Math.sin(node.phi);
+
+    const x3d =
+        Math.cos(theta) *
+        sinPhi *
+        node.radius;
+
+    const y3d =
+        Math.cos(node.phi) *
+        node.radius;
+
+    const z3d =
+        Math.sin(theta) *
+        sinPhi *
+        node.radius;
+
+    const perspective =
+        0.86 +
+        z3d * 0.16;
+
+    node.x =
+        centerX +
+        x3d *
+        globeWidth *
+        perspective;
+
+    node.y =
+        centerY +
+        y3d *
+        globeHeight *
+        perspective;
+
+    node.depth =
+        z3d;
+}
+
+
+/* ---------------------------------------------------------
+   DRAW NETWORK
+--------------------------------------------------------- */
+
+function drawNetwork(time) {
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    networkNodes.forEach(
+        node => {
+            projectNode(
+                node,
+                time
+            );
+        }
+    );
+
+
+    /* -----------------------------------------------
+       GLOBE OUTER GLOW
+    ----------------------------------------------- */
+
+    const centerX =
+        width * 0.50;
+
+    const centerY =
+        height * 0.49;
+
+    const globeWidth =
+        Math.min(
+            width * 0.43,
+            440
+        );
+
+    const globeHeight =
+        Math.min(
+            height * 0.58,
+            500
+        );
+
+    ctx.save();
+
+    ctx.strokeStyle =
+        "rgba(0,170,255,0.08)";
+
+    ctx.lineWidth = 1;
+
+    ctx.shadowBlur = 18;
+
+    ctx.shadowColor =
+        "rgba(0,170,255,0.15)";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX,
+        centerY,
+        globeWidth,
+        globeHeight,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.stroke();
+
+    ctx.restore();
+
+
+    /* -----------------------------------------------
+       NETWORK CONNECTIONS
+    ----------------------------------------------- */
+
+    for (
+        let i = 0;
+        i < networkNodes.length;
+        i++
+    ) {
+
+        const a =
+            networkNodes[i];
+
+        for (
+            let j = i + 1;
+            j < networkNodes.length;
+            j++
+        ) {
+
+            const b =
+                networkNodes[j];
+
+            const dx =
+                a.x - b.x;
+
+            const dy =
+                a.y - b.y;
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+            const threshold =
+                width < 600
+                    ? 78
+                    : 105;
+
+            if (
+                distance < threshold &&
+                a.depth > -0.35 &&
+                b.depth > -0.35
+            ) {
+
+                const depthStrength =
+                    Math.max(
+                        0,
+                        (a.depth +
+                            b.depth +
+                            2) / 4
+                    );
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    a.x,
+                    a.y
+                );
+
+                ctx.lineTo(
+                    b.x,
+                    b.y
+                );
+
+                ctx.strokeStyle =
+                    `rgba(0,170,255,${0.035 + depthStrength * 0.10})`;
+
+                ctx.lineWidth =
+                    0.6;
+
+                ctx.stroke();
+            }
+        }
+    }
+
+
+    /* -----------------------------------------------
+       GREEN SECONDARY CONNECTIONS
+    ----------------------------------------------- */
+
+    for (
+        let i = 0;
+        i < networkNodes.length;
+        i += 7
+    ) {
+
+        const a =
+            networkNodes[i];
+
+        const b =
+            networkNodes[
+                (i + 13) %
+                networkNodes.length
+            ];
+
+        const dx =
+            a.x - b.x;
+
+        const dy =
+            a.y - b.y;
+
+        const distance =
+            Math.sqrt(
+                dx * dx +
+                dy * dy
+            );
+
+        if (
+            distance < 150 &&
+            a.depth > 0 &&
+            b.depth > 0
+        ) {
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                a.x,
+                a.y
+            );
+
+            ctx.lineTo(
+                b.x,
+                b.y
+            );
+
+            ctx.strokeStyle =
+                "rgba(57,255,136,0.07)";
+
+            ctx.lineWidth =
+                0.7;
+
+            ctx.stroke();
+        }
+    }
+
+
+    /* -----------------------------------------------
+       NODES
+    ----------------------------------------------- */
+
+    networkNodes.forEach(
+        node => {
+
+            if (
+                node.depth < -0.45
+            ) {
+                return;
+            }
+
+            const depth =
+                Math.max(
+                    0,
+                    (node.depth + 1) / 2
+                );
+
+            const pulse =
+                reducedMotion
+                    ? 1
+                    :
+                    0.75 +
+                    Math.sin(
+                        time * 0.002 +
+                        node.pulse
+                    ) * 0.25;
+
+            const radius =
+                node.size *
+                (0.75 + depth * 0.8) *
+                pulse;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                node.x,
+                node.y,
+                radius,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle =
+                node.depth > 0.25
+                    ? "rgba(57,255,136,0.72)"
+                    : "rgba(0,170,255,0.75)";
+
+            ctx.shadowBlur =
+                8 + depth * 8;
+
+            ctx.shadowColor =
+                node.depth > 0.25
+                    ? "rgba(57,255,136,0.55)"
+                    : "rgba(0,170,255,0.55)";
+
+            ctx.fill();
+
+            ctx.shadowBlur = 0;
+        }
+    );
+
+
+    /* -----------------------------------------------
+       ORBITAL ARCS
+    ----------------------------------------------- */
+
+    ctx.save();
+
+    ctx.translate(
+        centerX,
+        centerY
+    );
+
+    ctx.rotate(
+        reducedMotion
+            ? -0.25
+            : time * 0.00004
+    );
+
+    ctx.strokeStyle =
+        "rgba(0,170,255,0.08)";
+
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        0,
+        0,
+        globeWidth * 1.06,
+        globeHeight * 0.30,
+        0.15,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.stroke();
+
+    ctx.strokeStyle =
+        "rgba(57,255,136,0.055)";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        0,
+        0,
+        globeWidth * 0.72,
+        globeHeight * 1.02,
+        -0.25,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.stroke();
+
+    ctx.restore();
+
+
+    /* -----------------------------------------------
+       VIGNETTE
+    ----------------------------------------------- */
+
+    const vignette =
+        ctx.createRadialGradient(
+            centerX,
+            centerY,
+            Math.min(
+                width,
+                height
+            ) * 0.12,
+            centerX,
+            centerY,
+            Math.max(
+                width,
+                height
+            ) * 0.72
+        );
+
+    vignette.addColorStop(
+        0,
+        "rgba(5,11,22,0)"
+    );
+
+    vignette.addColorStop(
+        1,
+        "rgba(5,11,22,0.55)"
+    );
+
+    ctx.fillStyle =
+        vignette;
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+}
+
+
+/* ---------------------------------------------------------
+   ANIMATION
+--------------------------------------------------------- */
+
+function animateNetwork(time) {
+
+    drawNetwork(time);
+
+    if (!reducedMotion) {
+
+        animationFrame =
+            requestAnimationFrame(
+                animateNetwork
+            );
+    }
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION LISTENER
+--------------------------------------------------------- */
+
+window
+    .matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    )
+    .addEventListener(
+        "change",
+        event => {
+
+            reducedMotion =
+                event.matches;
+
+            cancelAnimationFrame(
+                animationFrame
+            );
+
+            if (reducedMotion) {
+
+                drawNetwork(0);
+
+            } else {
+
+                animationFrame =
+                    requestAnimationFrame(
+                        animateNetwork
+                    );
+            }
+        }
+    );
+
+
+/* ---------------------------------------------------------
+   START NETWORK
+--------------------------------------------------------- */
+
+window.addEventListener(
+    "resize",
+    resizeNetwork
+);
+
+resizeNetwork();
+
+if (reducedMotion) {
+
+    drawNetwork(0);
+
+} else {
+
+    animationFrame =
+        requestAnimationFrame(
+            animateNetwork
+        );
+}
 
 </script>
 
