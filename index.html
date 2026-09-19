@@ -1476,6 +1476,208 @@
             }
         }
 
+
+        /* =====================================================
+           CYBER KNOWLEDGE MAP
+        ===================================================== */
+
+        .knowledge-section {
+            width: 94%;
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 40px 35px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(8, 25, 45, 0.90),
+                    rgba(3, 12, 25, 0.91)
+                );
+            border: 1px solid rgba(57, 255, 136, 0.28);
+            border-radius: 20px;
+            box-shadow: 0 0 35px rgba(0, 170, 255, 0.07);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .knowledge-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #39ff88,
+                    #00aaff
+                );
+            background-size: 200% 100%;
+            box-shadow: 0 0 12px rgba(0, 170, 255, 0.7);
+            animation: knowledgeEnergy 5s linear infinite;
+        }
+
+        @keyframes knowledgeEnergy {
+            from { background-position: 200% 0; }
+            to { background-position: -200% 0; }
+        }
+
+        .knowledge-title {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .knowledge-title span {
+            color: #39ff88;
+        }
+
+        .knowledge-intro {
+            max-width: 780px;
+            margin: 0 auto 30px;
+            text-align: center;
+            color: #aebdcc;
+            line-height: 1.7;
+        }
+
+        .knowledge-map {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .knowledge-node {
+            display: block;
+            padding: 22px 18px;
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 170, 255, 0.08),
+                    rgba(57, 255, 136, 0.025)
+                );
+            border: 1px solid rgba(0, 170, 255, 0.25);
+            color: white;
+            text-decoration: none;
+            transition:
+                transform 0.3s,
+                border-color 0.3s,
+                box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .knowledge-node:hover {
+            transform: translateY(-6px);
+            border-color: #00aaff;
+            box-shadow: 0 0 25px rgba(0, 170, 255, 0.20);
+        }
+
+        .knowledge-node .knowledge-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .knowledge-node h3 {
+            color: #00aaff;
+            margin-bottom: 8px;
+            font-size: 19px;
+        }
+
+        .knowledge-node p {
+            color: #aebdcc;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .knowledge-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .knowledge-topic {
+            display: inline-block;
+            padding: 5px 8px;
+            border-radius: 7px;
+            color: #39ff88;
+            background: rgba(57, 255, 136, 0.06);
+            border: 1px solid rgba(57, 255, 136, 0.18);
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .knowledge-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 28px 0 8px;
+            color: #7f8da0;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .knowledge-flow strong {
+            color: #00aaff;
+        }
+
+        .knowledge-career {
+            margin-top: 25px;
+            padding: 18px;
+            text-align: center;
+            border: 1px solid rgba(57, 255, 136, 0.25);
+            border-radius: 14px;
+            background: rgba(57, 255, 136, 0.035);
+        }
+
+        .knowledge-career p {
+            color: #aebdcc;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .knowledge-career a {
+            color: #39ff88;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .knowledge-career a:hover {
+            color: #00aaff;
+        }
+
+        @media (max-width: 950px) {
+            .knowledge-map {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .knowledge-section {
+                padding: 25px 15px;
+            }
+
+            .knowledge-title {
+                font-size: 28px;
+            }
+
+            .knowledge-map {
+                grid-template-columns: 1fr;
+            }
+
+            .knowledge-flow {
+                line-height: 1.8;
+            }
+        }
+
         /* =====================================================
            CYBERSECURITY CAREER PATHS
         ===================================================== */
@@ -2076,6 +2278,126 @@
 
     </section>
 
+
+
+
+    <!-- =====================================================
+         CYBER KNOWLEDGE MAP
+    ===================================================== -->
+
+    <section class="knowledge-section" id="knowledge-map">
+
+        <h2 class="knowledge-title">
+            🧠 Cyber <span>Knowledge Map</span>
+        </h2>
+
+        <p class="knowledge-intro">
+            See how the major parts of cybersecurity connect.
+            Choose a topic to jump into the Clyvexis area where you
+            can keep learning and practicing.
+        </p>
+
+        <div class="knowledge-map">
+
+            <a class="knowledge-node" href="lessons.html">
+                <div class="knowledge-icon">🌐</div>
+                <h3>Networking</h3>
+                <p>
+                    Learn how devices communicate and how networks
+                    are understood and protected.
+                </p>
+                <div class="knowledge-topics">
+                    <span class="knowledge-topic">IP Addresses</span>
+                    <span class="knowledge-topic">Protocols</span>
+                    <span class="knowledge-topic">Ports</span>
+                    <span class="knowledge-topic">DNS</span>
+                </div>
+            </a>
+
+            <a class="knowledge-node" href="lessons.html">
+                <div class="knowledge-icon">🛡️</div>
+                <h3>Security</h3>
+                <p>
+                    Build a foundation in common threats and the
+                    concepts used to protect systems and accounts.
+                </p>
+                <div class="knowledge-topics">
+                    <span class="knowledge-topic">Phishing</span>
+                    <span class="knowledge-topic">Malware</span>
+                    <span class="knowledge-topic">Passwords</span>
+                    <span class="knowledge-topic">Encryption</span>
+                </div>
+            </a>
+
+            <a class="knowledge-node" href="coding.html">
+                <div class="knowledge-icon">💻</div>
+                <h3>Coding</h3>
+                <p>
+                    Learn programming fundamentals and see how
+                    coding connects with cybersecurity.
+                </p>
+                <div class="knowledge-topics">
+                    <span class="knowledge-topic">HTML</span>
+                    <span class="knowledge-topic">CSS</span>
+                    <span class="knowledge-topic">JavaScript</span>
+                    <span class="knowledge-topic">Python</span>
+                </div>
+            </a>
+
+            <a class="knowledge-node" href="cyber-defense.html">
+                <div class="knowledge-icon">🖥️</div>
+                <h3>Systems & Defense</h3>
+                <p>
+                    Explore systems, defensive thinking, monitoring,
+                    investigation, and protecting environments.
+                </p>
+                <div class="knowledge-topics">
+                    <span class="knowledge-topic">Linux</span>
+                    <span class="knowledge-topic">Logs</span>
+                    <span class="knowledge-topic">Detection</span>
+                    <span class="knowledge-topic">Defense</span>
+                </div>
+            </a>
+
+            <a class="knowledge-node" href="lessons.html">
+                <div class="knowledge-icon">👤</div>
+                <h3>Identity</h3>
+                <p>
+                    Understand how users and accounts are identified,
+                    authenticated, and given access.
+                </p>
+                <div class="knowledge-topics">
+                    <span class="knowledge-topic">Authentication</span>
+                    <span class="knowledge-topic">MFA</span>
+                    <span class="knowledge-topic">Access Control</span>
+                    <span class="knowledge-topic">Identity</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="knowledge-flow">
+            <strong>LEARN</strong>
+            <span>→</span>
+            <strong>PRACTICE</strong>
+            <span>→</span>
+            <strong>BUILD SKILLS</strong>
+            <span>→</span>
+            <strong>EXPLORE CAREERS</strong>
+        </div>
+
+        <div class="knowledge-career">
+            <p>
+                Connect what you're learning to real cybersecurity
+                career directions already available on Clyvexis.
+            </p>
+
+            <a href="#career-paths">
+                Explore Cybersecurity Career Paths →
+            </a>
+        </div>
+
+    </section>
 
 
     <!-- =====================================================
