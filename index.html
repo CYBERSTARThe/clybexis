@@ -1476,6 +1476,173 @@
             }
         }
 
+        /* =====================================================
+           CYBERSECURITY CAREER PATHS
+        ===================================================== */
+
+        .career-section {
+            width: 94%;
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 40px 35px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(8, 25, 45, 0.90),
+                    rgba(3, 12, 25, 0.91)
+                );
+            border: 1px solid rgba(0, 170, 255, 0.35);
+            border-radius: 20px;
+            box-shadow: 0 0 35px rgba(0, 170, 255, 0.07);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .career-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00aaff, #39ff88, #00aaff);
+            background-size: 200% 100%;
+            box-shadow: 0 0 12px rgba(0, 170, 255, 0.7);
+            animation: careerEnergy 5s linear infinite;
+        }
+
+        @keyframes careerEnergy {
+            from { background-position: 200% 0; }
+            to { background-position: -200% 0; }
+        }
+
+        .career-title {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .career-title span {
+            color: #00aaff;
+        }
+
+        .career-intro {
+            max-width: 760px;
+            margin: 0 auto 30px;
+            text-align: center;
+            color: #aebdcc;
+            line-height: 1.7;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .career-card {
+            padding: 25px;
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 170, 255, 0.07),
+                    rgba(57, 255, 136, 0.025)
+                );
+            border: 1px solid rgba(0, 170, 255, 0.25);
+            transition:
+                transform 0.3s,
+                border-color 0.3s,
+                box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-card::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: -70px;
+            top: -70px;
+            border-radius: 50%;
+            background: rgba(0, 170, 255, 0.08);
+            filter: blur(2px);
+        }
+
+        .career-card:hover {
+            transform: translateY(-7px);
+            border-color: #00aaff;
+            box-shadow: 0 0 28px rgba(0, 170, 255, 0.18);
+        }
+
+        .career-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .career-card h3 {
+            color: #00aaff;
+            margin-bottom: 10px;
+        }
+
+        .career-card p {
+            color: #aebdcc;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .career-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 17px;
+        }
+
+        .career-skill {
+            padding: 5px 9px;
+            border-radius: 7px;
+            color: #39ff88;
+            background: rgba(57, 255, 136, 0.06);
+            border: 1px solid rgba(57, 255, 136, 0.18);
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .career-link {
+            color: #39ff88;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .career-link:hover {
+            color: #00aaff;
+        }
+
+        @media (max-width: 950px) {
+            .career-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .career-section {
+                padding: 25px 15px;
+            }
+
+            .career-title {
+                font-size: 28px;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 
@@ -1759,6 +1926,156 @@
         </div>
 
     </section>
+
+
+    <!-- =====================================================
+         CYBERSECURITY CAREER PATHS
+    ===================================================== -->
+
+    <section class="career-section" id="career-paths">
+
+        <h2 class="career-title">
+            🧑‍💻 Cybersecurity <span>Career Paths</span>
+        </h2>
+
+        <p class="career-intro">
+            Cybersecurity is a huge field with many different directions.
+            Explore some of the careers connected to the skills you can
+            start building with Clyvexis.
+        </p>
+
+        <div class="career-grid">
+
+            <div class="career-card">
+                <div class="career-icon">🛡️</div>
+                <h3>SOC Analyst</h3>
+                <p>
+                    Monitor security alerts, investigate suspicious activity,
+                    analyze logs, and help security teams respond to threats.
+                </p>
+
+                <div class="career-skills">
+                    <span class="career-skill">Logs</span>
+                    <span class="career-skill">Alerts</span>
+                    <span class="career-skill">Threat Detection</span>
+                    <span class="career-skill">Defense</span>
+                </div>
+
+                <a href="cyber-defense.html" class="career-link">
+                    Explore Defense →
+                </a>
+            </div>
+
+
+            <div class="career-card">
+                <div class="career-icon">🔐</div>
+                <h3>Cybersecurity Specialist</h3>
+                <p>
+                    Build a broad foundation in security concepts, threats,
+                    vulnerabilities, identity, and defensive security.
+                </p>
+
+                <div class="career-skills">
+                    <span class="career-skill">Security Basics</span>
+                    <span class="career-skill">Threats</span>
+                    <span class="career-skill">Identity</span>
+                    <span class="career-skill">Defense</span>
+                </div>
+
+                <a href="lessons.html" class="career-link">
+                    Start Fundamentals →
+                </a>
+            </div>
+
+
+            <div class="career-card">
+                <div class="career-icon">💻</div>
+                <h3>Security Programmer</h3>
+                <p>
+                    Combine programming with cybersecurity by learning how
+                    software can be built, analyzed, and improved securely.
+                </p>
+
+                <div class="career-skills">
+                    <span class="career-skill">Python</span>
+                    <span class="career-skill">JavaScript</span>
+                    <span class="career-skill">Coding</span>
+                    <span class="career-skill">Automation</span>
+                </div>
+
+                <a href="coding.html" class="career-link">
+                    Start Coding →
+                </a>
+            </div>
+
+
+            <div class="career-card">
+                <div class="career-icon">🌐</div>
+                <h3>Network Security</h3>
+                <p>
+                    Learn how networks work and how defenders monitor traffic,
+                    understand protocols, and protect communications.
+                </p>
+
+                <div class="career-skills">
+                    <span class="career-skill">Networking</span>
+                    <span class="career-skill">Traffic</span>
+                    <span class="career-skill">Protocols</span>
+                    <span class="career-skill">Defense</span>
+                </div>
+
+                <a href="lessons.html" class="career-link">
+                    Learn Networking →
+                </a>
+            </div>
+
+
+            <div class="career-card">
+                <div class="career-icon">🔎</div>
+                <h3>Digital Forensics</h3>
+                <p>
+                    Explore how investigators analyze digital evidence,
+                    activity, files, and security logs during investigations.
+                </p>
+
+                <div class="career-skills">
+                    <span class="career-skill">Investigation</span>
+                    <span class="career-skill">Evidence</span>
+                    <span class="career-skill">Logs</span>
+                    <span class="career-skill">Analysis</span>
+                </div>
+
+                <a href="labs.html" class="career-link">
+                    Try a Lab →
+                </a>
+            </div>
+
+
+            <div class="career-card">
+                <div class="career-icon">🐍</div>
+                <h3>Cyber + Python</h3>
+                <p>
+                    Use Python to build cybersecurity skills through
+                    automation, data analysis, fictional logs, and
+                    security-focused projects.
+                </p>
+
+                <div class="career-skills">
+                    <span class="career-skill">Python</span>
+                    <span class="career-skill">Automation</span>
+                    <span class="career-skill">Logs</span>
+                    <span class="career-skill">Projects</span>
+                </div>
+
+                <a href="coding.html" class="career-link">
+                    Enter Coding Lab →
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
 
 
     <!-- =====================================================
