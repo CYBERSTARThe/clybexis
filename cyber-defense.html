@@ -13,107 +13,316 @@
 
 <style>
 
-/* =========================
+/* =========================================================
+   CLYVEXIS CYBER DEFENSE OPERATIONS
+   GLOBAL CYBER NETWORK EDITION
+   ========================================================= */
+
+:root {
+
+    --bg: #050b16;
+    --panel: rgba(8,17,32,0.90);
+    --panel-strong: rgba(5,12,24,0.96);
+
+    --blue: #00aaff;
+    --blue-soft: #38bdf8;
+    --green: #39ff88;
+
+    --text: #eaf6ff;
+    --muted: #94a3b8;
+
+    --border: rgba(56,189,248,0.18);
+    --border-strong: rgba(56,189,248,0.35);
+
+    --danger: #ff5c5c;
+    --warning: #ffd166;
+}
+
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--text);
+
     min-height: 100vh;
+
     overflow-x: hidden;
 
     background:
         radial-gradient(
-            circle at 50% -10%,
-            rgba(0,170,255,0.20),
-            transparent 38%
-        ),
-        linear-gradient(
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
+            circle at 50% 42%,
+            rgba(0,170,255,0.07),
+            transparent 36%
         ),
         #050b16;
 
-    background-size:
-        auto,
-        35px 35px,
-        35px 35px,
-        auto;
-
-    background-attachment: fixed;
 }
 
-/* =========================
-   MOVING CYBER GLOW
-========================= */
 
-body::before {
+/* =========================================================
+   GLOBAL NETWORK CANVAS
+========================================================= */
 
-    content: "";
+#network-canvas {
 
     position: fixed;
 
-    top: -250px;
-    left: 50%;
+    inset: 0;
 
-    width: 700px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
 
-    transform: translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(0,170,255,0.18),
-            transparent 70%
-        );
+    z-index: 0;
 
     pointer-events: none;
 
-    z-index: -1;
-
-    animation: cyberGlow 6s ease-in-out infinite alternate;
 }
 
-@keyframes cyberGlow {
 
-    from {
-        transform:
-            translateX(-50%)
-            scale(0.9);
+/* =========================================================
+   NETWORK BACKGROUND LAYERS
+========================================================= */
 
-        opacity: 0.55;
-    }
+.network-background {
 
-    to {
-        transform:
-            translateX(-50%)
-            scale(1.15);
+    position: fixed;
 
-        opacity: 1;
-    }
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    overflow: hidden;
 
 }
 
-/* =========================
+
+.network-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.14;
+
+    background-image:
+
+        linear-gradient(
+            rgba(56,189,248,0.065) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(56,189,248,0.065) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        70px 70px;
+
+    mask-image:
+        radial-gradient(
+            circle at center,
+            black 8%,
+            transparent 78%
+        );
+
+    -webkit-mask-image:
+        radial-gradient(
+            circle at center,
+            black 8%,
+            transparent 78%
+        );
+
+}
+
+
+.network-vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            transparent 12%,
+            rgba(5,11,22,0.10) 45%,
+            rgba(5,11,22,0.86) 100%
+        );
+
+}
+
+
+.network-top-glow {
+
+    position: absolute;
+
+    top: -260px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 900px;
+
+    height: 430px;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(0,170,255,0.14),
+            rgba(0,170,255,0.035) 48%,
+            transparent 72%
+        );
+
+    filter: blur(18px);
+
+}
+
+
+/* =========================================================
+   CYBER HUD
+========================================================= */
+
+.network-hud {
+
+    position: absolute;
+
+    inset: 0;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: rgba(91,208,255,0.38);
+
+    text-transform: uppercase;
+
+}
+
+
+.network-hud span {
+
+    position: absolute;
+
+    padding: 7px 10px;
+
+    border-left:
+        1px solid
+        rgba(56,189,248,0.24);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.04),
+            transparent
+        );
+
+}
+
+
+.hud-top-left {
+
+    top: 90px;
+
+    left: 24px;
+
+}
+
+
+.hud-top-right {
+
+    top: 90px;
+
+    right: 24px;
+
+    text-align: right;
+
+    border-left: none !important;
+
+    border-right:
+        1px solid
+        rgba(56,189,248,0.24);
+
+}
+
+
+.hud-bottom-left {
+
+    bottom: 25px;
+
+    left: 24px;
+
+}
+
+
+.hud-bottom-right {
+
+    bottom: 25px;
+
+    right: 24px;
+
+    text-align: right;
+
+    border-left: none !important;
+
+    border-right:
+        1px solid
+        rgba(56,189,248,0.24);
+
+}
+
+
+/* =========================================================
+   CONTENT LAYER
+========================================================= */
+
+nav,
+.hero,
+.dashboard,
+.game-container,
+footer {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 nav {
 
@@ -133,15 +342,55 @@ nav {
 
     padding: 16px 6%;
 
-    background: rgba(5,11,22,0.92);
+    background:
+        rgba(5,11,22,0.88);
 
-    border-bottom: 1px solid rgba(0,170,255,0.25);
+    border-bottom:
+        1px solid
+        rgba(0,170,255,0.20);
 
-    backdrop-filter: blur(14px);
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.08);
+        0 10px 35px
+        rgba(0,0,0,0.25);
+
 }
+
+
+nav::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 2px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--blue),
+            var(--green),
+            var(--blue),
+            transparent
+        );
+
+    opacity: 0.75;
+
+}
+
 
 .logo {
 
@@ -149,15 +398,18 @@ nav {
 
     font-weight: 900;
 
-    color: #00aaff;
+    color: var(--blue);
 
     text-decoration: none;
 
     text-shadow:
-        0 0 10px rgba(0,170,255,0.7);
+        0 0 10px
+        rgba(0,170,255,0.7);
 
     white-space: nowrap;
+
 }
+
 
 .nav-links {
 
@@ -168,7 +420,9 @@ nav {
     justify-content: center;
 
     gap: 8px;
+
 }
+
 
 .nav-links a {
 
@@ -185,476 +439,715 @@ nav {
     border-radius: 8px;
 
     transition: 0.25s;
+
 }
+
 
 .nav-links a:hover {
 
-    color: #00aaff;
+    color: var(--blue);
 
-    background: rgba(0,170,255,0.08);
+    background:
+        rgba(0,170,255,0.08);
 
     text-shadow:
-        0 0 8px rgba(0,170,255,0.7);
+        0 0 8px
+        rgba(0,170,255,0.7);
+
 }
 
-/* =========================
+
+.nav-links a[href="cyber-defense.html"] {
+
+    color: white;
+
+    background:
+        rgba(0,170,255,0.11);
+
+    border:
+        1px solid
+        rgba(0,170,255,0.20);
+
+}
+
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
 
-    width: min(1100px, 90%);
+    width:
+        min(1100px,90%);
 
-    margin: 70px auto 40px;
+    margin:
+        70px auto 40px;
 
     text-align: center;
+
 }
+
 
 .status {
 
     display: inline-block;
 
-    padding: 7px 14px;
+    padding:
+        7px 14px;
 
-    margin-bottom: 18px;
+    margin-bottom:
+        18px;
 
-    border: 1px solid rgba(57,255,136,0.4);
+    border:
+        1px solid
+        rgba(57,255,136,0.4);
 
-    border-radius: 30px;
+    border-radius:
+        30px;
 
-    color: #39ff88;
+    color:
+        var(--green);
 
-    background: rgba(57,255,136,0.06);
+    background:
+        rgba(57,255,136,0.06);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1px;
 
     box-shadow:
-        0 0 18px rgba(57,255,136,0.08);
+        0 0 18px
+        rgba(57,255,136,0.08);
+
 }
+
 
 .hero h1 {
 
-    font-size: clamp(36px, 7vw, 70px);
+    font-size:
+        clamp(36px,7vw,70px);
 
-    line-height: 1.05;
+    line-height:
+        1.05;
 
-    margin-bottom: 18px;
+    margin-bottom:
+        18px;
 
-    color: white;
+    color:
+        white;
 
     text-shadow:
-        0 0 20px rgba(0,170,255,0.35);
+        0 0 20px
+        rgba(0,170,255,0.35);
+
 }
+
 
 .hero h1 span {
 
-    color: #00aaff;
+    color:
+        var(--blue);
 
     text-shadow:
-        0 0 20px rgba(0,170,255,0.7);
+        0 0 20px
+        rgba(0,170,255,0.7);
+
 }
+
 
 .hero p {
 
-    max-width: 720px;
+    max-width:
+        720px;
 
-    margin: auto;
+    margin:
+        auto;
 
-    color: #94a3b8;
+    color:
+        var(--muted);
 
-    font-size: 17px;
+    font-size:
+        17px;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
+
 }
 
-/* =========================
+
+/* =========================================================
    DASHBOARD
-========================= */
+========================================================= */
 
 .dashboard {
 
-    width: min(1100px, 90%);
+    width:
+        min(1100px,90%);
 
-    margin: 30px auto;
+    margin:
+        30px auto;
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
-    gap: 15px;
+    gap:
+        15px;
+
 }
+
 
 .stat {
 
     background:
         linear-gradient(
             145deg,
-            rgba(15,25,43,0.95),
-            rgba(5,11,22,0.95)
+            rgba(15,25,43,0.92),
+            rgba(5,11,22,0.94)
         );
 
-    border: 1px solid rgba(0,170,255,0.18);
+    border:
+        1px solid
+        rgba(0,170,255,0.16);
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
-    padding: 20px;
+    padding:
+        20px;
 
-    text-align: center;
+    text-align:
+        center;
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.04);
+        0 0 25px
+        rgba(0,170,255,0.035);
 
-    transition: 0.25s;
+    transition:
+        0.25s;
+
+    backdrop-filter:
+        blur(8px);
+
 }
+
 
 .stat:hover {
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
-    border-color: rgba(0,170,255,0.45);
+    border-color:
+        rgba(0,170,255,0.40);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.10);
+        0 0 30px
+        rgba(0,170,255,0.09);
+
 }
+
 
 .stat-label {
 
-    color: #64748b;
+    color:
+        #64748b;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1px;
 
-    margin-bottom: 8px;
+    margin-bottom:
+        8px;
+
 }
+
 
 .stat-value {
 
-    color: #00aaff;
+    color:
+        var(--blue);
 
-    font-size: 27px;
+    font-size:
+        27px;
 
-    font-weight: 900;
+    font-weight:
+        900;
+
 }
 
-/* =========================
+
+/* =========================================================
    MAIN PANEL
-========================= */
+========================================================= */
 
 .game-container {
 
-    width: min(900px, 90%);
+    width:
+        min(900px,90%);
 
-    margin: 35px auto 80px;
+    margin:
+        35px auto 80px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(10,20,35,0.96),
+            rgba(10,20,35,0.94),
             rgba(5,11,22,0.96)
         );
 
-    border: 1px solid rgba(0,170,255,0.22);
+    border:
+        1px solid
+        rgba(0,170,255,0.20);
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     box-shadow:
-        0 0 45px rgba(0,170,255,0.07);
+        0 0 50px
+        rgba(0,170,255,0.07);
+
+    backdrop-filter:
+        blur(10px);
+
 }
 
-/* =========================
+
+/* =========================================================
    MISSION HEADER
-========================= */
+========================================================= */
 
 .mission-header {
 
-    padding: 25px;
+    padding:
+        25px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.06);
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 20px;
+    gap:
+        20px;
+
 }
+
 
 .mission-title {
 
-    font-size: 20px;
+    font-size:
+        20px;
 
-    font-weight: 900;
+    font-weight:
+        900;
+
 }
+
 
 .mission-number {
 
-    color: #39ff88;
+    color:
+        var(--green);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    margin-bottom: 5px;
+    margin-bottom:
+        5px;
+
 }
+
 
 .difficulty {
 
-    padding: 7px 12px;
+    padding:
+        7px 12px;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    background: rgba(0,170,255,0.08);
+    background:
+        rgba(0,170,255,0.08);
 
-    border: 1px solid rgba(0,170,255,0.2);
+    border:
+        1px solid
+        rgba(0,170,255,0.20);
 
-    color: #00aaff;
+    color:
+        var(--blue);
+
 }
 
-/* =========================
+
+/* =========================================================
    PROGRESS
-========================= */
+========================================================= */
 
 .progress-wrapper {
 
-    padding: 0 25px 20px;
+    padding:
+        0 25px 20px;
+
 }
+
 
 .progress-bar {
 
-    height: 7px;
+    height:
+        7px;
 
-    width: 100%;
+    width:
+        100%;
 
-    background: #111827;
+    background:
+        #111827;
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
+
 }
+
 
 .progress-fill {
 
-    height: 100%;
+    height:
+        100%;
 
-    width: 10%;
+    width:
+        10%;
 
     background:
         linear-gradient(
             90deg,
-            #00aaff,
-            #39ff88
+            var(--blue),
+            var(--green)
         );
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    transition: width 0.4s ease;
+    transition:
+        width 0.4s ease;
 
     box-shadow:
-        0 0 12px rgba(0,170,255,0.6);
+        0 0 12px
+        rgba(0,170,255,0.6);
+
 }
 
-/* =========================
+
+/* =========================================================
    MISSION CONTENT
-========================= */
+========================================================= */
 
 .mission-content {
 
-    padding: 30px;
+    padding:
+        30px;
+
 }
+
 
 .scenario {
 
-    background: rgba(0,0,0,0.22);
+    background:
+        rgba(0,0,0,0.22);
 
-    border-left: 3px solid #00aaff;
+    border-left:
+        3px solid
+        var(--blue);
 
-    padding: 20px;
+    padding:
+        20px;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    margin-bottom: 25px;
+    margin-bottom:
+        25px;
 
-    color: #cbd5e1;
+    color:
+        #cbd5e1;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
+
 }
+
 
 .scenario strong {
 
-    color: #00aaff;
+    color:
+        var(--blue);
+
 }
+
 
 .question {
 
-    font-size: 21px;
+    font-size:
+        21px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    line-height: 1.5;
+    line-height:
+        1.5;
 
-    margin-bottom: 20px;
+    margin-bottom:
+        20px;
+
 }
 
-/* =========================
+
+/* =========================================================
    ANSWERS
-========================= */
+========================================================= */
 
 .answers {
 
-    display: grid;
+    display:
+        grid;
 
-    gap: 12px;
+    gap:
+        12px;
+
 }
+
 
 .answer {
 
-    width: 100%;
+    width:
+        100%;
 
-    padding: 17px 18px;
+    padding:
+        17px 18px;
 
-    text-align: left;
+    text-align:
+        left;
 
-    color: #dbeafe;
+    color:
+        #dbeafe;
 
     background:
         rgba(15,23,42,0.85);
 
-    border: 1px solid rgba(148,163,184,0.12);
+    border:
+        1px solid
+        rgba(148,163,184,0.12);
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 15px;
+    font-size:
+        15px;
 
-    line-height: 1.5;
+    line-height:
+        1.5;
 
-    transition: 0.25s;
+    transition:
+        0.25s;
+
 }
+
 
 .answer:hover {
 
-    border-color: rgba(0,170,255,0.5);
+    border-color:
+        rgba(0,170,255,0.5);
 
     background:
         rgba(0,170,255,0.06);
 
-    transform: translateX(4px);
+    transform:
+        translateX(4px);
+
 }
+
 
 .answer.correct {
 
-    border-color: #39ff88;
+    border-color:
+        var(--green);
 
     background:
         rgba(57,255,136,0.08);
 
-    color: #39ff88;
+    color:
+        var(--green);
+
 }
+
 
 .answer.wrong {
 
-    border-color: #ff5c5c;
+    border-color:
+        var(--danger);
 
     background:
         rgba(255,92,92,0.08);
 
-    color: #ff8c8c;
+    color:
+        #ff8c8c;
+
 }
+
 
 .answer.disabled {
 
-    cursor: default;
+    cursor:
+        default;
 
-    transform: none;
+    transform:
+        none;
+
 }
 
-/* =========================
+
+/* =========================================================
    FEEDBACK
-========================= */
+========================================================= */
 
 .feedback {
 
-    display: none;
+    display:
+        none;
 
-    margin-top: 25px;
+    margin-top:
+        25px;
 
-    padding: 20px;
+    padding:
+        20px;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     background:
         rgba(0,0,0,0.25);
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
-    line-height: 1.7;
+    line-height:
+        1.7;
+
 }
+
 
 .feedback.show {
 
-    display: block;
+    display:
+        block;
+
 }
+
 
 .feedback-title {
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    margin-bottom: 8px;
+    margin-bottom:
+        8px;
+
 }
+
 
 .feedback.correct-feedback {
 
-    border-color: rgba(57,255,136,0.35);
+    border-color:
+        rgba(57,255,136,0.35);
+
 }
 
-.feedback.correct-feedback .feedback-title {
 
-    color: #39ff88;
+.feedback.correct-feedback
+.feedback-title {
+
+    color:
+        var(--green);
+
 }
+
 
 .feedback.wrong-feedback {
 
-    border-color: rgba(255,92,92,0.35);
+    border-color:
+        rgba(255,92,92,0.35);
+
 }
 
-.feedback.wrong-feedback .feedback-title {
 
-    color: #ff7b7b;
+.feedback.wrong-feedback
+.feedback-title {
+
+    color:
+        #ff7b7b;
+
 }
 
-/* =========================
+
+/* =========================================================
    NEXT BUTTON
-========================= */
+========================================================= */
 
 .next-button {
 
-    display: none;
+    display:
+        none;
 
-    margin-top: 20px;
+    margin-top:
+        20px;
 
-    width: 100%;
+    width:
+        100%;
 
-    padding: 15px;
+    padding:
+        15px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     background:
         linear-gradient(
@@ -663,218 +1156,407 @@ nav {
             #00aaff
         );
 
-    color: white;
+    color:
+        white;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    font-size: 15px;
+    font-size:
+        15px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    transition: 0.25s;
+    transition:
+        0.25s;
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.15);
+        0 0 20px
+        rgba(0,170,255,0.15);
+
 }
+
 
 .next-button.show {
 
-    display: block;
+    display:
+        block;
+
 }
+
 
 .next-button:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.3);
+        0 0 25px
+        rgba(0,170,255,0.3);
+
 }
 
-/* =========================
+
+/* =========================================================
    FINAL SCREEN
-========================= */
+========================================================= */
 
 .final-screen {
 
-    display: none;
+    display:
+        none;
 
-    padding: 50px 30px;
+    padding:
+        50px 30px;
 
-    text-align: center;
+    text-align:
+        center;
+
 }
+
 
 .final-screen.show {
 
-    display: block;
+    display:
+        block;
+
 }
+
 
 .final-icon {
 
-    font-size: 60px;
+    font-size:
+        60px;
 
-    margin-bottom: 20px;
+    margin-bottom:
+        20px;
+
 }
+
 
 .final-screen h2 {
 
-    font-size: 35px;
+    font-size:
+        35px;
 
-    margin-bottom: 12px;
+    margin-bottom:
+        12px;
 
-    color: #00aaff;
+    color:
+        var(--blue);
+
 }
+
 
 .final-screen p {
 
-    color: #94a3b8;
+    color:
+        var(--muted);
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 
-    max-width: 600px;
+    max-width:
+        600px;
 
-    margin: auto;
+    margin:
+        auto;
+
 }
+
 
 .rank {
 
-    margin: 30px auto;
+    margin:
+        30px auto;
 
-    padding: 20px;
+    padding:
+        20px;
 
-    max-width: 500px;
+    max-width:
+        500px;
 
-    border: 1px solid rgba(57,255,136,0.25);
+    border:
+        1px solid
+        rgba(57,255,136,0.25);
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
-    background: rgba(57,255,136,0.05);
+    background:
+        rgba(57,255,136,0.05);
+
 }
+
 
 .rank-title {
 
-    color: #39ff88;
+    color:
+        var(--green);
 
-    font-size: 24px;
+    font-size:
+        24px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    margin-bottom: 8px;
+    margin-bottom:
+        8px;
+
 }
+
 
 .restart {
 
-    padding: 14px 25px;
+    padding:
+        14px 25px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
-    background: #00aaff;
+    background:
+        var(--blue);
 
-    color: white;
+    color:
+        white;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    transition: 0.25s;
+    transition:
+        0.25s;
+
 }
+
 
 .restart:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.35);
+        0 0 20px
+        rgba(0,170,255,0.35);
+
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
 
-    text-align: center;
+    text-align:
+        center;
 
-    padding: 30px;
+    padding:
+        30px;
 
-    color: #475569;
+    color:
+        #475569;
 
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top:
+        1px solid
+        rgba(255,255,255,0.05);
 
-    font-size: 13px;
+    font-size:
+        13px;
+
+    background:
+        rgba(2,7,14,0.65);
+
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media (max-width: 800px) {
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:800px) {
 
     nav {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        padding: 15px 4%;
+        padding:
+            15px 4%;
+
     }
+
 
     .nav-links {
 
-        gap: 4px;
+        gap:
+            4px;
+
     }
+
 
     .nav-links a {
 
-        font-size: 12px;
+        font-size:
+            12px;
 
-        padding: 7px;
+        padding:
+            7px;
+
     }
+
 
     .dashboard {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
+
     }
+
 
     .hero {
 
-        margin-top: 45px;
+        margin-top:
+            45px;
+
     }
+
 
     .mission-header {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
+
+    }
+
+
+    .hud-top-left,
+    .hud-top-right {
+
+        display:
+            none;
+
     }
 
 }
 
-@media (max-width: 500px) {
+
+@media (max-width:500px) {
 
     .dashboard {
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
+
     }
+
 
     .mission-content {
 
-        padding: 20px;
+        padding:
+            20px;
+
     }
+
 
     .scenario {
 
-        padding: 15px;
+        padding:
+            15px;
+
     }
+
 
     .question {
 
-        font-size: 18px;
+        font-size:
+            18px;
+
     }
+
 
     .answer {
 
-        font-size: 14px;
+        font-size:
+            14px;
+
+    }
+
+
+    .network-grid {
+
+        background-size:
+            50px 50px;
+
+    }
+
+
+    .network-hud {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .hud-bottom-left {
+
+        left:
+            10px;
+
+    }
+
+
+    .hud-bottom-right {
+
+        right:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+
+    }
+
+    #network-canvas {
+
+        opacity:
+            0.7;
+
     }
 
 }
@@ -885,74 +1567,151 @@ footer {
 
 <body>
 
-<!-- =========================
+
+<!-- =======================================================
+     GLOBAL CYBER NETWORK BACKGROUND
+======================================================= -->
+
+<canvas
+    id="network-canvas"
+    aria-hidden="true">
+</canvas>
+
+
+<div
+    class="network-background"
+    aria-hidden="true">
+
+    <div class="network-top-glow"></div>
+
+    <div class="network-grid"></div>
+
+    <div class="network-vignette"></div>
+
+
+    <div class="network-hud">
+
+        <span class="hud-top-left">
+            GLOBAL NETWORK // ACTIVE
+        </span>
+
+        <span class="hud-top-right">
+            THREAT MONITORING // ENABLED
+        </span>
+
+        <span class="hud-bottom-left">
+            DEFENSE OPERATIONS // ACTIVE
+        </span>
+
+        <span class="hud-bottom-right">
+            SECURITY LAYER // ONLINE
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
      NAVIGATION
-========================= -->
+======================================================= -->
 
 <nav>
 
-    <a class="logo" href="index.html">
+    <a
+        class="logo"
+        href="index.html">
+
         🛡️ Clyvexis
+
     </a>
+
 
     <div class="nav-links">
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="lessons.html">Lessons</a>
+        <a href="lessons.html">
+            Lessons
+        </a>
 
-        <a href="labs.html">Labs</a>
+        <a href="labs.html">
+            Labs
+        </a>
 
-        <a href="quiz.html">Quiz</a>
+        <a href="quiz.html">
+            Quiz
+        </a>
 
-        <a href="games.html">Games</a>
+        <a href="games.html">
+            Games
+        </a>
 
         <a href="cyber-defense.html">
             🛡️ Defense
         </a>
 
-        <a href="glossary.html">Glossary</a>
+        <a href="glossary.html">
+            Glossary
+        </a>
 
-        <a href="coding.html">Coding</a>
+        <a href="coding.html">
+            Coding
+        </a>
 
-        <a href="simulators.html">Simulators</a>
+        <a href="simulators.html">
+            Simulators
+        </a>
 
-        <a href="donate.html">Donate</a>
+        <a href="donate.html">
+            Donate
+        </a>
 
     </div>
 
 </nav>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+======================================================= -->
 
 <section class="hero">
 
     <div class="status">
+
         ● DEFENSIVE TRAINING SYSTEM ONLINE
+
     </div>
 
+
     <h1>
+
         Cyber Defense
         <span>Operations</span>
+
     </h1>
 
+
     <p>
+
         Train your cybersecurity decision-making skills through
         realistic fictional security scenarios. Analyze threats,
         protect systems, and make the right defensive decision.
+
     </p>
 
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      DASHBOARD
-========================= -->
+======================================================= -->
 
 <section class="dashboard">
+
 
     <div class="stat">
 
@@ -960,8 +1719,12 @@ footer {
             Score
         </div>
 
-        <div class="stat-value" id="score">
+        <div
+            class="stat-value"
+            id="score">
+
             0
+
         </div>
 
     </div>
@@ -973,8 +1736,12 @@ footer {
             Streak
         </div>
 
-        <div class="stat-value" id="streak">
+        <div
+            class="stat-value"
+            id="streak">
+
             0
+
         </div>
 
     </div>
@@ -986,8 +1753,12 @@ footer {
             Mission
         </div>
 
-        <div class="stat-value" id="missionStat">
+        <div
+            class="stat-value"
+            id="missionStat">
+
             1/10
+
         </div>
 
     </div>
@@ -999,43 +1770,66 @@ footer {
             Threat Level
         </div>
 
-        <div class="stat-value" id="threat">
+        <div
+            class="stat-value"
+            id="threat">
+
             LOW
+
         </div>
 
     </div>
 
+
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      GAME
-========================= -->
+======================================================= -->
 
 <main class="game-container">
 
+
     <div class="mission-header">
+
 
         <div>
 
-            <div class="mission-number" id="missionNumber">
+            <div
+                class="mission-number"
+                id="missionNumber">
+
                 MISSION 01
+
             </div>
 
-            <div class="mission-title" id="missionTitle">
+
+            <div
+                class="mission-title"
+                id="missionTitle">
+
                 Suspicious Email
+
             </div>
 
         </div>
 
-        <div class="difficulty" id="difficulty">
+
+        <div
+            class="difficulty"
+            id="difficulty">
+
             BEGINNER
+
         </div>
+
 
     </div>
 
 
     <div class="progress-wrapper">
+
 
         <div class="progress-bar">
 
@@ -1046,36 +1840,48 @@ footer {
 
         </div>
 
+
     </div>
 
 
-    <div class="mission-content" id="missionScreen">
+    <div
+        class="mission-content"
+        id="missionScreen">
 
-        <div class="scenario" id="scenario">
 
+        <div
+            class="scenario"
+            id="scenario">
         </div>
 
 
-        <div class="question" id="question">
-
+        <div
+            class="question"
+            id="question">
         </div>
 
 
-        <div class="answers" id="answers">
-
+        <div
+            class="answers"
+            id="answers">
         </div>
 
 
-        <div class="feedback" id="feedback">
+        <div
+            class="feedback"
+            id="feedback">
+
 
             <div
                 class="feedback-title"
                 id="feedbackTitle">
             </div>
 
+
             <div
                 id="feedbackText">
             </div>
+
 
         </div>
 
@@ -1088,38 +1894,53 @@ footer {
 
         </button>
 
+
     </div>
 
 
-    <!-- FINAL SCREEN -->
+    <!-- =====================================================
+         FINAL SCREEN
+    ====================================================== -->
 
     <div
         class="final-screen"
         id="finalScreen">
 
+
         <div class="final-icon">
+
             🛡️
+
         </div>
 
+
         <h2>
+
             Operations Complete
+
         </h2>
 
+
         <p>
+
             You completed the Cyber Defense Operations training.
             Your final score and defensive rank are shown below.
+
         </p>
 
 
         <div class="rank">
+
 
             <div
                 class="rank-title"
                 id="rankTitle">
             </div>
 
+
             <div id="finalScore">
             </div>
+
 
         </div>
 
@@ -1132,16 +1953,25 @@ footer {
 
         </button>
 
+
     </div>
+
 
 </main>
 
 
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
 <footer>
 
     Clyvexis Cyber Defense Operations
+
     <br><br>
+
     Educational defensive cybersecurity training.
+
     All scenarios are fictional.
 
 </footer>
@@ -1149,9 +1979,896 @@ footer {
 
 <script>
 
-/* =========================
+/* =========================================================
+   GLOBAL NETWORK CANVAS
+========================================================= */
+
+const networkCanvas =
+    document.getElementById(
+        "network-canvas"
+    );
+
+const networkCtx =
+    networkCanvas.getContext("2d");
+
+
+let networkWidth =
+    window.innerWidth;
+
+let networkHeight =
+    window.innerHeight;
+
+let networkDpr =
+    Math.min(
+        window.devicePixelRatio || 1,
+        2
+    );
+
+
+let networkNodes = [];
+
+let networkPackets = [];
+
+let networkTime = 0;
+
+let networkAnimationId = null;
+
+
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+function resizeNetworkCanvas() {
+
+    networkWidth =
+        window.innerWidth;
+
+    networkHeight =
+        window.innerHeight;
+
+
+    networkDpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
+    networkCanvas.width =
+        networkWidth *
+        networkDpr;
+
+
+    networkCanvas.height =
+        networkHeight *
+        networkDpr;
+
+
+    networkCanvas.style.width =
+        networkWidth + "px";
+
+
+    networkCanvas.style.height =
+        networkHeight + "px";
+
+
+    networkCtx.setTransform(
+        networkDpr,
+        0,
+        0,
+        networkDpr,
+        0,
+        0
+    );
+
+
+    createNetworkNodes();
+
+}
+
+
+/* =========================================================
+   CREATE NETWORK
+========================================================= */
+
+function createNetworkNodes() {
+
+    const area =
+        networkWidth *
+        networkHeight;
+
+
+    let count;
+
+
+    if (networkWidth < 500) {
+
+        count = 65;
+
+    } else if (networkWidth < 900) {
+
+        count = 105;
+
+    } else {
+
+        count =
+            Math.min(
+                185,
+                Math.max(
+                    125,
+                    Math.floor(
+                        area / 8500
+                    )
+                )
+            );
+
+    }
+
+
+    networkNodes = [];
+
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+
+        const theta =
+            Math.random() *
+            Math.PI *
+            2;
+
+
+        const phi =
+            Math.acos(
+                2 *
+                Math.random() -
+                1
+            );
+
+
+        networkNodes.push({
+
+            x:
+                Math.sin(phi) *
+                Math.cos(theta),
+
+            y:
+                Math.cos(phi),
+
+            z:
+                Math.sin(phi) *
+                Math.sin(theta),
+
+            size:
+                Math.random() *
+                1.8 +
+                0.7,
+
+            green:
+                Math.random() <
+                0.16,
+
+            phase:
+                Math.random() *
+                Math.PI *
+                2
+
+        });
+
+    }
+
+
+    networkPackets = [];
+
+
+    for (
+        let i = 0;
+        i < 12;
+        i++
+    ) {
+
+
+        networkPackets.push({
+
+            a:
+                Math.floor(
+                    Math.random() *
+                    networkNodes.length
+                ),
+
+            b:
+                Math.floor(
+                    Math.random() *
+                    networkNodes.length
+                ),
+
+            progress:
+                Math.random(),
+
+            speed:
+                0.0007 +
+                Math.random() *
+                0.0012
+
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   PROJECT NETWORK NODE
+========================================================= */
+
+function projectNetworkNode(
+    node,
+    rotation
+) {
+
+
+    const cosR =
+        Math.cos(rotation);
+
+
+    const sinR =
+        Math.sin(rotation);
+
+
+    const rotatedX =
+        node.x *
+        cosR -
+        node.z *
+        sinR;
+
+
+    const rotatedZ =
+        node.x *
+        sinR +
+        node.z *
+        cosR;
+
+
+    const perspective = 2.8;
+
+
+    const scale =
+        perspective /
+        (
+            perspective +
+            rotatedZ *
+            0.72
+        );
+
+
+    const globeRadius =
+        Math.min(
+            networkWidth,
+            networkHeight
+        ) *
+        (
+            networkWidth < 600
+                ? 0.29
+                : 0.34
+        );
+
+
+    return {
+
+        x:
+            networkWidth / 2 +
+            rotatedX *
+            globeRadius *
+            scale,
+
+        y:
+            networkHeight / 2 +
+            node.y *
+            globeRadius *
+            0.72 *
+            scale,
+
+        z:
+            rotatedZ,
+
+        scale:
+            scale
+
+    };
+
+}
+
+
+/* =========================================================
+   DRAW NETWORK
+========================================================= */
+
+function drawNetwork() {
+
+    networkCtx.clearRect(
+        0,
+        0,
+        networkWidth,
+        networkHeight
+    );
+
+
+    const rotation =
+        networkTime *
+        0.00011;
+
+
+    const projected =
+        networkNodes.map(
+            node =>
+                projectNetworkNode(
+                    node,
+                    rotation
+                )
+        );
+
+
+    const centerX =
+        networkWidth / 2;
+
+
+    const centerY =
+        networkHeight / 2;
+
+
+    const globeRadius =
+        Math.min(
+            networkWidth,
+            networkHeight
+        ) *
+        (
+            networkWidth < 600
+                ? 0.29
+                : 0.34
+        );
+
+
+    /* -----------------------------------------------------
+       GLOBE ATMOSPHERE
+    ----------------------------------------------------- */
+
+    const atmosphere =
+        networkCtx.createRadialGradient(
+            centerX,
+            centerY,
+            globeRadius * 0.15,
+            centerX,
+            centerY,
+            globeRadius * 1.25
+        );
+
+
+    atmosphere.addColorStop(
+        0,
+        "rgba(0,170,255,.065)"
+    );
+
+
+    atmosphere.addColorStop(
+        0.48,
+        "rgba(0,170,255,.025)"
+    );
+
+
+    atmosphere.addColorStop(
+        1,
+        "rgba(0,170,255,0)"
+    );
+
+
+    networkCtx.fillStyle =
+        atmosphere;
+
+
+    networkCtx.beginPath();
+
+
+    networkCtx.arc(
+        centerX,
+        centerY,
+        globeRadius * 1.25,
+        0,
+        Math.PI * 2
+    );
+
+
+    networkCtx.fill();
+
+
+    /* -----------------------------------------------------
+       GLOBE OUTLINE
+    ----------------------------------------------------- */
+
+    networkCtx.beginPath();
+
+
+    networkCtx.ellipse(
+        centerX,
+        centerY,
+        globeRadius,
+        globeRadius * 0.72,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+
+    networkCtx.strokeStyle =
+        "rgba(56,189,248,.075)";
+
+
+    networkCtx.lineWidth = 1;
+
+
+    networkCtx.stroke();
+
+
+    /* -----------------------------------------------------
+       CONNECTIONS
+    ----------------------------------------------------- */
+
+    for (
+        let i = 0;
+        i < projected.length;
+        i++
+    ) {
+
+
+        for (
+            let j = i + 1;
+            j < projected.length;
+            j++
+        ) {
+
+
+            const a =
+                projected[i];
+
+
+            const b =
+                projected[j];
+
+
+            if (
+                a.z < -0.62 &&
+                b.z < -0.62
+            ) {
+
+                continue;
+
+            }
+
+
+            const dx =
+                a.x -
+                b.x;
+
+
+            const dy =
+                a.y -
+                b.y;
+
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            const threshold =
+                networkWidth < 600
+                    ? 70
+                    : 105;
+
+
+            if (
+                distance <
+                threshold
+            ) {
+
+
+                const depth =
+                    Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            (
+                                a.z +
+                                b.z +
+                                2
+                            ) / 4
+                        )
+                    );
+
+
+                const alpha =
+                    (
+                        1 -
+                        distance /
+                        threshold
+                    ) *
+                    0.17 *
+                    depth;
+
+
+                networkCtx.beginPath();
+
+
+                networkCtx.moveTo(
+                    a.x,
+                    a.y
+                );
+
+
+                networkCtx.lineTo(
+                    b.x,
+                    b.y
+                );
+
+
+                networkCtx.strokeStyle =
+                    `rgba(56,189,248,${alpha})`;
+
+
+                networkCtx.lineWidth =
+                    0.55 +
+                    depth *
+                    0.35;
+
+
+                networkCtx.stroke();
+
+            }
+
+        }
+
+    }
+
+
+    /* -----------------------------------------------------
+       NODES
+    ----------------------------------------------------- */
+
+    projected.forEach(
+        (point,index) => {
+
+
+            const node =
+                networkNodes[index];
+
+
+            if (
+                point.z <
+                -0.72
+            ) {
+
+                return;
+
+            }
+
+
+            const pulse =
+                0.75 +
+                Math.sin(
+                    networkTime *
+                    0.002 +
+                    node.phase
+                ) *
+                0.25;
+
+
+            const radius =
+                node.size *
+                point.scale *
+                pulse;
+
+
+            networkCtx.beginPath();
+
+
+            networkCtx.arc(
+                point.x,
+                point.y,
+                radius * 4,
+                0,
+                Math.PI * 2
+            );
+
+
+            networkCtx.fillStyle =
+                node.green
+                    ? "rgba(57,255,136,.045)"
+                    : "rgba(0,170,255,.055)";
+
+
+            networkCtx.fill();
+
+
+            networkCtx.beginPath();
+
+
+            networkCtx.arc(
+                point.x,
+                point.y,
+                Math.max(
+                    0.65,
+                    radius
+                ),
+                0,
+                Math.PI * 2
+            );
+
+
+            networkCtx.fillStyle =
+                node.green
+                    ? "rgba(57,255,136,.62)"
+                    : "rgba(56,189,248,.62)";
+
+
+            networkCtx.fill();
+
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       MOVING DATA PACKETS
+    ----------------------------------------------------- */
+
+    networkPackets.forEach(
+        packet => {
+
+
+            const a =
+                projected[
+                    packet.a
+                ];
+
+
+            const b =
+                projected[
+                    packet.b
+                ];
+
+
+            if (!a || !b) {
+
+                return;
+
+            }
+
+
+            packet.progress +=
+                packet.speed;
+
+
+            if (
+                packet.progress >
+                1
+            ) {
+
+
+                packet.progress = 0;
+
+
+                packet.a =
+                    Math.floor(
+                        Math.random() *
+                        networkNodes.length
+                    );
+
+
+                packet.b =
+                    Math.floor(
+                        Math.random() *
+                        networkNodes.length
+                    );
+
+            }
+
+
+            const x =
+                a.x +
+                (
+                    b.x -
+                    a.x
+                ) *
+                packet.progress;
+
+
+            const y =
+                a.y +
+                (
+                    b.y -
+                    a.y
+                ) *
+                packet.progress;
+
+
+            const glow =
+                networkCtx.createRadialGradient(
+                    x,
+                    y,
+                    0,
+                    x,
+                    y,
+                    8
+                );
+
+
+            glow.addColorStop(
+                0,
+                "rgba(57,255,136,.8)"
+            );
+
+
+            glow.addColorStop(
+                1,
+                "rgba(57,255,136,0)"
+            );
+
+
+            networkCtx.fillStyle =
+                glow;
+
+
+            networkCtx.beginPath();
+
+
+            networkCtx.arc(
+                x,
+                y,
+                8,
+                0,
+                Math.PI * 2
+            );
+
+
+            networkCtx.fill();
+
+
+            networkCtx.beginPath();
+
+
+            networkCtx.arc(
+                x,
+                y,
+                1.5,
+                0,
+                Math.PI * 2
+            );
+
+
+            networkCtx.fillStyle =
+                "rgba(170,255,210,.95)";
+
+
+            networkCtx.fill();
+
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       ORBITAL ARCS
+    ----------------------------------------------------- */
+
+    networkCtx.save();
+
+
+    networkCtx.translate(
+        centerX,
+        centerY
+    );
+
+
+    networkCtx.rotate(
+        -0.22
+    );
+
+
+    networkCtx.beginPath();
+
+
+    networkCtx.ellipse(
+        0,
+        0,
+        globeRadius * 1.08,
+        globeRadius * 0.33,
+        0,
+        Math.PI * 0.08,
+        Math.PI * 1.08
+    );
+
+
+    networkCtx.strokeStyle =
+        "rgba(0,170,255,.085)";
+
+
+    networkCtx.lineWidth = 1;
+
+
+    networkCtx.stroke();
+
+
+    networkCtx.beginPath();
+
+
+    networkCtx.ellipse(
+        0,
+        0,
+        globeRadius * 1.16,
+        globeRadius * 0.42,
+        0,
+        Math.PI * 1.05,
+        Math.PI * 1.92
+    );
+
+
+    networkCtx.strokeStyle =
+        "rgba(57,255,136,.055)";
+
+
+    networkCtx.stroke();
+
+
+    networkCtx.restore();
+
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+function animateNetwork() {
+
+    networkTime++;
+
+    drawNetwork();
+
+
+    if (!reducedMotion) {
+
+        networkAnimationId =
+            requestAnimationFrame(
+                animateNetwork
+            );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeNetworkCanvas
+);
+
+
+resizeNetworkCanvas();
+
+animateNetwork();
+
+
+/* =========================================================
    MISSIONS
-========================= */
+========================================================= */
 
 const missions = [
 
@@ -1427,9 +3144,9 @@ const missions = [
 ];
 
 
-/* =========================
+/* =========================================================
    GAME VARIABLES
-========================= */
+========================================================= */
 
 let currentMission = 0;
 
@@ -1440,75 +3157,132 @@ let streak = 0;
 let answered = false;
 
 
-/* =========================
+/* =========================================================
    ELEMENTS
-========================= */
+========================================================= */
 
 const missionTitle =
-    document.getElementById("missionTitle");
+    document.getElementById(
+        "missionTitle"
+    );
+
 
 const missionNumber =
-    document.getElementById("missionNumber");
+    document.getElementById(
+        "missionNumber"
+    );
+
 
 const difficulty =
-    document.getElementById("difficulty");
+    document.getElementById(
+        "difficulty"
+    );
+
 
 const threat =
-    document.getElementById("threat");
+    document.getElementById(
+        "threat"
+    );
+
 
 const scenario =
-    document.getElementById("scenario");
+    document.getElementById(
+        "scenario"
+    );
+
 
 const question =
-    document.getElementById("question");
+    document.getElementById(
+        "question"
+    );
+
 
 const answers =
-    document.getElementById("answers");
+    document.getElementById(
+        "answers"
+    );
+
 
 const feedback =
-    document.getElementById("feedback");
+    document.getElementById(
+        "feedback"
+    );
+
 
 const feedbackTitle =
-    document.getElementById("feedbackTitle");
+    document.getElementById(
+        "feedbackTitle"
+    );
+
 
 const feedbackText =
-    document.getElementById("feedbackText");
+    document.getElementById(
+        "feedbackText"
+    );
+
 
 const nextButton =
-    document.getElementById("nextButton");
+    document.getElementById(
+        "nextButton"
+    );
+
 
 const progressFill =
-    document.getElementById("progressFill");
+    document.getElementById(
+        "progressFill"
+    );
+
 
 const scoreDisplay =
-    document.getElementById("score");
+    document.getElementById(
+        "score"
+    );
+
 
 const streakDisplay =
-    document.getElementById("streak");
+    document.getElementById(
+        "streak"
+    );
+
 
 const missionStat =
-    document.getElementById("missionStat");
+    document.getElementById(
+        "missionStat"
+    );
+
 
 const finalScreen =
-    document.getElementById("finalScreen");
+    document.getElementById(
+        "finalScreen"
+    );
+
 
 const missionScreen =
-    document.getElementById("missionScreen");
+    document.getElementById(
+        "missionScreen"
+    );
+
 
 const finalScore =
-    document.getElementById("finalScore");
+    document.getElementById(
+        "finalScore"
+    );
+
 
 const rankTitle =
-    document.getElementById("rankTitle");
+    document.getElementById(
+        "rankTitle"
+    );
 
 
-/* =========================
+/* =========================================================
    LOAD MISSION
-========================= */
+========================================================= */
 
 function loadMission() {
 
     answered = false;
+
 
     const mission =
         missions[currentMission];
@@ -1517,9 +3291,15 @@ function loadMission() {
     missionTitle.textContent =
         mission.title;
 
+
     missionNumber.textContent =
         "MISSION " +
-        String(currentMission + 1).padStart(2, "0");
+        String(
+            currentMission + 1
+        ).padStart(
+            2,
+            "0"
+        );
 
 
     difficulty.textContent =
@@ -1531,7 +3311,9 @@ function loadMission() {
 
 
     missionStat.textContent =
-        (currentMission + 1) +
+        (
+            currentMission + 1
+        ) +
         "/" +
         missions.length;
 
@@ -1545,25 +3327,42 @@ function loadMission() {
         mission.question;
 
 
-    answers.innerHTML = "";
+    answers.innerHTML =
+        "";
 
 
     mission.answers.forEach(
-        (answer, index) => {
+        (
+            answer,
+            index
+        ) => {
+
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             button.className =
                 "answer";
 
+
             button.textContent =
                 answer;
 
-            button.onclick =
-                () => chooseAnswer(index, button);
 
-            answers.appendChild(button);
+            button.onclick =
+                () =>
+                    chooseAnswer(
+                        index,
+                        button
+                    );
+
+
+            answers.appendChild(
+                button
+            );
 
         }
     );
@@ -1578,22 +3377,31 @@ function loadMission() {
 
 
     progressFill.style.width =
-        ((currentMission) /
-        missions.length * 100) +
+        (
+            currentMission /
+            missions.length *
+            100
+        ) +
         "%";
 
 }
 
 
-/* =========================
+/* =========================================================
    ANSWER
-========================= */
+========================================================= */
 
-function chooseAnswer(index, button) {
+function chooseAnswer(
+    index,
+    button
+) {
 
     if (answered) {
+
         return;
+
     }
+
 
     answered = true;
 
@@ -1603,7 +3411,9 @@ function chooseAnswer(index, button) {
 
 
     const allAnswers =
-        document.querySelectorAll(".answer");
+        document.querySelectorAll(
+            ".answer"
+        );
 
 
     allAnswers.forEach(
@@ -1617,13 +3427,20 @@ function chooseAnswer(index, button) {
     );
 
 
-    if (index === mission.correct) {
+    if (
+        index ===
+        mission.correct
+    ) {
+
 
         button.classList.add(
             "correct"
         );
 
-        score += 100;
+
+        score +=
+            100;
+
 
         streak++;
 
@@ -1631,17 +3448,22 @@ function chooseAnswer(index, button) {
         feedback.className =
             "feedback show correct-feedback";
 
+
         feedbackTitle.textContent =
             "✓ Correct Defensive Decision";
+
 
         feedbackText.textContent =
             mission.explanation;
 
+
     } else {
+
 
         button.classList.add(
             "wrong"
         );
+
 
         streak = 0;
 
@@ -1656,8 +3478,10 @@ function chooseAnswer(index, button) {
         feedback.className =
             "feedback show wrong-feedback";
 
+
         feedbackTitle.textContent =
             "✕ Incorrect Decision";
+
 
         feedbackText.textContent =
             mission.explanation;
@@ -1668,6 +3492,7 @@ function chooseAnswer(index, button) {
     scoreDisplay.textContent =
         score;
 
+
     streakDisplay.textContent =
         streak;
 
@@ -1677,10 +3502,13 @@ function chooseAnswer(index, button) {
         missions.length - 1
     ) {
 
+
         nextButton.textContent =
             "View Final Results →";
 
+
     } else {
+
 
         nextButton.textContent =
             "Next Mission →";
@@ -1693,19 +3521,26 @@ function chooseAnswer(index, button) {
 
 
     progressFill.style.width =
-        ((currentMission + 1) /
-        missions.length * 100) +
+        (
+            (
+                currentMission +
+                1
+            ) /
+            missions.length *
+            100
+        ) +
         "%";
 
 }
 
 
-/* =========================
+/* =========================================================
    NEXT MISSION
-========================= */
+========================================================= */
 
 nextButton.onclick =
     function() {
+
 
         currentMission++;
 
@@ -1715,7 +3550,9 @@ nextButton.onclick =
             missions.length
         ) {
 
+
             finishGame();
+
 
             return;
 
@@ -1727,14 +3564,15 @@ nextButton.onclick =
     };
 
 
-/* =========================
+/* =========================================================
    FINISH GAME
-========================= */
+========================================================= */
 
 function finishGame() {
 
     missionScreen.style.display =
         "none";
+
 
     finalScreen.classList.add(
         "show"
@@ -1745,7 +3583,10 @@ function finishGame() {
         "<strong>Final Score:</strong> " +
         score +
         " / " +
-        (missions.length * 100);
+        (
+            missions.length *
+            100
+        );
 
 
     let rank;
@@ -1753,20 +3594,27 @@ function finishGame() {
 
     if (score < 500) {
 
+
         rank =
             "ROOKIE DEFENDER";
 
+
     } else if (score < 700) {
+
 
         rank =
             "SECURITY ANALYST";
 
+
     } else if (score < 900) {
+
 
         rank =
             "CYBER DEFENDER";
 
+
     } else {
+
 
         rank =
             "SOC SPECIALIST";
@@ -1783,9 +3631,9 @@ function finishGame() {
 }
 
 
-/* =========================
+/* =========================================================
    RESTART
-========================= */
+========================================================= */
 
 function restartGame() {
 
@@ -1799,6 +3647,7 @@ function restartGame() {
     scoreDisplay.textContent =
         "0";
 
+
     streakDisplay.textContent =
         "0";
 
@@ -1806,6 +3655,7 @@ function restartGame() {
     finalScreen.classList.remove(
         "show"
     );
+
 
     missionScreen.style.display =
         "block";
@@ -1816,9 +3666,9 @@ function restartGame() {
 }
 
 
-/* =========================
+/* =========================================================
    BEST SCORE
-========================= */
+========================================================= */
 
 function saveBestScore() {
 
@@ -1830,7 +3680,11 @@ function saveBestScore() {
         );
 
 
-    if (score > oldScore) {
+    if (
+        score >
+        oldScore
+    ) {
+
 
         localStorage.setItem(
             "clyvexisDefenseBest",
@@ -1842,9 +3696,9 @@ function saveBestScore() {
 }
 
 
-/* =========================
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 loadMission();
 
