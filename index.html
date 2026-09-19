@@ -64,7 +64,6 @@
         content="website"
     >
 
-    <!-- Fixed to match canonical URL -->
     <meta
         property="og:url"
         content="https://cyberstarthe.github.io/clyvexis/"
@@ -121,19 +120,111 @@
 
 
         /* =====================================================
-           02. GLOBAL CYBER GRID
+           02. GLOBAL CYBER NETWORK
+        ===================================================== */
+
+        /*
+           Canvas used for the animated global
+           cybersecurity network.
+        */
+
+        #cyber-network {
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            opacity: 0.72;
+        }
+
+
+        /*
+           Ambient light behind the network.
+        */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 38%,
+                    rgba(0, 170, 255, 0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 50% 42%,
+                    rgba(57, 255, 136, 0.035),
+                    transparent 42%
+                );
+
+            animation:
+                networkAmbient
+                8s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+        @keyframes networkAmbient {
+
+            from {
+                opacity: 0.65;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /*
+           Keep all website content above
+           the animated background.
+        */
+
+        nav,
+        .hero,
+        .learn-section,
+        .career-section,
+        .knowledge-section,
+        .features-section,
+        footer {
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =====================================================
+           03. GLOBAL CYBER GRID
         ===================================================== */
 
         body::after {
             content: "";
 
             position: fixed;
+
             inset: 0;
 
             pointer-events: none;
+
             z-index: 0;
 
-            opacity: 0.65;
+            opacity: 0.45;
 
             background-image:
                 linear-gradient(
@@ -157,7 +248,10 @@
                 );
 
             animation:
-                gridDrift 18s linear infinite;
+                gridDrift
+                18s
+                linear
+                infinite;
         }
 
         @keyframes gridDrift {
@@ -177,14 +271,16 @@
 
 
         /* =====================================================
-           03. CYBER ATMOSPHERE
+           04. CYBER ATMOSPHERE
         ===================================================== */
 
         .cyber-atmosphere {
             position: fixed;
+
             inset: 0;
 
             pointer-events: none;
+
             overflow: hidden;
 
             z-index: 0;
@@ -204,7 +300,8 @@
             top: -360px;
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             border-radius: 50%;
 
@@ -219,7 +316,11 @@
             filter: blur(5px);
 
             animation:
-                atmospherePulse 7s ease-in-out infinite alternate;
+                atmospherePulse
+                7s
+                ease-in-out
+                infinite
+                alternate;
         }
 
 
@@ -246,7 +347,11 @@
                 );
 
             animation:
-                sideGlow 9s ease-in-out infinite alternate;
+                sideGlow
+                9s
+                ease-in-out
+                infinite
+                alternate;
         }
 
         @keyframes atmospherePulse {
@@ -283,7 +388,7 @@
 
 
         /* =====================================================
-           04. SCANNING LIGHT
+           05. SCANNING LIGHT
         ===================================================== */
 
         .scan-line {
@@ -309,12 +414,15 @@
 
             pointer-events: none;
 
-            z-index: 0;
+            z-index: 1;
 
             opacity: 0.35;
 
             animation:
-                scanMove 10s linear infinite;
+                scanMove
+                10s
+                linear
+                infinite;
         }
 
         @keyframes scanMove {
@@ -330,7 +438,7 @@
 
 
         /* =====================================================
-           05. NAVIGATION
+           06. NAVIGATION
         ===================================================== */
 
         nav {
@@ -398,7 +506,10 @@
                 rgba(0, 170, 255, 0.8);
 
             animation:
-                navEnergy 5s linear infinite;
+                navEnergy
+                5s
+                linear
+                infinite;
         }
 
         @keyframes navEnergy {
@@ -531,13 +642,13 @@
 
 
         /* =====================================================
-           06. HERO
+           07. HERO
         ===================================================== */
 
         .hero {
             position: relative;
 
-            z-index: 1;
+            z-index: 2;
 
             min-height: 700px;
 
@@ -575,7 +686,11 @@
                 );
 
             animation:
-                heroGlowLeft 8s ease-in-out infinite alternate;
+                heroGlowLeft
+                8s
+                ease-in-out
+                infinite
+                alternate;
 
             pointer-events: none;
         }
@@ -602,7 +717,11 @@
                 );
 
             animation:
-                heroGlowRight 9s ease-in-out infinite alternate;
+                heroGlowRight
+                9s
+                ease-in-out
+                infinite
+                alternate;
 
             pointer-events: none;
         }
@@ -643,7 +762,7 @@
         .hero-content {
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
 
             max-width: 850px;
         }
@@ -667,7 +786,10 @@
                 );
 
             animation:
-                shieldFloat 3s ease-in-out infinite;
+                shieldFloat
+                3s
+                ease-in-out
+                infinite;
         }
 
         @keyframes shieldFloat {
@@ -804,7 +926,7 @@
 
 
         /* =====================================================
-           07. SHARED SECTION CONTAINER
+           08. SHARED SECTION CONTAINER
         ===================================================== */
 
         .learn-section,
@@ -819,11 +941,12 @@
 
             position: relative;
 
-            z-index: 1;
+            z-index: 2;
 
             overflow: hidden;
 
-            backdrop-filter: blur(8px);
+            backdrop-filter:
+                blur(8px);
 
             background:
                 linear-gradient(
@@ -841,7 +964,7 @@
 
 
         /* =====================================================
-           08. WHAT CLYVEXIS TEACHES
+           09. WHAT CLYVEXIS TEACHES
         ===================================================== */
 
         .learn-section {
@@ -954,7 +1077,7 @@
 
 
         /* =====================================================
-           09. CYBERSECURITY CAREER PATHS
+           10. CYBERSECURITY CAREER PATHS
         ===================================================== */
 
         .career-section {
@@ -984,14 +1107,18 @@
                     #00aaff
                 );
 
-            background-size: 200% 100%;
+            background-size:
+                200% 100%;
 
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.7);
 
             animation:
-                careerEnergy 5s linear infinite;
+                careerEnergy
+                5s
+                linear
+                infinite;
         }
 
         @keyframes careerEnergy {
@@ -1164,7 +1291,7 @@
 
 
         /* =====================================================
-           10. CYBER KNOWLEDGE MAP
+           11. CYBER KNOWLEDGE MAP
         ===================================================== */
 
         .knowledge-section {
@@ -1194,14 +1321,18 @@
                     #00aaff
                 );
 
-            background-size: 200% 100%;
+            background-size:
+                200% 100%;
 
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.7);
 
             animation:
-                knowledgeEnergy 5s linear infinite;
+                knowledgeEnergy
+                5s
+                linear
+                infinite;
         }
 
         @keyframes knowledgeEnergy {
@@ -1413,7 +1544,7 @@
 
 
         /* =====================================================
-           11. EXPLORE CLYVEXIS
+           12. EXPLORE CLYVEXIS
         ===================================================== */
 
         .features-section {
@@ -1631,13 +1762,13 @@
 
 
         /* =====================================================
-           12. FOOTER
+           13. FOOTER
         ===================================================== */
 
         footer {
             position: relative;
 
-            z-index: 1;
+            z-index: 2;
 
             margin-top: 70px;
 
@@ -1692,12 +1823,10 @@
 
 
         /* =====================================================
-           13. TABLET RESPONSIVE
+           14. TABLET RESPONSIVE
         ===================================================== */
 
         @media (max-width: 950px) {
-
-            /* Navigation */
 
             nav {
                 flex-direction: column;
@@ -1714,15 +1843,11 @@
             }
 
 
-            /* Learning */
-
             .topic-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
-
-            /* Careers */
 
             .career-grid {
                 grid-template-columns:
@@ -1730,30 +1855,34 @@
             }
 
 
-            /* Knowledge Map */
-
             .knowledge-map {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
 
-            /* Features */
-
             .features-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
+            }
+
+
+            /*
+               Make the network slightly smaller
+               on tablets.
+            */
+
+            #cyber-network {
+                opacity: 0.58;
             }
         }
 
 
         /* =====================================================
-           14. MOBILE RESPONSIVE
+           15. MOBILE RESPONSIVE
         ===================================================== */
 
         @media (max-width: 600px) {
-
-            /* Navigation */
 
             nav {
                 padding:
@@ -1772,8 +1901,6 @@
                 font-size: 23px;
             }
 
-
-            /* Hero */
 
             .hero {
                 min-height: 600px;
@@ -1797,8 +1924,6 @@
             }
 
 
-            /* Learning */
-
             .learn-section {
                 padding:
                     25px 15px;
@@ -1813,8 +1938,6 @@
             }
 
 
-            /* Career Paths */
-
             .career-section {
                 padding:
                     25px 15px;
@@ -1828,8 +1951,6 @@
                 grid-template-columns: 1fr;
             }
 
-
-            /* Knowledge Map */
 
             .knowledge-section {
                 padding:
@@ -1849,8 +1970,6 @@
             }
 
 
-            /* Features */
-
             .features-section {
                 padding:
                     22px 15px;
@@ -1865,8 +1984,6 @@
             }
 
 
-            /* Atmosphere */
-
             .cyber-atmosphere::before {
                 width: 450px;
 
@@ -1876,11 +1993,21 @@
             .scan-line {
                 opacity: 0.20;
             }
+
+
+            /*
+               Keep the network visible,
+               but more subtle on phones.
+            */
+
+            #cyber-network {
+                opacity: 0.42;
+            }
         }
 
 
         /* =====================================================
-           15. REDUCED MOTION ACCESSIBILITY
+           16. REDUCED MOTION ACCESSIBILITY
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
@@ -1896,6 +2023,10 @@
 
                 scroll-behavior:
                     auto !important;
+            }
+
+            #cyber-network {
+                opacity: 0.28;
             }
         }
 
@@ -1914,6 +2045,16 @@
     <div class="cyber-atmosphere"></div>
 
     <div class="scan-line"></div>
+
+
+    <!-- =====================================================
+         GLOBAL CYBER NETWORK
+    ===================================================== -->
+
+    <canvas
+        id="cyber-network"
+        aria-hidden="true"
+    ></canvas>
 
 
     <!-- =====================================================
@@ -2083,8 +2224,6 @@
         <div class="topic-grid">
 
 
-            <!-- Phishing -->
-
             <div class="topic-card">
 
                 <h3>
@@ -2099,8 +2238,6 @@
 
             </div>
 
-
-            <!-- Malware -->
 
             <div class="topic-card">
 
@@ -2117,8 +2254,6 @@
             </div>
 
 
-            <!-- Password Security -->
-
             <div class="topic-card">
 
                 <h3>
@@ -2133,8 +2268,6 @@
 
             </div>
 
-
-            <!-- Networking -->
 
             <div class="topic-card">
 
@@ -2151,8 +2284,6 @@
             </div>
 
 
-            <!-- Coding -->
-
             <div class="topic-card">
 
                 <h3>
@@ -2167,8 +2298,6 @@
 
             </div>
 
-
-            <!-- Cyber Defense -->
 
             <div class="topic-card">
 
@@ -2212,8 +2341,6 @@
 
         <div class="career-grid">
 
-
-            <!-- SOC Analyst -->
 
             <div class="career-card">
 
@@ -2260,8 +2387,6 @@
             </div>
 
 
-            <!-- Cybersecurity Specialist -->
-
             <div class="career-card">
 
                 <div class="career-icon">
@@ -2306,8 +2431,6 @@
 
             </div>
 
-
-            <!-- Security Programmer -->
 
             <div class="career-card">
 
@@ -2354,8 +2477,6 @@
             </div>
 
 
-            <!-- Network Security -->
-
             <div class="career-card">
 
                 <div class="career-icon">
@@ -2401,8 +2522,6 @@
             </div>
 
 
-            <!-- Digital Forensics -->
-
             <div class="career-card">
 
                 <div class="career-icon">
@@ -2447,8 +2566,6 @@
 
             </div>
 
-
-            <!-- Cyber + Python -->
 
             <div class="career-card">
 
@@ -2525,8 +2642,6 @@
         <div class="knowledge-map">
 
 
-            <!-- Networking -->
-
             <a
                 class="knowledge-node"
                 href="lessons.html"
@@ -2567,8 +2682,6 @@
 
             </a>
 
-
-            <!-- Security -->
 
             <a
                 class="knowledge-node"
@@ -2611,8 +2724,6 @@
             </a>
 
 
-            <!-- Coding -->
-
             <a
                 class="knowledge-node"
                 href="coding.html"
@@ -2654,8 +2765,6 @@
             </a>
 
 
-            <!-- Systems & Defense -->
-
             <a
                 class="knowledge-node"
                 href="cyber-defense.html"
@@ -2696,8 +2805,6 @@
 
             </a>
 
-
-            <!-- Identity -->
 
             <a
                 class="knowledge-node"
@@ -2743,8 +2850,6 @@
         </div>
 
 
-        <!-- Learning flow -->
-
         <div class="knowledge-flow">
 
             <strong>
@@ -2778,8 +2883,6 @@
         </div>
 
 
-        <!-- Career connection -->
-
         <div class="knowledge-career">
 
             <p>
@@ -2810,8 +2913,6 @@
         <div class="features-grid">
 
 
-            <!-- Lessons -->
-
             <div class="feature-card">
 
                 <div class="feature-icon">
@@ -2837,8 +2938,6 @@
 
             </div>
 
-
-            <!-- Labs -->
 
             <div class="feature-card">
 
@@ -2866,8 +2965,6 @@
             </div>
 
 
-            <!-- Quiz -->
-
             <div class="feature-card">
 
                 <div class="feature-icon">
@@ -2893,8 +2990,6 @@
 
             </div>
 
-
-            <!-- Games -->
 
             <div class="feature-card">
 
@@ -2922,8 +3017,6 @@
             </div>
 
 
-            <!-- Defense -->
-
             <div class="feature-card defense-card">
 
                 <div class="feature-icon">
@@ -2949,8 +3042,6 @@
 
             </div>
 
-
-            <!-- Glossary -->
 
             <div class="feature-card">
 
@@ -2978,8 +3069,6 @@
             </div>
 
 
-            <!-- Coding -->
-
             <div class="feature-card coding-card">
 
                 <div class="feature-icon">
@@ -3005,8 +3094,6 @@
 
             </div>
 
-
-            <!-- Simulators -->
 
             <div class="feature-card simulator-card">
 
@@ -3062,5 +3149,918 @@
     </footer>
 
 
+    <!-- =====================================================
+         GLOBAL CYBER NETWORK ENGINE
+    ===================================================== -->
+
+    <script>
+
+    (() => {
+
+        const canvas =
+            document.getElementById(
+                "cyber-network"
+            );
+
+        if (!canvas) return;
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+        if (!ctx) return;
+
+
+        /* =================================================
+           SETTINGS
+        ================================================= */
+
+        const settings = {
+
+            desktopNodes: 95,
+
+            mobileNodes: 42,
+
+            connectionDistance: 150,
+
+            globeRadius: 270,
+
+            packetSpeed: 0.008,
+
+            nodePulseSpeed: 0.025
+
+        };
+
+
+        /* =================================================
+           STATE
+        ================================================= */
+
+        let width = 0;
+
+        let height = 0;
+
+        let dpr = 1;
+
+        let nodes = [];
+
+        let packets = [];
+
+
+        const reducedMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            );
+
+
+        /* =================================================
+           RESIZE
+        ================================================= */
+
+        function resize() {
+
+            dpr =
+                Math.min(
+                    window.devicePixelRatio || 1,
+                    2
+                );
+
+
+            width =
+                window.innerWidth;
+
+
+            height =
+                window.innerHeight;
+
+
+            canvas.width =
+                width * dpr;
+
+
+            canvas.height =
+                height * dpr;
+
+
+            canvas.style.width =
+                width + "px";
+
+
+            canvas.style.height =
+                height + "px";
+
+
+            ctx.setTransform(
+                dpr,
+                0,
+                0,
+                dpr,
+                0,
+                0
+            );
+
+
+            createNodes();
+
+            createPackets();
+
+        }
+
+
+        /* =================================================
+           CREATE NETWORK NODES
+        ================================================= */
+
+        function createNodes() {
+
+            nodes = [];
+
+
+            const count =
+                width < 700
+                    ? settings.mobileNodes
+                    : settings.desktopNodes;
+
+
+            for (
+                let i = 0;
+                i < count;
+                i++
+            ) {
+
+                nodes.push({
+
+                    angle:
+                        Math.random() *
+                        Math.PI *
+                        2,
+
+                    distance:
+                        Math.random(),
+
+                    x: 0,
+
+                    y: 0,
+
+                    size:
+                        Math.random() *
+                        1.8 +
+                        0.7,
+
+                    alpha:
+                        Math.random() *
+                        0.5 +
+                        0.25,
+
+                    pulse:
+                        Math.random() *
+                        Math.PI *
+                        2
+
+                });
+
+            }
+
+        }
+
+
+        /* =================================================
+           CREATE DATA PACKETS
+        ================================================= */
+
+        function createPackets() {
+
+            packets = [];
+
+
+            const count =
+                width < 700
+                    ? 8
+                    : 18;
+
+
+            for (
+                let i = 0;
+                i < count;
+                i++
+            ) {
+
+                packets.push({
+
+                    from:
+                        Math.floor(
+                            Math.random() *
+                            nodes.length
+                        ),
+
+                    to:
+                        Math.floor(
+                            Math.random() *
+                            nodes.length
+                        ),
+
+                    progress:
+                        Math.random(),
+
+                    speed:
+                        settings.packetSpeed *
+                        (
+                            0.7 +
+                            Math.random() *
+                            0.8
+                        )
+
+                });
+
+            }
+
+        }
+
+
+        /* =================================================
+           UPDATE NODE POSITIONS
+        ================================================= */
+
+        function updateNodes(time) {
+
+            const centerX =
+                width / 2;
+
+
+            const centerY =
+                height * 0.43;
+
+
+            const radius =
+                Math.min(
+                    settings.globeRadius,
+                    width * 0.34
+                );
+
+
+            nodes.forEach(
+                node => {
+
+                    const wobble =
+                        reducedMotion.matches
+                            ? 0
+                            : Math.sin(
+                                time * 0.00035 +
+                                node.pulse
+                            ) * 0.025;
+
+
+                    const distance =
+                        Math.min(
+                            1,
+                            node.distance +
+                            wobble
+                        );
+
+
+                    const x =
+                        Math.cos(
+                            node.angle
+                        ) *
+                        radius *
+                        distance;
+
+
+                    const y =
+                        Math.sin(
+                            node.angle
+                        ) *
+                        radius *
+                        distance *
+                        0.62;
+
+
+                    const curve =
+                        Math.cos(
+                            node.angle
+                        ) *
+                        distance *
+                        35;
+
+
+                    node.x =
+                        centerX +
+                        x;
+
+
+                    node.y =
+                        centerY +
+                        y +
+                        curve;
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           MAIN GLOW
+        ================================================= */
+
+        function drawGlow() {
+
+            const centerX =
+                width / 2;
+
+
+            const centerY =
+                height * 0.43;
+
+
+            const radius =
+                Math.min(
+                    settings.globeRadius * 1.5,
+                    width * 0.5
+                );
+
+
+            const gradient =
+                ctx.createRadialGradient(
+                    centerX,
+                    centerY,
+                    0,
+                    centerX,
+                    centerY,
+                    radius
+                );
+
+
+            gradient.addColorStop(
+                0,
+                "rgba(0,170,255,0.10)"
+            );
+
+
+            gradient.addColorStop(
+                0.35,
+                "rgba(0,170,255,0.045)"
+            );
+
+
+            gradient.addColorStop(
+                0.65,
+                "rgba(57,255,136,0.018)"
+            );
+
+
+            gradient.addColorStop(
+                1,
+                "rgba(0,0,0,0)"
+            );
+
+
+            ctx.fillStyle =
+                gradient;
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                centerX,
+                centerY,
+                radius,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fill();
+
+        }
+
+
+        /* =================================================
+           GLOBE RINGS
+        ================================================= */
+
+        function drawGlobeRings() {
+
+            const centerX =
+                width / 2;
+
+
+            const centerY =
+                height * 0.43;
+
+
+            const radius =
+                Math.min(
+                    settings.globeRadius,
+                    width * 0.34
+                );
+
+
+            ctx.save();
+
+
+            /* Main globe outline */
+
+            ctx.beginPath();
+
+
+            ctx.ellipse(
+                centerX,
+                centerY,
+                radius,
+                radius * 0.62,
+                0,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.strokeStyle =
+                "rgba(0,170,255,0.12)";
+
+
+            ctx.lineWidth = 1;
+
+
+            ctx.stroke();
+
+
+            /* Vertical rings */
+
+            for (
+                let i = 1;
+                i <= 3;
+                i++
+            ) {
+
+                const ring =
+                    radius *
+                    (i / 4);
+
+
+                ctx.beginPath();
+
+
+                ctx.ellipse(
+                    centerX,
+                    centerY,
+                    ring,
+                    radius * 0.62,
+                    0,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.strokeStyle =
+                    "rgba(0,170,255,0.055)";
+
+
+                ctx.stroke();
+
+            }
+
+
+            /* Horizontal latitude lines */
+
+            for (
+                let i = -2;
+                i <= 2;
+                i++
+            ) {
+
+                const offset =
+                    i *
+                    radius *
+                    0.20;
+
+
+                ctx.beginPath();
+
+
+                ctx.ellipse(
+                    centerX,
+                    centerY + offset,
+                    radius *
+                    Math.sqrt(
+                        Math.max(
+                            0.15,
+                            1 -
+                            Math.abs(i) *
+                            0.16
+                        )
+                    ),
+                    radius * 0.16,
+                    0,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.strokeStyle =
+                    "rgba(57,255,136,0.035)";
+
+
+                ctx.stroke();
+
+            }
+
+
+            ctx.restore();
+
+        }
+
+
+        /* =================================================
+           NETWORK CONNECTIONS
+        ================================================= */
+
+        function drawConnections(time) {
+
+            for (
+                let i = 0;
+                i < nodes.length;
+                i++
+            ) {
+
+                const a =
+                    nodes[i];
+
+
+                for (
+                    let j = i + 1;
+                    j < nodes.length;
+                    j++
+                ) {
+
+                    const b =
+                        nodes[j];
+
+
+                    const dx =
+                        a.x -
+                        b.x;
+
+
+                    const dy =
+                        a.y -
+                        b.y;
+
+
+                    const distance =
+                        Math.sqrt(
+                            dx * dx +
+                            dy * dy
+                        );
+
+
+                    if (
+                        distance >
+                        settings.connectionDistance
+                    ) {
+                        continue;
+                    }
+
+
+                    const strength =
+                        1 -
+                        distance /
+                        settings.connectionDistance;
+
+
+                    const pulse =
+                        reducedMotion.matches
+                            ? 0
+                            : (
+                                Math.sin(
+                                    time * 0.001 +
+                                    i
+                                ) *
+                                0.5 +
+                                0.5
+                            );
+
+
+                    ctx.beginPath();
+
+
+                    ctx.moveTo(
+                        a.x,
+                        a.y
+                    );
+
+
+                    ctx.lineTo(
+                        b.x,
+                        b.y
+                    );
+
+
+                    ctx.strokeStyle =
+                        `rgba(
+                            0,
+                            170,
+                            255,
+                            ${strength * 0.13 +
+                            pulse * 0.025}
+                        )`;
+
+
+                    ctx.lineWidth =
+                        0.6;
+
+
+                    ctx.stroke();
+
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           NETWORK NODES
+        ================================================= */
+
+        function drawNodes(time) {
+
+            nodes.forEach(
+                (node, index) => {
+
+                    const pulse =
+                        reducedMotion.matches
+                            ? 1
+                            : (
+                                Math.sin(
+                                    time *
+                                    0.000025 +
+                                    node.pulse
+                                ) *
+                                0.5 +
+                                0.5
+                            );
+
+
+                    const size =
+                        node.size +
+                        pulse * 0.8;
+
+
+                    /* Node glow */
+
+                    ctx.beginPath();
+
+
+                    ctx.arc(
+                        node.x,
+                        node.y,
+                        size * 3,
+                        0,
+                        Math.PI * 2
+                    );
+
+
+                    ctx.fillStyle =
+                        index % 5 === 0
+                            ? "rgba(57,255,136,0.045)"
+                            : "rgba(0,170,255,0.045)";
+
+
+                    ctx.fill();
+
+
+                    /* Node core */
+
+                    ctx.beginPath();
+
+
+                    ctx.arc(
+                        node.x,
+                        node.y,
+                        size,
+                        0,
+                        Math.PI * 2
+                    );
+
+
+                    ctx.fillStyle =
+                        index % 5 === 0
+                            ? `rgba(
+                                57,
+                                255,
+                                136,
+                                ${node.alpha}
+                            )`
+                            : `rgba(
+                                0,
+                                170,
+                                255,
+                                ${node.alpha}
+                            )`;
+
+
+                    ctx.fill();
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           MOVING DATA PACKETS
+        ================================================= */
+
+        function drawPackets() {
+
+            packets.forEach(
+                packet => {
+
+                    const from =
+                        nodes[
+                            packet.from %
+                            nodes.length
+                        ];
+
+
+                    const to =
+                        nodes[
+                            packet.to %
+                            nodes.length
+                        ];
+
+
+                    if (
+                        !from ||
+                        !to
+                    ) {
+                        return;
+                    }
+
+
+                    const x =
+                        from.x +
+                        (
+                            to.x -
+                            from.x
+                        ) *
+                        packet.progress;
+
+
+                    const y =
+                        from.y +
+                        (
+                            to.y -
+                            from.y
+                        ) *
+                        packet.progress;
+
+
+                    ctx.beginPath();
+
+
+                    ctx.arc(
+                        x,
+                        y,
+                        2,
+                        0,
+                        Math.PI * 2
+                    );
+
+
+                    ctx.shadowBlur =
+                        12;
+
+
+                    ctx.shadowColor =
+                        "#39ff88";
+
+
+                    ctx.fillStyle =
+                        "#39ff88";
+
+
+                    ctx.fill();
+
+
+                    ctx.shadowBlur =
+                        0;
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           UPDATE DATA PACKETS
+        ================================================= */
+
+        function updatePackets() {
+
+            if (
+                reducedMotion.matches
+            ) {
+                return;
+            }
+
+
+            packets.forEach(
+                packet => {
+
+                    packet.progress +=
+                        packet.speed;
+
+
+                    if (
+                        packet.progress >= 1
+                    ) {
+
+                        packet.progress = 0;
+
+
+                        packet.from =
+                            Math.floor(
+                                Math.random() *
+                                nodes.length
+                            );
+
+
+                        packet.to =
+                            Math.floor(
+                                Math.random() *
+                                nodes.length
+                            );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           ANIMATION LOOP
+        ================================================= */
+
+        function draw(time) {
+
+            ctx.clearRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            drawGlow();
+
+            updateNodes(time);
+
+            drawGlobeRings();
+
+            drawConnections(time);
+
+            drawPackets();
+
+            drawNodes(time);
+
+            updatePackets();
+
+
+            requestAnimationFrame(
+                draw
+            );
+
+        }
+
+
+        /* =================================================
+           START ENGINE
+        ================================================= */
+
+        window.addEventListener(
+            "resize",
+            resize
+        );
+
+
+        resize();
+
+
+        requestAnimationFrame(
+            draw
+        );
+
+
+    })();
+
+    </script>
+
+
 </body>
+
 </html>
