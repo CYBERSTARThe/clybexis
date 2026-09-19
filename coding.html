@@ -3,13 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Clyvexis CyberCoding Lab — learn HTML, CSS, JavaScript, Python, and cybersecurity through an interactive coding sandbox.">
+
+<meta
+    name="description"
+    content="Clyvexis CyberCoding Lab — learn HTML, CSS, JavaScript, Python, and cybersecurity through an interactive coding sandbox."
+>
+
 <title>Clyvexis | CyberCoding Lab</title>
 
 <style>
+
+/* =========================================================
+   CLYVEXIS CYBERCODING LAB
+   Developer Console Edition
+========================================================= */
+
+:root {
+    --blue: #00aaff;
+    --blue-soft: rgba(0,170,255,0.12);
+    --green: #39ff88;
+    --green-soft: rgba(57,255,136,0.10);
+    --bg: #030711;
+    --panel: rgba(5,12,24,0.86);
+    --panel-dark: #02060d;
+    --text: #ffffff;
+    --muted: #8fa3bb;
+    --muted-2: #63768b;
+    --border: rgba(0,170,255,0.15);
+}
+
 /* =========================================================
    RESET
 ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -21,143 +47,379 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--text);
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(0,170,255,0.16), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(57,255,136,0.07), transparent 25%),
-        #050b16;
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,170,255,0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(57,255,136,0.055),
+            transparent 24%
+        ),
+        linear-gradient(
+            180deg,
+            #030711 0%,
+            #050b16 45%,
+            #030711 100%
+        );
+
     min-height: 100vh;
     overflow-x: hidden;
 }
 
 /* =========================================================
-   CYBER GRID
+   DEVELOPER GRID BACKGROUND
 ========================================================= */
+
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
+
     background-image:
-        linear-gradient(rgba(0,170,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,170,255,0.035) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: -3;
+        linear-gradient(
+            rgba(0,170,255,0.028) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.028) 1px,
+            transparent 1px
+        );
+
+    background-size: 42px 42px;
+
+    z-index: -5;
 }
 
 body::after {
     content: "";
     position: fixed;
-    top: -20%;
+
+    top: -30%;
     left: -20%;
+
     width: 140%;
-    height: 60%;
-    background: radial-gradient(
-        ellipse,
-        rgba(0,170,255,0.10),
-        transparent 65%
-    );
-    animation: cyberGlow 10s ease-in-out infinite alternate;
+    height: 75%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,170,255,0.11),
+            transparent 67%
+        );
+
+    animation:
+        cyberGlow 12s ease-in-out infinite alternate;
+
     pointer-events: none;
-    z-index: -2;
+
+    z-index: -4;
 }
 
 @keyframes cyberGlow {
+
     0% {
-        transform: translateY(-20px) translateX(-30px);
-        opacity: 0.5;
+        transform:
+            translate3d(-25px,-25px,0);
+        opacity: 0.45;
     }
 
     100% {
-        transform: translateY(80px) translateX(30px);
+        transform:
+            translate3d(30px,80px,0);
         opacity: 1;
     }
 }
 
 /* =========================================================
+   CODE BACKGROUND
+========================================================= */
+
+#codeBackground {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    opacity: 0.34;
+
+    z-index: -3;
+}
+
+/* =========================================================
+   TOP DEVELOPER HUD
+========================================================= */
+
+.dev-hud {
+    position: fixed;
+
+    left: 18px;
+    right: 18px;
+    bottom: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    color: rgba(143,163,187,0.48);
+
+    text-transform: uppercase;
+}
+
+.dev-hud-left,
+.dev-hud-right {
+    display: flex;
+    gap: 15px;
+}
+
+.dev-hud strong {
+    color: rgba(57,255,136,0.55);
+}
+
+/* =========================================================
    NAVIGATION
 ========================================================= */
+
 nav {
     position: sticky;
     top: 0;
+
     z-index: 1000;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 14px 6%;
-    background: rgba(5,11,22,0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0,170,255,0.18);
-    box-shadow: 0 0 25px rgba(0,170,255,0.08);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3,8,18,0.96),
+            rgba(3,8,18,0.88)
+        );
+
+    backdrop-filter: blur(16px);
+
+    border-bottom:
+        1px solid rgba(0,170,255,0.18);
+
+    box-shadow:
+        0 0 30px rgba(0,170,255,0.07);
+}
+
+nav::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,170,255,0.8),
+            rgba(57,255,136,0.65),
+            rgba(0,170,255,0.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,0.65);
 }
 
 .logo {
     font-size: 1.25rem;
     font-weight: 800;
+
     color: #ffffff;
+
     text-decoration: none;
+
     letter-spacing: 0.5px;
+
+    white-space: nowrap;
 }
 
 .logo span {
-    color: #00aaff;
+    color: var(--blue);
+
+    text-shadow:
+        0 0 14px rgba(0,170,255,0.35);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
+
     gap: 18px;
+
     flex-wrap: wrap;
 }
 
 .nav-links a {
+    position: relative;
+
     color: #b9c7d9;
+
     text-decoration: none;
+
     font-size: 0.88rem;
     font-weight: 600;
+
     padding: 8px 4px;
-    transition: 0.25s ease;
+
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 1px;
+
+    height: 1px;
+
+    transform: scaleX(0);
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--green)
+        );
+
+    transition:
+        transform 0.25s ease;
 }
 
 .nav-links a:hover {
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(0,170,255,0.8);
+
+    text-shadow:
+        0 0 10px rgba(0,170,255,0.8);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
 }
 
 .nav-links a.active {
-    color: #00aaff;
-    text-shadow: 0 0 12px rgba(0,170,255,0.8);
+    color: var(--blue);
+
+    text-shadow:
+        0 0 12px rgba(0,170,255,0.8);
 }
 
 /* =========================================================
    HERO
 ========================================================= */
+
 .hero {
     position: relative;
+
     text-align: center;
-    padding: 90px 20px 65px;
+
+    padding:
+        105px
+        20px
+        80px;
+
     overflow: hidden;
+}
+
+.hero::before {
+    content: "C:/CLYVEXIS/CODING_LAB";
+
+    position: absolute;
+
+    top: 32px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color:
+        rgba(143,163,187,0.23);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
 }
 
 .scan-line {
     position: absolute;
+
     left: 0;
+
     width: 100%;
+
     height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #00aaff,
-        #39ff88,
-        #00aaff,
-        transparent
-    );
-    box-shadow: 0 0 12px rgba(0,170,255,0.9);
-    animation: scan 5s linear infinite;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--blue),
+            var(--green),
+            var(--blue),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,0.9);
+
+    animation:
+        scan 6s linear infinite;
 }
 
 @keyframes scan {
+
     0% {
         top: 0;
         opacity: 0;
@@ -178,425 +440,1029 @@ nav {
 }
 
 .hero-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
     padding: 8px 14px;
-    margin-bottom: 18px;
-    border: 1px solid rgba(0,170,255,0.35);
+
+    margin-bottom: 20px;
+
+    border:
+        1px solid rgba(0,170,255,0.35);
+
     border-radius: 999px;
-    background: rgba(0,170,255,0.06);
-    color: #39ff88;
-    font-size: 0.8rem;
+
+    background:
+        rgba(0,170,255,0.055);
+
+    color: var(--green);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 0.76rem;
+
     font-weight: 700;
-    letter-spacing: 1.5px;
+
+    letter-spacing: 1.7px;
+
+    box-shadow:
+        inset 0 0 20px rgba(0,170,255,0.025);
+}
+
+.hero-badge::before {
+    content: "●";
+
+    color: var(--green);
+
+    text-shadow:
+        0 0 10px var(--green);
+
+    animation:
+        pulseDot 1.7s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .hero h1 {
-    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    font-size:
+        clamp(
+            2.4rem,
+            6vw,
+            4.7rem
+        );
+
     line-height: 1;
-    margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(0,170,255,0.25);
+
+    margin-bottom: 22px;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 0 25px rgba(0,170,255,0.18);
 }
 
 .hero h1 span {
-    color: #00aaff;
+    color: var(--blue);
+
+    text-shadow:
+        0 0 22px rgba(0,170,255,0.45);
 }
 
 .hero p {
-    max-width: 780px;
+    max-width: 800px;
+
     margin: auto;
+
     color: #9fb1c7;
-    line-height: 1.7;
+
+    line-height: 1.75;
+
     font-size: 1rem;
+}
+
+/* =========================================================
+   HERO TERMINAL
+========================================================= */
+
+.hero-terminal {
+    width: min(680px, 94%);
+
+    margin: 32px auto 0;
+
+    text-align: left;
+
+    border:
+        1px solid rgba(0,170,255,0.16);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background:
+        rgba(1,5,12,0.74);
+
+    box-shadow:
+        0 0 35px rgba(0,170,255,0.055);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+}
+
+.terminal-top {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 12px;
+
+    border-bottom:
+        1px solid rgba(0,170,255,0.09);
+
+    background:
+        rgba(0,170,255,0.025);
+}
+
+.terminal-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #43566a;
+}
+
+.terminal-dot.blue {
+    background: var(--blue);
+    box-shadow:
+        0 0 8px rgba(0,170,255,0.7);
+}
+
+.terminal-dot.green {
+    background: var(--green);
+    box-shadow:
+        0 0 8px rgba(57,255,136,0.7);
+}
+
+.terminal-title {
+    margin-left: auto;
+
+    color: #62788f;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+.terminal-body {
+    padding: 15px 18px;
+
+    color: #8499af;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+.terminal-body .prompt {
+    color: var(--green);
+}
+
+.terminal-body .command {
+    color: #d6e5f3;
+}
+
+.terminal-body .cursor {
+    display: inline-block;
+
+    width: 7px;
+    height: 14px;
+
+    vertical-align: -2px;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 8px rgba(0,170,255,0.8);
+
+    animation:
+        cursorBlink 1s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
 }
 
 /* =========================================================
    STATUS
 ========================================================= */
+
 .status-row {
     display: flex;
+
     justify-content: center;
+
     flex-wrap: wrap;
+
     gap: 10px;
-    margin-top: 28px;
+
+    margin-top: 25px;
 }
 
 .status-chip {
     padding: 8px 12px;
-    border: 1px solid rgba(0,170,255,0.18);
+
+    border:
+        1px solid rgba(0,170,255,0.16);
+
     border-radius: 8px;
-    background: rgba(255,255,255,0.025);
+
+    background:
+        rgba(255,255,255,0.022);
+
     color: #a9bad0;
-    font-size: 0.78rem;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 0.72rem;
 }
 
 .status-chip strong {
-    color: #39ff88;
+    color: var(--green);
 }
 
 /* =========================================================
    MAIN
 ========================================================= */
+
 .container {
-    width: min(1400px, 92%);
+    position: relative;
+    z-index: 2;
+
+    width:
+        min(
+            1400px,
+            92%
+        );
+
     margin: auto;
 }
 
 section {
-    margin-bottom: 80px;
+    margin-bottom: 82px;
 }
 
 .section-title {
     margin-bottom: 10px;
+
     font-size: 1.8rem;
+
+    letter-spacing: -0.5px;
+}
+
+.section-title::before {
+    content: "// ";
+
+    color: var(--blue);
+
+    font-family:
+        monospace;
 }
 
 .section-subtitle {
     color: #8fa3bb;
+
     line-height: 1.7;
+
     margin-bottom: 25px;
 }
 
 /* =========================================================
    ROADMAP
 ========================================================= */
+
 .roadmap {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
     gap: 14px;
 }
 
 .roadmap-card {
+    position: relative;
+
     padding: 22px;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(0,170,255,0.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,170,255,0.035),
+            rgba(255,255,255,0.018)
+        );
+
+    border:
+        1px solid rgba(0,170,255,0.12);
+
     border-radius: 14px;
-    transition: 0.25s ease;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+    overflow: hidden;
+}
+
+.roadmap-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 35px;
+    height: 1px;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 10px rgba(57,255,136,0.6);
 }
 
 .roadmap-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(0,170,255,0.35);
-    box-shadow: 0 0 25px rgba(0,170,255,0.08);
+
+    border-color:
+        rgba(0,170,255,0.35);
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.08);
 }
 
 .roadmap-number {
-    color: #00aaff;
-    font-size: 0.75rem;
+    color: var(--blue);
+
+    font-family:
+        monospace;
+
+    font-size: 0.72rem;
+
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
 .roadmap-card h3 {
     margin: 8px 0;
+
     font-size: 1rem;
 }
 
 .roadmap-card p {
     color: #8296ad;
+
     font-size: 0.82rem;
+
     line-height: 1.6;
 }
 
 /* =========================================================
    FACT
 ========================================================= */
+
 .fact-box {
+    position: relative;
+
     padding: 22px 25px;
-    border: 1px solid rgba(57,255,136,0.16);
+
+    border:
+        1px solid rgba(57,255,136,0.16);
+
     border-radius: 14px;
+
     background:
         linear-gradient(
             135deg,
-            rgba(57,255,136,0.05),
-            rgba(0,170,255,0.04)
+            rgba(57,255,136,0.045),
+            rgba(0,170,255,0.035)
         );
+
     margin-bottom: 35px;
+
+    overflow: hidden;
+}
+
+.fact-box::after {
+    content: "FACT://SYSTEM";
+
+    position: absolute;
+
+    top: 13px;
+    right: 17px;
+
+    color:
+        rgba(57,255,136,0.16);
+
+    font-family:
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
 }
 
 .fact-label {
-    color: #39ff88;
+    color: var(--green);
+
+    font-family:
+        monospace;
+
     font-size: 0.72rem;
+
     font-weight: 800;
+
     letter-spacing: 1.5px;
+
     margin-bottom: 8px;
 }
 
 #codingFact {
     color: #c4d2e2;
+
     line-height: 1.6;
 }
 
 /* =========================================================
    LANGUAGE SELECTOR
 ========================================================= */
+
 .language-selector {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 10px;
+
     margin-bottom: 18px;
 }
 
 .language-btn {
     padding: 10px 15px;
-    border: 1px solid rgba(0,170,255,0.18);
+
+    border:
+        1px solid rgba(0,170,255,0.18);
+
     border-radius: 9px;
-    background: rgba(255,255,255,0.025);
+
+    background:
+        rgba(255,255,255,0.025);
+
     color: #aebed1;
+
     cursor: pointer;
+
     font-weight: 700;
-    transition: 0.2s ease;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    transition:
+        0.2s ease;
 }
 
 .language-btn:hover {
-    border-color: rgba(0,170,255,0.4);
+    border-color:
+        rgba(0,170,255,0.4);
+
     color: #ffffff;
 }
 
 .language-btn.active {
-    background: rgba(0,170,255,0.10);
-    border-color: #00aaff;
-    color: #00aaff;
-    box-shadow: 0 0 15px rgba(0,170,255,0.12);
+    background:
+        rgba(0,170,255,0.10);
+
+    border-color:
+        var(--blue);
+
+    color: var(--blue);
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.12);
 }
 
 /* =========================================================
    PROJECT SELECTOR
 ========================================================= */
+
 .project-selector {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 9px;
+
     margin-bottom: 22px;
 }
 
 .project-btn {
     padding: 9px 13px;
-    border: 1px solid rgba(255,255,255,0.09);
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
     border-radius: 8px;
-    background: rgba(255,255,255,0.025);
+
+    background:
+        rgba(255,255,255,0.025);
+
     color: #91a4ba;
+
     cursor: pointer;
-    transition: 0.2s ease;
+
+    transition:
+        0.2s ease;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 0.75rem;
 }
 
 .project-btn:hover {
     color: #ffffff;
-    border-color: rgba(0,170,255,0.3);
+
+    border-color:
+        rgba(0,170,255,0.3);
 }
 
 .project-btn.active {
     color: #ffffff;
-    border-color: rgba(57,255,136,0.45);
-    background: rgba(57,255,136,0.06);
+
+    border-color:
+        rgba(57,255,136,0.45);
+
+    background:
+        rgba(57,255,136,0.06);
+
+    box-shadow:
+        inset 0 0 18px rgba(57,255,136,0.025);
 }
 
 /* =========================================================
    SANDBOX
 ========================================================= */
+
 .sandbox {
-    border: 1px solid rgba(0,170,255,0.18);
+    border:
+        1px solid rgba(0,170,255,0.18);
+
     border-radius: 18px;
-    background: rgba(3,8,17,0.85);
-    box-shadow: 0 0 35px rgba(0,170,255,0.07);
+
+    background:
+        rgba(3,8,17,0.90);
+
+    box-shadow:
+        0 0 40px rgba(0,170,255,0.07);
+
     overflow: hidden;
 }
 
 .sandbox-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 15px;
-    padding: 15px 18px;
-    background: rgba(0,170,255,0.035);
-    border-bottom: 1px solid rgba(0,170,255,0.12);
+
+    padding: 12px 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.045),
+            rgba(57,255,136,0.025)
+        );
+
+    border-bottom:
+        1px solid rgba(0,170,255,0.12);
 }
 
 .sandbox-title {
-    font-size: 0.85rem;
+    font-family:
+        monospace;
+
+    font-size: 0.78rem;
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
+    color: #d5e3f1;
+}
+
+.sandbox-title::before {
+    content: "● ";
+
+    color: var(--green);
+
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.7);
 }
 
 .sandbox-status {
-    color: #39ff88;
-    font-size: 0.75rem;
+    color: var(--green);
+
+    font-family:
+        monospace;
+
+    font-size: 0.7rem;
 }
+
+/* =========================================================
+   SANDBOX WINDOW BAR
+========================================================= */
+
+.sandbox-windowbar {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 12px;
+
+    background:
+        #01040a;
+
+    border-bottom:
+        1px solid rgba(0,170,255,0.07);
+}
+
+.window-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #314052;
+}
+
+.window-dot.active {
+    background: var(--blue);
+
+    box-shadow:
+        0 0 8px rgba(0,170,255,0.65);
+}
+
+.window-label {
+    margin-left: 7px;
+
+    color: #53677d;
+
+    font-family:
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   SANDBOX BODY
+========================================================= */
 
 .sandbox-body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 0;
 }
 
 /* =========================================================
    CODE STACK
 ========================================================= */
+
 .code-stack {
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
+
     padding: 15px;
+
     min-width: 0;
 }
 
 .editor-panel {
-    border: 1px solid rgba(0,170,255,0.13);
+    border:
+        1px solid rgba(0,170,255,0.13);
+
     border-radius: 11px;
+
     overflow: hidden;
-    background: #02060d;
+
+    background:
+        #02060d;
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.2);
 }
 
 .editor-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     padding: 9px 12px;
-    background: rgba(0,170,255,0.045);
-    border-bottom: 1px solid rgba(0,170,255,0.10);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,0.045),
+            transparent
+        );
+
+    border-bottom:
+        1px solid rgba(0,170,255,0.10);
 }
 
 .editor-file {
-    font-family: monospace;
+    font-family:
+        monospace;
+
     font-size: 0.78rem;
+
     font-weight: 700;
+
     color: #c7d5e5;
 }
 
+.editor-file::before {
+    content: "▸ ";
+
+    color: var(--blue);
+}
+
 .editor-type {
-    font-size: 0.68rem;
-    color: #00aaff;
+    font-family:
+        monospace;
+
+    font-size: 0.64rem;
+
+    color: var(--blue);
+
     letter-spacing: 1px;
 }
 
 .editor-body {
     display: flex;
+
     height: 190px;
+
     min-height: 0;
 }
 
 .line-numbers {
     width: 43px;
+
     flex-shrink: 0;
+
     padding: 12px 7px;
+
     overflow: hidden;
-    background: #030912;
-    border-right: 1px solid rgba(0,170,255,0.08);
+
+    background:
+        #030912;
+
+    border-right:
+        1px solid rgba(0,170,255,0.08);
+
     color: #44576c;
-    font-family: monospace;
+
+    font-family:
+        monospace;
+
     font-size: 13px;
+
     line-height: 1.55;
+
     text-align: right;
+
     user-select: none;
 }
 
 .code-editor {
     flex: 1;
+
     width: 100%;
     height: 100%;
+
     resize: none;
+
     border: none;
     outline: none;
+
     padding: 12px;
-    background: #02060d;
+
+    background:
+        #02060d;
+
     color: #d9e6f4;
+
     font-family:
         "SFMono-Regular",
         Consolas,
         "Liberation Mono",
         monospace;
+
     font-size: 13px;
+
     line-height: 1.55;
+
     tab-size: 4;
+
     overflow: auto;
+
     white-space: pre;
 }
 
+.code-editor::selection {
+    background:
+        rgba(0,170,255,0.22);
+}
+
 .code-editor:focus {
-    box-shadow: inset 0 0 0 1px rgba(0,170,255,0.15);
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(0,170,255,0.15);
 }
 
 .editor-footer {
     display: flex;
+
     justify-content: space-between;
+
     padding: 6px 10px;
+
     color: #53677d;
-    font-family: monospace;
+
+    font-family:
+        monospace;
+
     font-size: 0.67rem;
-    border-top: 1px solid rgba(0,170,255,0.07);
+
+    border-top:
+        1px solid rgba(0,170,255,0.07);
 }
 
 /* =========================================================
    PREVIEW
 ========================================================= */
+
 .preview-panel {
     min-width: 0;
+
     padding: 15px;
-    border-left: 1px solid rgba(0,170,255,0.12);
-    background: rgba(0,0,0,0.18);
+
+    border-left:
+        1px solid rgba(0,170,255,0.12);
+
+    background:
+        rgba(0,0,0,0.18);
 }
 
 .preview-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     margin-bottom: 10px;
+
     color: #91a6bd;
-    font-size: 0.78rem;
+
+    font-family:
+        monospace;
+
+    font-size: 0.72rem;
 }
 
 .preview-dot {
     display: inline-block;
+
     width: 7px;
     height: 7px;
+
     margin-right: 6px;
+
     border-radius: 50%;
-    background: #39ff88;
-    box-shadow: 0 0 8px rgba(57,255,136,0.8);
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 8px rgba(57,255,136,0.8);
 }
 
 #preview {
     display: block;
+
     width: 100%;
+
     height: 560px;
-    border: 1px solid rgba(0,170,255,0.16);
+
+    border:
+        1px solid rgba(0,170,255,0.16);
+
     border-radius: 10px;
+
     background: #ffffff;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,0.25);
 }
 
 /* =========================================================
    JAVASCRIPT CONSOLE
 ========================================================= */
+
 .console-panel {
     margin-top: 12px;
-    border: 1px solid rgba(57,255,136,0.15);
+
+    border:
+        1px solid rgba(57,255,136,0.15);
+
     border-radius: 10px;
+
     overflow: hidden;
-    background: #010409;
+
+    background:
+        #010409;
 }
 
 .console-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     padding: 9px 12px;
-    background: rgba(57,255,136,0.035);
-    border-bottom: 1px solid rgba(57,255,136,0.10);
+
+    background:
+        rgba(57,255,136,0.035);
+
+    border-bottom:
+        1px solid rgba(57,255,136,0.10);
 }
 
 .console-title {
-    color: #39ff88;
-    font-family: monospace;
+    color: var(--green);
+
+    font-family:
+        monospace;
+
     font-size: 0.72rem;
+
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
 .console-clear {
     border: none;
+
     background: transparent;
+
     color: #70869d;
+
     cursor: pointer;
-    font-size: 0.7rem;
+
+    font-family:
+        monospace;
+
+    font-size: 0.68rem;
 }
 
 .console-clear:hover {
@@ -605,19 +1471,30 @@ section {
 
 #jsConsole {
     min-height: 120px;
+
     max-height: 190px;
+
     overflow: auto;
+
     padding: 12px;
+
     color: #a9bfd4;
-    font-family: monospace;
+
+    font-family:
+        monospace;
+
     font-size: 12px;
+
     line-height: 1.6;
+
     white-space: pre-wrap;
 }
 
 .console-line {
     padding: 3px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.03);
 }
 
 .console-log {
@@ -635,72 +1512,131 @@ section {
 /* =========================================================
    CONTROLS
 ========================================================= */
+
 .controls {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 10px;
+
     padding: 15px;
-    border-top: 1px solid rgba(0,170,255,0.12);
+
+    border-top:
+        1px solid rgba(0,170,255,0.12);
+
+    background:
+        rgba(0,170,255,0.012);
 }
 
 .control-btn {
     padding: 11px 16px;
-    border: 1px solid rgba(0,170,255,0.22);
+
+    border:
+        1px solid rgba(0,170,255,0.22);
+
     border-radius: 9px;
-    background: rgba(0,170,255,0.055);
+
+    background:
+        rgba(0,170,255,0.055);
+
     color: #c9d8e8;
+
     cursor: pointer;
+
+    font-family:
+        monospace;
+
     font-weight: 800;
-    font-size: 0.78rem;
-    transition: 0.2s ease;
+
+    font-size: 0.76rem;
+
+    transition:
+        0.2s ease;
 }
 
 .control-btn:hover {
     transform: translateY(-1px);
-    border-color: #00aaff;
+
+    border-color:
+        var(--blue);
+
     color: #ffffff;
-    box-shadow: 0 0 15px rgba(0,170,255,0.10);
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.10);
 }
 
 .control-btn.primary {
-    background: rgba(0,170,255,0.12);
-    border-color: #00aaff;
-    color: #00aaff;
+    background:
+        rgba(0,170,255,0.12);
+
+    border-color:
+        var(--blue);
+
+    color:
+        var(--blue);
 }
 
 .control-btn.green {
-    border-color: rgba(57,255,136,0.35);
-    color: #39ff88;
+    border-color:
+        rgba(57,255,136,0.35);
+
+    color:
+        var(--green);
 }
 
 /* =========================================================
    SAVE STATUS
 ========================================================= */
+
 .save-status {
-    padding: 0 15px 15px;
-    color: #60758c;
-    font-family: monospace;
-    font-size: 0.7rem;
+    padding:
+        0 15px 15px;
+
+    color:
+        #60758c;
+
+    font-family:
+        monospace;
+
+    font-size:
+        0.7rem;
 }
 
 .save-status strong {
-    color: #39ff88;
+    color:
+        var(--green);
 }
 
 /* =========================================================
    PYTHON
 ========================================================= */
+
 .python-lab {
     display: none;
 }
 
 .python-workspace {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid rgba(0,170,255,0.18);
-    border-radius: 16px;
-    overflow: hidden;
-    background: #02060d;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    border:
+        1px solid rgba(0,170,255,0.18);
+
+    border-radius:
+        16px;
+
+    overflow:
+        hidden;
+
+    background:
+        #02060d;
+
+    box-shadow:
+        0 0 35px rgba(0,170,255,0.055);
 }
 
 .python-editor-wrap,
@@ -709,133 +1645,258 @@ section {
 }
 
 .python-editor-wrap {
-    border-right: 1px solid rgba(0,170,255,0.12);
+    border-right:
+        1px solid rgba(0,170,255,0.12);
 }
 
 .python-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     padding: 12px 15px;
-    background: rgba(0,170,255,0.04);
-    border-bottom: 1px solid rgba(0,170,255,0.10);
+
+    background:
+        rgba(0,170,255,0.04);
+
+    border-bottom:
+        1px solid rgba(0,170,255,0.10);
+
+    font-family:
+        monospace;
 }
 
 .python-header span:first-child {
-    font-family: monospace;
-    font-weight: 700;
+    font-weight:
+        700;
 }
 
 .python-header span:last-child {
-    color: #39ff88;
-    font-size: 0.7rem;
+    color:
+        var(--green);
+
+    font-size:
+        0.7rem;
 }
 
 .python-editor-body {
-    display: flex;
-    height: 500px;
+    display:
+        flex;
+
+    height:
+        500px;
 }
 
 #pythonInput {
     flex: 1;
+
     resize: none;
+
     border: none;
+
     outline: none;
+
     padding: 15px;
-    background: #02060d;
-    color: #dce8f5;
+
+    background:
+        #02060d;
+
+    color:
+        #dce8f5;
+
     font-family:
         "SFMono-Regular",
         Consolas,
         monospace;
-    font-size: 13px;
-    line-height: 1.55;
-    tab-size: 4;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.55;
+
+    tab-size:
+        4;
+}
+
+#pythonInput::selection {
+    background:
+        rgba(0,170,255,0.22);
 }
 
 #pythonOutput {
-    height: 500px;
-    margin: 0;
-    padding: 15px;
-    overflow: auto;
-    background: #010409;
-    color: #b8ffd2;
+    height:
+        500px;
+
+    margin:
+        0;
+
+    padding:
+        15px;
+
+    overflow:
+        auto;
+
+    background:
+        #010409;
+
+    color:
+        #b8ffd2;
+
     font-family:
         "SFMono-Regular",
         Consolas,
         monospace;
-    font-size: 13px;
-    line-height: 1.55;
-    white-space: pre-wrap;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.55;
+
+    white-space:
+        pre-wrap;
 }
 
 /* =========================================================
    TIPS / CARDS
 ========================================================= */
+
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        16px;
 }
 
 .info-card {
-    padding: 22px;
-    border: 1px solid rgba(0,170,255,0.12);
-    border-radius: 14px;
-    background: rgba(255,255,255,0.025);
+    position:
+        relative;
+
+    padding:
+        22px;
+
+    border:
+        1px solid rgba(0,170,255,0.12);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    transition:
+        0.25s ease;
+}
+
+.info-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(0,170,255,0.28);
+
+    box-shadow:
+        0 0 22px rgba(0,170,255,0.05);
 }
 
 .info-card h3 {
-    margin-bottom: 10px;
-    font-size: 1rem;
+    margin-bottom:
+        10px;
+
+    font-size:
+        1rem;
 }
 
 .info-card p {
-    color: #879bb2;
-    line-height: 1.7;
-    font-size: 0.88rem;
+    color:
+        #879bb2;
+
+    line-height:
+        1.7;
+
+    font-size:
+        0.88rem;
 }
 
 .info-card ul {
-    padding-left: 18px;
-    color: #879bb2;
-    line-height: 1.8;
-    font-size: 0.88rem;
+    padding-left:
+        18px;
+
+    color:
+        #879bb2;
+
+    line-height:
+        1.8;
+
+    font-size:
+        0.88rem;
 }
 
 /* =========================================================
    CHALLENGE
 ========================================================= */
+
 .challenge {
-    padding: 25px;
-    border: 1px solid rgba(57,255,136,0.15);
-    border-radius: 15px;
+    padding:
+        25px;
+
+    border:
+        1px solid rgba(57,255,136,0.15);
+
+    border-radius:
+        15px;
+
     background:
         linear-gradient(
             135deg,
             rgba(57,255,136,0.04),
             rgba(0,170,255,0.04)
         );
+
+    box-shadow:
+        inset 0 0 25px rgba(57,255,136,0.015);
 }
 
 .challenge h3 {
-    margin-bottom: 9px;
-    color: #39ff88;
+    margin-bottom:
+        9px;
+
+    color:
+        var(--green);
 }
 
 .challenge p {
-    color: #9aadc2;
-    line-height: 1.7;
+    color:
+        #9aadc2;
+
+    line-height:
+        1.7;
 }
 
 /* =========================================================
    CYBER ARCADE
 ========================================================= */
+
 .arcade-section {
-    position: relative;
-    padding: 30px;
-    border: 1px solid rgba(0,170,255,0.18);
-    border-radius: 18px;
+    position:
+        relative;
+
+    padding:
+        30px;
+
+    border:
+        1px solid rgba(0,170,255,0.18);
+
+    border-radius:
+        18px;
+
     background:
         radial-gradient(
             circle at 20% 0%,
@@ -848,14 +1909,24 @@ section {
             transparent 30%
         ),
         rgba(3,8,17,0.82);
-    overflow: hidden;
-    box-shadow: 0 0 35px rgba(0,170,255,0.06);
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 0 35px rgba(0,170,255,0.06);
 }
 
 .arcade-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
     background:
         linear-gradient(
             rgba(0,170,255,0.025) 1px,
@@ -866,300 +1937,647 @@ section {
             rgba(0,170,255,0.025) 1px,
             transparent 1px
         );
-    background-size: 30px 30px;
-    pointer-events: none;
+
+    background-size:
+        30px 30px;
+
+    pointer-events:
+        none;
 }
 
 .arcade-header {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 25px;
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    margin-bottom:
+        25px;
 }
 
 .arcade-kicker {
-    color: #39ff88;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 7px;
+    color:
+        var(--green);
+
+    font-family:
+        monospace;
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        7px;
 }
 
 .arcade-header h2 {
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size:
+        2rem;
+
+    margin-bottom:
+        8px;
 }
 
 .arcade-header p {
-    color: #8fa3bb;
-    line-height: 1.6;
-    max-width: 700px;
+    color:
+        #8fa3bb;
+
+    line-height:
+        1.6;
+
+    max-width:
+        700px;
 }
 
 .arcade-launch {
-    flex-shrink: 0;
-    padding: 12px 18px;
-    border: 1px solid #00aaff;
-    border-radius: 9px;
-    background: rgba(0,170,255,0.08);
-    color: #00aaff;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 0.8rem;
-    transition: 0.2s ease;
+    flex-shrink:
+        0;
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid var(--blue);
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(0,170,255,0.08);
+
+    color:
+        var(--blue);
+
+    text-decoration:
+        none;
+
+    font-family:
+        monospace;
+
+    font-weight:
+        800;
+
+    font-size:
+        0.75rem;
+
+    transition:
+        0.2s ease;
 }
 
 .arcade-launch:hover {
-    background: rgba(0,170,255,0.16);
-    box-shadow: 0 0 20px rgba(0,170,255,0.2);
-    color: #ffffff;
+    background:
+        rgba(0,170,255,0.16);
+
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.2);
+
+    color:
+        #ffffff;
 }
 
 .arcade-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        14px;
 }
 
 .arcade-card {
-    position: relative;
-    padding: 20px;
-    min-height: 190px;
-    border: 1px solid rgba(0,170,255,0.12);
-    border-radius: 14px;
-    background: rgba(255,255,255,0.025);
-    transition: 0.25s ease;
+    position:
+        relative;
+
+    padding:
+        20px;
+
+    min-height:
+        190px;
+
+    border:
+        1px solid rgba(0,170,255,0.12);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    transition:
+        0.25s ease;
 }
 
 .arcade-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0,170,255,0.4);
-    box-shadow: 0 0 25px rgba(0,170,255,0.08);
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(0,170,255,0.4);
+
+    box-shadow:
+        0 0 25px rgba(0,170,255,0.08);
 }
 
 .arcade-icon {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
+    font-size:
+        1.8rem;
+
+    margin-bottom:
+        12px;
 }
 
 .arcade-card h3 {
-    font-size: 1rem;
-    margin-bottom: 8px;
+    font-size:
+        1rem;
+
+    margin-bottom:
+        8px;
 }
 
 .arcade-card p {
-    color: #8296ad;
-    font-size: 0.82rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    color:
+        #8296ad;
+
+    font-size:
+        0.82rem;
+
+    line-height:
+        1.6;
+
+    margin-bottom:
+        15px;
 }
 
 .arcade-play {
-    border: 1px solid rgba(57,255,136,0.35);
-    border-radius: 7px;
-    padding: 8px 12px;
-    background: rgba(57,255,136,0.05);
-    color: #39ff88;
-    cursor: pointer;
-    font-size: 0.72rem;
-    font-weight: 800;
-    transition: 0.2s ease;
+    border:
+        1px solid rgba(57,255,136,0.35);
+
+    border-radius:
+        7px;
+
+    padding:
+        8px 12px;
+
+    background:
+        rgba(57,255,136,0.05);
+
+    color:
+        var(--green);
+
+    cursor:
+        pointer;
+
+    font-family:
+        monospace;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    transition:
+        0.2s ease;
 }
 
 .arcade-play:hover {
-    background: rgba(57,255,136,0.12);
-    box-shadow: 0 0 15px rgba(57,255,136,0.12);
+    background:
+        rgba(57,255,136,0.12);
+
+    box-shadow:
+        0 0 15px rgba(57,255,136,0.12);
 }
 
 .arcade-console {
-    position: relative;
-    z-index: 1;
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid rgba(0,170,255,0.13);
-    border-radius: 12px;
-    background: #02060d;
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    margin-top:
+        20px;
+
+    padding:
+        20px;
+
+    border:
+        1px solid rgba(0,170,255,0.13);
+
+    border-radius:
+        12px;
+
+    background:
+        #02060d;
 }
 
 .arcade-console-label {
-    color: #00aaff;
-    font-family: monospace;
-    font-size: 0.72rem;
-    margin-bottom: 10px;
+    color:
+        var(--blue);
+
+    font-family:
+        monospace;
+
+    font-size:
+        0.72rem;
+
+    margin-bottom:
+        10px;
 }
 
 #arcadeOutput {
-    min-height: 45px;
-    color: #b8ffd2;
-    font-family: monospace;
-    font-size: 0.82rem;
-    line-height: 1.6;
-    white-space: pre-wrap;
+    min-height:
+        45px;
+
+    color:
+        #b8ffd2;
+
+    font-family:
+        monospace;
+
+    font-size:
+        0.82rem;
+
+    line-height:
+        1.6;
+
+    white-space:
+        pre-wrap;
 }
 
 /* =========================================================
    FOOTER
 ========================================================= */
+
 footer {
-    padding: 45px 20px;
-    text-align: center;
-    border-top: 1px solid rgba(0,170,255,0.10);
-    color: #63768b;
-    font-size: 0.8rem;
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    padding:
+        45px 20px;
+
+    text-align:
+        center;
+
+    border-top:
+        1px solid rgba(0,170,255,0.10);
+
+    color:
+        #63768b;
+
+    font-size:
+        0.8rem;
 }
 
 footer strong {
-    color: #00aaff;
+    color:
+        var(--blue);
 }
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
+
 @media (max-width: 1050px) {
+
     .roadmap {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+            repeat(3, 1fr);
     }
 
     .sandbox-body {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .preview-panel {
-        border-left: none;
-        border-top: 1px solid rgba(0,170,255,0.12);
+        border-left:
+            none;
+
+        border-top:
+            1px solid rgba(0,170,255,0.12);
     }
 
     .preview-panel #preview {
-        height: 500px;
+        height:
+            500px;
     }
 
     .arcade-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 }
 
 @media (max-width: 800px) {
+
     nav {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction:
+            column;
+
+        gap:
+            12px;
     }
 
     .nav-links {
-        justify-content: center;
-        gap: 12px;
+        justify-content:
+            center;
+
+        gap:
+            12px;
     }
 
     .roadmap {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .card-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .python-workspace {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .python-editor-wrap {
-        border-right: none;
-        border-bottom: 1px solid rgba(0,170,255,0.12);
+        border-right:
+            none;
+
+        border-bottom:
+            1px solid rgba(0,170,255,0.12);
+    }
+
+    .dev-hud {
+        display:
+            none;
     }
 }
 
 @media (max-width: 650px) {
+
+    .hero-terminal {
+        width:
+            96%;
+    }
+
     .arcade-header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
     }
 
     .arcade-launch {
-        width: 100%;
-        text-align: center;
+        width:
+            100%;
+
+        text-align:
+            center;
     }
 
     .arcade-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 }
 
 @media (max-width: 560px) {
+
     .hero {
-        padding-top: 65px;
+        padding-top:
+            70px;
+    }
+
+    .hero::before {
+        font-size:
+            8px;
+    }
+
+    .hero h1 {
+        letter-spacing:
+            -1px;
     }
 
     .roadmap {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .nav-links {
-        gap: 8px;
+        gap:
+            8px;
     }
 
     .nav-links a {
-        font-size: 0.76rem;
+        font-size:
+            0.76rem;
     }
 
     .sandbox-header {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
     }
 
     .editor-body {
-        height: 220px;
+        height:
+            220px;
     }
 
     #preview {
-        height: 420px !important;
+        height:
+            420px !important;
     }
 
     .controls {
-        flex-direction: column;
+        flex-direction:
+            column;
     }
 
     .control-btn {
-        width: 100%;
+        width:
+            100%;
     }
 
     .arcade-section {
-        padding: 20px;
+        padding:
+            20px;
+    }
+
+    .hero-terminal {
+        font-size:
+            10px;
+    }
+
+    .terminal-body {
+        padding:
+            12px;
     }
 }
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior:
+            auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.001ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.001ms !important;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- =========================================================
+     BACKGROUND CANVAS
+========================================================= -->
+
+<canvas id="codeBackground"></canvas>
+
+<!-- =========================================================
+     DEVELOPER HUD
+========================================================= -->
+
+<div class="dev-hud">
+
+    <div class="dev-hud-left">
+
+        <span>
+            CLYVEXIS://CODING
+        </span>
+
+        <span>
+            <strong>ENVIRONMENT ONLINE</strong>
+        </span>
+
+    </div>
+
+    <div class="dev-hud-right">
+
+        <span>
+            LOCAL SANDBOX
+        </span>
+
+        <span>
+            BROWSER RUNTIME
+        </span>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
      NAVIGATION
 ========================================================= -->
+
 <nav>
+
 <a href="index.html" class="logo">
     🛡️ <span>Clyvexis</span>
 </a>
 
 <div class="nav-links">
-<a href="index.html">Home</a>
-<a href="lessons.html">Lessons</a>
-<a href="labs.html">Labs</a>
-<a href="quiz.html">Quiz</a>
-<a href="games.html">Games</a>
-<a href="defense.html">Defense</a>
-<a href="glossary.html">Glossary</a>
-<a href="coding.html" class="active">Coding</a>
-<a href="simulators.html">Simulators</a>
-<a href="donate.html">Donate</a>
+
+<a href="index.html">
+    Home
+</a>
+
+<a href="lessons.html">
+    Lessons
+</a>
+
+<a href="labs.html">
+    Labs
+</a>
+
+<a href="quiz.html">
+    Quiz
+</a>
+
+<a href="games.html">
+    Games
+</a>
+
+<a href="defense.html">
+    Defense
+</a>
+
+<a href="glossary.html">
+    Glossary
+</a>
+
+<a href="coding.html" class="active">
+    Coding
+</a>
+
+<a href="simulators.html">
+    Simulators
+</a>
+
+<a href="donate.html">
+    Donate
+</a>
+
 </div>
+
 </nav>
 
 <!-- =========================================================
      HERO
 ========================================================= -->
+
 <header class="hero">
 
 <div class="scan-line"></div>
@@ -1177,6 +2595,71 @@ footer strong {
     Write HTML, CSS, JavaScript, and Python inside the
     Clyvexis interactive coding environment.
 </p>
+
+<!-- DEVELOPER TERMINAL -->
+
+<div class="hero-terminal">
+
+    <div class="terminal-top">
+
+        <span class="terminal-dot blue"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot green"></span>
+
+        <span class="terminal-title">
+            CLYVEXIS://TERMINAL
+        </span>
+
+    </div>
+
+    <div class="terminal-body">
+
+        <div>
+            <span class="prompt">
+                clyvexis@coding
+            </span>
+            <span>
+                :
+            </span>
+            <span class="command">
+                ~/lab
+            </span>
+        </div>
+
+        <div>
+            <span class="prompt">
+                $
+            </span>
+
+            <span class="command">
+                initialize --learning-mode
+            </span>
+        </div>
+
+        <div>
+            <span style="color:#39ff88;">
+                ✓
+            </span>
+
+            Coding environment ready.
+
+        </div>
+
+        <div>
+            <span class="prompt">
+                $
+            </span>
+
+            <span class="command">
+                write • test • debug • understand
+            </span>
+
+            <span class="cursor"></span>
+        </div>
+
+    </div>
+
+</div>
 
 <div class="status-row">
 
@@ -1201,6 +2684,7 @@ footer strong {
 </div>
 
 </div>
+
 </header>
 
 <main class="container">
@@ -1208,6 +2692,7 @@ footer strong {
 <!-- =========================================================
      ROADMAP
 ========================================================= -->
+
 <section>
 
 <h2 class="section-title">
@@ -1222,56 +2707,98 @@ footer strong {
 <div class="roadmap">
 
 <div class="roadmap-card">
-<div class="roadmap-number">01 — HTML</div>
-<h3>Structure</h3>
+
+<div class="roadmap-number">
+    01 — HTML
+</div>
+
+<h3>
+    Structure
+</h3>
+
 <p>
-Learn how webpages are built using elements,
-headings, links, forms, images, and containers.
+    Learn how webpages are built using elements,
+    headings, links, forms, images, and containers.
 </p>
+
 </div>
 
 <div class="roadmap-card">
-<div class="roadmap-number">02 — CSS</div>
-<h3>Design</h3>
+
+<div class="roadmap-number">
+    02 — CSS
+</div>
+
+<h3>
+    Design
+</h3>
+
 <p>
-Control colors, spacing, layouts, animations,
-responsive design, and visual effects.
+    Control colors, spacing, layouts, animations,
+    responsive design, and visual effects.
 </p>
+
 </div>
 
 <div class="roadmap-card">
-<div class="roadmap-number">03 — JAVASCRIPT</div>
-<h3>Logic</h3>
+
+<div class="roadmap-number">
+    03 — JAVASCRIPT
+</div>
+
+<h3>
+    Logic
+</h3>
+
 <p>
-Make websites interactive using variables,
-functions, events, conditions, and loops.
+    Make websites interactive using variables,
+    functions, events, conditions, and loops.
 </p>
+
 </div>
 
 <div class="roadmap-card">
-<div class="roadmap-number">04 — PYTHON</div>
-<h3>Programming</h3>
+
+<div class="roadmap-number">
+    04 — PYTHON
+</div>
+
+<h3>
+    Programming
+</h3>
+
 <p>
-Build programming fundamentals using Python
-variables, functions, loops, and logic.
+    Build programming fundamentals using Python
+    variables, functions, loops, and logic.
 </p>
+
 </div>
 
 <div class="roadmap-card">
-<div class="roadmap-number">05 — CYBER</div>
-<h3>Security</h3>
+
+<div class="roadmap-number">
+    05 — CYBER
+</div>
+
+<h3>
+    Security
+</h3>
+
 <p>
-Combine coding knowledge with cybersecurity,
-automation, analysis, and defensive development.
+    Combine coding knowledge with cybersecurity,
+    automation, analysis, and defensive development.
 </p>
+
 </div>
 
 </div>
+
 </section>
 
 <!-- =========================================================
      CODING FACT
 ========================================================= -->
+
 <section>
 
 <div class="fact-box">
@@ -1286,11 +2813,13 @@ automation, analysis, and defensive development.
 </p>
 
 </div>
+
 </section>
 
 <!-- =========================================================
      CODING LAB
 ========================================================= -->
+
 <section>
 
 <h2 class="section-title">
@@ -1323,6 +2852,7 @@ automation, analysis, and defensive development.
 <!-- =========================================================
      WEB LAB
 ========================================================= -->
+
 <div id="webLab">
 
 <div class="project-selector">
@@ -1373,13 +2903,28 @@ automation, analysis, and defensive development.
 
 <div class="sandbox">
 
+<div class="sandbox-windowbar">
+
+<span class="window-dot active"></span>
+<span class="window-dot"></span>
+<span class="window-dot"></span>
+
+<span class="window-label">
+    clyvexis-coding-environment
+</span>
+
+</div>
+
 <div class="sandbox-header">
 
 <div class="sandbox-title">
     INTERACTIVE CODING SANDBOX
 </div>
 
-<div class="sandbox-status" id="webStatus">
+<div
+    class="sandbox-status"
+    id="webStatus"
+>
     ● READY
 </div>
 
@@ -1390,9 +2935,11 @@ automation, analysis, and defensive development.
 <div class="code-stack">
 
 <!-- HTML EDITOR -->
+
 <div class="editor-panel">
 
 <div class="editor-header">
+
 <span class="editor-file">
     index.html
 </span>
@@ -1400,11 +2947,15 @@ automation, analysis, and defensive development.
 <span class="editor-type">
     HTML
 </span>
+
 </div>
 
 <div class="editor-body">
 
-<div class="line-numbers" id="htmlNumbers">
+<div
+    class="line-numbers"
+    id="htmlNumbers"
+>
 1
 </div>
 
@@ -1436,6 +2987,7 @@ automation, analysis, and defensive development.
 </div>
 
 <!-- CSS EDITOR -->
+
 <div class="editor-panel">
 
 <div class="editor-header">
@@ -1452,7 +3004,10 @@ automation, analysis, and defensive development.
 
 <div class="editor-body">
 
-<div class="line-numbers" id="cssNumbers">
+<div
+    class="line-numbers"
+    id="cssNumbers"
+>
 1
 </div>
 
@@ -1484,6 +3039,7 @@ automation, analysis, and defensive development.
 </div>
 
 <!-- JAVASCRIPT EDITOR -->
+
 <div class="editor-panel">
 
 <div class="editor-header">
@@ -1500,7 +3056,10 @@ automation, analysis, and defensive development.
 
 <div class="editor-body">
 
-<div class="line-numbers" id="jsNumbers">
+<div
+    class="line-numbers"
+    id="jsNumbers"
+>
 1
 </div>
 
@@ -1533,20 +3092,22 @@ automation, analysis, and defensive development.
 
 </div>
 
-<!-- =========================================================
-     PREVIEW
-========================================================= -->
+<!-- PREVIEW -->
+
 <div class="preview-panel">
 
 <div class="preview-header">
 
 <span>
+
 <span class="preview-dot"></span>
+
 LIVE PREVIEW
+
 </span>
 
 <span id="previewStatus">
-Ready
+    Ready
 </span>
 
 </div>
@@ -1558,6 +3119,7 @@ Ready
 ></iframe>
 
 <!-- JAVASCRIPT CONSOLE -->
+
 <div class="console-panel">
 
 <div class="console-header">
@@ -1586,6 +3148,7 @@ Console ready. Run your project to see JavaScript messages here.
 </div>
 
 <!-- CONTROLS -->
+
 <div class="controls">
 
 <button
@@ -1625,17 +3188,26 @@ Console ready. Run your project to see JavaScript messages here.
 
 </div>
 
-<div class="save-status" id="saveStatus">
-    Project status: <strong>READY</strong>
+<div
+    class="save-status"
+    id="saveStatus"
+>
+    Project status:
+    <strong>READY</strong>
 </div>
 
 </div>
+
 </div>
 
 <!-- =========================================================
      PYTHON LAB
 ========================================================= -->
-<div id="pythonLab" class="python-lab">
+
+<div
+    id="pythonLab"
+    class="python-lab"
+>
 
 <div class="python-workspace">
 
@@ -1745,6 +3317,7 @@ print("Welcome,", name)
 <!-- =========================================================
      TIPS
 ========================================================= -->
+
 <section>
 
 <h2 class="section-title">
@@ -1759,35 +3332,52 @@ print("Welcome,", name)
 <div class="card-grid">
 
 <div class="info-card">
-<h3>🧠 Read the Code</h3>
+
+<h3>
+    🧠 Read the Code
+</h3>
+
 <p>
-Before changing something, try to understand
-what the existing code is doing.
+    Before changing something, try to understand
+    what the existing code is doing.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>🔬 Experiment</h3>
+
+<h3>
+    🔬 Experiment
+</h3>
+
 <p>
-Change one thing at a time and run the project.
-This makes it easier to understand cause and effect.
+    Change one thing at a time and run the project.
+    This makes it easier to understand cause and effect.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>🐛 Debug</h3>
+
+<h3>
+    🐛 Debug
+</h3>
+
 <p>
-Errors are part of programming. Find the line,
-understand the problem, then test a fix.
+    Errors are part of programming. Find the line,
+    understand the problem, then test a fix.
 </p>
+
 </div>
 
 </div>
+
 </section>
 
 <!-- =========================================================
      CODING CHALLENGE
 ========================================================= -->
+
 <section>
 
 <div class="challenge">
@@ -1797,10 +3387,10 @@ understand the problem, then test a fix.
 </h3>
 
 <p>
-Create a webpage with a title, a short cybersecurity
-message, a button, and a visual effect.
-Then use JavaScript to make the button interact
-with the page.
+    Create a webpage with a title, a short cybersecurity
+    message, a button, and a visual effect.
+    Then use JavaScript to make the button interact
+    with the page.
 </p>
 
 </div>
@@ -1810,6 +3400,7 @@ with the page.
 <!-- =========================================================
      CYBER CONNECTION
 ========================================================= -->
+
 <section>
 
 <h2 class="section-title">
@@ -1824,35 +3415,52 @@ with the page.
 <div class="card-grid">
 
 <div class="info-card">
-<h3>🌐 Web Security</h3>
+
+<h3>
+    🌐 Web Security
+</h3>
+
 <p>
-Understanding HTML, CSS, and JavaScript helps you understand
-how websites work and where security problems can appear.
+    Understanding HTML, CSS, and JavaScript helps you understand
+    how websites work and where security problems can appear.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>🤖 Automation</h3>
+
+<h3>
+    🤖 Automation
+</h3>
+
 <p>
-Python can automate repetitive tasks and help security
-professionals process information efficiently.
+    Python can automate repetitive tasks and help security
+    professionals process information efficiently.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>🔐 Secure Development</h3>
+
+<h3>
+    🔐 Secure Development
+</h3>
+
 <p>
-Learning to code also teaches you how software should
-handle input, data, permissions, and errors.
+    Learning to code also teaches you how software should
+    handle input, data, permissions, and errors.
 </p>
+
 </div>
 
 </div>
+
 </section>
 
 <!-- =========================================================
      FOUNDATIONS
 ========================================================= -->
+
 <section>
 
 <h2 class="section-title">
@@ -1866,53 +3474,85 @@ handle input, data, permissions, and errors.
 <div class="card-grid">
 
 <div class="info-card">
-<h3>Variables</h3>
+
+<h3>
+    Variables
+</h3>
+
 <p>
-Variables store information that your program can use.
+    Variables store information that your program can use.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>Conditions</h3>
+
+<h3>
+    Conditions
+</h3>
+
 <p>
-Conditions allow programs to make decisions based on information.
+    Conditions allow programs to make decisions based on information.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>Loops</h3>
+
+<h3>
+    Loops
+</h3>
+
 <p>
-Loops allow programs to repeat instructions efficiently.
+    Loops allow programs to repeat instructions efficiently.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>Functions</h3>
+
+<h3>
+    Functions
+</h3>
+
 <p>
-Functions group instructions together so they can be reused.
+    Functions group instructions together so they can be reused.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>Objects</h3>
+
+<h3>
+    Objects
+</h3>
+
 <p>
-Objects allow programs to organize related information and behavior.
+    Objects allow programs to organize related information and behavior.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>Debugging</h3>
+
+<h3>
+    Debugging
+</h3>
+
 <p>
-Debugging means identifying and fixing problems in a program.
+    Debugging means identifying and fixing problems in a program.
 </p>
+
 </div>
 
 </div>
+
 </section>
 
 <!-- =========================================================
      CYBER ARCADE
 ========================================================= -->
+
 <section>
 
 <div class="arcade-section">
@@ -1959,8 +3599,8 @@ Debugging means identifying and fixing problems in a program.
 </h3>
 
 <p>
-Find the mistake hiding inside a small
-JavaScript program.
+    Find the mistake hiding inside a small
+    JavaScript program.
 </p>
 
 <button
@@ -1983,8 +3623,8 @@ JavaScript program.
 </h3>
 
 <p>
-Test your programming logic and figure
-out the correct solution.
+    Test your programming logic and figure
+    out the correct solution.
 </p>
 
 <button
@@ -2007,8 +3647,8 @@ out the correct solution.
 </h3>
 
 <p>
-Complete a quick JavaScript challenge
-before moving to the next mission.
+    Complete a quick JavaScript challenge
+    before moving to the next mission.
 </p>
 
 <button
@@ -2031,8 +3671,8 @@ before moving to the next mission.
 </h3>
 
 <p>
-Practice Python variables, logic, and
-basic programming concepts.
+    Practice Python variables, logic, and
+    basic programming concepts.
 </p>
 
 <button
@@ -2055,8 +3695,8 @@ basic programming concepts.
 </h3>
 
 <p>
-Identify coding practices that could
-create security problems.
+    Identify coding practices that could
+    create security problems.
 </p>
 
 <button
@@ -2079,8 +3719,8 @@ create security problems.
 </h3>
 
 <p>
-Investigate clues and determine what
-caused a program to fail.
+    Investigate clues and determine what
+    caused a program to fail.
 </p>
 
 <button
@@ -2103,8 +3743,8 @@ caused a program to fail.
 </h3>
 
 <p>
-Build a webpage that matches a set
-of requirements.
+    Build a webpage that matches a set
+    of requirements.
 </p>
 
 <button
@@ -2127,8 +3767,8 @@ of requirements.
 </h3>
 
 <p>
-Solve programming logic challenges
-and strengthen your problem solving.
+    Solve programming logic challenges
+    and strengthen your problem solving.
 </p>
 
 <button
@@ -2155,6 +3795,7 @@ and strengthen your problem solving.
 </div>
 
 </div>
+
 </section>
 
 </main>
@@ -2162,10 +3803,12 @@ and strengthen your problem solving.
 <!-- =========================================================
      FOOTER
 ========================================================= -->
+
 <footer>
 
 <p>
-    <strong>🛡️ Clyvexis</strong> — Learn. Build. Defend.
+    <strong>🛡️ Clyvexis</strong>
+    — Learn. Build. Defend.
 </p>
 
 <p style="margin-top:8px;">
@@ -2175,6 +3818,7 @@ and strengthen your problem solving.
 </footer>
 
 <script>
+
 /* =========================================================
    PROJECT DATABASE
 ========================================================= */
@@ -2558,10 +4202,6 @@ function activate() {
 
 },
 
-/* =========================================================
-   ARCADE STARTER
-========================================================= */
-
 arcade: {
 
 html: `
@@ -2788,44 +4428,65 @@ console.log(
 ========================================================= */
 
 let currentProject = "cyber";
+
 let currentLanguage = "web";
 
 let pyodide = null;
+
 let pythonLoading = false;
 
 /* =========================================================
    LANGUAGE SWITCHER
 ========================================================= */
 
-function selectLanguage(language, button) {
+function selectLanguage(
+    language,
+    button
+) {
 
     currentLanguage = language;
 
     document
         .querySelectorAll(".language-btn")
-        .forEach(btn => {
-            btn.classList.remove("active");
-        });
+        .forEach(
+            btn => {
+                btn.classList.remove(
+                    "active"
+                );
+            }
+        );
 
     if (button) {
-        button.classList.add("active");
+        button.classList.add(
+            "active"
+        );
     }
 
     const webLab =
-        document.getElementById("webLab");
+        document.getElementById(
+            "webLab"
+        );
 
     const pythonLab =
-        document.getElementById("pythonLab");
+        document.getElementById(
+            "pythonLab"
+        );
 
     if (language === "web") {
 
-        webLab.style.display = "block";
-        pythonLab.style.display = "none";
+        webLab.style.display =
+            "block";
+
+        pythonLab.style.display =
+            "none";
 
     } else {
 
-        webLab.style.display = "none";
-        pythonLab.style.display = "block";
+        webLab.style.display =
+            "none";
+
+        pythonLab.style.display =
+            "block";
 
         updatePythonStats();
     }
@@ -2835,9 +4496,13 @@ function selectLanguage(language, button) {
    LOAD PROJECT
 ========================================================= */
 
-function loadProject(name, button) {
+function loadProject(
+    name,
+    button
+) {
 
-    currentProject = name;
+    currentProject =
+        name;
 
     const project =
         projects[name];
@@ -2846,23 +4511,37 @@ function loadProject(name, button) {
         return;
     }
 
-    document.getElementById("htmlInput").value =
+    document.getElementById(
+        "htmlInput"
+    ).value =
         project.html;
 
-    document.getElementById("cssInput").value =
+    document.getElementById(
+        "cssInput"
+    ).value =
         project.css;
 
-    document.getElementById("jsInput").value =
+    document.getElementById(
+        "jsInput"
+    ).value =
         project.js;
 
     document
-        .querySelectorAll(".project-btn")
-        .forEach(btn => {
-            btn.classList.remove("active");
-        });
+        .querySelectorAll(
+            ".project-btn"
+        )
+        .forEach(
+            btn => {
+                btn.classList.remove(
+                    "active"
+                );
+            }
+        );
 
     if (button) {
-        button.classList.add("active");
+        button.classList.add(
+            "active"
+        );
     }
 
     updateAllEditorStats();
@@ -2882,9 +4561,15 @@ function loadProject(name, button) {
 
 function runCurrentCode() {
 
-    if (currentLanguage === "web") {
+    if (
+        currentLanguage ===
+        "web"
+    ) {
+
         runWebCode();
+
     } else {
+
         runPython();
     }
 }
@@ -2896,25 +4581,27 @@ function runCurrentCode() {
 function runWebCode() {
 
     const html =
-        document.getElementById("htmlInput").value;
+        document.getElementById(
+            "htmlInput"
+        ).value;
 
     const css =
-        document.getElementById("cssInput").value;
+        document.getElementById(
+            "cssInput"
+        ).value;
 
     let js =
-        document.getElementById("jsInput").value;
+        document.getElementById(
+            "jsInput"
+        ).value;
 
     clearJSConsole();
 
-    /*
-       Prevent a user's script from accidentally
-       closing the sandbox script tag.
-    */
-
-    js = js.replace(
-        /<\/script/gi,
-        "<\\/script"
-    );
+    js =
+        js.replace(
+            /<\/script/gi,
+            "<\\/script"
+        );
 
     const documentCode = `
 <!DOCTYPE html>
@@ -2948,40 +4635,66 @@ ${html}
 
     function formatValue(value) {
 
-        if (typeof value === "string") {
+        if (
+            typeof value ===
+            "string"
+        ) {
+
             return value;
         }
 
         try {
+
             return JSON.stringify(
                 value,
                 null,
                 2
             );
+
         } catch {
-            return String(value);
+
+            return String(
+                value
+            );
         }
     }
 
-    function sendMessage(level, args) {
+    function sendMessage(
+        level,
+        args
+    ) {
 
         try {
 
             parent.postMessage(
                 {
-                    type: "clyvexis-console",
-                    level: level,
-                    args: args.map(formatValue)
+                    type:
+                        "clyvexis-console",
+
+                    level:
+                        level,
+
+                    args:
+                        args.map(
+                            formatValue
+                        )
                 },
                 "*"
             );
 
         } catch (error) {
-            // Keep console reporting from breaking the preview.
+
+            // Keep console reporting
+            // from breaking preview.
+
         }
     }
 
-    ["log", "warn", "error"].forEach(
+    [
+        "log",
+        "warn",
+        "error"
+    ].forEach(
         function(level) {
 
             const original =
@@ -3035,17 +4748,21 @@ ${js}
 `;
 
     const preview =
-        document.getElementById("preview");
+        document.getElementById(
+            "preview"
+        );
 
     preview.srcdoc =
         documentCode;
 
-    document.getElementById("webStatus")
-        .textContent =
+    document.getElementById(
+        "webStatus"
+    ).textContent =
         "● RUNNING";
 
-    document.getElementById("previewStatus")
-        .textContent =
+    document.getElementById(
+        "previewStatus"
+    ).textContent =
         "Updated";
 
     setSaveStatus(
@@ -3055,8 +4772,9 @@ ${js}
     setTimeout(
         function() {
 
-            document.getElementById("webStatus")
-                .textContent =
+            document.getElementById(
+                "webStatus"
+            ).textContent =
                 "● READY";
 
         },
@@ -3070,7 +4788,10 @@ ${js}
 
 function resetCurrentProject() {
 
-    if (currentLanguage !== "web") {
+    if (
+        currentLanguage !==
+        "web"
+    ) {
 
         resetPython();
 
@@ -3078,19 +4799,27 @@ function resetCurrentProject() {
     }
 
     const project =
-        projects[currentProject];
+        projects[
+            currentProject
+        ];
 
     if (!project) {
         return;
     }
 
-    document.getElementById("htmlInput").value =
+    document.getElementById(
+        "htmlInput"
+    ).value =
         project.html;
 
-    document.getElementById("cssInput").value =
+    document.getElementById(
+        "cssInput"
+    ).value =
         project.css;
 
-    document.getElementById("jsInput").value =
+    document.getElementById(
+        "jsInput"
+    ).value =
         project.js;
 
     updateAllEditorStats();
@@ -3111,7 +4840,9 @@ function resetCurrentProject() {
 function clearPreview() {
 
     const preview =
-        document.getElementById("preview");
+        document.getElementById(
+            "preview"
+        );
 
     preview.srcdoc = `
 <!DOCTYPE html>
@@ -3138,8 +4869,9 @@ Preview cleared.
 </html>
 `;
 
-    document.getElementById("previewStatus")
-        .textContent =
+    document.getElementById(
+        "previewStatus"
+    ).textContent =
         "Cleared";
 }
 
@@ -3154,15 +4886,25 @@ function updateEditorStats(
 ) {
 
     const editor =
-        document.getElementById(inputId);
+        document.getElementById(
+            inputId
+        );
 
     const stats =
-        document.getElementById(statsId);
+        document.getElementById(
+            statsId
+        );
 
     const numbers =
-        document.getElementById(numbersId);
+        document.getElementById(
+            numbersId
+        );
 
-    if (!editor || !stats || !numbers) {
+    if (
+        !editor ||
+        !stats ||
+        !numbers
+    ) {
         return;
     }
 
@@ -3172,7 +4914,9 @@ function updateEditorStats(
     const lines =
         value.length === 0
             ? 1
-            : value.split("\n").length;
+            : value.split(
+                "\n"
+            ).length;
 
     const characters =
         value.length;
@@ -3240,12 +4984,19 @@ function syncLineNumbers(
 ) {
 
     const editor =
-        document.getElementById(editorId);
+        document.getElementById(
+            editorId
+        );
 
     const numbers =
-        document.getElementById(numbersId);
+        document.getElementById(
+            numbersId
+        );
 
-    if (!editor || !numbers) {
+    if (
+        !editor ||
+        !numbers
+    ) {
         return;
     }
 
@@ -3257,10 +5008,14 @@ function syncLineNumbers(
    TAB SUPPORT
 ========================================================= */
 
-function addTabSupport(textareaId) {
+function addTabSupport(
+    textareaId
+) {
 
     const textarea =
-        document.getElementById(textareaId);
+        document.getElementById(
+            textareaId
+        );
 
     if (!textarea) {
         return;
@@ -3270,7 +5025,10 @@ function addTabSupport(textareaId) {
         "keydown",
         function(event) {
 
-            if (event.key !== "Tab") {
+            if (
+                event.key !==
+                "Tab"
+            ) {
                 return;
             }
 
@@ -3298,9 +5056,15 @@ function addTabSupport(textareaId) {
                 textarea.selectionEnd =
                     start + 4;
 
-            if (textareaId === "pythonInput") {
+            if (
+                textareaId ===
+                "pythonInput"
+            ) {
+
                 updatePythonStats();
+
             } else {
+
                 updateAllEditorStats();
             }
         }
@@ -3313,7 +5077,10 @@ function addTabSupport(textareaId) {
 
 function saveCurrentProject() {
 
-    if (currentLanguage !== "web") {
+    if (
+        currentLanguage !==
+        "web"
+    ) {
 
         localStorage.setItem(
             "clyvexisPythonProject",
@@ -3352,8 +5119,12 @@ function saveCurrentProject() {
     };
 
     localStorage.setItem(
-        "clyvexisProject_" + currentProject,
-        JSON.stringify(savedProject)
+        "clyvexisProject_" +
+        currentProject,
+
+        JSON.stringify(
+            savedProject
+        )
     );
 
     setSaveStatus(
@@ -3367,7 +5138,10 @@ function saveCurrentProject() {
 
 function loadSavedProject() {
 
-    if (currentLanguage !== "web") {
+    if (
+        currentLanguage !==
+        "web"
+    ) {
 
         const savedPython =
             localStorage.getItem(
@@ -3415,7 +5189,9 @@ function loadSavedProject() {
     try {
 
         const project =
-            JSON.parse(saved);
+            JSON.parse(
+                saved
+            );
 
         document.getElementById(
             "htmlInput"
@@ -3452,7 +5228,9 @@ function loadSavedProject() {
    SAVE STATUS
 ========================================================= */
 
-function setSaveStatus(message) {
+function setSaveStatus(
+    message
+) {
 
     const status =
         document.getElementById(
@@ -3538,7 +5316,8 @@ window.addEventListener(
 
         if (
             !preview ||
-            event.source !== preview.contentWindow
+            event.source !==
+                preview.contentWindow
         ) {
             return;
         }
@@ -3552,8 +5331,11 @@ window.addEventListener(
         }
 
         addConsoleMessage(
-            event.data.level || "log",
-            event.data.args || []
+            event.data.level ||
+                "log",
+
+            event.data.args ||
+                []
         );
     }
 );
@@ -3597,7 +5379,10 @@ async function loadPythonRuntime() {
         );
 
         await new Promise(
-            function(resolve, reject) {
+            function(
+                resolve,
+                reject
+            ) {
 
                 script.onload =
                     resolve;
@@ -3771,14 +5556,18 @@ let factIndex = 0;
 function rotateFact() {
 
     factIndex =
-        (factIndex + 1)
+        (
+            factIndex + 1
+        )
         %
         codingFacts.length;
 
     document.getElementById(
         "codingFact"
     ).textContent =
-        codingFacts[factIndex];
+        codingFacts[
+            factIndex
+        ];
 }
 
 setInterval(
@@ -3887,7 +5676,9 @@ What happens when age = 16?`
 
 };
 
-function playArcade(mission) {
+function playArcade(
+    mission
+) {
 
     const output =
         document.getElementById(
@@ -3899,7 +5690,9 @@ function playArcade(mission) {
     }
 
     output.textContent =
-        arcadeMissions[mission] ||
+        arcadeMissions[
+            mission
+        ] ||
         "Mission unavailable.";
 }
 
@@ -3935,7 +5728,8 @@ document.addEventListener(
 
         if (
             event.ctrlKey &&
-            event.key.toLowerCase() === "s"
+            event.key.toLowerCase() ===
+                "s"
         ) {
 
             event.preventDefault();
@@ -3943,6 +5737,245 @@ document.addEventListener(
             saveCurrentProject();
         }
     }
+);
+
+/* =========================================================
+   DEVELOPER BACKGROUND
+========================================================= */
+
+const codeCanvas =
+    document.getElementById(
+        "codeBackground"
+    );
+
+const codeCtx =
+    codeCanvas.getContext(
+        "2d"
+    );
+
+let codeWidth = 0;
+let codeHeight = 0;
+let codeDpr = 1;
+
+const codeSymbols = [
+    "</>",
+    "{}",
+    "[]",
+    "()",
+    "01",
+    "JS",
+    "PY",
+    "CSS",
+    "HTML",
+    "&&",
+    "=>",
+    "const",
+    "let",
+    "if",
+    "for",
+    "def",
+    "import",
+    "sudo",
+    "git",
+    "run()",
+    "debug",
+    "secure"
+];
+
+let codeParticles = [];
+
+function resizeCodeBackground() {
+
+    codeDpr =
+        Math.min(
+            window.devicePixelRatio ||
+                1,
+            2
+        );
+
+    codeWidth =
+        window.innerWidth;
+
+    codeHeight =
+        window.innerHeight;
+
+    codeCanvas.width =
+        codeWidth * codeDpr;
+
+    codeCanvas.height =
+        codeHeight * codeDpr;
+
+    codeCanvas.style.width =
+        codeWidth + "px";
+
+    codeCanvas.style.height =
+        codeHeight + "px";
+
+    codeCtx.setTransform(
+        codeDpr,
+        0,
+        0,
+        codeDpr,
+        0,
+        0
+    );
+
+    createCodeParticles();
+}
+
+function createCodeParticles() {
+
+    const amount =
+        window.innerWidth < 700
+            ? 28
+            : 52;
+
+    codeParticles = [];
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        codeParticles.push({
+
+            x:
+                Math.random() *
+                codeWidth,
+
+            y:
+                Math.random() *
+                codeHeight,
+
+            speed:
+                0.08 +
+                Math.random() *
+                0.22,
+
+            size:
+                8 +
+                Math.random() *
+                4,
+
+            opacity:
+                0.04 +
+                Math.random() *
+                0.10,
+
+            symbol:
+                codeSymbols[
+                    Math.floor(
+                        Math.random() *
+                        codeSymbols.length
+                    )
+                ],
+
+            green:
+                Math.random() >
+                0.82
+
+        });
+    }
+}
+
+function drawCodeBackground() {
+
+    codeCtx.clearRect(
+        0,
+        0,
+        codeWidth,
+        codeHeight
+    );
+
+    codeParticles.forEach(
+        particle => {
+
+            particle.y +=
+                particle.speed;
+
+            if (
+                particle.y >
+                codeHeight + 30
+            ) {
+
+                particle.y =
+                    -30;
+
+                particle.x =
+                    Math.random() *
+                    codeWidth;
+            }
+
+            codeCtx.font =
+                `${particle.size}px monospace`;
+
+            codeCtx.fillStyle =
+                particle.green
+                    ? `rgba(57,255,136,${particle.opacity})`
+                    : `rgba(0,170,255,${particle.opacity})`;
+
+            codeCtx.fillText(
+                particle.symbol,
+                particle.x,
+                particle.y
+            );
+        }
+    );
+
+    /*
+       Subtle horizontal developer scan.
+    */
+
+    const scanY =
+        (
+            Date.now() /
+            22
+        )
+        %
+        codeHeight;
+
+    const gradient =
+        codeCtx.createLinearGradient(
+            0,
+            scanY - 35,
+            0,
+            scanY + 35
+        );
+
+    gradient.addColorStop(
+        0,
+        "rgba(0,170,255,0)"
+    );
+
+    gradient.addColorStop(
+        0.5,
+        "rgba(0,170,255,0.035)"
+    );
+
+    gradient.addColorStop(
+        1,
+        "rgba(0,170,255,0)"
+    );
+
+    codeCtx.fillStyle =
+        gradient;
+
+    codeCtx.fillRect(
+        0,
+        scanY - 35,
+        codeWidth,
+        70
+    );
+
+    requestAnimationFrame(
+        drawCodeBackground
+    );
+}
+
+window.addEventListener(
+    "resize",
+    resizeCodeBackground
 );
 
 /* =========================================================
@@ -3977,9 +6010,8 @@ document.addEventListener(
            IMPORTANT:
            Load the starter project LAST.
 
-           This fixes the old issue where
-           clearPreview() ran after loadProject()
-           and erased the preview.
+           This keeps the original
+           preview initialization behavior.
         */
 
         loadProject(
@@ -3988,8 +6020,18 @@ document.addEventListener(
                 ".project-btn.active"
             )
         );
+
+        /*
+           Start developer background.
+        */
+
+        resizeCodeBackground();
+
+        drawCodeBackground();
+
     }
 );
+
 </script>
 
 </body>
