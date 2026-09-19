@@ -4,130 +4,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="Clyvexis Cyber Arcade — interactive coding and cybersecurity games, missions, puzzles, and challenges.">
-
 <title>Clyvexis | Cyber Arcade</title>
+
+<meta name="description" content="Clyvexis Cyber Arcade — interactive coding and cybersecurity games, missions, puzzles, and challenges.">
 
 <style>
 /* =========================================================
    CLYVEXIS CYBER ARCADE
+   Professional Global Cyber Network Edition
    ========================================================= */
 
+:root{
+  --bg:#050b16;
+  --panel:rgba(8,17,32,.82);
+  --panel-strong:rgba(7,15,29,.94);
+  --blue:#00aaff;
+  --blue-soft:#38bdf8;
+  --green:#39ff88;
+  --text:#eaf6ff;
+  --muted:#8fa8bd;
+  --border:rgba(56,189,248,.18);
+  --border-strong:rgba(56,189,248,.35);
+  --danger:#ff5577;
+  --warning:#ffd166;
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    color:#fff;
-    min-height:100vh;
-    overflow-x:hidden;
-    position:relative;
-
-    background:
-        radial-gradient(circle at 50% -10%,rgba(0,170,255,.22),transparent 38%),
-        linear-gradient(rgba(0,170,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,170,255,.035) 1px,transparent 1px),
-        #050b16;
-
-    background-size:auto,35px 35px,35px 35px,auto;
-    background-attachment:fixed;
-}
-
-body:before{
-    content:"";
-    position:fixed;
-    top:-250px;
-    left:50%;
-    width:700px;
-    height:500px;
-    transform:translateX(-50%);
-    background:radial-gradient(
-        ellipse,
-        rgba(0,170,255,.18),
-        transparent 70%
-    );
-    pointer-events:none;
-    z-index:0;
-    animation:cyberGlow 6s ease-in-out infinite alternate;
-}
-
-@keyframes cyberGlow{
-    from{
-        transform:translateX(-50%) scale(.9);
-        opacity:.55;
-    }
-
-    to{
-        transform:translateX(-50%) scale(1.15);
-        opacity:1;
-    }
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(0,170,255,.08),transparent 34%),
+    #050b16;
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height:1.6;
 }
 
 /* =========================================================
-   NAVIGATION
+   GLOBAL NETWORK BACKGROUND
+   ========================================================= */
+
+#network-canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+}
+
+.network-background{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.network-grid{
+  position:absolute;
+  inset:0;
+  opacity:.16;
+  background-image:
+    linear-gradient(rgba(56,189,248,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,189,248,.07) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:radial-gradient(circle at center,black 10%,transparent 78%);
+  -webkit-mask-image:radial-gradient(circle at center,black 10%,transparent 78%);
+}
+
+.network-vignette{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center,
+      transparent 15%,
+      rgba(5,11,22,.10) 45%,
+      rgba(5,11,22,.82) 100%);
+}
+
+.network-top-glow{
+  position:absolute;
+  top:-260px;
+  left:50%;
+  transform:translateX(-50%);
+  width:900px;
+  height:420px;
+  background:radial-gradient(
+    ellipse,
+    rgba(0,170,255,.16),
+    rgba(0,170,255,.04) 45%,
+    transparent 72%
+  );
+  filter:blur(20px);
+}
+
+.network-hud{
+  position:absolute;
+  inset:0;
+  font-family:monospace;
+  font-size:10px;
+  letter-spacing:2px;
+  color:rgba(91,208,255,.42);
+  text-transform:uppercase;
+}
+
+.network-hud span{
+  position:absolute;
+  padding:7px 10px;
+  border-left:1px solid rgba(56,189,248,.28);
+  background:linear-gradient(
+    90deg,
+    rgba(0,170,255,.05),
+    transparent
+  );
+}
+
+.hud-top-left{
+  top:90px;
+  left:25px;
+}
+
+.hud-top-right{
+  top:90px;
+  right:25px;
+  text-align:right;
+  border-left:none !important;
+  border-right:1px solid rgba(56,189,248,.28);
+}
+
+.hud-bottom-left{
+  bottom:30px;
+  left:25px;
+}
+
+.hud-bottom-right{
+  bottom:30px;
+  right:25px;
+  text-align:right;
+  border-left:none !important;
+  border-right:1px solid rgba(56,189,248,.28);
+}
+
+/* =========================================================
+   CONTENT LAYER
+   ========================================================= */
+
+nav,
+.hero,
+.arcade-status,
+.random-mission,
+.filters,
+.games-container,
+.phish-arcade,
+.mystery-arcade,
+footer{
+  position:relative;
+  z-index:2;
+}
+
+/* =========================================================
+   NAVBAR
    ========================================================= */
 
 nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:16px 6%;
-
-    background:rgba(3,8,18,.88);
-    backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(0,200,255,.15);
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:15px 18px;
+  background:rgba(4,10,20,.82);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(56,189,248,.14);
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
 }
 
-.logo{
-    font-size:23px;
-    font-weight:bold;
-    white-space:nowrap;
+nav:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--blue),
+    var(--green),
+    var(--blue),
+    transparent
+  );
+  opacity:.75;
 }
 
-.logo span{
-    color:#00d9ff;
+nav a{
+  color:#a9bfd1;
+  text-decoration:none;
+  padding:8px 11px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:700;
+  transition:.25s ease;
 }
 
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
+nav a:hover{
+  color:white;
+  background:rgba(56,189,248,.08);
+  box-shadow:0 0 20px rgba(0,170,255,.08);
 }
 
-.nav-links a{
-    color:#c9d7e8;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s;
-}
-
-.nav-links a:hover,
-.nav-links .active{
-    color:#00d9ff;
-}
-
-.donate{
-    padding:9px 15px;
-    border-radius:20px;
-    border:1px solid rgba(0,255,170,.5);
-    color:#7dffc9!important;
-    background:rgba(0,255,170,.08);
+nav a.active{
+  color:white;
+  background:rgba(0,170,255,.12);
+  border:1px solid rgba(0,170,255,.22);
+  box-shadow:0 0 18px rgba(0,170,255,.10);
 }
 
 /* =========================================================
@@ -135,82 +241,80 @@ nav{
    ========================================================= */
 
 .hero{
-    position:relative;
-    z-index:1;
-    text-align:center;
-    padding:68px 20px 30px;
+  text-align:center;
+  max-width:1000px;
+  margin:0 auto;
+  padding:85px 20px 45px;
 }
 
 .hero-icon{
-    font-size:60px;
-    margin-bottom:12px;
-    filter:drop-shadow(0 0 18px rgba(0,200,255,.5));
+  font-size:58px;
+  display:inline-block;
+  margin-bottom:12px;
+  filter:drop-shadow(0 0 22px rgba(0,170,255,.35));
 }
 
 .hero h1{
-    font-size:clamp(40px,8vw,72px);
-    margin-bottom:12px;
-
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #00d9ff,
-        #39ff88
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+  font-size:clamp(38px,7vw,72px);
+  line-height:1;
+  margin-bottom:18px;
+  letter-spacing:-2px;
+  background:linear-gradient(
+    90deg,
+    #ffffff,
+    #62d3ff,
+    #39ff88
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .hero p{
-    color:#9eb2c8;
-    max-width:720px;
-    margin:auto;
-    line-height:1.7;
-    font-size:17px;
+  max-width:720px;
+  margin:0 auto 18px;
+  color:#a8bdd0;
+  font-size:17px;
 }
 
 .tagline{
-    margin-top:15px;
-    color:#00e5ff;
-    font-size:13px;
-    letter-spacing:4px;
-    font-weight:bold;
+  color:#58cfff !important;
+  font-family:monospace;
+  font-size:13px !important;
+  letter-spacing:3px;
+  font-weight:bold;
 }
 
 /* =========================================================
-   STATUS
+   STATUS BAR
    ========================================================= */
 
 .arcade-status{
-    width:min(1100px,92%);
-    margin:28px auto 0;
-
-    position:relative;
-    z-index:1;
-
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
+  max-width:1050px;
+  margin:0 auto 30px;
+  padding:18px 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
-.status-box{
-    padding:12px 18px;
-    border:1px solid rgba(0,210,255,.18);
-    border-radius:14px;
-    background:rgba(9,20,35,.65);
-
-    color:#9eb2c8;
-    font-size:13px;
+.status-item{
+  padding:9px 15px;
+  border:1px solid rgba(56,189,248,.16);
+  background:rgba(7,17,31,.72);
+  border-radius:999px;
+  color:#a9bfd1;
+  font-size:12px;
+  font-family:monospace;
+  letter-spacing:.5px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
 }
 
-.status-box strong{
-    color:#fff;
-}
-
-.green{
-    color:#39ff88!important;
+.status-online{
+  color:var(--green);
+  border-color:rgba(57,255,136,.20);
 }
 
 /* =========================================================
@@ -218,84 +322,84 @@ nav{
    ========================================================= */
 
 .random-mission{
-    width:min(1100px,92%);
-    margin:28px auto;
-
-    position:relative;
-    z-index:1;
-
-    padding:25px;
-
-    border-radius:22px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,170,255,.08),
-            rgba(57,255,136,.035)
-        );
-
-    border:1px solid rgba(0,210,255,.2);
-
-    box-shadow:
-        0 0 45px rgba(0,170,255,.08);
+  max-width:1050px;
+  margin:10px auto 35px;
+  padding:26px;
+  border:1px solid rgba(56,189,248,.20);
+  border-radius:18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,170,255,.08),
+      rgba(57,255,136,.025)
+    ),
+    rgba(5,13,25,.86);
+  box-shadow:var(--shadow);
+  overflow:hidden;
 }
 
-.random-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.random-header h2{
-    color:#fff;
-}
-
-.random-header span{
-    color:#39ff88;
-    font-size:11px;
-    letter-spacing:2px;
-    font-weight:bold;
-}
-
-.random-content{
-    margin-top:18px;
-    padding:20px;
-
-    border-radius:15px;
-
-    background:rgba(0,0,0,.22);
-
-    border:1px solid rgba(255,255,255,.07);
-}
-
-.random-content h3{
-    margin-bottom:10px;
-    color:#00d9ff;
-}
-
-.random-content p{
-    color:#b8c9d9;
-    line-height:1.7;
-    margin-bottom:16px;
-}
-
-.random-button{
-    padding:12px 18px;
-    border:0;
-    border-radius:10px;
-
-    background:linear-gradient(
-        90deg,
-        #008cff,
-        #00d9ff
+.random-mission:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(56,189,248,.04) 50%,
+      transparent 65%
     );
+  pointer-events:none;
+}
 
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
+.random-mission h2{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.random-mission p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.mission-box{
+  margin-top:18px;
+  padding:18px;
+  border-radius:12px;
+  background:rgba(0,0,0,.24);
+  border:1px solid rgba(56,189,248,.10);
+}
+
+.mission-text{
+  color:#dff5ff;
+  margin-bottom:15px;
+  font-weight:600;
+}
+
+button{
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.mission-btn,
+.filter-btn,
+.game-btn,
+.answer-btn{
+  transition:.25s ease;
+}
+
+.mission-btn{
+  padding:10px 17px;
+  border-radius:9px;
+  background:linear-gradient(135deg,#0099ee,#00c878);
+  color:#00111b;
+  font-weight:800;
+}
+
+.mission-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,170,255,.20);
 }
 
 /* =========================================================
@@ -303,37 +407,30 @@ nav{
    ========================================================= */
 
 .filters{
-    position:relative;
-    z-index:1;
-
-    width:min(1100px,92%);
-    margin:25px auto 20px;
-
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    flex-wrap:wrap;
+  max-width:1050px;
+  margin:0 auto 25px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:0 20px;
 }
 
-.filter{
-    padding:10px 15px;
-    border-radius:999px;
-
-    border:1px solid rgba(0,190,255,.2);
-
-    background:rgba(255,255,255,.03);
-
-    color:#b9cce0;
-
-    cursor:pointer;
-    font-weight:bold;
+.filter-btn{
+  padding:9px 16px;
+  border-radius:999px;
+  color:#91a9bb;
+  background:rgba(8,18,32,.78);
+  border:1px solid rgba(56,189,248,.13);
+  font-size:12px;
+  font-weight:bold;
 }
 
-.filter:hover,
-.filter.active{
-    background:rgba(0,190,255,.1);
-    border-color:#00d9ff;
-    color:#00d9ff;
+.filter-btn:hover,
+.filter-btn.active{
+  color:white;
+  border-color:rgba(0,170,255,.35);
+  background:rgba(0,170,255,.11);
 }
 
 /* =========================================================
@@ -341,322 +438,161 @@ nav{
    ========================================================= */
 
 .games-container{
-    position:relative;
-    z-index:1;
-
-    width:min(1100px,92%);
-    margin:0 auto 80px;
-
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-
-    gap:22px;
+  width:min(1100px,calc(100% - 30px));
+  margin:0 auto 70px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:16px;
 }
 
 .game-card{
-    position:relative;
-
-    padding:25px;
-
-    border-radius:22px;
-
-    background:rgba(9,20,35,.72);
-
-    border:1px solid rgba(0,190,255,.18);
-
-    backdrop-filter:blur(16px);
-
-    box-shadow:0 0 35px rgba(0,170,255,.07);
-
-    transition:.3s;
-
-    overflow:hidden;
+  position:relative;
+  overflow:hidden;
+  min-height:230px;
+  padding:23px;
+  border-radius:16px;
+  border:1px solid rgba(56,189,248,.15);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12,27,47,.91),
+      rgba(5,13,25,.92)
+    );
+  box-shadow:0 18px 50px rgba(0,0,0,.30);
+  transition:.3s ease;
 }
 
 .game-card:after{
-    content:"";
-
-    position:absolute;
-    left:-30%;
-    top:0;
-
-    width:60%;
-    height:2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #00d9ff,
-            transparent
-        );
-
-    animation:scan 4s linear infinite;
-
-    opacity:.65;
+  content:"";
+  position:absolute;
+  top:-100%;
+  left:-20%;
+  width:140%;
+  height:55%;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(0,170,255,.045),
+    transparent
+  );
+  transform:rotate(-5deg);
+  animation:cardScan 8s linear infinite;
+  pointer-events:none;
 }
 
-@keyframes scan{
-    from{
-        left:-60%;
-    }
-
-    to{
-        left:120%;
-    }
+@keyframes cardScan{
+  0%{top:-100%}
+  100%{top:150%}
 }
 
 .game-card:hover{
-    transform:translateY(-5px);
-
-    border-color:rgba(0,210,255,.45);
-
-    box-shadow:
-        0 0 35px rgba(0,190,255,.15);
-}
-
-.game-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:12px;
+  transform:translateY(-5px);
+  border-color:rgba(0,170,255,.38);
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.42),
+    0 0 35px rgba(0,170,255,.07);
 }
 
 .game-icon{
-    font-size:42px;
+  font-size:35px;
+  margin-bottom:8px;
 }
 
-.game-number{
-    font-size:11px;
-    color:#5f7890;
-    letter-spacing:2px;
-    font-weight:bold;
-}
-
-.game-card h2{
-    font-size:22px;
-    margin:13px 0 9px;
+.game-card h3{
+  font-size:18px;
+  margin-bottom:8px;
 }
 
 .game-card p{
-    color:#9eb2c8;
-    line-height:1.6;
-    margin-bottom:17px;
+  color:#8fa8bd;
+  font-size:13px;
+  min-height:58px;
 }
 
-.tags{
-    display:flex;
-    gap:7px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
+.game-tag{
+  display:inline-block;
+  margin-top:12px;
+  padding:4px 8px;
+  border-radius:5px;
+  font-family:monospace;
+  font-size:9px;
+  letter-spacing:1px;
+  color:#65d4ff;
+  background:rgba(0,170,255,.08);
+  border:1px solid rgba(0,170,255,.13);
 }
 
-.tag,
-.difficulty{
-    display:inline-block;
-
-    padding:6px 9px;
-
-    border-radius:20px;
-
-    font-size:10px;
-
-    letter-spacing:.5px;
-
-    color:#7de8ff;
-
-    background:rgba(0,200,255,.08);
-
-    border:1px solid rgba(0,200,255,.2);
+.game-btn{
+  margin-top:15px;
+  padding:9px 13px;
+  border-radius:8px;
+  background:rgba(56,189,248,.08);
+  color:#8fdcff;
+  border:1px solid rgba(56,189,248,.18);
+  font-weight:bold;
+  font-size:12px;
 }
 
-.difficulty.advanced{
-    color:#ffca7a;
-    border-color:rgba(255,180,70,.25);
-    background:rgba(255,180,70,.06);
-}
-
-.difficulty.intermediate{
-    color:#c7a7ff;
-    border-color:rgba(170,110,255,.25);
-    background:rgba(170,110,255,.06);
-}
-
-.game-button{
-    width:100%;
-
-    padding:13px 18px;
-
-    border:none;
-    border-radius:10px;
-
-    cursor:pointer;
-
-    color:#fff;
-
-    font-size:15px;
-    font-weight:bold;
-
-    background:
-        linear-gradient(
-            90deg,
-            #008cff,
-            #00d9ff
-        );
-
-    box-shadow:
-        0 0 18px rgba(0,180,255,.18);
-
-    transition:.3s;
-}
-
-.game-button:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 0 25px rgba(0,210,255,.35);
+.game-btn:hover{
+  background:rgba(56,189,248,.15);
+  color:white;
 }
 
 /* =========================================================
-   MINI GAME AREAS
+   EXPANDABLE GAME AREAS
    ========================================================= */
 
-.game-area{
-    display:none;
-
-    margin-top:18px;
-
-    padding:18px;
-
-    border-radius:15px;
-
-    background:rgba(0,0,0,.22);
-
-    border:1px solid rgba(255,255,255,.08);
+.game-panel{
+  display:none;
+  margin-top:16px;
+  padding-top:15px;
+  border-top:1px solid rgba(56,189,248,.10);
 }
 
-.game-area.show{
-    display:block;
+.game-panel.show{
+  display:block;
 }
 
-.challenge{
-    color:#dcecff;
-    line-height:1.6;
-    margin-bottom:15px;
+.game-panel input{
+  width:100%;
+  padding:10px;
+  margin:7px 0;
+  background:#020812;
+  color:white;
+  border:1px solid rgba(56,189,248,.20);
+  border-radius:7px;
+  outline:none;
 }
 
-.option{
-    width:100%;
-
-    padding:12px 14px;
-
-    margin-bottom:9px;
-
-    text-align:left;
-
-    color:#e7f2ff;
-
-    background:rgba(255,255,255,.035);
-
-    border:1px solid rgba(130,170,200,.18);
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    transition:.25s;
+.game-panel input:focus{
+  border-color:rgba(0,170,255,.55);
+  box-shadow:0 0 15px rgba(0,170,255,.08);
 }
 
-.option:hover{
-    border-color:#00d9ff;
-
-    background:
-        rgba(0,190,255,.08);
+.answer-grid{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
 }
 
-.option.correct{
-    border-color:#00ffae;
-    background:rgba(0,255,170,.10);
-    color:#8fffd3;
+.answer-btn{
+  padding:10px;
+  border-radius:8px;
+  background:rgba(255,255,255,.035);
+  color:#b7cada;
+  border:1px solid rgba(255,255,255,.08);
+  text-align:left;
 }
 
-.option.wrong{
-    border-color:#ff5c7a;
-    background:rgba(255,60,100,.08);
-    color:#ff9caf;
+.answer-btn:hover{
+  background:rgba(0,170,255,.08);
+  border-color:rgba(0,170,255,.22);
+  color:white;
 }
 
-.option:disabled{
-    cursor:not-allowed;
-    opacity:.85;
-}
-
-.result{
-    margin-top:10px;
-
-    font-weight:bold;
-
-    min-height:22px;
-
-    line-height:1.5;
-}
-
-.mini-input{
-    width:100%;
-
-    padding:12px;
-
-    border-radius:9px;
-
-    border:1px solid rgba(0,200,255,.22);
-
-    background:#07101d;
-
-    color:#fff;
-
-    margin-bottom:10px;
-
-    outline:none;
-}
-
-.mini-input:focus{
-    border-color:#00d9ff;
-}
-
-.mini-button{
-    padding:10px 14px;
-
-    border:0;
-
-    border-radius:8px;
-
-    background:#00d9ff;
-
-    color:#03101c;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-.code-box{
-    padding:14px;
-
-    border-radius:10px;
-
-    background:#02070e;
-
-    border:1px solid rgba(0,210,255,.16);
-
-    color:#b9eaff;
-
-    font-family:Consolas,monospace;
-
-    font-size:13px;
-
-    white-space:pre-wrap;
-
-    margin-bottom:12px;
+.feedback{
+  margin-top:10px;
+  font-size:13px;
 }
 
 /* =========================================================
@@ -665,447 +601,152 @@ nav{
 
 .phish-arcade,
 .mystery-arcade{
-    width:min(1100px,92%);
-
-    margin:35px auto 70px;
-
-    border:1px solid rgba(0,170,255,.28);
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,170,255,.055),
-            rgba(57,255,136,.025)
-        );
-
-    box-shadow:
-        0 0 45px rgba(0,170,255,.08);
-
-    overflow:hidden;
-
-    position:relative;
-
-    z-index:2;
+  width:min(1050px,calc(100% - 30px));
+  margin:0 auto 60px;
+  padding:30px;
+  border-radius:20px;
+  border:1px solid rgba(56,189,248,.17);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(7,18,34,.94),
+      rgba(4,11,22,.95)
+    );
+  box-shadow:var(--shadow);
 }
 
-.phish-topbar,
-.mystery-topbar{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:16px;
-
-    padding:16px 20px;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
-    background:rgba(0,0,0,.18);
+.section-title{
+  text-align:center;
+  margin-bottom:24px;
 }
 
-.phish-mission,
-.mystery-mission{
-    font-weight:800;
+.section-title h2{
+  font-size:28px;
+  margin-bottom:7px;
+}
 
-    letter-spacing:.12em;
-
-    color:#39ff88;
-
-    font-size:.78rem;
+.section-title p{
+  color:#8fa8bd;
+  font-size:14px;
 }
 
 .phish-hud,
 .mystery-hud{
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-    justify-content:flex-end;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:25px;
 }
 
-.phish-stat,
-.mystery-stat{
-    min-width:72px;
-
-    text-align:center;
-
-    padding:7px 10px;
-
-    border:1px solid rgba(0,170,255,.18);
-
-    border-radius:10px;
-
-    background:rgba(0,170,255,.045);
+.hud-item{
+  min-width:110px;
+  text-align:center;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(0,0,0,.23);
+  border:1px solid rgba(56,189,248,.11);
 }
 
-.phish-stat b,
-.mystery-stat b{
-    display:block;
-
-    color:#fff;
-
-    font-size:1rem;
+.hud-label{
+  display:block;
+  color:#70899d;
+  font-size:9px;
+  font-family:monospace;
+  letter-spacing:1px;
 }
 
-.phish-stat small,
-.mystery-stat small{
-    color:#7f9ab3;
-
-    font-size:.62rem;
-
-    letter-spacing:.08em;
+.hud-value{
+  color:#dff7ff;
+  font-size:18px;
+  font-weight:800;
 }
 
-.phish-board,
-.mystery-board{
-    padding:26px;
+.question-box{
+  padding:24px;
+  border-radius:15px;
+  background:rgba(0,0,0,.24);
+  border:1px solid rgba(56,189,248,.11);
 }
 
-.phish-email,
-.mystery-case{
-    border:1px solid rgba(255,255,255,.1);
-
-    border-radius:18px;
-
-    background:#09111d;
-
-    overflow:hidden;
-
-    box-shadow:
-        inset 0 0 30px rgba(0,170,255,.025);
+.question-label{
+  color:#55cfff;
+  font-family:monospace;
+  font-size:11px;
+  letter-spacing:1px;
+  margin-bottom:10px;
 }
 
-.phish-email-head,
-.mystery-case-head{
-    padding:18px 20px;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
+.question-text{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:18px;
+  overflow-wrap:anywhere;
 }
 
-.phish-row{
-    display:flex;
-
-    gap:10px;
-
-    margin:7px 0;
-
-    color:#a9bdd0;
-
-    word-break:break-word;
+.question-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.phish-row span{
-    width:72px;
-
-    color:#5d7890;
-
-    font-size:.8rem;
-
-    text-transform:uppercase;
-
-    letter-spacing:.08em;
+.question-actions button{
+  padding:12px;
+  border-radius:9px;
+  font-weight:800;
 }
 
-.phish-row strong{
-    color:#eaf6ff;
-
-    font-weight:650;
+.safe-btn{
+  color:#001a0b;
+  background:rgba(57,255,136,.88);
 }
 
-.phish-email-body,
-.mystery-case-body{
-    padding:24px 20px;
-
-    color:#c5d7e5;
-
-    line-height:1.7;
-
-    min-height:105px;
+.phish-btn{
+  color:white;
+  background:rgba(255,85,119,.80);
 }
 
-.phish-difficulty,
-.mystery-level{
-    display:inline-block;
-
-    margin:0 0 16px;
-
-    padding:5px 9px;
-
-    border:1px solid rgba(57,255,136,.25);
-
-    border-radius:999px;
-
-    color:#39ff88;
-
-    font-size:.66rem;
-
-    font-weight:800;
-
-    letter-spacing:.1em;
-}
-
-.phish-actions,
-.mystery-actions{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-    margin-top:18px;
-}
-
-.phish-answer,
-.mystery-answer{
-    border:1px solid rgba(255,255,255,.1);
-
-    border-radius:13px;
-
-    padding:14px;
-
-    background:#0b1623;
-
-    color:#e8f6ff;
-
-    cursor:pointer;
-
-    font-weight:800;
-
-    letter-spacing:.06em;
-
-    transition:.2s ease;
-}
-
-.phish-answer:hover,
-.mystery-answer:hover{
-    transform:translateY(-2px);
-
-    border-color:rgba(0,170,255,.5);
-
-    box-shadow:
-        0 0 22px rgba(0,170,255,.1);
-}
-
-.phish-tools,
-.mystery-tools{
-    margin-top:18px;
-}
-
-.phish-tools-title,
-.mystery-tools-title{
-    color:#6f8aa0;
-
-    font-size:.72rem;
-
-    letter-spacing:.1em;
-
-    margin-bottom:9px;
-}
-
-#phishClues,
-#mysteryClues{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    align-items:center;
+.safe-btn:hover,
+.phish-btn:hover{
+  transform:translateY(-2px);
 }
 
 .clue-btn{
-    border:1px solid rgba(0,170,255,.2);
-
-    background:rgba(0,170,255,.04);
-
-    color:#7ecbff;
-
-    padding:7px 10px;
-
-    border-radius:9px;
-
-    cursor:pointer;
-
-    font-size:.68rem;
-
-    font-weight:800;
+  margin-top:12px;
+  padding:9px 13px;
+  border-radius:8px;
+  color:#ffd76b;
+  background:rgba(255,209,102,.07);
+  border:1px solid rgba(255,209,102,.16);
 }
 
-.clue-btn:hover{
-    border-color:rgba(0,170,255,.55);
+.clue{
+  display:none;
+  margin-top:12px;
+  padding:12px;
+  color:#d4dce3;
+  background:rgba(255,209,102,.045);
+  border-left:2px solid rgba(255,209,102,.55);
+  border-radius:5px;
+  font-size:13px;
 }
 
-.phish-clue-text,
-.mystery-clue-text{
-    width:100%;
-
-    padding:9px 11px;
-
-    border-left:2px solid #00aaff;
-
-    background:rgba(0,170,255,.035);
-
-    color:#a8c6da;
-
-    font-size:.78rem;
+.result-box{
+  text-align:center;
+  padding:30px 10px;
 }
 
-.phish-feedback,
-.mystery-feedback{
-    margin-top:18px;
-
-    padding:14px 16px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:12px;
-
-    color:#a9bfd0;
-
-    line-height:1.55;
+.result-score{
+  font-size:42px;
+  font-weight:900;
+  color:#5ed7ff;
 }
 
-.phish-feedback.good,
-.mystery-feedback.good{
-    border-color:rgba(57,255,136,.3);
-
-    background:rgba(57,255,136,.035);
-
-    color:#b9ffd3;
-}
-
-.phish-feedback.bad,
-.mystery-feedback.bad{
-    border-color:rgba(255,91,91,.28);
-
-    background:rgba(255,91,91,.035);
-
-    color:#ffd0d0;
-}
-
-.phish-next-wrap,
-.mystery-next-wrap{
-    text-align:right;
-
-    margin-top:12px;
-}
-
-.game-btn{
-    border:1px solid rgba(0,170,255,.3);
-
-    border-radius:10px;
-
-    padding:11px 15px;
-
-    background:#0b1623;
-
-    color:#eaf7ff;
-
-    cursor:pointer;
-
-    font-weight:800;
-}
-
-.game-btn.primary{
-    background:
-        linear-gradient(
-            135deg,
-            #00aaff,
-            #39ff88
-        );
-
-    color:#041019;
-
-    border:0;
-}
-
-.phish-final,
-.mystery-final{
-    padding:42px 26px;
-
-    text-align:center;
-}
-
-.final-icon{
-    font-size:3rem;
-}
-
-.final-kicker{
-    margin-top:8px;
-
-    color:#39ff88;
-
-    font-weight:900;
-
-    letter-spacing:.14em;
-
-    font-size:.72rem;
-}
-
-.phish-final h3,
-.mystery-final h3{
-    margin:8px 0 20px;
-
-    font-size:2rem;
-
-    color:#fff;
-}
-
-.final-stats{
-    display:flex;
-
-    justify-content:center;
-
-    gap:14px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:22px;
-}
-
-.final-stats span{
-    min-width:105px;
-
-    padding:14px;
-
-    border:1px solid rgba(0,170,255,.18);
-
-    border-radius:13px;
-
-    background:rgba(0,170,255,.035);
-}
-
-.final-stats b{
-    display:block;
-
-    color:#fff;
-
-    font-size:1.25rem;
-}
-
-.final-stats small{
-    color:#718ba0;
-
-    letter-spacing:.08em;
-
-    font-size:.62rem;
-}
-
-.phish-final p,
-.mystery-final p{
-    max-width:650px;
-
-    margin:0 auto 24px;
-
-    color:#9eb5c7;
-
-    line-height:1.6;
+.result-rank{
+  margin-top:8px;
+  color:#39ff88;
+  font-family:monospace;
+  letter-spacing:2px;
 }
 
 /* =========================================================
@@ -1113,3270 +754,2800 @@ nav{
    ========================================================= */
 
 footer{
-    position:relative;
-
-    z-index:1;
-
-    text-align:center;
-
-    padding:40px 20px;
-
-    color:#71859b;
-
-    border-top:1px solid rgba(0,190,255,.10);
+  margin-top:80px;
+  padding:35px 20px;
+  text-align:center;
+  color:#6f8799;
+  border-top:1px solid rgba(56,189,248,.10);
+  background:rgba(2,7,14,.75);
 }
 
 footer strong{
-    color:#00d9ff;
+  color:#a9dfff;
 }
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:700px){
 
-    .games-container{
-        grid-template-columns:1fr;
-    }
+  nav{
+    gap:3px;
+    padding:11px 7px;
+  }
+
+  nav a{
+    font-size:11px;
+    padding:7px 7px;
+  }
+
+  .hero{
+    padding-top:60px;
+  }
+
+  .hero h1{
+    letter-spacing:-1px;
+  }
+
+  .arcade-status{
+    padding:10px 15px;
+  }
+
+  .random-mission{
+    margin-left:15px;
+    margin-right:15px;
+  }
+
+  .games-container{
+    grid-template-columns:1fr;
+  }
+
+  .phish-arcade,
+  .mystery-arcade{
+    padding:20px;
+  }
+
+  .question-actions{
+    grid-template-columns:1fr;
+  }
+
+  .hud-top-left,
+  .hud-top-right{
+    display:none;
+  }
+
+  .network-grid{
+    background-size:50px 50px;
+  }
 }
 
-@media(max-width:650px){
+@media(max-width:430px){
 
-    nav{
-        flex-direction:column;
-        gap:15px;
-        padding:15px;
-    }
+  nav a{
+    font-size:10px;
+    padding:6px 5px;
+  }
 
-    .nav-links{
-        width:100%;
-        justify-content:center;
-        gap:11px;
-    }
+  .hero-icon{
+    font-size:45px;
+  }
 
-    .nav-links a{
-        font-size:12px;
-    }
+  .hero h1{
+    font-size:38px;
+  }
 
-    .hero{
-        padding-top:45px;
-    }
+  .hero p{
+    font-size:14px;
+  }
 
-    .game-card{
-        padding:21px;
-    }
+  .network-hud{
+    font-size:8px;
+  }
 
-    .phish-actions,
-    .mystery-actions{
-        grid-template-columns:1fr;
-    }
+  .hud-bottom-left{
+    left:10px;
+  }
 
-    .phish-topbar,
-    .mystery-topbar{
-        align-items:flex-start;
-        flex-direction:column;
-    }
+  .hud-bottom-right{
+    right:10px;
+  }
+}
 
-    .phish-hud,
-    .mystery-hud{
-        justify-content:flex-start;
-    }
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-    .phish-board,
-    .mystery-board{
-        padding:16px;
-    }
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *:before,
+  *:after{
+    animation:none !important;
+    transition:none !important;
+  }
+
+  #network-canvas{
+    opacity:.7;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
+<!-- =======================================================
+     GLOBAL CYBER NETWORK BACKGROUND
+     ======================================================= -->
+
+<canvas id="network-canvas" aria-hidden="true"></canvas>
+
+<div class="network-background" aria-hidden="true">
+  <div class="network-top-glow"></div>
+  <div class="network-grid"></div>
+  <div class="network-vignette"></div>
+
+  <div class="network-hud">
+    <span class="hud-top-left">GLOBAL NETWORK // ACTIVE</span>
+    <span class="hud-top-right">THREAT MONITORING // ENABLED</span>
+    <span class="hud-bottom-left">CLOUD NODES // SYNCHRONIZED</span>
+    <span class="hud-bottom-right">SECURITY LAYER // ONLINE</span>
+  </div>
+</div>
+
+<!-- =======================================================
      NAVIGATION
-     ========================================================= -->
+     ======================================================= -->
 
 <nav>
-
-    <div class="logo">
-        🛡️ Cly<span>vexis</span>
-    </div>
-
-    <div class="nav-links">
-
-        <a href="index.html">Home</a>
-
-        <a href="lessons.html">Lessons</a>
-
-        <a href="labs.html">Labs</a>
-
-        <a href="quiz.html">Quiz</a>
-
-        <a href="games.html" class="active">Games</a>
-
-        <a href="cyber-defense.html">
-            🛡️ Defense
-        </a>
-
-        <a href="glossary.html">
-            Glossary
-        </a>
-
-        <a href="coding.html">
-            💻 Coding
-        </a>
-
-        <a href="simulators.html">
-            🖥️ Simulators
-        </a>
-
-        <a href="donate.html" class="donate">
-            💚 Donate
-        </a>
-
-    </div>
-
+  <a href="index.html">Home</a>
+  <a href="lessons.html">Lessons</a>
+  <a href="labs.html">Labs</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="games.html" class="active">Games</a>
+  <a href="cyber-defense.html">🛡️ Defense</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="coding.html">💻 Coding</a>
+  <a href="simulators.html">🧪 Simulators</a>
+  <a href="donate.html">💚 Donate</a>
 </nav>
 
-
-<!-- =========================================================
+<!-- =======================================================
      HERO
-     ========================================================= -->
+     ======================================================= -->
 
 <section class="hero">
 
-    <div class="hero-icon">
-        🎮
-    </div>
+  <div class="hero-icon">🎮</div>
 
-    <h1>
-        Clyvexis Cyber Arcade
-    </h1>
+  <h1>Clyvexis Cyber Arcade</h1>
 
-    <p>
-        Play interactive coding and cybersecurity missions,
-        solve problems, analyze clues, and build your skills
-        inside the Clyvexis Cyber Arcade.
-    </p>
+  <p>
+    Build cybersecurity and coding skills through interactive
+    games, missions, puzzles, and challenges.
+  </p>
 
-    <div class="tagline">
-        LEARN • CODE • ANALYZE • DEFEND
-    </div>
+  <p class="tagline">
+    LEARN • CODE • ANALYZE • DEFEND
+  </p>
 
 </section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      STATUS
-     ========================================================= -->
+     ======================================================= -->
 
-<div class="arcade-status">
+<section class="arcade-status">
 
-    <div class="status-box">
-        🎮 <strong>20</strong> Games
-    </div>
+  <div class="status-item">
+    🎮 20 Games
+  </div>
 
-    <div class="status-box">
-        💻 <strong>7</strong> Coding Games
-    </div>
+  <div class="status-item">
+    💻 7 Coding Games
+  </div>
 
-    <div class="status-box">
-        🛡️ <strong>10</strong> Cyber Games
-    </div>
+  <div class="status-item">
+    🛡️ 10 Cyber Games
+  </div>
 
-    <div class="status-box">
-        🧠 <strong>3</strong> Challenge Games
-    </div>
+  <div class="status-item">
+    ⚡ 3 Challenge Games
+  </div>
 
-    <div class="status-box green">
-        ● ARCADE ONLINE
-    </div>
+  <div class="status-item status-online">
+    ● ARCADE ONLINE
+  </div>
 
-</div>
+</section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      RANDOM MISSION
-     ========================================================= -->
+     ======================================================= -->
 
 <section class="random-mission">
 
-    <div class="random-header">
+  <h2>🎯 Random Cyber Mission</h2>
 
-        <h2>
-            🎲 Random Cyber Mission
-        </h2>
+  <p>
+    Need something to do? Generate a random cybersecurity
+    mission and test yourself.
+  </p>
 
-        <span>
-            MISSION GENERATOR // ONLINE
-        </span>
+  <div class="mission-box">
 
+    <div id="missionText" class="mission-text">
+      Click the button to generate a mission.
     </div>
 
-    <div class="random-content">
+    <button class="mission-btn" onclick="generateRandomMission()">
+      Generate Mission
+    </button>
 
-        <h3 id="randomTitle">
-            READY FOR A RANDOM MISSION?
-        </h3>
-
-        <p id="randomText">
-            Generate a random coding or cybersecurity
-            challenge and see what the Clyvexis system gives you.
-        </p>
-
-        <button
-            class="random-button"
-            onclick="generateRandomMission()"
-        >
-            🎲 GENERATE MISSION
-        </button>
-
-    </div>
+  </div>
 
 </section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      FILTERS
-     ========================================================= -->
+     ======================================================= -->
 
-<div class="filters">
+<section class="filters">
 
-    <button
-        class="filter active"
-        onclick="filterGames('all',this)"
-    >
-        ALL GAMES
-    </button>
+  <button
+    class="filter-btn active"
+    onclick="filterGames('all',this)"
+  >
+    All Games
+  </button>
 
-    <button
-        class="filter"
-        onclick="filterGames('cyber',this)"
-    >
-        🛡️ CYBERSECURITY
-    </button>
+  <button
+    class="filter-btn"
+    onclick="filterGames('cyber',this)"
+  >
+    Cybersecurity
+  </button>
 
-    <button
-        class="filter"
-        onclick="filterGames('coding',this)"
-    >
-        💻 CODING
-    </button>
+  <button
+    class="filter-btn"
+    onclick="filterGames('coding',this)"
+  >
+    Coding
+  </button>
 
-    <button
-        class="filter"
-        onclick="filterGames('challenge',this)"
-    >
-        🧠 CHALLENGES
-    </button>
+  <button
+    class="filter-btn"
+    onclick="filterGames('challenge',this)"
+  >
+    Challenges
+  </button>
 
-</div>
+</section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      GAME GRID
-     ========================================================= -->
+     ======================================================= -->
 
-<main class="games-container">
+<section class="games-container" id="gamesContainer">
 
+  <!-- GAME 1 -->
 
-<!-- =========================================================
-     GAME 01
-     ========================================================= -->
+  <article class="game-card" data-category="cyber">
 
-<div class="game-card" data-category="cyber">
+    <div class="game-icon">🎣</div>
 
-    <div class="game-top">
+    <h3>Phishing Hunt</h3>
 
-        <div class="game-icon">🎣</div>
+    <p>
+      Analyze suspicious messages and identify
+      phishing attempts before they fool you.
+    </p>
 
-        <div class="game-number">
-            GAME 01
-        </div>
+    <span class="game-tag">CYBERSECURITY</span>
+
+    <button class="game-btn" onclick="toggleGame('phishing')">
+      Play Game
+    </button>
+
+  </article>
+
+  <!-- GAME 2 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🔐</div>
+
+    <h3>Password Vault</h3>
+
+    <p>
+      Learn how password strength works and
+      test different password combinations.
+    </p>
+
+    <span class="game-tag">SECURITY</span>
+
+    <button class="game-btn" onclick="toggleGame('password')">
+      Play Game
+    </button>
+
+    <div id="password" class="game-panel">
+
+      <input
+        id="passwordInput"
+        type="text"
+        placeholder="Enter a practice password"
+      >
+
+      <button
+        class="game-btn"
+        onclick="checkInput()"
+      >
+        Analyze
+      </button>
+
+      <div id="passwordFeedback" class="feedback"></div>
 
     </div>
 
-    <h2>
-        Phishing Hunt
-    </h2>
+  </article>
+
+  <!-- GAME 3 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🕵️</div>
+
+    <h3>Cyber Mystery</h3>
 
     <p>
-        Inspect fictional messages and identify
-        the clues that reveal phishing attempts.
+      Investigate fictional cyber incidents and
+      determine what happened.
     </p>
 
-    <div class="tags">
+    <span class="game-tag">INVESTIGATION</span>
 
-        <span class="difficulty">
-            BEGINNER
-        </span>
+    <button class="game-btn" onclick="toggleGame('mystery')">
+      Play Game
+    </button>
 
-        <span class="tag">
-            SOCIAL ENGINEERING
-        </span>
+  </article>
+
+  <!-- GAME 4 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🛡️</div>
+
+    <h3>Defense Grid</h3>
+
+    <p>
+      Think like a defender and identify the
+      safest response to incoming threats.
+    </p>
+
+    <span class="game-tag">DEFENSE</span>
+
+    <button class="game-btn" onclick="toggleGame('defense')">
+      Play Game
+    </button>
+
+    <div id="defense" class="game-panel">
+
+      <p>
+        A suspicious file is detected on a workstation.
+        What should happen first?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Isolate the affected system
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Ignore the alert
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Share the file with another user
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 5 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">📡</div>
+
+    <h3>Packet Pursuit</h3>
+
+    <p>
+      Learn how network traffic moves between
+      devices and recognize suspicious patterns.
+    </p>
+
+    <span class="game-tag">NETWORKING</span>
+
+    <button class="game-btn" onclick="toggleGame('packet')">
+      Play Game
+    </button>
+
+    <div id="packet" class="game-panel">
+
+      <p>
+        Which device is commonly used to connect
+        multiple networks together?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Router
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Keyboard
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Monitor
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 6 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🚨</div>
+
+    <h3>Incident Response</h3>
+
+    <p>
+      Practice making safe decisions during a
+      fictional cybersecurity incident.
+    </p>
+
+    <span class="game-tag">INCIDENT RESPONSE</span>
+
+    <button class="game-btn" onclick="toggleGame('incident')">
+      Play Game
+    </button>
+
+    <div id="incident" class="game-panel">
+
+      <p>
+        You notice unusual activity on a computer.
+        What should you do first?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Report and document the activity
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Delete random system files
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Post the incident publicly
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 7 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🔢</div>
+
+    <h3>Cipher Challenge</h3>
+
+    <p>
+      Explore basic cryptography concepts and
+      decode simple practice messages.
+    </p>
+
+    <span class="game-tag">CRYPTOGRAPHY</span>
+
+    <button class="game-btn" onclick="toggleGame('cipher')">
+      Play Game
+    </button>
+
+    <div id="cipher" class="game-panel">
+
+      <p>
+        Which technology is designed to transform
+        readable data into protected ciphertext?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Encryption
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Compression
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Formatting
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 8 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">📋</div>
+
+    <h3>Log Detective</h3>
+
+    <p>
+      Read fictional security logs and identify
+      unusual events.
+    </p>
+
+    <span class="game-tag">LOG ANALYSIS</span>
+
+    <button class="game-btn" onclick="toggleGame('logs')">
+      Play Game
+    </button>
+
+    <div id="logs" class="game-panel">
+
+      <p>
+        A user suddenly has many failed login attempts.
+        What could this indicate?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Possible brute-force activity
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Guaranteed hardware failure
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Normal screen brightness
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 9 -->
+
+  <article class="game-card" data-category="coding">
+
+    <div class="game-icon">⌨️</div>
+
+    <h3>Terminal Rush</h3>
+
+    <p>
+      Test your understanding of common terminal
+      and command-line concepts.
+    </p>
+
+    <span class="game-tag">CODING</span>
+
+    <button class="game-btn" onclick="toggleGame('terminal')">
+      Play Game
+    </button>
+
+    <div id="terminal" class="game-panel">
+
+      <p>
+        Which command is commonly used to list files
+        in a Unix-like terminal?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          ls
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          runfiles
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          showallnow
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 10 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🔥</div>
+
+    <h3>Firewall Frenzy</h3>
+
+    <p>
+      Learn how firewalls help control network
+      traffic between systems.
+    </p>
+
+    <span class="game-tag">NETWORK DEFENSE</span>
+
+    <button class="game-btn" onclick="toggleGame('firewall')">
+      Play Game
+    </button>
+
+    <div id="firewall" class="game-panel">
+
+      <p>
+        What is a firewall primarily used for?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Controlling network traffic
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Increasing monitor brightness
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Writing documents
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 11 -->
+
+  <article class="game-card" data-category="coding">
+
+    <div class="game-icon">🐞</div>
+
+    <h3>Bug Hunter</h3>
+
+    <p>
+      Find simple programming mistakes and learn
+      how developers debug their code.
+    </p>
+
+    <span class="game-tag">DEBUGGING</span>
+
+    <button class="game-btn" onclick="toggleGame('bug')">
+      Play Game
+    </button>
+
+    <div id="bug" class="game-panel">
+
+      <p>
+        What is debugging?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Finding and fixing problems in code
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Deleting every program
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Turning off the computer
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 12 -->
+
+  <article class="game-card" data-category="coding">
+
+    <div class="game-icon">🌐</div>
+
+    <h3>HTML Hacker</h3>
+
+    <p>
+      Practice recognizing the building blocks
+      of modern webpages.
+    </p>
+
+    <span class="game-tag">HTML</span>
+
+    <button class="game-btn" onclick="toggleGame('htmlgame')">
+      Play Game
+    </button>
+
+    <div id="htmlgame" class="game-panel">
+
+      <p>
+        Which tag is commonly used for the largest
+        page heading?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          &lt;h1&gt;
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          &lt;heading&gt;
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          &lt;titlebig&gt;
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 13 -->
+
+  <article class="game-card" data-category="coding">
+
+    <div class="game-icon">🎨</div>
+
+    <h3>CSS Crash Lab</h3>
+
+    <p>
+      Learn how CSS controls the appearance and
+      layout of websites.
+    </p>
+
+    <span class="game-tag">CSS</span>
+
+    <button class="game-btn" onclick="toggleGame('cssgame')">
+      Play Game
+    </button>
+
+    <div id="cssgame" class="game-panel">
+
+      <p>
+        What does CSS primarily control?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Styling and layout
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Computer hardware
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Internet cables
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 14 -->
+
+  <article class="game-card" data-category="coding">
+
+    <div class="game-icon">⚡</div>
+
+    <h3>JavaScript Reactor</h3>
+
+    <p>
+      Practice the fundamentals of JavaScript
+      logic and interactive webpages.
+    </p>
+
+    <span class="game-tag">JAVASCRIPT</span>
+
+    <button class="game-btn" onclick="toggleGame('jsgame')">
+      Play Game
+    </button>
+
+    <div id="jsgame" class="game-panel">
+
+      <p>
+        What can JavaScript commonly add to a webpage?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Interactivity
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Physical electricity
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Monitor glass
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 15 -->
+
+  <article class="game-card" data-category="coding">
+
+    <div class="game-icon">🐍</div>
+
+    <h3>Python Protocol</h3>
+
+    <p>
+      Test your understanding of Python syntax,
+      variables, and programming concepts.
+    </p>
+
+    <span class="game-tag">PYTHON</span>
+
+    <button class="game-btn" onclick="toggleGame('pygame')">
+      Play Game
+    </button>
+
+    <div id="pygame" class="game-panel">
+
+      <p>
+        Which symbol begins a Python comment?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          #
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          //
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          &lt;!--
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 16 -->
+
+  <article class="game-card" data-category="coding challenge">
+
+    <div class="game-icon">🧩</div>
+
+    <h3>Code Breaker</h3>
+
+    <p>
+      Solve programming logic puzzles and break
+      down problems step by step.
+    </p>
+
+    <span class="game-tag">CHALLENGE</span>
+
+    <button class="game-btn" onclick="toggleGame('breaker')">
+      Play Game
+    </button>
+
+    <div id="breaker" class="game-panel">
+
+      <p>
+        What should you do first when solving a
+        programming problem?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Understand the problem
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Randomly type code
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Delete the requirements
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 17 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">🗺️</div>
+
+    <h3>Network Mapper</h3>
+
+    <p>
+      Learn the concepts behind network devices,
+      addresses, and system relationships.
+    </p>
+
+    <span class="game-tag">NETWORKING</span>
+
+    <button class="game-btn" onclick="toggleGame('mapper')">
+      Play Game
+    </button>
+
+    <div id="mapper" class="game-panel">
+
+      <p>
+        What does an IP address help identify?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          A device or network interface
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          A keyboard key
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          A monitor pixel
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 18 -->
+
+  <article class="game-card" data-category="cyber challenge">
+
+    <div class="game-icon">🤖</div>
+
+    <h3>Bot Battle</h3>
+
+    <p>
+      Learn how automated systems can interact with
+      networks and why defenders monitor them.
+    </p>
+
+    <span class="game-tag">CHALLENGE</span>
+
+    <button class="game-btn" onclick="toggleGame('bot')">
+      Play Game
+    </button>
+
+    <div id="bot" class="game-panel">
+
+      <p>
+        Why might defenders monitor automated network
+        activity?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          To detect unusual behavior
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          To make passwords longer automatically
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          To change screen resolution
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 19 -->
+
+  <article class="game-card" data-category="cyber">
+
+    <div class="game-icon">👤</div>
+
+    <h3>Access Control</h3>
+
+    <p>
+      Learn why systems limit what different users
+      are allowed to access.
+    </p>
+
+    <span class="game-tag">IDENTITY</span>
+
+    <button class="game-btn" onclick="toggleGame('access')">
+      Play Game
+    </button>
+
+    <div id="access" class="game-panel">
+
+      <p>
+        What security principle gives users only the
+        access they need?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pick(this,true)">
+          Least privilege
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Maximum privilege
+        </button>
+
+        <button class="answer-btn" onclick="pick(this,false)">
+          Open access
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+  <!-- GAME 20 -->
+
+  <article class="game-card" data-category="challenge">
+
+    <div class="game-icon">⚔️</div>
+
+    <h3>Clyvexis Cyber Gauntlet</h3>
+
+    <p>
+      Take on a sequence of cybersecurity questions
+      and see how far you can make it.
+    </p>
+
+    <span class="game-tag">CHALLENGE</span>
+
+    <button class="game-btn" onclick="toggleGame('gauntlet')">
+      Play Game
+    </button>
+
+    <div id="gauntlet" class="game-panel">
+
+      <p>
+        Which security property focuses on keeping
+        information from unauthorized people?
+      </p>
+
+      <div class="answer-grid">
+
+        <button class="answer-btn" onclick="pickGauntlet(this,true)">
+          Confidentiality
+        </button>
+
+        <button class="answer-btn" onclick="pickGauntlet(this,false)">
+          Availability
+        </button>
+
+        <button class="answer-btn" onclick="pickGauntlet(this,false)">
+          Formatting
+        </button>
+
+      </div>
+
+      <div class="feedback"></div>
+
+    </div>
+
+  </article>
+
+</section>
+
+<!-- =======================================================
+     PHISHING HUNT
+     ======================================================= -->
+
+<section class="phish-arcade">
+
+  <div class="section-title">
+
+    <h2>🎣 Phishing Hunt</h2>
+
+    <p>
+      Analyze each fictional message and decide whether
+      it appears legitimate or suspicious.
+    </p>
+
+  </div>
+
+  <div class="phish-hud">
+
+    <div class="hud-item">
+      <span class="hud-label">SCORE</span>
+      <span id="phishScore" class="hud-value">0</span>
+    </div>
+
+    <div class="hud-item">
+      <span class="hud-label">STREAK</span>
+      <span id="phishStreak" class="hud-value">0</span>
+    </div>
+
+    <div class="hud-item">
+      <span class="hud-label">ROUND</span>
+      <span id="phishRound" class="hud-value">1 / 8</span>
+    </div>
+
+    <div class="hud-item">
+      <span class="hud-label">TIME</span>
+      <span id="phishTimer" class="hud-value">20</span>
+    </div>
+
+  </div>
+
+  <div id="phishQuestion" class="question-box">
+
+    <div class="question-label">
+      MESSAGE ANALYSIS
+    </div>
+
+    <div id="phishText" class="question-text"></div>
+
+    <div class="question-actions">
+
+      <button
+        class="safe-btn"
+        onclick="answerPhishing(false)"
+      >
+        ✓ LEGITIMATE
+      </button>
+
+      <button
+        class="phish-btn"
+        onclick="answerPhishing(true)"
+      >
+        ⚠ PHISHING
+      </button>
 
     </div>
 
     <button
-        class="game-button"
-        onclick="startPhishingHunt()"
+      class="clue-btn"
+      onclick="showPhishClue()"
     >
-        ▶ PLAY PHISHING HUNT
+      💡 Show Clue
     </button>
 
-</div>
+    <div id="phishClue" class="clue"></div>
 
+  </div>
 
-<!-- =========================================================
-     GAME 02
-     ========================================================= -->
+  <div id="phishResult" class="result-box" style="display:none;">
 
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🔐</div>
-
-        <div class="game-number">
-            GAME 02
-        </div>
+    <div class="result-score" id="phishFinalScore">
+      0
     </div>
 
-    <h2>Password Vault</h2>
-
-    <p>
-        Protect the fictional vault by choosing
-        the safest password strategy.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty">BEGINNER</span>
-        <span class="tag">ACCOUNT SECURITY</span>
+    <div>
+      PHISHING HUNT SCORE
     </div>
 
-    <button class="game-button"
-        onclick="toggleGame('g2')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g2" class="game-area">
-
-        <div class="challenge">
-            <strong>VAULT LOCKED:</strong>
-            Choose the safest strategy.
-        </div>
-
-        <button class="option"
-            onclick="pick(this,false,'r2')">
-            Use one short password on every account.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,true,'r2')">
-            Use unique, long passwords or passphrases
-            for important accounts.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r2')">
-            Use easy personal information.
-        </button>
-
-        <div id="r2" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 03
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🕵️</div>
-
-        <div class="game-number">
-            GAME 03
-        </div>
-    </div>
-
-    <h2>Cyber Mystery</h2>
-
-    <p>
-        Enter investigation mode and analyze fictional
-        incidents across multiple rounds.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            INVESTIGATION
-        </span>
+    <div class="result-rank" id="phishRank">
+      SECURITY TRAINEE
     </div>
 
     <button
-        class="game-button"
-        onclick="startCyberMystery()"
+      class="game-btn"
+      onclick="restartPhishing()"
     >
-        🕵️ START INVESTIGATION
+      Play Again
     </button>
 
-</div>
-
-
-<!-- =========================================================
-     GAME 04
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🛡️</div>
-
-        <div class="game-number">
-            GAME 04
-        </div>
-    </div>
-
-    <h2>Defense Grid</h2>
-
-    <p>
-        Choose defensive actions to protect a fictional
-        network during a simulated alert.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            DEFENSE
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g4')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g4" class="game-area">
-
-        <div class="challenge">
-            ALERT: A workstation shows unusual activity.
-            What should happen first?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r4')">
-            Follow the organization's incident-response
-            procedure and investigate safely.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r4')">
-            Ignore the alert.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r4')">
-            Delete all records immediately.
-        </button>
-
-        <div id="r4" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 05
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🌐</div>
-
-        <div class="game-number">
-            GAME 05
-        </div>
-    </div>
-
-    <h2>Packet Pursuit</h2>
-
-    <p>
-        Learn basic networking by identifying
-        what different network systems do.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty">BEGINNER</span>
-        <span class="tag">NETWORKING</span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g5')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g5" class="game-area">
-
-        <div class="challenge">
-            Which system translates a website name
-            into an IP address?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r5')">
-            DNS
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r5')">
-            HDMI
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r5')">
-            USB
-        </button>
-
-        <div id="r5" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 06
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🚨</div>
-
-        <div class="game-number">
-            GAME 06
-        </div>
-    </div>
-
-    <h2>Incident Response</h2>
-
-    <p>
-        Make safe decisions while a fictional
-        security team responds to an alert.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty advanced">
-            ADVANCED
-        </span>
-
-        <span class="tag">
-            BLUE TEAM
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g6')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g6" class="game-area">
-
-        <div class="challenge">
-            Multiple unusual events are being investigated.
-            What principle matters first?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r6')">
-            Preserve evidence, follow procedure,
-            and investigate safely.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r6')">
-            Make random changes to every system.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r6')">
-            Erase logs before investigating.
-        </button>
-
-        <div id="r6" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 07
-     ========================================================= -->
-
-<div class="game-card" data-category="challenge">
-
-    <div class="game-top">
-        <div class="game-icon">🧠</div>
-
-        <div class="game-number">
-            GAME 07
-        </div>
-    </div>
-
-    <h2>Cipher Challenge</h2>
-
-    <p>
-        Decode a simple educational cipher.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty">BEGINNER</span>
-        <span class="tag">CRYPTOGRAPHY</span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g7')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g7" class="game-area">
-
-        <div class="challenge">
-            A fictional Caesar cipher shifts every
-            letter forward by 1.
-            Decode: <strong>IFMMP</strong>
-        </div>
-
-        <input
-            class="mini-input"
-            id="cipherInput"
-            placeholder="Type the decoded word"
-        >
-
-        <button
-            class="mini-button"
-            onclick="checkInput('cipherInput','HELLO','r7')"
-        >
-            Submit
-        </button>
-
-        <div id="r7" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 08
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🔎</div>
-
-        <div class="game-number">
-            GAME 08
-        </div>
-    </div>
-
-    <h2>Log Detective</h2>
-
-    <p>
-        Read fictional logs and identify
-        the event that deserves investigation.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            LOG ANALYSIS
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g8')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g8" class="game-area">
-
-        <div class="code-box">08:41 LOGIN user=alex status=success
-08:44 LOGIN user=alex status=success
-08:45 LOGIN user=alex status=failed
-08:45 LOGIN user=alex status=failed</div>
-
-        <div class="challenge">
-            Which pattern deserves closer investigation?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r8')">
-            The repeated failed login attempts.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r8')">
-            The successful login at 08:41.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r8')">
-            The timestamp format.
-        </button>
-
-        <div id="r8" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 09
-     ========================================================= -->
-
-<div class="game-card" data-category="challenge">
-
-    <div class="game-top">
-        <div class="game-icon">⚡</div>
-
-        <div class="game-number">
-            GAME 09
-        </div>
-    </div>
-
-    <h2>Terminal Rush</h2>
-
-    <p>
-        Practice recognizing safe command-line concepts
-        in a fictional terminal.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            CLI
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g9')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g9" class="game-area">
-
-        <div class="challenge">
-            Which command commonly displays the
-            current directory?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r9')">
-            pwd
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r9')">
-            paint
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r9')">
-            screenmode
-        </button>
-
-        <div id="r9" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 10
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🔥</div>
-
-        <div class="game-number">
-            GAME 10
-        </div>
-    </div>
-
-    <h2>Firewall Frenzy</h2>
-
-    <p>
-        Learn the idea of network filtering through
-        fictional defensive decisions.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            NETWORK DEFENSE
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g10')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g10" class="game-area">
-
-        <div class="challenge">
-            What defensive principle should a fictional
-            firewall follow?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r10')">
-            Only allow traffic that matches approved rules.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r10')">
-            Allow everything automatically.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r10')">
-            Disable the firewall.
-        </button>
-
-        <div id="r10" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 11
-     ========================================================= -->
-
-<div class="game-card" data-category="coding">
-
-    <div class="game-top">
-        <div class="game-icon">🐛</div>
-
-        <div class="game-number">
-            GAME 11
-        </div>
-    </div>
-
-    <h2>Bug Hunter</h2>
-
-    <p>
-        Find the problem in a tiny JavaScript snippet.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            JAVASCRIPT
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g11')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g11" class="game-area">
-
-        <div class="code-box">let score = 10;
-score = score + "5";
-console.log(score);</div>
-
-        <div class="challenge">
-            What is the main issue?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r11')">
-            The code mixes a number and a string,
-            which can cause unexpected behavior.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r11')">
-            console.log is always a security vulnerability.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r11')">
-            let cannot store numbers.
-        </button>
-
-        <div id="r11" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 12
-     ========================================================= -->
-
-<div class="game-card" data-category="coding">
-
-    <div class="game-top">
-        <div class="game-icon">🏗️</div>
-
-        <div class="game-number">
-            GAME 12
-        </div>
-    </div>
-
-    <h2>HTML Hacker</h2>
-
-    <p>
-        Repair a fictional webpage by identifying
-        the correct HTML element.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty">BEGINNER</span>
-        <span class="tag">HTML</span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g12')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g12" class="game-area">
-
-        <div class="challenge">
-            Which HTML element is normally used
-            for the largest main heading?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r12')">
-            &lt;h1&gt;
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r12')">
-            &lt;heading&gt;
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r12')">
-            &lt;titletext&gt;
-        </button>
-
-        <div id="r12" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 13
-     ========================================================= -->
-
-<div class="game-card" data-category="coding">
-
-    <div class="game-top">
-        <div class="game-icon">🎨</div>
-
-        <div class="game-number">
-            GAME 13
-        </div>
-    </div>
-
-    <h2>CSS Crash Lab</h2>
-
-    <p>
-        Identify the CSS property that controls
-        text color.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty">BEGINNER</span>
-        <span class="tag">CSS</span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g13')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g13" class="game-area">
-
-        <div class="challenge">
-            Which CSS property changes the color of text?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r13')">
-            color
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r13')">
-            text-paint
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r13')">
-            font-shade
-        </button>
-
-        <div id="r13" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 14
-     ========================================================= -->
-
-<div class="game-card" data-category="coding">
-
-    <div class="game-top">
-        <div class="game-icon">⚙️</div>
-
-        <div class="game-number">
-            GAME 14
-        </div>
-    </div>
-
-    <h2>JavaScript Reactor</h2>
-
-    <p>
-        Keep the fictional reactor stable by choosing
-        the correct JavaScript concept.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            JAVASCRIPT
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g14')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g14" class="game-area">
-
-        <div class="challenge">
-            Which keyword creates a variable
-            that cannot be reassigned?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r14')">
-            const
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r14')">
-            fixed
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r14')">
-            permanent
-        </button>
-
-        <div id="r14" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 15
-     ========================================================= -->
-
-<div class="game-card" data-category="coding">
-
-    <div class="game-top">
-        <div class="game-icon">🐍</div>
-
-        <div class="game-number">
-            GAME 15
-        </div>
-    </div>
-
-    <h2>Python Protocol</h2>
-
-    <p>
-        Solve short Python questions and keep
-        the protocol running.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            PYTHON
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g15')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g15" class="game-area">
-
-        <div class="challenge">
-            What does <strong>print("Hello")</strong> do?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r15')">
-            Displays Hello as output.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r15')">
-            Deletes the word Hello.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r15')">
-            Creates a new Python file.
-        </button>
-
-        <div id="r15" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 16
-     ========================================================= -->
-
-<div class="game-card" data-category="coding">
-
-    <div class="game-top">
-        <div class="game-icon">🧩</div>
-
-        <div class="game-number">
-            GAME 16
-        </div>
-    </div>
-
-    <h2>Code Breaker</h2>
-
-    <p>
-        Complete a small programming logic challenge.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            LOGIC
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g16')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g16" class="game-area">
-
-        <div class="challenge">
-            What value will this JavaScript expression produce?
-        </div>
-
-        <div class="code-box">
-5 + 3 * 2
-        </div>
-
-        <button class="option"
-            onclick="pick(this,false,'r16')">
-            16
-        </button>
-
-        <button class="option"
-            onclick="pick(this,true,'r16')">
-            11
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r16')">
-            13
-        </button>
-
-        <div id="r16" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 17
-     ========================================================= -->
-
-<div class="game-card" data-category="challenge">
-
-    <div class="game-top">
-        <div class="game-icon">🗺️</div>
-
-        <div class="game-number">
-            GAME 17
-        </div>
-    </div>
-
-    <h2>Network Mapper</h2>
-
-    <p>
-        Read a fictional network diagram and identify
-        the device connecting local systems.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty intermediate">
-            INTERMEDIATE
-        </span>
-
-        <span class="tag">
-            NETWORKING
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g17')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g17" class="game-area">
-
-        <div class="code-box">[Laptop A] ─┐
-[Laptop B] ─┼─ [Switch] ─ [Router] ─ Internet
-[Printer ] ─┘</div>
-
-        <div class="challenge">
-            Which device connects the local devices?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r17')">
-            Switch
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r17')">
-            Printer
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r17')">
-            Internet
-        </button>
-
-        <div id="r17" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 18
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🤖</div>
-
-        <div class="game-number">
-            GAME 18
-        </div>
-    </div>
-
-    <h2>Bot Battle</h2>
-
-    <p>
-        Defend a fictional service by recognizing
-        suspicious automated activity.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty advanced">
-            ADVANCED
-        </span>
-
-        <span class="tag">
-            DEFENSE
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g18')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g18" class="game-area">
-
-        <div class="challenge">
-            A fictional service receives thousands
-            of repetitive requests in a short period.
-            What should the team investigate?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r18')">
-            A possible automated traffic or abuse pattern.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r18')">
-            The monitor brightness.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r18')">
-            The keyboard layout.
-        </button>
-
-        <div id="r18" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 19
-     ========================================================= -->
-
-<div class="game-card" data-category="cyber">
-
-    <div class="game-top">
-        <div class="game-icon">🗝️</div>
-
-        <div class="game-number">
-            GAME 19
-        </div>
-    </div>
-
-    <h2>Access Control</h2>
-
-    <p>
-        Protect a fictional organization by choosing
-        appropriate permissions.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty advanced">
-            ADVANCED
-        </span>
-
-        <span class="tag">
-            IDENTITY
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g19')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g19" class="game-area">
-
-        <div class="challenge">
-            A new employee only needs access to one project.
-            Which principle should guide permissions?
-        </div>
-
-        <button class="option"
-            onclick="pick(this,true,'r19')">
-            Give only the access needed for the job.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r19')">
-            Give every employee administrator access.
-        </button>
-
-        <button class="option"
-            onclick="pick(this,false,'r19')">
-            Share one account with everyone.
-        </button>
-
-        <div id="r19" class="result"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     GAME 20
-     ========================================================= -->
-
-<div class="game-card" data-category="challenge">
-
-    <div class="game-top">
-        <div class="game-icon">🏆</div>
-
-        <div class="game-number">
-            GAME 20
-        </div>
-    </div>
-
-    <h2>Clyvexis Cyber Gauntlet</h2>
-
-    <p>
-        The final mixed challenge combines coding,
-        networking, security, and logic.
-    </p>
-
-    <div class="tags">
-        <span class="difficulty advanced">
-            ADVANCED
-        </span>
-
-        <span class="tag">
-            FINAL CHALLENGE
-        </span>
-    </div>
-
-    <button class="game-button"
-        onclick="toggleGame('g20')">
-        ▶ PLAY GAME
-    </button>
-
-    <div id="g20" class="game-area">
-
-        <div class="challenge">
-            FINAL ROUND:
-            What is the safest response when a suspicious
-            message asks for sensitive account information?
-        </div>
-
-        <button class="option"
-            onclick="pickGauntlet(this,0)">
-            Provide the information quickly.
-        </button>
-
-        <button class="option"
-            onclick="pickGauntlet(this,1)">
-            Verify the request independently and avoid
-            sharing sensitive information through the
-            suspicious message.
-        </button>
-
-        <button class="option"
-            onclick="pickGauntlet(this,0)">
-            Forward the message to random people.
-        </button>
-
-        <div id="r20" class="result"></div>
-
-    </div>
-
-</div>
-
-
-</main>
-
-
-<!-- =========================================================
-     FULL PHISHING HUNT
-     ========================================================= -->
-
-<section
-    class="phish-arcade"
-    id="phishingHuntGame"
-    style="display:none;"
->
-
-    <div class="phish-topbar">
-
-        <div class="phish-mission">
-            🕵️ PHISHING HUNT // LIVE MISSION
-        </div>
-
-        <div class="phish-hud">
-
-            <div class="phish-stat">
-                <b id="phishScore">0</b>
-                <small>SCORE</small>
-            </div>
-
-            <div class="phish-stat">
-                <b id="phishStreak">0</b>
-                <small>STREAK</small>
-            </div>
-
-            <div class="phish-stat">
-                <b id="phishTimer">20s</b>
-                <small>TIMER</small>
-            </div>
-
-            <div class="phish-stat">
-                <b id="phishRound">1 / 8</b>
-                <small>ROUND</small>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="phish-board" id="phishBoard">
-
-        <div class="phish-email">
-
-            <div class="phish-email-head">
-
-                <span
-                    class="phish-difficulty"
-                    id="phishDifficulty"
-                >
-                    EASY
-                </span>
-
-                <div class="phish-row">
-                    <span>From</span>
-                    <strong id="phishSender"></strong>
-                </div>
-
-                <div class="phish-row">
-                    <span>Subject</span>
-                    <strong id="phishSubject"></strong>
-                </div>
-
-            </div>
-
-            <div
-                class="phish-email-body"
-                id="phishBody"
-            ></div>
-
-        </div>
-
-
-        <div class="phish-tools">
-
-            <div class="phish-tools-title">
-                OPTIONAL INTELLIGENCE CLUES
-            </div>
-
-            <div id="phishClues"></div>
-
-        </div>
-
-
-        <div class="phish-actions">
-
-            <button
-                class="phish-answer"
-                onclick="answerPhishing('safe')"
-            >
-                ✓ LEGITIMATE
-            </button>
-
-            <button
-                class="phish-answer"
-                onclick="answerPhishing('phishing')"
-            >
-                ⚠ PHISHING
-            </button>
-
-        </div>
-
-
-        <div
-            class="phish-feedback"
-            id="phishFeedback"
-        >
-            Analyze the message, then make your call.
-        </div>
-
-
-        <div class="phish-next-wrap">
-
-            <button
-                class="game-btn primary"
-                id="phishNext"
-                style="display:none;"
-                onclick="nextPhishingRound()"
-            >
-                NEXT ROUND →
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div
-        class="phish-final"
-        id="phishFinal"
-        style="display:none;"
-    ></div>
+  </div>
 
 </section>
 
+<!-- =======================================================
+     CYBER MYSTERY
+     ======================================================= -->
 
-<!-- =========================================================
-     CYBER MYSTERY FULL MISSION
-     ========================================================= -->
+<section class="mystery-arcade">
 
-<section
-    class="mystery-arcade"
-    id="cyberMysteryGame"
-    style="display:none;"
->
+  <div class="section-title">
 
-    <div class="mystery-topbar">
+    <h2>🕵️ Cyber Mystery</h2>
 
-        <div class="mystery-mission">
-            🕵️ CYBER MYSTERY // INVESTIGATION MODE
-        </div>
+    <p>
+      Investigate fictional security cases and identify
+      what most likely happened.
+    </p>
 
-        <div class="mystery-hud">
+  </div>
 
-            <div class="mystery-stat">
-                <b id="mysteryScore">0</b>
-                <small>SCORE</small>
-            </div>
+  <div class="mystery-hud">
 
-            <div class="mystery-stat">
-                <b id="mysteryStreak">0</b>
-                <small>STREAK</small>
-            </div>
-
-            <div class="mystery-stat">
-                <b id="mysteryRound">1 / 6</b>
-                <small>CASE</small>
-            </div>
-
-        </div>
-
+    <div class="hud-item">
+      <span class="hud-label">SCORE</span>
+      <span id="mysteryScore" class="hud-value">0</span>
     </div>
 
-
-    <div
-        class="mystery-board"
-        id="mysteryBoard"
-    >
-
-        <div class="mystery-case">
-
-            <div class="mystery-case-head">
-
-                <span
-                    class="mystery-level"
-                    id="mysteryLevel"
-                >
-                    CASE 01
-                </span>
-
-                <h2 id="mysteryTitle">
-                    Investigation
-                </h2>
-
-            </div>
-
-            <div
-                class="mystery-case-body"
-                id="mysteryBody"
-            ></div>
-
-        </div>
-
-
-        <div class="mystery-tools">
-
-            <div class="mystery-tools-title">
-                INVESTIGATION CLUES
-            </div>
-
-            <div id="mysteryClues"></div>
-
-        </div>
-
-
-        <div
-            class="mystery-actions"
-            id="mysteryActions"
-        ></div>
-
-
-        <div
-            class="mystery-feedback"
-            id="mysteryFeedback"
-        >
-            Review the evidence and select your conclusion.
-        </div>
-
-
-        <div class="mystery-next-wrap">
-
-            <button
-                class="game-btn primary"
-                id="mysteryNext"
-                style="display:none;"
-                onclick="nextMysteryCase()"
-            >
-                NEXT CASE →
-            </button>
-
-        </div>
-
+    <div class="hud-item">
+      <span class="hud-label">STREAK</span>
+      <span id="mysteryStreak" class="hud-value">0</span>
     </div>
 
+    <div class="hud-item">
+      <span class="hud-label">CASE</span>
+      <span id="mysteryRound" class="hud-value">1 / 6</span>
+    </div>
+
+  </div>
+
+  <div id="mysteryQuestion" class="question-box">
+
+    <div class="question-label">
+      CASE FILE
+    </div>
+
+    <div id="mysteryText" class="question-text"></div>
 
     <div
-        class="mystery-final"
-        id="mysteryFinal"
-        style="display:none;"
+      id="mysteryAnswers"
+      class="answer-grid"
     ></div>
+
+    <button
+      class="clue-btn"
+      onclick="showMysteryClue()"
+    >
+      💡 Show Clue
+    </button>
+
+    <div id="mysteryClue" class="clue"></div>
+
+  </div>
+
+  <div id="mysteryResult" class="result-box" style="display:none;">
+
+    <div class="result-score" id="mysteryFinalScore">
+      0
+    </div>
+
+    <div>
+      CYBER MYSTERY SCORE
+    </div>
+
+    <div class="result-rank" id="mysteryRank">
+      JUNIOR INVESTIGATOR
+    </div>
+
+    <button
+      class="game-btn"
+      onclick="restartMystery()"
+    >
+      Investigate Again
+    </button>
+
+  </div>
 
 </section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      FOOTER
-     ========================================================= -->
+     ======================================================= -->
 
 <footer>
 
-    <strong>Clyvexis</strong>
+  <p>
+    <strong>Clyvexis</strong> — Learn. Practice. Defend.
+  </p>
 
-    <br><br>
-
-    LEARN. PRACTICE. STAY SECURE.
-
-    <br><br>
-
-    © 2026 Clyvexis • Cyber Arcade
+  <p>
+    Free cybersecurity education, coding practice,
+    interactive labs, and safe simulations.
+  </p>
 
 </footer>
 
-
 <script>
+
 /* =========================================================
-   BASIC GAME ENGINE
+   GLOBAL NETWORK CANVAS
+   ========================================================= */
+
+const networkCanvas = document.getElementById("network-canvas");
+const networkCtx = networkCanvas.getContext("2d");
+
+let networkWidth = window.innerWidth;
+let networkHeight = window.innerHeight;
+let networkDpr = Math.min(window.devicePixelRatio || 1,2);
+
+let networkNodes = [];
+let networkPackets = [];
+let networkAnimationId = null;
+let networkTime = 0;
+
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+function resizeNetworkCanvas(){
+
+  networkWidth = window.innerWidth;
+  networkHeight = window.innerHeight;
+
+  networkDpr = Math.min(window.devicePixelRatio || 1,2);
+
+  networkCanvas.width =
+    networkWidth * networkDpr;
+
+  networkCanvas.height =
+    networkHeight * networkDpr;
+
+  networkCanvas.style.width =
+    networkWidth + "px";
+
+  networkCanvas.style.height =
+    networkHeight + "px";
+
+  networkCtx.setTransform(
+    networkDpr,
+    0,
+    0,
+    networkDpr,
+    0,
+    0
+  );
+
+  createNetworkNodes();
+}
+
+function createNetworkNodes(){
+
+  const area =
+    networkWidth * networkHeight;
+
+  let count;
+
+  if(networkWidth < 500){
+    count = 65;
+  }else if(networkWidth < 900){
+    count = 105;
+  }else{
+    count = Math.min(
+      185,
+      Math.max(
+        125,
+        Math.floor(area / 8500)
+      )
+    );
+  }
+
+  networkNodes = [];
+
+  for(let i=0;i<count;i++){
+
+    const theta =
+      Math.random() * Math.PI * 2;
+
+    const phi =
+      Math.acos(
+        2 * Math.random() - 1
+      );
+
+    networkNodes.push({
+      x:
+        Math.sin(phi) *
+        Math.cos(theta),
+
+      y:
+        Math.cos(phi),
+
+      z:
+        Math.sin(phi) *
+        Math.sin(theta),
+
+      size:
+        Math.random() * 1.8 + .7,
+
+      green:
+        Math.random() < .16,
+
+      phase:
+        Math.random() * Math.PI * 2
+    });
+  }
+
+  networkPackets = [];
+
+  for(let i=0;i<12;i++){
+
+    networkPackets.push({
+      a:
+        Math.floor(
+          Math.random() *
+          networkNodes.length
+        ),
+
+      b:
+        Math.floor(
+          Math.random() *
+          networkNodes.length
+        ),
+
+      progress:
+        Math.random(),
+
+      speed:
+        .0007 +
+        Math.random() * .0012
+    });
+  }
+}
+
+function projectNetworkNode(node,rotation){
+
+  const cosR =
+    Math.cos(rotation);
+
+  const sinR =
+    Math.sin(rotation);
+
+  const rotatedX =
+    node.x * cosR -
+    node.z * sinR;
+
+  const rotatedZ =
+    node.x * sinR +
+    node.z * cosR;
+
+  const perspective = 2.8;
+
+  const scale =
+    perspective /
+    (perspective + rotatedZ * .72);
+
+  const globeRadius =
+    Math.min(
+      networkWidth,
+      networkHeight
+    ) * (
+      networkWidth < 600
+        ? .29
+        : .34
+    );
+
+  return {
+
+    x:
+      networkWidth / 2 +
+      rotatedX *
+      globeRadius *
+      scale,
+
+    y:
+      networkHeight / 2 +
+      node.y *
+      globeRadius *
+      .72 *
+      scale,
+
+    z:
+      rotatedZ,
+
+    scale
+  };
+}
+
+function drawNetwork(){
+
+  networkCtx.clearRect(
+    0,
+    0,
+    networkWidth,
+    networkHeight
+  );
+
+  const rotation =
+    networkTime * .00011;
+
+  const projected =
+    networkNodes.map(
+      node =>
+        projectNetworkNode(
+          node,
+          rotation
+        )
+    );
+
+  const centerX =
+    networkWidth / 2;
+
+  const centerY =
+    networkHeight / 2;
+
+  const globeRadius =
+    Math.min(
+      networkWidth,
+      networkHeight
+    ) * (
+      networkWidth < 600
+        ? .29
+        : .34
+    );
+
+  /* Globe atmosphere */
+
+  const atmosphere =
+    networkCtx.createRadialGradient(
+      centerX,
+      centerY,
+      globeRadius * .15,
+      centerX,
+      centerY,
+      globeRadius * 1.25
+    );
+
+  atmosphere.addColorStop(
+    0,
+    "rgba(0,170,255,.065)"
+  );
+
+  atmosphere.addColorStop(
+    .48,
+    "rgba(0,170,255,.025)"
+  );
+
+  atmosphere.addColorStop(
+    1,
+    "rgba(0,170,255,0)"
+  );
+
+  networkCtx.fillStyle =
+    atmosphere;
+
+  networkCtx.beginPath();
+
+  networkCtx.arc(
+    centerX,
+    centerY,
+    globeRadius * 1.25,
+    0,
+    Math.PI * 2
+  );
+
+  networkCtx.fill();
+
+  /* Globe outline */
+
+  networkCtx.beginPath();
+
+  networkCtx.ellipse(
+    centerX,
+    centerY,
+    globeRadius,
+    globeRadius * .72,
+    0,
+    0,
+    Math.PI * 2
+  );
+
+  networkCtx.strokeStyle =
+    "rgba(56,189,248,.075)";
+
+  networkCtx.lineWidth = 1;
+
+  networkCtx.stroke();
+
+  /* Connections */
+
+  for(let i=0;i<projected.length;i++){
+
+    for(let j=i+1;j<projected.length;j++){
+
+      const a =
+        projected[i];
+
+      const b =
+        projected[j];
+
+      if(a.z < -.62 && b.z < -.62){
+        continue;
+      }
+
+      const dx =
+        a.x - b.x;
+
+      const dy =
+        a.y - b.y;
+
+      const distance =
+        Math.sqrt(
+          dx * dx +
+          dy * dy
+        );
+
+      const threshold =
+        networkWidth < 600
+          ? 70
+          : 105;
+
+      if(distance < threshold){
+
+        const depth =
+          Math.max(
+            0,
+            Math.min(
+              1,
+              (a.z + b.z + 2) / 4
+            )
+          );
+
+        const alpha =
+          (1 - distance / threshold) *
+          .17 *
+          depth;
+
+        networkCtx.beginPath();
+
+        networkCtx.moveTo(
+          a.x,
+          a.y
+        );
+
+        networkCtx.lineTo(
+          b.x,
+          b.y
+        );
+
+        networkCtx.strokeStyle =
+          `rgba(56,189,248,${alpha})`;
+
+        networkCtx.lineWidth =
+          .55 + depth * .35;
+
+        networkCtx.stroke();
+      }
+    }
+  }
+
+  /* Nodes */
+
+  projected.forEach(
+    (point,index)=>{
+
+      const node =
+        networkNodes[index];
+
+      if(point.z < -.72){
+        return;
+      }
+
+      const pulse =
+        .75 +
+        Math.sin(
+          networkTime * .002 +
+          node.phase
+        ) * .25;
+
+      const radius =
+        node.size *
+        point.scale *
+        pulse;
+
+      networkCtx.beginPath();
+
+      networkCtx.arc(
+        point.x,
+        point.y,
+        radius * 4,
+        0,
+        Math.PI * 2
+      );
+
+      networkCtx.fillStyle =
+        node.green
+          ? "rgba(57,255,136,.045)"
+          : "rgba(0,170,255,.055)";
+
+      networkCtx.fill();
+
+      networkCtx.beginPath();
+
+      networkCtx.arc(
+        point.x,
+        point.y,
+        Math.max(
+          .65,
+          radius
+        ),
+        0,
+        Math.PI * 2
+      );
+
+      networkCtx.fillStyle =
+        node.green
+          ? `rgba(57,255,136,${.48 + point.z * .12})`
+          : `rgba(56,189,248,${.48 + point.z * .12})`;
+
+      networkCtx.fill();
+    }
+  );
+
+  /* Moving data packets */
+
+  networkPackets.forEach(packet=>{
+
+    const a =
+      projected[packet.a];
+
+    const b =
+      projected[packet.b];
+
+    if(!a || !b){
+      return;
+    }
+
+    packet.progress +=
+      packet.speed;
+
+    if(packet.progress > 1){
+      packet.progress = 0;
+
+      packet.a =
+        Math.floor(
+          Math.random() *
+          networkNodes.length
+        );
+
+      packet.b =
+        Math.floor(
+          Math.random() *
+          networkNodes.length
+        );
+    }
+
+    const x =
+      a.x +
+      (b.x-a.x) *
+      packet.progress;
+
+    const y =
+      a.y +
+      (b.y-a.y) *
+      packet.progress;
+
+    const glow =
+      networkCtx.createRadialGradient(
+        x,
+        y,
+        0,
+        x,
+        y,
+        8
+      );
+
+    glow.addColorStop(
+      0,
+      "rgba(57,255,136,.8)"
+    );
+
+    glow.addColorStop(
+      1,
+      "rgba(57,255,136,0)"
+    );
+
+    networkCtx.fillStyle =
+      glow;
+
+    networkCtx.beginPath();
+
+    networkCtx.arc(
+      x,
+      y,
+      8,
+      0,
+      Math.PI * 2
+    );
+
+    networkCtx.fill();
+
+    networkCtx.beginPath();
+
+    networkCtx.arc(
+      x,
+      y,
+      1.5,
+      0,
+      Math.PI * 2
+    );
+
+    networkCtx.fillStyle =
+      "rgba(170,255,210,.95)";
+
+    networkCtx.fill();
+  });
+
+  /* Orbital arcs */
+
+  networkCtx.save();
+
+  networkCtx.translate(
+    centerX,
+    centerY
+  );
+
+  networkCtx.rotate(
+    -.22
+  );
+
+  networkCtx.beginPath();
+
+  networkCtx.ellipse(
+    0,
+    0,
+    globeRadius * 1.08,
+    globeRadius * .33,
+    0,
+    Math.PI * .08,
+    Math.PI * 1.08
+  );
+
+  networkCtx.strokeStyle =
+    "rgba(0,170,255,.085)";
+
+  networkCtx.lineWidth = 1;
+
+  networkCtx.stroke();
+
+  networkCtx.beginPath();
+
+  networkCtx.ellipse(
+    0,
+    0,
+    globeRadius * 1.16,
+    globeRadius * .42,
+    0,
+    Math.PI * 1.05,
+    Math.PI * 1.92
+  );
+
+  networkCtx.strokeStyle =
+    "rgba(57,255,136,.055)";
+
+  networkCtx.stroke();
+
+  networkCtx.restore();
+}
+
+function animateNetwork(){
+
+  networkTime++;
+
+  drawNetwork();
+
+  if(!reducedMotion){
+    networkAnimationId =
+      requestAnimationFrame(
+        animateNetwork
+      );
+  }
+}
+
+window.addEventListener(
+  "resize",
+  resizeNetworkCanvas
+);
+
+resizeNetworkCanvas();
+animateNetwork();
+
+/* =========================================================
+   GAME FUNCTIONS
    ========================================================= */
 
 function toggleGame(id){
 
-    const area = document.getElementById(id);
+  const panel =
+    document.getElementById(id);
 
-    if(area){
-        area.classList.toggle("show");
-    }
+  if(!panel){
+    return;
+  }
 
+  panel.classList.toggle("show");
 }
 
+function pick(button,correct){
 
-/* =========================================================
-   BASIC QUESTION GAME
-   ========================================================= */
+  const panel =
+    button.closest(".game-panel");
 
-function pick(button, correct, resultId){
+  if(!panel){
+    return;
+  }
 
-    const parent = button.parentElement;
+  const feedback =
+    panel.querySelector(".feedback");
 
-    const buttons =
-        parent.querySelectorAll(".option");
+  if(correct){
 
-    buttons.forEach(b => {
-        b.disabled = true;
-    });
+    feedback.textContent =
+      "✓ Correct! Good security thinking.";
 
-    const result =
-        document.getElementById(resultId);
+    feedback.style.color =
+      "#39ff88";
 
-    if(!result) return;
+  }else{
 
-    if(correct){
+    feedback.textContent =
+      "✕ Not quite. Think about the safest defensive choice.";
 
-        button.classList.add("correct");
-
-        result.textContent =
-            "✅ Correct! Strong cybersecurity thinking.";
-
-        result.style.color = "#39ff88";
-
-    }else{
-
-        button.classList.add("wrong");
-
-        result.textContent =
-            "❌ Not quite. Review the concept and try another mission.";
-
-        result.style.color = "#ff7b91";
-
-    }
-
+    feedback.style.color =
+      "#ff7794";
+  }
 }
 
+function pickGauntlet(button,correct){
 
-/* =========================================================
-   FINAL GAUNTLET
-   ========================================================= */
+  const panel =
+    button.closest(".game-panel");
 
-function pickGauntlet(button, score){
+  const feedback =
+    panel.querySelector(".feedback");
 
-    const parent = button.parentElement;
+  if(correct){
 
-    parent.querySelectorAll(".option")
-        .forEach(b => b.disabled = true);
+    feedback.textContent =
+      "✓ Correct! Confidentiality protects information from unauthorized access.";
 
-    const result =
-        document.getElementById("r20");
+    feedback.style.color =
+      "#39ff88";
 
-    if(score){
+  }else{
 
-        button.classList.add("correct");
+    feedback.textContent =
+      "✕ Incorrect. Try thinking about the CIA security triad.";
 
-        result.textContent =
-            "🏆 GAUNTLET COMPLETE! You made the safe choice.";
-
-        result.style.color = "#39ff88";
-
-    }else{
-
-        button.classList.add("wrong");
-
-        result.textContent =
-            "❌ The gauntlet caught that decision. Think: verify first.";
-
-        result.style.color = "#ff7b91";
-
-    }
-
+    feedback.style.color =
+      "#ff7794";
+  }
 }
 
+function checkInput(){
 
-/* =========================================================
-   CIPHER INPUT
-   ========================================================= */
+  const input =
+    document.getElementById(
+      "passwordInput"
+    );
 
-function checkInput(inputId, expected, resultId){
+  const feedback =
+    document.getElementById(
+      "passwordFeedback"
+    );
 
-    const input =
-        document.getElementById(inputId);
+  const value =
+    input.value;
 
-    const result =
-        document.getElementById(resultId);
+  if(!value){
 
-    if(
-        input.value
-            .trim()
-            .toUpperCase() === expected
-    ){
+    feedback.textContent =
+      "Enter a practice password first.";
 
-        result.textContent =
-            "✅ Cipher solved! HELLO was the decoded message.";
+    feedback.style.color =
+      "#ffd166";
 
-        result.style.color = "#39ff88";
+    return;
+  }
 
-    }else{
+  let score = 0;
 
-        result.textContent =
-            "❌ Try again. Remember the cipher shifts each letter by 1.";
+  if(value.length >= 12){
+    score++;
+  }
 
-        result.style.color = "#ff7b91";
+  if(/[A-Z]/.test(value)){
+    score++;
+  }
 
-    }
+  if(/[a-z]/.test(value)){
+    score++;
+  }
 
+  if(/[0-9]/.test(value)){
+    score++;
+  }
+
+  if(/[^A-Za-z0-9]/.test(value)){
+    score++;
+  }
+
+  if(score <= 2){
+
+    feedback.textContent =
+      "Weak practice password. Try using more length and variety.";
+
+    feedback.style.color =
+      "#ff7794";
+
+  }else if(score <= 4){
+
+    feedback.textContent =
+      "Moderate practice password. More length can improve it.";
+
+    feedback.style.color =
+      "#ffd166";
+
+  }else{
+
+    feedback.textContent =
+      "Strong practice example. Never use a real password here.";
+
+    feedback.style.color =
+      "#39ff88";
+  }
 }
-
 
 /* =========================================================
    FILTER SYSTEM
    ========================================================= */
 
-function filterGames(category, button){
+function filterGames(category,button){
 
-    document
-        .querySelectorAll(".filter")
-        .forEach(b =>
-            b.classList.remove("active")
-        );
+  document
+    .querySelectorAll(".filter-btn")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
 
-    button.classList.add("active");
+  button.classList.add("active");
 
-    document
-        .querySelectorAll(".game-card")
-        .forEach(card => {
+  document
+    .querySelectorAll(".game-card")
+    .forEach(card=>{
 
-            card.style.display =
-                (
-                    category === "all" ||
-                    card.dataset.category === category
-                )
-                ? "block"
-                : "none";
+      const categories =
+        card.dataset.category
+          .toLowerCase()
+          .split(" ");
 
-        });
+      if(
+        category === "all" ||
+        categories.includes(category)
+      ){
 
+        card.style.display = "";
+
+      }else{
+
+        card.style.display =
+          "none";
+      }
+    });
 }
 
-
 /* =========================================================
-   RANDOM MISSION ENGINE
+   RANDOM MISSIONS
    ========================================================= */
 
 const randomMissions = [
 
-    {
-        title:"MISSION // PHISHING",
-        text:"Find three warning signs in a fictional email before deciding whether it should be trusted."
-    },
+  "Find three signs that can make a message look suspicious.",
 
-    {
-        title:"MISSION // JAVASCRIPT",
-        text:"Write a JavaScript variable called score and give it the value 100."
-    },
+  "Explain the difference between authentication and authorization.",
 
-    {
-        title:"MISSION // NETWORKING",
-        text:"Explain what DNS does in your own words."
-    },
+  "Learn what a firewall does and write one sentence explaining it.",
 
-    {
-        title:"MISSION // PYTHON",
-        text:"Write Python code that prints the word CLYVEXIS."
-    },
+  "Research the difference between malware and phishing.",
 
-    {
-        title:"MISSION // LOG ANALYSIS",
-        text:"Look for repeated failed login attempts in a fictional log and explain why they deserve attention."
-    },
+  "Explain why software updates can improve security.",
 
-    {
-        title:"MISSION // HTML",
-        text:"Build a simple HTML page containing a heading, paragraph, and button."
-    },
+  "Learn what hashing is and why passwords should not be stored as plain text.",
 
-    {
-        title:"MISSION // CSS",
-        text:"Create a CSS rule that gives a fictional card a glowing border."
-    },
+  "Identify three common cybersecurity career paths.",
 
-    {
-        title:"MISSION // DEFENSE",
-        text:"A fictional workstation shows unusual activity. Describe the safe first steps an analyst should consider."
-    },
+  "Explain what an IP address is.",
 
-    {
-        title:"MISSION // CYBER GLOSSARY",
-        text:"Choose one cybersecurity term you know and explain it without using technical jargon."
-    },
+  "Write a simple HTML page with a heading and paragraph.",
 
-    {
-        title:"MISSION // DEBUGGING",
-        text:"Find one mistake in a small program, explain why it is a problem, and describe how you would fix it."
-    }
+  "Create a small JavaScript variable and explain what it stores.",
 
+  "Learn what least privilege means in cybersecurity.",
+
+  "Explain the three parts of the CIA security triad.",
+
+  "Find one example of a safe cybersecurity lab you can practice in.",
+
+  "Explain why using unique passwords matters.",
+
+  "Learn the difference between a virus, worm, and trojan."
 ];
-
 
 function generateRandomMission(){
 
-    const mission =
-        randomMissions[
-            Math.floor(
-                Math.random() *
-                randomMissions.length
-            )
-        ];
+  const index =
+    Math.floor(
+      Math.random() *
+      randomMissions.length
+    );
 
-    document.getElementById(
-        "randomTitle"
-    ).textContent = mission.title;
-
-    document.getElementById(
-        "randomText"
-    ).textContent = mission.text;
-
+  document.getElementById(
+    "missionText"
+  ).textContent =
+    randomMissions[index];
 }
 
-
 /* =========================================================
-   PHISHING HUNT ENGINE
+   PHISHING HUNT
    ========================================================= */
 
 const phishingRounds = [
 
-    {
-        difficulty:"EASY",
+  {
+    text:
+      "Subject: Your account needs attention. Please visit security-update.example to review your account.",
+    phishing:true,
+    clue:
+      "Unexpected account warnings and urgent requests to click links are common phishing signals."
+  },
 
-        sender:"security@paypa1-alert.example",
+  {
+    text:
+      "Your teacher posts a normal classroom announcement through the school platform you already use.",
+    phishing:false,
+    clue:
+      "The message arrives through a known platform and does not request suspicious credentials."
+  },
 
-        subject:"URGENT: Verify your account",
+  {
+    text:
+      "Subject: You won a surprise prize! Send your password to claim your reward immediately.",
+    phishing:true,
+    clue:
+      "Legitimate organizations should not ask you to send your password."
+  },
 
-        body:"We noticed unusual activity. Verify your account immediately or access may be limited.",
+  {
+    text:
+      "A friend sends you a normal message through the messaging app you regularly use.",
+    phishing:false,
+    clue:
+      "The message itself does not contain a suspicious request or unusual link."
+  },
 
-        clues:[
-            "The sender uses 'paypa1' with the number 1.",
-            "The message creates urgency.",
-            "It asks you to verify your account."
-        ],
+  {
+    text:
+      "Subject: Security Alert. Your account will be closed today unless you confirm your login information.",
+    phishing:true,
+    clue:
+      "Pressure, urgency, and requests for login information are important warning signs."
+  },
 
-        answer:"phishing",
+  {
+    text:
+      "A website displays its normal sign-in page after you manually navigate to the official site.",
+    phishing:false,
+    clue:
+      "Manually navigating to a known website reduces the risk of following a malicious link."
+  },
 
-        explanation:
-            "The look-alike sender and urgent request are strong warning signs."
-    },
+  {
+    text:
+      "Subject: Invoice attached. Open this unexpected file immediately or your account will be suspended.",
+    phishing:true,
+    clue:
+      "Unexpected attachments combined with threats or urgency deserve extra caution."
+  },
 
-
-    {
-        difficulty:"EASY",
-
-        sender:"updates@clyvexis.example",
-
-        subject:"Your weekly learning summary",
-
-        body:"Your Clyvexis learning summary is ready. Open your dashboard when you have time.",
-
-        clues:[
-            "There is no urgent threat.",
-            "The message does not ask for a password.",
-            "The request resembles a normal notification."
-        ],
-
-        answer:"safe",
-
-        explanation:
-            "This simulated message is classified as safe. Real messages should still be verified."
-    },
-
-
-    {
-        difficulty:"MEDIUM",
-
-        sender:"helpdesk@micros0ft-security.example",
-
-        subject:"Password expires today",
-
-        body:"Your password will expire in 30 minutes. Sign in now using the link below to keep access.",
-
-        clues:[
-            "The domain contains a zero in 'micros0ft'.",
-            "The message uses a short deadline.",
-            "It pushes you toward a sign-in link."
-        ],
-
-        answer:"phishing",
-
-        explanation:
-            "The look-alike domain, deadline pressure, and sign-in request are warning signs."
-    },
-
-
-    {
-        difficulty:"MEDIUM",
-
-        sender:"teacher@school.example",
-
-        subject:"Class project reminder",
-
-        body:"Reminder: the project outline is due Friday. Bring your notes to class.",
-
-        clues:[
-            "There is no login request.",
-            "There is no suspicious attachment.",
-            "The message resembles a normal reminder."
-        ],
-
-        answer:"safe",
-
-        explanation:
-            "This simulated message has no obvious phishing indicators."
-    },
-
-
-    {
-        difficulty:"HARD",
-
-        sender:"billing@paypa1-support.example",
-
-        subject:"Payment review required",
-
-        body:"A recent payment needs review. Use the secure portal to confirm the transaction before it is finalized.",
-
-        clues:[
-            "The brand name is altered.",
-            "The sender claims to be a billing department.",
-            "The message moves the user toward a portal."
-        ],
-
-        answer:"phishing",
-
-        explanation:
-            "A look-alike brand domain plus a portal request are major warning signs."
-    },
-
-
-    {
-        difficulty:"HARD",
-
-        sender:"alerts@library.example",
-
-        subject:"New cybersecurity book available",
-
-        body:"A book you saved is now available. You can view it from your normal library account.",
-
-        clues:[
-            "The message does not ask for credentials.",
-            "It directs you to use your normal account.",
-            "There is no unusual deadline."
-        ],
-
-        answer:"safe",
-
-        explanation:
-            "This round is classified as safe. Independent verification is still a good habit."
-    },
-
-
-    {
-        difficulty:"EXPERT",
-
-        sender:"support@account-secure.example",
-
-        subject:"Security notice",
-
-        body:"Your account requires a security review. Instead of clicking the email link, open the service's official website yourself and check for alerts.",
-
-        clues:[
-            "It recommends navigating independently.",
-            "It does not request a password.",
-            "It avoids pushing you through a suspicious link."
-        ],
-
-        answer:"safe",
-
-        explanation:
-            "The simulation classifies this as safe because it recommends independent verification."
-    },
-
-
-    {
-        difficulty:"EXPERT",
-
-        sender:"admin@clyvexis-login.example",
-
-        subject:"Admin access confirmation",
-
-        body:"Confirm your admin access by replying with your password and recovery code. This request must be completed today.",
-
-        clues:[
-            "It asks for a password.",
-            "It asks for a recovery code.",
-            "It adds deadline pressure."
-        ],
-
-        answer:"phishing",
-
-        explanation:
-            "Passwords and recovery codes should not be requested through ordinary email."
-    }
+  {
+    text:
+      "Your school sends a routine reminder through its established communication system without requesting sensitive information.",
+    phishing:false,
+    clue:
+      "Routine messages from a known communication channel may be legitimate."
+  }
 
 ];
 
+let phishIndex = 0;
+let phishScore = 0;
+let phishStreak = 0;
+let phishTimer = 20;
+let phishInterval = null;
 
-let phishingIndex = 0;
-let phishingScore = 0;
-let phishingStreak = 0;
-let phishingCorrect = 0;
-let phishingLocked = false;
-let phishingTimer = null;
-let phishingSeconds = 20;
+function loadPhishingRound(){
 
+  if(phishIndex >= phishingRounds.length){
 
-function startPhishingHunt(){
+    finishPhishing();
 
-    const panel =
-        document.getElementById(
-            "phishingHuntGame"
-        );
+    return;
+  }
 
-    if(!panel) return;
+  const round =
+    phishingRounds[phishIndex];
 
-    panel.style.display = "block";
+  document.getElementById(
+    "phishRound"
+  ).textContent =
+    `${phishIndex + 1} / ${phishingRounds.length}`;
 
-    phishingIndex = 0;
-    phishingScore = 0;
-    phishingStreak = 0;
-    phishingCorrect = 0;
+  document.getElementById(
+    "phishText"
+  ).textContent =
+    round.text;
 
-    document.getElementById(
-        "phishFinal"
-    ).style.display = "none";
+  document.getElementById(
+    "phishClue"
+  ).textContent =
+    round.clue;
 
-    document.getElementById(
-        "phishBoard"
-    ).style.display = "block";
+  document.getElementById(
+    "phishClue"
+  ).style.display =
+    "none";
 
-    showPhishingRound();
-
-    panel.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
+  startPhishingTimer();
 }
-
-
-function stopPhishingTimer(){
-
-    if(phishingTimer){
-
-        clearInterval(phishingTimer);
-
-        phishingTimer = null;
-
-    }
-
-}
-
 
 function startPhishingTimer(){
 
-    stopPhishingTimer();
+  clearInterval(phishInterval);
 
-    phishingSeconds = 20;
+  phishTimer = 20;
 
-    updatePhishingHUD();
+  document.getElementById(
+    "phishTimer"
+  ).textContent =
+    phishTimer;
 
-    phishingTimer = setInterval(() => {
+  phishInterval =
+    setInterval(()=>{
 
-        phishingSeconds--;
+      phishTimer--;
 
-        updatePhishingHUD();
+      document.getElementById(
+        "phishTimer"
+      ).textContent =
+        phishTimer;
 
-        if(phishingSeconds <= 0){
+      if(phishTimer <= 0){
 
-            stopPhishingTimer();
+        clearInterval(
+          phishInterval
+        );
 
-            if(!phishingLocked){
-
-                phishingLocked = true;
-
-                phishingStreak = 0;
-
-                showPhishingFeedback(
-                    false,
-                    true
-                );
-
-            }
-
-        }
+        answerPhishing(
+          null,
+          true
+        );
+      }
 
     },1000);
-
 }
 
-
-function updatePhishingHUD(){
-
-    const score =
-        document.getElementById("phishScore");
-
-    const streak =
-        document.getElementById("phishStreak");
-
-    const timer =
-        document.getElementById("phishTimer");
-
-    const round =
-        document.getElementById("phishRound");
-
-    if(score)
-        score.textContent =
-            phishingScore;
-
-    if(streak)
-        streak.textContent =
-            phishingStreak;
-
-    if(timer)
-        timer.textContent =
-            phishingSeconds + "s";
-
-    if(round)
-        round.textContent =
-            `${Math.min(
-                phishingIndex + 1,
-                phishingRounds.length
-            )} / ${phishingRounds.length}`;
-
-}
-
-
-function showPhishingRound(){
-
-    stopPhishingTimer();
-
-    phishingLocked = false;
-
-    const r =
-        phishingRounds[phishingIndex];
-
-    document.getElementById(
-        "phishSender"
-    ).textContent = r.sender;
-
-    document.getElementById(
-        "phishSubject"
-    ).textContent = r.subject;
-
-    document.getElementById(
-        "phishBody"
-    ).textContent = r.body;
-
-    document.getElementById(
-        "phishDifficulty"
-    ).textContent = r.difficulty;
-
-    const clues =
-        document.getElementById(
-            "phishClues"
-        );
-
-    clues.innerHTML =
-        r.clues.map((clue,i) => `
-            <button
-                class="clue-btn"
-                onclick="togglePhishClue(${i})"
-            >
-                CLUE ${i + 1}
-            </button>
-        `).join("");
-
-    document.getElementById(
-        "phishFeedback"
-    ).className = "phish-feedback";
-
-    document.getElementById(
-        "phishFeedback"
-    ).textContent =
-        "Analyze the message, then make your call.";
-
-    document.getElementById(
-        "phishNext"
-    ).style.display = "none";
-
-    updatePhishingHUD();
-
-    startPhishingTimer();
-
-}
-
-
-function togglePhishClue(i){
-
-    const r =
-        phishingRounds[phishingIndex];
-
-    const clues =
-        document.getElementById(
-            "phishClues"
-        );
-
-    const existing =
-        clues.querySelector(
-            `[data-clue="${i}"]`
-        );
-
-    if(existing){
-
-        existing.remove();
-
-        return;
-
-    }
-
-    const item =
-        document.createElement("div");
-
-    item.className =
-        "phish-clue-text";
-
-    item.dataset.clue = i;
-
-    item.textContent =
-        "↳ " + r.clues[i];
-
-    clues.appendChild(item);
-
-}
-
-
-function answerPhishing(choice){
-
-    if(phishingLocked)
-        return;
-
-    phishingLocked = true;
-
-    stopPhishingTimer();
-
-    const r =
-        phishingRounds[phishingIndex];
-
-    const correct =
-        choice === r.answer;
-
-    if(correct){
-
-        phishingCorrect++;
-
-        phishingStreak++;
-
-        const timeBonus =
-            Math.max(
-                0,
-                phishingSeconds * 2
-            );
-
-        const streakBonus =
-            phishingStreak * 5;
-
-        phishingScore +=
-            100 +
-            timeBonus +
-            streakBonus;
-
-    }else{
-
-        phishingStreak = 0;
-
-        phishingScore =
-            Math.max(
-                0,
-                phishingScore - 25
-            );
-
-    }
-
-    updatePhishingHUD();
-
-    showPhishingFeedback(
-        correct,
-        false
-    );
-
-}
-
-
-function showPhishingFeedback(
-    correct,
-    timedOut
+function answerPhishing(
+  isPhishing,
+  timedOut=false
 ){
 
-    const r =
-        phishingRounds[phishingIndex];
+  clearInterval(
+    phishInterval
+  );
 
-    const feedback =
-        document.getElementById(
-            "phishFeedback"
-        );
+  const round =
+    phishingRounds[phishIndex];
 
-    const next =
-        document.getElementById(
-            "phishNext"
-        );
+  if(!round){
+    return;
+  }
 
-    if(timedOut){
+  const correct =
+    !timedOut &&
+    isPhishing === round.phishing;
 
-        feedback.innerHTML =
-            `<strong>TIMEOUT</strong> —
-            The message was
-            <strong>${r.answer.toUpperCase()}</strong>.
-            <br>${r.explanation}`;
+  if(correct){
 
-    }else if(correct){
+    phishStreak++;
 
-        feedback.innerHTML =
-            `<strong>CORRECT</strong> —
-            Nice analysis.
-            <br>${r.explanation}`;
+    phishScore +=
+      100 +
+      phishStreak * 15;
 
-    }else{
+  }else{
 
-        feedback.innerHTML =
-            `<strong>NOT QUITE</strong> —
-            The message was
-            <strong>${r.answer.toUpperCase()}</strong>.
-            <br>${r.explanation}`;
+    phishStreak = 0;
+  }
 
-    }
+  document.getElementById(
+    "phishScore"
+  ).textContent =
+    phishScore;
 
-    feedback.className =
-        "phish-feedback " +
-        (correct ? "good" : "bad");
+  document.getElementById(
+    "phishStreak"
+  ).textContent =
+    phishStreak;
 
-    next.style.display =
-        "inline-flex";
+  phishIndex++;
 
-    next.textContent =
-        phishingIndex ===
-        phishingRounds.length - 1
-            ? "VIEW RESULTS →"
-            : "NEXT ROUND →";
-
+  setTimeout(
+    loadPhishingRound,
+    350
+  );
 }
 
+function showPhishClue(){
 
-function nextPhishingRound(){
-
-    if(
-        phishingIndex >=
-        phishingRounds.length - 1
-    ){
-
-        finishPhishingHunt();
-
-        return;
-
-    }
-
-    phishingIndex++;
-
-    showPhishingRound();
-
-}
-
-
-function finishPhishingHunt(){
-
-    stopPhishingTimer();
-
-    const result =
-        document.getElementById(
-            "phishFinal"
-        );
-
-    const board =
-        document.getElementById(
-            "phishBoard"
-        );
-
-    const percent =
-        Math.round(
-            (
-                phishingCorrect /
-                phishingRounds.length
-            ) * 100
-        );
-
-    let rank =
-        "ANALYST";
-
-    if(phishingScore >= 950)
-        rank = "SOC COMMANDER";
-
-    else if(phishingScore >= 700)
-        rank = "THREAT HUNTER";
-
-    else if(phishingScore >= 450)
-        rank = "SECURITY ANALYST";
-
-    result.innerHTML = `
-
-        <div class="final-icon">
-            🏆
-        </div>
-
-        <div class="final-kicker">
-            MISSION COMPLETE
-        </div>
-
-        <h3>
-            ${rank}
-        </h3>
-
-        <div class="final-stats">
-
-            <span>
-                <b>${phishingScore}</b>
-                <small>SCORE</small>
-            </span>
-
-            <span>
-                <b>
-                    ${phishingCorrect}/${phishingRounds.length}
-                </b>
-                <small>CORRECT</small>
-            </span>
-
-            <span>
-                <b>${percent}%</b>
-                <small>ACCURACY</small>
-            </span>
-
-        </div>
-
-        <p>
-            ${percent >= 80
-                ? "Strong work. You consistently looked for warning signs instead of trusting messages at face value."
-                : "Good practice round. Review the clues and try again to sharpen your analysis."
-            }
-        </p>
-
-        <button
-            class="game-btn primary"
-            onclick="restartPhishingHunt()"
-        >
-            ↻ PLAY AGAIN
-        </button>
-
-    `;
-
-    board.style.display = "none";
-
-    result.style.display = "block";
-
-    result.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-}
-
-
-function restartPhishingHunt(){
-
+  const clue =
     document.getElementById(
-        "phishFinal"
-    ).style.display = "none";
+      "phishClue"
+    );
 
-    document.getElementById(
-        "phishBoard"
-    ).style.display = "block";
-
-    phishingIndex = 0;
-
-    phishingScore = 0;
-
-    phishingStreak = 0;
-
-    phishingCorrect = 0;
-
-    showPhishingRound();
-
+  clue.style.display =
+    clue.style.display === "block"
+      ? "none"
+      : "block";
 }
 
+function finishPhishing(){
+
+  clearInterval(
+    phishInterval
+  );
+
+  document.getElementById(
+    "phishQuestion"
+  ).style.display =
+    "none";
+
+  document.getElementById(
+    "phishResult"
+  ).style.display =
+    "block";
+
+  document.getElementById(
+    "phishFinalScore"
+  ).textContent =
+    phishScore;
+
+  let rank =
+    "SECURITY TRAINEE";
+
+  if(phishScore >= 800){
+    rank =
+      "PHISHING DEFENDER";
+  }else if(phishScore >= 500){
+    rank =
+      "SECURITY ANALYST";
+  }else if(phishScore >= 300){
+    rank =
+      "CYBER SCOUT";
+  }
+
+  document.getElementById(
+    "phishRank"
+  ).textContent =
+    rank;
+}
+
+function restartPhishing(){
+
+  phishIndex = 0;
+  phishScore = 0;
+  phishStreak = 0;
+
+  document.getElementById(
+    "phishScore"
+  ).textContent =
+    "0";
+
+  document.getElementById(
+    "phishStreak"
+  ).textContent =
+    "0";
+
+  document.getElementById(
+    "phishQuestion"
+  ).style.display =
+    "block";
+
+  document.getElementById(
+    "phishResult"
+  ).style.display =
+    "none";
+
+  loadPhishingRound();
+}
 
 /* =========================================================
-   CYBER MYSTERY ENGINE
+   CYBER MYSTERY
    ========================================================= */
 
 const mysteryCases = [
 
-    {
-        level:"CASE 01",
-        title:"The Midnight Login",
-        body:"A fictional account shows two successful logins followed by several failed attempts within a short period. The user says they were not active during that time.",
+  {
+    text:
+      "A user receives several unexpected password-reset messages and notices unfamiliar login alerts.",
+    answers:[
+      "Possible account compromise",
+      "Normal computer temperature",
+      "Printer maintenance"
+    ],
+    correct:0,
+    clue:
+      "Unexpected password-reset messages and unfamiliar logins can indicate unauthorized access attempts."
+  },
 
-        clues:[
-            "The activity happened close together.",
-            "There are repeated failed attempts.",
-            "The user says they were inactive."
-        ],
+  {
+    text:
+      "A workstation suddenly shows many pop-ups after a user installed an unknown program.",
+    answers:[
+      "Possible unwanted or malicious software",
+      "Normal operating-system behavior",
+      "Network cable improvement"
+    ],
+    correct:0,
+    clue:
+      "Unknown software followed by unusual pop-ups is worth investigating."
+  },
 
-        answers:[
-            "A possible account-security event deserves investigation.",
-            "A printer issue.",
-            "A display setting."
-        ],
+  {
+    text:
+      "A security log shows many failed login attempts against the same account within a short period.",
+    answers:[
+      "Possible brute-force activity",
+      "Normal file compression",
+      "Display calibration"
+    ],
+    correct:0,
+    clue:
+      "A large number of failed authentication attempts can be a warning sign."
+  },
 
-        correct:0,
+  {
+    text:
+      "A user receives a message from an unknown sender asking for sensitive information and creating urgency.",
+    answers:[
+      "Possible phishing",
+      "Routine system maintenance",
+      "Normal browser behavior"
+    ],
+    correct:0,
+    clue:
+      "Unknown sender + sensitive request + urgency is a common phishing pattern."
+  },
 
-        explanation:
-            "The unusual timing and repeated authentication failures make the account activity worth investigating."
-    },
+  {
+    text:
+      "A computer becomes unusually slow after several unknown applications begin running.",
+    answers:[
+      "Investigate the running applications",
+      "Ignore all security alerts",
+      "Share account credentials"
+    ],
+    correct:0,
+    clue:
+      "Unexpected applications and performance changes can justify investigation."
+  },
 
-
-    {
-        level:"CASE 02",
-        title:"The Strange Domain",
-        body:"Several employees receive a message that looks like it came from a familiar technology company. The sender's domain contains a subtle spelling difference.",
-
-        clues:[
-            "The sender domain is slightly altered.",
-            "Several employees received the same message.",
-            "The message resembles a brand employees recognize."
-        ],
-
-        answers:[
-            "A possible phishing campaign.",
-            "A normal software update.",
-            "A broken monitor."
-        ],
-
-        correct:0,
-
-        explanation:
-            "A look-alike domain combined with repeated delivery is a strong reason to investigate the message."
-    },
-
-
-    {
-        level:"CASE 03",
-        title:"Traffic Spike",
-        body:"A fictional web service suddenly receives a very large number of repetitive requests. The normal traffic pattern is much smaller.",
-
-        clues:[
-            "The requests are repetitive.",
-            "The traffic is much higher than normal.",
-            "The pattern appeared suddenly."
-        ],
-
-        answers:[
-            "Investigate the unusual automated traffic pattern.",
-            "Change the keyboard layout.",
-            "Ignore the event."
-        ],
-
-        correct:0,
-
-        explanation:
-            "A sudden repetitive traffic spike can indicate automated activity or abuse and deserves investigation."
-    },
-
-
-    {
-        level:"CASE 04",
-        title:"The Permission Problem",
-        body:"A fictional employee needs access to one project, but their account has access to many unrelated systems.",
-
-        clues:[
-            "The user only needs one project.",
-            "The account has unrelated permissions.",
-            "Access should match job requirements."
-        ],
-
-        answers:[
-            "Review and reduce unnecessary permissions.",
-            "Give the user even more access.",
-            "Share the account with coworkers."
-        ],
-
-        correct:0,
-
-        explanation:
-            "The principle of least privilege means users should receive only the access necessary for their work."
-    },
-
-
-    {
-        level:"CASE 05",
-        title:"The Missing Logs",
-        body:"A fictional investigation begins, but someone suggests deleting old records before the team reviews what happened.",
-
-        clues:[
-            "The records could contain useful evidence.",
-            "The investigation has not finished.",
-            "Deleting evidence can make analysis harder."
-        ],
-
-        answers:[
-            "Preserve relevant records and follow the investigation process.",
-            "Delete everything immediately.",
-            "Ignore the investigation."
-        ],
-
-        correct:0,
-
-        explanation:
-            "Preserving relevant evidence is an important part of safe incident investigation."
-    },
-
-
-    {
-        level:"CASE 06",
-        title:"The Suspicious Request",
-        body:"A fictional message asks an employee to provide sensitive account information. The employee was not expecting the request.",
-
-        clues:[
-            "The request is unexpected.",
-            "Sensitive information is being requested.",
-            "The employee should verify the request independently."
-        ],
-
-        answers:[
-            "Verify the request through a trusted channel before sharing information.",
-            "Send the information immediately.",
-            "Forward the information to everyone."
-        ],
-
-        correct:0,
-
-        explanation:
-            "Unexpected requests for sensitive information should be independently verified before action is taken."
-    }
+  {
+    text:
+      "An employee has access to sensitive files that are unrelated to their job responsibilities.",
+    answers:[
+      "Review access permissions",
+      "Give them even more access",
+      "Publish the files"
+    ],
+    correct:0,
+    clue:
+      "Access should generally follow the principle of least privilege."
+  }
 
 ];
-
 
 let mysteryIndex = 0;
 let mysteryScore = 0;
 let mysteryStreak = 0;
-let mysteryLocked = false;
 
+function loadMysteryCase(){
 
-function startCyberMystery(){
+  if(
+    mysteryIndex >=
+    mysteryCases.length
+  ){
 
-    const panel =
-        document.getElementById(
-            "cyberMysteryGame"
-        );
+    finishMystery();
 
-    if(!panel) return;
+    return;
+  }
 
-    panel.style.display = "block";
+  const mystery =
+    mysteryCases[mysteryIndex];
 
-    mysteryIndex = 0;
-    mysteryScore = 0;
-    mysteryStreak = 0;
+  document.getElementById(
+    "mysteryRound"
+  ).textContent =
+    `${mysteryIndex + 1} / ${mysteryCases.length}`;
 
+  document.getElementById(
+    "mysteryText"
+  ).textContent =
+    mystery.text;
+
+  const answers =
     document.getElementById(
-        "mysteryFinal"
-    ).style.display = "none";
-
-    document.getElementById(
-        "mysteryBoard"
-    ).style.display = "block";
-
-    showMysteryCase();
-
-    panel.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-}
-
-
-function updateMysteryHUD(){
-
-    document.getElementById(
-        "mysteryScore"
-    ).textContent =
-        mysteryScore;
-
-    document.getElementById(
-        "mysteryStreak"
-    ).textContent =
-        mysteryStreak;
-
-    document.getElementById(
-        "mysteryRound"
-    ).textContent =
-        `${Math.min(
-            mysteryIndex + 1,
-            mysteryCases.length
-        )} / ${mysteryCases.length}`;
-
-}
-
-
-function showMysteryCase(){
-
-    mysteryLocked = false;
-
-    const c =
-        mysteryCases[mysteryIndex];
-
-    document.getElementById(
-        "mysteryLevel"
-    ).textContent =
-        c.level;
-
-    document.getElementById(
-        "mysteryTitle"
-    ).textContent =
-        c.title;
-
-    document.getElementById(
-        "mysteryBody"
-    ).textContent =
-        c.body;
-
-    const clues =
-        document.getElementById(
-            "mysteryClues"
-        );
-
-    clues.innerHTML =
-        c.clues.map((clue,i) => `
-            <button
-                class="clue-btn"
-                onclick="toggleMysteryClue(${i})"
-            >
-                CLUE ${i + 1}
-            </button>
-        `).join("");
-
-    const actions =
-        document.getElementById(
-            "mysteryActions"
-        );
-
-    actions.innerHTML =
-        c.answers.map((answer,i) => `
-            <button
-                class="mystery-answer"
-                onclick="answerMystery(${i})"
-            >
-                ${answer}
-            </button>
-        `).join("");
-
-    const feedback =
-        document.getElementById(
-            "mysteryFeedback"
-        );
-
-    feedback.className =
-        "mystery-feedback";
-
-    feedback.textContent =
-        "Review the evidence and select your conclusion.";
-
-    document.getElementById(
-        "mysteryNext"
-    ).style.display =
-        "none";
-
-    updateMysteryHUD();
-
-}
-
-
-function toggleMysteryClue(i){
-
-    const c =
-        mysteryCases[mysteryIndex];
-
-    const clues =
-        document.getElementById(
-            "mysteryClues"
-        );
-
-    const existing =
-        clues.querySelector(
-            `[data-clue="${i}"]`
-        );
-
-    if(existing){
-
-        existing.remove();
-
-        return;
-
-    }
-
-    const item =
-        document.createElement("div");
-
-    item.className =
-        "mystery-clue-text";
-
-    item.dataset.clue = i;
-
-    item.textContent =
-        "↳ " + c.clues[i];
-
-    clues.appendChild(item);
-
-}
-
-
-function answerMystery(choice){
-
-    if(mysteryLocked)
-        return;
-
-    mysteryLocked = true;
-
-    const c =
-        mysteryCases[mysteryIndex];
-
-    const buttons =
-        document.querySelectorAll(
-            ".mystery-answer"
-        );
-
-    buttons.forEach(
-        b => b.disabled = true
+      "mysteryAnswers"
     );
 
-    const feedback =
-        document.getElementById(
-            "mysteryFeedback"
+  answers.innerHTML = "";
+
+  mystery.answers.forEach(
+    (answer,index)=>{
+
+      const button =
+        document.createElement(
+          "button"
         );
 
-    if(choice === c.correct){
+      button.className =
+        "answer-btn";
 
-        mysteryStreak++;
+      button.textContent =
+        answer;
 
-        mysteryScore +=
-            100 +
-            (mysteryStreak * 15);
+      button.onclick =
+        ()=>{
+          answerMystery(index);
+        };
 
-        buttons[choice]
-            .classList.add("correct");
-
-        feedback.innerHTML =
-            `<strong>CORRECT</strong> —
-            Investigation successful.
-            <br>${c.explanation}`;
-
-        feedback.className =
-            "mystery-feedback good";
-
-    }else{
-
-        mysteryStreak = 0;
-
-        mysteryScore =
-            Math.max(
-                0,
-                mysteryScore - 25
-            );
-
-        buttons[choice]
-            .classList.add("wrong");
-
-        buttons[c.correct]
-            .classList.add("correct");
-
-        feedback.innerHTML =
-            `<strong>NOT QUITE</strong> —
-            Review the evidence.
-            <br>${c.explanation}`;
-
-        feedback.className =
-            "mystery-feedback bad";
-
+      answers.appendChild(
+        button
+      );
     }
+  );
 
-    updateMysteryHUD();
+  document.getElementById(
+    "mysteryClue"
+  ).textContent =
+    mystery.clue;
 
-    const next =
-        document.getElementById(
-            "mysteryNext"
-        );
-
-    next.style.display =
-        "inline-flex";
-
-    next.textContent =
-        mysteryIndex ===
-        mysteryCases.length - 1
-            ? "VIEW RESULTS →"
-            : "NEXT CASE →";
-
+  document.getElementById(
+    "mysteryClue"
+  ).style.display =
+    "none";
 }
 
+function answerMystery(answer){
 
-function nextMysteryCase(){
+  const mystery =
+    mysteryCases[mysteryIndex];
 
-    if(
-        mysteryIndex >=
-        mysteryCases.length - 1
-    ){
+  if(!mystery){
+    return;
+  }
 
-        finishMystery();
+  const correct =
+    answer === mystery.correct;
 
-        return;
+  if(correct){
 
-    }
+    mysteryStreak++;
 
-    mysteryIndex++;
+    mysteryScore +=
+      100 +
+      mysteryStreak * 15;
 
-    showMysteryCase();
+  }else{
 
+    mysteryStreak = 0;
+  }
+
+  document.getElementById(
+    "mysteryScore"
+  ).textContent =
+    mysteryScore;
+
+  document.getElementById(
+    "mysteryStreak"
+  ).textContent =
+    mysteryStreak;
+
+  mysteryIndex++;
+
+  setTimeout(
+    loadMysteryCase,
+    350
+  );
 }
 
+function showMysteryClue(){
+
+  const clue =
+    document.getElementById(
+      "mysteryClue"
+    );
+
+  clue.style.display =
+    clue.style.display === "block"
+      ? "none"
+      : "block";
+}
 
 function finishMystery(){
 
-    const board =
-        document.getElementById(
-            "mysteryBoard"
-        );
+  document.getElementById(
+    "mysteryQuestion"
+  ).style.display =
+    "none";
 
-    const final =
-        document.getElementById(
-            "mysteryFinal"
-        );
+  document.getElementById(
+    "mysteryResult"
+  ).style.display =
+    "block";
 
-    const maxScore =
-        mysteryCases.length *
-        100 +
-        (
-            mysteryCases.length *
-            (mysteryCases.length + 1) /
-            2
-        ) * 15;
+  document.getElementById(
+    "mysteryFinalScore"
+  ).textContent =
+    mysteryScore;
 
-    const percent =
-        Math.min(
-            100,
-            Math.round(
-                (
-                    mysteryScore /
-                    maxScore
-                ) * 100
-            )
-        );
+  let rank =
+    "JUNIOR INVESTIGATOR";
 
-    let rank =
-        "FIELD ANALYST";
+  const maxScore =
+    mysteryCases.length * 100 +
+    (
+      mysteryCases.length *
+      (mysteryCases.length + 1) /
+      2
+    ) * 15;
 
-    if(mysteryScore >= 700)
-        rank = "CYBER INVESTIGATOR";
+  const percentage =
+    mysteryScore /
+    maxScore;
 
-    else if(mysteryScore >= 450)
-        rank = "THREAT ANALYST";
+  if(percentage >= .9){
 
-    final.innerHTML = `
+    rank =
+      "MASTER INVESTIGATOR";
 
-        <div class="final-icon">
-            🕵️
-        </div>
+  }else if(percentage >= .7){
 
-        <div class="final-kicker">
-            INVESTIGATION COMPLETE
-        </div>
+    rank =
+      "CYBER INVESTIGATOR";
 
-        <h3>
-            ${rank}
-        </h3>
+  }else if(percentage >= .45){
 
-        <div class="final-stats">
+    rank =
+      "SECURITY DETECTIVE";
+  }
 
-            <span>
-                <b>${mysteryScore}</b>
-                <small>SCORE</small>
-            </span>
-
-            <span>
-                <b>${mysteryCases.length}</b>
-                <small>CASES</small>
-            </span>
-
-            <span>
-                <b>${percent}%</b>
-                <small>PERFORMANCE</small>
-            </span>
-
-        </div>
-
-        <p>
-            You completed the Clyvexis Cyber Mystery
-            investigation. Keep practicing how to
-            connect evidence, clues, and safe decisions.
-        </p>
-
-        <button
-            class="game-btn primary"
-            onclick="restartMystery()"
-        >
-            ↻ NEW INVESTIGATION
-        </button>
-
-    `;
-
-    board.style.display =
-        "none";
-
-    final.style.display =
-        "block";
-
-    final.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
+  document.getElementById(
+    "mysteryRank"
+  ).textContent =
+    rank;
 }
-
 
 function restartMystery(){
 
-    document.getElementById(
-        "mysteryFinal"
-    ).style.display =
-        "none";
+  mysteryIndex = 0;
+  mysteryScore = 0;
+  mysteryStreak = 0;
 
-    document.getElementById(
-        "mysteryBoard"
-    ).style.display =
-        "block";
+  document.getElementById(
+    "mysteryScore"
+  ).textContent =
+    "0";
 
-    mysteryIndex = 0;
+  document.getElementById(
+    "mysteryStreak"
+  ).textContent =
+    "0";
 
-    mysteryScore = 0;
+  document.getElementById(
+    "mysteryQuestion"
+  ).style.display =
+    "block";
 
-    mysteryStreak = 0;
+  document.getElementById(
+    "mysteryResult"
+  ).style.display =
+    "none";
 
-    showMysteryCase();
-
+  loadMysteryCase();
 }
+
+/* =========================================================
+   INITIALIZE ARCADE
+   ========================================================= */
+
+loadPhishingRound();
+loadMysteryCase();
+
 </script>
 
 </body>
