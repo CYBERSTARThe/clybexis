@@ -13,9 +13,9 @@ content="Clyvexis cybersecurity quiz. Test your knowledge of cybersecurity, netw
 
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -23,171 +23,289 @@ content="Clyvexis cybersecurity quiz. Test your knowledge of cybersecurity, netw
     box-sizing: border-box;
 }
 
-
-/* =========================
-   HTML
-========================= */
-
 html {
     scroll-behavior: smooth;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
 body {
+
     font-family: Arial, Helvetica, sans-serif;
+
     color: white;
+
     min-height: 100vh;
+
     overflow-x: hidden;
+
     position: relative;
 
     background:
         radial-gradient(
-            circle at 50% -10%,
-            rgba(0,170,255,0.20),
-            transparent 38%
+            circle at 50% 45%,
+            rgba(0,170,255,0.055),
+            transparent 35%
         ),
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(0,255,136,0.035),
+            transparent 30%
+        ),
+        #020711;
+
+}
+
+
+/* =========================================================
+   GLOBAL CYBER NETWORK BACKGROUND
+========================================================= */
+
+#network-canvas {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* Subtle technical grid */
+
+.network-grid {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background-image:
         linear-gradient(
-            rgba(0,170,255,0.035) 1px,
+            rgba(0,170,255,0.025) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0,170,255,0.035) 1px,
+            rgba(0,170,255,0.025) 1px,
             transparent 1px
-        ),
-        #050b16;
+        );
 
-    background-size:
-        auto,
-        35px 35px,
-        35px 35px,
-        auto;
+    background-size: 45px 45px;
 
-    background-attachment: fixed;
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 20%,
+            transparent 82%
+        );
+
 }
 
 
-/* =========================
-   ANIMATED CYBER GLOW
-========================= */
+/* Dark cinematic edges */
 
-body::before {
-    content: "";
+.network-vignette {
 
     position: fixed;
 
-    top: -250px;
-    left: 50%;
+    inset: 0;
 
-    width: 700px;
-    height: 500px;
-
-    transform: translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(0,170,255,0.18),
-            transparent 70%
-        );
+    z-index: 1;
 
     pointer-events: none;
 
-    z-index: 0;
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,3,10,0.35) 70%,
+            rgba(0,3,10,0.88) 100%
+        );
+
+}
+
+
+/* Very subtle moving scan */
+
+.network-scan {
+
+    position: fixed;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 1px;
+
+    top: -5px;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,170,255,0.35),
+            rgba(0,255,136,0.25),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,0.25);
 
     animation:
-        cyberGlow
-        6s
-        ease-in-out
-        infinite
-        alternate;
-}
+        networkScan
+        9s
+        linear
+        infinite;
 
-
-@keyframes cyberGlow {
-
-    from {
-        transform:
-            translateX(-50%)
-            scale(0.9);
-
-        opacity: 0.55;
-    }
-
-    to {
-        transform:
-            translateX(-50%)
-            scale(1.15);
-
-        opacity: 1;
-    }
+    opacity: 0.5;
 
 }
 
 
-/* =========================
+@keyframes networkScan {
+
+    0% {
+        top: -5px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 nav {
+
     position: sticky;
+
     top: 0;
 
     z-index: 1000;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     padding: 16px 6%;
 
     background:
-        rgba(3,8,18,0.88);
+        rgba(2,7,17,0.88);
 
     backdrop-filter: blur(18px);
 
     border-bottom:
         1px solid
-        rgba(0,200,255,0.15);
+        rgba(0,200,255,0.16);
 
     box-shadow:
-        0 5px 25px
-        rgba(0,0,0,0.25);
+        0 5px 30px
+        rgba(0,0,0,0.35);
+
+}
+
+
+nav::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #00ff88,
+            #00aaff
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(0,170,255,0.65);
+
 }
 
 
 .logo {
+
     font-size: 23px;
+
     font-weight: bold;
 
     white-space: nowrap;
 
+    text-decoration: none;
+
+    color: white;
+
     text-shadow:
         0 0 15px
         rgba(0,200,255,0.25);
+
 }
 
 
 .logo span {
+
     color: #00d9ff;
+
 }
 
 
 .nav-links {
+
     display: flex;
+
     align-items: center;
 
     gap: 20px;
 
     flex-wrap: wrap;
+
 }
 
 
 .nav-links a {
+
+    position: relative;
+
     color: #c9d7e8;
 
     text-decoration: none;
@@ -197,30 +315,81 @@ nav {
     transition:
         color 0.3s,
         text-shadow 0.3s;
+
+}
+
+
+.nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -6px;
+
+    width: 0;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #00ff88
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(0,170,255,0.45);
+
+    transition:
+        width 0.3s;
+
 }
 
 
 .nav-links a:hover {
+
     color: #00d9ff;
 
     text-shadow:
         0 0 10px
         rgba(0,217,255,0.5);
+
+}
+
+
+.nav-links a:hover::after {
+
+    width: 100%;
+
 }
 
 
 .nav-links .active {
+
     color: #00d9ff;
 
     text-shadow:
         0 0 10px
         rgba(0,217,255,0.45);
+
+}
+
+
+.nav-links .active::after {
+
+    width: 100%;
+
 }
 
 
 /* DONATE */
 
 .donate {
+
     padding: 9px 15px;
 
     border-radius: 20px;
@@ -233,26 +402,38 @@ nav {
 
     background:
         rgba(0,255,170,0.08);
+
+}
+
+
+.donate::after {
+
+    display: none;
+
 }
 
 
 .donate:hover {
+
     background:
         rgba(0,255,170,0.16);
 
     box-shadow:
         0 0 18px
         rgba(0,255,170,0.15);
+
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     text-align: center;
 
@@ -260,10 +441,12 @@ nav {
         75px
         20px
         45px;
+
 }
 
 
 .hero-icon {
+
     font-size: 55px;
 
     margin-bottom: 15px;
@@ -280,6 +463,7 @@ nav {
         ease-in-out
         infinite
         alternate;
+
 }
 
 
@@ -311,15 +495,18 @@ nav {
         linear-gradient(
             90deg,
             #ffffff,
-            #00d9ff
+            #00d9ff,
+            #00ffae
         );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
     text-shadow:
         0 0 30px
         rgba(0,200,255,0.15);
+
 }
 
 
@@ -334,6 +521,7 @@ nav {
     line-height: 1.7;
 
     font-size: 17px;
+
 }
 
 
@@ -348,17 +536,23 @@ nav {
     letter-spacing: 4px;
 
     font-weight: bold;
+
+    text-shadow:
+        0 0 12px
+        rgba(0,229,255,0.25);
+
 }
 
 
-/* =========================
+/* =========================================================
    QUIZ AREA
-========================= */
+========================================================= */
 
 .quiz-container {
 
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     width:
         min(
@@ -370,35 +564,76 @@ nav {
         20px
         auto
         80px;
+
 }
 
 
-/* =========================
+/* =========================================================
    QUIZ CARD
-========================= */
+========================================================= */
 
 .quiz-card {
 
+    position: relative;
+
     background:
-        rgba(9,20,35,0.72);
+        linear-gradient(
+            145deg,
+            rgba(8,20,38,0.82),
+            rgba(3,10,22,0.88)
+        );
 
     border:
         1px solid
-        rgba(0,190,255,0.18);
+        rgba(0,190,255,0.22);
 
     border-radius: 22px;
 
     padding: 32px;
 
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(18px);
 
     box-shadow:
         0 0 35px
-        rgba(0,170,255,0.08);
+        rgba(0,170,255,0.08),
+        inset 0 0 35px
+        rgba(0,170,255,0.025);
+
+    overflow: hidden;
 
     transition:
         border-color 0.3s,
         box-shadow 0.3s;
+
+}
+
+
+.quiz-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #00ff88,
+            #00aaff
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(0,170,255,0.5);
+
 }
 
 
@@ -409,13 +644,16 @@ nav {
 
     box-shadow:
         0 0 45px
-        rgba(0,170,255,0.12);
+        rgba(0,170,255,0.12),
+        inset 0 0 35px
+        rgba(0,170,255,0.035);
+
 }
 
 
-/* =========================
+/* =========================================================
    PROGRESS TOP
-========================= */
+========================================================= */
 
 .quiz-top {
 
@@ -431,12 +669,13 @@ nav {
     color: #9eb2c8;
 
     font-size: 14px;
+
 }
 
 
-/* =========================
+/* =========================================================
    PROGRESS BAR
-========================= */
+========================================================= */
 
 .progress-container {
 
@@ -452,6 +691,7 @@ nav {
     overflow: hidden;
 
     margin-bottom: 35px;
+
 }
 
 
@@ -476,12 +716,13 @@ nav {
     box-shadow:
         0 0 12px
         rgba(0,210,255,0.35);
+
 }
 
 
-/* =========================
+/* =========================================================
    QUESTION
-========================= */
+========================================================= */
 
 .question-number {
 
@@ -494,6 +735,7 @@ nav {
     letter-spacing: 1px;
 
     font-weight: bold;
+
 }
 
 
@@ -504,18 +746,20 @@ nav {
     line-height: 1.4;
 
     margin-bottom: 25px;
+
 }
 
 
-/* =========================
+/* =========================================================
    ANSWERS
-========================= */
+========================================================= */
 
 .answers {
 
     display: grid;
 
     gap: 14px;
+
 }
 
 
@@ -551,6 +795,7 @@ nav {
         Arial,
         Helvetica,
         sans-serif;
+
 }
 
 
@@ -568,6 +813,7 @@ nav {
     box-shadow:
         0 0 15px
         rgba(0,190,255,0.08);
+
 }
 
 
@@ -582,6 +828,7 @@ nav {
     box-shadow:
         0 0 15px
         rgba(0,255,174,0.08);
+
 }
 
 
@@ -592,18 +839,20 @@ nav {
 
     background:
         rgba(255,60,100,0.10);
+
 }
 
 
 .answer:disabled {
 
     cursor: default;
+
 }
 
 
-/* =========================
+/* =========================================================
    EXPLANATION
-========================= */
+========================================================= */
 
 .explanation {
 
@@ -630,19 +879,28 @@ nav {
         explanationIn
         0.3s
         ease;
+
 }
 
 
 @keyframes explanationIn {
 
     from {
+
         opacity: 0;
-        transform: translateY(5px);
+
+        transform:
+            translateY(5px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
@@ -651,12 +909,13 @@ nav {
 .explanation strong {
 
     color: #00d9ff;
+
 }
 
 
-/* =========================
+/* =========================================================
    NEXT BUTTON
-========================= */
+========================================================= */
 
 .next-button {
 
@@ -691,6 +950,7 @@ nav {
 
     transition:
         0.25s;
+
 }
 
 
@@ -702,6 +962,7 @@ nav {
     box-shadow:
         0 0 30px
         rgba(0,190,255,0.4);
+
 }
 
 
@@ -709,12 +970,13 @@ nav {
 
     transform:
         translateY(0);
+
 }
 
 
-/* =========================
+/* =========================================================
    RESULTS
-========================= */
+========================================================= */
 
 .result {
 
@@ -725,6 +987,7 @@ nav {
     padding:
         20px
         0;
+
 }
 
 
@@ -739,6 +1002,7 @@ nav {
             0 0 18px
             rgba(0,200,255,0.3)
         );
+
 }
 
 
@@ -747,6 +1011,7 @@ nav {
     font-size: 38px;
 
     margin-bottom: 12px;
+
 }
 
 
@@ -763,6 +1028,7 @@ nav {
     text-shadow:
         0 0 20px
         rgba(0,217,255,0.25);
+
 }
 
 
@@ -773,12 +1039,13 @@ nav {
     line-height: 1.7;
 
     margin-bottom: 25px;
+
 }
 
 
-/* =========================
+/* =========================================================
    RESTART BUTTON
-========================= */
+========================================================= */
 
 .restart {
 
@@ -803,6 +1070,7 @@ nav {
 
     transition:
         0.25s;
+
 }
 
 
@@ -814,17 +1082,19 @@ nav {
     box-shadow:
         0 0 20px
         rgba(0,190,255,0.15);
+
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
 
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     text-align: center;
 
@@ -839,18 +1109,25 @@ footer {
     color: #6f8499;
 
     font-size: 13px;
+
+    background:
+        rgba(1,5,12,0.35);
+
+    backdrop-filter: blur(8px);
+
 }
 
 
 footer strong {
 
     color: #00d9ff;
+
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 850px) {
 
@@ -863,6 +1140,7 @@ footer strong {
         padding:
             15px
             5%;
+
     }
 
 
@@ -873,12 +1151,14 @@ footer strong {
         justify-content: center;
 
         gap: 10px 13px;
+
     }
 
 
     .nav-links a {
 
         font-size: 13px;
+
     }
 
 
@@ -888,18 +1168,21 @@ footer strong {
             50px
             20px
             35px;
+
     }
 
 
     .hero-icon {
 
         font-size: 48px;
+
     }
 
 
     .hero p {
 
         font-size: 15px;
+
     }
 
 
@@ -908,6 +1191,7 @@ footer strong {
         font-size: 11px;
 
         letter-spacing: 3px;
+
     }
 
 
@@ -916,18 +1200,21 @@ footer strong {
         padding: 22px;
 
         border-radius: 18px;
+
     }
 
 
     .quiz-top {
 
         font-size: 13px;
+
     }
 
 
     #question {
 
         font-size: 21px;
+
     }
 
 
@@ -937,62 +1224,71 @@ footer strong {
 
         padding:
             15px;
+
     }
 
 
     .result h2 {
 
         font-size: 30px;
+
     }
 
 
     .score {
 
         font-size: 45px;
+
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    SMALL PHONES
-========================= */
+========================================================= */
 
 @media (max-width: 480px) {
 
     .logo {
 
         font-size: 21px;
+
     }
 
 
     .nav-links {
 
         gap: 9px 11px;
+
     }
 
 
     .nav-links a {
 
         font-size: 12px;
+
     }
 
 
     .hero h1 {
 
         font-size: 40px;
+
     }
 
 
     .quiz-container {
 
         width: 94%;
+
     }
 
 
     .quiz-card {
 
         padding: 18px;
+
     }
 
 
@@ -1003,21 +1299,47 @@ footer strong {
         align-items: flex-start;
 
         gap: 6px;
+
     }
 
 
     #question {
 
         font-size: 20px;
+
     }
 
 
     .answer {
 
         font-size: 14px;
+
     }
 
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .network-scan,
+    .hero-icon {
+        animation: none;
+    }
+
+}
+
+
+/* =========================================================
+   END CSS
+========================================================= */
 
 </style>
 
@@ -1027,15 +1349,44 @@ footer strong {
 <body>
 
 
-<!-- =========================
+<!-- =======================================================
+     GLOBAL NETWORK BACKGROUND
+======================================================== -->
+
+<canvas
+    id="network-canvas"
+    aria-hidden="true">
+</canvas>
+
+<div
+    class="network-grid"
+    aria-hidden="true">
+</div>
+
+<div
+    class="network-vignette"
+    aria-hidden="true">
+</div>
+
+<div
+    class="network-scan"
+    aria-hidden="true">
+</div>
+
+
+<!-- =======================================================
      NAVIGATION
-========================= -->
+======================================================== -->
 
 <nav>
 
-    <div class="logo">
+    <a
+        href="index.html"
+        class="logo">
+
         🛡️ Cly<span>vexis</span>
-    </div>
+
+    </a>
 
 
     <div class="nav-links">
@@ -1052,9 +1403,12 @@ footer strong {
             Labs
         </a>
 
-        <a href="quiz.html"
-           class="active">
+        <a
+            href="quiz.html"
+            class="active">
+
             Quiz
+
         </a>
 
         <a href="games.html">
@@ -1077,9 +1431,12 @@ footer strong {
             🖥️ Simulators
         </a>
 
-        <a href="donate.html"
-           class="donate">
+        <a
+            href="donate.html"
+            class="donate">
+
             💚 Donate
+
         </a>
 
     </div>
@@ -1087,9 +1444,9 @@ footer strong {
 </nav>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+======================================================== -->
 
 <section class="hero">
 
@@ -1104,29 +1461,31 @@ footer strong {
 
 
     <p>
+
         Test your cybersecurity knowledge with challenging
         questions covering attacks, defense, networking,
         authentication, cryptography, and more.
+
     </p>
 
 
     <div class="tagline">
+
         THINK • ANALYZE • SECURE
+
     </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      QUIZ
-========================= -->
+======================================================== -->
 
 <main class="quiz-container">
 
     <div class="quiz-card">
 
-
-        <!-- QUIZ CONTENT -->
 
         <div id="quiz">
 
@@ -1156,24 +1515,30 @@ footer strong {
 
 
             <div class="question-number">
+
                 CLYVEXIS KNOWLEDGE TEST
+
             </div>
 
 
             <h2 id="question">
+
                 Loading question...
+
             </h2>
 
 
             <div
                 class="answers"
                 id="answers">
+
             </div>
 
 
             <div
                 class="explanation"
                 id="explanation">
+
             </div>
 
 
@@ -1189,9 +1554,9 @@ footer strong {
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
              RESULTS
-        ========================= -->
+        ================================================== -->
 
         <div
             class="result"
@@ -1218,7 +1583,9 @@ footer strong {
 
 
             <p id="resultMessage">
+
                 Great work!
+
             </p>
 
 
@@ -1237,9 +1604,9 @@ footer strong {
 </main>
 
 
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================== -->
 
 <footer>
 
@@ -1262,9 +1629,883 @@ footer strong {
 
 <script>
 
-/* =========================
+/* =========================================================
+   GLOBAL CYBER NETWORK
+========================================================= */
+
+const canvas =
+    document.getElementById("network-canvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+let width = window.innerWidth;
+
+let height = window.innerHeight;
+
+let dpr =
+    Math.min(
+        window.devicePixelRatio || 1,
+        2
+    );
+
+let nodes = [];
+
+let packets = [];
+
+let animationFrame;
+
+let rotation = 0;
+
+let lastTime = 0;
+
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* =========================================================
+   NETWORK SETTINGS
+========================================================= */
+
+function getNodeCount() {
+
+    if (width < 600) {
+
+        return 65;
+
+    }
+
+    if (width < 1000) {
+
+        return 105;
+
+    }
+
+    return 165;
+
+}
+
+
+function getGlobeSize() {
+
+    return Math.min(
+        width * 0.29,
+        height * 0.46,
+        430
+    );
+
+}
+
+
+/* =========================================================
+   RESIZE CANVAS
+========================================================= */
+
+function resizeNetwork() {
+
+    width =
+        window.innerWidth;
+
+    height =
+        window.innerHeight;
+
+    dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
+    canvas.width =
+        width * dpr;
+
+    canvas.height =
+        height * dpr;
+
+    canvas.style.width =
+        width + "px";
+
+    canvas.style.height =
+        height + "px";
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    createNetwork();
+
+}
+
+
+/* =========================================================
+   CREATE GLOBE NETWORK
+========================================================= */
+
+function createNetwork() {
+
+    nodes = [];
+
+    packets = [];
+
+
+    const count =
+        getNodeCount();
+
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+        const theta =
+            Math.random() *
+            Math.PI *
+            2;
+
+        const phi =
+            Math.acos(
+                2 * Math.random() - 1
+            );
+
+
+        nodes.push({
+
+            theta: theta,
+
+            phi: phi,
+
+            size:
+                Math.random() *
+                1.8 +
+                1.2,
+
+            green:
+                Math.random() <
+                0.17,
+
+            pulse:
+                Math.random() *
+                Math.PI *
+                2
+
+        });
+
+    }
+
+
+    const packetCount =
+        Math.min(
+            Math.floor(count * 0.12),
+            20
+        );
+
+
+    for (
+        let i = 0;
+        i < packetCount;
+        i++
+    ) {
+
+        packets.push({
+
+            from:
+                Math.floor(
+                    Math.random() *
+                    nodes.length
+                ),
+
+            to:
+                Math.floor(
+                    Math.random() *
+                    nodes.length
+                ),
+
+            progress:
+                Math.random(),
+
+            speed:
+                0.00008 +
+                Math.random() *
+                0.00009
+
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   PROJECT 3D POINT
+========================================================= */
+
+function projectNode(node) {
+
+    const x3 =
+        Math.sin(node.phi) *
+        Math.cos(
+            node.theta +
+            rotation
+        );
+
+    const y3 =
+        Math.cos(node.phi);
+
+    const z3 =
+        Math.sin(node.phi) *
+        Math.sin(
+            node.theta +
+            rotation
+        );
+
+
+    const radius =
+        getGlobeSize();
+
+
+    const perspective =
+        1.45;
+
+    const scale =
+        perspective /
+        (perspective + z3 * 0.65);
+
+
+    return {
+
+        x:
+            width / 2 +
+            x3 *
+            radius *
+            scale,
+
+        y:
+            height * 0.52 +
+            y3 *
+            radius *
+            0.68 *
+            scale,
+
+        z:
+            z3,
+
+        scale:
+            scale
+
+    };
+
+}
+
+
+/* =========================================================
+   DRAW GLOBE
+========================================================= */
+
+function drawGlobe() {
+
+    const centerX =
+        width / 2;
+
+    const centerY =
+        height * 0.52;
+
+    const radius =
+        getGlobeSize();
+
+
+    /* Outer glow */
+
+    const glow =
+        ctx.createRadialGradient(
+            centerX,
+            centerY,
+            radius * 0.15,
+            centerX,
+            centerY,
+            radius * 1.15
+        );
+
+
+    glow.addColorStop(
+        0,
+        "rgba(0,170,255,0.07)"
+    );
+
+    glow.addColorStop(
+        0.55,
+        "rgba(0,170,255,0.025)"
+    );
+
+    glow.addColorStop(
+        1,
+        "rgba(0,170,255,0)"
+    );
+
+
+    ctx.fillStyle =
+        glow;
+
+    ctx.beginPath();
+
+    ctx.arc(
+        centerX,
+        centerY,
+        radius * 1.15,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* Globe outline */
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX,
+        centerY,
+        radius,
+        radius * 0.68,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.strokeStyle =
+        "rgba(0,170,255,0.10)";
+
+    ctx.lineWidth = 1;
+
+    ctx.stroke();
+
+
+    /* Longitude-style orbit */
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX,
+        centerY,
+        radius * 0.46,
+        radius * 0.68,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.strokeStyle =
+        "rgba(0,255,136,0.06)";
+
+    ctx.stroke();
+
+
+    /* Latitude-style orbit */
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX,
+        centerY,
+        radius,
+        radius * 0.25,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.strokeStyle =
+        "rgba(0,170,255,0.07)";
+
+    ctx.stroke();
+
+}
+
+
+/* =========================================================
+   DRAW NETWORK CONNECTIONS
+========================================================= */
+
+function drawConnections(projected) {
+
+    const maxDistance =
+        width < 600
+            ? 85
+            : width < 1000
+                ? 105
+                : 125;
+
+
+    for (
+        let i = 0;
+        i < projected.length;
+        i++
+    ) {
+
+        for (
+            let j = i + 1;
+            j < projected.length;
+            j++
+        ) {
+
+            const a =
+                projected[i];
+
+            const b =
+                projected[j];
+
+
+            if (
+                a.z < -0.45 ||
+                b.z < -0.45
+            ) {
+
+                continue;
+
+            }
+
+
+            const dx =
+                a.x - b.x;
+
+            const dy =
+                a.y - b.y;
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            if (
+                distance >
+                maxDistance
+            ) {
+
+                continue;
+
+            }
+
+
+            const alpha =
+                (1 -
+                distance /
+                maxDistance) *
+                0.18 *
+                Math.max(
+                    0.2,
+                    (a.z + b.z + 2) / 3
+                );
+
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                a.x,
+                a.y
+            );
+
+            ctx.lineTo(
+                b.x,
+                b.y
+            );
+
+
+            ctx.strokeStyle =
+                `rgba(0,190,255,${alpha})`;
+
+            ctx.lineWidth =
+                0.65;
+
+            ctx.stroke();
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   DRAW DATA PACKETS
+========================================================= */
+
+function drawPackets(projected) {
+
+    packets.forEach(packet => {
+
+        const from =
+            projected[
+                packet.from
+            ];
+
+        const to =
+            projected[
+                packet.to
+            ];
+
+
+        if (
+            !from ||
+            !to
+        ) {
+
+            return;
+
+        }
+
+
+        packet.progress +=
+            packet.speed *
+            16;
+
+
+        if (
+            packet.progress >= 1
+        ) {
+
+            packet.progress = 0;
+
+            packet.from =
+                Math.floor(
+                    Math.random() *
+                    nodes.length
+                );
+
+            packet.to =
+                Math.floor(
+                    Math.random() *
+                    nodes.length
+                );
+
+        }
+
+
+        if (
+            from.z < -0.35 ||
+            to.z < -0.35
+        ) {
+
+            return;
+
+        }
+
+
+        const x =
+            from.x +
+            (
+                to.x -
+                from.x
+            ) *
+            packet.progress;
+
+
+        const y =
+            from.y +
+            (
+                to.y -
+                from.y
+            ) *
+            packet.progress;
+
+
+        const glow =
+            ctx.createRadialGradient(
+                x,
+                y,
+                0,
+                x,
+                y,
+                8
+            );
+
+
+        glow.addColorStop(
+            0,
+            "rgba(0,255,180,0.9)"
+        );
+
+        glow.addColorStop(
+            0.3,
+            "rgba(0,210,255,0.5)"
+        );
+
+        glow.addColorStop(
+            1,
+            "rgba(0,210,255,0)"
+        );
+
+
+        ctx.fillStyle =
+            glow;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            8,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+
+        ctx.fillStyle =
+            "#7dffd1";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            1.5,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    });
+
+}
+
+
+/* =========================================================
+   DRAW NODES
+========================================================= */
+
+function drawNodes(projected, time) {
+
+    projected.forEach(
+        (point, index) => {
+
+            const node =
+                nodes[index];
+
+
+            if (
+                point.z <
+                -0.55
+            ) {
+
+                return;
+
+            }
+
+
+            const pulse =
+                1 +
+                Math.sin(
+                    time * 0.002 +
+                    node.pulse
+                ) *
+                0.25;
+
+
+            const size =
+                node.size *
+                point.scale *
+                pulse;
+
+
+            const color =
+                node.green
+                    ? "0,255,136"
+                    : "0,190,255";
+
+
+            const glow =
+                ctx.createRadialGradient(
+                    point.x,
+                    point.y,
+                    0,
+                    point.x,
+                    point.y,
+                    size * 6
+                );
+
+
+            glow.addColorStop(
+                0,
+                `rgba(${color},0.65)`
+            );
+
+            glow.addColorStop(
+                0.35,
+                `rgba(${color},0.20)`
+            );
+
+            glow.addColorStop(
+                1,
+                `rgba(${color},0)`
+            );
+
+
+            ctx.fillStyle =
+                glow;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                point.x,
+                point.y,
+                size * 5,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+
+
+            ctx.fillStyle =
+                node.green
+                    ? "#00ff88"
+                    : "#00bfff";
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                point.x,
+                point.y,
+                Math.max(
+                    0.8,
+                    size
+                ),
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DRAW NETWORK
+========================================================= */
+
+function drawNetwork(time) {
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    drawGlobe();
+
+
+    const projected =
+        nodes.map(
+            projectNode
+        );
+
+
+    drawConnections(
+        projected
+    );
+
+    drawPackets(
+        projected
+    );
+
+    drawNodes(
+        projected,
+        time
+    );
+
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+function animate(time) {
+
+    const delta =
+        time -
+        lastTime;
+
+    lastTime =
+        time;
+
+
+    if (!reducedMotion) {
+
+        rotation +=
+            delta *
+            0.000035;
+
+    }
+
+
+    drawNetwork(
+        time
+    );
+
+
+    if (!reducedMotion) {
+
+        animationFrame =
+            requestAnimationFrame(
+                animate
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   START NETWORK
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    resizeNetwork
+);
+
+
+resizeNetwork();
+
+
+if (reducedMotion) {
+
+    drawNetwork(0);
+
+} else {
+
+    animationFrame =
+        requestAnimationFrame(
+            animate
+        );
+
+}
+
+
+/* =========================================================
    QUIZ QUESTIONS
-========================= */
+========================================================= */
 
 const questions = [
 
@@ -1631,9 +2872,9 @@ const questions = [
 ];
 
 
-/* =========================
+/* =========================================================
    QUIZ VARIABLES
-========================= */
+========================================================= */
 
 let currentQuestion = 0;
 
@@ -1642,9 +2883,9 @@ let score = 0;
 let answered = false;
 
 
-/* =========================
+/* =========================================================
    DOM ELEMENTS
-========================= */
+========================================================= */
 
 const questionElement =
     document.getElementById("question");
@@ -1680,13 +2921,14 @@ const resultMessage =
     document.getElementById("resultMessage");
 
 
-/* =========================
+/* =========================================================
    LOAD QUESTION
-========================= */
+========================================================= */
 
 function loadQuestion() {
 
     answered = false;
+
 
     const q =
         questions[currentQuestion];
@@ -1717,9 +2959,10 @@ function loadQuestion() {
 
 
     const progress =
-        ((currentQuestion) /
-        questions.length) *
-        100;
+        (
+            currentQuestion /
+            questions.length
+        ) * 100;
 
 
     progressBar.style.width =
@@ -1760,9 +3003,9 @@ function loadQuestion() {
 }
 
 
-/* =========================
+/* =========================================================
    SELECT ANSWER
-========================= */
+========================================================= */
 
 function selectAnswer(
     index,
@@ -1795,7 +3038,10 @@ function selectAnswer(
     );
 
 
-    if (index === q.correct) {
+    if (
+        index ===
+        q.correct
+    ) {
 
         selectedButton.classList.add(
             "correct"
@@ -1819,7 +3065,9 @@ function selectAnswer(
         );
 
 
-        buttons[q.correct].classList.add(
+        buttons[
+            q.correct
+        ].classList.add(
             "correct"
         );
 
@@ -1840,9 +3088,9 @@ function selectAnswer(
 }
 
 
-/* =========================
+/* =========================================================
    NEXT QUESTION
-========================= */
+========================================================= */
 
 function nextQuestion() {
 
@@ -1866,9 +3114,9 @@ function nextQuestion() {
 }
 
 
-/* =========================
+/* =========================================================
    SHOW RESULTS
-========================= */
+========================================================= */
 
 function showResults() {
 
@@ -1886,27 +3134,34 @@ function showResults() {
 
     const percentage =
         Math.round(
-            (score /
-            questions.length) *
-            100
+            (
+                score /
+                questions.length
+            ) * 100
         );
 
 
-    if (percentage >= 90) {
+    if (
+        percentage >= 90
+    ) {
 
         resultMessage.textContent =
             `Outstanding! You scored ${percentage}%. You have a strong cybersecurity foundation.`;
 
     }
 
-    else if (percentage >= 75) {
+    else if (
+        percentage >= 75
+    ) {
 
         resultMessage.textContent =
             `Great job! You scored ${percentage}%. Keep practicing and you'll get even stronger.`;
 
     }
 
-    else if (percentage >= 60) {
+    else if (
+        percentage >= 60
+    ) {
 
         resultMessage.textContent =
             `Nice work! You scored ${percentage}%. Review the lessons and try again.`;
@@ -1923,9 +3178,9 @@ function showResults() {
 }
 
 
-/* =========================
+/* =========================================================
    RESTART QUIZ
-========================= */
+========================================================= */
 
 function restartQuiz() {
 
@@ -1947,9 +3202,9 @@ function restartQuiz() {
 }
 
 
-/* =========================
+/* =========================================================
    START QUIZ
-========================= */
+========================================================= */
 
 loadQuestion();
 
