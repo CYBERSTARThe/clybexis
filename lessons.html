@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Clyvexis cybersecurity lessons covering beginner, intermediate, and advanced security concepts. Learn cybersecurity through visual lessons, examples, interactive topics, and hands-on practice.">
+
+<meta
+    name="description"
+    content="Clyvexis cybersecurity lessons covering beginner, intermediate, and advanced security concepts. Learn cybersecurity through visual lessons, examples, interactive topics, and hands-on practice."
+>
+
 <title>Clyvexis | Cybersecurity Lessons</title>
 
 <style>
 
 /* =========================================================
-   CLYVEXIS LESSONS — PROFESSIONAL EDITION
+   CLYVEXIS LESSONS — PROFESSIONAL GLOBAL NETWORK EDITION
 ========================================================= */
 
 * {
@@ -26,24 +31,259 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
     min-height: 100vh;
-    background-color: #050b16;
-    background-image:
-        linear-gradient(
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(0, 75, 130, 0.10),
+            transparent 38%
         ),
-        linear-gradient(
-            90deg,
-            rgba(0,170,255,0.035) 1px,
-            transparent 1px
-        );
-    background-size: 40px 40px;
+        #020711;
     overflow-x: hidden;
 }
 
 button,
 input {
     font-family: inherit;
+}
+
+
+/* =========================================================
+   GLOBAL NETWORK BACKGROUND
+========================================================= */
+
+#network-canvas {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.95;
+}
+
+
+/* Dark cinematic overlay */
+
+.network-vignette {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 15%,
+            rgba(1, 5, 13, 0.15) 48%,
+            rgba(1, 4, 10, 0.72) 100%
+        );
+}
+
+
+/* Very subtle technical grid */
+
+.network-grid {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 170, 255, 0.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 170, 255, 0.045) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 0%,
+            transparent 78%
+        );
+
+    -webkit-mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 0%,
+            transparent 78%
+        );
+}
+
+
+/* Atmospheric glow */
+
+.network-glow-blue {
+    position: fixed;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 43%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 130, 255, 0.08),
+            transparent 68%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        networkBreath 8s ease-in-out infinite;
+}
+
+@keyframes networkBreath {
+
+    0%,
+    100% {
+        opacity: 0.55;
+        transform:
+            translate(-50%, -50%)
+            scale(0.96);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform:
+            translate(-50%, -50%)
+            scale(1.05);
+    }
+
+}
+
+
+/* =========================================================
+   HUD CORNER INFORMATION
+========================================================= */
+
+.network-hud {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    color: rgba(135, 211, 255, 0.42);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.hud {
+    position: absolute;
+
+    padding: 10px 13px;
+
+    border-left:
+        1px solid rgba(0, 170, 255, 0.35);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 100, 180, 0.08),
+            transparent
+        );
+
+    text-shadow:
+        0 0 8px rgba(0, 170, 255, 0.35);
+}
+
+.hud strong {
+    color: rgba(57, 255, 136, 0.72);
+    font-weight: 700;
+}
+
+.hud-top-left {
+    top: 125px;
+    left: 25px;
+}
+
+.hud-top-right {
+    top: 125px;
+    right: 25px;
+
+    text-align: right;
+
+    border-left: none;
+    border-right:
+        1px solid rgba(0, 170, 255, 0.35);
+
+    background:
+        linear-gradient(
+            270deg,
+            rgba(0, 100, 180, 0.08),
+            transparent
+        );
+}
+
+.hud-bottom-left {
+    bottom: 28px;
+    left: 25px;
+}
+
+.hud-bottom-right {
+    bottom: 28px;
+    right: 25px;
+
+    text-align: right;
+
+    border-left: none;
+    border-right:
+        1px solid rgba(0, 170, 255, 0.35);
+
+    background:
+        linear-gradient(
+            270deg,
+            rgba(0, 100, 180, 0.08),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   CONTENT LAYER
+========================================================= */
+
+nav,
+.hero,
+.stats,
+.section,
+footer {
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -65,18 +305,19 @@ nav {
     background:
         linear-gradient(
             90deg,
-            rgba(3,10,23,0.98),
-            rgba(7,20,40,0.97),
-            rgba(3,10,23,0.98)
+            rgba(2, 8, 19, 0.97),
+            rgba(5, 17, 34, 0.94),
+            rgba(2, 8, 19, 0.97)
         );
 
-    border-bottom: 1px solid rgba(0,170,255,0.55);
+    border-bottom:
+        1px solid rgba(0, 170, 255, 0.5);
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.15),
-        0 5px 30px rgba(0,0,0,0.5);
+        0 0 20px rgba(0, 170, 255, 0.12),
+        0 5px 30px rgba(0, 0, 0, 0.5);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(20px);
 }
 
 nav::before {
@@ -209,9 +450,9 @@ nav a.donate {
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(0,150,255,0.19),
-            transparent 38%
+            circle at 50% 35%,
+            rgba(0, 130, 255, 0.09),
+            transparent 45%
         );
 }
 
@@ -226,7 +467,7 @@ nav a.donate {
     border-radius: 50%;
 
     background:
-        rgba(0,140,255,0.13);
+        rgba(0, 140, 255, 0.08);
 
     filter: blur(120px);
 
@@ -248,7 +489,7 @@ nav a.donate {
     border-radius: 50%;
 
     background:
-        rgba(57,255,136,0.08);
+        rgba(57, 255, 136, 0.045);
 
     filter: blur(120px);
 
@@ -308,7 +549,8 @@ nav a.donate {
 
     border-radius: 30px;
 
-    border: 1px solid rgba(0,170,255,0.35);
+    border:
+        1px solid rgba(0,170,255,0.35);
 
     background:
         rgba(0,170,255,0.07);
@@ -432,7 +674,8 @@ nav a.donate {
 .hero-btn.secondary {
     color: white;
 
-    border: 1px solid rgba(0,170,255,0.4);
+    border:
+        1px solid rgba(0,170,255,0.4);
 
     background:
         rgba(0,170,255,0.06);
@@ -476,17 +719,20 @@ nav a.donate {
 
     border-radius: 18px;
 
-    border: 1px solid rgba(0,170,255,0.25);
+    border:
+        1px solid rgba(0,170,255,0.25);
 
     background:
         linear-gradient(
             145deg,
-            rgba(10,27,49,0.97),
-            rgba(4,13,27,0.97)
+            rgba(7,22,41,0.94),
+            rgba(3,11,23,0.96)
         );
 
     box-shadow:
         0 15px 35px rgba(0,0,0,0.3);
+
+    backdrop-filter: blur(12px);
 
     transition: 0.3s;
 }
@@ -597,17 +843,20 @@ nav a.donate {
 
     border-radius: 25px;
 
-    border: 1px solid rgba(0,170,255,0.3);
+    border:
+        1px solid rgba(0,170,255,0.3);
 
     background:
         linear-gradient(
             145deg,
-            rgba(8,25,47,0.97),
-            rgba(3,12,25,0.97)
+            rgba(8,25,47,0.92),
+            rgba(3,12,25,0.94)
         );
 
     box-shadow:
         0 20px 50px rgba(0,0,0,0.3);
+
+    backdrop-filter: blur(12px);
 }
 
 .path-card::before {
@@ -652,7 +901,8 @@ nav a.donate {
     background:
         rgba(0,170,255,0.045);
 
-    border: 1px solid rgba(0,170,255,0.18);
+    border:
+        1px solid rgba(0,170,255,0.18);
 
     transition: 0.3s;
 }
@@ -734,17 +984,20 @@ nav a.donate {
 
     border-radius: 25px;
 
-    border: 1px solid rgba(0,170,255,0.35);
+    border:
+        1px solid rgba(0,170,255,0.35);
 
     background:
         linear-gradient(
             145deg,
-            rgba(8,24,45,0.97),
-            rgba(3,12,25,0.97)
+            rgba(8,24,45,0.93),
+            rgba(3,12,25,0.95)
         );
 
     box-shadow:
         0 20px 50px rgba(0,0,0,0.3);
+
+    backdrop-filter: blur(12px);
 }
 
 .visual-card::before {
@@ -801,7 +1054,8 @@ nav a.donate {
 
     border-radius: 20px;
 
-    border: 1px solid rgba(57,255,136,0.3);
+    border:
+        1px solid rgba(57,255,136,0.3);
 
     color: #39ff88;
 
@@ -845,7 +1099,8 @@ nav a.donate {
 
     border-radius: 18px;
 
-    border: 1px solid rgba(0,170,255,0.35);
+    border:
+        1px solid rgba(0,170,255,0.35);
 
     background:
         linear-gradient(
@@ -1190,12 +1445,14 @@ nav a.donate {
     background:
         linear-gradient(
             145deg,
-            rgba(10,25,45,0.96),
-            rgba(4,13,27,0.96)
+            rgba(10,25,45,0.94),
+            rgba(4,13,27,0.95)
         );
 
     box-shadow:
         0 12px 30px rgba(0,0,0,0.23);
+
+    backdrop-filter: blur(10px);
 
     transition:
         transform 0.3s,
@@ -1404,9 +1661,11 @@ nav a.donate {
     background:
         linear-gradient(
             145deg,
-            rgba(9,24,44,0.95),
+            rgba(9,24,44,0.94),
             rgba(4,13,26,0.95)
         );
+
+    backdrop-filter: blur(10px);
 }
 
 .mindset-card h3 {
@@ -1476,6 +1735,8 @@ nav a.donate {
 
     box-shadow:
         0 0 35px rgba(0,170,255,0.08);
+
+    backdrop-filter: blur(12px);
 }
 
 .final-cta h2 {
@@ -1585,7 +1846,9 @@ footer {
         1px solid rgba(0,170,255,0.2);
 
     background:
-        rgba(2,8,18,0.9);
+        rgba(2,8,18,0.93);
+
+    backdrop-filter: blur(15px);
 
     color: #71879a;
 }
@@ -1650,6 +1913,10 @@ footer {
             1fr;
     }
 
+    .hud {
+        opacity: 0.55;
+    }
+
 }
 
 
@@ -1658,6 +1925,31 @@ footer {
 ========================================================= */
 
 @media (max-width: 650px) {
+
+    .network-grid {
+        background-size: 35px 35px;
+        opacity: 0.12;
+    }
+
+    .network-hud {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .hud-top-left {
+        top: 180px;
+        left: 10px;
+    }
+
+    .hud-top-right {
+        top: 180px;
+        right: 10px;
+    }
+
+    .hud-bottom-left,
+    .hud-bottom-right {
+        display: none;
+    }
 
     nav {
         padding: 15px 10px;
@@ -1805,10 +2097,84 @@ footer {
 
 }
 
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    #network-canvas {
+        opacity: 0.7;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     GLOBAL CYBER NETWORK BACKGROUND
+========================================================= -->
+
+<canvas
+    id="network-canvas"
+    aria-hidden="true">
+</canvas>
+
+<div class="network-vignette"></div>
+
+<div class="network-grid"></div>
+
+<div class="network-glow-blue"></div>
+
+
+<!-- =========================================================
+     PROFESSIONAL HUD OVERLAY
+========================================================= -->
+
+<div
+    class="network-hud"
+    aria-hidden="true">
+
+    <div class="hud hud-top-left">
+        GLOBAL NETWORK<br>
+        <strong>STATUS // ACTIVE</strong>
+    </div>
+
+    <div class="hud hud-top-right">
+        NETWORK SECURITY<br>
+        <strong>MONITORING // ENABLED</strong>
+    </div>
+
+    <div class="hud hud-bottom-left">
+        CLYVEXIS SECURITY NETWORK<br>
+        CONNECTION // <strong>SECURE</strong>
+    </div>
+
+    <div class="hud hud-bottom-right">
+        DEFENSE SYSTEM<br>
+        <strong>ONLINE</strong>
+    </div>
+
+</div>
+
 
 <!-- =========================================================
      NAVIGATION
@@ -1851,8 +2217,6 @@ footer {
             Games
         </a>
     </li>
-
-    <!-- DEFENSE ADDED -->
 
     <li>
         <a href="cyber-defense.html">
@@ -1898,7 +2262,7 @@ footer {
 <div class="hero-content">
 
     <div class="hero-badge">
-        ⚡ CYL VEXIS LEARNING SYSTEM
+        ⚡ CLYVEXIS LEARNING SYSTEM
     </div>
 
     <div class="hero-icon">
@@ -2323,8 +2687,6 @@ footer {
 <div class="lesson-grid">
 
 
-<!-- 01 -->
-
 <article
     class="lesson-card"
     data-title="what is cybersecurity"
@@ -2385,8 +2747,6 @@ footer {
 </article>
 
 
-<!-- 02 -->
-
 <article
     class="lesson-card"
     data-title="phishing"
@@ -2446,8 +2806,6 @@ footer {
 </article>
 
 
-<!-- 03 -->
-
 <article
     class="lesson-card"
     data-title="strong passwords password security"
@@ -2503,8 +2861,6 @@ footer {
 </article>
 
 
-<!-- 04 -->
-
 <article
     class="lesson-card"
     data-title="multi factor authentication mfa"
@@ -2559,8 +2915,6 @@ footer {
 </article>
 
 
-<!-- 05 -->
-
 <article
     class="lesson-card"
     data-title="malware virus worm trojan"
@@ -2614,8 +2968,6 @@ footer {
 
 </article>
 
-
-<!-- 06 -->
 
 <article
     class="lesson-card"
@@ -3709,6 +4061,839 @@ footer {
 ========================================================= -->
 
 <script>
+
+/* =========================================================
+   GLOBAL CYBER NETWORK
+========================================================= */
+
+const networkCanvas =
+    document.getElementById("network-canvas");
+
+const networkCtx =
+    networkCanvas.getContext("2d");
+
+let networkWidth = 0;
+let networkHeight = 0;
+let networkNodes = [];
+let networkPackets = [];
+let networkRotation = 0;
+
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* ---------------------------------------------------------
+   RESIZE
+--------------------------------------------------------- */
+
+function resizeNetwork() {
+
+    const dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+    networkWidth =
+        window.innerWidth;
+
+    networkHeight =
+        window.innerHeight;
+
+    networkCanvas.width =
+        networkWidth * dpr;
+
+    networkCanvas.height =
+        networkHeight * dpr;
+
+    networkCanvas.style.width =
+        networkWidth + "px";
+
+    networkCanvas.style.height =
+        networkHeight + "px";
+
+    networkCtx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    createNetworkNodes();
+
+}
+
+
+/* ---------------------------------------------------------
+   CREATE GLOBAL NETWORK
+--------------------------------------------------------- */
+
+function createNetworkNodes() {
+
+    networkNodes = [];
+
+    let count;
+
+    if (networkWidth <= 650) {
+
+        count = 65;
+
+    } else if (networkWidth <= 1000) {
+
+        count = 105;
+
+    } else {
+
+        count = 170;
+
+    }
+
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+        const theta =
+            Math.random() *
+            Math.PI * 2;
+
+        const phi =
+            Math.acos(
+                2 * Math.random() - 1
+            );
+
+        networkNodes.push({
+
+            theta: theta,
+
+            phi: phi,
+
+            depth:
+                Math.sin(phi) *
+                Math.sin(theta),
+
+            size:
+                0.7 +
+                Math.random() * 1.8,
+
+            green:
+                Math.random() > 0.82,
+
+            pulse:
+                Math.random() *
+                Math.PI * 2
+
+        });
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 3D SPHERE
+--------------------------------------------------------- */
+
+function projectNode(node) {
+
+    const x3 =
+        Math.sin(node.phi) *
+        Math.cos(
+            node.theta +
+            networkRotation
+        );
+
+    const y3 =
+        Math.cos(node.phi);
+
+    const z3 =
+        Math.sin(node.phi) *
+        Math.sin(
+            node.theta +
+            networkRotation
+        );
+
+
+    const centerX =
+        networkWidth * 0.5;
+
+    const centerY =
+        networkHeight * 0.47;
+
+
+    const baseRadius =
+        Math.min(
+            networkWidth,
+            networkHeight
+        ) *
+        (
+            networkWidth <= 650
+                ? 0.30
+                : 0.36
+        );
+
+
+    const radiusX =
+        baseRadius * 1.25;
+
+    const radiusY =
+        baseRadius * 0.78;
+
+
+    const perspective =
+        1 /
+        (
+            1.25 -
+            z3 * 0.28
+        );
+
+
+    return {
+
+        x:
+            centerX +
+            x3 *
+            radiusX *
+            perspective,
+
+        y:
+            centerY +
+            y3 *
+            radiusY *
+            perspective,
+
+        z: z3,
+
+        scale: perspective
+
+    };
+
+}
+
+
+/* ---------------------------------------------------------
+   DRAW GLOBE OUTLINE
+--------------------------------------------------------- */
+
+function drawGlobeOutline() {
+
+    const centerX =
+        networkWidth * 0.5;
+
+    const centerY =
+        networkHeight * 0.47;
+
+    const radius =
+        Math.min(
+            networkWidth,
+            networkHeight
+        ) *
+        (
+            networkWidth <= 650
+                ? 0.30
+                : 0.36
+        );
+
+
+    networkCtx.save();
+
+    networkCtx.beginPath();
+
+    networkCtx.ellipse(
+        centerX,
+        centerY,
+        radius * 1.25,
+        radius * 0.78,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    networkCtx.strokeStyle =
+        "rgba(0,170,255,0.12)";
+
+    networkCtx.lineWidth = 1;
+
+    networkCtx.stroke();
+
+
+    /* Latitude-like arcs */
+
+    for (
+        let i = -2;
+        i <= 2;
+        i++
+    ) {
+
+        networkCtx.beginPath();
+
+        networkCtx.ellipse(
+            centerX,
+            centerY +
+                i * radius * 0.15,
+            radius *
+                1.05,
+            radius *
+                (0.35 + Math.abs(i) * 0.04),
+            0,
+            0,
+            Math.PI * 2
+        );
+
+        networkCtx.strokeStyle =
+            "rgba(0,170,255,0.045)";
+
+        networkCtx.stroke();
+
+    }
+
+
+    /* Longitude arcs */
+
+    for (
+        let i = 0;
+        i < 4;
+        i++
+    ) {
+
+        networkCtx.beginPath();
+
+        networkCtx.ellipse(
+            centerX,
+            centerY,
+            radius *
+                (0.25 + i * 0.25),
+            radius * 0.78,
+            0,
+            0,
+            Math.PI * 2
+        );
+
+        networkCtx.strokeStyle =
+            "rgba(57,255,136,0.035)";
+
+        networkCtx.stroke();
+
+    }
+
+    networkCtx.restore();
+
+}
+
+
+/* ---------------------------------------------------------
+   DRAW ORBITAL RINGS
+--------------------------------------------------------- */
+
+function drawOrbitals(time) {
+
+    const centerX =
+        networkWidth * 0.5;
+
+    const centerY =
+        networkHeight * 0.47;
+
+    const radius =
+        Math.min(
+            networkWidth,
+            networkHeight
+        ) *
+        (
+            networkWidth <= 650
+                ? 0.34
+                : 0.40
+        );
+
+
+    networkCtx.save();
+
+    for (
+        let i = 0;
+        i < 3;
+        i++
+    ) {
+
+        const rotation =
+            time * 0.00012 *
+            (i % 2 === 0 ? 1 : -1)
+            + i;
+
+        networkCtx.beginPath();
+
+        networkCtx.ellipse(
+            centerX,
+            centerY,
+            radius * (1 + i * 0.10),
+            radius *
+                (0.28 + i * 0.04),
+            rotation,
+            0,
+            Math.PI * 2
+        );
+
+        networkCtx.strokeStyle =
+            i === 1
+                ? "rgba(57,255,136,0.10)"
+                : "rgba(0,170,255,0.11)";
+
+        networkCtx.lineWidth =
+            i === 0 ? 1.3 : 0.8;
+
+        networkCtx.stroke();
+
+    }
+
+    networkCtx.restore();
+
+}
+
+
+/* ---------------------------------------------------------
+   DRAW CONNECTIONS
+--------------------------------------------------------- */
+
+function drawConnections(projected) {
+
+    const connectionDistance =
+        networkWidth <= 650
+            ? 105
+            : 135;
+
+
+    for (
+        let i = 0;
+        i < projected.length;
+        i++
+    ) {
+
+        const a =
+            projected[i];
+
+        if (a.z < -0.45) {
+            continue;
+        }
+
+
+        for (
+            let j = i + 1;
+            j < projected.length;
+            j++
+        ) {
+
+            const b =
+                projected[j];
+
+            if (b.z < -0.45) {
+                continue;
+            }
+
+
+            const dx =
+                a.x - b.x;
+
+            const dy =
+                a.y - b.y;
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            if (
+                distance <
+                connectionDistance
+            ) {
+
+                const alpha =
+                    (1 -
+                        distance /
+                        connectionDistance
+                    ) *
+                    0.24;
+
+
+                networkCtx.beginPath();
+
+                networkCtx.moveTo(
+                    a.x,
+                    a.y
+                );
+
+                networkCtx.lineTo(
+                    b.x,
+                    b.y
+                );
+
+
+                networkCtx.strokeStyle =
+                    "rgba(0,180,255," +
+                    alpha +
+                    ")";
+
+                networkCtx.lineWidth =
+                    0.6;
+
+                networkCtx.stroke();
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   DRAW NODES
+--------------------------------------------------------- */
+
+function drawNodes(
+    projected,
+    time
+) {
+
+    projected.forEach(
+        (point, index) => {
+
+            const node =
+                networkNodes[index];
+
+            if (
+                point.z <
+                -0.58
+            ) {
+                return;
+            }
+
+
+            const pulse =
+                Math.sin(
+                    time * 0.002 +
+                    node.pulse
+                ) * 0.5 + 0.5;
+
+
+            const radius =
+                (
+                    node.size *
+                    point.scale
+                ) *
+                (
+                    point.z > 0
+                        ? 1
+                        : 0.7
+                );
+
+
+            const color =
+                node.green
+                    ? "57,255,136"
+                    : "0,190,255";
+
+
+            const glow =
+                networkCtx.createRadialGradient(
+                    point.x,
+                    point.y,
+                    0,
+                    point.x,
+                    point.y,
+                    radius * 6
+                );
+
+
+            glow.addColorStop(
+                0,
+                "rgba(" +
+                color +
+                ",0.45)"
+            );
+
+            glow.addColorStop(
+                1,
+                "rgba(" +
+                color +
+                ",0)"
+            );
+
+
+            networkCtx.beginPath();
+
+            networkCtx.fillStyle =
+                glow;
+
+            networkCtx.arc(
+                point.x,
+                point.y,
+                radius * 6,
+                0,
+                Math.PI * 2
+            );
+
+            networkCtx.fill();
+
+
+            networkCtx.beginPath();
+
+            networkCtx.fillStyle =
+                "rgba(" +
+                color +
+                "," +
+                (
+                    0.55 +
+                    pulse * 0.35
+                ) +
+                ")";
+
+
+            networkCtx.arc(
+                point.x,
+                point.y,
+                Math.max(
+                    1,
+                    radius
+                ),
+                0,
+                Math.PI * 2
+            );
+
+            networkCtx.fill();
+
+        }
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   DATA PACKETS
+--------------------------------------------------------- */
+
+function createPackets(projected) {
+
+    networkPackets = [];
+
+    for (
+        let i = 0;
+        i < 9;
+        i++
+    ) {
+
+        const start =
+            Math.floor(
+                Math.random() *
+                projected.length
+            );
+
+        let end =
+            Math.floor(
+                Math.random() *
+                projected.length
+            );
+
+
+        if (end === start) {
+            end =
+                (
+                    end + 1
+                ) %
+                projected.length;
+        }
+
+
+        networkPackets.push({
+
+            start: start,
+
+            end: end,
+
+            progress:
+                Math.random(),
+
+            speed:
+                0.0015 +
+                Math.random() *
+                0.0025
+
+        });
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   DRAW DATA PACKETS
+--------------------------------------------------------- */
+
+function drawPackets(
+    projected
+) {
+
+    networkPackets.forEach(
+        packet => {
+
+            const a =
+                projected[
+                    packet.start
+                ];
+
+            const b =
+                projected[
+                    packet.end
+                ];
+
+
+            if (
+                !a ||
+                !b ||
+                a.z < -0.5 ||
+                b.z < -0.5
+            ) {
+                return;
+            }
+
+
+            packet.progress +=
+                packet.speed;
+
+
+            if (
+                packet.progress >= 1
+            ) {
+
+                packet.progress = 0;
+
+            }
+
+
+            const x =
+                a.x +
+                (
+                    b.x - a.x
+                ) *
+                packet.progress;
+
+            const y =
+                a.y +
+                (
+                    b.y - a.y
+                ) *
+                packet.progress;
+
+
+            networkCtx.beginPath();
+
+            networkCtx.fillStyle =
+                "rgba(57,255,136,0.9)";
+
+            networkCtx.shadowBlur = 12;
+
+            networkCtx.shadowColor =
+                "#39ff88";
+
+            networkCtx.arc(
+                x,
+                y,
+                1.6,
+                0,
+                Math.PI * 2
+            );
+
+            networkCtx.fill();
+
+            networkCtx.shadowBlur = 0;
+
+        }
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   DRAW NETWORK
+--------------------------------------------------------- */
+
+function drawNetwork(time) {
+
+    networkCtx.clearRect(
+        0,
+        0,
+        networkWidth,
+        networkHeight
+    );
+
+
+    if (!reducedMotion) {
+
+        networkRotation +=
+            0.00065;
+
+    }
+
+
+    drawGlobeOutline();
+
+    drawOrbitals(time);
+
+
+    const projected =
+        networkNodes.map(
+            projectNode
+        );
+
+
+    drawConnections(
+        projected
+    );
+
+    drawNodes(
+        projected,
+        time
+    );
+
+    drawPackets(
+        projected
+    );
+
+
+    requestAnimationFrame(
+        drawNetwork
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   INITIALIZE
+--------------------------------------------------------- */
+
+resizeNetwork();
+
+createPackets(
+    networkNodes.map(
+        projectNode
+    )
+);
+
+window.addEventListener(
+    "resize",
+    resizeNetwork
+);
+
+drawNetwork(
+    performance.now()
+);
+
 
 /* =========================================================
    VISUAL LESSON DATA
