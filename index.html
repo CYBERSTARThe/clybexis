@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- =====================================================
+         BASIC DOCUMENT SETUP
+    ===================================================== -->
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
+    <!-- Google Search Console -->
     <meta
         name="google-site-verification"
         content="7LVdoDj4R1AxBbP5Nn6Zk0rUqpKI7B43HSMRczBcS1I"
     >
+
+
+    <!-- =====================================================
+         SEO
+    ===================================================== -->
 
     <title>
         Clyvexis | Cybersecurity Education, Labs & Learning
@@ -30,6 +44,11 @@
         href="https://cyberstarthe.github.io/clyvexis/"
     >
 
+
+    <!-- =====================================================
+         SOCIAL / OPEN GRAPH
+    ===================================================== -->
+
     <meta
         property="og:title"
         content="Clyvexis | Cybersecurity Education, Labs & Learning"
@@ -45,15 +64,21 @@
         content="website"
     >
 
+    <!-- Fixed to match canonical URL -->
     <meta
         property="og:url"
-        content="https://cyberstarthe.github.io/clybexis/"
+        content="https://cyberstarthe.github.io/clyvexis/"
     >
+
+
+    <!-- =====================================================
+         STYLES
+    ===================================================== -->
 
     <style>
 
         /* =====================================================
-           RESET
+           01. RESET & BASE
         ===================================================== */
 
         * {
@@ -65,11 +90,6 @@
         html {
             scroll-behavior: smooth;
         }
-
-
-        /* =====================================================
-           BODY
-        ===================================================== */
 
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -101,15 +121,18 @@
 
 
         /* =====================================================
-           PROFESSIONAL CYBER GRID
+           02. GLOBAL CYBER GRID
         ===================================================== */
 
         body::after {
             content: "";
+
             position: fixed;
             inset: 0;
+
             pointer-events: none;
             z-index: 0;
+
             opacity: 0.65;
 
             background-image:
@@ -123,8 +146,7 @@
                     transparent 1px
                 );
 
-            background-size:
-                45px 45px;
+            background-size: 45px 45px;
 
             mask-image:
                 linear-gradient(
@@ -155,30 +177,34 @@
 
 
         /* =====================================================
-           CYBER ATMOSPHERE
+           03. CYBER ATMOSPHERE
         ===================================================== */
 
         .cyber-atmosphere {
             position: fixed;
             inset: 0;
+
             pointer-events: none;
             overflow: hidden;
+
             z-index: 0;
         }
 
 
-        /* LARGE BLUE ORB */
+        /* Large blue orb */
 
         .cyber-atmosphere::before {
             content: "";
+
             position: absolute;
+
             width: 650px;
             height: 650px;
+
             top: -360px;
             left: 50%;
 
-            transform:
-                translateX(-50%);
+            transform: translateX(-50%);
 
             border-radius: 50%;
 
@@ -197,13 +223,16 @@
         }
 
 
-        /* GREEN SIDE ORB */
+        /* Green side orb */
 
         .cyber-atmosphere::after {
             content: "";
+
             position: absolute;
+
             width: 500px;
             height: 500px;
+
             right: -300px;
             bottom: 5%;
 
@@ -219,7 +248,6 @@
             animation:
                 sideGlow 9s ease-in-out infinite alternate;
         }
-
 
         @keyframes atmospherePulse {
 
@@ -240,7 +268,6 @@
             }
         }
 
-
         @keyframes sideGlow {
 
             from {
@@ -256,12 +283,14 @@
 
 
         /* =====================================================
-           SCANNING LIGHT
+           04. SCANNING LIGHT
         ===================================================== */
 
         .scan-line {
             position: fixed;
+
             left: 0;
+
             width: 100%;
             height: 1px;
 
@@ -279,13 +308,14 @@
                 rgba(0, 170, 255, 0.25);
 
             pointer-events: none;
+
             z-index: 0;
+
             opacity: 0.35;
 
             animation:
                 scanMove 10s linear infinite;
         }
-
 
         @keyframes scanMove {
 
@@ -300,15 +330,18 @@
 
 
         /* =====================================================
-           NAVBAR
+           05. NAVIGATION
         ===================================================== */
 
         nav {
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
 
             display: flex;
+
             justify-content: space-between;
             align-items: center;
 
@@ -335,13 +368,16 @@
         }
 
 
-        /* NAVBAR TOP ENERGY LINE */
+        /* Navbar top energy line */
 
         nav::before {
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 2px;
 
@@ -355,8 +391,7 @@
                     transparent
                 );
 
-            background-size:
-                200% 100%;
+            background-size: 200% 100%;
 
             box-shadow:
                 0 0 14px
@@ -365,7 +400,6 @@
             animation:
                 navEnergy 5s linear infinite;
         }
-
 
         @keyframes navEnergy {
 
@@ -381,13 +415,13 @@
         }
 
 
-        /* =====================================================
-           LOGO
-        ===================================================== */
+        /* Logo */
 
         .logo {
             font-size: 26px;
+
             font-weight: bold;
+
             letter-spacing: 0.5px;
 
             text-shadow:
@@ -400,34 +434,38 @@
         }
 
 
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
+        /* Navigation list */
 
         nav ul {
             list-style: none;
 
             display: flex;
+
             align-items: center;
 
             gap: 20px;
+
             flex-wrap: wrap;
         }
 
+
+        /* Navigation links */
 
         nav a {
             position: relative;
 
             color: white;
+
             text-decoration: none;
+
             font-weight: bold;
+
             font-size: 14px;
 
             transition:
                 color 0.3s,
                 text-shadow 0.3s;
         }
-
 
         nav a:hover {
             color: #00aaff;
@@ -438,12 +476,11 @@
         }
 
 
-        /* ACTIVE PAGE */
+        /* Active page */
 
         nav a.active {
             color: #39ff88;
         }
-
 
         nav a.active::after {
             content: "";
@@ -469,9 +506,7 @@
         }
 
 
-        /* =====================================================
-           DONATE
-        ===================================================== */
+        /* Donate */
 
         .donate {
             padding: 8px 14px;
@@ -496,16 +531,18 @@
 
 
         /* =====================================================
-           HERO
+           06. HERO
         ===================================================== */
 
         .hero {
             position: relative;
+
             z-index: 1;
 
             min-height: 700px;
 
             display: flex;
+
             justify-content: center;
             align-items: center;
 
@@ -517,7 +554,7 @@
         }
 
 
-        /* HERO BLUE LIGHT */
+        /* Hero blue light */
 
         .hero::before {
             content: "";
@@ -544,7 +581,7 @@
         }
 
 
-        /* HERO GREEN LIGHT */
+        /* Hero green light */
 
         .hero::after {
             content: "";
@@ -570,7 +607,6 @@
             pointer-events: none;
         }
 
-
         @keyframes heroGlowLeft {
 
             from {
@@ -585,7 +621,6 @@
                     scale(1.15);
             }
         }
-
 
         @keyframes heroGlowRight {
 
@@ -603,21 +638,18 @@
         }
 
 
-        /* =====================================================
-           HERO CONTENT
-        ===================================================== */
+        /* Hero content */
 
         .hero-content {
             position: relative;
+
             z-index: 2;
 
             max-width: 850px;
         }
 
 
-        /* =====================================================
-           SHIELD
-        ===================================================== */
+        /* Shield */
 
         .shield {
             font-size: 85px;
@@ -638,7 +670,6 @@
                 shieldFloat 3s ease-in-out infinite;
         }
 
-
         @keyframes shieldFloat {
 
             0%,
@@ -654,9 +685,7 @@
         }
 
 
-        /* =====================================================
-           MAIN TITLE
-        ===================================================== */
+        /* Main title */
 
         .hero h1 {
             font-size:
@@ -664,19 +693,16 @@
 
             margin-bottom: 15px;
 
-            letter-spacing:
-                -2px;
+            letter-spacing: -2px;
 
             text-shadow:
                 0 0 30px
                 rgba(0, 170, 255, 0.10);
         }
 
-
         .hero h1 .cyber {
             color: white;
         }
-
 
         .hero h1 .start {
             background:
@@ -689,14 +715,11 @@
 
             -webkit-background-clip: text;
 
-            -webkit-text-fill-color:
-                transparent;
+            -webkit-text-fill-color: transparent;
         }
 
 
-        /* =====================================================
-           TAGLINE
-        ===================================================== */
+        /* Tagline */
 
         .tagline {
             font-size: 15px;
@@ -710,7 +733,6 @@
             color: #dce8f5;
         }
 
-
         .tagline span {
             color: #39ff88;
 
@@ -722,9 +744,7 @@
         }
 
 
-        /* =====================================================
-           HERO DESCRIPTION
-        ===================================================== */
+        /* Hero description */
 
         .hero p {
             max-width: 700px;
@@ -739,9 +759,7 @@
         }
 
 
-        /* =====================================================
-           START BUTTON
-        ===================================================== */
+        /* Start button */
 
         .start-button {
             display: inline-block;
@@ -775,7 +793,6 @@
                 box-shadow 0.3s;
         }
 
-
         .start-button:hover {
             transform:
                 translateY(-3px);
@@ -787,16 +804,26 @@
 
 
         /* =====================================================
-           WHAT CLYVEXIS TEACHES
+           07. SHARED SECTION CONTAINER
         ===================================================== */
 
-        .learn-section {
+        .learn-section,
+        .features-section,
+        .knowledge-section,
+        .career-section {
             width: 94%;
+
             max-width: 1250px;
 
             margin: 40px auto;
 
-            padding: 40px 35px;
+            position: relative;
+
+            z-index: 1;
+
+            overflow: hidden;
+
+            backdrop-filter: blur(8px);
 
             background:
                 linear-gradient(
@@ -805,26 +832,25 @@
                     rgba(3, 12, 25, 0.91)
                 );
 
-            border:
-                1px solid
-                rgba(0, 170, 255, 0.35);
-
             border-radius: 20px;
 
             box-shadow:
                 0 0 35px
                 rgba(0, 170, 255, 0.07);
-
-            position: relative;
-
-            z-index: 1;
-
-            overflow: hidden;
-
-            backdrop-filter:
-                blur(8px);
         }
 
+
+        /* =====================================================
+           08. WHAT CLYVEXIS TEACHES
+        ===================================================== */
+
+        .learn-section {
+            padding: 40px 35px;
+
+            border:
+                1px solid
+                rgba(0, 170, 255, 0.35);
+        }
 
         .learn-section::before {
             content: "";
@@ -849,7 +875,6 @@
                 rgba(0, 170, 255, 0.7);
         }
 
-
         .learn-title {
             text-align: center;
 
@@ -857,7 +882,6 @@
 
             margin-bottom: 12px;
         }
-
 
         .learn-intro {
             max-width: 700px;
@@ -871,7 +895,6 @@
             line-height: 1.7;
         }
 
-
         .topic-grid {
             display: grid;
 
@@ -880,7 +903,6 @@
 
             gap: 20px;
         }
-
 
         .topic-card {
             padding: 25px;
@@ -904,7 +926,6 @@
                 box-shadow 0.3s;
         }
 
-
         .topic-card:hover {
             transform:
                 translateY(-5px);
@@ -917,69 +938,491 @@
                 rgba(0, 170, 255, 0.18);
         }
 
-
         .topic-card h3 {
-            color:
-                #00aaff;
+            color: #00aaff;
 
-            margin-bottom:
-                10px;
+            margin-bottom: 10px;
         }
 
-
         .topic-card p {
-            color:
-                #aebdcc;
+            color: #aebdcc;
 
-            line-height:
-                1.6;
+            line-height: 1.6;
 
-            font-size:
-                14px;
+            font-size: 14px;
         }
 
 
         /* =====================================================
-           FEATURES SECTION
+           09. CYBERSECURITY CAREER PATHS
         ===================================================== */
 
-        .features-section {
-            width: 94%;
-            max-width: 1250px;
-
-            margin: 40px auto;
-
-            padding: 35px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(8, 25, 45, 0.90),
-                    rgba(3, 12, 25, 0.91)
-                );
+        .career-section {
+            padding: 40px 35px;
 
             border:
                 1px solid
                 rgba(0, 170, 255, 0.35);
+        }
 
-            border-radius: 20px;
+        .career-section::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #39ff88,
+                    #00aaff
+                );
+
+            background-size: 200% 100%;
 
             box-shadow:
-                0 0 35px
-                rgba(0, 170, 255, 0.07);
+                0 0 12px
+                rgba(0, 170, 255, 0.7);
+
+            animation:
+                careerEnergy 5s linear infinite;
+        }
+
+        @keyframes careerEnergy {
+
+            from {
+                background-position:
+                    200% 0;
+            }
+
+            to {
+                background-position:
+                    -200% 0;
+            }
+        }
+
+        .career-title {
+            text-align: center;
+
+            font-size: 34px;
+
+            margin-bottom: 12px;
+        }
+
+        .career-title span {
+            color: #00aaff;
+        }
+
+        .career-intro {
+            max-width: 760px;
+
+            margin: 0 auto 30px;
+
+            text-align: center;
+
+            color: #aebdcc;
+
+            line-height: 1.7;
+        }
+
+        .career-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .career-card {
+            padding: 25px;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 170, 255, 0.07),
+                    rgba(57, 255, 136, 0.025)
+                );
+
+            border:
+                1px solid
+                rgba(0, 170, 255, 0.25);
+
+            transition:
+                transform 0.3s,
+                border-color 0.3s,
+                box-shadow 0.3s;
 
             position: relative;
 
-            z-index: 1;
-
             overflow: hidden;
+        }
 
-            backdrop-filter:
-                blur(8px);
+        .career-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 120px;
+
+            right: -70px;
+            top: -70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 170, 255, 0.08);
+
+            filter: blur(2px);
+        }
+
+        .career-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                #00aaff;
+
+            box-shadow:
+                0 0 28px
+                rgba(0, 170, 255, 0.18);
+        }
+
+        .career-icon {
+            font-size: 38px;
+
+            margin-bottom: 15px;
+        }
+
+        .career-card h3 {
+            color: #00aaff;
+
+            margin-bottom: 10px;
+        }
+
+        .career-card p {
+            color: #aebdcc;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 16px;
+        }
+
+        .career-skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-bottom: 17px;
+        }
+
+        .career-skill {
+            padding: 5px 9px;
+
+            border-radius: 7px;
+
+            color: #39ff88;
+
+            background:
+                rgba(57, 255, 136, 0.06);
+
+            border:
+                1px solid
+                rgba(57, 255, 136, 0.18);
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .career-link {
+            color: #39ff88;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 13px;
+        }
+
+        .career-link:hover {
+            color: #00aaff;
         }
 
 
-        /* SECTION TOP LINE */
+        /* =====================================================
+           10. CYBER KNOWLEDGE MAP
+        ===================================================== */
+
+        .knowledge-section {
+            padding: 40px 35px;
+
+            border:
+                1px solid
+                rgba(57, 255, 136, 0.28);
+        }
+
+        .knowledge-section::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #39ff88,
+                    #00aaff
+                );
+
+            background-size: 200% 100%;
+
+            box-shadow:
+                0 0 12px
+                rgba(0, 170, 255, 0.7);
+
+            animation:
+                knowledgeEnergy 5s linear infinite;
+        }
+
+        @keyframes knowledgeEnergy {
+
+            from {
+                background-position:
+                    200% 0;
+            }
+
+            to {
+                background-position:
+                    -200% 0;
+            }
+        }
+
+        .knowledge-title {
+            text-align: center;
+
+            font-size: 34px;
+
+            margin-bottom: 12px;
+        }
+
+        .knowledge-title span {
+            color: #39ff88;
+        }
+
+        .knowledge-intro {
+            max-width: 780px;
+
+            margin: 0 auto 30px;
+
+            text-align: center;
+
+            color: #aebdcc;
+
+            line-height: 1.7;
+        }
+
+        .knowledge-map {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 16px;
+
+            align-items: stretch;
+        }
+
+        .knowledge-node {
+            display: block;
+
+            padding: 22px 18px;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 170, 255, 0.08),
+                    rgba(57, 255, 136, 0.025)
+                );
+
+            border:
+                1px solid
+                rgba(0, 170, 255, 0.25);
+
+            color: white;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.3s,
+                border-color 0.3s,
+                box-shadow 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .knowledge-node:hover {
+            transform:
+                translateY(-6px);
+
+            border-color:
+                #00aaff;
+
+            box-shadow:
+                0 0 25px
+                rgba(0, 170, 255, 0.20);
+        }
+
+        .knowledge-node .knowledge-icon {
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .knowledge-node h3 {
+            color: #00aaff;
+
+            margin-bottom: 8px;
+
+            font-size: 19px;
+        }
+
+        .knowledge-node p {
+            color: #aebdcc;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin-bottom: 14px;
+        }
+
+        .knowledge-topics {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+        .knowledge-topic {
+            display: inline-block;
+
+            padding: 5px 8px;
+
+            border-radius: 7px;
+
+            color: #39ff88;
+
+            background:
+                rgba(57, 255, 136, 0.06);
+
+            border:
+                1px solid
+                rgba(57, 255, 136, 0.18);
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .knowledge-flow {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin: 28px 0 8px;
+
+            color: #7f8da0;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+        .knowledge-flow strong {
+            color: #00aaff;
+        }
+
+        .knowledge-career {
+            margin-top: 25px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                rgba(57, 255, 136, 0.25);
+
+            border-radius: 14px;
+
+            background:
+                rgba(57, 255, 136, 0.035);
+        }
+
+        .knowledge-career p {
+            color: #aebdcc;
+
+            margin-bottom: 12px;
+
+            line-height: 1.6;
+        }
+
+        .knowledge-career a {
+            color: #39ff88;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .knowledge-career a:hover {
+            color: #00aaff;
+        }
+
+
+        /* =====================================================
+           11. EXPLORE CLYVEXIS
+        ===================================================== */
+
+        .features-section {
+            padding: 35px;
+
+            border:
+                1px solid
+                rgba(0, 170, 255, 0.35);
+        }
 
         .features-section::before {
             content: "";
@@ -1004,11 +1447,6 @@
                 rgba(0, 170, 255, 0.7);
         }
 
-
-        /* =====================================================
-           SECTION TITLE
-        ===================================================== */
-
         .features-title {
             text-align: center;
 
@@ -1016,11 +1454,6 @@
 
             margin-bottom: 30px;
         }
-
-
-        /* =====================================================
-           FEATURE GRID
-        ===================================================== */
 
         .features-grid {
             display: grid;
@@ -1030,11 +1463,6 @@
 
             gap: 20px;
         }
-
-
-        /* =====================================================
-           FEATURE CARD
-        ===================================================== */
 
         .feature-card {
             padding: 25px 15px;
@@ -1063,7 +1491,6 @@
                 blur(4px);
         }
 
-
         .feature-card:hover {
             transform:
                 translateY(-7px);
@@ -1077,9 +1504,7 @@
         }
 
 
-        /* =====================================================
-           FEATURE ICON
-        ===================================================== */
+        /* Feature icon */
 
         .feature-icon {
             width: 85px;
@@ -1114,71 +1539,51 @@
         }
 
 
-        /* =====================================================
-           FEATURE TITLE
-        ===================================================== */
+        /* Feature title */
 
         .feature-card h3 {
             margin-bottom: 10px;
 
-            color:
-                #00aaff;
+            color: #00aaff;
         }
 
 
-        /* =====================================================
-           FEATURE DESCRIPTION
-        ===================================================== */
+        /* Feature description */
 
         .feature-card p {
-            color:
-                #aebdcc;
+            color: #aebdcc;
 
-            font-size:
-                13px;
+            font-size: 13px;
 
-            line-height:
-                1.5;
+            line-height: 1.5;
 
-            margin-bottom:
-                15px;
+            margin-bottom: 15px;
         }
 
 
-        /* =====================================================
-           FEATURE LINK
-        ===================================================== */
+        /* Feature link */
 
         .feature-link {
-            color:
-                #39ff88;
+            color: #39ff88;
 
-            text-decoration:
-                none;
+            text-decoration: none;
 
-            font-weight:
-                bold;
+            font-weight: bold;
 
-            font-size:
-                13px;
+            font-size: 13px;
         }
-
 
         .feature-link:hover {
-            color:
-                #00aaff;
+            color: #00aaff;
         }
 
 
-        /* =====================================================
-           DEFENSE CARD
-        ===================================================== */
+        /* Defense */
 
         .defense-card {
             border-color:
                 rgba(57, 255, 136, 0.45);
         }
-
 
         .defense-card .feature-icon {
             border-color:
@@ -1189,22 +1594,18 @@
                 rgba(57, 255, 136, 0.20);
         }
 
-
         .defense-card h3 {
             color:
                 #39ff88;
         }
 
 
-        /* =====================================================
-           CODING CARD
-        ===================================================== */
+        /* Coding */
 
         .coding-card {
             border-color:
                 rgba(57, 255, 136, 0.35);
         }
-
 
         .coding-card .feature-icon {
             border-color:
@@ -1212,15 +1613,12 @@
         }
 
 
-        /* =====================================================
-           SIMULATOR CARD
-        ===================================================== */
+        /* Simulators */
 
         .simulator-card {
             border-color:
                 rgba(0, 170, 255, 0.45);
         }
-
 
         .simulator-card .feature-icon {
             border-color:
@@ -1233,7 +1631,7 @@
 
 
         /* =====================================================
-           FOOTER
+           12. FOOTER
         ===================================================== */
 
         footer {
@@ -1259,28 +1657,20 @@
                 rgba(0, 0, 0, 0.20);
         }
 
-
         footer h2 {
-            margin-bottom:
-                10px;
+            margin-bottom: 10px;
         }
-
 
         footer h2 span {
-            color:
-                #00aaff;
+            color: #00aaff;
         }
 
-
         .footer-line {
-            width:
-                120px;
+            width: 120px;
 
-            height:
-                2px;
+            height: 2px;
 
-            margin:
-                15px auto;
+            margin: 15px auto;
 
             background:
                 linear-gradient(
@@ -1294,48 +1684,61 @@
                 rgba(0, 170, 255, 0.7);
         }
 
-
         footer p {
-            color:
-                #7f8da0;
+            color: #7f8da0;
 
-            margin-top:
-                8px;
+            margin-top: 8px;
         }
 
 
         /* =====================================================
-           TABLET RESPONSIVE
+           13. TABLET RESPONSIVE
         ===================================================== */
 
         @media (max-width: 950px) {
 
+            /* Navigation */
+
             nav {
-                flex-direction:
-                    column;
+                flex-direction: column;
 
-                gap:
-                    15px;
+                gap: 15px;
             }
-
 
             nav ul {
-                flex-wrap:
-                    wrap;
+                flex-wrap: wrap;
 
-                justify-content:
-                    center;
+                justify-content: center;
 
-                gap:
-                    12px;
+                gap: 12px;
             }
 
+
+            /* Learning */
 
             .topic-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
+
+            /* Careers */
+
+            .career-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            /* Knowledge Map */
+
+            .knowledge-map {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            /* Features */
 
             .features-grid {
                 grid-template-columns:
@@ -1345,119 +1748,139 @@
 
 
         /* =====================================================
-           MOBILE RESPONSIVE
+           14. MOBILE RESPONSIVE
         ===================================================== */
 
         @media (max-width: 600px) {
+
+            /* Navigation */
 
             nav {
                 padding:
                     15px 10px;
             }
 
-
             nav ul {
-                gap:
-                    10px;
+                gap: 10px;
             }
-
 
             nav a {
-                font-size:
-                    12px;
+                font-size: 12px;
             }
-
 
             .logo {
-                font-size:
-                    23px;
+                font-size: 23px;
             }
 
 
+            /* Hero */
+
             .hero {
-                min-height:
-                    600px;
+                min-height: 600px;
 
                 padding:
                     60px 15px;
             }
 
-
             .hero h1 {
-                font-size:
-                    52px;
+                font-size: 52px;
             }
-
 
             .hero p {
-                font-size:
-                    15px;
+                font-size: 15px;
             }
-
 
             .hero::before {
-                width:
-                    500px;
+                width: 500px;
 
-                height:
-                    500px;
+                height: 500px;
             }
 
+
+            /* Learning */
 
             .learn-section {
                 padding:
                     25px 15px;
             }
 
-
             .learn-title {
-                font-size:
-                    28px;
+                font-size: 28px;
             }
-
 
             .topic-grid {
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
+
+            /* Career Paths */
+
+            .career-section {
+                padding:
+                    25px 15px;
+            }
+
+            .career-title {
+                font-size: 28px;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            /* Knowledge Map */
+
+            .knowledge-section {
+                padding:
+                    25px 15px;
+            }
+
+            .knowledge-title {
+                font-size: 28px;
+            }
+
+            .knowledge-map {
+                grid-template-columns: 1fr;
+            }
+
+            .knowledge-flow {
+                line-height: 1.8;
+            }
+
+
+            /* Features */
 
             .features-section {
                 padding:
                     22px 15px;
             }
 
-
             .features-title {
-                font-size:
-                    28px;
+                font-size: 28px;
             }
-
 
             .features-grid {
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
+
+            /* Atmosphere */
 
             .cyber-atmosphere::before {
-                width:
-                    450px;
+                width: 450px;
 
-                height:
-                    450px;
+                height: 450px;
             }
 
-
             .scan-line {
-                opacity:
-                    0.20;
+                opacity: 0.20;
             }
         }
 
 
         /* =====================================================
-           REDUCED MOTION
+           15. REDUCED MOTION ACCESSIBILITY
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
@@ -1476,382 +1899,16 @@
             }
         }
 
-
-        /* =====================================================
-           CYBER KNOWLEDGE MAP
-        ===================================================== */
-
-        .knowledge-section {
-            width: 94%;
-            max-width: 1250px;
-            margin: 40px auto;
-            padding: 40px 35px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(8, 25, 45, 0.90),
-                    rgba(3, 12, 25, 0.91)
-                );
-            border: 1px solid rgba(57, 255, 136, 0.28);
-            border-radius: 20px;
-            box-shadow: 0 0 35px rgba(0, 170, 255, 0.07);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-        }
-
-        .knowledge-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background:
-                linear-gradient(
-                    90deg,
-                    #00aaff,
-                    #39ff88,
-                    #00aaff
-                );
-            background-size: 200% 100%;
-            box-shadow: 0 0 12px rgba(0, 170, 255, 0.7);
-            animation: knowledgeEnergy 5s linear infinite;
-        }
-
-        @keyframes knowledgeEnergy {
-            from { background-position: 200% 0; }
-            to { background-position: -200% 0; }
-        }
-
-        .knowledge-title {
-            text-align: center;
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .knowledge-title span {
-            color: #39ff88;
-        }
-
-        .knowledge-intro {
-            max-width: 780px;
-            margin: 0 auto 30px;
-            text-align: center;
-            color: #aebdcc;
-            line-height: 1.7;
-        }
-
-        .knowledge-map {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-            align-items: stretch;
-        }
-
-        .knowledge-node {
-            display: block;
-            padding: 22px 18px;
-            border-radius: 16px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 170, 255, 0.08),
-                    rgba(57, 255, 136, 0.025)
-                );
-            border: 1px solid rgba(0, 170, 255, 0.25);
-            color: white;
-            text-decoration: none;
-            transition:
-                transform 0.3s,
-                border-color 0.3s,
-                box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .knowledge-node:hover {
-            transform: translateY(-6px);
-            border-color: #00aaff;
-            box-shadow: 0 0 25px rgba(0, 170, 255, 0.20);
-        }
-
-        .knowledge-node .knowledge-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .knowledge-node h3 {
-            color: #00aaff;
-            margin-bottom: 8px;
-            font-size: 19px;
-        }
-
-        .knowledge-node p {
-            color: #aebdcc;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 14px;
-        }
-
-        .knowledge-topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-
-        .knowledge-topic {
-            display: inline-block;
-            padding: 5px 8px;
-            border-radius: 7px;
-            color: #39ff88;
-            background: rgba(57, 255, 136, 0.06);
-            border: 1px solid rgba(57, 255, 136, 0.18);
-            font-size: 11px;
-            font-weight: bold;
-        }
-
-        .knowledge-flow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 28px 0 8px;
-            color: #7f8da0;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .knowledge-flow strong {
-            color: #00aaff;
-        }
-
-        .knowledge-career {
-            margin-top: 25px;
-            padding: 18px;
-            text-align: center;
-            border: 1px solid rgba(57, 255, 136, 0.25);
-            border-radius: 14px;
-            background: rgba(57, 255, 136, 0.035);
-        }
-
-        .knowledge-career p {
-            color: #aebdcc;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .knowledge-career a {
-            color: #39ff88;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .knowledge-career a:hover {
-            color: #00aaff;
-        }
-
-        @media (max-width: 950px) {
-            .knowledge-map {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .knowledge-section {
-                padding: 25px 15px;
-            }
-
-            .knowledge-title {
-                font-size: 28px;
-            }
-
-            .knowledge-map {
-                grid-template-columns: 1fr;
-            }
-
-            .knowledge-flow {
-                line-height: 1.8;
-            }
-        }
-
-        /* =====================================================
-           CYBERSECURITY CAREER PATHS
-        ===================================================== */
-
-        .career-section {
-            width: 94%;
-            max-width: 1250px;
-            margin: 40px auto;
-            padding: 40px 35px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(8, 25, 45, 0.90),
-                    rgba(3, 12, 25, 0.91)
-                );
-            border: 1px solid rgba(0, 170, 255, 0.35);
-            border-radius: 20px;
-            box-shadow: 0 0 35px rgba(0, 170, 255, 0.07);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-        }
-
-        .career-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #00aaff, #39ff88, #00aaff);
-            background-size: 200% 100%;
-            box-shadow: 0 0 12px rgba(0, 170, 255, 0.7);
-            animation: careerEnergy 5s linear infinite;
-        }
-
-        @keyframes careerEnergy {
-            from { background-position: 200% 0; }
-            to { background-position: -200% 0; }
-        }
-
-        .career-title {
-            text-align: center;
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .career-title span {
-            color: #00aaff;
-        }
-
-        .career-intro {
-            max-width: 760px;
-            margin: 0 auto 30px;
-            text-align: center;
-            color: #aebdcc;
-            line-height: 1.7;
-        }
-
-        .career-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .career-card {
-            padding: 25px;
-            border-radius: 16px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 170, 255, 0.07),
-                    rgba(57, 255, 136, 0.025)
-                );
-            border: 1px solid rgba(0, 170, 255, 0.25);
-            transition:
-                transform 0.3s,
-                border-color 0.3s,
-                box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .career-card::after {
-            content: "";
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            right: -70px;
-            top: -70px;
-            border-radius: 50%;
-            background: rgba(0, 170, 255, 0.08);
-            filter: blur(2px);
-        }
-
-        .career-card:hover {
-            transform: translateY(-7px);
-            border-color: #00aaff;
-            box-shadow: 0 0 28px rgba(0, 170, 255, 0.18);
-        }
-
-        .career-icon {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .career-card h3 {
-            color: #00aaff;
-            margin-bottom: 10px;
-        }
-
-        .career-card p {
-            color: #aebdcc;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .career-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-bottom: 17px;
-        }
-
-        .career-skill {
-            padding: 5px 9px;
-            border-radius: 7px;
-            color: #39ff88;
-            background: rgba(57, 255, 136, 0.06);
-            border: 1px solid rgba(57, 255, 136, 0.18);
-            font-size: 11px;
-            font-weight: bold;
-        }
-
-        .career-link {
-            color: #39ff88;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        .career-link:hover {
-            color: #00aaff;
-        }
-
-        @media (max-width: 950px) {
-            .career-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .career-section {
-                padding: 25px 15px;
-            }
-
-            .career-title {
-                font-size: 28px;
-            }
-
-            .career-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
     </style>
+
 </head>
+
 
 <body>
 
+
     <!-- =====================================================
-         CYBER ATMOSPHERE
+         BACKGROUND EFFECTS
     ===================================================== -->
 
     <div class="cyber-atmosphere"></div>
@@ -1860,7 +1917,7 @@
 
 
     <!-- =====================================================
-         NAVBAR
+         NAVIGATION
     ===================================================== -->
 
     <nav>
@@ -1868,6 +1925,7 @@
         <div class="logo">
             🛡️ Cly<span>vexis</span>
         </div>
+
 
         <ul>
 
@@ -1954,6 +2012,7 @@
                 🛡️
             </div>
 
+
             <h1>
 
                 <span class="cyber">
@@ -2024,7 +2083,7 @@
         <div class="topic-grid">
 
 
-            <!-- PHISHING -->
+            <!-- Phishing -->
 
             <div class="topic-card">
 
@@ -2041,7 +2100,7 @@
             </div>
 
 
-            <!-- MALWARE -->
+            <!-- Malware -->
 
             <div class="topic-card">
 
@@ -2058,7 +2117,7 @@
             </div>
 
 
-            <!-- PASSWORD SECURITY -->
+            <!-- Password Security -->
 
             <div class="topic-card">
 
@@ -2075,7 +2134,7 @@
             </div>
 
 
-            <!-- NETWORKING -->
+            <!-- Networking -->
 
             <div class="topic-card">
 
@@ -2092,7 +2151,7 @@
             </div>
 
 
-            <!-- CODING -->
+            <!-- Coding -->
 
             <div class="topic-card">
 
@@ -2109,7 +2168,7 @@
             </div>
 
 
-            <!-- CYBER DEFENSE -->
+            <!-- Cyber Defense -->
 
             <div class="topic-card">
 
@@ -2134,11 +2193,15 @@
          CYBERSECURITY CAREER PATHS
     ===================================================== -->
 
-    <section class="career-section" id="career-paths">
+    <section
+        class="career-section"
+        id="career-paths"
+    >
 
         <h2 class="career-title">
             🧑‍💻 Cybersecurity <span>Career Paths</span>
         </h2>
+
 
         <p class="career-intro">
             Cybersecurity is a huge field with many different directions.
@@ -2146,116 +2209,257 @@
             start building with Clyvexis.
         </p>
 
+
         <div class="career-grid">
 
+
+            <!-- SOC Analyst -->
+
             <div class="career-card">
-                <div class="career-icon">🛡️</div>
-                <h3>SOC Analyst</h3>
+
+                <div class="career-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    SOC Analyst
+                </h3>
+
                 <p>
                     Monitor security alerts, investigate suspicious activity,
                     analyze logs, and help security teams respond to threats.
                 </p>
 
                 <div class="career-skills">
-                    <span class="career-skill">Logs</span>
-                    <span class="career-skill">Alerts</span>
-                    <span class="career-skill">Threat Detection</span>
-                    <span class="career-skill">Defense</span>
+
+                    <span class="career-skill">
+                        Logs
+                    </span>
+
+                    <span class="career-skill">
+                        Alerts
+                    </span>
+
+                    <span class="career-skill">
+                        Threat Detection
+                    </span>
+
+                    <span class="career-skill">
+                        Defense
+                    </span>
+
                 </div>
 
-                <a href="cyber-defense.html" class="career-link">
+                <a
+                    href="cyber-defense.html"
+                    class="career-link"
+                >
                     Explore Defense →
                 </a>
+
             </div>
 
 
+            <!-- Cybersecurity Specialist -->
+
             <div class="career-card">
-                <div class="career-icon">🔐</div>
-                <h3>Cybersecurity Specialist</h3>
+
+                <div class="career-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Cybersecurity Specialist
+                </h3>
+
                 <p>
                     Build a broad foundation in security concepts, threats,
                     vulnerabilities, identity, and defensive security.
                 </p>
 
                 <div class="career-skills">
-                    <span class="career-skill">Security Basics</span>
-                    <span class="career-skill">Threats</span>
-                    <span class="career-skill">Identity</span>
-                    <span class="career-skill">Defense</span>
+
+                    <span class="career-skill">
+                        Security Basics
+                    </span>
+
+                    <span class="career-skill">
+                        Threats
+                    </span>
+
+                    <span class="career-skill">
+                        Identity
+                    </span>
+
+                    <span class="career-skill">
+                        Defense
+                    </span>
+
                 </div>
 
-                <a href="lessons.html" class="career-link">
+                <a
+                    href="lessons.html"
+                    class="career-link"
+                >
                     Start Fundamentals →
                 </a>
+
             </div>
 
 
+            <!-- Security Programmer -->
+
             <div class="career-card">
-                <div class="career-icon">💻</div>
-                <h3>Security Programmer</h3>
+
+                <div class="career-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Security Programmer
+                </h3>
+
                 <p>
                     Combine programming with cybersecurity by learning how
                     software can be built, analyzed, and improved securely.
                 </p>
 
                 <div class="career-skills">
-                    <span class="career-skill">Python</span>
-                    <span class="career-skill">JavaScript</span>
-                    <span class="career-skill">Coding</span>
-                    <span class="career-skill">Automation</span>
+
+                    <span class="career-skill">
+                        Python
+                    </span>
+
+                    <span class="career-skill">
+                        JavaScript
+                    </span>
+
+                    <span class="career-skill">
+                        Coding
+                    </span>
+
+                    <span class="career-skill">
+                        Automation
+                    </span>
+
                 </div>
 
-                <a href="coding.html" class="career-link">
+                <a
+                    href="coding.html"
+                    class="career-link"
+                >
                     Start Coding →
                 </a>
+
             </div>
 
 
+            <!-- Network Security -->
+
             <div class="career-card">
-                <div class="career-icon">🌐</div>
-                <h3>Network Security</h3>
+
+                <div class="career-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Network Security
+                </h3>
+
                 <p>
                     Learn how networks work and how defenders monitor traffic,
                     understand protocols, and protect communications.
                 </p>
 
                 <div class="career-skills">
-                    <span class="career-skill">Networking</span>
-                    <span class="career-skill">Traffic</span>
-                    <span class="career-skill">Protocols</span>
-                    <span class="career-skill">Defense</span>
+
+                    <span class="career-skill">
+                        Networking
+                    </span>
+
+                    <span class="career-skill">
+                        Traffic
+                    </span>
+
+                    <span class="career-skill">
+                        Protocols
+                    </span>
+
+                    <span class="career-skill">
+                        Defense
+                    </span>
+
                 </div>
 
-                <a href="lessons.html" class="career-link">
+                <a
+                    href="lessons.html"
+                    class="career-link"
+                >
                     Learn Networking →
                 </a>
+
             </div>
 
 
+            <!-- Digital Forensics -->
+
             <div class="career-card">
-                <div class="career-icon">🔎</div>
-                <h3>Digital Forensics</h3>
+
+                <div class="career-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Digital Forensics
+                </h3>
+
                 <p>
                     Explore how investigators analyze digital evidence,
                     activity, files, and security logs during investigations.
                 </p>
 
                 <div class="career-skills">
-                    <span class="career-skill">Investigation</span>
-                    <span class="career-skill">Evidence</span>
-                    <span class="career-skill">Logs</span>
-                    <span class="career-skill">Analysis</span>
+
+                    <span class="career-skill">
+                        Investigation
+                    </span>
+
+                    <span class="career-skill">
+                        Evidence
+                    </span>
+
+                    <span class="career-skill">
+                        Logs
+                    </span>
+
+                    <span class="career-skill">
+                        Analysis
+                    </span>
+
                 </div>
 
-                <a href="labs.html" class="career-link">
+                <a
+                    href="labs.html"
+                    class="career-link"
+                >
                     Try a Lab →
                 </a>
+
             </div>
 
 
+            <!-- Cyber + Python -->
+
             <div class="career-card">
-                <div class="career-icon">🐍</div>
-                <h3>Cyber + Python</h3>
+
+                <div class="career-icon">
+                    🐍
+                </div>
+
+                <h3>
+                    Cyber + Python
+                </h3>
+
                 <p>
                     Use Python to build cybersecurity skills through
                     automation, data analysis, fictional logs, and
@@ -2263,33 +2467,53 @@
                 </p>
 
                 <div class="career-skills">
-                    <span class="career-skill">Python</span>
-                    <span class="career-skill">Automation</span>
-                    <span class="career-skill">Logs</span>
-                    <span class="career-skill">Projects</span>
+
+                    <span class="career-skill">
+                        Python
+                    </span>
+
+                    <span class="career-skill">
+                        Automation
+                    </span>
+
+                    <span class="career-skill">
+                        Logs
+                    </span>
+
+                    <span class="career-skill">
+                        Projects
+                    </span>
+
                 </div>
 
-                <a href="coding.html" class="career-link">
+                <a
+                    href="coding.html"
+                    class="career-link"
+                >
                     Enter Coding Lab →
                 </a>
+
             </div>
+
 
         </div>
 
     </section>
 
 
-
-
     <!-- =====================================================
          CYBER KNOWLEDGE MAP
     ===================================================== -->
 
-    <section class="knowledge-section" id="knowledge-map">
+    <section
+        class="knowledge-section"
+        id="knowledge-map"
+    >
 
         <h2 class="knowledge-title">
             🧠 Cyber <span>Knowledge Map</span>
         </h2>
+
 
         <p class="knowledge-intro">
             See how the major parts of cybersecurity connect.
@@ -2297,96 +2521,267 @@
             can keep learning and practicing.
         </p>
 
+
         <div class="knowledge-map">
 
-            <a class="knowledge-node" href="lessons.html">
-                <div class="knowledge-icon">🌐</div>
-                <h3>Networking</h3>
+
+            <!-- Networking -->
+
+            <a
+                class="knowledge-node"
+                href="lessons.html"
+            >
+
+                <div class="knowledge-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Networking
+                </h3>
+
                 <p>
                     Learn how devices communicate and how networks
                     are understood and protected.
                 </p>
+
                 <div class="knowledge-topics">
-                    <span class="knowledge-topic">IP Addresses</span>
-                    <span class="knowledge-topic">Protocols</span>
-                    <span class="knowledge-topic">Ports</span>
-                    <span class="knowledge-topic">DNS</span>
+
+                    <span class="knowledge-topic">
+                        IP Addresses
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Protocols
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Ports
+                    </span>
+
+                    <span class="knowledge-topic">
+                        DNS
+                    </span>
+
                 </div>
+
             </a>
 
-            <a class="knowledge-node" href="lessons.html">
-                <div class="knowledge-icon">🛡️</div>
-                <h3>Security</h3>
+
+            <!-- Security -->
+
+            <a
+                class="knowledge-node"
+                href="lessons.html"
+            >
+
+                <div class="knowledge-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Security
+                </h3>
+
                 <p>
                     Build a foundation in common threats and the
                     concepts used to protect systems and accounts.
                 </p>
+
                 <div class="knowledge-topics">
-                    <span class="knowledge-topic">Phishing</span>
-                    <span class="knowledge-topic">Malware</span>
-                    <span class="knowledge-topic">Passwords</span>
-                    <span class="knowledge-topic">Encryption</span>
+
+                    <span class="knowledge-topic">
+                        Phishing
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Malware
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Passwords
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Encryption
+                    </span>
+
                 </div>
+
             </a>
 
-            <a class="knowledge-node" href="coding.html">
-                <div class="knowledge-icon">💻</div>
-                <h3>Coding</h3>
+
+            <!-- Coding -->
+
+            <a
+                class="knowledge-node"
+                href="coding.html"
+            >
+
+                <div class="knowledge-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Coding
+                </h3>
+
                 <p>
                     Learn programming fundamentals and see how
                     coding connects with cybersecurity.
                 </p>
+
                 <div class="knowledge-topics">
-                    <span class="knowledge-topic">HTML</span>
-                    <span class="knowledge-topic">CSS</span>
-                    <span class="knowledge-topic">JavaScript</span>
-                    <span class="knowledge-topic">Python</span>
+
+                    <span class="knowledge-topic">
+                        HTML
+                    </span>
+
+                    <span class="knowledge-topic">
+                        CSS
+                    </span>
+
+                    <span class="knowledge-topic">
+                        JavaScript
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Python
+                    </span>
+
                 </div>
+
             </a>
 
-            <a class="knowledge-node" href="cyber-defense.html">
-                <div class="knowledge-icon">🖥️</div>
-                <h3>Systems & Defense</h3>
+
+            <!-- Systems & Defense -->
+
+            <a
+                class="knowledge-node"
+                href="cyber-defense.html"
+            >
+
+                <div class="knowledge-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    Systems & Defense
+                </h3>
+
                 <p>
                     Explore systems, defensive thinking, monitoring,
                     investigation, and protecting environments.
                 </p>
+
                 <div class="knowledge-topics">
-                    <span class="knowledge-topic">Linux</span>
-                    <span class="knowledge-topic">Logs</span>
-                    <span class="knowledge-topic">Detection</span>
-                    <span class="knowledge-topic">Defense</span>
+
+                    <span class="knowledge-topic">
+                        Linux
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Logs
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Detection
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Defense
+                    </span>
+
                 </div>
+
             </a>
 
-            <a class="knowledge-node" href="lessons.html">
-                <div class="knowledge-icon">👤</div>
-                <h3>Identity</h3>
+
+            <!-- Identity -->
+
+            <a
+                class="knowledge-node"
+                href="lessons.html"
+            >
+
+                <div class="knowledge-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Identity
+                </h3>
+
                 <p>
                     Understand how users and accounts are identified,
                     authenticated, and given access.
                 </p>
+
                 <div class="knowledge-topics">
-                    <span class="knowledge-topic">Authentication</span>
-                    <span class="knowledge-topic">MFA</span>
-                    <span class="knowledge-topic">Access Control</span>
-                    <span class="knowledge-topic">Identity</span>
+
+                    <span class="knowledge-topic">
+                        Authentication
+                    </span>
+
+                    <span class="knowledge-topic">
+                        MFA
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Access Control
+                    </span>
+
+                    <span class="knowledge-topic">
+                        Identity
+                    </span>
+
                 </div>
+
             </a>
 
+
         </div>
+
+
+        <!-- Learning flow -->
 
         <div class="knowledge-flow">
-            <strong>LEARN</strong>
-            <span>→</span>
-            <strong>PRACTICE</strong>
-            <span>→</span>
-            <strong>BUILD SKILLS</strong>
-            <span>→</span>
-            <strong>EXPLORE CAREERS</strong>
+
+            <strong>
+                LEARN
+            </strong>
+
+            <span>
+                →
+            </span>
+
+            <strong>
+                PRACTICE
+            </strong>
+
+            <span>
+                →
+            </span>
+
+            <strong>
+                BUILD SKILLS
+            </strong>
+
+            <span>
+                →
+            </span>
+
+            <strong>
+                EXPLORE CAREERS
+            </strong>
+
         </div>
 
+
+        <!-- Career connection -->
+
         <div class="knowledge-career">
+
             <p>
                 Connect what you're learning to real cybersecurity
                 career directions already available on Clyvexis.
@@ -2395,13 +2790,14 @@
             <a href="#career-paths">
                 Explore Cybersecurity Career Paths →
             </a>
+
         </div>
 
     </section>
 
 
     <!-- =====================================================
-         FEATURES
+         EXPLORE CLYVEXIS
     ===================================================== -->
 
     <section class="features-section">
@@ -2414,9 +2810,7 @@
         <div class="features-grid">
 
 
-            <!-- =================================================
-                 LESSONS
-            ================================================= -->
+            <!-- Lessons -->
 
             <div class="feature-card">
 
@@ -2444,9 +2838,7 @@
             </div>
 
 
-            <!-- =================================================
-                 LABS
-            ================================================= -->
+            <!-- Labs -->
 
             <div class="feature-card">
 
@@ -2474,9 +2866,7 @@
             </div>
 
 
-            <!-- =================================================
-                 QUIZ
-            ================================================= -->
+            <!-- Quiz -->
 
             <div class="feature-card">
 
@@ -2504,9 +2894,7 @@
             </div>
 
 
-            <!-- =================================================
-                 GAMES
-            ================================================= -->
+            <!-- Games -->
 
             <div class="feature-card">
 
@@ -2534,9 +2922,7 @@
             </div>
 
 
-            <!-- =================================================
-                 DEFENSE
-            ================================================= -->
+            <!-- Defense -->
 
             <div class="feature-card defense-card">
 
@@ -2564,9 +2950,7 @@
             </div>
 
 
-            <!-- =================================================
-                 GLOSSARY
-            ================================================= -->
+            <!-- Glossary -->
 
             <div class="feature-card">
 
@@ -2594,9 +2978,7 @@
             </div>
 
 
-            <!-- =================================================
-                 CODING
-            ================================================= -->
+            <!-- Coding -->
 
             <div class="feature-card coding-card">
 
@@ -2624,9 +3006,7 @@
             </div>
 
 
-            <!-- =================================================
-                 SIMULATORS
-            ================================================= -->
+            <!-- Simulators -->
 
             <div class="feature-card simulator-card">
 
@@ -2680,6 +3060,7 @@
         </p>
 
     </footer>
+
 
 </body>
 </html>
