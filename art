@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Ethics & Adversary Thinking Sandbox</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#101a30;
+      --muted:#97a6c3;
+      --text:#eaf1ff;
+      --accent:#6ea8fe;
+      --good:#22c55e;
+      --bad:#ef4444;
+      --warn:#f59e0b;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 10px 35px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(110,168,254,.20), transparent 60%),
+                  radial-gradient(900px 600px at 90% 30%, rgba(34,197,94,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      padding: 18px;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      display:grid;
+      gap:14px;
+    }
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    header h1{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    header p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      max-width: 560px;
+    }
+    .top-actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+      min-width: 180px;
+    }
+    .pill{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill strong{color:var(--text)}
+    .btn-row{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      flex-wrap: wrap;
+    }
+    button{
+      appearance:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 650;
+      letter-spacing:.2px;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+      font-size: 13px;
+    }
+    button:hover{
+      background: rgba(255,255,255,.07);
+      border-color: rgba(110,168,254,.35);
+    }
+    button:active{transform: translateY(1px)}
+    button.primary{
+      background: rgba(110,168,254,.18);
+      border-color: rgba(110,168,254,.45);
+    }
+    button.primary:hover{
+      background: rgba(110,168,254,.25);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap: 14px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+      .top-actions{min-width:auto; align-items:flex-start}
+      .pill{justify-content:flex-start}
+      header{flex-direction:column}
+    }
+
+    .card{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size: 15px;
+      letter-spacing:.2px;
+    }
+    .muted{color:var(--muted)}
+    .node{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .node .scenario{
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
+      background: rgba(255,255,255,.02);
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .evidence-box{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .evidence-box .title{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing:.2px;
+      text-transform: uppercase;
+    }
+    .evidence-list{
+      margin:0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 13px;
+      line-height:1.5;
+    }
+
+    .options{
+      display:grid;
+      gap:10px;
+    }
+    .opt{
+      text-align:left;
+      padding: 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      cursor:pointer;
+      transition: background .15s ease, border-color .15s ease, transform .05s ease;
+    }
+    .opt:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(110,168,254,.35);
+    }
+    .opt:active{transform: translateY(1px)}
+    .opt .label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 6px;
+    }
+    .badge{
+      font-size: 11px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      white-space: nowrap;
+    }
+    .opt .text{
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .feedback{
+      border-radius: 14px;
+      padding: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .feedback .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .feedback .tag{
+      font-weight: 800;
+      letter-spacing:.2px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+    }
+    .feedback.good{ border-color: rgba(34,197,94,.35); }
+    .feedback.good .tag{ color: var(--good); border-color: rgba(34,197,94,.45); }
+    .feedback.bad{ border-color: rgba(239,68,68,.35); }
+    .feedback.bad .tag{ color: var(--bad); border-color: rgba(239,68,68,.45); }
+    .feedback.warn{ border-color: rgba(245,158,11,.35); }
+    .feedback.warn .tag{ color: var(--warn); border-color: rgba(245,158,11,.45); }
+    .feedback p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .side h3{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing:.2px;
+    }
+    .metric{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.10);
+      margin-bottom: 10px;
+    }
+    .metric .k{
+      color:var(--muted);
+      font-size: 12px;
+    }
+    .metric .v{
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing:.3px;
+    }
+    .timeline{
+      margin:0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.55;
+    }
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 12px 0;
+    }
+    .small{
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .choices-disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+    .footer-note{
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding: 4px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🛡️ Cyber Ethics & Adversary Thinking Sandbox</h1>
+        <p>
+          Practice ethical decision-making during incidents. Choose the next best action for evidence handling,
+          reporting, and safe defender behavior. Each choice updates your score.
+        </p>
+      </div>
+      <div class="top-actions">
+        <div class="pill">Progress: <strong id="progressText">0/0</strong></div>
+        <div class="btn-row">
+          <button class="primary" id="restartBtn" type="button">Restart</button>
+          <button id="randomScenarioBtn" type="button">New Scenario</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <div class="node">
+          <h2 id="nodeTitle">Scenario</h2>
+
+          <div class="scenario" id="scenarioText"></div>
+
+          <div class="evidence-box">
+            <div class="title">Available clues (fictional)</div>
+            <ul class="evidence-list" id="evidenceList"></ul>
+          </div>
+
+          <div class="options" id="options"></div>
+
+          <div class="feedback" id="feedback" style="display:none;"></div>
+
+          <div class="footer-note">Tip: the “best” choice is usually the one that preserves evidence, follows policy, and reduces harm.</div>
+        </div>
+      </section>
+
+      <aside class="card side">
+        <h3>Session stats</h3>
+        <div class="metric">
+          <div class="k">Score</div>
+          <div class="v" id="scoreText">0</div>
+        </div>
+        <div class="metric">
+          <div class="k">Best-practice moves</div>
+          <div class="v" id="bestText">0</div>
+        </div>
+        <div class="metric" style="margin-bottom:0">
+          <div class="k">Mistakes</div>
+          <div class="v" id="mistakesText">0</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>What you chose</h3>
+        <ol class="timeline" id="timeline"></ol>
+
+        <div class="divider"></div>
+        <div class="small">
+          This sandbox is educational and uses fictional data. Use it to learn safe decision patterns.
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Branching scenario engine (fictional)
+    // Each node has: id, title, scenario, evidence (array of strings), options (array)
+    // Each option has: id, label, text, verdict: {kind:"good"|"warn"|"bad", deltaScore, reason}, nextNodeId
+
+    const SCENARIOS = [
+      {
+        id: "breach-reporting",
+        startNodeId: "n1",
+        nodes: [
+          {
+            id: "n1",
+            title: "Alert arrives",
+            scenario:
+              "You receive an alert: multiple failed logins followed by a successful sign-in to a user account from an unfamiliar country. A teammate asks you to immediately 'check the inbox for the attacker email' and to 'open the suspicious attachment to learn how it works.' What should you do next?",
+            evidence: [
+              "Email gateway flagged a message as suspicious (quarantine available).",
+              "SIEM shows: 12 failed auth attempts → 1 success within 7 minutes.",
+              "The affected user reports: 'I didn’t try to log in.'",
+            ],
+            options: [
+              {
+                id: "a",
+                label: "A",
+                text: "Quarantine/contain the suspicious email and preserve logs; start an incident triage checklist.",
+                verdict: { kind:"good", deltaScore: 2, reason:"Containment + preservation first. Logs and email evidence should be handled safely." },
+                nextNodeId: "n2"
+              },
+              {
+                id: "b",
+                label: "B",
+                text: "Open the attachment right away on your machine to understand the malware behavior.",
+                verdict: { kind:"bad", deltaScore: -2, reason:"Executing or opening unknown attachments increases risk and can destroy evidence." },
+                nextNodeId: "n2"
+              },
+              {
+                id: "c",
+                label: "C",
+                text: "Ignore the alert until you confirm whether the user is 'probably traveling.'",
+                verdict: { kind:"warn", deltaScore: -1, reason:"Delaying response can increase impact; verify quickly using safe sources." },
+                nextNodeId: "n2"
+              }
+            ]
+          },
+          {
+            id: "n2",
+            title: "Evidence handling",
+            scenario:
+              "Your SOC lead asks for 'the facts only.' You can either share a detailed screenshot of the suspicious email and the user’s activity, or provide a sanitized summary. What is the best next action?",
+            evidence: [
+              "You have user activity details (timestamps, IP, device) in the ticket.",
+              "The email details page includes recipient address + subject line.",
+              "Company policy: share minimal necessary information during early triage.",
+            ],
+            options: [
+              {
+                id: "a",
+                label: "A",
+                text: "Share a minimal summary (no personal details) and link to the ticket for controlled access.",
+                verdict: { kind:"good", deltaScore: 2, reason:"Minimizes privacy risk while maintaining traceability." },
+                nextNodeId: "n3"
+              },
+              {
+                id: "b",
+                label: "B",
+                text: "Post full screenshots in the team chat so everyone can investigate faster.",
+                verdict: { kind:"bad", deltaScore: -2, reason:"Unnecessary distribution can violate confidentiality and create evidence-handling issues." },
+                nextNodeId: "n3"
+              },
+              {
+                id: "c",
+                label: "C",
+                text: "Share enough details so leadership can decide, even if it includes more data than required.",
+                verdict: { kind:"warn", deltaScore: -1, reason:"Leadership visibility matters, but data minimization is still required." },
+                nextNodeId: "n3"
+              }
+            ]
+          },
+          {
+            id: "n3",
+            title: "Adversary thinking vs harm",
+            scenario:
+              "You suspect credential theft. A junior asks: 'Can we reset the user password and log in ourselves to see if we can reproduce the access?' This would speed up learning, but might affect the investigation. What should you do?",
+            evidence: [
+              "Risk of account lockout if multiple logins occur.",
+              "Password resets can invalidate some evidence depending on systems.",
+              "There is a safe environment for testing with separate accounts.",
+            ],
+            options: [
+              {
+                id: "a",
+                label: "A",
+                text: "Follow procedure: reset credentials only when authorized; perform testing in a controlled way using separate accounts.",
+                verdict: { kind:"good", deltaScore: 2, reason:"Balances validation with minimizing disruption and maintaining an ethical investigation process." },
+                nextNodeId: "n4"
+              },
+              {
+                id: "b",
+                label: "B",
+                text: "Reset immediately and test by logging in as the user right away without approvals.",
+                verdict: { kind:"bad", deltaScore: -2, reason:"Unauthorized actions can disrupt evidence and violate process controls." },
+                nextNodeId: "n4"
+              },
+              {
+                id: "c",
+                label: "C",
+                text: "Don’t reset or test yet; wait for perfect certainty before taking any action.",
+                verdict: { kind:"warn", deltaScore: -1, reason:"Over-waiting can prolong exposure; act based on risk and policy, not perfect certainty." },
+                nextNodeId: "n4"
+              }
+            ]
+          },
+          {
+            id: "n4",
+            title: "Disclosure and next reporting",
+            scenario:
+              "You’ve completed triage. Management asks whether to notify customers immediately. You have partial evidence. What is the best ethically sound response?",
+            evidence: [
+              "Evidence is currently limited to indicators and suspicious login patterns.",
+              "Customer notification has legal and reputational implications.",
+              "There is a defined escalation path with security/legal.",
+            ],
+            options: [
+              {
+                id: "a",
+                label: "A",
+                text: "Escalate through security/legal, report the current impact level clearly, and avoid speculation.",
+                verdict: { kind:"good", deltaScore: 2, reason:"Clear, accurate reporting supports ethical disclosure and proper governance." },
+                nextNodeId: "end"
+              },
+              {
+                id: "b",
+                label: "B",
+                text: "Notify customers now with a strong statement that data was stolen.",
+                verdict: { kind:"bad", deltaScore: -3, reason:"Speculative or exaggerated claims can cause harm and may be legally problematic." },
+                nextNodeId: "end"
+              },
+              {
+                id: "c",
+                label: "C",
+                text: "Tell management you’ll decide later after you try more actions to increase certainty.",
+                verdict: { kind:"warn", deltaScore: -1, reason:"You can continue investigation, but reporting decisions must follow process and timelines." },
+                nextNodeId: "end"
+              }
+            ]
+          },
+          {
+            id: "end",
+            title: "Session complete",
+            scenario:
+              "Review your choices. Ethical incident handling is about protecting people, preserving evidence, and following safe, accountable procedures—while still learning from each step.",
+            evidence: ["You can restart to practice again."],
+            options: [
+              {
+                id: "restart",
+                label: "↻",
+                text: "Restart from the beginning",
+                verdict: { kind:"good", deltaScore: 0, reason:"Practice improves decision consistency." },
+                nextNodeId: "n1"
+              },
+              {
+                id: "new",
+                label: "✦",
+                text: "Switch to a new scenario thread",
+                verdict: { kind:"good", deltaScore: 0, reason:"Trying different scenarios builds broader judgment." },
+                nextNodeId: "NEW_SCENARIO"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "misuse-prevention",
+        startNodeId: "m1",
+        nodes: [
+          {
+            id: "m1",
+            title: "Tool access request",
+            scenario:
+              "A coworker requests temporary admin access 'just to test a security idea.' You can approve, deny, or ask for a formal request. What is the best ethically defensible next action?",
+            evidence: [
+              "No ticket or authorization is attached to the request.",
+              "Admin access would allow access to sensitive logs and accounts.",
+              "Least-privilege policy exists and is enforced.",
+            ],
+            options: [
+              {
+                id: "a",
+                label: "A",
+                text: "Deny the request and ask for a formal, documented approval with scope and time limit.",
+                verdict: { kind:"good", deltaScore: 2, reason:"Stops privilege abuse and requires accountability." },
+                nextNodeId: "m2"
+              },
+              {
+                id: "b",
+                label: "B",
+                text: "Approve immediately to be helpful; they can figure out the paperwork later.",
+                verdict: { kind:"bad", deltaScore: -2, reason:"Bypassing process enables misuse and increases risk." },
+                nextNodeId: "m2"
+              },
+              {
+                id: "c",
+                label: "C",
+                text: "Give access but only to a 'low-risk' subset of systems without confirming scope.",
+                verdict: { kind:"warn", deltaScore: -1, reason:"Partial access without approval can still violate policy and audit expectations." },
+                nextNodeId: "m2"
+              }
+            ]
+          },
+          {
+            id: "m2",
+            title: "Adversary thinking",
+            scenario:
+              "You realize the coworker’s plan could mirror attacker behavior (privilege escalation / data exploration). They claim it’s for learning. What should you do ethically?",
+            evidence: [
+              "You can offer a safe lab environment with test accounts and simulated data.",
+              "Real production logs contain personal information.",
+              "Policy encourages learning without exposing real data.",
+            ],
+            options: [
+              {
+                id: "a",
+                label: "A",
+                text: "Offer a controlled lab with synthetic data; supervise and require explicit goals before any real access.",
+                verdict: { kind:"good", deltaScore: 2, reason:"Enables learning while preventing harm and protecting privacy." },
+                nextNodeId: "end2"
+              },
+              {
+                id: "b",
+                label: "B",
+                text: "Allow exploration in production but redact data manually after the fact.",
+                verdict: { kind:"bad", deltaScore: -2, reason:"Redaction after access doesn’t prevent unauthorized exposure." },
+                nextNodeId: "end2"
+              },
+              {
+                id: "c",
+                label: "C",
+                text: "Let them proceed quickly to avoid delaying learning, trusting they won’t do harm.",
+                verdict: { kind:"warn", deltaScore: -1, reason:"Trust is not a control; ethics requires safeguards, not assumptions." },
+                nextNodeId: "end2"
+              }
+            ]
+          },
+          {
+            id: "end2",
+            title: "Session complete",
+            scenario:
+              "Good ethics often look like good controls: least privilege, accountability, safe training environments, and privacy-aware handling.",
+            evidence: ["Restart or switch scenarios to keep practicing."],
+            options: [
+              {
+                id: "restart",
+                label: "↻",
+                text: "Restart this scenario",
+                verdict: { kind:"good", deltaScore: 0, reason:"Repetition builds reliable judgment." },
+                nextNodeId: "m1"
+              },
+              {
+                id: "new",
+                label: "✦",
+                text: "Switch to a different scenario thread",
+                verdict: { kind:"good", deltaScore: 0, reason:"Variety improves resilience of ethical decision-making." },
+                nextNodeId: "NEW_SCENARIO"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    // State
+    let scenario = null;
+    let node = null;
+    let score = 0;
+    let bestMoves = 0;
+    let mistakes = 0;
+    let history = [];
+
+    // Elements
+    const nodeTitle = document.getElementById('nodeTitle');
+    const scenarioText = document.getElementById('scenarioText');
+    const evidenceList = document.getElementById('evidenceList');
+    const optionsEl = document.getElementById('options');
+    const feedbackEl = document.getElementById('feedback');
+
+    const progressText = document.getElementById('progressText');
+    const scoreText = document.getElementById('scoreText');
+    const bestText = document.getElementById('bestText');
+    const mistakesText = document.getElementById('mistakesText');
+
+    const timelineEl = document.getElementById('timeline');
+    const restartBtn = document.getElementById('restartBtn');
+    const randomScenarioBtn = document.getElementById('randomScenarioBtn');
+
+    function pickScenarioRandom(){
+      const idx = Math.floor(Math.random() * SCENARIOS.length);
+      return SCENARIOS[idx];
+    }
+
+    function getNodeById(scen, id){
+      return scen.nodes.find(n => n.id === id);
+    }
+
+    function totalInteractiveNodes(scen){
+      // Count nodes excluding any that aren't really decision points.
+      // Here: count nodes until an "end" prefix or node with no options besides restart.
+      return scen.nodes.filter(n => n.id !== "end" && n.id !== "end2").length;
+    }
+
+    function resetSession(newScenario=true){
+      if(newScenario){
+        scenario = pickScenarioRandom();
+      }
+      score = 0;
+      bestMoves = 0;
+      mistakes = 0;
+      history = [];
+      node = getNodeById(scenario, scenario.startNodeId);
+      render();
+    }
+
+    function setFeedback(kind, title, message){
+      feedbackEl.style.display = 'flex';
+      feedbackEl.classList.remove('good','bad','warn');
+      feedbackEl.classList.add(kind === 'good' ? 'good' : kind === 'bad' ? 'bad' : 'warn');
+
+      const tagColor = kind === 'good' ? 'Best action' : kind === 'bad' ? 'Harmful/unsafe choice' : 'Mixed/less optimal';
+      feedbackEl.innerHTML = `
+        <div class="row">
+          <div class="tag">${tagColor}</div>
+          <div class="badge">Score impact: ${title}</div>
+        </div>
+        <p>${message}</p>
+      `;
+    }
+
+    function clearFeedback(){
+      feedbackEl.style.display = 'none';
+      feedbackEl.innerHTML = '';
+      feedbackEl.classList.remove('good','bad','warn');
+    }
+
+    function lockOptions(lock){
+      if(lock){
+        optionsEl.classList.add('choices-disabled');
+      } else {
+        optionsEl.classList.remove('choices-disabled');
+      }
+    }
+
+    function render(){
+      // Title
+      nodeTitle.textContent = node.title;
+
+      // Scenario text
+      scenarioText.textContent = node.scenario;
+
+      // Evidence
+      evidenceList.innerHTML = '';
+      (node.evidence || []).forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        evidenceList.appendChild(li);
+      });
+
+      // Options
+      optionsEl.innerHTML = '';
+      clearFeedback();
+
+      // Progress: compute based on history length (approx)
+      const total = totalInteractiveNodes(scenario);
+      const step = Math.min(history.length, total);
+      progressText.textContent = `${step}/${total}`;
+
+      scoreText.textContent = String(score);
+      bestText.textContent = String(bestMoves);
+      mistakesText.textContent = String(mistakes);
+
+      node.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'opt';
+
+        const label = (opt.label || '•');
+        btn.innerHTML = `
+          <div class="label">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="badge">${label}</span>
+              <strong style="font-size:13px; letter-spacing:.2px;">Choose this</strong>
+            </div>
+            <span class="badge">Decision</span>
+          </div>
+          <div class="text">${opt.text}</div>
+        `;
+
+        btn.addEventListener('click', () => {
+          // Handle special transitions
+          const verdict = opt.verdict || {kind:"warn", deltaScore:0, reason:"No rubric provided."};
+
+          score += verdict.deltaScore;
+          const wasBest = verdict.kind === 'good';
+          const wasMistake = verdict.kind === 'bad';
+
+          if(wasBest) bestMoves += 1;
+          if(wasMistake) mistakes += 1;
+
+          const scoreImpactLabel = verdict.deltaScore === 0 ? "0" : (verdict.deltaScore > 0 ? `+${verdict.deltaScore}` : `${verdict.deltaScore}`);
+
+          history.push({
+            nodeTitle: node.title,
+            choice: opt.text,
+            kind: verdict.kind,
+            scoreImpact: scoreImpactLabel
+          });
+
+          // Update sidebar timeline
+          timelineEl.innerHTML = '';
+          history.forEach((h, i) => {
+            const li = document.createElement('li');
+            const kindWord = h.kind === 'good' ? 'Best' : h.kind === 'bad' ? 'Unsafe' : 'Okay';
+            li.textContent = `${i+1}. [${kindWord} ${h.scoreImpact}] ${h.choice}`;
+            timelineEl.appendChild(li);
+          });
+
+          // Feedback
+          setFeedback(
+            verdict.kind,
+            scoreImpactLabel,
+            verdict.reason + " (Continue to the next step.)"
+          );
+
+          // Disable quickly to avoid double click
+          lockOptions(true);
+
+          // Next node
+          const nextId = opt.nextNodeId;
+
+          setTimeout(() => {
+            lockOptions(false);
+
+            if(nextId === "NEW_SCENARIO"){
+              scenario = pickScenarioRandom();
+              node = getNodeById(scenario, scenario.startNodeId);
+            } else {
+              node = getNodeById(scenario, nextId);
+            }
+
+            render();
+          }, 650);
+        });
+
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function init(){
+      // Start with a random scenario by default
+      scenario = pickScenarioRandom();
+      node = getNodeById(scenario, scenario.startNodeId);
+      resetSession(false);
+    }
+
+    restartBtn.addEventListener('click', () => {
+      // restart with current scenario thread
+      node = getNodeById(scenario, scenario.startNodeId);
+      score = 0;
+      bestMoves = 0;
+      mistakes = 0;
+      history = [];
+      timelineEl.innerHTML = '';
+      render();
+    });
+
+    randomScenarioBtn.addEventListener('click', () => {
+      resetSession(true);
+      timelineEl.innerHTML = '';
+    });
+
+    init();
+  </script>
+</body>
+</html>
