@@ -55,13 +55,6 @@ body {
 
 /* ================= GLOBAL CYBER NETWORK BACKGROUND ================= */
 
-/*
-   The canvas creates the animated network/globe effect.
-
-   It stays behind the website content and does not interfere
-   with buttons, links, forms, or labs.
-*/
-
 #network-canvas {
 
     position: fixed;
@@ -77,8 +70,6 @@ body {
 
 }
 
-
-/* Dark cinematic overlay */
 
 .network-background {
 
@@ -113,8 +104,6 @@ body {
 }
 
 
-/* Subtle professional grid */
-
 .network-grid {
 
     position: fixed;
@@ -145,8 +134,6 @@ body {
 }
 
 
-/* Dark edge vignette */
-
 .network-vignette {
 
     position: fixed;
@@ -168,8 +155,6 @@ body {
 
 }
 
-
-/* Subtle moving scan line */
 
 .scan-line {
 
@@ -219,7 +204,9 @@ body {
 }
 
 
-/* ================= NAVBAR ================= */
+/* =========================================================
+   PROFESSIONAL RESPONSIVE NAVIGATION
+   ========================================================= */
 
 nav {
 
@@ -235,25 +222,30 @@ nav {
 
     align-items: center;
 
-    padding: 18px 5%;
+    min-height: 72px;
+
+    padding: 12px 5%;
 
     background:
 
         linear-gradient(
             90deg,
-            rgba(2,8,20,0.96),
-            rgba(4,17,34,0.94)
+            rgba(3,10,23,0.98),
+            rgba(5,17,34,0.96),
+            rgba(3,10,23,0.98)
         );
 
     border-bottom:
         1px solid rgba(0,170,255,0.55);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.16);
+        0 0 25px rgba(0,170,255,0.15);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
 
 }
+
 
 nav::before {
 
@@ -273,22 +265,49 @@ nav::before {
 
         linear-gradient(
             90deg,
+            transparent,
             #00aaff,
-            #00ff88,
-            #00aaff
+            #39ff88,
+            #00aaff,
+            transparent
         );
 
+    background-size:
+        200% 100%;
+
     box-shadow:
-        0 0 14px #00aaff,
-        0 0 25px rgba(0,255,136,0.35);
+        0 0 14px rgba(0,170,255,0.8);
+
+    animation:
+        navEnergy 5s linear infinite;
 
 }
 
+
+@keyframes navEnergy {
+
+    from {
+        background-position:
+            200% 0;
+    }
+
+    to {
+        background-position:
+            -200% 0;
+    }
+
+}
+
+
 .logo {
+
+    position: relative;
 
     font-size: 26px;
 
     font-weight: bold;
+
+    letter-spacing: 0.5px;
 
     color: white;
 
@@ -296,13 +315,19 @@ nav::before {
 
     white-space: nowrap;
 
+    text-shadow:
+        0 0 12px rgba(0,170,255,0.35);
+
 }
+
 
 .logo span {
 
-    color: #00aaff;
+    color:
+        #00aaff;
 
 }
+
 
 nav ul {
 
@@ -312,41 +337,105 @@ nav ul {
 
     align-items: center;
 
-    gap: 20px;
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    margin: 0;
+
+    padding: 0;
 
 }
+
+
+nav li {
+
+    position: relative;
+
+}
+
 
 nav a {
 
     position: relative;
 
-    color: white;
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 40px;
+
+    padding: 8px 11px;
+
+    color: #dce8f5;
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 13px;
 
-    transition: 0.3s;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    transition:
+
+        color 0.25s ease,
+
+        background 0.25s ease,
+
+        transform 0.25s ease,
+
+        box-shadow 0.25s ease;
 
 }
+
 
 nav a:hover {
 
-    color: #00aaff;
+    color: #ffffff;
+
+    background:
+        rgba(0,170,255,0.08);
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.10);
+
+    transform:
+        translateY(-1px);
 
 }
 
-nav a::after {
+
+nav a.active {
+
+    color:
+        #39ff88;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(0,170,255,0.10),
+            rgba(57,255,136,0.06)
+        );
+
+    box-shadow:
+        inset 0 0 12px rgba(0,170,255,0.06);
+
+}
+
+
+nav a.active::after {
 
     content: "";
 
     position: absolute;
 
-    left: 0;
+    left: 11px;
 
-    bottom: -7px;
+    right: 11px;
 
-    width: 0;
+    bottom: 3px;
 
     height: 2px;
 
@@ -355,50 +444,67 @@ nav a::after {
         linear-gradient(
             90deg,
             #00aaff,
-            #00ff88
+            #39ff88
         );
 
-    transition: 0.3s;
-
-}
-
-nav a:hover::after {
-
-    width: 100%;
-
-}
-
-nav a.active {
-
-    color: #00aaff;
-
-}
-
-nav a.active::after {
-
-    width: 100%;
-
-}
-
-.donate {
-
-    padding: 8px 14px;
-
-    border: 1px solid #00ff88;
-
-    border-radius: 20px;
-
-    color: #00ff88 !important;
-
-    background:
-        rgba(0,255,136,0.05);
-
-}
-
-.donate:hover {
+    border-radius: 2px;
 
     box-shadow:
-        0 0 15px rgba(0,255,136,0.4);
+        0 0 8px rgba(57,255,136,0.7);
+
+}
+
+
+/* ================= MOBILE MENU BUTTON ================= */
+
+.menu-toggle {
+
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid rgba(0,170,255,0.45);
+
+    border-radius: 9px;
+
+    background:
+        rgba(0,170,255,0.06);
+
+    color:
+        #00aaff;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    transition:
+
+        background 0.25s ease,
+
+        border-color 0.25s ease,
+
+        box-shadow 0.25s ease;
+
+}
+
+
+.menu-toggle:hover {
+
+    background:
+        rgba(0,170,255,0.12);
+
+    border-color:
+        #00aaff;
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,0.18);
 
 }
 
@@ -421,11 +527,13 @@ nav a.active::after {
 
     letter-spacing: 2px;
 
-    color: rgba(142,205,255,0.45);
+    color:
+        rgba(142,205,255,0.45);
 
     text-transform: uppercase;
 
 }
+
 
 .hud-top-left {
 
@@ -434,6 +542,7 @@ nav a.active::after {
     left: 25px;
 
 }
+
 
 .hud-top-right {
 
@@ -445,6 +554,7 @@ nav a.active::after {
 
 }
 
+
 .hud-bottom-left {
 
     bottom: 25px;
@@ -452,6 +562,7 @@ nav a.active::after {
     left: 25px;
 
 }
+
 
 .hud-bottom-right {
 
@@ -463,12 +574,14 @@ nav a.active::after {
 
 }
 
+
 .hud-green {
 
     color:
         rgba(0,255,136,0.48);
 
 }
+
 
 .hud-blue {
 
@@ -512,8 +625,6 @@ nav a.active::after {
 }
 
 
-/* Soft atmospheric glow */
-
 .hero::before {
 
     content: "";
@@ -528,7 +639,8 @@ nav a.active::after {
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     background:
         rgba(0,170,255,0.06);
@@ -542,6 +654,7 @@ nav a.active::after {
 
 }
 
+
 .hero-content {
 
     position: relative;
@@ -553,6 +666,7 @@ nav a.active::after {
     margin: auto;
 
 }
+
 
 .hero-icon {
 
@@ -572,6 +686,7 @@ nav a.active::after {
 
 }
 
+
 .hero h1 {
 
     font-size:
@@ -580,6 +695,7 @@ nav a.active::after {
     margin-bottom: 15px;
 
 }
+
 
 .hero h1 span {
 
@@ -594,9 +710,11 @@ nav a.active::after {
 
     -webkit-background-clip: text;
 
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color:
+        transparent;
 
 }
+
 
 .hero p {
 
@@ -604,7 +722,8 @@ nav a.active::after {
 
     margin: auto;
 
-    color: #b8c7d9;
+    color:
+        #b8c7d9;
 
     font-size: 18px;
 
@@ -630,6 +749,7 @@ nav a.active::after {
 
 }
 
+
 .lab-grid {
 
     display: grid;
@@ -640,6 +760,7 @@ nav a.active::after {
     gap: 25px;
 
 }
+
 
 .lab-card {
 
@@ -669,14 +790,18 @@ nav a.active::after {
     overflow: hidden;
 
     transition:
+
         transform 0.3s,
+
         border-color 0.3s,
+
         box-shadow 0.3s;
 
     backdrop-filter:
         blur(8px);
 
 }
+
 
 .lab-card::before {
 
@@ -705,6 +830,7 @@ nav a.active::after {
 
 }
 
+
 .lab-card::after {
 
     content: "";
@@ -731,6 +857,7 @@ nav a.active::after {
 
 }
 
+
 .lab-card:hover {
 
     transform:
@@ -747,6 +874,7 @@ nav a.active::after {
 
 }
 
+
 .lab-icon {
 
     font-size: 40px;
@@ -760,23 +888,28 @@ nav a.active::after {
 
 }
 
+
 .lab-card h2 {
 
     margin-bottom: 10px;
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
 }
 
+
 .lab-card p {
 
-    color: #aebed0;
+    color:
+        #aebed0;
 
     line-height: 1.6;
 
     margin-bottom: 18px;
 
 }
+
 
 .lab-button {
 
@@ -788,7 +921,8 @@ nav a.active::after {
     background:
         rgba(0,170,255,0.08);
 
-    color: #00aaff;
+    color:
+        #00aaff;
 
     padding:
         10px 18px;
@@ -803,6 +937,7 @@ nav a.active::after {
 
 }
 
+
 .lab-button:hover {
 
     background:
@@ -815,6 +950,7 @@ nav a.active::after {
         translateY(-1px);
 
 }
+
 
 .lab-content {
 
@@ -829,25 +965,31 @@ nav a.active::after {
 
 }
 
+
 .lab-content.show {
 
     display: block;
 
 }
 
+
 .lab-content h3 {
 
-    color: #00ff88;
+    color:
+        #00ff88;
 
     margin-bottom: 12px;
 
 }
 
+
 .lab-content p {
 
-    color: #c6d4e2;
+    color:
+        #c6d4e2;
 
 }
+
 
 input,
 textarea,
@@ -873,6 +1015,7 @@ select {
 
 }
 
+
 input:focus,
 textarea:focus,
 select:focus {
@@ -884,6 +1027,7 @@ select:focus {
         0 0 10px rgba(0,170,255,0.2);
 
 }
+
 
 .result {
 
@@ -899,9 +1043,11 @@ select:focus {
     border:
         1px solid rgba(0,170,255,0.2);
 
-    color: #dcecff;
+    color:
+        #dcecff;
 
 }
+
 
 .option {
 
@@ -931,6 +1077,7 @@ select:focus {
 
 }
 
+
 .option:hover {
 
     border-color:
@@ -941,6 +1088,7 @@ select:focus {
 
 }
 
+
 .correct {
 
     border-color:
@@ -950,6 +1098,7 @@ select:focus {
         rgba(0,255,136,0.1) !important;
 
 }
+
 
 .wrong {
 
@@ -989,11 +1138,14 @@ footer {
 
 }
 
+
 footer strong {
 
-    color: white;
+    color:
+        white;
 
 }
+
 
 .footer-line {
 
@@ -1018,30 +1170,42 @@ footer strong {
 }
 
 
-/* ================= TABLET ================= */
+/* =========================================================
+   NAV RESPONSIVE
+   ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
 
     nav {
 
-        flex-direction:
-            column;
-
-        gap: 15px;
+        padding:
+            12px 3%;
 
     }
 
     nav ul {
 
-        flex-wrap:
-            wrap;
-
-        justify-content:
-            center;
-
-        gap: 12px;
+        gap:
+            3px;
 
     }
+
+    nav a {
+
+        padding:
+            8px 8px;
+
+        font-size:
+            12px;
+
+    }
+
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
 
     .lab-grid {
 
@@ -1059,27 +1223,20 @@ footer strong {
 }
 
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE NAV ================= */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     nav {
 
+        min-height:
+            64px;
+
         padding:
-            15px 4%;
+            11px 15px;
 
-    }
-
-    nav ul {
-
-        gap: 10px;
-
-    }
-
-    nav a {
-
-        font-size:
-            12px;
+        flex-wrap:
+            wrap;
 
     }
 
@@ -1087,6 +1244,117 @@ footer strong {
 
         font-size:
             23px;
+
+    }
+
+    .menu-toggle {
+
+        display:
+            flex;
+
+    }
+
+    nav ul {
+
+        display:
+            none;
+
+        width:
+            100%;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            5px;
+
+        margin-top:
+            10px;
+
+        padding:
+            10px;
+
+        border:
+            1px solid rgba(0,170,255,0.20);
+
+        border-radius:
+            12px;
+
+        background:
+            rgba(3,12,25,0.97);
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,0.35);
+
+    }
+
+    nav ul.open {
+
+        display:
+            flex;
+
+    }
+
+    nav li {
+
+        width:
+            100%;
+
+    }
+
+    nav a {
+
+        width:
+            100%;
+
+        justify-content:
+            flex-start;
+
+        padding:
+            11px 13px;
+
+        font-size:
+            14px;
+
+    }
+
+    nav a.active::after {
+
+        left:
+            13px;
+
+        right:
+            auto;
+
+        width:
+            35px;
+
+        bottom:
+            5px;
+
+    }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    nav {
+
+        padding:
+            10px 12px;
+
+    }
+
+    .logo {
+
+        font-size:
+            21px;
 
     }
 
@@ -1121,21 +1389,50 @@ footer strong {
 }
 
 
+@media (max-width: 400px) {
+
+    .logo {
+
+        font-size:
+            20px;
+
+    }
+
+}
+
+
 /* ================= REDUCED MOTION ================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     html {
-        scroll-behavior: auto;
+
+        scroll-behavior:
+            auto;
+
     }
 
     .scan-line {
-        animation: none;
+
+        animation:
+            none;
+
     }
 
     .lab-card,
-    .lab-button {
-        transition: none;
+    .lab-button,
+    nav a {
+
+        transition:
+            none;
+
+    }
+
+    nav::before {
+
+        animation:
+            none;
+
     }
 
 }
@@ -1221,7 +1518,9 @@ footer strong {
 </div>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
 
 <nav>
 
@@ -1232,7 +1531,17 @@ footer strong {
         🛡️ Cly<span>vexis</span>
     </a>
 
-    <ul>
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        type="button"
+    >
+        ☰
+    </button>
+
+    <ul id="main-navigation">
 
         <li>
             <a href="index.html">
@@ -1287,16 +1596,7 @@ footer strong {
 
         <li>
             <a href="simulators.html">
-                🖥️ Simulators
-            </a>
-        </li>
-
-        <li>
-            <a
-                href="donate.html"
-                class="donate"
-            >
-                💚 Donate
+                🧪 Simulators
             </a>
         </li>
 
@@ -2028,6 +2328,134 @@ footer strong {
 
 
 /* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+(() => {
+
+    const menuToggle =
+        document.getElementById("menu-toggle");
+
+    const navigation =
+        document.getElementById("main-navigation");
+
+
+    if (
+        !menuToggle ||
+        !navigation
+    ) {
+
+        return;
+
+    }
+
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                navigation.classList.toggle(
+                    "open"
+                );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
+
+
+            menuToggle.textContent =
+                isOpen
+                    ? "✕"
+                    : "☰";
+
+        }
+    );
+
+
+    navigation
+        .querySelectorAll("a")
+        .forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navigation.classList.remove(
+                            "open"
+                        );
+
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Open navigation menu"
+                        );
+
+
+                        menuToggle.textContent =
+                            "☰";
+
+                    }
+                );
+
+            }
+        );
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 800
+            ) {
+
+                navigation.classList.remove(
+                    "open"
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+
+                menuToggle.textContent =
+                    "☰";
+
+            }
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
    GLOBAL CYBER NETWORK ENGINE
    ========================================================= */
 
@@ -2119,11 +2547,6 @@ function createNetwork() {
     }
 
 
-    /*
-       The nodes are distributed across a 3D sphere.
-       They are later projected onto the screen.
-    */
-
     for (
         let i = 0;
         i < nodeCount;
@@ -2169,11 +2592,6 @@ function createNetwork() {
     }
 
 
-    /*
-       Create a small number of moving
-       data packets.
-    */
-
     for (
         let i = 0;
         i < 12;
@@ -2216,13 +2634,6 @@ function projectNodes(time) {
 
     const centerX =
         width / 2;
-
-    /*
-       Keep the network centered slightly
-       above the exact middle so it feels
-       like a background system rather than
-       an object covering the content.
-    */
 
     const centerY =
         height * 0.49;
@@ -2279,10 +2690,6 @@ function projectNodes(time) {
                 node.radius;
 
 
-            /*
-               Perspective projection.
-            */
-
             const perspective =
                 2.8;
 
@@ -2332,11 +2739,17 @@ function projectNodes(time) {
 
 
     return {
+
         nodes: projected,
+
         centerX,
+
         centerY,
+
         radiusX,
+
         radiusY
+
     };
 
 }
@@ -2360,10 +2773,6 @@ function drawNetwork(time) {
     const projected =
         scene.nodes;
 
-
-    /*
-       Draw subtle globe outline.
-    */
 
     ctx.save();
 
@@ -2389,11 +2798,6 @@ function drawNetwork(time) {
     ctx.restore();
 
 
-    /*
-       Draw a second slightly offset
-       orbital ring.
-    */
-
     ctx.save();
 
     ctx.beginPath();
@@ -2417,10 +2821,6 @@ function drawNetwork(time) {
 
     ctx.restore();
 
-
-    /*
-       Network connections.
-    */
 
     const connectionDistance =
         width < 600
@@ -2460,11 +2860,6 @@ function drawNetwork(time) {
                 );
 
 
-            /*
-               Only connect nearby points
-               and avoid too many lines.
-            */
-
             if (
                 distance <
                 connectionDistance
@@ -2476,11 +2871,6 @@ function drawNetwork(time) {
                         b.z
                     ) / 2;
 
-
-                /*
-                   Points on the far side
-                   are dimmer.
-                */
 
                 const depthAlpha =
                     0.035 +
@@ -2529,10 +2919,6 @@ function drawNetwork(time) {
     }
 
 
-    /*
-       Moving data packets.
-    */
-
     packets.forEach(
         packet => {
 
@@ -2540,8 +2926,11 @@ function drawNetwork(time) {
                 packet.a >= projected.length ||
                 packet.b >= projected.length
             ) {
+
                 return;
+
             }
+
 
             const a =
                 projected[packet.a];
@@ -2549,11 +2938,6 @@ function drawNetwork(time) {
             const b =
                 projected[packet.b];
 
-
-            /*
-               Only show packets when
-               the selected nodes are reasonably close.
-            */
 
             const dx =
                 a.x - b.x;
@@ -2572,7 +2956,9 @@ function drawNetwork(time) {
                 distance >
                 connectionDistance
             ) {
+
                 return;
+
             }
 
 
@@ -2603,6 +2989,7 @@ function drawNetwork(time) {
                     y,
                     8
                 );
+
 
             gradient.addColorStop(
                 0,
@@ -2657,6 +3044,7 @@ function drawNetwork(time) {
                 packet.progress +=
                     packet.speed;
 
+
                 if (
                     packet.progress >= 1
                 ) {
@@ -2682,10 +3070,6 @@ function drawNetwork(time) {
         }
     );
 
-
-    /*
-       Draw nodes on top of connections.
-    */
 
     projected.forEach(
         node => {
@@ -2781,10 +3165,6 @@ function drawNetwork(time) {
     );
 
 
-    /*
-       Subtle center glow.
-    */
-
     const centerGlow =
         ctx.createRadialGradient(
             scene.centerX,
@@ -2794,6 +3174,7 @@ function drawNetwork(time) {
             scene.centerY,
             scene.radiusX
         );
+
 
     centerGlow.addColorStop(
         0,
