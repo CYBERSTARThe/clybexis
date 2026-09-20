@@ -54,28 +54,18 @@ input {
 #network-canvas {
     position: fixed;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     z-index: 0;
-
     pointer-events: none;
-
     opacity: 0.95;
 }
-
-
-/* Dark cinematic overlay */
 
 .network-vignette {
     position: fixed;
     inset: 0;
-
     z-index: 1;
-
     pointer-events: none;
-
     background:
         radial-gradient(
             ellipse at center,
@@ -85,19 +75,12 @@ input {
         );
 }
 
-
-/* Very subtle technical grid */
-
 .network-grid {
     position: fixed;
     inset: 0;
-
     z-index: 1;
-
     pointer-events: none;
-
     opacity: 0.18;
-
     background-image:
         linear-gradient(
             rgba(0, 170, 255, 0.045) 1px,
@@ -108,16 +91,13 @@ input {
             rgba(0, 170, 255, 0.045) 1px,
             transparent 1px
         );
-
     background-size: 55px 55px;
-
     mask-image:
         radial-gradient(
             ellipse at center,
             black 0%,
             transparent 78%
         );
-
     -webkit-mask-image:
         radial-gradient(
             ellipse at center,
@@ -126,97 +106,64 @@ input {
         );
 }
 
-
-/* Atmospheric glow */
-
 .network-glow-blue {
     position: fixed;
-
     width: 600px;
     height: 600px;
-
     left: 50%;
     top: 43%;
-
-    transform:
-        translate(-50%, -50%);
-
+    transform: translate(-50%, -50%);
     border-radius: 50%;
-
     z-index: 0;
-
     pointer-events: none;
-
     background:
         radial-gradient(
             circle,
             rgba(0, 130, 255, 0.08),
             transparent 68%
         );
-
     filter: blur(30px);
-
-    animation:
-        networkBreath 8s ease-in-out infinite;
+    animation: networkBreath 8s ease-in-out infinite;
 }
 
 @keyframes networkBreath {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 0.55;
-        transform:
-            translate(-50%, -50%)
-            scale(0.96);
+        transform: translate(-50%, -50%) scale(0.96);
     }
 
     50% {
         opacity: 0.9;
-        transform:
-            translate(-50%, -50%)
-            scale(1.05);
+        transform: translate(-50%, -50%) scale(1.05);
     }
-
 }
 
 
 /* =========================================================
-   HUD CORNER INFORMATION
+   HUD
 ========================================================= */
 
 .network-hud {
     position: fixed;
-
     inset: 0;
-
     z-index: 1;
-
     pointer-events: none;
-
     color: rgba(135, 211, 255, 0.42);
-
     font-size: 9px;
-
     letter-spacing: 2px;
-
     text-transform: uppercase;
 }
 
 .hud {
     position: absolute;
-
     padding: 10px 13px;
-
-    border-left:
-        1px solid rgba(0, 170, 255, 0.35);
-
+    border-left: 1px solid rgba(0, 170, 255, 0.35);
     background:
         linear-gradient(
             90deg,
             rgba(0, 100, 180, 0.08),
             transparent
         );
-
     text-shadow:
         0 0 8px rgba(0, 170, 255, 0.35);
 }
@@ -234,13 +181,9 @@ input {
 .hud-top-right {
     top: 125px;
     right: 25px;
-
     text-align: right;
-
     border-left: none;
-    border-right:
-        1px solid rgba(0, 170, 255, 0.35);
-
+    border-right: 1px solid rgba(0, 170, 255, 0.35);
     background:
         linear-gradient(
             270deg,
@@ -257,13 +200,9 @@ input {
 .hud-bottom-right {
     bottom: 28px;
     right: 25px;
-
     text-align: right;
-
     border-left: none;
-    border-right:
-        1px solid rgba(0, 170, 255, 0.35);
-
+    border-right: 1px solid rgba(0, 170, 255, 0.35);
     background:
         linear-gradient(
             270deg,
@@ -288,7 +227,7 @@ footer {
 
 
 /* =========================================================
-   NAVIGATION
+   UPDATED GLOBAL NAVIGATION
 ========================================================= */
 
 nav {
@@ -300,35 +239,35 @@ nav {
     justify-content: space-between;
     align-items: center;
 
-    padding: 16px 6%;
+    min-height: 72px;
+    padding: 12px 5%;
 
     background:
         linear-gradient(
             90deg,
-            rgba(2, 8, 19, 0.97),
-            rgba(5, 17, 34, 0.94),
-            rgba(2, 8, 19, 0.97)
+            rgba(3, 10, 23, 0.98),
+            rgba(5, 17, 34, 0.96),
+            rgba(3, 10, 23, 0.98)
         );
 
     border-bottom:
-        1px solid rgba(0, 170, 255, 0.5);
+        1px solid rgba(0, 170, 255, 0.55);
 
     box-shadow:
-        0 0 20px rgba(0, 170, 255, 0.12),
-        0 5px 30px rgba(0, 0, 0, 0.5);
+        0 0 25px rgba(0, 170, 255, 0.15),
+        0 5px 30px rgba(0, 0, 0, 0.45);
 
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(18px);
 }
 
 nav::before {
     content: "";
 
     position: absolute;
-
     top: 0;
-    left: 8%;
+    left: 0;
 
-    width: 84%;
+    width: 100%;
     height: 2px;
 
     background:
@@ -341,17 +280,38 @@ nav::before {
             transparent
         );
 
+    background-size: 200% 100%;
+
     box-shadow:
-        0 0 12px #00aaff,
-        0 0 22px #39ff88;
+        0 0 14px rgba(0, 170, 255, 0.8);
+
+    animation: navEnergy 5s linear infinite;
+}
+
+@keyframes navEnergy {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
 }
 
 .logo {
+    position: relative;
+
     font-size: 26px;
     font-weight: 900;
-    letter-spacing: -1px;
+
+    letter-spacing: 0.5px;
+
     white-space: nowrap;
-    color: white;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px rgba(0, 170, 255, 0.35);
 }
 
 .logo span {
@@ -359,46 +319,89 @@ nav::before {
 
     text-shadow:
         0 0 10px #00aaff,
-        0 0 20px rgba(0,170,255,0.5);
+        0 0 20px rgba(0, 170, 255, 0.5);
 }
 
 nav ul {
+    list-style: none;
+
     display: flex;
     align-items: center;
-    gap: 18px;
-    list-style: none;
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    position: relative;
 }
 
 nav a {
-    color: #dcefff;
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 40px;
+
+    padding: 8px 11px;
+
+    color: #dce8f5;
+
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 9px 4px;
-    transition: 0.3s;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 nav a:hover {
-    color: #00d9ff;
+    color: #ffffff;
 
-    text-shadow:
-        0 0 10px #00aaff;
+    background:
+        rgba(0, 170, 255, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(0, 170, 255, 0.10);
+
+    transform:
+        translateY(-1px);
 }
 
 nav a.active {
-    color: #00d9ff;
+    color: #39ff88;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 170, 255, 0.10),
+            rgba(57, 255, 136, 0.06)
+        );
+
+    box-shadow:
+        inset 0 0 12px rgba(0, 170, 255, 0.06);
 }
 
 nav a.active::after {
     content: "";
 
-    display: block;
+    position: absolute;
 
-    height: 3px;
+    left: 11px;
+    right: 11px;
+    bottom: 3px;
 
-    margin-top: 5px;
-
-    border-radius: 10px;
+    height: 2px;
 
     background:
         linear-gradient(
@@ -407,26 +410,53 @@ nav a.active::after {
             #39ff88
         );
 
+    border-radius: 2px;
+
     box-shadow:
-        0 0 8px #00aaff;
+        0 0 8px rgba(57, 255, 136, 0.7);
 }
 
-nav a.donate {
-    padding: 9px 16px;
 
-    border: 1px solid #39ff88;
+/* Mobile menu button */
 
-    border-radius: 30px;
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(0, 170, 255, 0.45);
+
+    border-radius: 9px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(0,170,255,0.1),
-            rgba(57,255,136,0.1)
-        );
+        rgba(0, 170, 255, 0.06);
+
+    color: #00aaff;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.menu-toggle:hover {
+    background:
+        rgba(0, 170, 255, 0.12);
+
+    border-color:
+        #00aaff;
 
     box-shadow:
-        0 0 12px rgba(57,255,136,0.2);
+        0 0 15px rgba(0, 170, 255, 0.18);
 }
 
 
@@ -501,40 +531,29 @@ nav a.donate {
 }
 
 @keyframes heroBlue {
-
     from {
-        transform:
-            translate(0,0)
-            scale(1);
+        transform: translate(0, 0) scale(1);
     }
 
     to {
-        transform:
-            translate(260px,80px)
-            scale(1.15);
+        transform: translate(260px, 80px) scale(1.15);
     }
-
 }
 
 @keyframes heroGreen {
-
     from {
-        transform:
-            translate(0,0)
-            scale(1);
+        transform: translate(0, 0) scale(1);
     }
 
     to {
-        transform:
-            translate(-230px,-70px)
-            scale(1.1);
+        transform: translate(-230px, -70px) scale(1.1);
     }
-
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+
     max-width: 900px;
 }
 
@@ -550,10 +569,10 @@ nav a.donate {
     border-radius: 30px;
 
     border:
-        1px solid rgba(0,170,255,0.35);
+        1px solid rgba(0, 170, 255, 0.35);
 
     background:
-        rgba(0,170,255,0.07);
+        rgba(0, 170, 255, 0.07);
 
     color: #9edfff;
 
@@ -565,7 +584,7 @@ nav a.donate {
     text-transform: uppercase;
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.08);
+        0 0 20px rgba(0, 170, 255, 0.08);
 }
 
 .hero-icon {
@@ -574,23 +593,20 @@ nav a.donate {
 
     filter:
         drop-shadow(0 0 14px #00aaff)
-        drop-shadow(0 0 25px rgba(57,255,136,0.25));
+        drop-shadow(0 0 25px rgba(57, 255, 136, 0.25));
 
     animation:
         floatIcon 4s infinite ease-in-out;
 }
 
 @keyframes floatIcon {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0);
     }
 
     50% {
         transform: translateY(-8px);
     }
-
 }
 
 .hero h1 {
@@ -668,24 +684,24 @@ nav a.donate {
         );
 
     box-shadow:
-        0 0 22px rgba(0,170,255,0.3);
+        0 0 22px rgba(0, 170, 255, 0.3);
 }
 
 .hero-btn.secondary {
     color: white;
 
     border:
-        1px solid rgba(0,170,255,0.4);
+        1px solid rgba(0, 170, 255, 0.4);
 
     background:
-        rgba(0,170,255,0.06);
+        rgba(0, 170, 255, 0.06);
 }
 
 .hero-btn:hover {
     transform: translateY(-3px);
 
     box-shadow:
-        0 8px 25px rgba(0,170,255,0.2);
+        0 8px 25px rgba(0, 170, 255, 0.2);
 }
 
 
@@ -720,17 +736,17 @@ nav a.donate {
     border-radius: 18px;
 
     border:
-        1px solid rgba(0,170,255,0.25);
+        1px solid rgba(0, 170, 255, 0.25);
 
     background:
         linear-gradient(
             145deg,
-            rgba(7,22,41,0.94),
-            rgba(3,11,23,0.96)
+            rgba(7, 22, 41, 0.94),
+            rgba(3, 11, 23, 0.96)
         );
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.3);
+        0 15px 35px rgba(0, 0, 0, 0.3);
 
     backdrop-filter: blur(12px);
 
@@ -741,10 +757,10 @@ nav a.donate {
     transform: translateY(-5px);
 
     border-color:
-        rgba(0,210,255,0.65);
+        rgba(0, 210, 255, 0.65);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.12);
+        0 0 25px rgba(0, 170, 255, 0.12);
 }
 
 .stat-number {
@@ -769,7 +785,7 @@ nav a.donate {
 
 
 /* =========================================================
-   SECTION HEADERS
+   SECTIONS
 ========================================================= */
 
 .section {
@@ -836,7 +852,6 @@ nav a.donate {
 
 .path-card {
     position: relative;
-
     overflow: hidden;
 
     padding: 40px;
@@ -844,22 +859,24 @@ nav a.donate {
     border-radius: 25px;
 
     border:
-        1px solid rgba(0,170,255,0.3);
+        1px solid rgba(0, 170, 255, 0.3);
 
     background:
         linear-gradient(
             145deg,
-            rgba(8,25,47,0.92),
-            rgba(3,12,25,0.94)
+            rgba(8, 25, 47, 0.92),
+            rgba(3, 12, 25, 0.94)
         );
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.3);
+        0 20px 50px rgba(0, 0, 0, 0.3);
 
     backdrop-filter: blur(12px);
 }
 
-.path-card::before {
+.path-card::before,
+.visual-card::before,
+.lesson-card::before {
     content: "";
 
     position: absolute;
@@ -899,10 +916,10 @@ nav a.donate {
     border-radius: 18px;
 
     background:
-        rgba(0,170,255,0.045);
+        rgba(0, 170, 255, 0.045);
 
     border:
-        1px solid rgba(0,170,255,0.18);
+        1px solid rgba(0, 170, 255, 0.18);
 
     transition: 0.3s;
 }
@@ -911,10 +928,10 @@ nav a.donate {
     transform: translateY(-6px);
 
     border-color:
-        rgba(0,210,255,0.6);
+        rgba(0, 210, 255, 0.6);
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.1);
+        0 0 25px rgba(0, 170, 255, 0.1);
 }
 
 .path-number {
@@ -977,7 +994,6 @@ nav a.donate {
 
 .visual-card {
     position: relative;
-
     overflow: hidden;
 
     padding: 38px;
@@ -985,42 +1001,19 @@ nav a.donate {
     border-radius: 25px;
 
     border:
-        1px solid rgba(0,170,255,0.35);
+        1px solid rgba(0, 170, 255, 0.35);
 
     background:
         linear-gradient(
             145deg,
-            rgba(8,24,45,0.93),
-            rgba(3,12,25,0.95)
+            rgba(8, 24, 45, 0.93),
+            rgba(3, 12, 25, 0.95)
         );
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.3);
+        0 20px 50px rgba(0, 0, 0, 0.3);
 
     backdrop-filter: blur(12px);
-}
-
-.visual-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 3px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88,
-            #00aaff
-        );
-
-    box-shadow:
-        0 0 15px #00aaff;
 }
 
 .visual-top {
@@ -1055,12 +1048,12 @@ nav a.donate {
     border-radius: 20px;
 
     border:
-        1px solid rgba(57,255,136,0.3);
+        1px solid rgba(57, 255, 136, 0.3);
 
     color: #39ff88;
 
     background:
-        rgba(57,255,136,0.06);
+        rgba(57, 255, 136, 0.06);
 
     font-size: 11px;
 
@@ -1100,13 +1093,13 @@ nav a.donate {
     border-radius: 18px;
 
     border:
-        1px solid rgba(0,170,255,0.35);
+        1px solid rgba(0, 170, 255, 0.35);
 
     background:
         linear-gradient(
             145deg,
-            rgba(0,170,255,0.08),
-            rgba(57,255,136,0.04)
+            rgba(0, 170, 255, 0.08),
+            rgba(57, 255, 136, 0.04)
         );
 
     transition: 0.3s;
@@ -1116,7 +1109,6 @@ nav a.donate {
 }
 
 @keyframes nodeIn {
-
     from {
         opacity: 0;
         transform: scale(0.92);
@@ -1126,7 +1118,6 @@ nav a.donate {
         opacity: 1;
         transform: scale(1);
     }
-
 }
 
 .diagram-node:hover {
@@ -1135,7 +1126,7 @@ nav a.donate {
     border-color: #00d9ff;
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.2);
+        0 0 25px rgba(0, 170, 255, 0.2);
 }
 
 .diagram-icon {
@@ -1175,10 +1166,10 @@ nav a.donate {
     border-radius: 15px;
 
     border:
-        1px solid rgba(57,255,136,0.25);
+        1px solid rgba(57, 255, 136, 0.25);
 
     background:
-        rgba(57,255,136,0.04);
+        rgba(57, 255, 136, 0.04);
 }
 
 .diagram-explanation strong {
@@ -1203,10 +1194,10 @@ nav a.donate {
 
 .diagram-btn {
     border:
-        1px solid rgba(0,170,255,0.5);
+        1px solid rgba(0, 170, 255, 0.5);
 
     background:
-        rgba(0,170,255,0.07);
+        rgba(0, 170, 255, 0.07);
 
     color: white;
 
@@ -1223,12 +1214,13 @@ nav a.donate {
 
 .diagram-btn:hover {
     background:
-        rgba(0,170,255,0.18);
+        rgba(0, 170, 255, 0.18);
 
     box-shadow:
-        0 0 15px rgba(0,170,255,0.25);
+        0 0 15px rgba(0, 170, 255, 0.25);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .diagram-counter {
@@ -1276,14 +1268,14 @@ nav a.donate {
     border-radius: 14px;
 
     border:
-        1px solid rgba(0,170,255,0.25);
+        1px solid rgba(0, 170, 255, 0.25);
 
     outline: none;
 
     color: white;
 
     background:
-        rgba(5,15,29,0.95);
+        rgba(5, 15, 29, 0.95);
 
     font-size: 14px;
 
@@ -1294,14 +1286,13 @@ nav a.donate {
     border-color: #00aaff;
 
     box-shadow:
-        0 0 20px rgba(0,170,255,0.12);
+        0 0 20px rgba(0, 170, 255, 0.12);
 }
 
 .search-icon {
     position: absolute;
 
     left: 16px;
-
     top: 50%;
 
     transform:
@@ -1324,10 +1315,10 @@ nav a.donate {
     border-radius: 20px;
 
     border:
-        1px solid rgba(0,170,255,0.22);
+        1px solid rgba(0, 170, 255, 0.22);
 
     background:
-        rgba(0,170,255,0.05);
+        rgba(0, 170, 255, 0.05);
 
     color: #a9c1d4;
 
@@ -1347,15 +1338,15 @@ nav a.donate {
     border-color: #00aaff;
 
     background:
-        rgba(0,170,255,0.15);
+        rgba(0, 170, 255, 0.15);
 
     box-shadow:
-        0 0 12px rgba(0,170,255,0.12);
+        0 0 12px rgba(0, 170, 255, 0.12);
 }
 
 
 /* =========================================================
-   LEVEL SECTIONS
+   LEVELS
 ========================================================= */
 
 .level {
@@ -1374,7 +1365,7 @@ nav a.donate {
     padding-bottom: 16px;
 
     border-bottom:
-        1px solid rgba(0,170,255,0.2);
+        1px solid rgba(0, 170, 255, 0.2);
 }
 
 .level-number {
@@ -1391,15 +1382,15 @@ nav a.donate {
     background:
         linear-gradient(
             135deg,
-            rgba(0,170,255,0.2),
-            rgba(57,255,136,0.12)
+            rgba(0, 170, 255, 0.2),
+            rgba(57, 255, 136, 0.12)
         );
 
     border:
         1px solid #00aaff;
 
     box-shadow:
-        0 0 15px rgba(0,170,255,0.18);
+        0 0 15px rgba(0, 170, 255, 0.18);
 
     font-weight: 900;
 }
@@ -1440,17 +1431,17 @@ nav a.donate {
     border-radius: 19px;
 
     border:
-        1px solid rgba(0,170,255,0.19);
+        1px solid rgba(0, 170, 255, 0.19);
 
     background:
         linear-gradient(
             145deg,
-            rgba(10,25,45,0.94),
-            rgba(4,13,27,0.95)
+            rgba(10, 25, 45, 0.94),
+            rgba(4, 13, 27, 0.95)
         );
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,0.23);
+        0 12px 30px rgba(0, 0, 0, 0.23);
 
     backdrop-filter: blur(10px);
 
@@ -1465,23 +1456,6 @@ nav a.donate {
 }
 
 .lesson-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 3px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #00aaff,
-            #39ff88
-        );
-
     opacity: 0.65;
 }
 
@@ -1489,10 +1463,10 @@ nav a.donate {
     transform: translateY(-7px);
 
     border-color:
-        rgba(0,210,255,0.65);
+        rgba(0, 210, 255, 0.65);
 
     box-shadow:
-        0 18px 40px rgba(0,120,255,0.13);
+        0 18px 40px rgba(0, 120, 255, 0.13);
 }
 
 .lesson-icon {
@@ -1511,10 +1485,10 @@ nav a.donate {
     font-size: 30px;
 
     background:
-        rgba(0,170,255,0.07);
+        rgba(0, 170, 255, 0.07);
 
     border:
-        1px solid rgba(0,170,255,0.18);
+        1px solid rgba(0, 170, 255, 0.18);
 }
 
 .lesson-card h3 {
@@ -1559,10 +1533,10 @@ nav a.donate {
     color: #9feaff;
 
     border:
-        1px solid rgba(0,170,255,0.3);
+        1px solid rgba(0, 170, 255, 0.3);
 
     background:
-        rgba(0,170,255,0.07);
+        rgba(0, 170, 255, 0.07);
 }
 
 .lesson-time {
@@ -1585,10 +1559,10 @@ nav a.donate {
     border-radius: 10px;
 
     border:
-        1px solid rgba(0,170,255,0.25);
+        1px solid rgba(0, 170, 255, 0.25);
 
     background:
-        rgba(0,170,255,0.05);
+        rgba(0, 170, 255, 0.05);
 
     color: #bdeaff;
 
@@ -1607,7 +1581,7 @@ nav a.donate {
     border-color: #00aaff;
 
     background:
-        rgba(0,170,255,0.14);
+        rgba(0, 170, 255, 0.14);
 }
 
 .lesson-details {
@@ -1656,13 +1630,13 @@ nav a.donate {
     border-radius: 20px;
 
     border:
-        1px solid rgba(0,170,255,0.2);
+        1px solid rgba(0, 170, 255, 0.2);
 
     background:
         linear-gradient(
             145deg,
-            rgba(9,24,44,0.94),
-            rgba(4,13,26,0.95)
+            rgba(9, 24, 44, 0.94),
+            rgba(4, 13, 26, 0.95)
         );
 
     backdrop-filter: blur(10px);
@@ -1690,7 +1664,7 @@ nav a.donate {
     padding: 12px 0;
 
     border-bottom:
-        1px solid rgba(255,255,255,0.05);
+        1px solid rgba(255, 255, 255, 0.05);
 
     color: #b9cbd8;
 
@@ -1724,17 +1698,17 @@ nav a.donate {
     border-radius: 25px;
 
     border:
-        1px solid rgba(0,170,255,0.3);
+        1px solid rgba(0, 170, 255, 0.3);
 
     background:
         radial-gradient(
             circle at center,
-            rgba(0,170,255,0.12),
-            rgba(4,13,26,0.95) 65%
+            rgba(0, 170, 255, 0.12),
+            rgba(4, 13, 26, 0.95) 65%
         );
 
     box-shadow:
-        0 0 35px rgba(0,170,255,0.08);
+        0 0 35px rgba(0, 170, 255, 0.08);
 
     backdrop-filter: blur(12px);
 }
@@ -1798,10 +1772,10 @@ nav a.donate {
     color: white;
 
     border:
-        1px solid rgba(0,170,255,0.35);
+        1px solid rgba(0, 170, 255, 0.35);
 
     background:
-        rgba(0,170,255,0.06);
+        rgba(0, 170, 255, 0.06);
 }
 
 .cta-btn:hover {
@@ -1823,7 +1797,7 @@ nav a.donate {
     color: #7891a4;
 
     border:
-        1px dashed rgba(0,170,255,0.25);
+        1px dashed rgba(0, 170, 255, 0.25);
 
     border-radius: 18px;
 }
@@ -1843,10 +1817,10 @@ footer {
     padding: 55px 20px;
 
     border-top:
-        1px solid rgba(0,170,255,0.2);
+        1px solid rgba(0, 170, 255, 0.2);
 
     background:
-        rgba(2,8,18,0.93);
+        rgba(2, 8, 18, 0.93);
 
     backdrop-filter: blur(15px);
 
@@ -1882,21 +1856,24 @@ footer {
    TABLET
 ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
 
     nav {
-        flex-direction: column;
-
-        gap: 14px;
+        padding: 12px 3%;
     }
 
     nav ul {
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        gap: 10px 14px;
+        gap: 3px;
     }
+
+    nav a {
+        padding: 8px 8px;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 1000px) {
 
     .stats {
         grid-template-columns:
@@ -1915,6 +1892,87 @@ footer {
 
     .hud {
         opacity: 0.55;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        min-height: 64px;
+
+        padding:
+            11px 15px;
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 5px;
+
+        margin-top: 10px;
+
+        padding: 10px;
+
+        border:
+            1px solid rgba(0, 170, 255, 0.20);
+
+        border-radius: 12px;
+
+        background:
+            rgba(3, 12, 25, 0.97);
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav li {
+        width: 100%;
+    }
+
+    nav a {
+        width: 100%;
+
+        justify-content: flex-start;
+
+        padding:
+            11px 13px;
+
+        font-size: 14px;
+    }
+
+    nav a.active::after {
+        left: 13px;
+        right: auto;
+
+        width: 35px;
+
+        bottom: 5px;
     }
 
 }
@@ -1951,33 +2009,11 @@ footer {
         display: none;
     }
 
-    nav {
-        padding: 15px 10px;
-    }
-
-    .logo {
-        font-size: 23px;
-    }
-
-    nav ul {
-        gap: 7px 11px;
-    }
-
-    nav a {
-        font-size: 12px;
-    }
-
-    nav a.donate {
-        padding: 8px 11px;
-    }
-
     .hero {
         min-height: 500px;
 
         padding:
-            65px
-            16px
-            65px;
+            65px 16px 65px;
     }
 
     .hero-icon {
@@ -2099,6 +2135,24 @@ footer {
 
 
 /* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav {
+        padding:
+            10px 12px;
+    }
+
+}
+
+
+/* =========================================================
    REDUCED MOTION
 ========================================================= */
 
@@ -2111,9 +2165,14 @@ footer {
     *,
     *::before,
     *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
+        animation-duration:
+            0.001ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.001ms !important;
     }
 
     #network-canvas {
@@ -2177,78 +2236,81 @@ footer {
 
 
 <!-- =========================================================
-     NAVIGATION
+     UPDATED NAVIGATION
 ========================================================= -->
 
 <nav>
 
-<div class="logo">
-    🛡️ Cly<span>vexis</span>
-</div>
+    <div class="logo">
+        🛡️ Cly<span>vexis</span>
+    </div>
 
-<ul>
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        type="button">
+        ☰
+    </button>
 
-    <li>
-        <a href="index.html">
-            Home
-        </a>
-    </li>
+    <ul id="main-navigation">
 
-    <li>
-        <a href="lessons.html" class="active">
-            Lessons
-        </a>
-    </li>
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
 
-    <li>
-        <a href="labs.html">
-            Labs
-        </a>
-    </li>
+        <li>
+            <a href="lessons.html" class="active">
+                Lessons
+            </a>
+        </li>
 
-    <li>
-        <a href="quiz.html">
-            Quiz
-        </a>
-    </li>
+        <li>
+            <a href="labs.html">
+                Labs
+            </a>
+        </li>
 
-    <li>
-        <a href="games.html">
-            Games
-        </a>
-    </li>
+        <li>
+            <a href="quiz.html">
+                Quiz
+            </a>
+        </li>
 
-    <li>
-        <a href="cyber-defense.html">
-            🛡️ Defense
-        </a>
-    </li>
+        <li>
+            <a href="games.html">
+                Games
+            </a>
+        </li>
 
-    <li>
-        <a href="glossary.html">
-            Glossary
-        </a>
-    </li>
+        <li>
+            <a href="cyber-defense.html">
+                🛡️ Defense
+            </a>
+        </li>
 
-    <li>
-        <a href="coding.html">
-            💻 Coding
-        </a>
-    </li>
+        <li>
+            <a href="glossary.html">
+                Glossary
+            </a>
+        </li>
 
-    <li>
-        <a href="simulators.html">
-            🖥️ Simulators
-        </a>
-    </li>
+        <li>
+            <a href="coding.html">
+                💻 Coding
+            </a>
+        </li>
 
-    <li>
-        <a href="donate.html" class="donate">
-            💚 Donate
-        </a>
-    </li>
+        <li>
+            <a href="simulators.html">
+                🧪 Simulators
+            </a>
+        </li>
 
-</ul>
+    </ul>
 
 </nav>
 
@@ -2259,45 +2321,45 @@ footer {
 
 <section class="hero">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-    <div class="hero-badge">
-        ⚡ CLYVEXIS LEARNING SYSTEM
+        <div class="hero-badge">
+            ⚡ CLYVEXIS LEARNING SYSTEM
+        </div>
+
+        <div class="hero-icon">
+            📚
+        </div>
+
+        <h1>
+            Learn.
+            <span>Understand.</span>
+            Defend.
+        </h1>
+
+        <p>
+            Build real cybersecurity knowledge through
+            structured lessons, visual explanations,
+            security concepts, and hands-on practice.
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                href="#learning-path"
+                class="hero-btn primary">
+                Start Learning →
+            </a>
+
+            <a
+                href="#lesson-library"
+                class="hero-btn secondary">
+                Explore Lessons
+            </a>
+
+        </div>
+
     </div>
-
-    <div class="hero-icon">
-        📚
-    </div>
-
-    <h1>
-        Learn.
-        <span>Understand.</span>
-        Defend.
-    </h1>
-
-    <p>
-        Build real cybersecurity knowledge through
-        structured lessons, visual explanations,
-        security concepts, and hands-on practice.
-    </p>
-
-    <div class="hero-actions">
-
-        <a
-            href="#learning-path"
-            class="hero-btn primary">
-            Start Learning →
-        </a>
-
-        <a
-            href="#lesson-library"
-            class="hero-btn secondary">
-            Explore Lessons
-        </a>
-
-    </div>
-
-</div>
 
 </section>
 
@@ -2308,56 +2370,25 @@ footer {
 
 <section class="stats">
 
-<div class="stat">
-
-    <div class="stat-number">
-        03
+    <div class="stat">
+        <div class="stat-number">03</div>
+        <div class="stat-label">Learning Levels</div>
     </div>
 
-    <div class="stat-label">
-        Learning Levels
+    <div class="stat">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Security Topics</div>
     </div>
 
-</div>
-
-
-<div class="stat">
-
-    <div class="stat-number">
-        20+
+    <div class="stat">
+        <div class="stat-number">08</div>
+        <div class="stat-label">Visual Lessons</div>
     </div>
 
-    <div class="stat-label">
-        Security Topics
+    <div class="stat">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Practice Potential</div>
     </div>
-
-</div>
-
-
-<div class="stat">
-
-    <div class="stat-number">
-        08
-    </div>
-
-    <div class="stat-label">
-        Visual Lessons
-    </div>
-
-</div>
-
-
-<div class="stat">
-
-    <div class="stat-number">
-        ∞
-    </div>
-
-    <div class="stat-label">
-        Practice Potential
-    </div>
-
-</div>
 
 </section>
 
@@ -2370,105 +2401,102 @@ footer {
     class="section"
     id="learning-path">
 
-<div class="section-heading">
+    <div class="section-heading">
 
-    <div class="eyebrow">
-        YOUR PATH
-    </div>
-
-    <h2>
-        From Beginner to Defender
-    </h2>
-
-    <p>
-        Cybersecurity becomes easier when you build
-        your knowledge in the right order.
-    </p>
-
-</div>
-
-
-<div class="path-card">
-
-    <div class="path">
-
-        <div class="path-step">
-
-            <div class="path-number">
-                01
-            </div>
-
-            <h3>
-                🟢 Build Foundations
-            </h3>
-
-            <p>
-                Learn the basic ideas behind cybersecurity,
-                common threats, account security, malware,
-                and networks.
-            </p>
-
-            <a
-                href="#beginner"
-                class="path-link">
-                Explore Beginner →
-            </a>
-
+        <div class="eyebrow">
+            YOUR PATH
         </div>
 
+        <h2>
+            From Beginner to Defender
+        </h2>
 
-        <div class="path-step">
-
-            <div class="path-number">
-                02
-            </div>
-
-            <h3>
-                🔵 Understand Defense
-            </h3>
-
-            <p>
-                Learn encryption, hashing, firewalls,
-                access control, vulnerabilities,
-                and incident response.
-            </p>
-
-            <a
-                href="#intermediate"
-                class="path-link">
-                Explore Intermediate →
-            </a>
-
-        </div>
-
-
-        <div class="path-step">
-
-            <div class="path-number">
-                03
-            </div>
-
-            <h3>
-                🟣 Think Like a Defender
-            </h3>
-
-            <p>
-                Explore networking concepts, least privilege,
-                attack concepts, and the defensive mindset
-                used by security professionals.
-            </p>
-
-            <a
-                href="#advanced"
-                class="path-link">
-                Explore Advanced →
-            </a>
-
-        </div>
+        <p>
+            Cybersecurity becomes easier when you build
+            your knowledge in the right order.
+        </p>
 
     </div>
 
-</div>
+    <div class="path-card">
+
+        <div class="path">
+
+            <div class="path-step">
+
+                <div class="path-number">
+                    01
+                </div>
+
+                <h3>
+                    🟢 Build Foundations
+                </h3>
+
+                <p>
+                    Learn the basic ideas behind cybersecurity,
+                    common threats, account security, malware,
+                    and networks.
+                </p>
+
+                <a
+                    href="#beginner"
+                    class="path-link">
+                    Explore Beginner →
+                </a>
+
+            </div>
+
+            <div class="path-step">
+
+                <div class="path-number">
+                    02
+                </div>
+
+                <h3>
+                    🔵 Understand Defense
+                </h3>
+
+                <p>
+                    Learn encryption, hashing, firewalls,
+                    access control, vulnerabilities,
+                    and incident response.
+                </p>
+
+                <a
+                    href="#intermediate"
+                    class="path-link">
+                    Explore Intermediate →
+                </a>
+
+            </div>
+
+            <div class="path-step">
+
+                <div class="path-number">
+                    03
+                </div>
+
+                <h3>
+                    🟣 Think Like a Defender
+                </h3>
+
+                <p>
+                    Explore networking concepts, least privilege,
+                    attack concepts, and the defensive mindset
+                    used by security professionals.
+                </p>
+
+                <a
+                    href="#advanced"
+                    class="path-link">
+                    Explore Advanced →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -2479,103 +2507,91 @@ footer {
 
 <section class="section">
 
-<div class="section-heading">
+    <div class="section-heading">
 
-    <div class="eyebrow">
-        INTERACTIVE LEARNING
-    </div>
-
-    <h2>
-        See How Cybersecurity Works
-    </h2>
-
-    <p>
-        Follow the flow of real security concepts
-        instead of simply reading definitions.
-    </p>
-
-</div>
-
-
-<div class="visual-card">
-
-    <div class="visual-top">
-
-        <div>
-
-            <h3 id="diagramTitle">
-                🎣 How Phishing Works
-            </h3>
-
-            <p id="diagramSubtitle">
-                Follow the path from suspicious message
-                to a protected decision.
-            </p>
-
+        <div class="eyebrow">
+            INTERACTIVE LEARNING
         </div>
 
-        <div class="live-badge">
-            ● INTERACTIVE
-        </div>
+        <h2>
+            See How Cybersecurity Works
+        </h2>
 
-    </div>
-
-
-    <div
-        class="diagram-flow"
-        id="diagramFlow">
-    </div>
-
-
-    <div class="diagram-explanation">
-
-        <p id="diagramExplanation">
-
-            <strong>
-                What to remember:
-            </strong>
-
-            Phishing relies on deception.
-            Slow down, verify unexpected requests,
-            and avoid entering information into
-            suspicious websites.
-
+        <p>
+            Follow the flow of real security concepts
+            instead of simply reading definitions.
         </p>
 
     </div>
 
+    <div class="visual-card">
 
-    <div class="diagram-controls">
+        <div class="visual-top">
 
-        <button
-            class="diagram-btn"
-            onclick="previousDiagram()">
+            <div>
 
-            ← Previous
+                <h3 id="diagramTitle">
+                    🎣 How Phishing Works
+                </h3>
 
-        </button>
+                <p id="diagramSubtitle">
+                    Follow the path from suspicious message
+                    to a protected decision.
+                </p>
 
+            </div>
 
-        <button
-            class="diagram-btn"
-            onclick="nextDiagram()">
+            <div class="live-badge">
+                ● INTERACTIVE
+            </div>
 
-            Next Lesson →
+        </div>
 
-        </button>
+        <div
+            class="diagram-flow"
+            id="diagramFlow">
+        </div>
+
+        <div class="diagram-explanation">
+
+            <p id="diagramExplanation">
+
+                <strong>
+                    What to remember:
+                </strong>
+
+                Phishing relies on deception.
+                Slow down, verify unexpected requests,
+                and avoid entering information into
+                suspicious websites.
+
+            </p>
+
+        </div>
+
+        <div class="diagram-controls">
+
+            <button
+                class="diagram-btn"
+                onclick="previousDiagram()">
+                ← Previous
+            </button>
+
+            <button
+                class="diagram-btn"
+                onclick="nextDiagram()">
+                Next Lesson →
+            </button>
+
+        </div>
+
+        <div
+            class="diagram-counter"
+            id="diagramCounter">
+            Lesson 1 of 8
+        </div>
 
     </div>
-
-
-    <div
-        class="diagram-counter"
-        id="diagramCounter">
-
-        Lesson 1 of 8
-
-    </div>
-
-</div>
 
 </section>
 
@@ -2588,1297 +2604,1200 @@ footer {
     class="section"
     id="lesson-library">
 
-<div class="section-heading">
+    <div class="section-heading">
 
-    <div class="eyebrow">
-        LESSON LIBRARY
-    </div>
-
-    <h2>
-        Explore Cybersecurity
-    </h2>
-
-    <p>
-        Search the library or filter lessons by
-        difficulty to find exactly what you want to learn.
-    </p>
-
-</div>
-
-
-<div class="lesson-tools">
-
-    <div class="search-box">
-
-        <span class="search-icon">
-            🔎
-        </span>
-
-        <input
-            type="text"
-            id="lessonSearch"
-            placeholder="Search cybersecurity lessons..."
-            oninput="filterLessons()">
-
-    </div>
-
-
-    <div class="filters">
-
-        <button
-            class="filter-btn active"
-            onclick="setFilter('all', this)">
-            All
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setFilter('beginner', this)">
-            Beginner
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setFilter('intermediate', this)">
-            Intermediate
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setFilter('advanced', this)">
-            Advanced
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     BEGINNER
-========================================================= -->
-
-<section
-    class="level"
-    id="beginner"
-    data-level="beginner">
-
-<div class="level-header">
-
-    <div class="level-number">
-        01
-    </div>
-
-    <div>
+        <div class="eyebrow">
+            LESSON LIBRARY
+        </div>
 
         <h2>
-            🟢 Beginner
+            Explore Cybersecurity
         </h2>
 
-    </div>
-
-    <p>
-        Build your foundation
-    </p>
-
-</div>
-
-
-<div class="lesson-grid">
-
-
-<article
-    class="lesson-card"
-    data-title="what is cybersecurity"
-    data-level="beginner">
-
-    <div class="lesson-icon">
-        🛡️
-    </div>
-
-    <h3>
-        What Is Cybersecurity?
-    </h3>
-
-    <p>
-        Learn what cybersecurity is, why it matters,
-        and what security professionals work to protect.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            FUNDAMENTALS
-        </span>
-
-        <span class="lesson-time">
-            ~5 min
-        </span>
+        <p>
+            Search the library or filter lessons by
+            difficulty to find exactly what you want to learn.
+        </p>
 
     </div>
 
-    <div class="lesson-more">
+    <div class="lesson-tools">
 
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
+        <div class="search-box">
 
-        <div class="lesson-details">
+            <span class="search-icon">
+                🔎
+            </span>
 
-            <strong>
-                Key concept:
-            </strong>
+            <input
+                type="text"
+                id="lessonSearch"
+                placeholder="Search cybersecurity lessons..."
+                oninput="filterLessons()">
 
-            Cybersecurity protects information,
-            systems, devices, networks, and people
-            from security threats.
+        </div>
 
-            <br><br>
+        <div class="filters">
 
-            Think about cybersecurity as a collection
-            of layers rather than one single tool.
+            <button
+                class="filter-btn active"
+                onclick="setFilter('all', this)">
+                All
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="setFilter('beginner', this)">
+                Beginner
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="setFilter('intermediate', this)">
+                Intermediate
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="setFilter('advanced', this)">
+                Advanced
+            </button>
 
         </div>
 
     </div>
 
-</article>
 
+    <!-- BEGINNER -->
 
-<article
-    class="lesson-card"
-    data-title="phishing"
-    data-level="beginner">
+    <section
+        class="level"
+        id="beginner"
+        data-level="beginner">
 
-    <div class="lesson-icon">
-        🎣
-    </div>
+        <div class="level-header">
 
-    <h3>
-        Phishing
-    </h3>
+            <div class="level-number">
+                01
+            </div>
 
-    <p>
-        Learn how deceptive messages and websites
-        can be used to manipulate people.
-    </p>
+            <div>
+                <h2>
+                    🟢 Beginner
+                </h2>
+            </div>
 
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            THREATS
-        </span>
-
-        <span class="lesson-time">
-            ~6 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Phishing attacks often create urgency,
-            fear, curiosity, or trust.
-
-            <br><br>
-
-            Learn to pause, inspect unexpected requests,
-            and verify information through trusted channels.
+            <p>
+                Build your foundation
+            </p>
 
         </div>
 
-    </div>
-
-</article>
+        <div class="lesson-grid">
 
 
-<article
-    class="lesson-card"
-    data-title="strong passwords password security"
-    data-level="beginner">
+            <article
+                class="lesson-card"
+                data-title="what is cybersecurity"
+                data-level="beginner">
 
-    <div class="lesson-icon">
-        🔐
-    </div>
+                <div class="lesson-icon">🛡️</div>
 
-    <h3>
-        Strong Passwords
-    </h3>
+                <h3>
+                    What Is Cybersecurity?
+                </h3>
 
-    <p>
-        Understand why unique passwords and
-        password managers can improve account security.
-    </p>
+                <p>
+                    Learn what cybersecurity is, why it matters,
+                    and what security professionals work to protect.
+                </p>
 
-    <div class="lesson-meta">
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        FUNDAMENTALS
+                    </span>
 
-        <span class="lesson-tag">
-            ACCOUNT SECURITY
-        </span>
+                    <span class="lesson-time">
+                        ~5 min
+                    </span>
+                </div>
 
-        <span class="lesson-time">
-            ~5 min
-        </span>
+                <div class="lesson-more">
 
-    </div>
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
 
-    <div class="lesson-more">
+                    <div class="lesson-details">
 
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
+                        <strong>
+                            Key concept:
+                        </strong>
 
-        <div class="lesson-details">
+                        Cybersecurity protects information,
+                        systems, devices, networks, and people
+                        from security threats.
 
-            <strong>
-                Key concept:
-            </strong>
+                        <br><br>
 
-            Reusing the same password across multiple
-            accounts increases the potential impact
-            if one account is compromised.
+                        Think about cybersecurity as a collection
+                        of layers rather than one single tool.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="phishing"
+                data-level="beginner">
+
+                <div class="lesson-icon">🎣</div>
+
+                <h3>
+                    Phishing
+                </h3>
+
+                <p>
+                    Learn how deceptive messages and websites
+                    can be used to manipulate people.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        THREATS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~6 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Phishing attacks often create urgency,
+                        fear, curiosity, or trust.
+
+                        <br><br>
+
+                        Learn to pause, inspect unexpected requests,
+                        and verify information through trusted channels.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="strong passwords password security"
+                data-level="beginner">
+
+                <div class="lesson-icon">🔐</div>
+
+                <h3>
+                    Strong Passwords
+                </h3>
+
+                <p>
+                    Understand why unique passwords and
+                    password managers can improve account security.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        ACCOUNT SECURITY
+                    </span>
+
+                    <span class="lesson-time">
+                        ~5 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Reusing the same password across multiple
+                        accounts increases the potential impact
+                        if one account is compromised.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="multi factor authentication mfa"
+                data-level="beginner">
+
+                <div class="lesson-icon">📱</div>
+
+                <h3>
+                    Multi-Factor Authentication
+                </h3>
+
+                <p>
+                    Learn how MFA adds another layer of protection
+                    when signing into an account.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        AUTHENTICATION
+                    </span>
+
+                    <span class="lesson-time">
+                        ~5 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Authentication factors can include something
+                        you know, something you have, or something you are.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="malware virus worm trojan"
+                data-level="beginner">
+
+                <div class="lesson-icon">🦠</div>
+
+                <h3>
+                    Malware
+                </h3>
+
+                <p>
+                    Explore malicious software and common categories
+                    such as viruses, worms, and trojans.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        THREATS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Malware is a broad category. Different types
+                        can have very different behaviors and impacts.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="network security networks"
+                data-level="beginner">
+
+                <div class="lesson-icon">🌐</div>
+
+                <h3>
+                    Network Security
+                </h3>
+
+                <p>
+                    Learn why networks need security controls
+                    and how defenders protect connected systems.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        NETWORKS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Network security combines technologies,
+                        rules, monitoring, and good security practices.
+
+                    </div>
+
+                </div>
+
+            </article>
 
         </div>
 
-    </div>
-
-</article>
+    </section>
 
 
-<article
-    class="lesson-card"
-    data-title="multi factor authentication mfa"
-    data-level="beginner">
+    <!-- INTERMEDIATE -->
 
-    <div class="lesson-icon">
-        📱
-    </div>
+    <section
+        class="level"
+        id="intermediate"
+        data-level="intermediate">
 
-    <h3>
-        Multi-Factor Authentication
-    </h3>
+        <div class="level-header">
 
-    <p>
-        Learn how MFA adds another layer of protection
-        when signing into an account.
-    </p>
+            <div class="level-number">
+                02
+            </div>
 
-    <div class="lesson-meta">
+            <div>
+                <h2>
+                    🔵 Intermediate
+                </h2>
+            </div>
 
-        <span class="lesson-tag">
-            AUTHENTICATION
-        </span>
-
-        <span class="lesson-time">
-            ~5 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Authentication factors can include something
-            you know, something you have, or something you are.
+            <p>
+                Understand attacks and defense
+            </p>
 
         </div>
 
-    </div>
-
-</article>
+        <div class="lesson-grid">
 
 
-<article
-    class="lesson-card"
-    data-title="malware virus worm trojan"
-    data-level="beginner">
+            <article
+                class="lesson-card"
+                data-title="encryption cryptography"
+                data-level="intermediate">
 
-    <div class="lesson-icon">
-        🦠
-    </div>
+                <div class="lesson-icon">🔒</div>
 
-    <h3>
-        Malware
-    </h3>
+                <h3>
+                    Encryption
+                </h3>
 
-    <p>
-        Explore malicious software and common categories
-        such as viruses, worms, and trojans.
-    </p>
+                <p>
+                    Learn how encryption protects information
+                    by transforming readable data into protected data.
+                </p>
 
-    <div class="lesson-meta">
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        CRYPTOGRAPHY
+                    </span>
 
-        <span class="lesson-tag">
-            THREATS
-        </span>
+                    <span class="lesson-time">
+                        ~8 min
+                    </span>
+                </div>
 
-        <span class="lesson-time">
-            ~7 min
-        </span>
+                <div class="lesson-more">
 
-    </div>
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
 
-    <div class="lesson-more">
+                    <div class="lesson-details">
 
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
+                        <strong>
+                            Key concept:
+                        </strong>
 
-        <div class="lesson-details">
+                        Encryption is designed so that protected
+                        information cannot be easily understood
+                        without the appropriate key.
 
-            <strong>
-                Key concept:
-            </strong>
+                    </div>
 
-            Malware is a broad category. Different types
-            can have very different behaviors and impacts.
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="hashing sha 256 cryptography"
+                data-level="intermediate">
+
+                <div class="lesson-icon">#️⃣</div>
+
+                <h3>
+                    Hashing
+                </h3>
+
+                <p>
+                    Understand how hash functions produce fixed-size
+                    values and why hashing matters in security.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        CRYPTOGRAPHY
+                    </span>
+
+                    <span class="lesson-time">
+                        ~8 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        A cryptographic hash produces a value from
+                        input data. Even a small input change can
+                        produce a very different result.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="firewall network defense"
+                data-level="intermediate">
+
+                <div class="lesson-icon">🧱</div>
+
+                <h3>
+                    Firewalls
+                </h3>
+
+                <p>
+                    Learn how firewalls can filter network traffic
+                    according to defined security rules.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        DEFENSE
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Firewalls can enforce rules about network
+                        traffic, but they are only one part of
+                        a layered security strategy.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="social engineering human factors"
+                data-level="intermediate">
+
+                <div class="lesson-icon">🧠</div>
+
+                <h3>
+                    Social Engineering
+                </h3>
+
+                <p>
+                    Discover how attackers can manipulate people
+                    rather than directly attacking technology.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        HUMAN FACTORS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Security awareness matters because technology
+                        can be undermined by human manipulation.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="incident response security incident"
+                data-level="intermediate">
+
+                <div class="lesson-icon">🚨</div>
+
+                <h3>
+                    Incident Response
+                </h3>
+
+                <p>
+                    Learn the basic defensive process for identifying,
+                    containing, investigating, and recovering from incidents.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        DEFENSE
+                    </span>
+
+                    <span class="lesson-time">
+                        ~8 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Good incident response uses an organized process
+                        instead of making random decisions under pressure.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="vulnerabilities patching updates"
+                data-level="intermediate">
+
+                <div class="lesson-icon">🔧</div>
+
+                <h3>
+                    Vulnerabilities & Patching
+                </h3>
+
+                <p>
+                    Learn what vulnerabilities are and why updates
+                    help reduce security risk.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        VULNERABILITIES
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Software vulnerabilities can create security
+                        weaknesses. Timely updates can reduce exposure
+                        to known problems.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="authentication authorization access"
+                data-level="intermediate">
+
+                <div class="lesson-icon">👤</div>
+
+                <h3>
+                    Authentication vs Authorization
+                </h3>
+
+                <p>
+                    Understand the difference between proving
+                    who you are and deciding what you can access.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        ACCESS CONTROL
+                    </span>
+
+                    <span class="lesson-time">
+                        ~6 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Remember:
+                        </strong>
+
+                        Authentication asks:
+                        “Who are you?”
+
+                        <br><br>
+
+                        Authorization asks:
+                        “What are you allowed to access?”
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="access control permissions"
+                data-level="intermediate">
+
+                <div class="lesson-icon">🚪</div>
+
+                <h3>
+                    Access Control
+                </h3>
+
+                <p>
+                    Learn how organizations decide which users,
+                    systems, and services can access resources.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        SECURITY
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Access control reduces unnecessary access
+                        and helps organizations protect sensitive resources.
+
+                    </div>
+
+                </div>
+
+            </article>
 
         </div>
 
-    </div>
-
-</article>
+    </section>
 
 
-<article
-    class="lesson-card"
-    data-title="network security networks"
-    data-level="beginner">
+    <!-- ADVANCED -->
 
-    <div class="lesson-icon">
-        🌐
-    </div>
+    <section
+        class="level"
+        id="advanced"
+        data-level="advanced">
 
-    <h3>
-        Network Security
-    </h3>
+        <div class="level-header">
 
-    <p>
-        Learn why networks need security controls
-        and how defenders protect connected systems.
-    </p>
+            <div class="level-number">
+                03
+            </div>
 
-    <div class="lesson-meta">
+            <div>
+                <h2>
+                    🟣 Advanced
+                </h2>
+            </div>
 
-        <span class="lesson-tag">
-            NETWORKS
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Network security combines technologies,
-            rules, monitoring, and good security practices.
+            <p>
+                Think like a security analyst
+            </p>
 
         </div>
 
-    </div>
-
-</article>
-
-</div>
-
-</section>
+        <div class="lesson-grid">
 
 
-<!-- =========================================================
-     INTERMEDIATE
-========================================================= -->
+            <article
+                class="lesson-card"
+                data-title="least privilege access control"
+                data-level="advanced">
 
-<section
-    class="level"
-    id="intermediate"
-    data-level="intermediate">
+                <div class="lesson-icon">⚖️</div>
 
-<div class="level-header">
+                <h3>
+                    Least Privilege
+                </h3>
 
-    <div class="level-number">
-        02
-    </div>
+                <p>
+                    Learn why users and systems should receive
+                    only the access they actually need.
+                </p>
 
-    <div>
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        ACCESS CONTROL
+                    </span>
 
-        <h2>
-            🔵 Intermediate
-        </h2>
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
 
-    </div>
+                <div class="lesson-more">
 
-    <p>
-        Understand attacks and defense
-    </p>
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
 
-</div>
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Limiting unnecessary privileges can reduce
+                        the potential impact of mistakes or compromised accounts.
+
+                    </div>
+
+                </div>
+
+            </article>
 
 
-<div class="lesson-grid">
+            <article
+                class="lesson-card"
+                data-title="vpn virtual private network"
+                data-level="advanced">
+
+                <div class="lesson-icon">🔗</div>
+
+                <h3>
+                    VPNs
+                </h3>
+
+                <p>
+                    Understand the basic purpose of VPNs and
+                    how they can create protected network connections.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        NETWORKS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        VPNs can help create encrypted connections,
+                        but using a VPN does not automatically make
+                        every aspect of online activity secure.
+
+                    </div>
+
+                </div>
+
+            </article>
 
 
-<article
-    class="lesson-card"
-    data-title="encryption cryptography"
-    data-level="intermediate">
+            <article
+                class="lesson-card"
+                data-title="dns domain name system"
+                data-level="advanced">
 
-    <div class="lesson-icon">
-        🔒
-    </div>
+                <div class="lesson-icon">📡</div>
 
-    <h3>
-        Encryption
-    </h3>
+                <h3>
+                    DNS
+                </h3>
 
-    <p>
-        Learn how encryption protects information
-        by transforming readable data into protected data.
-    </p>
+                <p>
+                    Learn how the Domain Name System helps translate
+                    domain names into IP addresses.
+                </p>
 
-    <div class="lesson-meta">
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        NETWORKS
+                    </span>
 
-        <span class="lesson-tag">
-            CRYPTOGRAPHY
-        </span>
+                    <span class="lesson-time">
+                        ~8 min
+                    </span>
+                </div>
 
-        <span class="lesson-time">
-            ~8 min
-        </span>
+                <div class="lesson-more">
 
-    </div>
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
 
-    <div class="lesson-more">
+                    <div class="lesson-details">
 
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
+                        <strong>
+                            Key concept:
+                        </strong>
 
-        <div class="lesson-details">
+                        DNS makes the internet easier to use by
+                        connecting human-readable names with network addresses.
 
-            <strong>
-                Key concept:
-            </strong>
+                    </div>
 
-            Encryption is designed so that protected
-            information cannot be easily understood
-            without the appropriate key.
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="ip addresses networking"
+                data-level="advanced">
+
+                <div class="lesson-icon">🏷️</div>
+
+                <h3>
+                    IP Addresses
+                </h3>
+
+                <p>
+                    Learn what IP addresses are and how they help
+                    devices communicate across networks.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        NETWORKING
+                    </span>
+
+                    <span class="lesson-time">
+                        ~7 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        IP addresses help identify network interfaces
+                        so information can be routed between systems.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="ddos denial of service attacks"
+                data-level="advanced">
+
+                <div class="lesson-icon">🌊</div>
+
+                <h3>
+                    DDoS Attacks
+                </h3>
+
+                <p>
+                    Understand distributed denial-of-service attacks
+                    and the defensive goal of maintaining availability.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        THREATS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~8 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        DDoS attacks attempt to overwhelm a service
+                        with large amounts of traffic or requests.
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="lesson-card"
+                data-title="ransomware malware defense"
+                data-level="advanced">
+
+                <div class="lesson-icon">🔴</div>
+
+                <h3>
+                    Ransomware
+                </h3>
+
+                <p>
+                    Learn how ransomware can disrupt organizations
+                    and why layered defenses and backups matter.
+                </p>
+
+                <div class="lesson-meta">
+                    <span class="lesson-tag">
+                        THREATS
+                    </span>
+
+                    <span class="lesson-time">
+                        ~8 min
+                    </span>
+                </div>
+
+                <div class="lesson-more">
+
+                    <button
+                        class="learn-btn"
+                        onclick="toggleLesson(this)">
+                        Learn More +
+                    </button>
+
+                    <div class="lesson-details">
+
+                        <strong>
+                            Key concept:
+                        </strong>
+
+                        Strong security combines prevention, detection,
+                        response, recovery, and reliable backups.
+
+                    </div>
+
+                </div>
+
+            </article>
 
         </div>
 
-    </div>
-
-</article>
+    </section>
 
 
-<article
-    class="lesson-card"
-    data-title="hashing sha 256 cryptography"
-    data-level="intermediate">
+    <div
+        class="no-results"
+        id="noResults">
 
-    <div class="lesson-icon">
-        #️⃣
-    </div>
+        🔎 No lessons matched your search.
 
-    <h3>
-        Hashing
-    </h3>
+        <br><br>
 
-    <p>
-        Understand how hash functions produce fixed-size
-        values and why hashing matters in security.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            CRYPTOGRAPHY
-        </span>
-
-        <span class="lesson-time">
-            ~8 min
-        </span>
+        Try another cybersecurity term or choose
+        a different difficulty level.
 
     </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            A cryptographic hash produces a value from
-            input data. Even a small input change can
-            produce a very different result.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="firewall network defense"
-    data-level="intermediate">
-
-    <div class="lesson-icon">
-        🧱
-    </div>
-
-    <h3>
-        Firewalls
-    </h3>
-
-    <p>
-        Learn how firewalls can filter network traffic
-        according to defined security rules.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            DEFENSE
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Firewalls can enforce rules about network
-            traffic, but they are only one part of
-            a layered security strategy.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="social engineering human factors"
-    data-level="intermediate">
-
-    <div class="lesson-icon">
-        🧠
-    </div>
-
-    <h3>
-        Social Engineering
-    </h3>
-
-    <p>
-        Discover how attackers can manipulate people
-        rather than directly attacking technology.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            HUMAN FACTORS
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Security awareness matters because technology
-            can be undermined by human manipulation.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="incident response security incident"
-    data-level="intermediate">
-
-    <div class="lesson-icon">
-        🚨
-    </div>
-
-    <h3>
-        Incident Response
-    </h3>
-
-    <p>
-        Learn the basic defensive process for identifying,
-        containing, investigating, and recovering from incidents.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            DEFENSE
-        </span>
-
-        <span class="lesson-time">
-            ~8 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Good incident response uses an organized process
-            instead of making random decisions under pressure.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="vulnerabilities patching updates"
-    data-level="intermediate">
-
-    <div class="lesson-icon">
-        🔧
-    </div>
-
-    <h3>
-        Vulnerabilities & Patching
-    </h3>
-
-    <p>
-        Learn what vulnerabilities are and why updates
-        help reduce security risk.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            VULNERABILITIES
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Software vulnerabilities can create security
-            weaknesses. Timely updates can reduce exposure
-            to known problems.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="authentication authorization access"
-    data-level="intermediate">
-
-    <div class="lesson-icon">
-        👤
-    </div>
-
-    <h3>
-        Authentication vs Authorization
-    </h3>
-
-    <p>
-        Understand the difference between proving
-        who you are and deciding what you can access.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            ACCESS CONTROL
-        </span>
-
-        <span class="lesson-time">
-            ~6 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Remember:
-            </strong>
-
-            Authentication asks:
-            “Who are you?”
-
-            <br><br>
-
-            Authorization asks:
-            “What are you allowed to access?”
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="access control permissions"
-    data-level="intermediate">
-
-    <div class="lesson-icon">
-        🚪
-    </div>
-
-    <h3>
-        Access Control
-    </h3>
-
-    <p>
-        Learn how organizations decide which users,
-        systems, and services can access resources.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            SECURITY
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Access control reduces unnecessary access
-            and helps organizations protect sensitive resources.
-
-        </div>
-
-    </div>
-
-</article>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     ADVANCED
-========================================================= -->
-
-<section
-    class="level"
-    id="advanced"
-    data-level="advanced">
-
-<div class="level-header">
-
-    <div class="level-number">
-        03
-    </div>
-
-    <div>
-
-        <h2>
-            🟣 Advanced
-        </h2>
-
-    </div>
-
-    <p>
-        Think like a security analyst
-    </p>
-
-</div>
-
-
-<div class="lesson-grid">
-
-
-<article
-    class="lesson-card"
-    data-title="least privilege access control"
-    data-level="advanced">
-
-    <div class="lesson-icon">
-        ⚖️
-    </div>
-
-    <h3>
-        Least Privilege
-    </h3>
-
-    <p>
-        Learn why users and systems should receive
-        only the access they actually need.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            ACCESS CONTROL
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Limiting unnecessary privileges can reduce
-            the potential impact of mistakes or compromised accounts.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="vpn virtual private network"
-    data-level="advanced">
-
-    <div class="lesson-icon">
-        🔗
-    </div>
-
-    <h3>
-        VPNs
-    </h3>
-
-    <p>
-        Understand the basic purpose of VPNs and
-        how they can create protected network connections.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            NETWORKS
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            VPNs can help create encrypted connections,
-            but using a VPN does not automatically make
-            every aspect of online activity secure.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="dns domain name system"
-    data-level="advanced">
-
-    <div class="lesson-icon">
-        📡
-    </div>
-
-    <h3>
-        DNS
-    </h3>
-
-    <p>
-        Learn how the Domain Name System helps translate
-        domain names into IP addresses.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            NETWORKS
-        </span>
-
-        <span class="lesson-time">
-            ~8 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            DNS makes the internet easier to use by
-            connecting human-readable names with network addresses.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="ip addresses networking"
-    data-level="advanced">
-
-    <div class="lesson-icon">
-        🏷️
-    </div>
-
-    <h3>
-        IP Addresses
-    </h3>
-
-    <p>
-        Learn what IP addresses are and how they help
-        devices communicate across networks.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            NETWORKING
-        </span>
-
-        <span class="lesson-time">
-            ~7 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            IP addresses help identify network interfaces
-            so information can be routed between systems.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="ddos denial of service attacks"
-    data-level="advanced">
-
-    <div class="lesson-icon">
-        🌊
-    </div>
-
-    <h3>
-        DDoS Attacks
-    </h3>
-
-    <p>
-        Understand distributed denial-of-service attacks
-        and the defensive goal of maintaining availability.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            THREATS
-        </span>
-
-        <span class="lesson-time">
-            ~8 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            DDoS attacks attempt to overwhelm a service
-            with large amounts of traffic or requests.
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<article
-    class="lesson-card"
-    data-title="ransomware malware defense"
-    data-level="advanced">
-
-    <div class="lesson-icon">
-        🔴
-    </div>
-
-    <h3>
-        Ransomware
-    </h3>
-
-    <p>
-        Learn how ransomware can disrupt organizations
-        and why layered defenses and backups matter.
-    </p>
-
-    <div class="lesson-meta">
-
-        <span class="lesson-tag">
-            THREATS
-        </span>
-
-        <span class="lesson-time">
-            ~8 min
-        </span>
-
-    </div>
-
-    <div class="lesson-more">
-
-        <button
-            class="learn-btn"
-            onclick="toggleLesson(this)">
-            Learn More +
-        </button>
-
-        <div class="lesson-details">
-
-            <strong>
-                Key concept:
-            </strong>
-
-            Strong security combines prevention, detection,
-            response, recovery, and reliable backups.
-
-        </div>
-
-    </div>
-
-</article>
-
-</div>
-
-</section>
-
-
-<div
-    class="no-results"
-    id="noResults">
-
-    🔎 No lessons matched your search.
-
-    <br><br>
-
-    Try another cybersecurity term or choose
-    a different difficulty level.
-
-</div>
 
 </section>
 
@@ -3889,95 +3808,94 @@ footer {
 
 <section class="section">
 
-<div class="section-heading">
+    <div class="section-heading">
 
-    <div class="eyebrow">
-        SECURITY MINDSET
+        <div class="eyebrow">
+            SECURITY MINDSET
+        </div>
+
+        <h2>
+            Start Thinking Like a Defender
+        </h2>
+
+        <p>
+            Cybersecurity isn't only about knowing tools.
+            It's about learning how to recognize risk and make
+            good decisions.
+        </p>
+
     </div>
 
-    <h2>
-        Start Thinking Like a Defender
-    </h2>
+    <div class="mindset">
 
-    <p>
-        Cybersecurity isn't only about knowing tools.
-        It's about learning how to recognize risk and make
-        good decisions.
-    </p>
+        <div class="mindset-card">
 
-</div>
+            <h3>
+                🧠 Ask Better Questions
+            </h3>
 
+            <p>
+                Security professionals constantly question
+                assumptions and investigate unusual behavior.
+            </p>
 
-<div class="mindset">
+            <ul class="mindset-list">
 
-<div class="mindset-card">
+                <li>
+                    What am I protecting?
+                </li>
 
-    <h3>
-        🧠 Ask Better Questions
-    </h3>
+                <li>
+                    What could go wrong?
+                </li>
 
-    <p>
-        Security professionals constantly question
-        assumptions and investigate unusual behavior.
-    </p>
+                <li>
+                    Who should have access?
+                </li>
 
-    <ul class="mindset-list">
+                <li>
+                    How would I detect a problem?
+                </li>
 
-        <li>
-            What am I protecting?
-        </li>
+            </ul>
 
-        <li>
-            What could go wrong?
-        </li>
-
-        <li>
-            Who should have access?
-        </li>
-
-        <li>
-            How would I detect a problem?
-        </li>
-
-    </ul>
-
-</div>
+        </div>
 
 
-<div class="mindset-card">
+        <div class="mindset-card">
 
-    <h3>
-        🛡️ Think in Layers
-    </h3>
+            <h3>
+                🛡️ Think in Layers
+            </h3>
 
-    <p>
-        Strong security rarely depends on one single
-        control. Multiple layers can provide better protection.
-    </p>
+            <p>
+                Strong security rarely depends on one single
+                control. Multiple layers can provide better protection.
+            </p>
 
-    <ul class="mindset-list">
+            <ul class="mindset-list">
 
-        <li>
-            Strong authentication
-        </li>
+                <li>
+                    Strong authentication
+                </li>
 
-        <li>
-            Access controls
-        </li>
+                <li>
+                    Access controls
+                </li>
 
-        <li>
-            Network defenses
-        </li>
+                <li>
+                    Network defenses
+                </li>
 
-        <li>
-            Monitoring and response
-        </li>
+                <li>
+                    Monitoring and response
+                </li>
 
-    </ul>
+            </ul>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
@@ -3988,49 +3906,41 @@ footer {
 
 <section class="section">
 
-<div class="final-cta">
+    <div class="final-cta">
 
-    <h2>
-        Ready to Put Knowledge Into Practice?
-    </h2>
+        <h2>
+            Ready to Put Knowledge Into Practice?
+        </h2>
 
-    <p>
-        Reading is only the beginning. Test your knowledge,
-        explore safe cybersecurity labs, and experiment with
-        interactive simulations.
-    </p>
+        <p>
+            Reading is only the beginning. Test your knowledge,
+            explore safe cybersecurity labs, and experiment with
+            interactive simulations.
+        </p>
 
-    <div class="cta-buttons">
+        <div class="cta-buttons">
 
-        <a
-            href="labs.html"
-            class="cta-btn primary">
+            <a
+                href="labs.html"
+                class="cta-btn primary">
+                🧪 Explore Labs →
+            </a>
 
-            🧪 Explore Labs →
+            <a
+                href="quiz.html"
+                class="cta-btn secondary">
+                🧠 Take the Quiz →
+            </a>
 
-        </a>
+            <a
+                href="simulators.html"
+                class="cta-btn secondary">
+                🖥️ Try Simulators →
+            </a>
 
-
-        <a
-            href="quiz.html"
-            class="cta-btn secondary">
-
-            🧠 Take the Quiz →
-
-        </a>
-
-
-        <a
-            href="simulators.html"
-            class="cta-btn secondary">
-
-            🖥️ Try Simulators →
-
-        </a>
+        </div>
 
     </div>
-
-</div>
 
 </section>
 
@@ -4041,17 +3951,17 @@ footer {
 
 <footer>
 
-<div class="footer-logo">
-    🛡️ Cly<span>vexis</span>
-</div>
+    <div class="footer-logo">
+        🛡️ Cly<span>vexis</span>
+    </div>
 
-<div class="slogan">
-    LEARN. PRACTICE. STAY SECURE.
-</div>
+    <div class="slogan">
+        LEARN. PRACTICE. STAY SECURE.
+    </div>
 
-<p>
-    © 2026 Clyvexis
-</p>
+    <p>
+        © 2026 Clyvexis
+    </p>
 
 </footer>
 
@@ -4063,19 +3973,131 @@ footer {
 <script>
 
 /* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+(() => {
+
+    const menuToggle =
+        document.getElementById("menu-toggle");
+
+    const navigation =
+        document.getElementById("main-navigation");
+
+    if (!menuToggle || !navigation) {
+        return;
+    }
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                navigation.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
+
+            menuToggle.textContent =
+                isOpen
+                    ? "✕"
+                    : "☰";
+
+        }
+    );
+
+
+    navigation
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navigation.classList.remove(
+                        "open"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
+                    menuToggle.textContent =
+                        "☰";
+
+                }
+            );
+
+        });
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 800
+            ) {
+
+                navigation.classList.remove(
+                    "open"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+                menuToggle.textContent =
+                    "☰";
+
+            }
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
    GLOBAL CYBER NETWORK
 ========================================================= */
 
 const networkCanvas =
-    document.getElementById("network-canvas");
+    document.getElementById(
+        "network-canvas"
+    );
 
 const networkCtx =
     networkCanvas.getContext("2d");
 
 let networkWidth = 0;
 let networkHeight = 0;
+
 let networkNodes = [];
 let networkPackets = [];
+
 let networkRotation = 0;
 
 const reducedMotion =
@@ -4084,9 +4106,9 @@ const reducedMotion =
     ).matches;
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    RESIZE
---------------------------------------------------------- */
+========================================================= */
 
 function resizeNetwork() {
 
@@ -4128,9 +4150,9 @@ function resizeNetwork() {
 }
 
 
-/* ---------------------------------------------------------
-   CREATE GLOBAL NETWORK
---------------------------------------------------------- */
+/* =========================================================
+   CREATE NETWORK
+========================================================= */
 
 function createNetworkNodes() {
 
@@ -4196,9 +4218,9 @@ function createNetworkNodes() {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PROJECT 3D SPHERE
---------------------------------------------------------- */
+========================================================= */
 
 function projectNode(node) {
 
@@ -4219,13 +4241,11 @@ function projectNode(node) {
             networkRotation
         );
 
-
     const centerX =
         networkWidth * 0.5;
 
     const centerY =
         networkHeight * 0.47;
-
 
     const baseRadius =
         Math.min(
@@ -4238,13 +4258,11 @@ function projectNode(node) {
                 : 0.36
         );
 
-
     const radiusX =
         baseRadius * 1.25;
 
     const radiusY =
         baseRadius * 0.78;
-
 
     const perspective =
         1 /
@@ -4252,7 +4270,6 @@ function projectNode(node) {
             1.25 -
             z3 * 0.28
         );
-
 
     return {
 
@@ -4277,9 +4294,9 @@ function projectNode(node) {
 }
 
 
-/* ---------------------------------------------------------
-   DRAW GLOBE OUTLINE
---------------------------------------------------------- */
+/* =========================================================
+   GLOBE
+========================================================= */
 
 function drawGlobeOutline() {
 
@@ -4299,7 +4316,6 @@ function drawGlobeOutline() {
                 ? 0.30
                 : 0.36
         );
-
 
     networkCtx.save();
 
@@ -4323,8 +4339,6 @@ function drawGlobeOutline() {
     networkCtx.stroke();
 
 
-    /* Latitude-like arcs */
-
     for (
         let i = -2;
         i <= 2;
@@ -4337,8 +4351,7 @@ function drawGlobeOutline() {
             centerX,
             centerY +
                 i * radius * 0.15,
-            radius *
-                1.05,
+            radius * 1.05,
             radius *
                 (0.35 + Math.abs(i) * 0.04),
             0,
@@ -4353,8 +4366,6 @@ function drawGlobeOutline() {
 
     }
 
-
-    /* Longitude arcs */
 
     for (
         let i = 0;
@@ -4387,9 +4398,9 @@ function drawGlobeOutline() {
 }
 
 
-/* ---------------------------------------------------------
-   DRAW ORBITAL RINGS
---------------------------------------------------------- */
+/* =========================================================
+   ORBITALS
+========================================================= */
 
 function drawOrbitals(time) {
 
@@ -4410,7 +4421,6 @@ function drawOrbitals(time) {
                 : 0.40
         );
 
-
     networkCtx.save();
 
     for (
@@ -4430,8 +4440,7 @@ function drawOrbitals(time) {
             centerX,
             centerY,
             radius * (1 + i * 0.10),
-            radius *
-                (0.28 + i * 0.04),
+            radius * (0.28 + i * 0.04),
             rotation,
             0,
             Math.PI * 2
@@ -4454,9 +4463,9 @@ function drawOrbitals(time) {
 }
 
 
-/* ---------------------------------------------------------
-   DRAW CONNECTIONS
---------------------------------------------------------- */
+/* =========================================================
+   CONNECTIONS
+========================================================= */
 
 function drawConnections(projected) {
 
@@ -4464,7 +4473,6 @@ function drawConnections(projected) {
         networkWidth <= 650
             ? 105
             : 135;
-
 
     for (
         let i = 0;
@@ -4479,7 +4487,6 @@ function drawConnections(projected) {
             continue;
         }
 
-
         for (
             let j = i + 1;
             j < projected.length;
@@ -4493,7 +4500,6 @@ function drawConnections(projected) {
                 continue;
             }
 
-
             const dx =
                 a.x - b.x;
 
@@ -4506,19 +4512,18 @@ function drawConnections(projected) {
                     dy * dy
                 );
 
-
             if (
                 distance <
                 connectionDistance
             ) {
 
                 const alpha =
-                    (1 -
+                    (
+                        1 -
                         distance /
                         connectionDistance
                     ) *
                     0.24;
-
 
                 networkCtx.beginPath();
 
@@ -4531,7 +4536,6 @@ function drawConnections(projected) {
                     b.x,
                     b.y
                 );
-
 
                 networkCtx.strokeStyle =
                     "rgba(0,180,255," +
@@ -4552,9 +4556,9 @@ function drawConnections(projected) {
 }
 
 
-/* ---------------------------------------------------------
-   DRAW NODES
---------------------------------------------------------- */
+/* =========================================================
+   NODES
+========================================================= */
 
 function drawNodes(
     projected,
@@ -4574,13 +4578,13 @@ function drawNodes(
                 return;
             }
 
-
             const pulse =
                 Math.sin(
                     time * 0.002 +
                     node.pulse
-                ) * 0.5 + 0.5;
-
+                ) *
+                0.5 +
+                0.5;
 
             const radius =
                 (
@@ -4593,12 +4597,10 @@ function drawNodes(
                         : 0.7
                 );
 
-
             const color =
                 node.green
                     ? "57,255,136"
                     : "0,190,255";
-
 
             const glow =
                 networkCtx.createRadialGradient(
@@ -4609,7 +4611,6 @@ function drawNodes(
                     point.y,
                     radius * 6
                 );
-
 
             glow.addColorStop(
                 0,
@@ -4624,7 +4625,6 @@ function drawNodes(
                 color +
                 ",0)"
             );
-
 
             networkCtx.beginPath();
 
@@ -4641,7 +4641,6 @@ function drawNodes(
 
             networkCtx.fill();
 
-
             networkCtx.beginPath();
 
             networkCtx.fillStyle =
@@ -4653,7 +4652,6 @@ function drawNodes(
                     pulse * 0.35
                 ) +
                 ")";
-
 
             networkCtx.arc(
                 point.x,
@@ -4674,9 +4672,9 @@ function drawNodes(
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    DATA PACKETS
---------------------------------------------------------- */
+========================================================= */
 
 function createPackets(projected) {
 
@@ -4700,15 +4698,15 @@ function createPackets(projected) {
                 projected.length
             );
 
-
         if (end === start) {
+
             end =
                 (
                     end + 1
                 ) %
                 projected.length;
-        }
 
+        }
 
         networkPackets.push({
 
@@ -4731,10 +4729,6 @@ function createPackets(projected) {
 }
 
 
-/* ---------------------------------------------------------
-   DRAW DATA PACKETS
---------------------------------------------------------- */
-
 function drawPackets(
     projected
 ) {
@@ -4752,7 +4746,6 @@ function drawPackets(
                     packet.end
                 ];
 
-
             if (
                 !a ||
                 !b ||
@@ -4762,10 +4755,8 @@ function drawPackets(
                 return;
             }
 
-
             packet.progress +=
                 packet.speed;
-
 
             if (
                 packet.progress >= 1
@@ -4774,7 +4765,6 @@ function drawPackets(
                 packet.progress = 0;
 
             }
-
 
             const x =
                 a.x +
@@ -4789,7 +4779,6 @@ function drawPackets(
                     b.y - a.y
                 ) *
                 packet.progress;
-
 
             networkCtx.beginPath();
 
@@ -4819,9 +4808,9 @@ function drawPackets(
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    DRAW NETWORK
---------------------------------------------------------- */
+========================================================= */
 
 function drawNetwork(time) {
 
@@ -4832,7 +4821,6 @@ function drawNetwork(time) {
         networkHeight
     );
 
-
     if (!reducedMotion) {
 
         networkRotation +=
@@ -4840,17 +4828,14 @@ function drawNetwork(time) {
 
     }
 
-
     drawGlobeOutline();
 
     drawOrbitals(time);
-
 
     const projected =
         networkNodes.map(
             projectNode
         );
-
 
     drawConnections(
         projected
@@ -4865,7 +4850,6 @@ function drawNetwork(time) {
         projected
     );
 
-
     requestAnimationFrame(
         drawNetwork
     );
@@ -4873,9 +4857,9 @@ function drawNetwork(time) {
 }
 
 
-/* ---------------------------------------------------------
-   INITIALIZE
---------------------------------------------------------- */
+/* =========================================================
+   INITIALIZE NETWORK
+========================================================= */
 
 resizeNetwork();
 
@@ -4902,7 +4886,8 @@ drawNetwork(
 const visualLessons = [
 
     {
-        title: "🎣 How Phishing Works",
+        title:
+            "🎣 How Phishing Works",
 
         subtitle:
             "Follow the path from suspicious message to a protected decision.",
@@ -4937,11 +4922,13 @@ const visualLessons = [
 
         explanation:
             "Phishing relies on deception. Slow down, verify unexpected requests, and avoid entering information into suspicious websites."
+
     },
 
 
     {
-        title: "🔐 How Encryption Works",
+        title:
+            "🔐 How Encryption Works",
 
         subtitle:
             "See how readable information can be protected.",
@@ -4976,11 +4963,13 @@ const visualLessons = [
 
         explanation:
             "Encryption helps protect information while it is stored or transmitted."
+
     },
 
 
     {
-        title: "🌐 How the Internet Works",
+        title:
+            "🌐 How the Internet Works",
 
         subtitle:
             "Follow a simple path from your device to a website.",
@@ -5015,11 +5004,13 @@ const visualLessons = [
 
         explanation:
             "The internet is a network of connected systems. DNS helps translate human-friendly domain names into IP addresses."
+
     },
 
 
     {
-        title: "🧱 How a Firewall Works",
+        title:
+            "🧱 How a Firewall Works",
 
         subtitle:
             "See how security rules can filter network traffic.",
@@ -5054,11 +5045,13 @@ const visualLessons = [
 
         explanation:
             "A firewall is one layer of defense. Strong security usually combines multiple layers."
+
     },
 
 
     {
-        title: "🔑 Password Security",
+        title:
+            "🔑 Password Security",
 
         subtitle:
             "Understand the basic path to a safer account.",
@@ -5093,11 +5086,13 @@ const visualLessons = [
 
         explanation:
             "Use unique passwords for important accounts and enable MFA when available."
+
     },
 
 
     {
-        title: "📱 How MFA Works",
+        title:
+            "📱 How MFA Works",
 
         subtitle:
             "See how multiple authentication factors work together.",
@@ -5132,11 +5127,13 @@ const visualLessons = [
 
         explanation:
             "MFA combines different types of authentication evidence to provide stronger account protection."
+
     },
 
 
     {
-        title: "🚨 Incident Response",
+        title:
+            "🚨 Incident Response",
 
         subtitle:
             "See the basic defensive process after a security incident.",
@@ -5171,11 +5168,13 @@ const visualLessons = [
 
         explanation:
             "Incident response helps organizations react in an organized way instead of making random decisions during an emergency."
+
     },
 
 
     {
-        title: "🦠 Understanding Malware",
+        title:
+            "🦠 Understanding Malware",
 
         subtitle:
             "Learn the defensive view of how malware can affect systems.",
@@ -5210,6 +5209,7 @@ const visualLessons = [
 
         explanation:
             "Malware comes in many forms. Defenders focus on prevention, detection, containment, and recovery."
+
     }
 
 ];
@@ -5218,10 +5218,16 @@ const visualLessons = [
 let currentDiagram = 0;
 
 
+/* =========================================================
+   LOAD VISUAL LESSON
+========================================================= */
+
 function loadDiagram() {
 
     const lesson =
-        visualLessons[currentDiagram];
+        visualLessons[
+            currentDiagram
+        ];
 
     document.getElementById(
         "diagramTitle"
@@ -5250,12 +5256,15 @@ function loadDiagram() {
         (step, index) => {
 
             const node =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             node.className =
                 "diagram-node";
 
             node.innerHTML = `
+
                 <div class="diagram-icon">
                     ${step[0]}
                 </div>
@@ -5267,6 +5276,7 @@ function loadDiagram() {
                 <p>
                     ${step[2]}
                 </p>
+
             `;
 
             flow.appendChild(node);
@@ -5277,7 +5287,9 @@ function loadDiagram() {
             ) {
 
                 const arrow =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
                 arrow.className =
                     "diagram-arrow";
@@ -5285,7 +5297,9 @@ function loadDiagram() {
                 arrow.textContent =
                     "→";
 
-                flow.appendChild(arrow);
+                flow.appendChild(
+                    arrow
+                );
 
             }
 
@@ -5296,7 +5310,9 @@ function loadDiagram() {
         "diagramCounter"
     ).textContent =
         "Lesson " +
-        (currentDiagram + 1) +
+        (
+            currentDiagram + 1
+        ) +
         " of " +
         visualLessons.length;
 
@@ -5346,12 +5362,18 @@ function previousDiagram() {
 function toggleLesson(button) {
 
     const card =
-        button.closest(".lesson-card");
+        button.closest(
+            ".lesson-card"
+        );
 
-    card.classList.toggle("open");
+    card.classList.toggle(
+        "open"
+    );
 
     if (
-        card.classList.contains("open")
+        card.classList.contains(
+            "open"
+        )
     ) {
 
         button.textContent =
@@ -5379,16 +5401,23 @@ function setFilter(
     button
 ) {
 
-    activeFilter = filter;
+    activeFilter =
+        filter;
 
     document
-        .querySelectorAll(".filter-btn")
+        .querySelectorAll(
+            ".filter-btn"
+        )
         .forEach(
             btn =>
-                btn.classList.remove("active")
+                btn.classList.remove(
+                    "active"
+                )
         );
 
-    button.classList.add("active");
+    button.classList.add(
+        "active"
+    );
 
     filterLessons();
 
@@ -5399,7 +5428,9 @@ function filterLessons() {
 
     const search =
         document
-            .getElementById("lessonSearch")
+            .getElementById(
+                "lessonSearch"
+            )
             .value
             .toLowerCase()
             .trim();
@@ -5411,72 +5442,84 @@ function filterLessons() {
 
     let visible = 0;
 
-    cards.forEach(card => {
+    cards.forEach(
+        card => {
 
-        const title =
-            card.dataset.title
-                .toLowerCase();
+            const title =
+                card.dataset.title
+                    .toLowerCase();
 
-        const level =
-            card.dataset.level;
+            const level =
+                card.dataset.level;
 
-        const matchesSearch =
-            title.includes(search);
+            const matchesSearch =
+                title.includes(
+                    search
+                );
 
-        const matchesFilter =
-            activeFilter === "all" ||
-            level === activeFilter;
+            const matchesFilter =
+                activeFilter === "all" ||
+                level === activeFilter;
 
-        if (
-            matchesSearch &&
-            matchesFilter
-        ) {
+            if (
+                matchesSearch &&
+                matchesFilter
+            ) {
 
-            card.style.display =
-                "flex";
+                card.style.display =
+                    "flex";
 
-            visible++;
+                visible++;
 
-        } else {
+            } else {
 
-            card.style.display =
-                "none";
+                card.style.display =
+                    "none";
+
+            }
 
         }
-
-    });
+    );
 
 
     document
-        .querySelectorAll(".level")
-        .forEach(section => {
+        .querySelectorAll(
+            ".level"
+        )
+        .forEach(
+            section => {
 
-            const cardsInside =
-                section.querySelectorAll(
-                    ".lesson-card"
+                const cardsInside =
+                    section.querySelectorAll(
+                        ".lesson-card"
+                    );
+
+                let hasVisible =
+                    false;
+
+                cardsInside.forEach(
+                    card => {
+
+                        if (
+                            card.style.display !==
+                            "none"
+                        ) {
+
+                            hasVisible =
+                                true;
+
+                        }
+
+                    }
                 );
 
-            let hasVisible = false;
+                section.style.display =
+                    hasVisible
+                        ? "block"
+                        : "none";
 
-            cardsInside.forEach(card => {
-
-                if (
-                    card.style.display !==
-                    "none"
-                ) {
-
-                    hasVisible = true;
-
-                }
-
-            });
-
-            section.style.display =
-                hasVisible
-                    ? "block"
-                    : "none";
-
-        });
+            }
+        );
 
 
     const noResults =
@@ -5484,8 +5527,9 @@ function filterLessons() {
             "noResults"
         );
 
-
-    if (visible === 0) {
+    if (
+        visible === 0
+    ) {
 
         noResults.classList.add(
             "show"
