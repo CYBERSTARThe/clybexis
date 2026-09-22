@@ -821,185 +821,7 @@ nav a.active::after {
 
         linear-gradient(
             90deg,
-            #00aaff,
-            #00ff88
-        );
-
-    box-shadow:
-        0 0 12px #00aaff;
-
-}
-
-
-.lab-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-
-    height: 180px;
-
-    top: -100px;
-
-    right: -100px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(0,170,255,0.035);
-
-    filter:
-        blur(30px);
-
-    pointer-events: none;
-
-}
-
-
-.lab-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(0,170,255,0.75);
-
-    box-shadow:
-
-        0 0 30px rgba(0,170,255,0.14),
-
-        inset 0 0 30px rgba(0,170,255,0.025);
-
-}
-
-
-.lab-icon {
-
-    font-size: 40px;
-
-    margin-bottom: 12px;
-
-    filter:
-        drop-shadow(
-            0 0 8px rgba(0,170,255,0.4)
-        );
-
-}
-
-
-.lab-card h2 {
-
-    margin-bottom: 10px;
-
-    color:
-        #ffffff;
-
-}
-
-
-.lab-card p {
-
-    color:
-        #aebed0;
-
-    line-height: 1.6;
-
-    margin-bottom: 18px;
-
-}
-
-
-.lab-button {
-
-    display: inline-block;
-
-    border:
-        1px solid #00aaff;
-
-    background:
-        rgba(0,170,255,0.08);
-
-    color:
-        #00aaff;
-
-    padding:
-        10px 18px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-
-}
-
-
-.lab-button:hover {
-
-    background:
-        rgba(0,170,255,0.18);
-
-    box-shadow:
-        0 0 15px rgba(0,170,255,0.35);
-
-    transform:
-        translateY(-1px);
-
-}
-
-
-.lab-content {
-
-    display: none;
-
-    margin-top: 20px;
-
-    padding-top: 20px;
-
-    border-top:
-        1px solid rgba(0,170,255,0.2);
-
-}
-
-
-.lab-content.show {
-
-    display: block;
-
-}
-
-
-.lab-content h3 {
-
-    color:
-        #00ff88;
-
-    margin-bottom: 12px;
-
-}
-
-
-.lab-content p {
-
-    color:
-        #c6d4e2;
-
-}
-
-
-input,
-textarea,
-select {
-
-    width: 100%;
-
-    padding: 12px;
-
-    margin: 10px 0;
+            #00aaff,    margin: 10px 0;
 
     background:
         #050b16;
@@ -1996,9 +1818,7 @@ nav a.active::after {
 
                 <h3>
                     Password Analyzer
-                </h3>
-
-                <p>
+                </h3>                <p>
                     Try a fictional password and see
                     which security characteristics it has.
                 </p>
@@ -2997,9 +2817,7 @@ function projectNodes(time) {
             const sinPhi =
                 Math.sin(
                     node.phi
-                );
-
-            const x =
+                );            const x =
                 sinPhi *
                 Math.cos(theta) *
                 node.radius;
@@ -3998,7 +3816,7 @@ function checkIncident(
         document
             .getElementById(
                 "incidentResult"
-            );
+            );            );
 
 
     if (correct) {
