@@ -1,77 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- =====================================================
          BASIC DOCUMENT SETUP
     ===================================================== -->
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <!-- Google Search Console -->
     <meta
         name="google-site-verification"
         content="7LVdoDj4R1AxBbP5Nn6Zk0rUqpKI7B43HSMRczBcS1I"
     >
+
     <!-- =====================================================
          SEO
     ===================================================== -->
+
     <title>
         Clyvexis | Cybersecurity Education, Labs & Learning
     </title>
+
     <meta
         name="description"
         content="Clyvexis is a free cybersecurity learning platform for beginners. Learn phishing, malware, password security, networking, coding, cyber defense, and more through interactive lessons, labs, quizzes, games, and safe simulations."
     >
+
     <meta
         name="robots"
         content="index, follow"
     >
+
     <link
         rel="canonical"
         href="https://cyberstarthe.github.io/clyvexis/"
     >
+
     <!-- =====================================================
          SOCIAL / OPEN GRAPH
     ===================================================== -->
+
     <meta
         property="og:title"
         content="Clyvexis | Cybersecurity Education, Labs & Learning"
     >
+
     <meta
         property="og:description"
         content="Learn cybersecurity through lessons, interactive labs, quizzes, games, coding, safe simulators, and hands-on practice."
     >
+
     <meta
         property="og:type"
         content="website"
     >
+
     <meta
         property="og:url"
         content="https://cyberstarthe.github.io/clyvexis/"
     >
+
     <!-- =====================================================
          STYLES
     ===================================================== -->
+
     <style>
+
         /* =====================================================
            01. RESET & BASE
         ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+
             background:
                 radial-gradient(
                     circle at 50% -15%,
@@ -89,11 +110,14 @@
                     transparent 25%
                 ),
                 #030811;
+
             background-attachment: fixed;
         }
+
         /* =====================================================
            02. GLOBAL CYBER NETWORK
         ===================================================== */
+
         #cyber-network {
             position: fixed;
             inset: 0;
@@ -103,12 +127,14 @@
             z-index: 0;
             opacity: 0.72;
         }
+
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 0;
+
             background:
                 radial-gradient(
                     circle at 50% 38%,
@@ -120,6 +146,7 @@
                     rgba(57, 255, 136, 0.035),
                     transparent 42%
                 );
+
             animation:
                 networkAmbient
                 8s
@@ -127,14 +154,19 @@
                 infinite
                 alternate;
         }
+
         @keyframes networkAmbient {
+
             from {
                 opacity: 0.65;
             }
+
             to {
                 opacity: 1;
             }
+
         }
+
         nav,
         .hero,
         .learn-section,
@@ -145,9 +177,11 @@
             position: relative;
             z-index: 2;
         }
+
         /* =====================================================
            03. GLOBAL CYBER GRID
         ===================================================== */
+
         body::after {
             content: "";
             position: fixed;
@@ -155,6 +189,7 @@
             pointer-events: none;
             z-index: 0;
             opacity: 0.45;
+
             background-image:
                 linear-gradient(
                     rgba(0, 170, 255, 0.025) 1px,
@@ -165,7 +200,9 @@
                     rgba(0, 170, 255, 0.025) 1px,
                     transparent 1px
                 );
+
             background-size: 45px 45px;
+
             mask-image:
                 linear-gradient(
                     to bottom,
@@ -173,27 +210,34 @@
                     rgba(0, 0, 0, 0.7) 55%,
                     transparent 100%
                 );
+
             animation:
                 gridDrift
                 18s
                 linear
                 infinite;
         }
+
         @keyframes gridDrift {
+
             from {
                 background-position:
                     0 0,
                     0 0;
             }
+
             to {
                 background-position:
                     45px 45px,
                     45px 45px;
             }
+
         }
+
         /* =====================================================
            04. CYBER ATMOSPHERE
         ===================================================== */
+
         .cyber-atmosphere {
             position: fixed;
             inset: 0;
@@ -201,16 +245,22 @@
             overflow: hidden;
             z-index: 0;
         }
+
         .cyber-atmosphere::before {
             content: "";
             position: absolute;
+
             width: 650px;
             height: 650px;
+
             top: -360px;
             left: 50%;
+
             transform:
                 translateX(-50%);
+
             border-radius: 50%;
+
             background:
                 radial-gradient(
                     circle,
@@ -218,7 +268,9 @@
                     rgba(0, 170, 255, 0.07) 35%,
                     transparent 70%
                 );
+
             filter: blur(5px);
+
             animation:
                 atmospherePulse
                 7s
@@ -226,20 +278,26 @@
                 infinite
                 alternate;
         }
+
         .cyber-atmosphere::after {
             content: "";
             position: absolute;
+
             width: 500px;
             height: 500px;
+
             right: -300px;
             bottom: 5%;
+
             border-radius: 50%;
+
             background:
                 radial-gradient(
                     circle,
                     rgba(57, 255, 136, 0.07),
                     transparent 70%
                 );
+
             animation:
                 sideGlow
                 9s
@@ -247,38 +305,51 @@
                 infinite
                 alternate;
         }
+
         @keyframes atmospherePulse {
+
             from {
                 transform:
                     translateX(-50%)
                     scale(0.85);
+
                 opacity: 0.65;
             }
+
             to {
                 transform:
                     translateX(-50%)
                     scale(1.2);
+
                 opacity: 1;
             }
+
         }
+
         @keyframes sideGlow {
+
             from {
                 transform:
                     translate(0, 0);
             }
+
             to {
                 transform:
                     translate(-150px, -100px);
             }
+
         }
+
         /* =====================================================
            05. SCANNING LIGHT
         ===================================================== */
+
         .scan-line {
             position: fixed;
             left: 0;
             width: 100%;
             height: 1px;
+
             background:
                 linear-gradient(
                     90deg,
@@ -287,38 +358,52 @@
                     rgba(57, 255, 136, 0.35),
                     transparent
                 );
+
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.25);
+
             pointer-events: none;
             z-index: 1;
             opacity: 0.35;
+
             animation:
                 scanMove
                 10s
                 linear
                 infinite;
         }
+
         @keyframes scanMove {
+
             from {
                 top: -5%;
             }
+
             to {
                 top: 105%;
             }
+
         }
+
         /* =====================================================
            06. NAVIGATION
+           MASTER NAVIGATION SYSTEM
         ===================================================== */
+
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             min-height: 72px;
+
             padding: 12px 5%;
+
             background:
                 linear-gradient(
                     90deg,
@@ -326,23 +411,33 @@
                     rgba(5, 17, 34, 0.96),
                     rgba(3, 10, 23, 0.98)
                 );
+
             border-bottom:
                 1px solid
                 rgba(0, 170, 255, 0.55);
+
             box-shadow:
                 0 0 25px
                 rgba(0, 170, 255, 0.15);
+
             backdrop-filter:
                 blur(18px);
         }
-        /* Navbar top energy line */
+
+        /* =====================================================
+           NAV TOP ENERGY LINE
+        ===================================================== */
+
         nav::before {
             content: "";
+
             position: absolute;
             top: 0;
             left: 0;
+
             width: 100%;
             height: 2px;
+
             background:
                 linear-gradient(
                     90deg,
@@ -352,322 +447,720 @@
                     #00aaff,
                     transparent
                 );
+
             background-size: 200% 100%;
+
             box-shadow:
                 0 0 14px
                 rgba(0, 170, 255, 0.8);
+
             animation:
                 navEnergy
                 5s
                 linear
                 infinite;
         }
+
         @keyframes navEnergy {
+
             from {
                 background-position:
                     200% 0;
             }
+
             to {
                 background-position:
                     -200% 0;
             }
+
         }
+
         /* =====================================================
-           LOGO
+           CLYVEXIS NAV LOGO
         ===================================================== */
-        .logo {
+
+        .nav-logo {
             position: relative;
+
+            color: white;
+            text-decoration: none;
+
             font-size: 26px;
             font-weight: bold;
+
             letter-spacing: 0.5px;
+
             white-space: nowrap;
+
             text-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.35);
+
+            transition:
+                color 0.25s ease,
+                text-shadow 0.25s ease;
         }
-        .logo span {
-            color: #00aaff;
+
+        .nav-logo:hover {
+            color: #ffffff;
+
+            text-shadow:
+                0 0 18px
+                rgba(0, 170, 255, 0.7);
         }
+
         /* =====================================================
            NAVIGATION LIST
         ===================================================== */
-        nav ul {
+
+        nav > ul {
             list-style: none;
+
             display: flex;
             align-items: center;
             justify-content: flex-end;
+
             gap: 7px;
+
             margin: 0;
             padding: 0;
         }
+
         nav li {
             position: relative;
         }
+
         /* =====================================================
            NAVIGATION LINKS
         ===================================================== */
+
         nav a {
             position: relative;
+
             display: inline-flex;
             align-items: center;
+
             min-height: 40px;
+
             padding: 8px 11px;
+
             color: #dce8f5;
+
             text-decoration: none;
+
             font-size: 13px;
             font-weight: bold;
+
             border-radius: 8px;
+
             transition:
                 color 0.25s ease,
                 background 0.25s ease,
                 transform 0.25s ease,
                 box-shadow 0.25s ease;
         }
+
         nav a:hover {
             color: #ffffff;
+
             background:
                 rgba(0, 170, 255, 0.08);
+
             box-shadow:
                 0 0 15px
                 rgba(0, 170, 255, 0.10);
+
             transform:
                 translateY(-1px);
         }
-        /* Active page */
+
+        /* =====================================================
+           ACTIVE NAV LINK
+        ===================================================== */
+
         nav a.active {
             color: #39ff88;
+
             background:
                 linear-gradient(
                     135deg,
                     rgba(0, 170, 255, 0.10),
                     rgba(57, 255, 136, 0.06)
                 );
+
             box-shadow:
                 inset 0 0 12px
                 rgba(0, 170, 255, 0.06);
         }
-        /* Active indicator */
+
         nav a.active::after {
             content: "";
+
             position: absolute;
+
             left: 11px;
             right: 11px;
             bottom: 3px;
+
             height: 2px;
+
             background:
                 linear-gradient(
                     90deg,
                     #00aaff,
                     #39ff88
                 );
+
             border-radius: 2px;
+
             box-shadow:
                 0 0 8px
                 rgba(57, 255, 136, 0.7);
         }
+
         /* =====================================================
-           MOBILE MENU BUTTON
+           DROPDOWN BUTTON
         ===================================================== */
-        .menu-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
+
+        .dropdown-button {
+            position: relative;
+
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+
+            min-height: 40px;
+
+            padding: 8px 11px;
+
+            border: none;
+
+            color: #dce8f5;
+
+            background: transparent;
+
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: bold;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition:
+                color 0.25s ease,
+                background 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .dropdown-button:hover {
+            color: #ffffff;
+
+            background:
+                rgba(0, 170, 255, 0.08);
+
+            box-shadow:
+                0 0 15px
+                rgba(0, 170, 255, 0.10);
+
+            transform:
+                translateY(-1px);
+        }
+
+        .dropdown-button.active {
+            color: #39ff88;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 170, 255, 0.10),
+                    rgba(57, 255, 136, 0.06)
+                );
+        }
+
+        .dropdown-button .arrow {
+            margin-left: 6px;
+
+            font-size: 9px;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+        .dropdown.open
+        .dropdown-button
+        .arrow {
+            transform:
+                rotate(180deg);
+        }
+
+        /* =====================================================
+           DROPDOWN MENU
+        ===================================================== */
+
+        .dropdown-menu {
+            position: absolute;
+
+            top: calc(100% + 9px);
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                translateY(-5px);
+
+            min-width: 190px;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 8px;
+
+            list-style: none;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(5, 17, 34, 0.98),
+                    rgba(3, 10, 23, 0.98)
+                );
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.45);
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.45),
+                0 0 25px
+                rgba(0, 170, 255, 0.12);
+
+            backdrop-filter:
+                blur(18px);
+
+            opacity: 0;
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease,
+                visibility 0.2s ease;
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            display: flex;
+
+            width: 100%;
+
+            min-height: 40px;
+
+            padding:
+                10px 12px;
+
+            font-size: 13px;
+
+            border-radius: 8px;
+        }
+
+        .dropdown-menu a:hover {
+            background:
+                rgba(0, 170, 255, 0.10);
+
+            transform:
+                translateX(2px);
+        }
+
+        .dropdown-menu a.active {
+            color: #39ff88;
+        }
+
+        .dropdown:hover
+        .dropdown-menu,
+        .dropdown:focus-within
+        .dropdown-menu,
+        .dropdown.open
+        .dropdown-menu {
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(0, 170, 255, 0.45);
+
             border-radius: 9px;
+
             background:
                 rgba(0, 170, 255, 0.06);
+
             color: #00aaff;
+
             font-size: 21px;
+
             cursor: pointer;
+
             transition:
                 background 0.25s ease,
                 border-color 0.25s ease,
                 box-shadow 0.25s ease;
         }
+
         .menu-toggle:hover {
             background:
                 rgba(0, 170, 255, 0.12);
+
             border-color:
                 #00aaff;
+
             box-shadow:
                 0 0 15px
                 rgba(0, 170, 255, 0.18);
         }
+
         /* =====================================================
            TABLET NAVIGATION
         ===================================================== */
+
         @media (max-width: 1050px) {
+
             nav {
                 padding:
                     12px 3%;
             }
-            nav ul {
+
+            nav > ul {
                 gap: 3px;
             }
-            nav a {
+
+            nav a,
+            .dropdown-button {
                 padding:
                     8px 8px;
+
                 font-size: 12px;
             }
+
         }
+
         /* =====================================================
            MOBILE NAVIGATION
         ===================================================== */
+
         @media (max-width: 800px) {
+
             nav {
                 min-height: 64px;
+
                 padding:
                     11px 15px;
+
                 flex-wrap: wrap;
             }
-            .logo {
+
+            .nav-logo {
                 font-size: 23px;
             }
+
             .menu-toggle {
                 display: flex;
             }
-            nav ul {
+
+            nav > ul {
                 display: none;
+
                 width: 100%;
+
                 flex-direction: column;
+
                 align-items: stretch;
+
                 gap: 5px;
+
                 margin-top: 10px;
+
                 padding: 10px;
+
                 border:
                     1px solid
                     rgba(0, 170, 255, 0.20);
+
                 border-radius: 12px;
+
                 background:
                     rgba(3, 12, 25, 0.97);
+
                 box-shadow:
                     0 10px 30px
                     rgba(0, 0, 0, 0.35);
             }
-            nav ul.open {
+
+            nav > ul.open {
                 display: flex;
             }
+
             nav li {
                 width: 100%;
             }
-            nav a {
+
+            nav a,
+            .dropdown-button {
                 width: 100%;
+
                 justify-content: flex-start;
+
                 padding:
                     11px 13px;
+
                 font-size: 14px;
             }
+
+            .dropdown-button {
+                border-radius: 8px;
+            }
+
+            .dropdown-button .arrow {
+                margin-left: auto;
+            }
+
+            .dropdown-menu {
+                position: static;
+
+                transform: none;
+
+                width: 100%;
+
+                min-width: 0;
+
+                max-height: 0;
+
+                overflow: hidden;
+
+                margin-top: 0;
+
+                padding:
+                    0 8px;
+
+                border:
+                    0 solid
+                    transparent;
+
+                border-radius: 8px;
+
+                background:
+                    rgba(0, 170, 255, 0.035);
+
+                box-shadow: none;
+
+                opacity: 1;
+
+                visibility: visible;
+
+                pointer-events: auto;
+
+                transition:
+                    max-height 0.25s ease,
+                    padding 0.25s ease,
+                    border-color 0.25s ease;
+            }
+
+            .dropdown.open
+            .dropdown-menu {
+                max-height: 300px;
+
+                padding:
+                    8px;
+
+                border:
+                    1px solid
+                    rgba(0, 170, 255, 0.15);
+            }
+
+            .dropdown:hover
+            .dropdown-menu,
+            .dropdown:focus-within
+            .dropdown-menu {
+                transform: none;
+            }
+
             nav a.active::after {
                 left: 13px;
+
                 right: auto;
+
                 width: 35px;
+
                 bottom: 5px;
             }
+
         }
+
         /* =====================================================
            SMALL PHONES
         ===================================================== */
+
         @media (max-width: 400px) {
-            .logo {
+
+            .nav-logo {
                 font-size: 21px;
             }
+
             nav {
                 padding:
                     10px 12px;
             }
+
         }
+
         /* =====================================================
            07. HERO
         ===================================================== */
+
         .hero {
             position: relative;
             z-index: 2;
+
             min-height: 700px;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             text-align: center;
+
             overflow: hidden;
-            padding: 80px 20px;
+
+            padding:
+                80px 20px;
         }
+
         .hero::before {
             content: "";
+
             position: absolute;
+
             width: 750px;
             height: 750px;
+
             top: -390px;
             left: -300px;
+
             background:
                 radial-gradient(
                     circle,
                     rgba(0, 170, 255, 0.17),
                     transparent 70%
                 );
+
             animation:
                 heroGlowLeft
                 8s
                 ease-in-out
                 infinite
                 alternate;
+
             pointer-events: none;
         }
+
         .hero::after {
             content: "";
+
             position: absolute;
+
             width: 650px;
             height: 650px;
+
             right: -320px;
             bottom: -340px;
+
             background:
                 radial-gradient(
                     circle,
                     rgba(57, 255, 136, 0.10),
                     transparent 70%
                 );
+
             animation:
                 heroGlowRight
                 9s
                 ease-in-out
                 infinite
                 alternate;
+
             pointer-events: none;
         }
+
         @keyframes heroGlowLeft {
+
             from {
                 transform:
                     translate(0, 0)
                     scale(0.9);
             }
+
             to {
                 transform:
                     translate(160px, 120px)
                     scale(1.15);
             }
+
         }
+
         @keyframes heroGlowRight {
+
             from {
                 transform:
                     translate(0, 0)
                     scale(0.9);
             }
+
             to {
                 transform:
                     translate(-150px, -120px)
                     scale(1.15);
             }
+
         }
+
         .hero-content {
             position: relative;
             z-index: 3;
+
             max-width: 850px;
         }
+
         .shield {
             font-size: 85px;
+
             margin-bottom: 20px;
+
             filter:
                 drop-shadow(
                     0 0 12px
@@ -677,35 +1170,46 @@
                     0 0 25px
                     rgba(57, 255, 136, 0.5)
                 );
+
             animation:
                 shieldFloat
                 3s
                 ease-in-out
                 infinite;
         }
+
         @keyframes shieldFloat {
+
             0%,
             100% {
                 transform:
                     translateY(0);
             }
+
             50% {
                 transform:
                     translateY(-12px);
             }
+
         }
+
         .hero h1 {
             font-size:
                 clamp(55px, 10vw, 100px);
+
             margin-bottom: 15px;
+
             letter-spacing: -2px;
+
             text-shadow:
                 0 0 30px
                 rgba(0, 170, 255, 0.10);
         }
+
         .hero h1 .cyber {
             color: white;
         }
+
         .hero h1 .start {
             background:
                 linear-gradient(
@@ -714,38 +1218,84 @@
                     #00d9ff,
                     #39ff88
                 );
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .hero-icon {
+            font-size: 85px;
+
+            margin-bottom: 20px;
+
+            filter:
+                drop-shadow(
+                    0 0 12px
+                    rgba(0, 170, 255, 0.8)
+                )
+                drop-shadow(
+                    0 0 25px
+                    rgba(57, 255, 136, 0.5)
+                );
+
+            animation:
+                shieldFloat
+                3s
+                ease-in-out
+                infinite;
+        }
+
         .tagline {
             font-size: 15px;
+
             letter-spacing: 5px;
+
             font-weight: bold;
+
             margin-bottom: 22px;
+
             color: #dce8f5;
         }
+
         .tagline span {
             color: #39ff88;
-            margin: 0 6px;
+
+            margin:
+                0 6px;
+
             text-shadow:
                 0 0 8px
                 rgba(57, 255, 136, 0.6);
         }
+
         .hero p {
             max-width: 700px;
+
             margin: auto;
+
             color: #b9c7d8;
+
             line-height: 1.7;
+
             font-size: 17px;
         }
+
         .start-button {
             display: inline-block;
+
             margin-top: 30px;
-            padding: 15px 30px;
+
+            padding:
+                15px 30px;
+
             border-radius: 10px;
+
             color: white;
+
             text-decoration: none;
+
             font-weight: bold;
+
             background:
                 linear-gradient(
                     90deg,
@@ -753,141 +1303,202 @@
                     #00aaff,
                     #39ff88
                 );
+
             box-shadow:
                 0 0 18px
                 rgba(0, 170, 255, 0.35);
+
             transition:
                 transform 0.3s,
                 box-shadow 0.3s;
         }
+
         .start-button:hover {
             transform:
                 translateY(-3px);
+
             box-shadow:
                 0 0 35px
                 rgba(0, 170, 255, 0.65);
         }
+
         /* =====================================================
            08. SHARED SECTION CONTAINER
         ===================================================== */
+
         .learn-section,
         .features-section,
         .knowledge-section,
         .career-section {
+
             width: 94%;
+
             max-width: 1250px;
-            margin: 40px auto;
+
+            margin:
+                40px auto;
+
             position: relative;
+
             z-index: 2;
+
             overflow: hidden;
+
             backdrop-filter:
                 blur(8px);
+
             background:
                 linear-gradient(
                     145deg,
                     rgba(8, 25, 45, 0.90),
                     rgba(3, 12, 25, 0.91)
                 );
+
             border-radius: 20px;
+
             box-shadow:
                 0 0 35px
                 rgba(0, 170, 255, 0.07);
         }
+
         /* =====================================================
            09. WHAT CLYVEXIS TEACHES
         ===================================================== */
+
         .learn-section {
-            padding: 40px 35px;
+            padding:
+                40px 35px;
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.35);
         }
+
         .learn-section::before {
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 2px;
+
             background:
                 linear-gradient(
                     90deg,
                     #00aaff,
                     #39ff88
                 );
+
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.7);
         }
+
         .learn-title {
             text-align: center;
+
             font-size: 34px;
+
             margin-bottom: 12px;
         }
+
         .learn-intro {
             max-width: 700px;
-            margin: 0 auto 30px;
+
+            margin:
+                0 auto 30px;
+
             text-align: center;
+
             color: #aebdcc;
+
             line-height: 1.7;
         }
+
         .topic-grid {
             display: grid;
+
             grid-template-columns:
                 repeat(3, 1fr);
+
             gap: 20px;
         }
+
         .topic-card {
             padding: 25px;
+
             border-radius: 16px;
+
             background:
                 linear-gradient(
                     145deg,
                     rgba(0, 170, 255, 0.07),
                     rgba(57, 255, 136, 0.025)
                 );
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.25);
+
             transition:
                 transform 0.3s,
                 border-color 0.3s,
                 box-shadow 0.3s;
         }
+
         .topic-card:hover {
             transform:
                 translateY(-5px);
+
             border-color:
                 #00aaff;
+
             box-shadow:
                 0 0 25px
                 rgba(0, 170, 255, 0.18);
         }
+
         .topic-card h3 {
             color: #00aaff;
+
             margin-bottom: 10px;
         }
+
         .topic-card p {
             color: #aebdcc;
+
             line-height: 1.6;
+
             font-size: 14px;
         }
+
         /* =====================================================
            10. CYBERSECURITY CAREER PATHS
         ===================================================== */
+
         .career-section {
-            padding: 40px 35px;
+            padding:
+                40px 35px;
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.35);
         }
+
         .career-section::before {
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 2px;
+
             background:
                 linear-gradient(
                     90deg,
@@ -895,145 +1506,216 @@
                     #39ff88,
                     #00aaff
                 );
+
             background-size:
                 200% 100%;
+
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.7);
+
             animation:
                 careerEnergy
                 5s
                 linear
                 infinite;
         }
+
         @keyframes careerEnergy {
+
             from {
                 background-position:
                     200% 0;
             }
+
             to {
                 background-position:
                     -200% 0;
             }
+
         }
+
         .career-title {
             text-align: center;
+
             font-size: 34px;
+
             margin-bottom: 12px;
         }
+
         .career-title span {
             color: #00aaff;
         }
+
         .career-intro {
             max-width: 760px;
-            margin: 0 auto 30px;
+
+            margin:
+                0 auto 30px;
+
             text-align: center;
+
             color: #aebdcc;
+
             line-height: 1.7;
         }
+
         .career-grid {
             display: grid;
+
             grid-template-columns:
                 repeat(3, 1fr);
+
             gap: 20px;
         }
+
         .career-card {
             padding: 25px;
+
             border-radius: 16px;
+
             background:
                 linear-gradient(
                     145deg,
                     rgba(0, 170, 255, 0.07),
                     rgba(57, 255, 136, 0.025)
                 );
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.25);
+
             transition:
                 transform 0.3s,
                 border-color 0.3s,
                 box-shadow 0.3s;
+
             position: relative;
+
             overflow: hidden;
         }
+
         .career-card::after {
             content: "";
+
             position: absolute;
+
             width: 120px;
             height: 120px;
+
             right: -70px;
             top: -70px;
+
             border-radius: 50%;
+
             background:
                 rgba(0, 170, 255, 0.08);
+
             filter: blur(2px);
         }
+
         .career-card:hover {
             transform:
                 translateY(-7px);
+
             border-color:
                 #00aaff;
+
             box-shadow:
                 0 0 28px
                 rgba(0, 170, 255, 0.18);
         }
+
         .career-icon {
             font-size: 38px;
+
             margin-bottom: 15px;
         }
+
         .career-card h3 {
             color: #00aaff;
+
             margin-bottom: 10px;
         }
+
         .career-card p {
             color: #aebdcc;
+
             font-size: 14px;
+
             line-height: 1.6;
+
             margin-bottom: 16px;
         }
+
         .career-skills {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 7px;
+
             margin-bottom: 17px;
         }
+
         .career-skill {
-            padding: 5px 9px;
+            padding:
+                5px 9px;
+
             border-radius: 7px;
+
             color: #39ff88;
+
             background:
                 rgba(57, 255, 136, 0.06);
+
             border:
                 1px solid
                 rgba(57, 255, 136, 0.18);
+
             font-size: 11px;
+
             font-weight: bold;
         }
+
         .career-link {
             color: #39ff88;
+
             text-decoration: none;
+
             font-weight: bold;
+
             font-size: 13px;
         }
+
         .career-link:hover {
             color: #00aaff;
         }
+
         /* =====================================================
            11. CYBER KNOWLEDGE MAP
         ===================================================== */
+
         .knowledge-section {
-            padding: 40px 35px;
+            padding:
+                40px 35px;
+
             border:
                 1px solid
                 rgba(57, 255, 136, 0.28);
         }
+
         .knowledge-section::before {
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 2px;
+
             background:
                 linear-gradient(
                     90deg,
@@ -1041,1872 +1723,2850 @@
                     #39ff88,
                     #00aaff
                 );
+
             background-size:
                 200% 100%;
+
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.7);
+
             animation:
                 knowledgeEnergy
                 5s
                 linear
                 infinite;
         }
+
         @keyframes knowledgeEnergy {
+
             from {
                 background-position:
                     200% 0;
             }
+
             to {
                 background-position:
                     -200% 0;
             }
+
         }
+
         .knowledge-title {
             text-align: center;
+
             font-size: 34px;
+
             margin-bottom: 12px;
         }
+
         .knowledge-title span {
             color: #39ff88;
         }
+
         .knowledge-intro {
             max-width: 780px;
-            margin: 0 auto 30px;
+
+            margin:
+                0 auto 30px;
+
             text-align: center;
+
             color: #aebdcc;
+
             line-height: 1.7;
         }
+
         .knowledge-map {
             display: grid;
+
             grid-template-columns:
                 repeat(5, 1fr);
+
             gap: 16px;
+
             align-items: stretch;
         }
+
         .knowledge-node {
             display: block;
-            padding: 22px 18px;
+
+            padding:
+                22px 18px;
+
             border-radius: 16px;
+
             background:
                 linear-gradient(
                     145deg,
                     rgba(0, 170, 255, 0.08),
                     rgba(57, 255, 136, 0.025)
                 );
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.25);
+
             color: white;
+
             text-decoration: none;
+
             transition:
                 transform 0.3s,
                 border-color 0.3s,
                 box-shadow 0.3s;
+
             position: relative;
+
             overflow: hidden;
         }
+
         .knowledge-node:hover {
             transform:
                 translateY(-6px);
+
             border-color:
                 #00aaff;
+
             box-shadow:
                 0 0 25px
                 rgba(0, 170, 255, 0.20);
         }
-        .knowledge-node .knowledge-icon {
+
+        .knowledge-node
+        .knowledge-icon {
             font-size: 32px;
+
             margin-bottom: 10px;
         }
+
         .knowledge-node h3 {
             color: #00aaff;
+
             margin-bottom: 8px;
+
             font-size: 19px;
         }
+
         .knowledge-node p {
             color: #aebdcc;
+
             font-size: 13px;
+
             line-height: 1.5;
+
             margin-bottom: 14px;
         }
+
         .knowledge-topics {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 7px;
         }
+
         .knowledge-topic {
             display: inline-block;
-            padding: 5px 8px;
+
+            padding:
+                5px 8px;
+
             border-radius: 7px;
+
             color: #39ff88;
+
             background:
                 rgba(57, 255, 136, 0.06);
+
             border:
                 1px solid
                 rgba(57, 255, 136, 0.18);
+
             font-size: 11px;
+
             font-weight: bold;
         }
+
         .knowledge-flow {
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             gap: 10px;
+
             flex-wrap: wrap;
-            margin: 28px 0 8px;
+
+            margin:
+                28px 0 8px;
+
             color: #7f8da0;
+
             font-size: 12px;
+
             font-weight: bold;
+
             letter-spacing: 1px;
         }
+
         .knowledge-flow strong {
             color: #00aaff;
         }
+
         .knowledge-career {
             margin-top: 25px;
+
             padding: 18px;
+
             text-align: center;
+
             border:
                 1px solid
                 rgba(57, 255, 136, 0.25);
+
             border-radius: 14px;
+
             background:
                 rgba(57, 255, 136, 0.035);
         }
+
         .knowledge-career p {
             color: #aebdcc;
+
             margin-bottom: 12px;
+
             line-height: 1.6;
         }
+
         .knowledge-career a {
             color: #39ff88;
+
             text-decoration: none;
+
             font-weight: bold;
         }
+
         .knowledge-career a:hover {
             color: #00aaff;
         }
+
         /* =====================================================
            12. EXPLORE CLYVEXIS
         ===================================================== */
+
         .features-section {
             padding: 35px;
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.35);
         }
+
         .features-section::before {
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 2px;
+
             background:
                 linear-gradient(
                     90deg,
                     #00aaff,
                     #39ff88
                 );
+
             box-shadow:
                 0 0 12px
                 rgba(0, 170, 255, 0.7);
         }
+
         .features-title {
             text-align: center;
+
             font-size: 34px;
+
             margin-bottom: 30px;
         }
+
         .features-grid {
             display: grid;
+
             grid-template-columns:
                 repeat(5, 1fr);
+
             gap: 20px;
         }
+
         .feature-card {
-            padding: 25px 15px;
+            padding:
+                25px 15px;
+
             text-align: center;
+
             border-radius: 16px;
+
             background:
                 linear-gradient(
                     145deg,
                     rgba(0, 170, 255, 0.07),
                     rgba(57, 255, 136, 0.025)
                 );
+
             border:
                 1px solid
                 rgba(0, 170, 255, 0.25);
+
             transition:
                 transform 0.3s,
                 border-color 0.3s,
                 box-shadow 0.3s;
+
             backdrop-filter:
                 blur(4px);
         }
+
         .feature-card:hover {
             transform:
                 translateY(-7px);
+
             border-color:
                 #00aaff;
+
             box-shadow:
                 0 0 28px
                 rgba(0, 170, 255, 0.20);
         }
+
         .feature-icon {
             width: 85px;
             height: 85px;
+
             margin:
                 0 auto 18px;
+
             display: flex;
+
             justify-content: center;
             align-items: center;
+
             border-radius: 20px;
+
             font-size: 38px;
+
             background:
                 linear-gradient(
                     145deg,
                     rgba(0, 170, 255, 0.15),
                     rgba(57, 255, 136, 0.06)
                 );
+
             border:
                 1px solid
                 #00aaff;
+
             box-shadow:
                 0 0 15px
                 rgba(0, 170, 255, 0.15);
         }
+
         .feature-card h3 {
             margin-bottom: 10px;
+
             color: #00aaff;
         }
+
         .feature-card p {
             color: #aebdcc;
+
             font-size: 13px;
+
             line-height: 1.5;
+
             margin-bottom: 15px;
         }
+
         .feature-link {
             color: #39ff88;
+
             text-decoration: none;
+
             font-weight: bold;
+
             font-size: 13px;
         }
+
         .feature-link:hover {
             color: #00aaff;
         }
+
         .defense-card {
             border-color:
                 rgba(57, 255, 136, 0.45);
         }
+
         .defense-card .feature-icon {
             border-color:
                 #39ff88;
+
             box-shadow:
                 0 0 18px
                 rgba(57, 255, 136, 0.20);
         }
+
         .defense-card h3 {
             color:
                 #39ff88;
         }
+
         .coding-card {
             border-color:
                 rgba(57, 255, 136, 0.35);
         }
+
         .coding-card .feature-icon {
             border-color:
                 #39ff88;
         }
+
         .simulator-card {
             border-color:
                 rgba(0, 170, 255, 0.45);
         }
+
         .simulator-card .feature-icon {
             border-color:
                 #00aaff;
+
             box-shadow:
                 0 0 18px
                 rgba(0, 170, 255, 0.25);
         }
+
         /* =====================================================
            13. FOOTER
         ===================================================== */
+
         footer {
             position: relative;
+
             z-index: 2;
+
             margin-top: 70px;
-            padding: 40px 20px;
+
+            padding:
+                40px 20px;
+
             text-align: center;
+
             background:
                 rgba(2, 7, 16, 0.96);
+
             border-top:
                 1px solid
                 rgba(0, 170, 255, 0.3);
+
             box-shadow:
                 0 -10px 40px
                 rgba(0, 0, 0, 0.20);
         }
+
         footer h2 {
             margin-bottom: 10px;
         }
+
         footer h2 span {
             color: #00aaff;
         }
+
         .footer-line {
             width: 120px;
+
             height: 2px;
-            margin: 15px auto;
+
+            margin:
+                15px auto;
+
             background:
                 linear-gradient(
                     90deg,
                     #00aaff,
                     #39ff88
                 );
+
             box-shadow:
                 0 0 10px
                 rgba(0, 170, 255, 0.7);
         }
+
         footer p {
             color: #7f8da0;
+
             margin-top: 8px;
         }
+
         /* =====================================================
            14. TABLET RESPONSIVE
         ===================================================== */
+
         @media (max-width: 950px) {
+
             .topic-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
+
             .career-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
+
             .knowledge-map {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
+
             .features-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
+
             #cyber-network {
                 opacity: 0.58;
             }
+
         }
+
         /* =====================================================
            15. MOBILE RESPONSIVE
         ===================================================== */
+
         @media (max-width: 600px) {
+
             .hero {
                 min-height: 600px;
+
                 padding:
                     60px 15px;
             }
+
             .hero h1 {
                 font-size: 52px;
             }
+
             .hero p {
                 font-size: 15px;
             }
+
             .hero::before {
                 width: 500px;
                 height: 500px;
             }
+
+            .hero-icon {
+                font-size: 65px;
+            }
+
             .learn-section {
                 padding:
                     25px 15px;
             }
+
             .learn-title {
                 font-size: 28px;
             }
+
             .topic-grid {
                 grid-template-columns: 1fr;
             }
+
             .career-section {
                 padding:
                     25px 15px;
             }
+
             .career-title {
                 font-size: 28px;
             }
+
             .career-grid {
                 grid-template-columns: 1fr;
             }
+
             .knowledge-section {
                 padding:
                     25px 15px;
             }
+
             .knowledge-title {
                 font-size: 28px;
             }
+
             .knowledge-map {
                 grid-template-columns: 1fr;
             }
+
             .knowledge-flow {
                 line-height: 1.8;
             }
+
             .features-section {
                 padding:
                     22px 15px;
             }
+
             .features-title {
                 font-size: 28px;
             }
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
+
             .cyber-atmosphere::before {
                 width: 450px;
                 height: 450px;
             }
+
             .scan-line {
                 opacity: 0.20;
             }
+
             #cyber-network {
                 opacity: 0.42;
             }
+
         }
+
         /* =====================================================
            16. REDUCED MOTION ACCESSIBILITY
         ===================================================== */
+
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
                 animation-duration:
                     0.01ms !important;
+
                 animation-iteration-count:
                     1 !important;
+
                 scroll-behavior:
                     auto !important;
             }
+
             #cyber-network {
                 opacity: 0.28;
             }
+
         }
+
     </style>
+
 </head>
+
 <body>
+
     <!-- =====================================================
          BACKGROUND EFFECTS
     ===================================================== -->
+
     <div class="cyber-atmosphere"></div>
+
     <div class="scan-line"></div>
+
     <!-- =====================================================
          GLOBAL CYBER NETWORK
     ===================================================== -->
+
     <canvas
         id="cyber-network"
         aria-hidden="true"
     ></canvas>
+
+
     <!-- =====================================================
          NAVIGATION
+         HOMEPAGE VERSION
     ===================================================== -->
- 
-<nav>
 
-  <a href="index.html" class="nav-logo">
-    🛡️ Clyvexis
-  </a>
+    <nav>
 
-  <button
-    class="menu-toggle"
-    id="menuToggle"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
-    type="button"
-  >
-    ☰
-  </button>
+        <a
+            href="index.html"
+            class="nav-logo"
+        >
+            🛡️ Clyvexis
+        </a>
 
-  <ul id="mainNav">
 
-    <li>
-      <a href="index.html">
-        🏠 Home
-      </a>
-    </li>
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            type="button"
+        >
+            ☰
+        </button>
 
-    <!-- LEARN -->
 
-    <li class="dropdown">
+        <ul id="mainNav">
 
-      <button
-        class="dropdown-button"
-        type="button"
-        aria-expanded="false"
-      >
-        📚 Learn
-        <span class="arrow">▼</span>
-      </button>
+            <!-- HOME -->
 
-      <ul class="dropdown-menu">
+            <li>
+                <a
+                    href="index.html"
+                    class="active"
+                >
+                    🏠 Home
+                </a>
+            </li>
 
-        <li>
-          <a href="lessons.html">
-            📚 Lessons
-          </a>
-        </li>
 
-        <li>
-          <a href="labs.html">
-            🧪 Labs
-          </a>
-        </li>
+            <!-- LEARN -->
 
-        <li>
-          <a href="quiz.html">
-            🧠 Quiz
-          </a>
-        </li>
+            <li class="dropdown">
 
-      </ul>
+                <button
+                    class="dropdown-button"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    📚 Learn
 
-    </li>
+                    <span class="arrow">
+                        ▼
+                    </span>
+                </button>
 
-    <!-- PRACTICE -->
 
-    <li class="dropdown">
+                <ul class="dropdown-menu">
 
-      <button
-        class="dropdown-button active"
-        type="button"
-        aria-expanded="false"
-      >
-        🎯 Practice
-        <span class="arrow">▼</span>
-      </button>
+                    <li>
+                        <a href="lessons.html">
+                            📚 Lessons
+                        </a>
+                    </li>
 
-      <ul class="dropdown-menu">
+                    <li>
+                        <a href="labs.html">
+                            🧪 Labs
+                        </a>
+                    </li>
 
-        <li>
-          <a href="games.html" class="active">
-            🎮 Games
-          </a>
-        </li>
+                    <li>
+                        <a href="quiz.html">
+                            🧠 Quiz
+                        </a>
+                    </li>
 
-        <li>
-          <a href="cyber-defense.html">
-            🛡️ Defense
-          </a>
-        </li>
+                </ul>
 
-        <li>
-          <a href="simulators.html">
-            🧪 Simulators
-          </a>
-        </li>
+            </li>
 
-      </ul>
 
-    </li>
+            <!-- PRACTICE -->
 
-    <li>
-      <a href="coding.html">
-        💻 Coding
-      </a>
-    </li>
+            <li class="dropdown">
 
-    <li>
-      <a href="glossary.html">
-        📖 Glossary
-      </a>
-    </li>
+                <button
+                    class="dropdown-button"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    🎯 Practice
 
-  </ul>
+                    <span class="arrow">
+                        ▼
+                    </span>
+                </button>
 
-</nav>
 
-<!-- =======================================================
-     HERO
-     ======================================================= -->
+                <ul class="dropdown-menu">
 
-<section class="hero">
+                    <li>
+                        <a href="games.html">
+                            🎮 Games
+                        </a>
+                    </li>
 
-  <div class="hero-icon">🎮</div>
+                    <li>
+                        <a href="cyber-defense.html">
+                            🛡️ Defense
+                        </a>
+                    </li>
 
-  <h1>Clyvexis Cyber Arcade</h1>
+                    <li>
+                        <a href="simulators.html">
+                            🧪 Simulators
+                        </a>
+                    </li>
 
-  <p>
-    Build cybersecurity and coding skills through interactive
-    games, missions, puzzles, and challenges.
-  </p>
+                </ul>
 
-  <p class="tagline">
-    LEARN • CODE • ANALYZE • DEFEND
-  </p>
+            </li>
 
-</section>
+
+            <!-- CODING -->
+
+            <li>
+                <a href="coding.html">
+                    💻 Coding
+                </a>
+            </li>
+
+
+            <!-- GLOSSARY -->
+
+            <li>
+                <a href="glossary.html">
+                    📖 Glossary
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-icon">
+            🎮
+        </div>
+
+        <h1>
+            Clyvexis Cyber Arcade
+        </h1>
+
+        <p>
+            Build cybersecurity and coding skills through interactive
+            games, missions, puzzles, and challenges.
+        </p>
+
+        <p class="tagline">
+            LEARN • CODE • ANALYZE • DEFEND
+        </p>
+
+    </section>
+
 
     <!-- =====================================================
          CYBERSECURITY CAREER PATHS
     ===================================================== -->
+
     <section
         class="career-section"
         id="career-paths"
     >
+
         <h2 class="career-title">
-            🧑‍💻 Cybersecurity <span>Career Paths</span>
+            🧑‍💻 Cybersecurity
+            <span>Career Paths</span>
         </h2>
+
+
         <p class="career-intro">
             Cybersecurity is a huge field with many different directions.
             Explore some of the careers connected to the skills you can
             start building with Clyvexis.
         </p>
+
+
         <div class="career-grid">
+
+
             <div class="career-card">
+
                 <div class="career-icon">
                     🛡️
                 </div>
+
                 <h3>
                     SOC Analyst
                 </h3>
+
                 <p>
                     Monitor security alerts, investigate suspicious activity,
                     analyze logs, and help security teams respond to threats.
                 </p>
+
                 <div class="career-skills">
+
                     <span class="career-skill">
                         Logs
                     </span>
+
                     <span class="career-skill">
                         Alerts
                     </span>
+
                     <span class="career-skill">
                         Threat Detection
                     </span>
+
                     <span class="career-skill">
                         Defense
                     </span>
+
                 </div>
+
                 <a
                     href="cyber-defense.html"
                     class="career-link"
                 >
                     Explore Defense →
                 </a>
+
             </div>
+
+
             <div class="career-card">
+
                 <div class="career-icon">
                     🔐
                 </div>
+
                 <h3>
                     Cybersecurity Specialist
                 </h3>
+
                 <p>
                     Build a broad foundation in security concepts, threats,
                     vulnerabilities, identity, and defensive security.
                 </p>
+
                 <div class="career-skills">
+
                     <span class="career-skill">
                         Security Basics
                     </span>
+
                     <span class="career-skill">
                         Threats
                     </span>
+
                     <span class="career-skill">
                         Identity
                     </span>
+
                     <span class="career-skill">
                         Defense
                     </span>
+
                 </div>
+
                 <a
                     href="lessons.html"
                     class="career-link"
                 >
                     Start Fundamentals →
                 </a>
+
             </div>
+
+
             <div class="career-card">
+
                 <div class="career-icon">
                     💻
                 </div>
+
                 <h3>
                     Security Programmer
                 </h3>
+
                 <p>
                     Combine programming with cybersecurity by learning how
                     software can be built, analyzed, and improved securely.
                 </p>
+
                 <div class="career-skills">
+
                     <span class="career-skill">
                         Python
                     </span>
+
                     <span class="career-skill">
                         JavaScript
                     </span>
+
                     <span class="career-skill">
                         Coding
                     </span>
+
                     <span class="career-skill">
                         Automation
                     </span>
+
                 </div>
+
                 <a
                     href="coding.html"
                     class="career-link"
                 >
                     Start Coding →
                 </a>
+
             </div>
+
+
             <div class="career-card">
+
                 <div class="career-icon">
                     🌐
                 </div>
+
                 <h3>
                     Network Security
                 </h3>
+
                 <p>
                     Learn how networks work and how defenders monitor traffic,
                     understand protocols, and protect communications.
                 </p>
+
                 <div class="career-skills">
+
                     <span class="career-skill">
                         Networking
                     </span>
+
                     <span class="career-skill">
                         Traffic
                     </span>
+
                     <span class="career-skill">
                         Protocols
                     </span>
+
                     <span class="career-skill">
                         Defense
                     </span>
+
                 </div>
+
                 <a
                     href="lessons.html"
                     class="career-link"
                 >
                     Learn Networking →
                 </a>
+
             </div>
+
+
             <div class="career-card">
+
                 <div class="career-icon">
                     🔎
                 </div>
+
                 <h3>
                     Digital Forensics
                 </h3>
+
                 <p>
                     Explore how investigators analyze digital evidence,
                     activity, files, and security logs during investigations.
                 </p>
+
                 <div class="career-skills">
+
                     <span class="career-skill">
                         Investigation
                     </span>
+
                     <span class="career-skill">
                         Evidence
                     </span>
+
                     <span class="career-skill">
                         Logs
                     </span>
+
                     <span class="career-skill">
                         Analysis
                     </span>
+
                 </div>
+
                 <a
                     href="labs.html"
                     class="career-link"
                 >
                     Try a Lab →
                 </a>
+
             </div>
+
+
             <div class="career-card">
+
                 <div class="career-icon">
                     🐍
                 </div>
+
                 <h3>
                     Cyber + Python
                 </h3>
+
                 <p>
                     Use Python to build cybersecurity skills through
                     automation, data analysis, fictional logs, and
                     security-focused projects.
                 </p>
+
                 <div class="career-skills">
+
                     <span class="career-skill">
                         Python
                     </span>
+
                     <span class="career-skill">
                         Automation
                     </span>
+
                     <span class="career-skill">
                         Logs
                     </span>
+
                     <span class="career-skill">
                         Projects
                     </span>
+
                 </div>
+
                 <a
                     href="coding.html"
                     class="career-link"
                 >
                     Enter Coding Lab →
                 </a>
+
             </div>
+
         </div>
+
     </section>
+
+
     <!-- =====================================================
          CYBER KNOWLEDGE MAP
     ===================================================== -->
+
     <section
         class="knowledge-section"
         id="knowledge-map"
     >
+
         <h2 class="knowledge-title">
-            🧠 Cyber <span>Knowledge Map</span>
+            🧠 Cyber
+            <span>Knowledge Map</span>
         </h2>
+
+
         <p class="knowledge-intro">
             See how the major parts of cybersecurity connect.
             Choose a topic to jump into the Clyvexis area where you
             can keep learning and practicing.
         </p>
+
+
         <div class="knowledge-map">
+
+
             <a
                 class="knowledge-node"
                 href="lessons.html"
             >
+
                 <div class="knowledge-icon">
                     🌐
                 </div>
+
                 <h3>
                     Networking
                 </h3>
+
                 <p>
                     Learn how devices communicate and how networks
                     are understood and protected.
                 </p>
+
                 <div class="knowledge-topics">
+
                     <span class="knowledge-topic">
                         IP Addresses
                     </span>
+
                     <span class="knowledge-topic">
                         Protocols
                     </span>
+
                     <span class="knowledge-topic">
                         Ports
                     </span>
+
                     <span class="knowledge-topic">
                         DNS
                     </span>
+
                 </div>
+
             </a>
+
+
             <a
                 class="knowledge-node"
                 href="lessons.html"
             >
+
                 <div class="knowledge-icon">
                     🛡️
                 </div>
+
                 <h3>
                     Security
                 </h3>
+
                 <p>
                     Build a foundation in common threats and the
                     concepts used to protect systems and accounts.
                 </p>
+
                 <div class="knowledge-topics">
+
                     <span class="knowledge-topic">
                         Phishing
                     </span>
+
                     <span class="knowledge-topic">
                         Malware
                     </span>
+
                     <span class="knowledge-topic">
                         Passwords
                     </span>
+
                     <span class="knowledge-topic">
                         Encryption
                     </span>
+
                 </div>
+
             </a>
+
+
             <a
                 class="knowledge-node"
                 href="coding.html"
             >
+
                 <div class="knowledge-icon">
                     💻
                 </div>
+
                 <h3>
                     Coding
                 </h3>
+
                 <p>
                     Learn programming fundamentals and see how
                     coding connects with cybersecurity.
                 </p>
+
                 <div class="knowledge-topics">
+
                     <span class="knowledge-topic">
                         HTML
                     </span>
+
                     <span class="knowledge-topic">
                         CSS
                     </span>
+
                     <span class="knowledge-topic">
                         JavaScript
                     </span>
+
                     <span class="knowledge-topic">
                         Python
                     </span>
+
                 </div>
+
             </a>
+
+
             <a
                 class="knowledge-node"
                 href="cyber-defense.html"
             >
+
                 <div class="knowledge-icon">
                     🖥️
                 </div>
+
                 <h3>
                     Systems & Defense
                 </h3>
+
                 <p>
                     Explore systems, defensive thinking, monitoring,
                     investigation, and protecting environments.
                 </p>
+
                 <div class="knowledge-topics">
+
                     <span class="knowledge-topic">
                         Linux
                     </span>
+
                     <span class="knowledge-topic">
                         Logs
                     </span>
+
                     <span class="knowledge-topic">
                         Detection
                     </span>
+
                     <span class="knowledge-topic">
                         Defense
                     </span>
+
                 </div>
+
             </a>
+
+
             <a
                 class="knowledge-node"
                 href="lessons.html"
             >
+
                 <div class="knowledge-icon">
                     👤
                 </div>
+
                 <h3>
                     Identity
                 </h3>
+
                 <p>
                     Understand how users and accounts are identified,
                     authenticated, and given access.
                 </p>
+
                 <div class="knowledge-topics">
+
                     <span class="knowledge-topic">
                         Authentication
                     </span>
+
                     <span class="knowledge-topic">
                         MFA
                     </span>
+
                     <span class="knowledge-topic">
                         Access Control
                     </span>
+
                     <span class="knowledge-topic">
                         Identity
                     </span>
+
                 </div>
+
             </a>
+
         </div>
+
+
         <div class="knowledge-flow">
+
             <strong>
                 LEARN
             </strong>
+
             <span>
                 →
             </span>
+
             <strong>
                 PRACTICE
             </strong>
+
             <span>
                 →
             </span>
+
             <strong>
                 BUILD SKILLS
             </strong>
+
             <span>
                 →
             </span>
+
             <strong>
                 EXPLORE CAREERS
             </strong>
+
         </div>
+
+
         <div class="knowledge-career">
+
             <p>
                 Connect what you're learning to real cybersecurity
                 career directions already available on Clyvexis.
             </p>
+
             <a href="#career-paths">
                 Explore Cybersecurity Career Paths →
             </a>
+
         </div>
+
     </section>
+
+
     <!-- =====================================================
          EXPLORE CLYVEXIS
     ===================================================== -->
+
     <section class="features-section">
+
         <h2 class="features-title">
             Explore Clyvexis
         </h2>
+
+
         <div class="features-grid">
+
+
             <div class="feature-card">
+
                 <div class="feature-icon">
                     📚
                 </div>
+
                 <h3>
                     Lessons
                 </h3>
+
                 <p>
                     Learn cybersecurity
                     concepts from beginner
                     to advanced.
                 </p>
+
                 <a
                     href="lessons.html"
                     class="feature-link"
                 >
                     Start Learning →
                 </a>
+
             </div>
+
+
             <div class="feature-card">
+
                 <div class="feature-icon">
                     🧪
                 </div>
+
                 <h3>
                     Labs
                 </h3>
+
                 <p>
                     Practice cybersecurity
                     concepts using safe
                     interactive experiments.
                 </p>
+
                 <a
                     href="labs.html"
                     class="feature-link"
                 >
                     Enter Labs →
                 </a>
+
             </div>
+
+
             <div class="feature-card">
+
                 <div class="feature-icon">
                     🧠
                 </div>
+
                 <h3>
                     Quiz
                 </h3>
+
                 <p>
                     Test your cybersecurity
                     knowledge with challenging
                     questions.
                 </p>
+
                 <a
                     href="quiz.html"
                     class="feature-link"
                 >
                     Take Quiz →
                 </a>
+
             </div>
+
+
             <div class="feature-card">
+
                 <div class="feature-icon">
                     🎮
                 </div>
+
                 <h3>
                     Games
                 </h3>
+
                 <p>
                     Learn security concepts
                     while playing interactive
                     cybersecurity games.
                 </p>
+
                 <a
                     href="games.html"
                     class="feature-link"
                 >
                     Play Games →
                 </a>
+
             </div>
+
+
             <div class="feature-card defense-card">
+
                 <div class="feature-icon">
                     🛡️
                 </div>
+
                 <h3>
                     Defense
                 </h3>
+
                 <p>
                     Learn how defenders
                     detect threats and protect
                     systems from attacks.
                 </p>
+
                 <a
                     href="cyber-defense.html"
                     class="feature-link"
                 >
                     Enter Defense →
                 </a>
+
             </div>
+
+
             <div class="feature-card">
+
                 <div class="feature-icon">
                     📖
                 </div>
+
                 <h3>
                     Glossary
                 </h3>
+
                 <p>
                     Explore important
                     cybersecurity terms and
                     definitions.
                 </p>
+
                 <a
                     href="glossary.html"
                     class="feature-link"
                 >
                     View Glossary →
                 </a>
+
             </div>
+
+
             <div class="feature-card coding-card">
+
                 <div class="feature-icon">
                     💻
                 </div>
+
                 <h3>
                     Coding
                 </h3>
+
                 <p>
                     Learn HTML, CSS,
                     JavaScript, and how to
                     build your own webpages.
                 </p>
+
                 <a
                     href="coding.html"
                     class="feature-link"
                 >
                     Learn Coding →
                 </a>
+
             </div>
+
+
             <div class="feature-card simulator-card">
+
                 <div class="feature-icon">
                     🧪
                 </div>
+
                 <h3>
                     Simulators
                 </h3>
+
                 <p>
                     Practice cybersecurity
                     investigations inside
                     safe fictional environments.
                 </p>
+
                 <a
                     href="simulators.html"
                     class="feature-link"
                 >
                     Enter Simulators →
                 </a>
+
             </div>
+
         </div>
+
     </section>
+
+
     <!-- =====================================================
          FOOTER
     ===================================================== -->
+
     <footer>
+
         <h2>
             🛡️ Cly<span>vexis</span>
         </h2>
+
         <div class="footer-line"></div>
+
         <p>
             LEARN. PRACTICE. STAY SECURE.
         </p>
+
         <p>
             © 2026 Clyvexis
         </p>
+
     </footer>
+
+
     <!-- =====================================================
-         GLOBAL CYBER NETWORK ENGINE
+         JAVASCRIPT
     ===================================================== -->
+
     <script>
-    /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
-    (() => {
+
+        /* =====================================================
+           MASTER NAVIGATION SYSTEM
+        ===================================================== */
+
         const menuToggle =
-            document.getElementById(
-                "menu-toggle"
-            );
-        const navigation =
-            document.getElementById(
-                "main-navigation"
-            );
-        if (
-            !menuToggle ||
-            !navigation
-        ) {
-            return;
-        }
-        menuToggle.addEventListener(
-            "click",
-            () => {
-                const isOpen =
-                    navigation.classList.toggle(
-                        "open"
+            document.getElementById("menuToggle");
+
+        const mainNav =
+            document.getElementById("mainNav");
+
+        const dropdowns =
+            document.querySelectorAll(".dropdown");
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        if (menuToggle && mainNav) {
+
+            menuToggle.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mainNav.classList.toggle("open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        isOpen ? "true" : "false"
                     );
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                );
-                menuToggle.setAttribute(
-                    "aria-label",
-                    isOpen
-                        ? "Close navigation menu"
-                        : "Open navigation menu"
-                );
-                menuToggle.textContent =
-                    isOpen
-                        ? "✕"
-                        : "☰";
-            }
-        );
-        /* Close menu after selecting a page */
-        navigation
-            .querySelectorAll("a")
-            .forEach(
-                link => {
-                    link.addEventListener(
-                        "click",
-                        () => {
-                            navigation.classList.remove(
-                                "open"
-                            );
-                            menuToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-                            menuToggle.setAttribute(
-                                "aria-label",
-                                "Open navigation menu"
-                            );
-                            menuToggle.textContent =
-                                "☰";
-                        }
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "Close navigation menu"
+                            : "Open navigation menu"
                     );
+
+                    menuToggle.textContent =
+                        isOpen
+                            ? "✕"
+                            : "☰";
+
                 }
             );
-        /* Close menu if window becomes desktop size */
+
+        }
+
+
+        /* =====================================================
+           DROPDOWN BUTTONS
+        ===================================================== */
+
+        document
+            .querySelectorAll(".dropdown-button")
+            .forEach(
+                button => {
+
+                    button.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
+
+                            event.stopPropagation();
+
+                            const dropdown =
+                                button.closest(".dropdown");
+
+                            const wasOpen =
+                                dropdown.classList.contains("open");
+
+
+                            dropdowns.forEach(
+                                item => {
+
+                                    item.classList.remove(
+                                        "open"
+                                    );
+
+                                    const itemButton =
+                                        item.querySelector(
+                                            ".dropdown-button"
+                                        );
+
+                                    if (itemButton) {
+
+                                        itemButton.setAttribute(
+                                            "aria-expanded",
+                                            "false"
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+
+                            if (!wasOpen) {
+
+                                dropdown.classList.add(
+                                    "open"
+                                );
+
+                                button.setAttribute(
+                                    "aria-expanded",
+                                    "true"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+        ===================================================== */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !event.target.closest(".dropdown")
+                ) {
+
+                    dropdowns.forEach(
+                        dropdown => {
+
+                            dropdown.classList.remove(
+                                "open"
+                            );
+
+                            const button =
+                                dropdown.querySelector(
+                                    ".dropdown-button"
+                                );
+
+                            if (button) {
+
+                                button.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           CLOSE MOBILE MENU AFTER SELECTING A PAGE
+        ===================================================== */
+
+        document
+            .querySelectorAll("#mainNav a")
+            .forEach(
+                link => {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            if (mainNav) {
+
+                                mainNav.classList.remove(
+                                    "open"
+                                );
+
+                            }
+
+                            if (menuToggle) {
+
+                                menuToggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                                menuToggle.setAttribute(
+                                    "aria-label",
+                                    "Open navigation menu"
+                                );
+
+                                menuToggle.textContent =
+                                    "☰";
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           RESET NAVIGATION WHEN RETURNING TO DESKTOP
+        ===================================================== */
+
         window.addEventListener(
             "resize",
-            () => {
+            function () {
+
                 if (
                     window.innerWidth > 800
                 ) {
-                    navigation.classList.remove(
-                        "open"
+
+                    if (mainNav) {
+
+                        mainNav.classList.remove(
+                            "open"
+                        );
+
+                    }
+
+                    if (menuToggle) {
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        menuToggle.setAttribute(
+                            "aria-label",
+                            "Open navigation menu"
+                        );
+
+                        menuToggle.textContent =
+                            "☰";
+
+                    }
+
+                    dropdowns.forEach(
+                        dropdown => {
+
+                            dropdown.classList.remove(
+                                "open"
+                            );
+
+                        }
                     );
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
-                    menuToggle.textContent =
-                        "☰";
+
                 }
+
             }
         );
-    })();
-    /* =====================================================
-       GLOBAL CYBER NETWORK
-    ===================================================== */
-    (() => {
-        const canvas =
-            document.getElementById(
-                "cyber-network"
-            );
-        if (!canvas) return;
-        const ctx =
-            canvas.getContext("2d");
-        if (!ctx) return;
-        /* =================================================
-           SETTINGS
-        ================================================= */
-        const settings = {
-            desktopNodes: 95,
-            mobileNodes: 42,
-            connectionDistance: 150,
-            globeRadius: 270,
-            packetSpeed: 0.008,
-            nodePulseSpeed: 0.025
-        };
-        /* =================================================
-           STATE
-        ================================================= */
-        let width = 0;
-        let height = 0;
-        let dpr = 1;
-        let nodes = [];
-        let packets = [];
-        const reducedMotion =
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            );
-        /* =================================================
-           RESIZE
-        ================================================= */
-        function resize() {
-            dpr =
-                Math.min(
-                    window.devicePixelRatio || 1,
-                    2
+
+
+        /* =====================================================
+           GLOBAL CYBER NETWORK
+        ===================================================== */
+
+        (() => {
+
+            const canvas =
+                document.getElementById(
+                    "cyber-network"
                 );
-            width =
-                window.innerWidth;
-            height =
-                window.innerHeight;
-            canvas.width =
-                width * dpr;
-            canvas.height =
-                height * dpr;
-            canvas.style.width =
-                width + "px";
-            canvas.style.height =
-                height + "px";
-            ctx.setTransform(
-                dpr,
-                0,
-                0,
-                dpr,
-                0,
-                0
-            );
-            createNodes();
-            createPackets();
-        }
-        /* =================================================
-           CREATE NETWORK NODES
-        ================================================= */
-        function createNodes() {
-            nodes = [];
-            const count =
-                width < 700
-                    ? settings.mobileNodes
-                    : settings.desktopNodes;
-            for (
-                let i = 0;
-                i < count;
-                i++
-            ) {
-                nodes.push({
-                    angle:
-                        Math.random() *
-                        Math.PI *
-                        2,
-                    distance:
-                        Math.random(),
-                    x: 0,
-                    y: 0,
-                    size:
-                        Math.random() *
-                        1.8 +
-                        0.7,
-                    alpha:
-                        Math.random() *
-                        0.5 +
-                        0.25,
-                    pulse:
-                        Math.random() *
-                        Math.PI *
+
+            if (!canvas) return;
+
+
+            const ctx =
+                canvas.getContext("2d");
+
+            if (!ctx) return;
+
+
+            /* =================================================
+               SETTINGS
+            ================================================= */
+
+            const settings = {
+
+                desktopNodes: 95,
+
+                mobileNodes: 42,
+
+                connectionDistance: 150,
+
+                globeRadius: 270,
+
+                packetSpeed: 0.008,
+
+                nodePulseSpeed: 0.025
+
+            };
+
+
+            /* =================================================
+               STATE
+            ================================================= */
+
+            let width = 0;
+
+            let height = 0;
+
+            let dpr = 1;
+
+            let nodes = [];
+
+            let packets = [];
+
+
+            const reducedMotion =
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                );
+
+
+            /* =================================================
+               RESIZE
+            ================================================= */
+
+            function resize() {
+
+                dpr =
+                    Math.min(
+                        window.devicePixelRatio || 1,
                         2
-                });
-            }
-        }
-        /* =================================================
-           CREATE DATA PACKETS
-        ================================================= */
-        function createPackets() {
-            packets = [];
-            const count =
-                width < 700
-                    ? 8
-                    : 18;
-            for (
-                let i = 0;
-                i < count;
-                i++
-            ) {
-                packets.push({
-                    from:
-                        Math.floor(
-                            Math.random() *
-                            nodes.length
-                        ),
-                    to:
-                        Math.floor(
-                            Math.random() *
-                            nodes.length
-                        ),
-                    progress:
-                        Math.random(),
-                    speed:
-                        settings.packetSpeed *
-                        (
-                            0.7 +
-                            Math.random() *
-                            0.8
-                        )
-                });
-            }
-        }
-        /* =================================================
-           UPDATE NODE POSITIONS
-        ================================================= */
-        function updateNodes(time) {
-            const centerX =
-                width / 2;
-            const centerY =
-                height * 0.43;
-            const radius =
-                Math.min(
-                    settings.globeRadius,
-                    width * 0.34
-                );
-            nodes.forEach(
-                node => {
-                    const wobble =
-                        reducedMotion.matches
-                            ? 0
-                            : Math.sin(
-                                time * 0.00035 +
-                                node.pulse
-                            ) * 0.025;
-                    const distance =
-                        Math.min(
-                            1,
-                            node.distance +
-                            wobble
-                        );
-                    const x =
-                        Math.cos(
-                            node.angle
-                        ) *
-                        radius *
-                        distance;
-                    const y =
-                        Math.sin(
-                            node.angle
-                        ) *
-                        radius *
-                        distance *
-                        0.62;
-                    const curve =
-                        Math.cos(
-                            node.angle
-                        ) *
-                        distance *
-                        35;
-                    node.x =
-                        centerX +
-                        x;
-                    node.y =
-                        centerY +
-                        y +
-                        curve;
-                }
-            );
-        }
-        /* =================================================
-           MAIN GLOW
-        ================================================= */
-        function drawGlow() {
-            const centerX =
-                width / 2;
-            const centerY =
-                height * 0.43;
-            const radius =
-                Math.min(
-                    settings.globeRadius * 1.5,
-                    width * 0.5
-                );
-            const gradient =
-                ctx.createRadialGradient(
-                    centerX,
-                    centerY,
+                    );
+
+                width =
+                    window.innerWidth;
+
+                height =
+                    window.innerHeight;
+
+
+                canvas.width =
+                    width * dpr;
+
+                canvas.height =
+                    height * dpr;
+
+
+                canvas.style.width =
+                    width + "px";
+
+                canvas.style.height =
+                    height + "px";
+
+
+                ctx.setTransform(
+                    dpr,
                     0,
+                    0,
+                    dpr,
+                    0,
+                    0
+                );
+
+
+                createNodes();
+
+                createPackets();
+
+            }
+
+
+            /* =================================================
+               CREATE NETWORK NODES
+            ================================================= */
+
+            function createNodes() {
+
+                nodes = [];
+
+
+                const count =
+                    width < 700
+                        ? settings.mobileNodes
+                        : settings.desktopNodes;
+
+
+                for (
+                    let i = 0;
+                    i < count;
+                    i++
+                ) {
+
+                    nodes.push({
+
+                        angle:
+                            Math.random() *
+                            Math.PI *
+                            2,
+
+                        distance:
+                            Math.random(),
+
+                        x: 0,
+
+                        y: 0,
+
+                        size:
+                            Math.random() *
+                            1.8 +
+                            0.7,
+
+                        alpha:
+                            Math.random() *
+                            0.5 +
+                            0.25,
+
+                        pulse:
+                            Math.random() *
+                            Math.PI *
+                            2
+
+                    });
+
+                }
+
+            }
+
+
+            /* =================================================
+               CREATE DATA PACKETS
+            ================================================= */
+
+            function createPackets() {
+
+                packets = [];
+
+
+                const count =
+                    width < 700
+                        ? 8
+                        : 18;
+
+
+                for (
+                    let i = 0;
+                    i < count;
+                    i++
+                ) {
+
+                    packets.push({
+
+                        from:
+                            Math.floor(
+                                Math.random() *
+                                nodes.length
+                            ),
+
+                        to:
+                            Math.floor(
+                                Math.random() *
+                                nodes.length
+                            ),
+
+                        progress:
+                            Math.random(),
+
+                        speed:
+                            settings.packetSpeed *
+                            (
+                                0.7 +
+                                Math.random() *
+                                0.8
+                            )
+
+                    });
+
+                }
+
+            }
+
+
+            /* =================================================
+               UPDATE NODE POSITIONS
+            ================================================= */
+
+            function updateNodes(time) {
+
+                const centerX =
+                    width / 2;
+
+                const centerY =
+                    height * 0.43;
+
+
+                const radius =
+                    Math.min(
+                        settings.globeRadius,
+                        width * 0.34
+                    );
+
+
+                nodes.forEach(
+                    node => {
+
+                        const wobble =
+                            reducedMotion.matches
+                                ? 0
+                                : Math.sin(
+                                    time * 0.00035 +
+                                    node.pulse
+                                ) * 0.025;
+
+
+                        const distance =
+                            Math.min(
+                                1,
+                                node.distance +
+                                wobble
+                            );
+
+
+                        const x =
+                            Math.cos(
+                                node.angle
+                            ) *
+                            radius *
+                            distance;
+
+
+                        const y =
+                            Math.sin(
+                                node.angle
+                            ) *
+                            radius *
+                            distance *
+                            0.62;
+
+
+                        const curve =
+                            Math.cos(
+                                node.angle
+                            ) *
+                            distance *
+                            35;
+
+
+                        node.x =
+                            centerX +
+                            x;
+
+
+                        node.y =
+                            centerY +
+                            y +
+                            curve;
+
+                    }
+                );
+
+            }
+
+
+            /* =================================================
+               MAIN GLOW
+            ================================================= */
+
+            function drawGlow() {
+
+                const centerX =
+                    width / 2;
+
+                const centerY =
+                    height * 0.43;
+
+
+                const radius =
+                    Math.min(
+                        settings.globeRadius * 1.5,
+                        width * 0.5
+                    );
+
+
+                const gradient =
+                    ctx.createRadialGradient(
+                        centerX,
+                        centerY,
+                        0,
+                        centerX,
+                        centerY,
+                        radius
+                    );
+
+
+                gradient.addColorStop(
+                    0,
+                    "rgba(0,170,255,0.10)"
+                );
+
+
+                gradient.addColorStop(
+                    0.35,
+                    "rgba(0,170,255,0.045)"
+                );
+
+
+                gradient.addColorStop(
+                    0.65,
+                    "rgba(57,255,136,0.018)"
+                );
+
+
+                gradient.addColorStop(
+                    1,
+                    "rgba(0,0,0,0)"
+                );
+
+
+                ctx.fillStyle =
+                    gradient;
+
+
+                ctx.beginPath();
+
+
+                ctx.arc(
                     centerX,
                     centerY,
-                    radius
+                    radius,
+                    0,
+                    Math.PI * 2
                 );
-            gradient.addColorStop(
-                0,
-                "rgba(0,170,255,0.10)"
-            );
-            gradient.addColorStop(
-                0.35,
-                "rgba(0,170,255,0.045)"
-            );
-            gradient.addColorStop(
-                0.65,
-                "rgba(57,255,136,0.018)"
-            );
-            gradient.addColorStop(
-                1,
-                "rgba(0,0,0,0)"
-            );
-            ctx.fillStyle =
-                gradient;
-            ctx.beginPath();
-            ctx.arc(
-                centerX,
-                centerY,
-                radius,
-                0,
-                Math.PI * 2
-            );
-            ctx.fill();
-        }
-        /* =================================================
-           GLOBE RINGS
-        ================================================= */
-        function drawGlobeRings() {
-            const centerX =
-                width / 2;
-            const centerY =
-                height * 0.43;
-            const radius =
-                Math.min(
-                    settings.globeRadius,
-                    width * 0.34
-                );
-            ctx.save();
-            /* Main globe outline */
-            ctx.beginPath();
-            ctx.ellipse(
-                centerX,
-                centerY,
-                radius,
-                radius * 0.62,
-                0,
-                0,
-                Math.PI * 2
-            );
-            ctx.strokeStyle =
-                "rgba(0,170,255,0.12)";
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            /* Vertical rings */
-            for (
-                let i = 1;
-                i <= 3;
-                i++
-            ) {
-                const ring =
-                    radius *
-                    (i / 4);
+
+
+                ctx.fill();
+
+            }
+
+
+            /* =================================================
+               GLOBE RINGS
+            ================================================= */
+
+            function drawGlobeRings() {
+
+                const centerX =
+                    width / 2;
+
+                const centerY =
+                    height * 0.43;
+
+
+                const radius =
+                    Math.min(
+                        settings.globeRadius,
+                        width * 0.34
+                    );
+
+
+                ctx.save();
+
+
+                /* Main globe outline */
+
                 ctx.beginPath();
+
                 ctx.ellipse(
                     centerX,
                     centerY,
-                    ring,
+                    radius,
                     radius * 0.62,
                     0,
                     0,
                     Math.PI * 2
                 );
+
                 ctx.strokeStyle =
-                    "rgba(0,170,255,0.055)";
+                    "rgba(0,170,255,0.12)";
+
+                ctx.lineWidth = 1;
+
                 ctx.stroke();
-            }
-            /* Horizontal latitude lines */
-            for (
-                let i = -2;
-                i <= 2;
-                i++
-            ) {
-                const offset =
-                    i *
-                    radius *
-                    0.20;
-                ctx.beginPath();
-                ctx.ellipse(
-                    centerX,
-                    centerY + offset,
-                    radius *
-                    Math.sqrt(
-                        Math.max(
-                            0.15,
-                            1 -
-                            Math.abs(i) *
-                            0.16
-                        )
-                    ),
-                    radius * 0.16,
-                    0,
-                    0,
-                    Math.PI * 2
-                );
-                ctx.strokeStyle =
-                    "rgba(57,255,136,0.035)";
-                ctx.stroke();
-            }
-            ctx.restore();
-        }
-        /* =================================================
-           NETWORK CONNECTIONS
-        ================================================= */
-        function drawConnections(time) {
-            for (
-                let i = 0;
-                i < nodes.length;
-                i++
-            ) {
-                const a =
-                    nodes[i];
+
+
+                /* Vertical rings */
+
                 for (
-                    let j = i + 1;
-                    j < nodes.length;
-                    j++
+                    let i = 1;
+                    i <= 3;
+                    i++
                 ) {
-                    const b =
-                        nodes[j];
-                    const dx =
-                        a.x -
-                        b.x;
-                    const dy =
-                        a.y -
-                        b.y;
-                    const distance =
-                        Math.sqrt(
-                            dx * dx +
-                            dy * dy
-                        );
-                    if (
-                        distance >
-                        settings.connectionDistance
-                    ) {
-                        continue;
-                    }
-                    const strength =
-                        1 -
-                        distance /
-                        settings.connectionDistance;
-                    const pulse =
-                        reducedMotion.matches
-                            ? 0
-                            : (
-                                Math.sin(
-                                    time * 0.001 +
-                                    i
-                                ) *
-                                0.5 +
-                                0.5
-                            );
+
+                    const ring =
+                        radius *
+                        (i / 4);
+
+
                     ctx.beginPath();
-                    ctx.moveTo(
-                        a.x,
-                        a.y
+
+
+                    ctx.ellipse(
+                        centerX,
+                        centerY,
+                        ring,
+                        radius * 0.62,
+                        0,
+                        0,
+                        Math.PI * 2
                     );
-                    ctx.lineTo(
-                        b.x,
-                        b.y
-                    );
+
+
                     ctx.strokeStyle =
-                        `rgba(
-                            0,
-                            170,
-                            255,
-                            ${strength * 0.13 +
-                            pulse * 0.025}
-                        )`;
-                    ctx.lineWidth =
-                        0.6;
+                        "rgba(0,170,255,0.055)";
+
+
                     ctx.stroke();
+
                 }
+
+
+                /* Horizontal latitude lines */
+
+                for (
+                    let i = -2;
+                    i <= 2;
+                    i++
+                ) {
+
+                    const offset =
+                        i *
+                        radius *
+                        0.20;
+
+
+                    ctx.beginPath();
+
+
+                    ctx.ellipse(
+                        centerX,
+                        centerY + offset,
+
+                        radius *
+                        Math.sqrt(
+                            Math.max(
+                                0.15,
+                                1 -
+                                Math.abs(i) *
+                                0.16
+                            )
+                        ),
+
+                        radius * 0.16,
+
+                        0,
+                        0,
+                        Math.PI * 2
+                    );
+
+
+                    ctx.strokeStyle =
+                        "rgba(57,255,136,0.035)";
+
+
+                    ctx.stroke();
+
+                }
+
+
+                ctx.restore();
+
             }
-        }
-        /* =================================================
-           NETWORK NODES
-        ================================================= */
-        function drawNodes(time) {
-            nodes.forEach(
-                (node, index) => {
-                    const pulse =
-                        reducedMotion.matches
-                            ? 1
-                            : (
-                                Math.sin(
-                                    time *
-                                    0.000025 +
-                                    node.pulse
-                                ) *
-                                0.5 +
-                                0.5
+
+
+            /* =================================================
+               NETWORK CONNECTIONS
+            ================================================= */
+
+            function drawConnections(time) {
+
+                for (
+                    let i = 0;
+                    i < nodes.length;
+                    i++
+                ) {
+
+                    const a =
+                        nodes[i];
+
+
+                    for (
+                        let j = i + 1;
+                        j < nodes.length;
+                        j++
+                    ) {
+
+                        const b =
+                            nodes[j];
+
+
+                        const dx =
+                            a.x -
+                            b.x;
+
+
+                        const dy =
+                            a.y -
+                            b.y;
+
+
+                        const distance =
+                            Math.sqrt(
+                                dx * dx +
+                                dy * dy
                             );
-                    const size =
-                        node.size +
-                        pulse * 0.8;
-                    /* Node glow */
-                    ctx.beginPath();
-                    ctx.arc(
-                        node.x,
-                        node.y,
-                        size * 3,
-                        0,
-                        Math.PI * 2
-                    );
-                    ctx.fillStyle =
-                        index % 5 === 0
-                            ? "rgba(57,255,136,0.045)"
-                            : "rgba(0,170,255,0.045)";
-                    ctx.fill();
-                    /* Node core */
-                    ctx.beginPath();
-                    ctx.arc(
-                        node.x,
-                        node.y,
-                        size,
-                        0,
-                        Math.PI * 2
-                    );
-                    ctx.fillStyle =
-                        index % 5 === 0
-                            ? `rgba(
-                                57,
-                                255,
-                                136,
-                                ${node.alpha}
-                            )`
-                            : `rgba(
+
+
+                        if (
+                            distance >
+                            settings.connectionDistance
+                        ) {
+
+                            continue;
+
+                        }
+
+
+                        const strength =
+                            1 -
+                            distance /
+                            settings.connectionDistance;
+
+
+                        const pulse =
+                            reducedMotion.matches
+                                ? 0
+                                : (
+                                    Math.sin(
+                                        time * 0.001 +
+                                        i
+                                    ) *
+                                    0.5 +
+                                    0.5
+                                );
+
+
+                        ctx.beginPath();
+
+
+                        ctx.moveTo(
+                            a.x,
+                            a.y
+                        );
+
+
+                        ctx.lineTo(
+                            b.x,
+                            b.y
+                        );
+
+
+                        ctx.strokeStyle =
+                            `rgba(
                                 0,
                                 170,
                                 255,
-                                ${node.alpha}
+                                ${
+                                    strength * 0.13 +
+                                    pulse * 0.025
+                                }
                             )`;
-                    ctx.fill();
-                }
-            );
-        }
-        /* =================================================
-           MOVING DATA PACKETS
-        ================================================= */
-        function drawPackets() {
-            packets.forEach(
-                packet => {
-                    const from =
-                        nodes[
-                            packet.from %
-                            nodes.length
-                        ];
-                    const to =
-                        nodes[
-                            packet.to %
-                            nodes.length
-                        ];
-                    if (
-                        !from ||
-                        !to
-                    ) {
-                        return;
+
+
+                        ctx.lineWidth =
+                            0.6;
+
+
+                        ctx.stroke();
+
                     }
-                    const x =
-                        from.x +
-                        (
-                            to.x -
-                            from.x
-                        ) *
-                        packet.progress;
-                    const y =
-                        from.y +
-                        (
-                            to.y -
-                            from.y
-                        ) *
-                        packet.progress;
-                    ctx.beginPath();
-                    ctx.arc(
-                        x,
-                        y,
-                        2,
-                        0,
-                        Math.PI * 2
-                    );
-                    ctx.shadowBlur =
-                        12;
-                    ctx.shadowColor =
-                        "#39ff88";
-                    ctx.fillStyle =
-                        "#39ff88";
-                    ctx.fill();
-                    ctx.shadowBlur =
-                        0;
+
                 }
-            );
-        }
-        /* =================================================
-           UPDATE DATA PACKETS
-        ================================================= */
-        function updatePackets() {
-            if (
-                reducedMotion.matches
-            ) {
-                return;
+
             }
-            packets.forEach(
-                packet => {
-                    packet.progress +=
-                        packet.speed;
-                    if (
-                        packet.progress >= 1
-                    ) {
-                        packet.progress = 0;
-                        packet.from =
-                            Math.floor(
-                                Math.random() *
-                                nodes.length
-                            );
-                        packet.to =
-                            Math.floor(
-                                Math.random() *
-                                nodes.length
-                            );
+
+
+            /* =================================================
+               NETWORK NODES
+            ================================================= */
+
+            function drawNodes(time) {
+
+                nodes.forEach(
+                    (node, index) => {
+
+                        const pulse =
+                            reducedMotion.matches
+                                ? 1
+                                : (
+                                    Math.sin(
+                                        time *
+                                        0.000025 +
+                                        node.pulse
+                                    ) *
+                                    0.5 +
+                                    0.5
+                                );
+
+
+                        const size =
+                            node.size +
+                            pulse * 0.8;
+
+
+                        /* Node glow */
+
+                        ctx.beginPath();
+
+
+                        ctx.arc(
+                            node.x,
+                            node.y,
+                            size * 3,
+                            0,
+                            Math.PI * 2
+                        );
+
+
+                        ctx.fillStyle =
+                            index % 5 === 0
+                                ? "rgba(57,255,136,0.045)"
+                                : "rgba(0,170,255,0.045)";
+
+
+                        ctx.fill();
+
+
+                        /* Node core */
+
+                        ctx.beginPath();
+
+
+                        ctx.arc(
+                            node.x,
+                            node.y,
+                            size,
+                            0,
+                            Math.PI * 2
+                        );
+
+
+                        ctx.fillStyle =
+                            index % 5 === 0
+                                ? `rgba(
+                                    57,
+                                    255,
+                                    136,
+                                    ${node.alpha}
+                                )`
+                                : `rgba(
+                                    0,
+                                    170,
+                                    255,
+                                    ${node.alpha}
+                                )`;
+
+
+                        ctx.fill();
+
                     }
+                );
+
+            }
+
+
+            /* =================================================
+               MOVING DATA PACKETS
+            ================================================= */
+
+            function drawPackets() {
+
+                packets.forEach(
+                    packet => {
+
+                        const from =
+                            nodes[
+                                packet.from %
+                                nodes.length
+                            ];
+
+
+                        const to =
+                            nodes[
+                                packet.to %
+                                nodes.length
+                            ];
+
+
+                        if (
+                            !from ||
+                            !to
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const x =
+                            from.x +
+                            (
+                                to.x -
+                                from.x
+                            ) *
+                            packet.progress;
+
+
+                        const y =
+                            from.y +
+                            (
+                                to.y -
+                                from.y
+                            ) *
+                            packet.progress;
+
+
+                        ctx.beginPath();
+
+
+                        ctx.arc(
+                            x,
+                            y,
+                            2,
+                            0,
+                            Math.PI * 2
+                        );
+
+
+                        ctx.shadowBlur =
+                            12;
+
+
+                        ctx.shadowColor =
+                            "#39ff88";
+
+
+                        ctx.fillStyle =
+                            "#39ff88";
+
+
+                        ctx.fill();
+
+
+                        ctx.shadowBlur =
+                            0;
+
+                    }
+                );
+
+            }
+
+
+            /* =================================================
+               UPDATE DATA PACKETS
+            ================================================= */
+
+            function updatePackets() {
+
+                if (
+                    reducedMotion.matches
+                ) {
+
+                    return;
+
                 }
+
+
+                packets.forEach(
+                    packet => {
+
+                        packet.progress +=
+                            packet.speed;
+
+
+                        if (
+                            packet.progress >= 1
+                        ) {
+
+                            packet.progress = 0;
+
+
+                            packet.from =
+                                Math.floor(
+                                    Math.random() *
+                                    nodes.length
+                                );
+
+
+                            packet.to =
+                                Math.floor(
+                                    Math.random() *
+                                    nodes.length
+                                );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =================================================
+               ANIMATION LOOP
+            ================================================= */
+
+            function draw(time) {
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+                drawGlow();
+
+                updateNodes(time);
+
+                drawGlobeRings();
+
+                drawConnections(time);
+
+                drawPackets();
+
+                drawNodes(time);
+
+                updatePackets();
+
+
+                requestAnimationFrame(
+                    draw
+                );
+
+            }
+
+
+            /* =================================================
+               START ENGINE
+            ================================================= */
+
+            window.addEventListener(
+                "resize",
+                resize
             );
-        }
-        /* =================================================
-           ANIMATION LOOP
-        ================================================= */
-        function draw(time) {
-            ctx.clearRect(
-                0,
-                0,
-                width,
-                height
-            );
-            drawGlow();
-            updateNodes(time);
-            drawGlobeRings();
-            drawConnections(time);
-            drawPackets();
-            drawNodes(time);
-            updatePackets();
+
+
+            resize();
+
+
             requestAnimationFrame(
                 draw
             );
-        }
-        /* =================================================
-           START ENGINE
-        ================================================= */
-        window.addEventListener(
-            "resize",
-            resize
-        );
-        resize();
-        requestAnimationFrame(
-            draw
-        );
-    })();
+
+        })();
+
     </script>
+
 </body>
 </html>
