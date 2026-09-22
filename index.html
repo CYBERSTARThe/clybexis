@@ -1504,183 +1504,142 @@
     <!-- =====================================================
          NAVIGATION
     ===================================================== -->
-    <nav>
-        <div class="logo">
-            🛡️ Cly<span>vexis</span>
-        </div>
-        <!-- Mobile menu button -->
-        <button
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            type="button"
-        >
-            ☰
-        </button>
-        <ul id="main-navigation">
-            <li>
-                <a
-                    href="index.html"
-                    class="active"
-                >
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="lessons.html">
-                    Lessons
-                </a>
-            </li>
-            <li>
-                <a href="labs.html">
-                    Labs
-                </a>
-            </li>
-            <li>
-                <a href="quiz.html">
-                    Quiz
-                </a>
-            </li>
-            <li>
-                <a href="games.html">
-                    Games
-                </a>
-            </li>
-            <li>
-                <a href="cyber-defense.html">
-                    🛡️ Defense
-                </a>
-            </li>
-            <li>
-                <a href="glossary.html">
-                    Glossary
-                </a>
-            </li>
-            <li>
-                <a href="coding.html">
-                    💻 Coding
-                </a>
-            </li>
-            <li>
-                <a href="simulators.html">
-                    🧪 Simulators
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- =====================================================
-         HERO
-    ===================================================== -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="shield">
-                🛡️
-            </div>
-            <h1>
-                <span class="cyber">
-                    Cly
-                </span>
-                <span class="start">
-                    vexis
-                </span>
-            </h1>
-            <div class="tagline">
-                LEARN
-                <span>/</span>
-                PRACTICE
-                <span>/</span>
-                STAY SECURE
-            </div>
-            <p>
-                Start learning cybersecurity through
-                beginner-friendly lessons, hands-on labs,
-                quizzes, games, coding exercises, safe
-                simulations, and cyber defense activities.
-                Build your skills one step at a time.
-            </p>
-            <a
-                href="lessons.html"
-                class="start-button"
-            >
-                🚀 Start Learning →
-            </a>
-        </div>
-    </section>
-    <!-- =====================================================
-         WHAT CLYVEXIS TEACHES
-    ===================================================== -->
-    <section class="learn-section">
-        <h2 class="learn-title">
-            What You'll Learn
-        </h2>
-        <p class="learn-intro">
-            Clyvexis helps beginners build practical
-            cybersecurity knowledge through interactive
-            learning and safe practice.
-        </p>
-        <div class="topic-grid">
-            <div class="topic-card">
-                <h3>
-                    🎣 Phishing
-                </h3>
-                <p>
-                    Learn how phishing attacks work and how
-                    to recognize suspicious messages, links,
-                    and websites.
-                </p>
-            </div>
-            <div class="topic-card">
-                <h3>
-                    🦠 Malware
-                </h3>
-                <p>
-                    Understand malware concepts, common
-                    threats, and how security professionals
-                    defend systems.
-                </p>
-            </div>
-            <div class="topic-card">
-                <h3>
-                    🔐 Password Security
-                </h3>
-                <p>
-                    Learn about strong passwords,
-                    authentication, hashing, and safer
-                    account practices.
-                </p>
-            </div>
-            <div class="topic-card">
-                <h3>
-                    🌐 Networking
-                </h3>
-                <p>
-                    Explore networks, IP addresses,
-                    protocols, ports, and the basics
-                    of network security.
-                </p>
-            </div>
-            <div class="topic-card">
-                <h3>
-                    💻 Coding
-                </h3>
-                <p>
-                    Learn HTML, CSS, JavaScript, Python,
-                    and how programming connects with
-                    cybersecurity.
-                </p>
-            </div>
-            <div class="topic-card">
-                <h3>
-                    🛡️ Cyber Defense
-                </h3>
-                <p>
-                    Learn how defenders investigate threats,
-                    analyze activity, and protect systems.
-                </p>
-            </div>
-        </div>
-    </section>
+ 
+<nav>
+
+  <a href="index.html" class="nav-logo">
+    🛡️ Clyvexis
+  </a>
+
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    type="button"
+  >
+    ☰
+  </button>
+
+  <ul id="mainNav">
+
+    <li>
+      <a href="index.html">
+        🏠 Home
+      </a>
+    </li>
+
+    <!-- LEARN -->
+
+    <li class="dropdown">
+
+      <button
+        class="dropdown-button"
+        type="button"
+        aria-expanded="false"
+      >
+        📚 Learn
+        <span class="arrow">▼</span>
+      </button>
+
+      <ul class="dropdown-menu">
+
+        <li>
+          <a href="lessons.html">
+            📚 Lessons
+          </a>
+        </li>
+
+        <li>
+          <a href="labs.html">
+            🧪 Labs
+          </a>
+        </li>
+
+        <li>
+          <a href="quiz.html">
+            🧠 Quiz
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+
+    <!-- PRACTICE -->
+
+    <li class="dropdown">
+
+      <button
+        class="dropdown-button active"
+        type="button"
+        aria-expanded="false"
+      >
+        🎯 Practice
+        <span class="arrow">▼</span>
+      </button>
+
+      <ul class="dropdown-menu">
+
+        <li>
+          <a href="games.html" class="active">
+            🎮 Games
+          </a>
+        </li>
+
+        <li>
+          <a href="cyber-defense.html">
+            🛡️ Defense
+          </a>
+        </li>
+
+        <li>
+          <a href="simulators.html">
+            🧪 Simulators
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+
+    <li>
+      <a href="coding.html">
+        💻 Coding
+      </a>
+    </li>
+
+    <li>
+      <a href="glossary.html">
+        📖 Glossary
+      </a>
+    </li>
+
+  </ul>
+
+</nav>
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<section class="hero">
+
+  <div class="hero-icon">🎮</div>
+
+  <h1>Clyvexis Cyber Arcade</h1>
+
+  <p>
+    Build cybersecurity and coding skills through interactive
+    games, missions, puzzles, and challenges.
+  </p>
+
+  <p class="tagline">
+    LEARN • CODE • ANALYZE • DEFEND
+  </p>
+
+</section>
+
     <!-- =====================================================
          CYBERSECURITY CAREER PATHS
     ===================================================== -->
