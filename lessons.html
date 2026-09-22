@@ -2237,65 +2237,104 @@ footer {
 
 <!-- =========================================================
      UPDATED NAVIGATION
+========================================================= --
+<!-- =========================================================
+     CLYVEXIS NAVIGATION
 ========================================================= -->
 
 <nav>
 
-    <div class="logo">
-        🛡️ Cly<span>vexis</span>
-    </div>
+    <a href="index.html" class="nav-logo">
+        🛡️ Clyvexis
+    </a>
 
     <button
         class="menu-toggle"
-        id="menu-toggle"
+        id="menuToggle"
         aria-label="Open navigation menu"
         aria-expanded="false"
         type="button">
         ☰
     </button>
 
-    <ul id="main-navigation">
+    <ul id="mainNav">
 
         <li>
             <a href="index.html">
-                Home
+                🏠 Home
             </a>
         </li>
 
-        <li>
-            <a href="lessons.html" class="active">
-                Lessons
-            </a>
+        <li class="dropdown">
+
+            <button
+                class="dropdown-button active"
+                type="button"
+                aria-expanded="false">
+
+                📚 Learn
+                <span class="arrow">▼</span>
+
+            </button>
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a href="lessons.html" class="active">
+                        📚 Lessons
+                    </a>
+                </li>
+
+                <li>
+                    <a href="labs.html">
+                        🧪 Labs
+                    </a>
+                </li>
+
+                <li>
+                    <a href="quiz.html">
+                        🧠 Quiz
+                    </a>
+                </li>
+
+            </ul>
+
         </li>
 
-        <li>
-            <a href="labs.html">
-                Labs
-            </a>
-        </li>
+        <li class="dropdown">
 
-        <li>
-            <a href="quiz.html">
-                Quiz
-            </a>
-        </li>
+            <button
+                class="dropdown-button"
+                type="button"
+                aria-expanded="false">
 
-        <li>
-            <a href="games.html">
-                Games
-            </a>
-        </li>
+                🎯 Practice
+                <span class="arrow">▼</span>
 
-        <li>
-            <a href="cyber-defense.html">
-                🛡️ Defense
-            </a>
-        </li>
+            </button>
 
-        <li>
-            <a href="glossary.html">
-                Glossary
-            </a>
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a href="games.html">
+                        🎮 Games
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cyber-defense.html">
+                        🛡️ Defense
+                    </a>
+                </li>
+
+                <li>
+                    <a href="simulators.html">
+                        🧪 Simulators
+                    </a>
+                </li>
+
+            </ul>
+
         </li>
 
         <li>
@@ -2305,15 +2344,14 @@ footer {
         </li>
 
         <li>
-            <a href="simulators.html">
-                🧪 Simulators
+            <a href="glossary.html">
+                📖 Glossary
             </a>
         </li>
 
     </ul>
 
 </nav>
-
 
 <!-- =========================================================
      HERO
