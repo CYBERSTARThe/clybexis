@@ -4,19 +4,12 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<meta
-    name="description"
-    content="Clyvexis cybersecurity quiz. Test your knowledge of cybersecurity, networking, authentication, cryptography, attacks, and defense."
->
+<meta name="description"
+content="Clyvexis cybersecurity quiz. Test your knowledge of cybersecurity, networking, authentication, cryptography, attacks, and defense.">
 
 <title>Clyvexis | Cybersecurity Quiz</title>
-
 
 <style>
 
@@ -36,10 +29,7 @@ html {
 
 body {
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     color: white;
 
@@ -162,8 +152,7 @@ body {
         );
 
     box-shadow:
-        0 0 12px
-        rgba(0,170,255,0.25);
+        0 0 12px rgba(0,170,255,0.25);
 
     animation:
         networkScan
@@ -198,8 +187,7 @@ body {
 
 
 /* =========================================================
-   MASTER NAVIGATION
-   SAME NAVIGATION ACROSS CLYVEXIS
+   MASTER CLYVEXIS NAVIGATION
 ========================================================= */
 
 nav {
@@ -212,19 +200,19 @@ nav {
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content: center;
 
     align-items: center;
 
     min-height: 72px;
 
-    padding: 12px 5%;
+    padding: 10px 4%;
 
     background:
         linear-gradient(
             90deg,
             rgba(3,10,23,0.98),
-            rgba(5,17,34,0.96),
+            rgba(5,17,34,0.97),
             rgba(3,10,23,0.98)
         );
 
@@ -240,8 +228,6 @@ nav {
         blur(18px);
 }
 
-
-/* Animated top energy line */
 
 nav::before {
 
@@ -267,7 +253,8 @@ nav::before {
             transparent
         );
 
-    background-size: 200% 100%;
+    background-size:
+        200% 100%;
 
     box-shadow:
         0 0 14px
@@ -294,39 +281,7 @@ nav::before {
 
 
 /* =========================================================
-   NAV LOGO
-========================================================= */
-
-.nav-logo {
-
-    position: relative;
-
-    font-size: 26px;
-
-    font-weight: bold;
-
-    letter-spacing: 0.5px;
-
-    white-space: nowrap;
-
-    text-shadow:
-        0 0 12px
-        rgba(0,170,255,0.35);
-
-    color: white;
-
-    text-decoration: none;
-}
-
-
-.nav-logo span {
-
-    color: #00aaff;
-}
-
-
-/* =========================================================
-   NAVIGATION LIST
+   MAIN NAVIGATION
 ========================================================= */
 
 nav > ul {
@@ -337,9 +292,9 @@ nav > ul {
 
     align-items: center;
 
-    justify-content: flex-end;
+    justify-content: center;
 
-    gap: 7px;
+    gap: 8px;
 
     margin: 0;
 
@@ -347,17 +302,18 @@ nav > ul {
 }
 
 
-nav li {
+nav > ul > li {
 
     position: relative;
 }
 
 
 /* =========================================================
-   NORMAL NAV LINKS
+   NAV LINKS
 ========================================================= */
 
-nav a {
+nav a,
+.dropdown-button {
 
     position: relative;
 
@@ -365,21 +321,32 @@ nav a {
 
     align-items: center;
 
-    min-height: 40px;
+    justify-content: center;
 
-    padding:
-        8px
-        11px;
+    min-height: 42px;
+
+    padding: 9px 14px;
 
     color: #dce8f5;
 
     text-decoration: none;
 
-    font-size: 13px;
+    font-size: 15px;
 
     font-weight: bold;
 
-    border-radius: 8px;
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     transition:
         color 0.25s ease,
@@ -389,7 +356,8 @@ nav a {
 }
 
 
-nav a:hover {
+nav a:hover,
+.dropdown-button:hover {
 
     color: #ffffff;
 
@@ -409,7 +377,8 @@ nav a:hover {
    ACTIVE PAGE
 ========================================================= */
 
-nav a.active {
+nav a.active,
+.dropdown-button.active {
 
     color: #39ff88;
 
@@ -426,15 +395,16 @@ nav a.active {
 }
 
 
-nav a.active::after {
+nav a.active::after,
+.dropdown-button.active::after {
 
     content: "";
 
     position: absolute;
 
-    left: 11px;
+    left: 12px;
 
-    right: 11px;
+    right: 12px;
 
     bottom: 3px;
 
@@ -461,72 +431,13 @@ nav a.active::after {
 
 .dropdown-button {
 
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    min-height: 40px;
-
-    padding:
-        8px
-        11px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #dce8f5;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    gap: 7px;
 }
 
-
-.dropdown-button:hover {
-
-    color: white;
-
-    background:
-        rgba(0,170,255,0.08);
-
-    box-shadow:
-        0 0 15px
-        rgba(0,170,255,0.10);
-
-    transform:
-        translateY(-1px);
-}
-
-
-.dropdown-button.active {
-
-    color: #39ff88;
-}
-
-
-/* =========================================================
-   DROPDOWN ARROW
-========================================================= */
 
 .arrow {
+
+    display: inline-block;
 
     font-size: 11px;
 
@@ -536,6 +447,7 @@ nav a.active::after {
 
 
 .dropdown.open
+.dropdown-button
 .arrow {
 
     transform:
@@ -557,15 +469,11 @@ nav a.active::after {
 
     min-width: 190px;
 
-    display: flex;
+    list-style: none;
 
-    flex-direction: column;
-
-    gap: 4px;
+    margin: 0;
 
     padding: 8px;
-
-    list-style: none;
 
     background:
         rgba(3,12,25,0.98);
@@ -594,10 +502,16 @@ nav a.active::after {
 
     transition:
         opacity 0.2s ease,
-        transform 0.2s ease,
-        visibility 0.2s ease;
+        visibility 0.2s ease,
+        transform 0.2s ease;
 }
 
+
+.dropdown:hover
+.dropdown-menu,
+
+.dropdown:focus-within
+.dropdown-menu,
 
 .dropdown.open
 .dropdown-menu {
@@ -619,32 +533,21 @@ nav a.active::after {
 
 .dropdown-menu a {
 
+    display: flex;
+
     width: 100%;
 
-    min-height: 38px;
+    justify-content:
+        flex-start;
 
     padding:
-        9px
-        12px;
+        11px 13px;
 
-    font-size: 13px;
+    font-size: 14px;
 
     border-radius: 8px;
-}
 
-
-.dropdown-menu a.active {
-
-    color: #39ff88;
-
-    background:
-        rgba(0,170,255,0.08);
-}
-
-
-.dropdown-menu a.active::after {
-
-    display: none;
+    white-space: nowrap;
 }
 
 
@@ -673,7 +576,8 @@ nav a.active::after {
     background:
         rgba(0,170,255,0.06);
 
-    color: #00aaff;
+    color:
+        #00aaff;
 
     font-size: 21px;
 
@@ -709,8 +613,7 @@ nav a.active::after {
     nav {
 
         padding:
-            12px
-            3%;
+            10px 3%;
     }
 
 
@@ -724,9 +627,9 @@ nav a.active::after {
     .dropdown-button {
 
         padding:
-            8px;
+            8px 10px;
 
-        font-size: 12px;
+        font-size: 13px;
     }
 
 }
@@ -743,16 +646,12 @@ nav a.active::after {
         min-height: 64px;
 
         padding:
-            11px
-            15px;
+            10px 15px;
+
+        justify-content:
+            flex-end;
 
         flex-wrap: wrap;
-    }
-
-
-    .nav-logo {
-
-        font-size: 23px;
     }
 
 
@@ -785,7 +684,7 @@ nav a.active::after {
         border-radius: 12px;
 
         background:
-            rgba(3,12,25,0.97);
+            rgba(3,12,25,0.98);
 
         box-shadow:
             0 10px 30px
@@ -799,7 +698,7 @@ nav a.active::after {
     }
 
 
-    nav li {
+    nav > ul > li {
 
         width: 100%;
     }
@@ -810,33 +709,20 @@ nav a.active::after {
 
         width: 100%;
 
-        justify-content: flex-start;
+        justify-content:
+            flex-start;
 
         padding:
-            11px
-            13px;
+            12px 13px;
 
         font-size: 14px;
     }
 
 
-    nav a.active::after {
-
-        left: 13px;
-
-        right: auto;
-
-        width: 35px;
-
-        bottom: 5px;
-    }
-
-
-    /* Mobile dropdown */
-
     .dropdown-button {
 
-        justify-content: space-between;
+        justify-content:
+            space-between;
     }
 
 
@@ -859,21 +745,18 @@ nav a.active::after {
         transform: none;
 
         padding:
-            0
-            0
-            0
-            10px;
+            0 8px;
 
         margin: 0;
 
-        background:
-            transparent;
-
         border: none;
+
+        border-radius: 8px;
 
         box-shadow: none;
 
-        backdrop-filter: none;
+        background:
+            rgba(0,0,0,0.12);
 
         transition:
             max-height 0.3s ease,
@@ -884,33 +767,32 @@ nav a.active::after {
     .dropdown.open
     .dropdown-menu {
 
-        max-height: 500px;
+        max-height: 300px;
 
         padding:
-            4px
-            0
-            4px
-            10px;
+            6px 8px;
     }
 
 
     .dropdown-menu a {
 
-        padding:
-            10px
-            13px;
-
         font-size: 13px;
 
-        background:
-            rgba(0,170,255,0.035);
+        padding:
+            10px 12px;
     }
 
 
-    .dropdown-menu a:hover {
+    nav a.active::after,
+    .dropdown-button.active::after {
 
-        background:
-            rgba(0,170,255,0.08);
+        left: 13px;
+
+        right: auto;
+
+        width: 35px;
+
+        bottom: 5px;
     }
 
 }
@@ -922,17 +804,10 @@ nav a.active::after {
 
 @media (max-width: 400px) {
 
-    .nav-logo {
-
-        font-size: 21px;
-    }
-
-
     nav {
 
         padding:
-            10px
-            12px;
+            9px 12px;
     }
 
 }
@@ -987,6 +862,7 @@ nav a.active::after {
     to {
         transform: scale(1.08);
     }
+
 }
 
 
@@ -1392,6 +1268,7 @@ nav a.active::after {
         transform:
             translateY(0);
     }
+
 }
 
 
@@ -1746,11 +1623,6 @@ footer strong {
 
 }
 
-
-/* =========================================================
-   END CSS
-========================================================= */
-
 </style>
 
 </head>
@@ -1785,28 +1657,14 @@ footer strong {
 
 
 <!-- =======================================================
-     MASTER NAVIGATION
+     MASTER CLYVEXIS NAVIGATION
 ======================================================== -->
 
 <nav>
 
-
-    <!-- LOGO -->
-
-    <a
-        href="index.html"
-        class="nav-logo">
-
-        🛡️ Cly<span>vexis</span>
-
-    </a>
-
-
-    <!-- MOBILE BUTTON -->
-
     <button
         class="menu-toggle"
-        id="menu-toggle"
+        id="menuToggle"
         aria-label="Open navigation menu"
         aria-expanded="false"
         type="button">
@@ -1816,17 +1674,13 @@ footer strong {
     </button>
 
 
-    <!-- NAVIGATION -->
-
-    <ul id="main-navigation">
-
+    <ul id="mainNav">
 
         <!-- HOME -->
 
         <li>
 
-            <a
-                href="index.html">
+            <a href="index.html">
 
                 🏠 Home
 
@@ -1837,13 +1691,10 @@ footer strong {
 
         <!-- LEARN -->
 
-        <li
-            class="dropdown"
-            id="learn-dropdown">
-
+        <li class="dropdown">
 
             <button
-                class="dropdown-button"
+                class="dropdown-button active"
                 type="button"
                 aria-expanded="false">
 
@@ -1858,52 +1709,20 @@ footer strong {
 
             <ul class="dropdown-menu">
 
-
                 <li>
 
-                    <a
-                        href="lessons.html">
+                    <a href="lessons.html">
 
-                        📖 Lessons
+                        📚 Lessons
 
                     </a>
 
                 </li>
 
 
-            </ul>
-
-        </li>
-
-
-        <!-- PRACTICE -->
-
-        <li
-            class="dropdown"
-            id="practice-dropdown">
-
-
-            <button
-                class="dropdown-button active"
-                type="button"
-                aria-expanded="false">
-
-                🎯 Practice
-
-                <span class="arrow">
-                    ▼
-                </span>
-
-            </button>
-
-
-            <ul class="dropdown-menu">
-
-
                 <li>
 
-                    <a
-                        href="labs.html">
+                    <a href="labs.html">
 
                         🧪 Labs
 
@@ -1924,11 +1743,34 @@ footer strong {
 
                 </li>
 
+            </ul>
+
+        </li>
+
+
+        <!-- PRACTICE -->
+
+        <li class="dropdown">
+
+            <button
+                class="dropdown-button"
+                type="button"
+                aria-expanded="false">
+
+                🎯 Practice
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <ul class="dropdown-menu">
 
                 <li>
 
-                    <a
-                        href="games.html">
+                    <a href="games.html">
 
                         🎮 Games
 
@@ -1939,8 +1781,7 @@ footer strong {
 
                 <li>
 
-                    <a
-                        href="cyber-defense.html">
+                    <a href="cyber-defense.html">
 
                         🛡️ Defense
 
@@ -1951,15 +1792,13 @@ footer strong {
 
                 <li>
 
-                    <a
-                        href="simulators.html">
+                    <a href="simulators.html">
 
                         🧪 Simulators
 
                     </a>
 
                 </li>
-
 
             </ul>
 
@@ -1970,8 +1809,7 @@ footer strong {
 
         <li>
 
-            <a
-                href="coding.html">
+            <a href="coding.html">
 
                 💻 Coding
 
@@ -1984,15 +1822,13 @@ footer strong {
 
         <li>
 
-            <a
-                href="glossary.html">
+            <a href="glossary.html">
 
                 📖 Glossary
 
             </a>
 
         </li>
-
 
     </ul>
 
@@ -2005,18 +1841,13 @@ footer strong {
 
 <section class="hero">
 
-
     <div class="hero-icon">
-
         🧠
-
     </div>
 
 
     <h1>
-
         Clyvexis Quiz
-
     </h1>
 
 
@@ -2035,7 +1866,6 @@ footer strong {
 
     </div>
 
-
 </section>
 
 
@@ -2045,7 +1875,6 @@ footer strong {
 
 <main class="quiz-container">
 
-
     <div class="quiz-card">
 
 
@@ -2054,32 +1883,24 @@ footer strong {
 
             <div class="quiz-top">
 
-
                 <span id="questionCounter">
-
                     Question 1 of 30
-
                 </span>
 
 
                 <span id="scoreText">
-
                     Score: 0
-
                 </span>
-
 
             </div>
 
 
             <div class="progress-container">
 
-
                 <div
                     class="progress-bar"
                     id="progressBar">
                 </div>
-
 
             </div>
 
@@ -2101,12 +1922,14 @@ footer strong {
             <div
                 class="answers"
                 id="answers">
+
             </div>
 
 
             <div
                 class="explanation"
                 id="explanation">
+
             </div>
 
 
@@ -2118,7 +1941,6 @@ footer strong {
                 Next Question →
 
             </button>
-
 
         </div>
 
@@ -2133,16 +1955,12 @@ footer strong {
 
 
             <div class="result-icon">
-
                 🏆
-
             </div>
 
 
             <h2>
-
                 Quiz Complete
-
             </h2>
 
 
@@ -2170,12 +1988,9 @@ footer strong {
 
             </button>
 
-
         </div>
 
-
     </div>
-
 
 </main>
 
@@ -2186,27 +2001,19 @@ footer strong {
 
 <footer>
 
-
     <p>
-
         🛡️ <strong>Clyvexis</strong>
-
     </p>
 
 
     <p>
-
         Learn • Practice • Stay Secure
-
     </p>
 
 
     <p style="margin-top:10px;">
-
         Educational cybersecurity content
-
     </p>
-
 
 </footer>
 
@@ -2218,18 +2025,14 @@ footer strong {
 ========================================================= */
 
 const canvas =
-    document.getElementById(
-        "network-canvas"
-    );
+    document.getElementById("network-canvas");
 
 const ctx =
     canvas.getContext("2d");
 
-let width =
-    window.innerWidth;
+let width = window.innerWidth;
 
-let height =
-    window.innerHeight;
+let height = window.innerHeight;
 
 let dpr =
     Math.min(
@@ -2393,9 +2196,7 @@ function createNetwork() {
 
     const packetCount =
         Math.min(
-            Math.floor(
-                count * 0.12
-            ),
+            Math.floor(count * 0.12),
             20
         );
 
@@ -2468,10 +2269,7 @@ function projectNode(node) {
 
     const scale =
         perspective /
-        (
-            perspective +
-            z3 * 0.65
-        );
+        (perspective + z3 * 0.65);
 
 
     return {
@@ -2684,19 +2482,13 @@ function drawConnections(projected) {
 
 
             const alpha =
-                (
-                    1 -
-                    distance /
-                    maxDistance
-                ) *
+                (1 -
+                distance /
+                maxDistance) *
                 0.18 *
                 Math.max(
                     0.2,
-                    (
-                        a.z +
-                        b.z +
-                        2
-                    ) / 3
+                    (a.z + b.z + 2) / 3
                 );
 
 
@@ -2734,146 +2526,142 @@ function drawConnections(projected) {
 
 function drawPackets(projected) {
 
-    packets.forEach(
-        packet => {
+    packets.forEach(packet => {
 
-            const from =
-                projected[
-                    packet.from
-                ];
+        const from =
+            projected[
+                packet.from
+            ];
 
-            const to =
-                projected[
-                    packet.to
-                ];
-
-
-            if (
-                !from ||
-                !to
-            ) {
-
-                return;
-
-            }
+        const to =
+            projected[
+                packet.to
+            ];
 
 
-            packet.progress +=
-                packet.speed *
-                16;
+        if (
+            !from ||
+            !to
+        ) {
 
-
-            if (
-                packet.progress >= 1
-            ) {
-
-                packet.progress = 0;
-
-
-                packet.from =
-                    Math.floor(
-                        Math.random() *
-                        nodes.length
-                    );
-
-
-                packet.to =
-                    Math.floor(
-                        Math.random() *
-                        nodes.length
-                    );
-
-            }
-
-
-            if (
-                from.z < -0.35 ||
-                to.z < -0.35
-            ) {
-
-                return;
-
-            }
-
-
-            const x =
-                from.x +
-                (
-                    to.x -
-                    from.x
-                ) *
-                packet.progress;
-
-
-            const y =
-                from.y +
-                (
-                    to.y -
-                    from.y
-                ) *
-                packet.progress;
-
-
-            const glow =
-                ctx.createRadialGradient(
-                    x,
-                    y,
-                    0,
-                    x,
-                    y,
-                    8
-                );
-
-
-            glow.addColorStop(
-                0,
-                "rgba(0,255,180,0.9)"
-            );
-
-            glow.addColorStop(
-                0.3,
-                "rgba(0,210,255,0.5)"
-            );
-
-            glow.addColorStop(
-                1,
-                "rgba(0,210,255,0)"
-            );
-
-
-            ctx.fillStyle =
-                glow;
-
-            ctx.beginPath();
-
-            ctx.arc(
-                x,
-                y,
-                8,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fill();
-
-
-            ctx.fillStyle =
-                "#7dffd1";
-
-            ctx.beginPath();
-
-            ctx.arc(
-                x,
-                y,
-                1.5,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fill();
+            return;
 
         }
-    );
+
+
+        packet.progress +=
+            packet.speed *
+            16;
+
+
+        if (
+            packet.progress >= 1
+        ) {
+
+            packet.progress = 0;
+
+            packet.from =
+                Math.floor(
+                    Math.random() *
+                    nodes.length
+                );
+
+            packet.to =
+                Math.floor(
+                    Math.random() *
+                    nodes.length
+                );
+
+        }
+
+
+        if (
+            from.z < -0.35 ||
+            to.z < -0.35
+        ) {
+
+            return;
+
+        }
+
+
+        const x =
+            from.x +
+            (
+                to.x -
+                from.x
+            ) *
+            packet.progress;
+
+
+        const y =
+            from.y +
+            (
+                to.y -
+                from.y
+            ) *
+            packet.progress;
+
+
+        const glow =
+            ctx.createRadialGradient(
+                x,
+                y,
+                0,
+                x,
+                y,
+                8
+            );
+
+
+        glow.addColorStop(
+            0,
+            "rgba(0,255,180,0.9)"
+        );
+
+        glow.addColorStop(
+            0.3,
+            "rgba(0,210,255,0.5)"
+        );
+
+        glow.addColorStop(
+            1,
+            "rgba(0,210,255,0)"
+        );
+
+
+        ctx.fillStyle =
+            glow;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            8,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+
+        ctx.fillStyle =
+            "#7dffd1";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            1.5,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    });
 
 }
 
@@ -2882,10 +2670,7 @@ function drawPackets(projected) {
    DRAW NODES
 ========================================================= */
 
-function drawNodes(
-    projected,
-    time
-) {
+function drawNodes(projected, time) {
 
     projected.forEach(
         (point, index) => {
@@ -3022,11 +2807,9 @@ function drawNetwork(time) {
         projected
     );
 
-
     drawPackets(
         projected
     );
-
 
     drawNodes(
         projected,
@@ -3110,542 +2893,363 @@ if (reducedMotion) {
 const questions = [
 
     {
-        question:
-            "What is the main purpose of multi-factor authentication (MFA)?",
-
+        question: "What is the main purpose of multi-factor authentication (MFA)?",
         answers: [
             "To make passwords longer",
             "To require multiple forms of verification",
             "To encrypt every file on a computer",
             "To increase internet speed"
         ],
-
         correct: 1,
-
-        explanation:
-            "MFA adds additional verification factors, such as a password plus a security code or security key."
+        explanation: "MFA adds additional verification factors, such as a password plus a security code or security key."
     },
 
-
     {
-        question:
-            "A user receives an email claiming their account will be deleted unless they click a link immediately. What is the biggest warning sign?",
-
+        question: "A user receives an email claiming their account will be deleted unless they click a link immediately. What is the biggest warning sign?",
         answers: [
             "The email contains text",
             "The message creates urgency and asks for an action",
             "The email has a subject line",
             "The user has an account"
         ],
-
         correct: 1,
-
-        explanation:
-            "Attackers commonly use urgency and fear to pressure people into making unsafe decisions."
+        explanation: "Attackers commonly use urgency and fear to pressure people into making unsafe decisions."
     },
 
-
     {
-        question:
-            "What does a firewall primarily help control?",
-
+        question: "What does a firewall primarily help control?",
         answers: [
             "Physical computer temperature",
             "Network traffic",
             "Keyboard layout",
             "Screen brightness"
         ],
-
         correct: 1,
-
-        explanation:
-            "Firewalls inspect and control network traffic based on security rules."
+        explanation: "Firewalls inspect and control network traffic based on security rules."
     },
 
-
     {
-        question:
-            "Which security principle means users should receive only the access they need?",
-
+        question: "Which security principle means users should receive only the access they need?",
         answers: [
             "Least privilege",
             "Maximum access",
             "Open access",
             "Shared access"
         ],
-
         correct: 0,
-
-        explanation:
-            "Least privilege reduces risk by giving users and systems only the permissions required for their tasks."
+        explanation: "Least privilege reduces risk by giving users and systems only the permissions required for their tasks."
     },
 
-
     {
-        question:
-            "What is hashing primarily used for?",
-
+        question: "What is hashing primarily used for?",
         answers: [
             "Creating a fixed-size representation of data",
             "Increasing monitor resolution",
             "Making Wi-Fi faster",
             "Deleting networks"
         ],
-
         correct: 0,
-
-        explanation:
-            "A cryptographic hash converts data into a fixed-length value that can be used for integrity checks and other security purposes."
+        explanation: "A cryptographic hash converts data into a fixed-length value that can be used for integrity checks and other security purposes."
     },
 
-
     {
-        question:
-            "Which protocol is commonly used to securely access a website?",
-
+        question: "Which protocol is commonly used to securely access a website?",
         answers: [
             "HTTP",
             "HTTPS",
             "FTP",
             "SMTP"
         ],
-
         correct: 1,
-
-        explanation:
-            "HTTPS uses TLS to protect communication between a browser and website."
+        explanation: "HTTPS uses TLS to protect communication between a browser and website."
     },
 
-
     {
-        question:
-            "What is malware?",
-
+        question: "What is malware?",
         answers: [
             "A type of monitor",
             "Malicious software",
             "A network cable",
             "A password manager"
         ],
-
         correct: 1,
-
-        explanation:
-            "Malware is software designed to perform harmful or unauthorized actions."
+        explanation: "Malware is software designed to perform harmful or unauthorized actions."
     },
 
-
     {
-        question:
-            "What is a vulnerability?",
-
+        question: "What is a vulnerability?",
         answers: [
             "A security weakness",
             "A strong password",
             "A firewall rule",
             "A backup"
         ],
-
         correct: 0,
-
-        explanation:
-            "A vulnerability is a weakness that could potentially be exploited or otherwise cause a security problem."
+        explanation: "A vulnerability is a weakness that could potentially be exploited or otherwise cause a security problem."
     },
 
-
     {
-        question:
-            "What is social engineering?",
-
+        question: "What is social engineering?",
         answers: [
             "Designing social media websites",
             "Manipulating people into revealing information or taking actions",
             "Building computer hardware",
             "Encrypting a hard drive"
         ],
-
         correct: 1,
-
-        explanation:
-            "Social engineering targets people rather than relying only on technical vulnerabilities."
+        explanation: "Social engineering targets people rather than relying only on technical vulnerabilities."
     },
 
-
     {
-        question:
-            "What does DNS primarily do?",
-
+        question: "What does DNS primarily do?",
         answers: [
             "Translates domain names into IP addresses",
             "Creates passwords",
             "Scans keyboards",
             "Encrypts USB drives"
         ],
-
         correct: 0,
-
-        explanation:
-            "DNS helps devices find the IP address associated with a domain name."
+        explanation: "DNS helps devices find the IP address associated with a domain name."
     },
 
-
     {
-        question:
-            "What is ransomware?",
-
+        question: "What is ransomware?",
         answers: [
             "Software that improves Wi-Fi",
             "Malware that can block access to data and demand payment",
             "A type of firewall",
             "A password manager"
         ],
-
         correct: 1,
-
-        explanation:
-            "Ransomware is malware that can make data or systems inaccessible and then demand payment."
+        explanation: "Ransomware is malware that can make data or systems inaccessible and then demand payment."
     },
 
-
     {
-        question:
-            "What is the purpose of a software security patch?",
-
+        question: "What is the purpose of a software security patch?",
         answers: [
             "To fix known problems or vulnerabilities",
             "To make a screen brighter",
             "To remove the keyboard",
             "To increase battery size"
         ],
-
         correct: 0,
-
-        explanation:
-            "Security patches repair vulnerabilities and other software problems."
+        explanation: "Security patches repair vulnerabilities and other software problems."
     },
 
-
     {
-        question:
-            "What does authentication verify?",
-
+        question: "What does authentication verify?",
         answers: [
             "What permissions a person has",
             "Who or what someone is",
             "How fast the network is",
             "How much storage exists"
         ],
-
         correct: 1,
-
-        explanation:
-            "Authentication verifies identity. Authorization determines what that identity is allowed to do."
+        explanation: "Authentication verifies identity. Authorization determines what that identity is allowed to do."
     },
 
-
     {
-        question:
-            "What does authorization determine?",
-
+        question: "What does authorization determine?",
         answers: [
             "Whether someone is allowed to access a resource",
             "Someone's password length",
             "The computer's screen size",
             "The speed of a processor"
         ],
-
         correct: 0,
-
-        explanation:
-            "Authorization determines what an authenticated user or system is permitted to access."
+        explanation: "Authorization determines what an authenticated user or system is permitted to access."
     },
 
-
     {
-        question:
-            "What is a DDoS attack designed to do?",
-
+        question: "What is a DDoS attack designed to do?",
         answers: [
             "Overwhelm a service with large amounts of traffic",
             "Improve website performance",
             "Create stronger passwords",
             "Encrypt a user's files"
         ],
-
         correct: 0,
-
-        explanation:
-            "A distributed denial-of-service attack attempts to overwhelm a service so legitimate users have difficulty accessing it."
+        explanation: "A distributed denial-of-service attack attempts to overwhelm a service so legitimate users have difficulty accessing it."
     },
 
-
     {
-        question:
-            "What is a VPN commonly used for?",
-
+        question: "What is a VPN commonly used for?",
         answers: [
             "Creating a protected connection over a network",
             "Increasing monitor size",
             "Removing all malware automatically",
             "Creating new computer hardware"
         ],
-
         correct: 0,
-
-        explanation:
-            "A VPN can create an encrypted connection between a device and a VPN service."
+        explanation: "A VPN can create an encrypted connection between a device and a VPN service."
     },
 
-
     {
-        question:
-            "What is a zero-day vulnerability?",
-
+        question: "What is a zero-day vulnerability?",
         answers: [
             "A vulnerability that has never existed",
             "A newly discovered vulnerability that may not yet have a fix available",
             "A vulnerability in a calendar",
             "A type of password"
         ],
-
         correct: 1,
-
-        explanation:
-            "A zero-day vulnerability is a security flaw for which defenders may have had little or no time to develop a fix."
+        explanation: "A zero-day vulnerability is a security flaw for which defenders may have had little or no time to develop a fix."
     },
 
-
     {
-        question:
-            "Which is the strongest password practice?",
-
+        question: "Which is the strongest password practice?",
         answers: [
             "Reuse one password everywhere",
             "Use short passwords",
             "Use unique strong passwords with a password manager",
             "Share passwords with friends"
         ],
-
         correct: 2,
-
-        explanation:
-            "Unique strong passwords reduce the damage if one account is compromised. A password manager can help manage them."
+        explanation: "Unique strong passwords reduce the damage if one account is compromised. A password manager can help manage them."
     },
 
-
     {
-        question:
-            "Why are backups important for cybersecurity?",
-
+        question: "Why are backups important for cybersecurity?",
         answers: [
             "They can help recover data after loss or an incident",
             "They make passwords unnecessary",
             "They prevent every cyberattack",
             "They replace firewalls"
         ],
-
         correct: 0,
-
-        explanation:
-            "Reliable backups can help organizations recover data after accidental deletion, hardware failure, or certain cyber incidents."
+        explanation: "Reliable backups can help organizations recover data after accidental deletion, hardware failure, or certain cyber incidents."
     },
 
-
     {
-        question:
-            "What is an IP address used for?",
-
+        question: "What is an IP address used for?",
         answers: [
             "Identifying an endpoint on a network",
             "Changing keyboard colors",
             "Creating encryption keys automatically",
             "Increasing storage"
         ],
-
         correct: 0,
-
-        explanation:
-            "IP addresses identify network interfaces or endpoints so network traffic can be routed."
+        explanation: "IP addresses identify network interfaces or endpoints so network traffic can be routed."
     },
 
-
     {
-        question:
-            "What is a Trojan in cybersecurity?",
-
+        question: "What is a Trojan in cybersecurity?",
         answers: [
             "A type of malicious program disguised as something legitimate",
             "A firewall",
             "A backup system",
             "A network cable"
         ],
-
         correct: 0,
-
-        explanation:
-            "A Trojan disguises itself as legitimate software or content to trick users into running it."
+        explanation: "A Trojan disguises itself as legitimate software or content to trick users into running it."
     },
 
-
     {
-        question:
-            "What is incident response?",
-
+        question: "What is incident response?",
         answers: [
             "The process of handling and recovering from security incidents",
             "Installing video games",
             "Changing monitor settings",
             "Building a computer"
         ],
-
         correct: 0,
-
-        explanation:
-            "Incident response involves detecting, analyzing, containing, recovering from, and learning from security incidents."
+        explanation: "Incident response involves detecting, analyzing, containing, recovering from, and learning from security incidents."
     },
 
-
     {
-        question:
-            "Why is encryption useful?",
-
+        question: "Why is encryption useful?",
         answers: [
             "It helps protect data from unauthorized reading",
             "It makes every password public",
             "It removes all vulnerabilities",
             "It increases screen resolution"
         ],
-
         correct: 0,
-
-        explanation:
-            "Encryption transforms readable data into protected ciphertext that requires the appropriate key to decrypt."
+        explanation: "Encryption transforms readable data into protected ciphertext that requires the appropriate key to decrypt."
     },
 
-
     {
-        question:
-            "What is a brute-force attack?",
-
+        question: "What is a brute-force attack?",
         answers: [
             "Trying many possible credentials or combinations",
             "Installing a firewall",
             "Backing up files",
             "Updating software"
         ],
-
         correct: 0,
-
-        explanation:
-            "Brute-force attacks repeatedly try possible credentials or combinations until a valid one is found."
+        explanation: "Brute-force attacks repeatedly try possible credentials or combinations until a valid one is found."
     },
 
-
     {
-        question:
-            "What is the main purpose of security logs?",
-
+        question: "What is the main purpose of security logs?",
         answers: [
             "Record events that can help with monitoring and investigation",
             "Make websites faster",
             "Replace passwords",
             "Turn off networks"
         ],
-
         correct: 0,
-
-        explanation:
-            "Logs provide a record of events that security teams can analyze when monitoring systems or investigating incidents."
+        explanation: "Logs provide a record of events that security teams can analyze when monitoring systems or investigating incidents."
     },
 
-
     {
-        question:
-            "Which action is safest when you receive a suspicious attachment?",
-
+        question: "Which action is safest when you receive a suspicious attachment?",
         answers: [
             "Open it immediately",
             "Forward it to everyone",
             "Verify the sender and context before opening",
             "Disable security software"
         ],
-
         correct: 2,
-
-        explanation:
-            "Unexpected attachments should be treated cautiously. Verify the sender and context before interacting with them."
+        explanation: "Unexpected attachments should be treated cautiously. Verify the sender and context before interacting with them."
     },
 
-
     {
-        question:
-            "What does the CIA triad represent?",
-
+        question: "What does the CIA triad represent?",
         answers: [
             "Confidentiality, Integrity, Availability",
             "Computers, Internet, Accounts",
             "Code, Identity, Authentication",
             "Cybersecurity, Internet, Applications"
         ],
-
         correct: 0,
-
-        explanation:
-            "The CIA triad is a core security model focused on confidentiality, integrity, and availability."
+        explanation: "The CIA triad is a core security model focused on confidentiality, integrity, and availability."
     },
 
-
     {
-        question:
-            "What does confidentiality mean in cybersecurity?",
-
+        question: "What does confidentiality mean in cybersecurity?",
         answers: [
             "Information is available to everyone",
             "Information is protected from unauthorized access",
             "Information is deleted",
             "Information is always public"
         ],
-
         correct: 1,
-
-        explanation:
-            "Confidentiality means preventing unauthorized people or systems from accessing information."
+        explanation: "Confidentiality means preventing unauthorized people or systems from accessing information."
     },
 
-
     {
-        question:
-            "What does integrity mean?",
-
+        question: "What does integrity mean?",
         answers: [
             "Data remains accurate and has not been improperly changed",
             "Everyone can access the data",
             "The computer is turned off",
             "Passwords are removed"
         ],
-
         correct: 0,
-
-        explanation:
-            "Integrity focuses on keeping information accurate, complete, and protected from unauthorized modification."
+        explanation: "Integrity focuses on keeping information accurate, complete, and protected from unauthorized modification."
     },
 
-
     {
-        question:
-            "What does availability mean?",
-
+        question: "What does availability mean?",
         answers: [
             "Authorized users can access systems and information when needed",
             "Passwords are shared publicly",
             "Every file is encrypted forever",
             "No one can access a system"
         ],
-
         correct: 0,
-
-        explanation:
-            "Availability means systems and information remain accessible to authorized users when needed."
+        explanation: "Availability means systems and information remain accessible to authorized users when needed."
     }
 
 ];
@@ -3667,59 +3271,37 @@ let answered = false;
 ========================================================= */
 
 const questionElement =
-    document.getElementById(
-        "question"
-    );
+    document.getElementById("question");
 
 const answersElement =
-    document.getElementById(
-        "answers"
-    );
+    document.getElementById("answers");
 
 const explanationElement =
-    document.getElementById(
-        "explanation"
-    );
+    document.getElementById("explanation");
 
 const nextButton =
-    document.getElementById(
-        "nextButton"
-    );
+    document.getElementById("nextButton");
 
 const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
+    document.getElementById("progressBar");
 
 const questionCounter =
-    document.getElementById(
-        "questionCounter"
-    );
+    document.getElementById("questionCounter");
 
 const scoreText =
-    document.getElementById(
-        "scoreText"
-    );
+    document.getElementById("scoreText");
 
 const quizElement =
-    document.getElementById(
-        "quiz"
-    );
+    document.getElementById("quiz");
 
 const resultElement =
-    document.getElementById(
-        "result"
-    );
+    document.getElementById("result");
 
 const finalScore =
-    document.getElementById(
-        "finalScore"
-    );
+    document.getElementById("finalScore");
 
 const resultMessage =
-    document.getElementById(
-        "resultMessage"
-    );
+    document.getElementById("resultMessage");
 
 
 /* =========================================================
@@ -3732,9 +3314,7 @@ function loadQuestion() {
 
 
     const q =
-        questions[
-            currentQuestion
-        ];
+        questions[currentQuestion];
 
 
     questionElement.textContent =
@@ -3754,11 +3334,7 @@ function loadQuestion() {
 
 
     questionCounter.textContent =
-        `Question ${
-            currentQuestion + 1
-        } of ${
-            questions.length
-        }`;
+        `Question ${currentQuestion + 1} of ${questions.length}`;
 
 
     scoreText.textContent =
@@ -3826,9 +3402,7 @@ function selectAnswer(
 
 
     const q =
-        questions[
-            currentQuestion
-        ];
+        questions[currentQuestion];
 
 
     const buttons =
@@ -3882,7 +3456,7 @@ function selectAnswer(
 
 
         explanationElement.innerHTML =
-            `<strong>✗ Not quite.</strong><br><br>${q.explanation}`;
+            `<strong>✗ Not quite.</strong><br><br>${q.explanation`;
 
     }
 
@@ -4012,23 +3586,20 @@ function restartQuiz() {
 
 
 /* =========================================================
-   MASTER NAVIGATION
+   MASTER NAVIGATION SYSTEM
 ========================================================= */
 
 (() => {
 
-
     const menuToggle =
         document.getElementById(
-            "menu-toggle"
+            "menuToggle"
         );
 
-
-    const navigation =
+    const mainNav =
         document.getElementById(
-            "main-navigation"
+            "mainNav"
         );
-
 
     const dropdowns =
         document.querySelectorAll(
@@ -4038,7 +3609,7 @@ function restartQuiz() {
 
     if (
         !menuToggle ||
-        !navigation
+        !mainNav
     ) {
 
         return;
@@ -4055,7 +3626,7 @@ function restartQuiz() {
         () => {
 
             const isOpen =
-                navigation.classList.toggle(
+                mainNav.classList.toggle(
                     "open"
                 );
 
@@ -4084,7 +3655,7 @@ function restartQuiz() {
 
 
     /* =====================================================
-       DROPDOWNS
+       DROPDOWN BUTTONS
     ===================================================== */
 
     dropdowns.forEach(
@@ -4115,15 +3686,15 @@ function restartQuiz() {
 
 
                     dropdowns.forEach(
-                        other => {
+                        otherDropdown => {
 
-                            other.classList.remove(
+                            otherDropdown.classList.remove(
                                 "open"
                             );
 
 
                             const otherButton =
-                                other.querySelector(
+                                otherDropdown.querySelector(
                                     ".dropdown-button"
                                 );
 
@@ -4204,7 +3775,7 @@ function restartQuiz() {
        CLOSE MOBILE MENU AFTER LINK CLICK
     ===================================================== */
 
-    navigation
+    mainNav
         .querySelectorAll(
             "a"
         )
@@ -4215,7 +3786,7 @@ function restartQuiz() {
                     "click",
                     () => {
 
-                        navigation.classList.remove(
+                        mainNav.classList.remove(
                             "open"
                         );
 
@@ -4243,7 +3814,7 @@ function restartQuiz() {
 
 
     /* =====================================================
-       RESET MOBILE NAV ON RESIZE
+       RESET MOBILE MENU ON RESIZE
     ===================================================== */
 
     window.addEventListener(
@@ -4254,7 +3825,7 @@ function restartQuiz() {
                 window.innerWidth > 800
             ) {
 
-                navigation.classList.remove(
+                mainNav.classList.remove(
                     "open"
                 );
 
@@ -4274,11 +3845,21 @@ function restartQuiz() {
                 menuToggle.textContent =
                     "☰";
 
+
+                dropdowns.forEach(
+                    dropdown => {
+
+                        dropdown.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
+
             }
 
         }
     );
-
 
 })();
 
