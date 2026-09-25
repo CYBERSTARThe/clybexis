@@ -51,7 +51,6 @@ body {
             transparent 30%
         ),
         #020711;
-
 }
 
 
@@ -72,11 +71,8 @@ body {
     z-index: 0;
 
     pointer-events: none;
-
 }
 
-
-/* Subtle technical grid */
 
 .network-grid {
 
@@ -107,11 +103,8 @@ body {
             black 20%,
             transparent 82%
         );
-
 }
 
-
-/* Dark cinematic edges */
 
 .network-vignette {
 
@@ -130,11 +123,8 @@ body {
             rgba(0,3,10,0.35) 70%,
             rgba(0,3,10,0.88) 100%
         );
-
 }
 
-
-/* Very subtle moving scan */
 
 .network-scan {
 
@@ -171,7 +161,6 @@ body {
         infinite;
 
     opacity: 0.5;
-
 }
 
 
@@ -194,56 +183,93 @@ body {
         top: 100%;
         opacity: 0;
     }
-
 }
 
 
 /* =========================================================
-   NAVBAR
+   MASTER CLYVEXIS NAVIGATION
 ========================================================= */
 
 nav {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content: center;
+
     align-items: center;
+
     min-height: 72px;
-    padding: 12px 5%;
+
+    padding: 10px 4%;
+
     background:
         linear-gradient(
             90deg,
-            rgba(3, 10, 23, 0.98),
-            rgba(5, 17, 34, 0.96),
-            rgba(3, 10, 23, 0.98)
+            rgba(3,10,23,0.98),
+            rgba(5,17,34,0.97),
+            rgba(3,10,23,0.98)
         );
-    border-bottom: 1px solid rgba(0, 170, 255, 0.55);
-    box-shadow: 0 0 25px rgba(0, 170, 255, 0.15);
-    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(0,170,255,0.55);
+
+    box-shadow:
+        0 0 25px
+        rgba(0,170,255,0.15);
+
+    backdrop-filter:
+        blur(18px);
 }
+
 
 nav::before {
+
     content: "";
+
     position: absolute;
+
     top: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #00aaff,
-        #39ff88,
-        #00aaff,
-        transparent
-    );
-    background-size: 200% 100%;
-    box-shadow: 0 0 14px rgba(0, 170, 255, 0.8);
-    animation: navEnergy 5s linear infinite;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00aaff,
+            #39ff88,
+            #00aaff,
+            transparent
+        );
+
+    background-size:
+        200% 100%;
+
+    box-shadow:
+        0 0 14px
+        rgba(0,170,255,0.8);
+
+    animation:
+        navEnergy
+        5s
+        linear
+        infinite;
 }
 
+
 @keyframes navEnergy {
+
     from {
         background-position: 200% 0;
     }
@@ -253,46 +279,75 @@ nav::before {
     }
 }
 
-.logo {
-    position: relative;
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    text-shadow: 0 0 12px rgba(0, 170, 255, 0.35);
-    color: white;
-    text-decoration: none;
-}
 
-.logo span {
-    color: #00aaff;
-}
+/* =========================================================
+   MAIN NAVIGATION
+========================================================= */
 
-nav ul {
+nav > ul {
+
     list-style: none;
+
     display: flex;
+
     align-items: center;
-    justify-content: flex-end;
-    gap: 7px;
+
+    justify-content: center;
+
+    gap: 8px;
+
     margin: 0;
+
     padding: 0;
 }
 
-nav li {
+
+nav > ul > li {
+
     position: relative;
 }
 
-nav a {
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+nav a,
+.dropdown-button {
+
     position: relative;
+
     display: inline-flex;
+
     align-items: center;
-    min-height: 40px;
-    padding: 8px 11px;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 9px 14px;
+
     color: #dce8f5;
+
     text-decoration: none;
-    font-size: 13px;
+
+    font-size: 15px;
+
     font-weight: bold;
-    border-radius: 8px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     transition:
         color 0.25s ease,
         background 0.25s ease,
@@ -300,138 +355,459 @@ nav a {
         box-shadow 0.25s ease;
 }
 
-nav a:hover {
+
+nav a:hover,
+.dropdown-button:hover {
+
     color: #ffffff;
-    background: rgba(0, 170, 255, 0.08);
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.10);
-    transform: translateY(-1px);
+
+    background:
+        rgba(0,170,255,0.08);
+
+    box-shadow:
+        0 0 15px
+        rgba(0,170,255,0.10);
+
+    transform:
+        translateY(-1px);
 }
 
-nav a.active {
+
+/* =========================================================
+   ACTIVE PAGE
+========================================================= */
+
+nav a.active,
+.dropdown-button.active {
+
     color: #39ff88;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 170, 255, 0.10),
-        rgba(57, 255, 136, 0.06)
-    );
-    box-shadow: inset 0 0 12px rgba(0, 170, 255, 0.06);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,170,255,0.10),
+            rgba(57,255,136,0.06)
+        );
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(0,170,255,0.06);
 }
 
-nav a.active::after {
+
+nav a.active::after,
+.dropdown-button.active::after {
+
     content: "";
+
     position: absolute;
-    left: 11px;
-    right: 11px;
+
+    left: 12px;
+
+    right: 12px;
+
     bottom: 3px;
+
     height: 2px;
-    background: linear-gradient(90deg, #00aaff, #39ff88);
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #39ff88
+        );
+
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(57, 255, 136, 0.7);
+
+    box-shadow:
+        0 0 8px
+        rgba(57,255,136,0.7);
 }
+
+
+/* =========================================================
+   DROPDOWN BUTTON
+========================================================= */
+
+.dropdown-button {
+
+    gap: 7px;
+}
+
+
+.arrow {
+
+    display: inline-block;
+
+    font-size: 11px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.dropdown.open
+.dropdown-button
+.arrow {
+
+    transform:
+        rotate(180deg);
+}
+
+
+/* =========================================================
+   DROPDOWN MENU
+========================================================= */
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: calc(100% + 8px);
+
+    left: 0;
+
+    min-width: 190px;
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 8px;
+
+    background:
+        rgba(3,12,25,0.98);
+
+    border:
+        1px solid
+        rgba(0,170,255,0.25);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,0.45),
+        0 0 20px
+        rgba(0,170,255,0.08);
+
+    backdrop-filter:
+        blur(18px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-8px);
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.dropdown:hover
+.dropdown-menu,
+
+.dropdown:focus-within
+.dropdown-menu,
+
+.dropdown.open
+.dropdown-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+.dropdown-menu li {
+
+    width: 100%;
+}
+
+
+.dropdown-menu a {
+
+    display: flex;
+
+    width: 100%;
+
+    justify-content:
+        flex-start;
+
+    padding:
+        11px 13px;
+
+    font-size: 14px;
+
+    border-radius: 8px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
 
 .menu-toggle {
+
     display: none;
+
     width: 42px;
+
     height: 42px;
+
     align-items: center;
+
     justify-content: center;
-    border: 1px solid rgba(0, 170, 255, 0.45);
+
+    border:
+        1px solid
+        rgba(0,170,255,0.45);
+
     border-radius: 9px;
-    background: rgba(0, 170, 255, 0.06);
-    color: #00aaff;
+
+    background:
+        rgba(0,170,255,0.06);
+
+    color:
+        #00aaff;
+
     font-size: 21px;
+
     cursor: pointer;
+
     transition:
         background 0.25s ease,
         border-color 0.25s ease,
         box-shadow 0.25s ease;
 }
 
+
 .menu-toggle:hover {
-    background: rgba(0, 170, 255, 0.12);
-    border-color: #00aaff;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.18);
+
+    background:
+        rgba(0,170,255,0.12);
+
+    border-color:
+        #00aaff;
+
+    box-shadow:
+        0 0 15px
+        rgba(0,170,255,0.18);
 }
+
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 1050px) {
 
     nav {
-        padding: 12px 3%;
+
+        padding:
+            10px 3%;
     }
 
-    nav ul {
+
+    nav > ul {
+
         gap: 3px;
     }
 
-    nav a {
-        padding: 8px 8px;
-        font-size: 12px;
+
+    nav a,
+    .dropdown-button {
+
+        padding:
+            8px 10px;
+
+        font-size: 13px;
     }
 
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 800px) {
 
     nav {
+
         min-height: 64px;
-        padding: 11px 15px;
+
+        padding:
+            10px 15px;
+
+        justify-content:
+            flex-end;
+
         flex-wrap: wrap;
     }
 
-    .logo {
-        font-size: 23px;
-    }
 
     .menu-toggle {
+
         display: flex;
     }
 
-    nav ul {
+
+    nav > ul {
+
         display: none;
+
         width: 100%;
+
         flex-direction: column;
+
         align-items: stretch;
+
         gap: 5px;
+
         margin-top: 10px;
+
         padding: 10px;
-        border: 1px solid rgba(0, 170, 255, 0.20);
+
+        border:
+            1px solid
+            rgba(0,170,255,0.20);
+
         border-radius: 12px;
-        background: rgba(3, 12, 25, 0.97);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+        background:
+            rgba(3,12,25,0.98);
+
+        box-shadow:
+            0 10px 30px
+            rgba(0,0,0,0.35);
     }
 
-    nav ul.open {
+
+    nav > ul.open {
+
         display: flex;
     }
 
-    nav li {
+
+    nav > ul > li {
+
         width: 100%;
     }
 
-    nav a {
+
+    nav a,
+    .dropdown-button {
+
         width: 100%;
-        justify-content: flex-start;
-        padding: 11px 13px;
+
+        justify-content:
+            flex-start;
+
+        padding:
+            12px 13px;
+
         font-size: 14px;
     }
 
-    nav a.active::after {
+
+    .dropdown-button {
+
+        justify-content:
+            space-between;
+    }
+
+
+    .dropdown-menu {
+
+        position: static;
+
+        width: 100%;
+
+        min-width: 0;
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: none;
+
+        padding:
+            0 8px;
+
+        margin: 0;
+
+        border: none;
+
+        border-radius: 8px;
+
+        box-shadow: none;
+
+        background:
+            rgba(0,0,0,0.12);
+
+        transition:
+            max-height 0.3s ease,
+            padding 0.3s ease;
+    }
+
+
+    .dropdown.open
+    .dropdown-menu {
+
+        max-height: 300px;
+
+        padding:
+            6px 8px;
+    }
+
+
+    .dropdown-menu a {
+
+        font-size: 13px;
+
+        padding:
+            10px 12px;
+    }
+
+
+    nav a.active::after,
+    .dropdown-button.active::after {
+
         left: 13px;
+
         right: auto;
+
         width: 35px;
+
         bottom: 5px;
     }
 
 }
 
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
 @media (max-width: 400px) {
 
-    .logo {
-        font-size: 21px;
-    }
-
     nav {
-        padding: 10px 12px;
+
+        padding:
+            9px 12px;
     }
 
 }
@@ -453,7 +829,6 @@ nav a.active::after {
         75px
         20px
         45px;
-
 }
 
 
@@ -475,7 +850,6 @@ nav a.active::after {
         ease-in-out
         infinite
         alternate;
-
 }
 
 
@@ -518,7 +892,6 @@ nav a.active::after {
     text-shadow:
         0 0 30px
         rgba(0,200,255,0.15);
-
 }
 
 
@@ -533,7 +906,6 @@ nav a.active::after {
     line-height: 1.7;
 
     font-size: 17px;
-
 }
 
 
@@ -552,7 +924,6 @@ nav a.active::after {
     text-shadow:
         0 0 12px
         rgba(0,229,255,0.25);
-
 }
 
 
@@ -576,7 +947,6 @@ nav a.active::after {
         20px
         auto
         80px;
-
 }
 
 
@@ -603,7 +973,8 @@ nav a.active::after {
 
     padding: 32px;
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
 
     box-shadow:
         0 0 35px
@@ -616,7 +987,6 @@ nav a.active::after {
     transition:
         border-color 0.3s,
         box-shadow 0.3s;
-
 }
 
 
@@ -645,7 +1015,6 @@ nav a.active::after {
     box-shadow:
         0 0 14px
         rgba(0,170,255,0.5);
-
 }
 
 
@@ -659,7 +1028,6 @@ nav a.active::after {
         rgba(0,170,255,0.12),
         inset 0 0 35px
         rgba(0,170,255,0.035);
-
 }
 
 
@@ -681,7 +1049,6 @@ nav a.active::after {
     color: #9eb2c8;
 
     font-size: 14px;
-
 }
 
 
@@ -703,7 +1070,6 @@ nav a.active::after {
     overflow: hidden;
 
     margin-bottom: 35px;
-
 }
 
 
@@ -728,7 +1094,6 @@ nav a.active::after {
     box-shadow:
         0 0 12px
         rgba(0,210,255,0.35);
-
 }
 
 
@@ -747,7 +1112,6 @@ nav a.active::after {
     letter-spacing: 1px;
 
     font-weight: bold;
-
 }
 
 
@@ -758,7 +1122,6 @@ nav a.active::after {
     line-height: 1.4;
 
     margin-bottom: 25px;
-
 }
 
 
@@ -771,7 +1134,6 @@ nav a.active::after {
     display: grid;
 
     gap: 14px;
-
 }
 
 
@@ -807,7 +1169,6 @@ nav a.active::after {
         Arial,
         Helvetica,
         sans-serif;
-
 }
 
 
@@ -825,7 +1186,6 @@ nav a.active::after {
     box-shadow:
         0 0 15px
         rgba(0,190,255,0.08);
-
 }
 
 
@@ -840,7 +1200,6 @@ nav a.active::after {
     box-shadow:
         0 0 15px
         rgba(0,255,174,0.08);
-
 }
 
 
@@ -851,14 +1210,12 @@ nav a.active::after {
 
     background:
         rgba(255,60,100,0.10);
-
 }
 
 
 .answer:disabled {
 
     cursor: default;
-
 }
 
 
@@ -891,7 +1248,6 @@ nav a.active::after {
         explanationIn
         0.3s
         ease;
-
 }
 
 
@@ -903,7 +1259,6 @@ nav a.active::after {
 
         transform:
             translateY(5px);
-
     }
 
     to {
@@ -912,7 +1267,6 @@ nav a.active::after {
 
         transform:
             translateY(0);
-
     }
 
 }
@@ -921,7 +1275,6 @@ nav a.active::after {
 .explanation strong {
 
     color: #00d9ff;
-
 }
 
 
@@ -962,7 +1315,6 @@ nav a.active::after {
 
     transition:
         0.25s;
-
 }
 
 
@@ -974,7 +1326,6 @@ nav a.active::after {
     box-shadow:
         0 0 30px
         rgba(0,190,255,0.4);
-
 }
 
 
@@ -982,7 +1333,6 @@ nav a.active::after {
 
     transform:
         translateY(0);
-
 }
 
 
@@ -999,7 +1349,6 @@ nav a.active::after {
     padding:
         20px
         0;
-
 }
 
 
@@ -1014,7 +1363,6 @@ nav a.active::after {
             0 0 18px
             rgba(0,200,255,0.3)
         );
-
 }
 
 
@@ -1023,7 +1371,6 @@ nav a.active::after {
     font-size: 38px;
 
     margin-bottom: 12px;
-
 }
 
 
@@ -1040,7 +1387,6 @@ nav a.active::after {
     text-shadow:
         0 0 20px
         rgba(0,217,255,0.25);
-
 }
 
 
@@ -1051,7 +1397,6 @@ nav a.active::after {
     line-height: 1.7;
 
     margin-bottom: 25px;
-
 }
 
 
@@ -1082,7 +1427,6 @@ nav a.active::after {
 
     transition:
         0.25s;
-
 }
 
 
@@ -1094,7 +1438,6 @@ nav a.active::after {
     box-shadow:
         0 0 20px
         rgba(0,190,255,0.15);
-
 }
 
 
@@ -1125,15 +1468,14 @@ footer {
     background:
         rgba(1,5,12,0.35);
 
-    backdrop-filter: blur(8px);
-
+    backdrop-filter:
+        blur(8px);
 }
 
 
 footer strong {
 
     color: #00d9ff;
-
 }
 
 
@@ -1149,21 +1491,18 @@ footer strong {
             50px
             20px
             35px;
-
     }
 
 
     .hero-icon {
 
         font-size: 48px;
-
     }
 
 
     .hero p {
 
         font-size: 15px;
-
     }
 
 
@@ -1172,7 +1511,6 @@ footer strong {
         font-size: 11px;
 
         letter-spacing: 3px;
-
     }
 
 
@@ -1181,21 +1519,18 @@ footer strong {
         padding: 22px;
 
         border-radius: 18px;
-
     }
 
 
     .quiz-top {
 
         font-size: 13px;
-
     }
 
 
     #question {
 
         font-size: 21px;
-
     }
 
 
@@ -1205,21 +1540,18 @@ footer strong {
 
         padding:
             15px;
-
     }
 
 
     .result h2 {
 
         font-size: 30px;
-
     }
 
 
     .score {
 
         font-size: 45px;
-
     }
 
 }
@@ -1234,21 +1566,18 @@ footer strong {
     .hero h1 {
 
         font-size: 40px;
-
     }
 
 
     .quiz-container {
 
         width: 94%;
-
     }
 
 
     .quiz-card {
 
         padding: 18px;
-
     }
 
 
@@ -1259,21 +1588,18 @@ footer strong {
         align-items: flex-start;
 
         gap: 6px;
-
     }
 
 
     #question {
 
         font-size: 20px;
-
     }
 
 
     .answer {
 
         font-size: 14px;
-
     }
 
 }
@@ -1296,11 +1622,6 @@ footer strong {
     }
 
 }
-
-
-/* =========================================================
-   END CSS
-========================================================= */
 
 </style>
 
@@ -1336,23 +1657,14 @@ footer strong {
 
 
 <!-- =======================================================
-     NAVIGATION
+     MASTER CLYVEXIS NAVIGATION
 ======================================================== -->
 
 <nav>
 
-    <a
-        href="index.html"
-        class="logo">
-
-        🛡️ Cly<span>vexis</span>
-
-    </a>
-
-
     <button
         class="menu-toggle"
-        id="menu-toggle"
+        id="menuToggle"
         aria-label="Open navigation menu"
         aria-expanded="false"
         type="button">
@@ -1362,64 +1674,160 @@ footer strong {
     </button>
 
 
-    <ul id="main-navigation">
+    <ul id="mainNav">
+
+        <!-- HOME -->
 
         <li>
+
             <a href="index.html">
-                Home
-            </a>
-        </li>
 
-        <li>
-            <a href="lessons.html">
-                Lessons
-            </a>
-        </li>
-
-        <li>
-            <a href="labs.html">
-                Labs
-            </a>
-        </li>
-
-        <li>
-            <a
-                href="quiz.html"
-                class="active">
-
-                Quiz
+                🏠 Home
 
             </a>
+
         </li>
 
-        <li>
-            <a href="games.html">
-                Games
-            </a>
+
+        <!-- LEARN -->
+
+        <li class="dropdown">
+
+            <button
+                class="dropdown-button active"
+                type="button"
+                aria-expanded="false">
+
+                📚 Learn
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <ul class="dropdown-menu">
+
+                <li>
+
+                    <a href="lessons.html">
+
+                        📚 Lessons
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="labs.html">
+
+                        🧪 Labs
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="quiz.html"
+                        class="active">
+
+                        🧠 Quiz
+
+                    </a>
+
+                </li>
+
+            </ul>
+
         </li>
 
-        <li>
-            <a href="cyber-defense.html">
-                🛡️ Defense
-            </a>
+
+        <!-- PRACTICE -->
+
+        <li class="dropdown">
+
+            <button
+                class="dropdown-button"
+                type="button"
+                aria-expanded="false">
+
+                🎯 Practice
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <ul class="dropdown-menu">
+
+                <li>
+
+                    <a href="games.html">
+
+                        🎮 Games
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="cyber-defense.html">
+
+                        🛡️ Defense
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="simulators.html">
+
+                        🧪 Simulators
+
+                    </a>
+
+                </li>
+
+            </ul>
+
         </li>
 
-        <li>
-            <a href="glossary.html">
-                Glossary
-            </a>
-        </li>
+
+        <!-- CODING -->
 
         <li>
+
             <a href="coding.html">
+
                 💻 Coding
+
             </a>
+
         </li>
 
+
+        <!-- GLOSSARY -->
+
         <li>
-            <a href="simulators.html">
-                🧪 Simulators
+
+            <a href="glossary.html">
+
+                📖 Glossary
+
             </a>
+
         </li>
 
     </ul>
@@ -1906,8 +2314,6 @@ function drawGlobe() {
         getGlobeSize();
 
 
-    /* Outer glow */
-
     const glow =
         ctx.createRadialGradient(
             centerX,
@@ -1951,8 +2357,6 @@ function drawGlobe() {
     ctx.fill();
 
 
-    /* Globe outline */
-
     ctx.beginPath();
 
     ctx.ellipse(
@@ -1973,8 +2377,6 @@ function drawGlobe() {
     ctx.stroke();
 
 
-    /* Longitude-style orbit */
-
     ctx.beginPath();
 
     ctx.ellipse(
@@ -1992,8 +2394,6 @@ function drawGlobe() {
 
     ctx.stroke();
 
-
-    /* Latitude-style orbit */
 
     ctx.beginPath();
 
@@ -3056,7 +3456,7 @@ function selectAnswer(
 
 
         explanationElement.innerHTML =
-            `<strong>✗ Not quite.</strong><br><br>${q.explanation}`;
+            `<strong>✗ Not quite.</strong><br><br>${q.explanation`;
 
     }
 
@@ -3186,25 +3586,30 @@ function restartQuiz() {
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   MASTER NAVIGATION SYSTEM
 ========================================================= */
 
 (() => {
 
     const menuToggle =
         document.getElementById(
-            "menu-toggle"
+            "menuToggle"
         );
 
-    const navigation =
+    const mainNav =
         document.getElementById(
-            "main-navigation"
+            "mainNav"
+        );
+
+    const dropdowns =
+        document.querySelectorAll(
+            ".dropdown"
         );
 
 
     if (
         !menuToggle ||
-        !navigation
+        !mainNav
     ) {
 
         return;
@@ -3212,12 +3617,16 @@ function restartQuiz() {
     }
 
 
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
     menuToggle.addEventListener(
         "click",
         () => {
 
             const isOpen =
-                navigation.classList.toggle(
+                mainNav.classList.toggle(
                     "open"
                 );
 
@@ -3245,8 +3654,131 @@ function restartQuiz() {
     );
 
 
-    navigation
-        .querySelectorAll("a")
+    /* =====================================================
+       DROPDOWN BUTTONS
+    ===================================================== */
+
+    dropdowns.forEach(
+        dropdown => {
+
+            const button =
+                dropdown.querySelector(
+                    ".dropdown-button"
+                );
+
+
+            if (!button) {
+                return;
+            }
+
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+
+                    const wasOpen =
+                        dropdown.classList.contains(
+                            "open"
+                        );
+
+
+                    dropdowns.forEach(
+                        otherDropdown => {
+
+                            otherDropdown.classList.remove(
+                                "open"
+                            );
+
+
+                            const otherButton =
+                                otherDropdown.querySelector(
+                                    ".dropdown-button"
+                                );
+
+
+                            if (otherButton) {
+
+                                otherButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                    if (!wasOpen) {
+
+                        dropdown.classList.add(
+                            "open"
+                        );
+
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "true"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        () => {
+
+            dropdowns.forEach(
+                dropdown => {
+
+                    dropdown.classList.remove(
+                        "open"
+                    );
+
+
+                    const button =
+                        dropdown.querySelector(
+                            ".dropdown-button"
+                        );
+
+
+                    if (button) {
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU AFTER LINK CLICK
+    ===================================================== */
+
+    mainNav
+        .querySelectorAll(
+            "a"
+        )
         .forEach(
             link => {
 
@@ -3254,7 +3786,7 @@ function restartQuiz() {
                     "click",
                     () => {
 
-                        navigation.classList.remove(
+                        mainNav.classList.remove(
                             "open"
                         );
 
@@ -3281,6 +3813,10 @@ function restartQuiz() {
         );
 
 
+    /* =====================================================
+       RESET MOBILE MENU ON RESIZE
+    ===================================================== */
+
     window.addEventListener(
         "resize",
         () => {
@@ -3289,7 +3825,7 @@ function restartQuiz() {
                 window.innerWidth > 800
             ) {
 
-                navigation.classList.remove(
+                mainNav.classList.remove(
                     "open"
                 );
 
@@ -3308,6 +3844,17 @@ function restartQuiz() {
 
                 menuToggle.textContent =
                     "☰";
+
+
+                dropdowns.forEach(
+                    dropdown => {
+
+                        dropdown.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
 
             }
 
